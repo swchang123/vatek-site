@@ -1088,7 +1088,6 @@ def build_home():
       <div class="ability-pin">
         <div class="ability-pin-title"><h2>우리의 능력</h2></div>
         <div class="ability-item">
-          <span class="ability-watermark" aria-hidden="true">ABILITY</span>
           <div class="ability-body">
             <div class="ability-stats">
               <div class="ability-stat">

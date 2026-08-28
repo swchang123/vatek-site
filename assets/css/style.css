@@ -460,6 +460,7 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    다시 순수 흰 배경이라 카드 사이 빈틈에 색이 비칠 일이 없다. */
 .stackdo-section {
   background: var(--white);
+  padding-top: 0;
 }
 .stackdo-list::before {
   content: "";
@@ -467,7 +468,11 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   top: 0; left: 0; right: 0;
   height: calc(var(--stackdo-title-h) + var(--stackdo-pin-tail));
   z-index: 0;
-  background: linear-gradient(135deg, #d6eef1 0%, #b9e2e8 45%, #98d2db 100%);
+  background:
+    radial-gradient(60% 90% at 6% 0%, rgba(79, 173, 184, 0.22), transparent 60%),
+    radial-gradient(55% 75% at 96% 10%, rgba(169, 197, 47, 0.14), transparent 62%),
+    radial-gradient(75% 65% at 50% 100%, rgba(34, 136, 150, 0.10), transparent 70%),
+    #fbfdfb;
   background-attachment: fixed;
 }
 .stackdo-pin-title {
@@ -492,7 +497,11 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 .stackdo-pin-title::before {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, #d6eef1 0%, #b9e2e8 45%, #98d2db 100%);
+  background:
+    radial-gradient(60% 90% at 6% 0%, rgba(79, 173, 184, 0.22), transparent 60%),
+    radial-gradient(55% 75% at 96% 10%, rgba(169, 197, 47, 0.14), transparent 62%),
+    radial-gradient(75% 65% at 50% 100%, rgba(34, 136, 150, 0.10), transparent 70%),
+    #fbfdfb;
   background-attachment: fixed;
   opacity: 1;
   transition: opacity .5s ease;
@@ -623,6 +632,8 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   -webkit-mask-image: none;
   mask-image: none;
 }
+.stackdo-item-4::before { display: none; }
+.stackdo-item-4 .stackdo-head { border-bottom: none; }
 /* 위 margin-bottom 공식은 4개 항목의 "실제 콘텐츠 높이"가 서로 비슷하다고
    가정한 값인데, 실제 사진이 들어간 항목은 사진 때문에 다른 항목보다 실측
    높이가 훨씬 커져서 공식대로 두면 그 항목만 훨씬 먼저 풀려나 버림(사진이
@@ -824,7 +835,8 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   flex: 1 1 auto;
   min-height: 0; /* flex column 기본값(auto)이면 내부 스크롤 대신 넘쳐버리므로 필수 */
   position: relative;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 8vh;
   background: var(--gray-bg);
   /* (후속58) 스탯+하이라이트+고객사 마퀴가 한 화면에 다 들어가도록 크기를
      맞췄지만, 짧은 창 높이 등 예외 상황에서 내용이 화면(핀 높이)보다 커질 수
