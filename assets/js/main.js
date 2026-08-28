@@ -195,7 +195,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // 유지해 재진입 시마다 다시 실행되도록 변경. 같은 요소가 짧은 시간 안에 여러 번
   // 드나들 때 이전 tick 루프와 새 tick 루프가 겹쳐 값이 튀는 것을 막기 위해 요소마다
   // "실행 세대(runId)"를 두어, tick이 자기 세대가 최신일 때만 화면에 반영하도록 함.
-  var countUpEls = document.querySelectorAll(".count-up");
+  // (후속69) "우리의 가치" 재설계로 .value-stats의 카운트업 숫자는 더 이상
+  // 화면에 "들어올 때마다"가 아니라 "자신이 속한 .value-block이 처음 포커스될
+  // 때 1회"만 실행되어야 함(data-count-on-focus 속성으로 표시) — 아래
+  // valueBlocks IntersectionObserver가 이 요소들을 직접 담당하므로, 여기
+  // 일반 스크롤-진입 카운트업 대상에서는 제외.
+  var countUpEls = document.querySelectorAll(".count-up:not([data-count-on-focus])");
   if (countUpEls.length && "IntersectionObserver" in window) {
     var countUpRunId = new WeakMap();
     var countUpResetText = new WeakMap();
@@ -231,6 +236,15 @@ document.addEventListener("DOMContentLoaded", function () {
       var suffix = el.getAttribute("data-suffix") || "";
       countUpResetText.set(el, prefix + "0" + suffix);
     });
+    // (후속69) data-count-on-focus 요소(.value-stats)는 위 countUpEls에서
+    // 제외되어 있지만, runCountUp()·countUpResetText는 아래 valueBlocks
+    // 블록(같은 함수 스코프, var 호이스팅으로 이 시점 이후에도 접근 가능)에서
+    // 그대로 재사용하므로 리셋용 "0" 텍스트만 여기서 동일하게 미리 기억해둠.
+    document.querySelectorAll(".count-up[data-count-on-focus]").forEach(function (el) {
+      var prefix = el.getAttribute("data-prefix") || "";
+      var suffix = el.getAttribute("data-suffix") || "";
+      countUpResetText.set(el, prefix + "0" + suffix);
+    });
     var countUpObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -254,12 +268,66 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // (후속57) 기존 "OUR HISTORY" 크로스페이드 스크롤 연출은 제거함 — 사용자 요청에
-  // 따라 그 내용(연혁·규모 수치) 중 임팩트 있는 일부만 골라 "우리의 능력" 섹션
-  // 안에 빨간 카운트업 숫자 아래 정적 텍스트로 흡수했고(.ability-highlights,
-  // generate.py의 ABILITY_HIGHLIGHTS 참고), "우리의 능력" 섹션 자체는 아래
-  // "WHAT WE DO" 전체화면 핀 섹션과 동일한 동작(.ability-pin-title/.ability-item)을
-  // CSS만으로 구현했으므로 이 블록에서 처리하던 별도 JS 연출은 더 이상 필요 없음.
+  // (후속69) "우리의 가치" 재설계: 구 .ability-pin(100vh 풀-락, CSS만으로 구현,
+  // 별도 JS 불필요)을 .section-value(.value-block 4개 + IntersectionObserver
+  // 기반 포커스/톤 전환)로 교체. 아래 블록이 그 동작을 전담한다.
+  var valueBlocks = document.querySelectorAll(".value-block");
+  if (valueBlocks.length && "IntersectionObserver" in window) {
+    var valueContent = document.querySelector(".value-content");
+    var valueRatios = new WeakMap();
+    var applyValueFocus = function () {
+      var focused = null;
+      var best = -1;
+      valueBlocks.forEach(function (block) {
+        var ratio = valueRatios.get(block) || 0;
+        if (ratio > best) {
+          best = ratio;
+          focused = block;
+        }
+      });
+      valueBlocks.forEach(function (block) {
+        block.classList.toggle("is-focused", block === focused && best > 0);
+      });
+      if (focused && best > 0 && valueContent) {
+        var tone = focused.getAttribute("data-tone");
+        if (tone) valueContent.style.backgroundColor = tone;
+      }
+    };
+    var valueObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          var block = entry.target;
+          valueRatios.set(block, entry.intersectionRatio);
+          // data-count-on-focus 카운트업: 블록이 처음 화면에 걸리는 순간
+          // (intersectionRatio > 0) 1회 실행하고(el.dataset.counted로 재실행
+          // 방지), 화면 밖으로 완전히 벗어나(intersectionRatio === 0) 다시
+          // 들어올 때를 대비해 그때만 "0"으로 리셋 — runCountUp()과
+          // countUpResetText는 위 count-up 블록에서 이미 정의됨(var 호이스팅).
+          // (버그 수정) 블록 하나(.value-stats)에 카운트업 숫자가 4개 있을 수
+          // 있어 querySelector(단수)가 아니라 querySelectorAll로 전부 순회해야 함
+          // — querySelector만 쓰면 첫 번째 숫자만 카운트되고 나머지 3개는
+          // "0"에 멈춰있는 회귀가 있었음(Playwright로 확인 후 수정).
+          block.querySelectorAll(".count-up[data-count-on-focus]").forEach(function (countEl) {
+            if (entry.intersectionRatio > 0 && !countEl.dataset.counted) {
+              countEl.dataset.counted = "1";
+              runCountUp(countEl);
+            } else if (entry.intersectionRatio === 0 && countEl.dataset.counted) {
+              delete countEl.dataset.counted;
+              if (!prefersReducedMotion) {
+                countEl.textContent = countUpResetText.get(countEl) || "0";
+              }
+            }
+          });
+        });
+        applyValueFocus();
+      },
+      { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] }
+    );
+    valueBlocks.forEach(function (block) {
+      valueRatios.set(block, 0);
+      valueObserver.observe(block);
+    });
+  }
 
   // 스크롤 리빌 애니메이션 (후속61, 첫 페이지 정적 섹션 전용): 뷰포트에 들어오면
   // .reveal/.reveal-scale/.reveal-pop 요소에 is-visible을 붙여 CSS 트랜지션으로

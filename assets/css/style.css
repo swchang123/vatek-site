@@ -888,113 +888,161 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    직결되어 있어 여기서 더 줄이려면 01~05번 margin·pin-tail 전체를
    재계산해야 함(시도해봤다가 05번 사진이 중간에 잘리는 회귀 확인 후
    원복 — 위 .stackdo-ability-teaser 주석 참고). */
-.ability-section { padding-top: 0; }
-.ability-list {
-  position: relative;
-  --ability-tail-slack: 80px;
+/* (후속69) 재설계: 구 .ability-*(100vh 풀-락 pin) 전면 교체.
+   제목(.value-pin-title)만 `position:sticky; top:0`으로 붙여두고, 그 아래
+   4개 .value-block이 일반 문서 흐름으로 스크롤됨 — WHAT WE DO/구 우리의
+   능력처럼 margin-bottom·pin-tail을 수식으로 맞출 필요가 없는 훨씬 단순한
+   구조. 화면에 가장 많이 걸쳐 있는 블록을 assets/js/main.js의
+   IntersectionObserver가 찾아 `.is-focused`를 붙이면(확대+선명+그림자,
+   나머지 블록은 축소+회색조로 죽음) .value-content 배경색이 그 블록의
+   data-tone으로 0.7s 크로스페이드된다. */
+.section-value {
+  background: var(--white);
+  padding-top: 0; /* 구 .ability-section과 동일한 이유 — 05번이 풀려나는
+    즉시 이 섹션이 바로 이어지도록 상단 여백 제거 */
 }
-.ability-tail { height: var(--ability-tail-slack); }
-.ability-pin {
+.value-list { position: relative; }
+.value-pin-title {
   position: sticky;
   top: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: var(--white);
-}
-.ability-pin-title {
-  flex: 0 0 auto;
+  z-index: 5;
   display: flex; align-items: center; justify-content: center;
-  padding: 32px 24px;
-  position: relative; z-index: 2;
+  padding: 28px 24px;
   background: var(--white);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-sm);
 }
-.ability-pin-title h2 {
+.value-pin-title h2 {
   margin: 0; text-align: center;
   font-size: clamp(31px, 4vw, 53px); font-weight: 800; letter-spacing: -0.02em;
 }
-.ability-item {
-  flex: 1 1 auto;
-  min-height: 0; /* flex column 기본값(auto)이면 내부 스크롤 대신 넘쳐버리므로 필수 */
+.value-content {
   position: relative;
-  display: flex; align-items: flex-start; justify-content: center;
-  padding-top: 8vh;
-  background: var(--gray-bg);
-  /* (후속58) 스탯+하이라이트+고객사 마퀴가 한 화면에 다 들어가도록 크기를
-     맞췄지만, 짧은 창 높이 등 예외 상황에서 내용이 화면(핀 높이)보다 커질 수
-     있어 안전하게 내부 스크롤을 항상 허용함 — main.js의 전역 휠 스무스스크롤도
-     이 요소가 실제로 넘칠 때는 가로채지 않고 비켜주도록 맞춰둠(.ability-item
-     bypass 로직 참고). */
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  padding: clamp(56px, 8vw, 96px) 0;
+  background-color: var(--blue-pale);
+  transition: background-color .7s ease;
 }
-.ability-watermark {
-  position: absolute; top: 4%; left: 50%; transform: translateX(-50%);
-  font-size: clamp(52px, 9vw, 128px); font-weight: 800; letter-spacing: 6px;
-  color: rgba(40, 55, 57, 0.05); white-space: nowrap; z-index: 0;
-  user-select: none; pointer-events: none;
+.value-label {
+  display: block; text-align: center;
+  font-size: 13px; font-weight: 800; color: var(--blue-dark);
+  letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 18px;
 }
-.ability-body {
-  position: relative; z-index: 1; width: 100%; max-width: var(--maxw);
-  margin: 0 auto; padding: 0 32px;
+.value-block {
+  max-width: var(--maxw);
+  margin: 0 auto clamp(60px, 10vw, 120px);
+  padding: clamp(32px, 4vw, 48px) clamp(24px, 4vw, 48px);
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transform: scale(.9);
+  filter: grayscale(1);
+  opacity: .7;
+  transition: transform .5s ease, filter .5s ease, opacity .5s ease, box-shadow .5s ease;
 }
-.ability-stats {
+.value-block:last-child { margin-bottom: 0; }
+.value-block.is-focused {
+  transform: scale(1.05);
+  filter: grayscale(0);
+  opacity: 1;
+  box-shadow: var(--shadow-lift);
+}
+.value-timeline {
+  position: relative;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+}
+.value-timeline::before {
+  content: "";
+  position: absolute; top: 6px; left: 6%; right: 6%; height: 0;
+  border-top: 2px dotted var(--gray-line);
+}
+.value-timeline-item { position: relative; text-align: center; padding-top: 26px; }
+.value-timeline-item::before {
+  content: "";
+  position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--blue); box-shadow: 0 0 0 3px var(--white), 0 0 0 4px var(--blue);
+}
+.value-timeline-item b {
+  display: block; font-size: clamp(24px, 3vw, 34px); font-weight: 800; color: var(--navy);
+  margin-bottom: 8px;
+}
+.value-timeline-item span { font-size: 13.5px; color: var(--text-muted); font-weight: 600; word-break: keep-all; }
+.value-stats {
+  position: relative;
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; text-align: center;
 }
-.ability-stat { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.ability-stat .a-en {
-  font-size: 13px; font-weight: 800; color: var(--text-muted); letter-spacing: 1px;
+.value-stat { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.value-stat:not(:first-child)::before {
+  content: ""; position: absolute; left: 0; top: 12%; bottom: 12%;
+  border-left: 1px solid var(--gray-line);
 }
-/* (후속58) "1986, 20개 이상... 이것도 No.1, 250 등과 같은 크기로 해줘" — 아래
-   .ability-highlight b와 폰트 크기를 정확히 동일하게 맞춤(공유 규칙).
-   (후속59) 고객사 마퀴를 핀 화면에서 뺀 만큼 여유가 생겨 크기를 다시 소폭
-   키움. */
-.ability-stat b.count-up,
-.ability-highlight b {
+.value-stat b {
   display: block;
-  font-size: clamp(36px, 5vw, 66px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;
-  white-space: nowrap;
+  font-size: clamp(36px, 5vw, 60px); font-weight: 800; letter-spacing: -0.02em;
+  color: var(--accent-red);
 }
-.ability-stat b.count-up { color: var(--accent-red); }
-.ability-highlight b { color: var(--blue-dark); }
-.ability-stat .a-kr { font-size: 14px; font-weight: 600; color: var(--text-body); }
-
-/* OUR HISTORY에서 흡수한 임팩트 항목 4개 — 빨간 카운트업 숫자와 같은 크기로
-   그 아래 정적 텍스트로 배치(사용자 요청), (후속59) 이 숫자들도 스탯과 동일하게
-   count-up 애니메이션 적용(JS: assets/js/main.js의 .count-up 로직, data-suffix로
-   "개"/"개+" 단위 지원). */
-.ability-highlights {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; text-align: center;
-  /* (후속59) "위 아래 숫자간 간격을 좀 만들어줘. 너무 붙어 있는 느낌이야" —
-     스탯 행과 하이라이트 행 사이 간격을 눈에 띄게 넓힘(고객사 마퀴를 빼면서
-     생긴 여유 공간을 이 간격에 사용). */
-  margin-top: clamp(40px, 6vw, 72px); padding-top: clamp(28px, 3.6vw, 44px);
+.value-stat span { font-size: 14px; color: var(--text-body); font-weight: 600; }
+.value-feature {
+  display: grid; grid-template-columns: 0.8fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: center;
+}
+/* (2026-08-28 갱신) 실제 이미지 반영 완료 — .value-feature-img는 사진을 감싸는
+   1:1 비율 프레임(둥근 모서리), 내부 img는 object-fit:cover로 꽉 채움. */
+.value-feature-img {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--gray-bg);
+}
+.value-feature-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.value-feature-list { list-style: none; margin: 0; padding: 0; counter-reset: vf; }
+.value-feature-list li {
+  counter-increment: vf;
+  position: relative;
+  padding-left: 40px;
+  font-size: 16px; line-height: 1.6; color: var(--text-body); font-weight: 600;
+  margin-bottom: 18px;
+}
+.value-feature-list li:last-child { margin-bottom: 0; }
+.value-feature-list li::before {
+  content: counter(vf);
+  position: absolute; left: 0; top: 0;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--blue-dark); color: var(--white);
+  font-size: 14px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.value-cert-row {
+  display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap;
+  margin-top: clamp(28px, 4vw, 40px); padding-top: clamp(20px, 3vw, 28px);
   border-top: 1px solid var(--gray-line);
 }
-.ability-highlight { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.ability-highlight span { font-size: 13px; color: var(--text-muted); font-weight: 600; word-break: keep-all; }
-
-.ability-body .stat-note { margin: clamp(20px, 3vw, 30px) 0 0; text-align: center; }
-
-/* (후속58) "우리의 능력" 핀 화면 안에 고객사 마퀴를 넣는 구조/스타일. (후속59)
-   "고객 레퍼런스는 잠시 빼자. 나중에 필요하면 다시 얘기할께"에 따라 지금은
-   generate.py에서 이 마크업을 렌더링하지 않지만(ref_marquee_html() 호출 제거),
-   나중에 다시 요청하면 바로 재사용할 수 있도록 CSS는 그대로 남겨둠. */
-.ability-refs { margin-top: clamp(16px, 2.4vw, 24px); }
-.ability-refs-label {
-  display: block; text-align: center; font-size: 12.5px; font-weight: 800;
-  color: var(--text-muted); letter-spacing: .6px; margin-bottom: 10px;
+/* (2026-08-28 갱신) 인증마크·매체/시상 로고 전부 실제 이미지로 교체 — 로고마다
+   원본 비율이 제각각이라 height만 고정하고 width는 auto로 비율 유지, object-fit:
+   contain으로 여백 없이 잘리지 않게 표시. */
+.value-cert-mark { height: 56px; width: auto; object-fit: contain; }
+.value-logos {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(24px, 4vw, 40px);
 }
+.value-logo {
+  height: 40px; width: auto; max-width: 140px; object-fit: contain;
+  filter: grayscale(1) opacity(.65);
+  transition: filter .2s ease;
+}
+.value-logo:hover { filter: grayscale(0) opacity(1); }
 
 @media (max-width: 860px) {
-  .ability-list { --ability-tail-slack: 56px; }
-  .ability-pin-title { padding: 22px 20px; }
-  .ability-pin-title h2 { font-size: clamp(24px, 6.5vw, 32px); }
-  .ability-body { padding: 0 20px; }
-  .ability-stats { grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
-  .ability-highlights { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; margin-top: clamp(30px, 8vw, 44px); padding-top: clamp(20px, 5vw, 28px); }
-  .ability-stat b.count-up, .ability-highlight b { font-size: clamp(30px, 8vw, 44px); }
+  .value-pin-title { padding: 20px 20px; }
+  .value-pin-title h2 { font-size: clamp(24px, 6.5vw, 32px); }
+  .value-content { padding: clamp(40px, 8vw, 64px) 0; }
+  .value-block { padding: 24px 20px; margin-bottom: 48px; }
+  .value-timeline, .value-stats { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
+  .value-timeline::before { display: none; }
+  .value-timeline-item { padding-top: 0; }
+  .value-timeline-item::before { display: none; }
+  .value-stat:nth-child(odd)::before { display: none; }
+  .value-feature { grid-template-columns: 1fr; }
+  .value-feature-img { max-width: 240px; margin: 0 auto; }
+  .value-logo { height: 32px; max-width: 110px; }
+  .value-cert-mark { height: 44px; }
 }
 
 /* ---------- 고객사 레퍼런스 마퀴 (가안) ----------
@@ -1250,7 +1298,7 @@ body.home .section-head h2 {
 /* ---- 6개 정적 섹션 공통 리듬: 여백을 조금 더 넉넉하게 + 은은한 배경 광원으로
    섹션 사이 흐름에 깊이감을 더함(히어로/WHAT WE DO/우리의 능력은 자체 리듬이
    있으므로 제외) ---- */
-body.home section:not(.hero):not(.stackdo-section):not(.ability-section) {
+body.home section:not(.hero):not(.stackdo-section):not(.section-value) {
   padding: clamp(76px, 9.5vw, 144px) 0;
 }
 body.home .section-voice,

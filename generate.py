@@ -849,22 +849,36 @@ def energy_dots_html(count=64, seed=42):
     return "".join(spans)
 
 
-# (후속57) 기존 "OUR HISTORY" 크로스페이드 스크롤 섹션(좌 6개/우 6개, 총 12개 연혁·
-# 규모 수치)은 사용자 피드백("이 부분을 우리의 능력 아래 빨간 숫자 아래에 그냥
-# 텍스트로 배치하는 게 어떨까 싶어" → "임팩트 있는 것 몇 개만 골라서")에 따라
-# 제거하고, 그중 임팩트 있는 항목만 골라 "우리의 능력" 섹션 안에 정적 텍스트로
-# 흡수했다. 이미 ability-stats(카운트업 4개: 세계 판매량 1위 / 250 이상 특허 /
-# 1988 세계 최초 특허 / 47개 서비스센터)와 겹치는 "250개 이상 특허"·"1988년 최초
-# 특허" 계열은 중복이라 제외하고, 스탯과 겹치지 않으면서 규모/역사를 함께
-# 보여주는 4개만 선정함.
-# (후속59) 사용자 요청: "1986 등 숫자도 위와 같이 카운트 되게 해줘" — 위 ability-stats와
-# 동일하게 화면에 들어올 때 0에서 목표값까지 세는 count-up 애니메이션을 적용하기
-# 위해 (표시용 문자열, 설명) 대신 (숫자 목표값, 숫자 뒤에 붙는 접미사, 설명)으로 구성.
-ABILITY_HIGHLIGHTS = [
-    (1986, "", "최초의 산업용 드라이아이스 개발"),
-    (20, "개+", "최다 기술특허 보유"),  # (후속58) "20개 이상"이 큰 폰트에서 줄바꿈되어 축약
-    (14, "개", "최다 글로벌 자회사"),
-    (3, "개", "최다 R&D연구소"),
+# (후속69) 사용자 요청("클로드 디자인"이 작성한 상세 스펙)에 따라 기존 "우리의
+# 능력"(.ability-section, 100vh 풀-락 pin + 스탯/하이라이트 텍스트 구성)을
+# "우리의 가치"(.section-value)로 전면 재설계 — 제목만 `position:sticky;
+# top:0`으로 붙여두고 그 아래 4개 콘텐츠 블록(.value-block)이 일반 문서
+# 흐름으로 스크롤되며, 화면에 가장 많이 걸친 블록에 IntersectionObserver로
+# 포커스를 주는 훨씬 단순한 구조로 바뀜(아래 build_home()의 .section-value,
+# assets/css/style.css의 .value-* 규칙, assets/js/main.js의 valueBlocks
+# 관련 블록 참고). 옛 ABILITY_HIGHLIGHTS(1986/20개+/14개/3개 정적 텍스트)는
+# 더 이상 쓰이지 않아 제거하고, 대신 새 섹션의 "미디어 보도 및 수상" 블록에
+# 쓰이는 실제 매체/시상 브랜드명 목록만 남김.
+# 주의(다음 세션 참고): 이 재설계 스펙은 세션 컨텍스트 압축(compaction) 이후
+# 요약본 기준으로 구현됨 — 클래스명·동작(포커스 전환, 카운트업, 반응형 등)은
+# 정확히 반영했으나, "역사로 보는 신뢰"의 1996/2005/2021년 연혁 문구, "믿을 수
+# 있는 규모"의 통계 라벨 일부는 원본 문구를 보유하지 못해 대괄호 placeholder
+# (기존 .img-ph 관례와 동일)로 남아있음 — 사용자가 실제 문구를 주면 바로 교체.
+# (2026-08-28 갱신) 사용자가 assets/img/에 15개 이미지 파일을 전부 넣어줘서
+# 기술 라인업 사진·인증마크 2종·매체/시상 로고 12종은 실제 <img>로 교체 완료.
+VALUE_MEDIA_LOGOS = [
+    ("National Geographic", "logo-natgeo.png"),
+    ("History Channel", "logo-history.png"),
+    ("DIY Network", "logo-diy.png"),
+    ("Goering Center", "logo-goering.png"),
+    ("Inc. 5000", "logo-inc5000.png"),
+    ("Ernst & Young", "logo-ey.png"),
+    ("Mazzy Awards", "logo-mazzy.png"),
+    ("Tristate Success Awards", "logo-tristate.png"),
+    ("Fast 55", "logo-fast55.png"),
+    ("International Business Awards", "logo-iba.png"),
+    ("eAwards", "logo-eawards.png"),
+    ("Plastics Technology", "logo-plastics.png"),
 ]
 
 # (후속57) 사용자 요청: irisventure.com처럼 2줄이 서로 반대 방향으로 흐르는
@@ -1099,8 +1113,8 @@ def build_home():
            텍스트를 빼도 항목 전체 높이·release 타이밍(수식)은 전혀
            바뀌지 않음. 즉 "덮기+05번 축소" 기능과 화살표 힌트는 그대로
            작동하되, 중복될 뿐이던 텍스트 라벨만 사라짐 — 실제 "우리의
-           가치" 글씨는 바로 다음 .ability-section의 전체화면 고정 블록
-           (큰 제목)에서 그대로 유지.
+           가치" 글씨는 바로 다음 .section-value의 sticky 제목(.value-pin-title)
+           에서 그대로 유지(후속69: 구 .ability-section 전면 교체).
            (추가 피드백 — 사용자가 05번과 "우리의 가치" 사이 빈 여백
            스크린샷을 보고 "5번과 우리의 가치 공백을 절반으로 줄여주고,
            중간의 화살표를 빼줘") 이 항목의 본문(.stackdo-body)은 원래
@@ -1122,42 +1136,74 @@ def build_home():
     </div>
   </section>
 
-  <section class="ability-section">
-    <div class="ability-list">
-      <div class="ability-pin">
-        <div class="ability-pin-title"><h2>우리의 가치</h2></div>
-        <div class="ability-item">
-          <div class="ability-body">
-            <div class="ability-stats">
-              <div class="ability-stat">
-                <span class="a-en">Global Sales</span>
-                <b class="count-up" data-target="1" data-prefix="No.">No.0</b>
-                <span class="a-kr">세계 판매량 1위</span>
-              </div>
-              <div class="ability-stat">
-                <span class="a-en">Most Patents</span>
-                <b class="count-up" data-target="250">0</b>
-                <span class="a-kr">250 이상의 특허보유</span>
-              </div>
-              <div class="ability-stat">
-                <span class="a-en">First in the World</span>
-                <b class="count-up" data-target="1988">0</b>
-                <span class="a-kr">세계 최초의 특허</span>
-              </div>
-              <div class="ability-stat">
-                <span class="a-en">Global Service</span>
-                <b class="count-up" data-target="47">0</b>
-                <span class="a-kr">세계 47개의 서비스센터</span>
-              </div>
+  <section class="section-value">
+    <div class="value-list">
+      <div class="value-pin-title"><h2>우리의 가치</h2></div>
+      <div class="value-content">
+        <div class="value-block" data-tone="#f3f9fa">
+          <span class="value-label">역사로 보는 신뢰</span>
+          <div class="value-timeline">
+            <div class="value-timeline-item">
+              <b class="count-up" data-target="1986">0</b>
+              <span>최초의 산업용 드라이아이스 세척 시스템 개발</span>
             </div>
-            <div class="ability-highlights">
-              {"".join(f'<div class="ability-highlight"><b class="count-up" data-target="{target}" data-suffix="{suffix}">0{suffix}</b><span>{desc}</span></div>' for target, suffix, desc in ABILITY_HIGHLIGHTS)}
+            <div class="value-timeline-item">
+              <b class="count-up" data-target="1996">0</b>
+              <span>[1996년 연혁 내용 예정]</span>
             </div>
-            <p class="stat-note">(출처: Cold Jet 공식 소개자료 — 바테크는 이 기술력을 국내 현장에 그대로 전달합니다)</p>
+            <div class="value-timeline-item">
+              <b class="count-up" data-target="2005">0</b>
+              <span>[2005년 연혁 내용 예정]</span>
+            </div>
+            <div class="value-timeline-item">
+              <b class="count-up" data-target="2021">0</b>
+              <span>[2021년 연혁 내용 예정]</span>
+            </div>
+          </div>
+        </div>
+        <div class="value-block" data-tone="#eaf6f7">
+          <span class="value-label">믿을 수 있는 규모</span>
+          <div class="value-stats">
+            <div class="value-stat">
+              <b class="count-up" data-target="3" data-count-on-focus>0</b>
+              <span>[통계 라벨 예정]</span>
+            </div>
+            <div class="value-stat">
+              <b class="count-up" data-target="120" data-suffix="+" data-count-on-focus>0</b>
+              <span>[통계 라벨 예정]</span>
+            </div>
+            <div class="value-stat">
+              <b class="count-up" data-target="14" data-count-on-focus>0</b>
+              <span>글로벌 자회사</span>
+            </div>
+            <div class="value-stat">
+              <b class="count-up" data-target="3" data-count-on-focus>0</b>
+              <span>R&amp;D 연구소</span>
+            </div>
+          </div>
+        </div>
+        <div class="value-block" data-tone="#f3f7de">
+          <span class="value-label">검증된 기술력</span>
+          <div class="value-feature">
+            <div class="value-feature-img"><img src="{asset("assets/img/ability-tech-lineup.png", 0)}" alt="Cold Jet 기술 라인업" loading="lazy" /></div>
+            <ol class="value-feature-list">
+              <li>세계 판매량 1위 드라이아이스 블라스팅 장비</li>
+              <li>250개 이상의 특허 보유</li>
+              <li>세계 47개의 서비스센터 운영</li>
+            </ol>
+          </div>
+          <div class="value-cert-row">
+            <img class="value-cert-mark" src="{asset("assets/img/cert-ce.png", 0)}" alt="CE 인증" loading="lazy" />
+            <img class="value-cert-mark" src="{asset("assets/img/cert-ru.avif", 0)}" alt="EAC(러시아) 인증" loading="lazy" />
+          </div>
+        </div>
+        <div class="value-block" data-tone="#e3f1f2">
+          <span class="value-label">미디어 보도 및 수상</span>
+          <div class="value-logos">
+            {"".join(f'<img class="value-logo" src="{asset("assets/img/" + file, 0)}" alt="{name}" loading="lazy" />' for name, file in VALUE_MEDIA_LOGOS)}
           </div>
         </div>
       </div>
-      <div class="ability-tail" aria-hidden="true"></div>
     </div>
   </section>
 

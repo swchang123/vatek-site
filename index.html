@@ -150,8 +150,8 @@
            텍스트를 빼도 항목 전체 높이·release 타이밍(수식)은 전혀
            바뀌지 않음. 즉 "덮기+05번 축소" 기능과 화살표 힌트는 그대로
            작동하되, 중복될 뿐이던 텍스트 라벨만 사라짐 — 실제 "우리의
-           가치" 글씨는 바로 다음 .ability-section의 전체화면 고정 블록
-           (큰 제목)에서 그대로 유지.
+           가치" 글씨는 바로 다음 .section-value의 sticky 제목(.value-pin-title)
+           에서 그대로 유지(후속69: 구 .ability-section 전면 교체).
            (추가 피드백 — 사용자가 05번과 "우리의 가치" 사이 빈 여백
            스크린샷을 보고 "5번과 우리의 가치 공백을 절반으로 줄여주고,
            중간의 화살표를 빼줘") 이 항목의 본문(.stackdo-body)은 원래
@@ -173,42 +173,74 @@
     </div>
   </section>
 
-  <section class="ability-section">
-    <div class="ability-list">
-      <div class="ability-pin">
-        <div class="ability-pin-title"><h2>우리의 가치</h2></div>
-        <div class="ability-item">
-          <div class="ability-body">
-            <div class="ability-stats">
-              <div class="ability-stat">
-                <span class="a-en">Global Sales</span>
-                <b class="count-up" data-target="1" data-prefix="No.">No.0</b>
-                <span class="a-kr">세계 판매량 1위</span>
-              </div>
-              <div class="ability-stat">
-                <span class="a-en">Most Patents</span>
-                <b class="count-up" data-target="250">0</b>
-                <span class="a-kr">250 이상의 특허보유</span>
-              </div>
-              <div class="ability-stat">
-                <span class="a-en">First in the World</span>
-                <b class="count-up" data-target="1988">0</b>
-                <span class="a-kr">세계 최초의 특허</span>
-              </div>
-              <div class="ability-stat">
-                <span class="a-en">Global Service</span>
-                <b class="count-up" data-target="47">0</b>
-                <span class="a-kr">세계 47개의 서비스센터</span>
-              </div>
+  <section class="section-value">
+    <div class="value-list">
+      <div class="value-pin-title"><h2>우리의 가치</h2></div>
+      <div class="value-content">
+        <div class="value-block" data-tone="#f3f9fa">
+          <span class="value-label">역사로 보는 신뢰</span>
+          <div class="value-timeline">
+            <div class="value-timeline-item">
+              <b class="count-up" data-target="1986">0</b>
+              <span>최초의 산업용 드라이아이스 세척 시스템 개발</span>
             </div>
-            <div class="ability-highlights">
-              <div class="ability-highlight"><b class="count-up" data-target="1986" data-suffix="">0</b><span>최초의 산업용 드라이아이스 개발</span></div><div class="ability-highlight"><b class="count-up" data-target="20" data-suffix="개+">0개+</b><span>최다 기술특허 보유</span></div><div class="ability-highlight"><b class="count-up" data-target="14" data-suffix="개">0개</b><span>최다 글로벌 자회사</span></div><div class="ability-highlight"><b class="count-up" data-target="3" data-suffix="개">0개</b><span>최다 R&D연구소</span></div>
+            <div class="value-timeline-item">
+              <b class="count-up" data-target="1996">0</b>
+              <span>[1996년 연혁 내용 예정]</span>
             </div>
-            <p class="stat-note">(출처: Cold Jet 공식 소개자료 — 바테크는 이 기술력을 국내 현장에 그대로 전달합니다)</p>
+            <div class="value-timeline-item">
+              <b class="count-up" data-target="2005">0</b>
+              <span>[2005년 연혁 내용 예정]</span>
+            </div>
+            <div class="value-timeline-item">
+              <b class="count-up" data-target="2021">0</b>
+              <span>[2021년 연혁 내용 예정]</span>
+            </div>
+          </div>
+        </div>
+        <div class="value-block" data-tone="#eaf6f7">
+          <span class="value-label">믿을 수 있는 규모</span>
+          <div class="value-stats">
+            <div class="value-stat">
+              <b class="count-up" data-target="3" data-count-on-focus>0</b>
+              <span>[통계 라벨 예정]</span>
+            </div>
+            <div class="value-stat">
+              <b class="count-up" data-target="120" data-suffix="+" data-count-on-focus>0</b>
+              <span>[통계 라벨 예정]</span>
+            </div>
+            <div class="value-stat">
+              <b class="count-up" data-target="14" data-count-on-focus>0</b>
+              <span>글로벌 자회사</span>
+            </div>
+            <div class="value-stat">
+              <b class="count-up" data-target="3" data-count-on-focus>0</b>
+              <span>R&amp;D 연구소</span>
+            </div>
+          </div>
+        </div>
+        <div class="value-block" data-tone="#f3f7de">
+          <span class="value-label">검증된 기술력</span>
+          <div class="value-feature">
+            <div class="value-feature-img"><img src="assets/img/ability-tech-lineup.png" alt="Cold Jet 기술 라인업" loading="lazy" /></div>
+            <ol class="value-feature-list">
+              <li>세계 판매량 1위 드라이아이스 블라스팅 장비</li>
+              <li>250개 이상의 특허 보유</li>
+              <li>세계 47개의 서비스센터 운영</li>
+            </ol>
+          </div>
+          <div class="value-cert-row">
+            <img class="value-cert-mark" src="assets/img/cert-ce.png" alt="CE 인증" loading="lazy" />
+            <img class="value-cert-mark" src="assets/img/cert-ru.avif" alt="EAC(러시아) 인증" loading="lazy" />
+          </div>
+        </div>
+        <div class="value-block" data-tone="#e3f1f2">
+          <span class="value-label">미디어 보도 및 수상</span>
+          <div class="value-logos">
+            <img class="value-logo" src="assets/img/logo-natgeo.png" alt="National Geographic" loading="lazy" /><img class="value-logo" src="assets/img/logo-history.png" alt="History Channel" loading="lazy" /><img class="value-logo" src="assets/img/logo-diy.png" alt="DIY Network" loading="lazy" /><img class="value-logo" src="assets/img/logo-goering.png" alt="Goering Center" loading="lazy" /><img class="value-logo" src="assets/img/logo-inc5000.png" alt="Inc. 5000" loading="lazy" /><img class="value-logo" src="assets/img/logo-ey.png" alt="Ernst & Young" loading="lazy" /><img class="value-logo" src="assets/img/logo-mazzy.png" alt="Mazzy Awards" loading="lazy" /><img class="value-logo" src="assets/img/logo-tristate.png" alt="Tristate Success Awards" loading="lazy" /><img class="value-logo" src="assets/img/logo-fast55.png" alt="Fast 55" loading="lazy" /><img class="value-logo" src="assets/img/logo-iba.png" alt="International Business Awards" loading="lazy" /><img class="value-logo" src="assets/img/logo-eawards.png" alt="eAwards" loading="lazy" /><img class="value-logo" src="assets/img/logo-plastics.png" alt="Plastics Technology" loading="lazy" />
           </div>
         </div>
       </div>
-      <div class="ability-tail" aria-hidden="true"></div>
     </div>
   </section>
 
