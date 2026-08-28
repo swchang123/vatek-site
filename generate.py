@@ -1,0 +1,1280 @@
+# -*- coding: utf-8 -*-
+"""
+VATEK 홈페이지 리뉴얼 - 정적 사이트 뼈대 생성 스크립트
+- 홈페이지(index.html)는 별도의 풍부한 콘텐츠로 직접 작성
+- 6개 대메뉴 허브 + 31개 서브메뉴 페이지는 공통 템플릿으로 일괄 생성
+"""
+import os
+import math
+import random
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
+# ---------------------------------------------------------------------------
+# 0. 실제 제품 콘텐츠 (Cold Jet 공식 웹사이트 coldjet.com 정보를 바탕으로 국문 재구성)
+#    스펙 수치는 coldjet.com 공개 자료 기준이며, 정식 계약 전 최신 스펙시트로 재확인이 필요합니다.
+# ---------------------------------------------------------------------------
+
+GUIDE_BODY = """
+<p>드라이아이스 블라스팅은 재활용된 이산화탄소(CO<sub>2</sub>)로 만든 드라이아이스 펠릿을 압축공기로
+초음속에 가깝게 가속해 표면에 분사하는 세척 기술입니다. 모래나 소다처럼 표면을 깎아내는 연마재 세척과
+달리, 드라이아이스 입자는 표면에 부딪히는 순간 고체에서 기체로 바로 승화합니다.</p>
+
+<h2 style="font-size:20px; margin-top:32px;">세척 원리</h2>
+<ul style="padding-left:20px; display:grid; gap:8px;">
+  <li><b>운동 에너지</b> — 초음속으로 분사된 펠릿이 오염물질에 물리적 충격을 가해 표면에서 떼어냅니다.</li>
+  <li><b>열 에너지</b> — 영하 78.5℃의 드라이아이스가 오염물질을 급속히 냉각시켜 기저 표면과의 접착력을 약화시킵니다.</li>
+  <li><b>승화 팽창</b> — 표면에 닿은 펠릿이 즉시 기체로 승화하며 부피가 급격히 팽창해, 남아있던 오염물질을 밀어냅니다.</li>
+</ul>
+
+<h2 style="font-size:20px; margin-top:32px;">주요 장점</h2>
+<div class="icon-row" style="grid-template-columns:repeat(3,1fr);">
+  <div class="item"><div class="ic">🛡️</div><span>비연마성 · 표면 손상 없음</span></div>
+  <div class="item"><div class="ic">♻️</div><span>2차 폐기물 · 화학잔류물 없음</span></div>
+  <div class="item"><div class="ic">⚡</div><span>비전도성 · 통전 상태 세척 가능</span></div>
+  <div class="item"><div class="ic">🍽️</div><span>식품 등급, 인체에 무해</span></div>
+  <div class="item"><div class="ic">🛠️</div><span>대부분 분해 없이 즉시 세척</span></div>
+  <div class="item"><div class="ic">⏱️</div><span>가동 중단 시간 단축</span></div>
+</div>
+
+<h2 style="font-size:20px; margin-top:32px;">안전 수칙</h2>
+<p>드라이아이스 블라스팅 자체는 위험한 작업이 아니지만, 다음 사항은 반드시 지켜야 합니다.</p>
+<ul style="padding-left:20px; display:grid; gap:8px;">
+  <li>밀폐 공간 작업 시 충분한 환기를 확보해 CO<sub>2</sub> 농도 상승을 방지합니다.</li>
+  <li>장갑 · 보안경 등 개인보호장비(PPE)를 착용합니다.</li>
+  <li>CO<sub>2</sub>가 정체될 수 있는 저지대 · 밀폐구역을 사전에 확인하고 표시합니다.</li>
+  <li>연속 노출 시간 제한을 준수합니다.</li>
+</ul>
+
+<h2 style="font-size:20px; margin-top:32px;">자주 묻는 질문</h2>
+<p><b>Q. 전자 · 정밀 장비에도 사용할 수 있나요?</b><br />
+A. 네. 비전도성 · 비마모성 특성 덕분에 통전 중인 전기 패널이나 정밀 금형에도 널리 사용됩니다.
+다만 장비 민감도에 따라 압력 · 노즐을 조정해야 하므로 사전 테스트를 권장합니다.</p>
+<p><b>Q. 세척 후 남는 것이 있나요?</b><br />
+A. 드라이아이스 입자는 세척 즉시 기체로 승화하기 때문에 남는 것은 원래 있던 오염물질뿐입니다.
+별도 건조나 폐수 처리가 필요 없습니다.</p>
+<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(출처: Cold Jet 공식 웹사이트)</p>
+"""
+
+COMPARE_BODY = """
+<p>드라이아이스 세척은 연마재 블라스팅(유리 · 호두껍질 · 실리콘), 샌드 · 소다 블라스팅, 고압수 세척,
+화학용제, 수작업 등 기존 세척 방식을 대체할 수 있습니다. 방식별 차이는 다음과 같습니다.</p>
+<table class="compare-table">
+  <tr><th>비교 항목</th><th>드라이아이스 세척</th><th>연마재 · 샌드 · 소다 블라스팅</th><th>고압수 세척</th><th>화학용제</th></tr>
+  <tr><td>표면 손상</td><td class="good">없음 (비연마성)</td><td>있음 (마모 · 긁힘)</td><td>고압에서 발생 가능</td><td>재질에 따라 손상 가능</td></tr>
+  <tr><td>2차 폐기물</td><td class="good">없음 (승화)</td><td>매체 잔여물 발생</td><td>폐수 발생</td><td>유해 폐기물 발생</td></tr>
+  <tr><td>전기 안전성</td><td class="good">비전도성</td><td>제한적</td><td>감전 위험</td><td>제한적</td></tr>
+  <tr><td>설비 분해</td><td class="good">대부분 불필요</td><td>필요한 경우 많음</td><td>필요한 경우 많음</td><td>필요한 경우 많음</td></tr>
+  <tr><td>건조 공정</td><td class="good">불필요</td><td>불필요</td><td>필요</td><td>필요</td></tr>
+  <tr><td>식품 · 인체 안전</td><td class="good">식품 등급</td><td>매체에 따라 다름</td><td>비교적 안전</td><td>유해할 수 있음</td></tr>
+</table>
+<p style="margin-top:18px;">Cold Jet은 이 같은 특성 덕분에 드라이아이스 세척이 미국 EPA · FDA · USDA 기준을
+충족하는 친환경 세척 대안이라고 설명합니다. (출처: Cold Jet 공식 웹사이트)</p>
+"""
+
+_INDUSTRIES = [
+    ("항공우주 · 항공", "엔진 부품, 랜딩기어 등 정밀 부품의 도장 전처리 및 세척"),
+    ("자동차 제조", "도장 전 금형 · 지그 세척, 로봇 자동화 라인 통합"),
+    ("외주 세척 서비스", "그래피티 제거, 화재 · 연기 피해 복구 등 방문형 세척"),
+    ("목재 · 합판", "프레스 · 성형몰드의 수지 · 접착제 잔여물 제거"),
+    ("식품 · 음료", "오븐 · 컨베이어 등 식품설비를 분해 없이 위생적으로 세척"),
+    ("주조(Foundry)", "주조 금형의 이형제 · 탄화물 잔여물 제거"),
+    ("의료기기", "정밀 의료기기 표면 오염물 제거"),
+    ("광업", "중장비 부품의 카본 · 오일 잔여물 제거"),
+    ("오일 · 가스", "배관 · 밸브 등 설비의 스케일 · 잔류물 제거"),
+    ("포장", "포장 라인 금형 · 롤러 세척"),
+    ("플라스틱 · 복합소재", "사출 · 복합소재 성형몰드 세척"),
+    ("발전설비", "터빈 · 모터의 카본 및 오염물 제거"),
+    ("인쇄", "인쇄기 롤러 · 인쇄판의 잉크 잔여물 제거"),
+    ("철도", "철도 차량 부품 세척"),
+    ("화재 · 곰팡이 복구", "화재 · 누수 피해 시설의 그을음 · 곰팡이 제거"),
+    ("고무 · 타이어", "타이어 금형 세척으로 사이클타임 단축"),
+    ("반도체 · PCB", "정밀 전자부품 · PCB 세척"),
+    ("섬유", "섬유 설비 잔여물 제거"),
+]
+INDUSTRY_BODY = """
+<p>Cold Jet의 드라이아이스 세척은 전 세계 18개 이상의 산업에서 활용되고 있습니다.
+바테크는 이 중 국내 제조 현장에서 특히 수요가 많은 산업을 중심으로 대응하고 있습니다.</p>
+<div class="sub-grid">
+""" + "".join(
+    f'<div class="sub-card"><h3>{name}</h3><p>{desc}</p></div>' for name, desc in _INDUSTRIES
+) + """
+</div>
+<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(출처: Cold Jet 공식 웹사이트 Industries 목록 기준)</p>
+"""
+
+_TASKS = [
+    ("접착제 · 실란트 제거", "굳은 접착제, 실란트 잔여물을 표면 손상 없이 제거합니다."),
+    ("자동차 디테일링 · 복원", "클래식카 복원, 엔진룸 디테일링 등에 활용됩니다."),
+    ("복합소재 몰드 세척", "복합소재 성형몰드의 수지 잔여물을 제거합니다."),
+    ("버 · 플래시 제거(디버링)", "사출 · 다이캐스팅 부품의 버(burr)와 플래시를 제거합니다."),
+    ("전자기기 리퍼브", "리퍼브 시 기판 · 부품 표면을 정밀 세척합니다."),
+    ("설비 유지보수 세척", "생산설비의 정기 유지보수 세척에 활용됩니다."),
+    ("고무 · 플라스틱 금형 세척", "사출 · 고무 금형을 세척해 사이클타임을 단축합니다."),
+]
+TASK_BODY = """
+<p>세척 대상이 아니라 <b>어떤 작업</b>을 하려는지로도 적합한 방식을 찾을 수 있습니다.
+아래는 Cold Jet이 소개하는 대표적인 작업 유형입니다.</p>
+<div class="sub-grid">
+""" + "".join(
+    f'<div class="sub-card"><h3>{name}</h3><p>{desc}</p></div>' for name, desc in _TASKS
+) + """
+</div>
+<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(출처: Cold Jet 공식 웹사이트 Applications 목록 기준)</p>
+"""
+
+ADOPT_BODY = """
+<p>Cold Jet 장비를 도입하는 방법에는 여러 옵션이 있습니다. 바테크 상담을 통해 현장에 맞는 방식을
+확인하실 수 있습니다.</p>
+<table class="compare-table">
+  <tr><th>도입 방식</th><th>설명</th></tr>
+  <tr><td>신규 구매</td><td>최신 기술이 적용된 신품 장비를 구매합니다.</td></tr>
+  <tr><td>평가 프로그램(PEP)</td><td>구매 전 일정 기간 렌탈로 사용해보고, 납입한 렌탈료를 구매 대금에
+    반영할 수 있는 방식입니다.</td></tr>
+  <tr><td>인증 중고 장비</td><td>정밀 점검 · 수리를 거친 중고 장비를 상대적으로 낮은 비용에 도입합니다.</td></tr>
+  <tr><td>금융 · 리스</td><td>분할 납부를 통해 초기 투자 부담을 낮출 수 있습니다.</td></tr>
+</table>
+<p style="font-size:13px; color:var(--text-muted);">* 위 옵션은 Cold Jet 글로벌 기준이며, 국내 적용 가능 여부와
+세부 조건은 바테크 상담을 통해 확인하실 수 있습니다.</p>
+
+<h2 style="font-size:20px; margin-top:32px;">도입 전 체크리스트</h2>
+<ul style="padding-left:20px; display:grid; gap:8px;">
+  <li>세척 대상과 오염물질 종류 파악 (재질, 민감도)</li>
+  <li>필요 압축공기 용량 확인 (모델별로 상이)</li>
+  <li>작업 공간의 환기 조건 점검</li>
+  <li>드라이아이스 공급 방식 결정 (직접 생산 vs 구매)</li>
+  <li>데모 테스트로 실제 세척 결과 사전 확인</li>
+</ul>
+<p>설치 · 시운전 절차는 <a href="../support/install.html">설치/시운전</a> 페이지에서도 확인하실 수 있습니다.</p>
+"""
+
+AUTOMATION_BODY = """
+<p>생산 라인에 드라이아이스 세척을 통합하고 싶다면, Cold Jet의 통합 자동화 솔루션을 적용할 수 있습니다.</p>
+
+<h2 style="font-size:20px; margin-top:32px;">COMBI&reg; PCS&reg; — 완전 자동화 솔루션</h2>
+<p>업계 최고 수준의 드라이아이스 펠렛타이저와 입자 제어 시스템(PCS)을 하나로 결합한 완전 자동화 장비입니다.
+드라이아이스 생산부터 블라스팅까지 중단 없이 연속 운영할 수 있습니다.</p>
+
+<h2 style="font-size:20px; margin-top:32px;">PCS&reg; ULTRA — 반자동화 솔루션</h2>
+<p>기존 자동화 생산 설비에 드라이아이스 블라스터를 통합하는 방식으로, 산업용 로봇 시스템과 연동해
+라인의 일부 공정으로 편입할 수 있습니다.</p>
+
+<h2 style="font-size:20px; margin-top:32px;">적용 산업</h2>
+<div class="chip-grid">
+  <span class="chip">항공우주</span><span class="chip">자동차 제조</span>
+  <span class="chip">식품 · 음료</span><span class="chip">반도체 · PCB</span>
+</div>
+<p style="margin-top:18px;">공정별 맞춤 설계와 함께, Cold Jet CONNECT&reg;를 통한 원격 모니터링 · 진단이
+제공됩니다. (출처: Cold Jet 공식 웹사이트)</p>
+"""
+
+NOZZLE_BODY = """
+<p>세척 대상과 작업 조건에 맞춰 다양한 노즐과 액세서리를 조합해 사용할 수 있습니다.</p>
+<table class="compare-table">
+  <tr><th>구성품</th><th>설명</th></tr>
+  <tr><td>노즐(Nozzles)</td><td>세척 강도와 분사 패턴을 결정하는 핵심 부품으로, 용도별 다양한 라인업이 제공됩니다.</td></tr>
+  <tr><td>분사기(Applicators)</td><td>작업자의 편의성과 안전성, 조작 단순성을 고려해 설계된 핸들형 분사기구입니다.</td></tr>
+  <tr><td>블라스트 호스</td><td>유연하면서도 내구성 있는 에어 · 블라스트 전용 호스입니다.</td></tr>
+  <tr><td>예비 부품</td><td>장비 가동률 유지를 위한 각종 교체 부품을 보유하고 있습니다.</td></tr>
+</table>
+<p style="margin-top:18px;">세척 대상(정밀 전자부품 ~ 대형 산업설비)에 따라 적합한 노즐과 액세서리 구성이
+달라지므로, 바테크 상담을 통해 최적 구성을 추천받으실 수 있습니다. (출처: Cold Jet 공식 웹사이트)</p>
+"""
+
+_SUPPLY_USES = [
+    ("항공사 케이터링", "기내식 보관 · 운송 시 신선도 유지에 사용됩니다."),
+    ("콜드체인 관리", "의약품 · 백신 등 온도 민감 물품의 운송 중 온도를 유지합니다."),
+    ("식품 배송", "신선식품 배송 시 냉각재로 사용됩니다."),
+    ("식품가공 냉각", "식품 처리 시설의 냉각 공정에 직접 활용됩니다."),
+    ("생명과학 시료 보관", "의료 · 진단 검체를 저온 상태로 보관 · 운송합니다."),
+    ("블라스팅용 원료", "드라이아이스 블라스팅 장비에 투입되는 세척용 미디어입니다."),
+    ("재판매용 생산", "타 업체에 판매하기 위한 드라이아이스 생산입니다."),
+    ("바이오가스", "바이오가스 업그레이드 과정의 CO2 포집 · 처리에 활용됩니다."),
+    ("원격지 생산", "드라이아이스 공급이 어려운 원격 지역에서 현지 생산합니다."),
+]
+SUPPLY_BODY = """
+<p>바테크는 장비뿐 아니라 드라이아이스(소모품) 자체도 정기적으로 공급합니다. 드라이아이스는 세척용
+미디어 외에도 다양한 산업에서 활용됩니다.</p>
+<div class="sub-grid">
+""" + "".join(
+    f'<div class="sub-card"><h3>{name}</h3><p>{desc}</p></div>' for name, desc in _SUPPLY_USES
+) + """
+</div>
+<p style="margin-top:18px;">세척용 펠릿 정기 공급부터 냉장 · 냉동이 필요한 물류 · 의약품 운송용
+드라이아이스까지, 필요한 형태와 주기에 맞춰 공급해 드립니다. (출처: Cold Jet 공식 웹사이트 참고)</p>
+"""
+
+COMPARE_EQUIP_BODY = """
+<p>어떤 장비가 적합한지 아래 기준으로 먼저 가늠해보시고, 정확한 추천은 견적문의를 통해 받아보세요.</p>
+<table class="compare-table">
+  <tr><th>모델</th><th>구분</th><th>이런 현장에 적합</th></tr>
+  <tr><td><a href="blaster/aero2-ultra.html">Aero2&reg; ULTRA</a> / <a href="blaster/i3-microclean-2.html">i3 MicroClean&reg; 2</a></td><td>스마트(IoT)</td><td>원격 모니터링 · 데이터 관리가 필요한 스마트팩토리</td></tr>
+  <tr><td><a href="blaster/i3-microclean.html">i&sup3; MicroClean&reg;</a></td><td>정밀 · 소형</td><td>전자부품, 정밀금형 등 섬세한 표면</td></tr>
+  <tr><td><a href="blaster/sdi-select-60.html">SDI Select&trade; 60</a></td><td>범용</td><td>다양한 산업의 일반적인 온 · 오프 세척</td></tr>
+  <tr><td><a href="blaster/aero-series.html">Aero&reg; Series</a></td><td>풀프레셔</td><td>강한 오염물 제거가 필요한 현장</td></tr>
+  <tr><td><a href="blaster/elite20-icerocket.html">Elite 20 / IceRocket PLT</a></td><td>입문형</td><td>압축공기 여건이 제한적인 현장, 첫 도입</td></tr>
+  <tr><td><a href="blaster/c100.html">C100</a></td><td>완전 공압식</td><td>전원 연결이 어려운 현장</td></tr>
+  <tr><td><a href="blaster/e-co2-150.html">E-CO2&trade; 150</a></td><td>연마재 복합</td><td>도장 · 코팅 · 부식 제거 작업</td></tr>
+  <tr><td><a href="pelletizer/pe-80.html">PE-80</a></td><td>소용량 생산</td><td>자체 세척용 소량 드라이아이스가 필요한 현장</td></tr>
+  <tr><td><a href="pelletizer/pr350h.html">PR350H 이상</a></td><td>대용량 생산</td><td>판매용 또는 대규모 세척 라인 공급</td></tr>
+  <tr><td><a href="recovery/index.html">RE-CO2 시리즈</a></td><td>CO2 회수</td><td>드라이아이스 자체 생산량이 많은 현장</td></tr>
+</table>
+<p style="margin-top:18px;">현장 사진이나 도면, 세척 대상 정보를 <a href="quote.html">견적 요청</a> 시 함께 보내주시면
+더 정확하게 추천해 드립니다.</p>
+"""
+
+PROCESS_BODY = """
+<p>바테크의 장비 구매는 아래 순서로 진행됩니다. 고가 장비인 만큼 대부분의 고객사가 테스트 단계를 거쳐
+내부 의사결정을 진행합니다.</p>
+<ol style="padding-left:20px; display:grid; gap:14px;">
+  <li><b>1. 문의 · 상담</b> — 세척 대상, 오염물질, 현장 조건을 바탕으로 적합한 장비를 안내받습니다.</li>
+  <li><b>2. 데모 · 렌탈 테스트</b> — 실제 시료로 세척 테스트를 진행해 효과를 직접 확인합니다.</li>
+  <li><b>3. 견적 및 사내 품의</b> — 테스트 결과를 바탕으로 견적을 받아 사내 구매 승인 절차를 진행합니다.</li>
+  <li><b>4. 계약 및 도입</b> — 계약 후 설치 · 시운전을 거쳐 현장에 장비를 도입합니다.</li>
+  <li><b>5. 사후 지원</b> — 교육, A/S, 소모품 공급 등 도입 이후에도 지속적으로 지원합니다.</li>
+</ol>
+<p style="margin-top:18px;">신규 구매 외에도 Cold Jet은 평가 프로그램(PEP), 인증 중고 장비, 금융 · 리스 등
+다양한 도입 방식을 제공합니다. 국내 적용 조건은 상담 시 안내해 드립니다.</p>
+"""
+
+_CASES = [
+    ("BÄMM Bakery", "식품 · 음료", "베이커리 생산설비를 물 없이 빠르게 세척"),
+    ("자동차 부품 제조업체", "자동차", "드라이아이스 블라스팅을 자동화 라인에 통합해 디버링 공정을 자동화"),
+    ("몰타 지역 외주 세척업체", "외주 세척 서비스", "건물 외벽 그래피티(낙서)를 몇 분 만에 제거"),
+    ("클래식카 복원업체", "자동차 복원", "원형 손상 없이 표면을 세척해 복원 차량의 진정성을 유지"),
+    ("KS Aluminum-Technologie GmbH", "금속 가공", "Werner Fiedler — 사용이 쉽고 신뢰할 수 있는 도입 사례로 평가"),
+    ("Progress Casting", "주조(Foundry)", "Daryl Hesch — 예상 투자회수기간 6개월을 실제로는 1개월로 단축"),
+    ("Silgan Plastics", "플라스틱", "Joe Pond — 세척 시간 절감과 화학물질 사용 감소를 동시에 달성"),
+    ("The Mariners' Museum", "문화재 보존", "Will Hoffman — 문화재 표면 손상 없이 세척 가능함을 검증"),
+]
+LIBRARY_BODY = """
+<p>국내 적용사례는 프로젝트별로 별도 자료로 정리해 안내해 드리며, 아래는 Cold Jet 본사가 공개한
+글로벌 적용사례입니다. 바테크는 Cold Jet 대한민국 공식 대리점으로서 동일한 장비와 기술을 국내 현장에
+공급합니다.</p>
+<div class="sub-grid">
+""" + "".join(
+    f'<div class="sub-card"><h3>{name}</h3><p><b>{tag}</b><br />{desc}</p></div>' for name, tag, desc in _CASES
+) + """
+</div>
+<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(출처: Cold Jet 공식 웹사이트 Case Studies / 고객 인터뷰)</p>
+"""
+
+TESTIMONIALS_BODY = """
+<p>아래는 Cold Jet 글로벌 고객들이 남긴 이야기입니다. 정확한 원문 인용이 아닌 요지를 정리한 내용이며,
+원문은 Cold Jet 공식 웹사이트에서 확인하실 수 있습니다.</p>
+<div class="sub-grid">
+  <div class="sub-card"><h3>Werner Fiedler</h3><p>KS Aluminum-Technologie GmbH<br />
+    도입이 쉽고 신뢰할 수 있는 세척 방식이라고 평가했습니다.</p></div>
+  <div class="sub-card"><h3>Tony Tai</h3><p>글로벌 초콜릿 제조사<br />
+    사용자 친화적인 장비로 현장 효율성이 높아졌다고 전했습니다.</p></div>
+  <div class="sub-card"><h3>Tom Mendel</h3><p>Performance Plastics<br />
+    매일, 모든 교대조에서 장비를 사용하고 있다고 밝혔습니다.</p></div>
+  <div class="sub-card"><h3>Daryl Hesch</h3><p>Progress Casting<br />
+    예상했던 6개월 투자회수기간이 실제로는 1개월로 단축됐다고 전했습니다.</p></div>
+  <div class="sub-card"><h3>Will Hoffman</h3><p>The Mariners' Museum<br />
+    문화재 표면에 손상을 주지 않고 세척할 수 있음을 확인했다고 밝혔습니다.</p></div>
+  <div class="sub-card"><h3>Joe Pond</h3><p>Silgan Plastics<br />
+    세척 시간이 줄고 화학물질 사용량도 함께 감소했다고 전했습니다.</p></div>
+</div>
+<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(출처: Cold Jet 공식 웹사이트 고객 인터뷰 요약, 국문 재구성)</p>
+"""
+
+VRENTAL_BODY = """
+<p>V RENTAL은 바테크가 운영하는 드라이아이스 장비 렌탈 프로그램입니다. 장비를 구매하기 전 실제 현장에서
+성능을 검증하고 싶거나, 특정 프로젝트 · 성수기에만 한시적으로 장비가 필요한 경우에 활용할 수 있습니다.</p>
+<h2 style="font-size:20px; margin-top:32px;">이런 경우에 적합합니다</h2>
+<ul style="padding-left:20px; display:grid; gap:8px;">
+  <li>연간 사용 빈도가 낮아 구매보다 렌탈이 경제적인 경우</li>
+  <li>특정 프로젝트나 성수기에만 일시적으로 장비가 필요한 경우</li>
+  <li>구매 전 현장 적합성을 충분히 검증하고 싶은 경우</li>
+  <li>보유 장비의 고장 · 정비 기간 동안 대체 장비가 필요한 경우</li>
+</ul>
+<p>렌탈 기간, 요금, 재고 현황은 장비 모델과 시점에 따라 달라지므로 <a href="../products/quote.html">견적문의</a>를
+통해 안내받으실 수 있습니다.</p>
+"""
+
+RECOMMEND_BODY = """
+<p>아래 기준으로 구매와 렌탈 중 무엇이 더 적합한지 가늠해보세요.</p>
+<table class="compare-table">
+  <tr><th>상황</th><th>추천</th></tr>
+  <tr><td>연간 가동일이 많고 장기적으로 반복 사용</td><td class="good">구매</td></tr>
+  <tr><td>특정 프로젝트 · 성수기에만 일시적으로 필요</td><td class="good">렌탈</td></tr>
+  <tr><td>구매 전 현장 적합성 검증이 필요</td><td class="good">렌탈 후 구매 전환 (PEP 방식)</td></tr>
+  <tr><td>보유 장비 고장 시 임시 대체가 필요</td><td class="good">단기 렌탈</td></tr>
+</table>
+<p style="margin-top:18px;">정확히 판단하기 어렵다면 <a href="demo.html">데모 테스트</a>부터 시작해보시는 것을 추천합니다.</p>
+"""
+
+DEMO_BODY = """
+<p>실제 현장 시료로 세척 테스트를 진행해 도입 전에 효과를 직접 확인할 수 있습니다.</p>
+<h2 style="font-size:20px; margin-top:32px;">진행 순서</h2>
+<ol style="padding-left:20px; display:grid; gap:10px;">
+  <li><b>1. 신청</b> — 세척 대상, 오염물질 종류, 현장 사진을 보내주세요.</li>
+  <li><b>2. 사전 검토</b> — 담당자가 적합한 장비와 노즐 구성을 사전에 준비합니다.</li>
+  <li><b>3. 테스트 진행</b> — 바테크 시연장 방문 또는 현장 방문을 통해 실제 세척 테스트를 진행합니다.</li>
+  <li><b>4. 결과 공유</b> — 테스트 전후 비교와 함께 상세 결과를 안내해 드립니다.</li>
+</ol>
+<p>테스트에는 현장 조건에 따라 별도 비용이 발생할 수 있으며, 세부 조건은 상담 시 안내해 드립니다.</p>
+"""
+
+D_FAQ_BODY = """
+<p><b>Q. 데모 테스트는 무료인가요?</b><br />
+A. 기본적인 상담과 현장 조건 검토는 무료입니다. 실제 테스트 진행 여부와 비용은 장비 · 현장 조건에 따라
+다르므로 상담 시 안내해 드립니다.</p>
+<p><b>Q. 렌탈 기간은 얼마나 되나요?</b><br />
+A. 단기(일 단위)부터 장기(월 단위)까지 현장 상황에 맞춰 조정할 수 있습니다.</p>
+<p><b>Q. 렌탈료를 구매 비용에 반영할 수 있나요?</b><br />
+A. 평가 프로그램(PEP) 방식으로 진행하는 경우, 납입한 렌탈료 일부를 이후 구매 대금에 반영할 수 있습니다.
+세부 조건은 상담을 통해 확인해 주세요.</p>
+"""
+
+VISIT_BODY = """
+<p>담당자가 직접 현장을 방문해 세척 대상과 작업 환경을 확인하고, 필요 시 휴대용 장비로 즉석 시연을
+진행합니다.</p>
+<h2 style="font-size:20px; margin-top:32px;">방문 상담에서 확인하는 것들</h2>
+<ul style="padding-left:20px; display:grid; gap:8px;">
+  <li>세척 대상의 재질과 민감도</li>
+  <li>현장의 압축공기 · 전원 조건</li>
+  <li>환기 및 작업 공간 조건</li>
+  <li>필요한 세척 주기와 물량</li>
+</ul>
+<p>방문 상담 신청은 <a href="../products/quote.html">견적문의</a> 페이지에서 함께 접수하실 수 있습니다.</p>
+"""
+
+INSTALL_BODY = """
+<p>장비 도입이 결정되면 아래 순서로 설치와 시운전을 진행합니다.</p>
+<ol style="padding-left:20px; display:grid; gap:10px;">
+  <li><b>1. 현장 사전 점검</b> — 압축공기 용량, 전원, 배치 공간을 확인합니다.</li>
+  <li><b>2. 설치</b> — 장비를 반입하고 배관 · 전원을 연결합니다.</li>
+  <li><b>3. 시운전</b> — 실제 조건에서 정상 작동 여부를 점검합니다.</li>
+  <li><b>4. 운용 교육</b> — 현장 작업자에게 조작법과 안전수칙을 교육합니다.</li>
+</ol>
+<p>정밀 장비의 경우 사전 현장 조건 확인이 특히 중요하며, 필요한 압축공기 · 전원 사양은 모델별
+스펙시트를 기준으로 안내해 드립니다. 모델별 사양은 <a href="../products/blaster/index.html">제품 페이지</a>에서도
+확인하실 수 있습니다.</p>
+"""
+
+EDUCATION_BODY = """
+<p>장비를 안전하고 오래 사용하실 수 있도록 교육과 A/S를 함께 제공합니다.</p>
+<h2 style="font-size:20px; margin-top:32px;">운용 교육</h2>
+<p>장비 조작법, 노즐 교체, 일상 점검 항목, 안전수칙을 현장 작업자 대상으로 교육합니다.</p>
+<h2 style="font-size:20px; margin-top:32px;">A/S 접수</h2>
+<p>장비 이상 발생 시 <a href="../products/quote.html">견적문의</a> 페이지 또는 대표 연락처로 접수하시면
+담당자가 원인을 확인한 뒤 방문 또는 원격으로 대응합니다.</p>
+"""
+
+TECHSUPPORT_BODY = """
+<p>세척 결과가 기대에 못 미치거나 특수한 오염물질 대응이 필요한 경우, 기술지원팀이 노즐 · 압력 ·
+이송속도 등 세척 조건을 함께 점검해 드립니다.</p>
+<h2 style="font-size:20px; margin-top:32px;">지원 범위</h2>
+<ul style="padding-left:20px; display:grid; gap:8px;">
+  <li>세척 조건(압력, 노즐, 이송속도) 최적화 상담</li>
+  <li>신규 적용 부위에 대한 사전 테스트</li>
+  <li>정기 점검 및 소모품(노즐 등) 교체 안내</li>
+  <li>장비 이상 진단 및 수리 연계</li>
+</ul>
+"""
+
+CATALOG_BODY = """
+<p>모델별 상세 사양은 <a href="../products/blaster/index.html">드라이아이스 세척기</a>,
+<a href="../products/pelletizer/index.html">드라이아이스 제조기</a>, <a href="../products/recovery/index.html">CO2 리커버리</a>
+페이지에서 표로 확인하실 수 있습니다. 인쇄용 카탈로그 PDF가 필요하시면
+<a href="../products/quote.html">견적문의</a> 시 함께 요청해 주세요.</p>
+"""
+
+KNOWLEDGE_BODY = """
+<p>드라이아이스 세척의 원리, 산업별 활용, 타 세척방식과의 비교는 아래 페이지에 정리되어 있습니다.</p>
+<div class="chip-grid">
+  <span class="chip">세척 원리</span><span class="chip">안전 수칙</span>
+  <span class="chip">산업별 활용</span><span class="chip">작업별 활용</span>
+  <span class="chip">타 세척방식 비교</span><span class="chip">적용사례</span>
+</div>
+<div class="sub-grid" style="margin-top:20px;">
+  <div class="sub-card"><h3>드라이아이스 세척 가이드</h3><p>원리 · 장점 · 안전 · FAQ</p>
+    <a class="more" href="../cleaning/guide.html">보러가기 →</a></div>
+  <div class="sub-card"><h3>타 세척방식과 비교</h3><p>연마재 · 화학용제 · 고압세척과 비교</p>
+    <a class="more" href="../cleaning/compare.html">보러가기 →</a></div>
+  <div class="sub-card"><h3>산업별 솔루션</h3><p>18개 산업별 적용 방식</p>
+    <a class="more" href="../cleaning/industry.html">보러가기 →</a></div>
+  <div class="sub-card"><h3>적용사례 라이브러리</h3><p>Cold Jet 글로벌 적용사례</p>
+    <a class="more" href="../cases/library.html">보러가기 →</a></div>
+</div>
+"""
+
+NEWS_BODY = """
+<p>이 페이지에는 바테크의 보도자료, 전시회 참가 소식, 공지사항이 게시됩니다.
+새로운 소식이 있을 때 이곳에서 가장 먼저 확인하실 수 있습니다.</p>
+"""
+
+ABOUT_BODY = """
+<p>주식회사 바테크는 Cold Jet(미국) 대한민국 공식 대리점으로, 드라이아이스 블라스터 · 펠렛타이저 ·
+CO2 리커버리 등 관련 장비와 드라이아이스(소모품) 공급을 함께 담당합니다. 기업 고객을 대상으로 한 B2B
+공급을 중심으로 하며, 데모 · 렌탈 테스트로 현장 적합성을 검증한 뒤 구매를 진행하는 절차를 지원합니다.</p>
+<table class="compare-table">
+  <tr><th>항목</th><th>내용</th></tr>
+  <tr><td>회사명</td><td>주식회사 바테크 (VATEK Corporation)</td></tr>
+  <tr><td>사업분야</td><td>드라이아이스 블라스터 · 펠렛타이저 · CO2 리커버리 공급, 드라이아이스 제조 · 판매</td></tr>
+  <tr><td>파트너십</td><td>Cold Jet(미국) 대한민국 공식 대리점</td></tr>
+  <tr><td>주요 고객</td><td>기업 구매담당자, 현장 유지보수 책임자 (B2B)</td></tr>
+  <tr><td>설립연도</td><td>[입력 필요]</td></tr>
+  <tr><td>대표자</td><td>[입력 필요]</td></tr>
+  <tr><td>주요 연혁</td><td>[입력 필요]</td></tr>
+</table>
+"""
+
+PARTNER_BODY = """
+<p>바테크는 Cold Jet(미국)의 대한민국 공식 대리점입니다. Cold Jet은 1988년 미국 오하이오주
+러벨랜드(Loveland, Ohio)에서 창립된, 드라이아이스 블라스팅 기술을 세계 최초로 상용화한 기업입니다.</p>
+<table class="compare-table">
+  <tr><th>항목</th><th>내용</th></tr>
+  <tr><td>창립</td><td>1988년, 미국 오하이오주 러벨랜드</td></tr>
+  <tr><td>원천 특허</td><td>현대적 드라이아이스 블라스팅 장비 원천특허 US 4,617,064 (1986년)</td></tr>
+  <tr><td>보유 특허</td><td>250개 이상의 국제 특허</td></tr>
+  <tr><td>주요 연혁</td><td>1993년 미국 FAA(연방항공청) 승인 · 2016년 IceTech 인수 ·
+    2020년 코로나19 백신 운송용 드라이아이스 생산장비 공급</td></tr>
+  <tr><td>글로벌 서비스망</td><td>미국 · 캐나다 · 멕시코 · 벨기에(유럽 본부) · 덴마크 · 독일 · 폴란드 ·
+    스페인 · 중국(3개 도시) · 일본 등 11개국 서비스 센터</td></tr>
+</table>
+<p style="margin-top:18px;">바테크는 이 검증된 기술과 정품 장비를 국내 현장에 가장 가까운 곳에서
+공급 · 지원합니다. (출처: Cold Jet 공식 웹사이트 회사소개)</p>
+"""
+
+CAPABILITY_BODY = """
+<p>바테크는 장비 판매 이후에도 국내에서 직접 대응할 수 있는 체계를 갖추고 있습니다.</p>
+<div class="sub-grid">
+  <div class="sub-card"><h3>설치 · 시운전</h3><p>현장 조건 점검부터 설치, 시운전까지 지원합니다.</p>
+    <a class="more" href="../support/install.html">자세히 보기 →</a></div>
+  <div class="sub-card"><h3>운용 교육 · A/S</h3><p>현장 작업자 교육과 A/S 접수 · 대응을 제공합니다.</p>
+    <a class="more" href="../support/education.html">자세히 보기 →</a></div>
+  <div class="sub-card"><h3>기술지원</h3><p>세척 조건 최적화, 신규 적용 부위 사전 테스트를 지원합니다.</p>
+    <a class="more" href="../support/techsupport.html">자세히 보기 →</a></div>
+  <div class="sub-card"><h3>소모품 공급</h3><p>드라이아이스, 노즐 등 소모품을 정기적으로 공급합니다.</p>
+    <a class="more" href="../products/supply.html">자세히 보기 →</a></div>
+</div>
+"""
+
+FACILITY_BODY = """
+<table class="compare-table">
+  <tr><th>항목</th><th>내용</th></tr>
+  <tr><td>공식 파트너십</td><td>Cold Jet(미국) 대한민국 공식 대리점</td></tr>
+  <tr><td>보유 시설</td><td>[입력 필요]</td></tr>
+  <tr><td>보유 인증</td><td>[입력 필요]</td></tr>
+  <tr><td>협력 파트너사</td><td>[입력 필요]</td></tr>
+</table>
+"""
+
+QUOTE_BODY = """
+<p>필요한 장비, 세척 대상, 현장 조건(압축공기 · 전원 · 공간)을 알려주시면 담당자가 적합한 모델과
+견적을 안내해 드립니다. 판단이 어려우시면 <a href="compare-equip.html">장비 비교·추천받기</a> 또는
+<a href="../rental/demo.html">데모 테스트</a>부터 시작하셔도 됩니다.</p>
+<h2 style="font-size:20px; margin-top:32px;">문의 시 아래 정보를 함께 보내주시면 더 정확합니다</h2>
+<ul style="padding-left:20px; display:grid; gap:8px;">
+  <li>세척 대상과 오염물질 종류 (사진이 있으면 더 좋습니다)</li>
+  <li>현장의 압축공기 · 전원 조건</li>
+  <li>희망하는 도입 시기와 예산 범위</li>
+</ul>
+<p>담당자 확인 후 1~2영업일 내 연락드립니다.</p>
+"""
+
+LOCATION_BODY = """
+<table class="compare-table">
+  <tr><th>항목</th><th>내용</th></tr>
+  <tr><td>주소</td><td>[입력 필요]</td></tr>
+  <tr><td>대표전화</td><td>[입력 필요]</td></tr>
+  <tr><td>이메일</td><td>[입력 필요]</td></tr>
+  <tr><td>사업자등록번호</td><td>[입력 필요]</td></tr>
+  <tr><td>오시는 길</td><td>[입력 필요]</td></tr>
+</table>
+"""
+
+# ---------------------------------------------------------------------------
+# 1. 정보구조(IA) 데이터
+# ---------------------------------------------------------------------------
+MENU = [
+    {
+        "code": "cleaning", "label": "드라이아이스 세척이란", "short": "세척이란",
+        "tagline": "드라이아이스 블라스팅의 원리와 장점, 우리 현장에 맞는 솔루션을 알아보세요.",
+        "subs": [
+            {"slug": "guide", "title": "드라이아이스 세척 가이드",
+             "desc": "드라이아이스 세척의 원리, 장점, 안전 수칙과 자주 묻는 질문을 한 곳에 정리했습니다.",
+             "body": GUIDE_BODY},
+            {"slug": "compare", "title": "타 세척방식과 비교",
+             "desc": "연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.",
+             "body": COMPARE_BODY},
+            {"slug": "industry", "title": "산업별 솔루션",
+             "desc": "자동차, 식품, 반도체·PCB, 금형, 인쇄, 발전, 조선 등 산업별로 어떤 문제를 해결하는지 설명합니다.",
+             "body": INDUSTRY_BODY},
+            {"slug": "task", "title": "작업별 솔루션",
+             "desc": "이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.",
+             "body": TASK_BODY},
+            {"slug": "adopt", "title": "도입 가이드",
+             "desc": "도입 전 검토사항부터 설치 준비, 운영 체크리스트까지 순서대로 안내합니다.",
+             "body": ADOPT_BODY},
+        ],
+    },
+    {
+        "code": "products", "label": "제품·자동화·공급", "short": "제품",
+        "tagline": "세척기부터 제조기, 자동화 시스템, 소모품 공급까지 한 번에 확인하세요.",
+        "subs": [
+            {"slug": "blaster", "title": "드라이아이스 세척기 (블라스터)",
+             "desc": "스마트 · 펠릿 · 마이크로파티클 · 특수 목적, 4개 카테고리 8개 모델 라인업을 소개합니다.",
+             "is_group": True},
+            {"slug": "pelletizer", "title": "드라이아이스 제조기 (펠렛타이저)",
+             "desc": "액체 CO2로 드라이아이스 펠릿을 직접 생산하는 제조 장비를 소개합니다.",
+             "is_group": True},
+            {"slug": "recovery", "title": "CO2 리커버리",
+             "desc": "드라이아이스 생산 중 배출되는 CO2 가스를 회수해 재사용하는 리커버리 시스템을 소개합니다.",
+             "is_group": True},
+            {"slug": "automation", "title": "자동화 시스템",
+             "desc": "생산 라인에 통합 가능한 자동화 드라이아이스 세척 시스템을 소개합니다.",
+             "body": AUTOMATION_BODY},
+            {"slug": "nozzle", "title": "노즐·액세서리",
+             "desc": "작업 목적에 맞는 노즐과 각종 액세서리 구성품을 안내합니다.",
+             "body": NOZZLE_BODY},
+            {"slug": "supply", "title": "드라이아이스 구매 (소모품 공급 안내)",
+             "desc": "장비가 아닌 소모품으로서의 드라이아이스 정기 공급 및 구매 방법을 안내합니다.",
+             "body": SUPPLY_BODY},
+            {"slug": "compare-equip", "title": "장비 비교·추천받기",
+             "desc": "보유 현장 조건을 입력하면 적합한 장비 모델을 비교·추천해 드립니다.",
+             "body": COMPARE_EQUIP_BODY},
+            {"slug": "process", "title": "구매 프로세스 안내",
+             "desc": "테스트 → 사내 품의 → 계약으로 이어지는 실제 구매 절차를 단계별로 설명합니다.",
+             "body": PROCESS_BODY},
+            {"slug": "quote", "title": "견적 요청",
+             "desc": "필요한 장비와 현장 조건을 알려주시면 담당자가 맞춤 견적을 안내해 드립니다.",
+             "body": QUOTE_BODY},
+        ],
+    },
+    {
+        "code": "cases", "label": "적용사례", "short": "적용사례",
+        "tagline": "다양한 산업 현장에서 검증된 실제 도입 사례를 확인하세요.",
+        "subs": [
+            {"slug": "library", "title": "적용사례 라이브러리",
+             "desc": "산업별·작업별·Before & After 필터로 원하는 적용사례를 빠르게 찾아보세요.",
+             "body": LIBRARY_BODY},
+            {"slug": "testimonials", "title": "고객 후기·추천사",
+             "desc": "실제 도입 담당자들이 남긴 사용 후기와 추천의 말을 모았습니다.",
+             "body": TESTIMONIALS_BODY},
+        ],
+    },
+    {
+        "code": "rental", "label": "렌탈·데모", "short": "렌탈·데모",
+        "tagline": "구매 전, 먼저 테스트해보세요. 렌탈과 데모로 적합성을 확인할 수 있습니다.",
+        "subs": [
+            {"slug": "vrental", "title": "V RENTAL 안내",
+             "desc": "단기·장기로 장비를 빌려 쓸 수 있는 V RENTAL 프로그램을 소개합니다.",
+             "body": VRENTAL_BODY},
+            {"slug": "recommend", "title": "렌탈 추천 상황",
+             "desc": "구매보다 렌탈이 더 적합한 현장 상황과 사례를 안내합니다.",
+             "body": RECOMMEND_BODY},
+            {"slug": "demo", "title": "데모 테스트 신청",
+             "desc": "실제 현장 시료로 세척 테스트를 진행하는 데모 신청 절차를 안내합니다.",
+             "body": DEMO_BODY},
+            {"slug": "faq", "title": "절차/조건/FAQ",
+             "desc": "렌탈·데모 이용 절차와 조건, 자주 묻는 질문을 정리했습니다.",
+             "body": D_FAQ_BODY},
+            {"slug": "visit", "title": "방문 시연·상담 신청",
+             "desc": "담당자가 직접 현장을 방문해 시연과 상담을 진행하는 일정을 신청할 수 있습니다.",
+             "body": VISIT_BODY},
+        ],
+    },
+    {
+        "code": "support", "label": "지원·자료", "short": "지원·자료",
+        "tagline": "설치부터 A/S, 기술자료까지 도입 이후 필요한 모든 것을 지원합니다.",
+        "subs": [
+            {"slug": "install", "title": "설치/시운전",
+             "desc": "장비 설치와 초기 시운전 과정에서 안내드리는 절차를 소개합니다.",
+             "body": INSTALL_BODY},
+            {"slug": "education", "title": "교육/A·S",
+             "desc": "운용 인력 교육 프로그램과 A/S 접수·대응 절차를 안내합니다.",
+             "body": EDUCATION_BODY},
+            {"slug": "techsupport", "title": "기술지원 서비스",
+             "desc": "현장 문제 해결을 위한 기술지원 서비스 범위와 대응 방식을 소개합니다.",
+             "body": TECHSUPPORT_BODY},
+            {"slug": "catalog", "title": "카탈로그 다운로드",
+             "desc": "제품 카탈로그와 사양서를 PDF로 내려받을 수 있습니다.",
+             "body": CATALOG_BODY},
+            {"slug": "knowledge", "title": "Knowledge Center",
+             "desc": "드라이아이스 세척 관련 백서와 업계 트렌드 콘텐츠를 제공합니다.",
+             "body": KNOWLEDGE_BODY},
+            {"slug": "news", "title": "공지사항·뉴스",
+             "desc": "보도자료, 전시회 참가 소식 등 회사의 최신 소식을 전합니다.",
+             "body": NEWS_BODY},
+        ],
+    },
+    {
+        "code": "company", "label": "회사소개", "short": "VATEK",
+        "tagline": "Cold Jet 대한민국 공식 대리점, 바테크를 소개합니다.",
+        "subs": [
+            {"slug": "about", "title": "회사소개",
+             "desc": "바테크의 사업 영역과 연혁, 비전을 소개합니다.",
+             "body": ABOUT_BODY},
+            {"slug": "partner", "title": "Cold Jet 대한민국 공식 대리점",
+             "desc": "세계 1위 드라이아이스 블라스팅 기업 Cold Jet과의 공식 파트너십을 소개합니다.",
+             "body": PARTNER_BODY},
+            {"slug": "capability", "title": "기술·서비스 역량",
+             "desc": "설치, 기술지원, A/S로 이어지는 국내 대응 역량을 소개합니다.",
+             "body": CAPABILITY_BODY},
+            {"slug": "facility", "title": "시설/인증/파트너",
+             "desc": "보유 시설과 인증 현황, 협력 파트너사를 소개합니다.",
+             "body": FACILITY_BODY},
+            {"slug": "location", "title": "위치/연락처",
+             "desc": "찾아오시는 길과 대표 연락처를 안내합니다.",
+             "body": LOCATION_BODY},
+        ],
+    },
+]
+
+CODE_ORDER = [m["code"] for m in MENU]
+
+
+def find_menu(code):
+    return next(m for m in MENU if m["code"] == code)
+
+
+# ---------------------------------------------------------------------------
+# 2. 공통 partial: head / nav / footer
+# ---------------------------------------------------------------------------
+
+def asset(path, depth):
+    prefix = "../" * depth
+    return prefix + path
+
+
+def nav_html(depth, active_code=None):
+    items = []
+    for m in MENU:
+        li_active = " active" if m["code"] == active_code else ""
+        hub_href = asset(f"{m['code']}/index.html", depth)
+        subs = "".join(
+            f'<li><a href="{asset(m["code"] + "/" + s["slug"] + ("/index.html" if s.get("is_group") else ".html"), depth)}">{s["title"]}</a></li>'
+            for s in m["subs"]
+        )
+        items.append(
+            f'<li class="{li_active.strip()}">'
+            f'<a href="{hub_href}">{m["label"]}</a>'
+            f'<div class="dropdown">'
+            f'<ul>{subs}</ul>'
+            f'</div>'
+            f'</li>'
+        )
+    quote_href = asset("products/quote.html", depth)
+    return f"""
+  <header class="site-header">
+    <div class="header-bar">
+      <a class="logo" href="{asset('index.html', depth)}"><img class="logo-img" src="{asset('assets/img/vatek-logo.png', depth)}" alt="VATEK" /></a>
+      <nav class="main-nav">
+        <ul>{''.join(items)}</ul>
+      </nav>
+      <div class="header-right">
+        <a class="cta-btn" href="{quote_href}">견적문의</a>
+        <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+        <img class="coldjet-badge" src="{asset('assets/img/coldjet-logo.png', depth)}" alt="Cold Jet" />
+      </div>
+    </div>
+  </header>
+"""
+
+
+def footer_html(depth):
+    cols = []
+    for m in MENU:
+        links = "".join(
+            f'<li><a href="{asset(m["code"] + "/" + s["slug"] + ("/index.html" if s.get("is_group") else ".html"), depth)}">{s["title"]}</a></li>'
+            for s in m["subs"][:4]
+        )
+        cols.append(f'<div class="footer-col"><h4>{m["label"]}</h4><ul>{links}</ul></div>')
+    # footer는 4칸 그리드이므로 6개 메뉴 중 대표 4개만 노출하고 나머지는 브랜드 영역에 통합
+    main_cols = cols[:3]
+    return f"""
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="logo" href="{asset('index.html', depth)}">VATEK<span class="dot"></span></a>
+          <p>주식회사 바테크 | 드라이아이스 블라스터·펠렛타이저·리커버리 및 관련 소모품 공급</p>
+          <p>[사업자등록번호 입력] · [주소 입력]</p>
+          <span class="partner-badge">🧊 Cold Jet 대한민국 공식 대리점</span>
+        </div>
+        {''.join(main_cols)}
+      </div>
+      <div class="footer-bottom">
+        <span>© VATEK Corporation. All rights reserved. (본 페이지는 리뉴얼 시안이며 실제 배포용이 아닙니다)</span>
+        <span>[대표전화 입력] · [이메일 입력]</span>
+      </div>
+    </div>
+  </footer>
+  <script src="{asset('assets/js/main.js', depth)}"></script>
+"""
+
+
+def page_shell(title, description, depth, active_code, body, is_home=False):
+    body_class = ' class="home"' if is_home else ""
+    return f"""<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title} | VATEK</title>
+<meta name="description" content="{description}" />
+<link rel="stylesheet" href="{asset('assets/css/style.css', depth)}" />
+</head>
+<body{body_class}>
+{nav_html(depth, active_code)}
+{body}
+{footer_html(depth)}
+</body>
+</html>
+"""
+
+
+# ---------------------------------------------------------------------------
+# 3. 허브 페이지 (대메뉴 index) 생성
+# ---------------------------------------------------------------------------
+
+def build_hub_page(m):
+    depth = 1
+    cards = ""
+    for s in m["subs"]:
+        href = f"{s['slug']}/index.html" if s.get("is_group") else f"{s['slug']}.html"
+        cards += f"""
+        <div class="sub-card">
+          <h3>{s['title']}</h3>
+          <p>{s['desc']}</p>
+          <a class="more" href="{href}">자세히 보기 →</a>
+        </div>"""
+    body = f"""
+  <div class="wrap breadcrumb"><a href="../index.html">홈</a> &gt; {m['label']}</div>
+  <section class="page-hero" style="padding-top:24px;">
+    <div class="wrap">
+      <span class="cat">{m['short']}</span>
+      <h1>{m['label']}</h1>
+      <p>{m['tagline']}</p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="sub-grid">{cards}</div>
+      <div class="cta-band">
+        <div>
+          <h3>더 궁금한 점이 있으신가요?</h3>
+          <p>현장 조건을 알려주시면 담당자가 1:1로 안내해 드립니다.</p>
+        </div>
+        <a class="cta-btn" href="../products/quote.html">견적문의 하기</a>
+      </div>
+    </div>
+  </section>
+"""
+    html = page_shell(m["label"], m["tagline"], depth, m["code"], body)
+    with open(os.path.join(ROOT, m["code"], "index.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+
+
+# ---------------------------------------------------------------------------
+# 4. 서브메뉴 상세 페이지 생성
+# ---------------------------------------------------------------------------
+
+def build_sub_page(m, s):
+    depth = 1
+    siblings = [x for x in m["subs"] if x["slug"] != s["slug"]][:4]
+    sib_cards = "".join(
+        f'<div class="sub-card"><h3>{x["title"]}</h3><p>{x["desc"]}</p>'
+        f'<a class="more" href="{x["slug"]}/index.html">자세히 보기 →</a></div>'
+        if x.get("is_group") else
+        f'<div class="sub-card"><h3>{x["title"]}</h3><p>{x["desc"]}</p>'
+        f'<a class="more" href="{x["slug"]}.html">자세히 보기 →</a></div>'
+        for x in siblings
+    )
+    has_real_content = bool(s.get("body"))
+    if has_real_content:
+        main_block = f"""
+      <div class="img-ph" style="min-height:220px; margin-bottom:28px;">[제품 사진/영상 영역]</div>
+      {s['body']}
+"""
+    else:
+        main_block = f"""
+      <div class="img-ph" style="min-height:280px; margin-bottom:28px;">[이미지/영상 영역]</div>
+      <h2 style="font-size:20px;">{s['title']}</h2>
+      <p>{s['desc']}</p>
+"""
+    body = f"""
+  <div class="wrap breadcrumb"><a href="../index.html">홈</a> &gt; <a href="index.html">{m['label']}</a> &gt; {s['title']}</div>
+  <section class="page-hero" style="padding-top:24px;">
+    <div class="wrap">
+      <span class="cat">{m['short']}</span>
+      <h1>{s['title']}</h1>
+      <p>{s['desc']}</p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      {main_block}
+      <h2 style="font-size:20px; margin-top:32px;">같은 카테고리의 다른 페이지</h2>
+      <div class="sub-grid">{sib_cards}</div>
+      <div class="cta-band">
+        <div>
+          <h3>바테크에 직접 문의해보세요</h3>
+          <p>현장 상황에 맞는 가장 정확한 답변을 담당자가 안내해 드립니다.</p>
+        </div>
+        <a class="cta-btn" href="../products/quote.html">견적문의 하기</a>
+      </div>
+    </div>
+  </section>
+"""
+    html = page_shell(s["title"], s["desc"], depth, m["code"], body)
+    with open(os.path.join(ROOT, m["code"], f"{s['slug']}.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+
+
+def energy_dots_html(count=64, seed=42):
+    """진입 임팩트용 흩어진 점 파티클 — 화면 곳곳에 넓게 분포된 점들이 로고를 향해
+    안쪽으로 빨려들어오며 수렴하는 에너지 필드를 연출. 빌드 시점에 좌표를 고정
+    시드로 미리 계산해두므로 재생성해도 항상 동일한 결과가 나온다."""
+    rnd = random.Random(seed)
+    spans = []
+    for i in range(count):
+        angle = rnd.uniform(0, 2 * math.pi)
+        distance = rnd.uniform(90, 560)
+        dx = round(math.cos(angle) * distance, 1)
+        dy = round(math.sin(angle) * distance, 1)
+        size = round(rnd.uniform(1.8, 4.5), 1)
+        delay = round(rnd.uniform(0, 1.4), 2)
+        duration = round(rnd.uniform(.6, 1.1), 2)
+        opacity = round(rnd.uniform(.5, 1), 2)
+        style = (
+            f"--dx:{dx}px; --dy:{dy}px; --sz:{size}px; "
+            f"--op:{opacity}; animation-delay:{delay}s; animation-duration:{duration}s;"
+        )
+        spans.append(f'<span class="energy-dot" style="{style}"></span>')
+    return "".join(spans)
+
+
+# (후속57) 기존 "OUR HISTORY" 크로스페이드 스크롤 섹션(좌 6개/우 6개, 총 12개 연혁·
+# 규모 수치)은 사용자 피드백("이 부분을 우리의 능력 아래 빨간 숫자 아래에 그냥
+# 텍스트로 배치하는 게 어떨까 싶어" → "임팩트 있는 것 몇 개만 골라서")에 따라
+# 제거하고, 그중 임팩트 있는 항목만 골라 "우리의 능력" 섹션 안에 정적 텍스트로
+# 흡수했다. 이미 ability-stats(카운트업 4개: 세계 판매량 1위 / 250 이상 특허 /
+# 1988 세계 최초 특허 / 47개 서비스센터)와 겹치는 "250개 이상 특허"·"1988년 최초
+# 특허" 계열은 중복이라 제외하고, 스탯과 겹치지 않으면서 규모/역사를 함께
+# 보여주는 4개만 선정함.
+# (후속59) 사용자 요청: "1986 등 숫자도 위와 같이 카운트 되게 해줘" — 위 ability-stats와
+# 동일하게 화면에 들어올 때 0에서 목표값까지 세는 count-up 애니메이션을 적용하기
+# 위해 (표시용 문자열, 설명) 대신 (숫자 목표값, 숫자 뒤에 붙는 접미사, 설명)으로 구성.
+ABILITY_HIGHLIGHTS = [
+    (1986, "", "최초의 산업용 드라이아이스 개발"),
+    (20, "개+", "최다 기술특허 보유"),  # (후속58) "20개 이상"이 큰 폰트에서 줄바꿈되어 축약
+    (14, "개", "최다 글로벌 자회사"),
+    (3, "개", "최다 R&D연구소"),
+]
+
+# (후속57) 사용자 요청: irisventure.com처럼 2줄이 서로 반대 방향으로 흐르는
+# 고객 레퍼런스 로고 마퀴. "기업들 레퍼런스 이미지는 나중에 줄게. 일단 그래도
+# 넣어서 모양만 보자"에 따라 실제 로고 대신 플레이스홀더 텍스트 칩으로 모양만
+# 먼저 구성함(가운데 구슬 장식은 요청대로 제외). 실제 로고 수령 시 이 목록을
+# <img> 태그로 교체하면 됨.
+REF_MARQUEE_ROW1 = [f"고객사 {c}" for c in "ABCDEFGH"]
+REF_MARQUEE_ROW2 = [f"고객사 {c}" for c in "IJKLMNOP"]
+
+
+def _ref_marquee_track_html(names):
+    chips = "".join(f'<span class="ref-chip">{name}</span>' for name in names)
+    # translateX(-50%) 루프가 이음매 없이 이어지도록 동일한 칩 세트를 2번 반복
+    return f'<div class="ref-marquee-track">{chips}{chips}</div>'
+
+
+def ref_marquee_html():
+    """(후속58) 사용자 요청: "우리들의 능력에서 틀고정 한 후 납품고객 리스트까지 다
+    내려온 후 틀고정 풀리게 해줘" — 즉 이 마퀴가 "우리의 능력" 전체화면 핀
+    바깥(핀이 풀린 뒤에 오는 별도 섹션)이 아니라, 핀이 걸려 있는 화면 안에서
+    스탯/하이라이트 바로 아래에 함께 보이다가, 그 화면을 다 보여준 뒤에야 핀이
+    풀리도록 해야 함. 그래서 더 이상 독립 <section>이 아니라 .ability-item
+    내부에 삽입되는 조각으로 반환 — 큰 섹션 제목 없이 작은 라벨만 붙여 공간을
+    아낀다."""
+    return f"""
+    <div class="ability-refs">
+      <span class="ability-refs-label">Our Clients · 납품고객</span>
+      <div class="ref-marquee" aria-hidden="true">
+        <div class="ref-marquee-row ref-marquee-row-left">{_ref_marquee_track_html(REF_MARQUEE_ROW1)}</div>
+        <div class="ref-marquee-row ref-marquee-row-right">{_ref_marquee_track_html(REF_MARQUEE_ROW2)}</div>
+      </div>
+    </div>
+"""
+
+
+# "우리가 하는 일" — pxpush.com (https://pxpush.com/) 의 "It's a whole new level..."
+# 하단에서 본 스크롤 스택 카드 효과를 참고해 순수 CSS position:sticky로 구현.
+# 항목마다 상단 sticky 위치를 한 행(--stackdo-head-h)씩 밀어서(--i 변수) 배치하면,
+# 스크롤할수록 각 카드의 "번호+제목" 줄만 화면 위에 차곡차곡 쌓여 남고 본문은
+# 다음 카드가 덮으며 사라짐 — 자바스크립트 없이 브라우저 기본 sticky 동작만으로
+# 재현되므로 별도 스크롤 이벤트 처리나 외부 라이브러리가 필요 없음.
+# (사용자 피드백 반영: "WHAT WE DO" 제목 자체도 `.stackdo-pin-title`로 이 sticky
+# 스택의 맨 앞(z-index 최하단) 항목이 되도록 `.stackdo-list` 안으로 옮김 — 스크롤
+# 시 제목이 먼저 화면 상단에 고정되고, 그 아래로 01~04가 차례로 쌓인 뒤, 4번(기술지원)
+# 까지 다 쌓이고 나면 제목+4개 항목이 전부 같은 `.stackdo-list` 컨테이너를 sticky
+# containing block으로 공유하므로 컨테이너 끝에서 다같이 스크롤에서 풀려나 함께
+# 위로 사라짐 — 4번만 유독 먼저 1~3을 덮고 멈춰버리던 것과 달리 전체가 한 덩어리로
+# 자연스럽게 마무리됨. 또한 `.stackdo-list`를 `.wrap`(최대폭 1160px) 밖으로 꺼내
+# 섹션 전체 폭(100%)을 그대로 채우도록 구조를 바꿈.
+#
+# 버그 발견 및 수정 (2단계):
+# 1) 마지막 항목(04 기술지원)이 sticky로 "고정되는 시점"과 "풀려나는 시점"이
+#    수학적으로 정확히 같아서 — 고정되자마자 곧바로 풀려나 버려, 다른 항목들과
+#    달리 전혀 멈춰있지 않고 1~3을 덮은 직후 바로 이어서 위로 사라지는 것처럼
+#    보였음(사용자가 "기술지원만 다르게 동작한다"고 지적한 원인). 원인은
+#    `.stackdo-list`의 전체 높이가 항목들의 실제 콘텐츠 높이 합과 정확히 같아서
+#    컨테이너가 끝나는 지점과 마지막 항목이 sticky로 고정되는 지점이 겹쳐버렸기
+#    때문 — 뒤에 여유 스크롤 공간이 전혀 없었던 게 근본 원인.
+# 2) 1번을 단순히 `.stackdo-tail`(끝부분 여유 공간)만으로 고치면, 항목마다 sticky
+#    top이 --stackdo-head-h씩 밀려있는 구조상 "풀려나는 시점"이 뒤 항목일수록
+#    앞 항목보다 정확히 --stackdo-head-h씩 더 일찍 와버려 — 04, 03, 02, 01 순서로
+#    차례차례 풀려나면서, 먼저 풀려났지만 z-index는 더 높은 항목이 스크롤되어
+#    사라지는 도중 아직 고정된 앞 항목의 제목 줄을 잠깐 덮어버리는 현상이 남음
+#    ("1,2,3,4가 함께 위로 올라가게" 요청과 어긋남). 최종 해결: 각 항목에
+#    margin-bottom을 (마지막 인덱스 - i) * head-h 만큼 미리 부여(CSS
+#    `.stackdo-item`)해 모든 항목의 release 시점 계산식이 정확히 같아지도록
+#    맞춤 — 그 결과 제목+1~4가 전부 정확히 같은 스크롤 지점에서 동시에 풀려나
+#    함께 위로 사라짐. `.stackdo-tail`은 이제 dwell 시간 보정용이 아니라, 전체가
+#    풀려난 뒤 다음 섹션으로 넘어가기 전의 순수한 디자인 여백 역할만 담당.)
+# 2026-08-27 (후속46) 제목만 우선 사용자 요청대로 교체(01 드라이아이스 블라스터 /
+# 02 드라이아이스 제조 · 리커버리 / 03 자동화 시스템 / 04 렌탈 · 데모 서비스).
+# 설명 문구·연결 링크(href)는 아직 예전 제목(제품·자동화 공급/생산·공급/렌탈·데모/
+# 기술지원) 기준 그대로 남아 있어 03·04번은 새 제목과 내용이 서로 맞지 않는
+# 상태 — 사용자 요청으로 일단 보류(추후 안내 예정).
+# (후속47) 사용자가 보내준 실제 제품 사진은 처음엔 01(블라스터)에 넣었으나,
+# 사용자가 "이건 제조기·펠렛타이저 사진"이라고 해서 02번(드라이아이스 제조 ·
+# 리커버리)로 옮겼었음.
+# (후속49) 사용자가 "지금도 블라스터 이미지가 제조/리커버리에 있어"라고 재차
+# 정정 — 이 사진은 실제로는 블라스터 사진이 맞았음(원래 처음 요청대로 01번용).
+# 02번에서 다시 01번으로 되돌리고 파일명도 stackdo-blaster.jpg로 변경, 02번은
+# 다시 빗금 placeholder로. (제조·리커버리용 실제 사진은 아직 없음 — 추후 받으면
+# 반영 예정.)
+# (후속48) 사용자가 보내준 로봇팔 블라스팅 사진(assets/img/stackdo-automation.jpg)은
+# "자동화 사진"이라고 알려줘서 03번(자동화 시스템)에 삽입.
+# (후속50) 02번 제목을 "드라이아이스 제조 · 리커버리" → "드라이아이스 제조기 / 리커버리"로
+# 변경하고, 사용자가 보내준 펠렛타이저/리커버리 장비 사진(assets/img/stackdo-pelletizer.jpg)을
+# 02번에 삽입.
+# (후속52) 사용자가 보내준 포터블 블라스터 카트 사진(assets/img/stackdo-rental.jpg)을
+# 04번(렌탈 · 데모 서비스)에 삽입 — 이제 01~04 전 항목이 실사진 보유.
+STACKDO_ITEMS = [
+    (
+        "01",
+        "드라이아이스 블라스터",
+        "블라스터부터 자동화 세척 시스템까지, 현장에 맞는 장비를 공급합니다.",
+        "products/index.html",
+        "[제품·자동화 공급 이미지 예정]",
+        "stackdo-blaster.jpg",
+    ),
+    (
+        "02",
+        "드라이아이스 제조기 · 리커버리",
+        "액체 CO2로 드라이아이스를 직접 만드는 펠렛타이저와, 배출 CO2를 회수해 재사용하는 리커버리 장비를 공급합니다.",
+        "products/pelletizer/index.html",
+        "[드라이아이스 제조기·리커버리 이미지 예정]",
+        "stackdo-pelletizer.jpg",
+    ),
+    (
+        "03",
+        "자동화 시스템",
+        "구매 전, 실제 현장에서 먼저 성능을 확인해보세요.",
+        "rental/index.html",
+        "[렌탈·데모 이미지 예정]",
+        "stackdo-automation.jpg",
+    ),
+    # (후속65) 신규 추가: "드라이아이스 생산 · 공급" — 장비가 아닌 소모품으로서
+    # 드라이아이스 자체를 정기적으로 생산·공급받는 서비스. desc는 원래 02번
+    # 자리에 있던 문구를 그대로 옮김(애초에 이 문구가 뜻하는 내용이 "생산·공급"
+    # 이었음 — 02번은 이제 장비(제조기·리커버리) 자체를 소개하는 문구로 교체).
+    # href도 이 문구와 정확히 맞는 기존 서브페이지(products/supply.html —
+    # "드라이아이스 구매(소모품 공급 안내)")로 연결.
+    # (후속68) 사용자가 보내준 드라이아이스 실사진(assets/img/stackdo-supply.jpg)을
+    # 적용 — 플레이스홀더 상태 해소.
+    (
+        "04",
+        "드라이아이스 생산 · 공급",
+        "펠렛타이저로 직접 생산하거나, 소모품으로 정기 공급받을 수 있습니다.",
+        "products/supply.html",
+        "[드라이아이스 생산·공급 이미지 예정]",
+        "stackdo-supply.jpg",
+    ),
+    (
+        "05",
+        "렌탈 · 데모 서비스",
+        "설치부터 A/S까지, 도입 이후에도 끝까지 책임집니다.",
+        "support/techsupport.html",
+        "[기술지원 이미지 예정]",
+        "stackdo-rental.jpg",
+    ),
+]
+
+
+def stackdo_items_html():
+    items = []
+    for i, (num, title, desc, href, ph_text, img) in enumerate(STACKDO_ITEMS):
+        visual_html = (
+            f'<img class="stackdo-visual stackdo-visual-photo" src="{asset("assets/img/" + img, 0)}" alt="{title}" loading="lazy" />'
+            if img
+            else f'<div class="img-ph stackdo-visual">{ph_text}</div>'
+        )
+        items.append(
+            f"""
+        <div class="stackdo-item stackdo-item-{i}{' has-photo' if img else ''}" style="--i:{i};">
+          <div class="stackdo-head">
+            <span class="num">{num}</span>
+            <h3>{title}</h3>
+          </div>
+          <div class="stackdo-body{' has-photo' if img else ''}">
+            <div class="stackdo-text">
+              <p>{desc}</p>
+              <a class="more" href="{asset(href, 0)}">자세히 보기 →</a>
+            </div>
+            {visual_html}
+          </div>
+        </div>"""
+        )
+    return "".join(items)
+
+
+def build_home():
+    depth = 0
+
+    body = f"""
+  <section class="hero">
+    <div class="hero-video-wrap">
+      <video class="hero-video" autoplay muted loop playsinline poster="assets/video/main-hero-poster.jpg">
+        <source src="assets/video/main-hero.webm" type="video/webm">
+        <source src="assets/video/main-hero.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-intro" aria-hidden="true">
+      {energy_dots_html()}
+      <img class="power-core" src="assets/img/vatek-logo.png" alt="VATEK" />
+      <div class="snap-flash"></div>
+    </div>
+    <div class="wrap">
+      <span class="tag">🧊 Cold Jet 대한민국 공식 대리점</span>
+      <h1>분해 없이, 손상 없이,<br />폐기물 없이 세척합니다.</h1>
+      <p class="lead">바테크는 전 세계 드라이아이스 블라스팅 1위 기업 Cold Jet의 대한민국 공식 대리점입니다.
+      검증된 장비와 국내 기술지원으로 산업 현장의 세척을 책임집니다.</p>
+      <div class="actions">
+        <a class="cta-btn" href="products/quote.html">견적문의</a>
+        <a class="cta-btn outline" href="rental/demo.html">데모 테스트 신청</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll down</span>
+      <span class="hero-scroll-chevrons">
+        <span class="chevron"></span>
+        <span class="chevron"></span>
+      </span>
+    </div>
+  </section>
+
+  <section class="stackdo-section">
+    <div class="stackdo-list">
+      <div class="stackdo-pin-title"><h2>우리가 하는 일</h2></div>
+      <div class="stackdo-intro">
+        <div class="stackdo-intro-photo">
+          <p>드라이아이스 기술의 도입부터 운영까지, 현장에 필요한 장비와 시스템을 바테크가 전문적으로 제공합니다.</p>
+        </div>
+      </div>
+      {stackdo_items_html()}
+      <div class="stackdo-tail" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="ability-section">
+    <div class="ability-list">
+      <div class="ability-pin">
+        <div class="ability-pin-title"><h2>우리의 능력</h2></div>
+        <div class="ability-item">
+          <span class="ability-watermark" aria-hidden="true">ABILITY</span>
+          <div class="ability-body">
+            <div class="ability-stats">
+              <div class="ability-stat">
+                <span class="a-en">Global Sales</span>
+                <b class="count-up" data-target="1" data-prefix="No.">No.0</b>
+                <span class="a-kr">세계 판매량 1위</span>
+              </div>
+              <div class="ability-stat">
+                <span class="a-en">Most Patents</span>
+                <b class="count-up" data-target="250">0</b>
+                <span class="a-kr">250 이상의 특허보유</span>
+              </div>
+              <div class="ability-stat">
+                <span class="a-en">First in the World</span>
+                <b class="count-up" data-target="1988">0</b>
+                <span class="a-kr">세계 최초의 특허</span>
+              </div>
+              <div class="ability-stat">
+                <span class="a-en">Global Service</span>
+                <b class="count-up" data-target="47">0</b>
+                <span class="a-kr">세계 47개의 서비스센터</span>
+              </div>
+            </div>
+            <div class="ability-highlights">
+              {"".join(f'<div class="ability-highlight"><b class="count-up" data-target="{target}" data-suffix="{suffix}">0{suffix}</b><span>{desc}</span></div>' for target, suffix, desc in ABILITY_HIGHLIGHTS)}
+            </div>
+            <p class="stat-note">(출처: Cold Jet 공식 소개자료 — 바테크는 이 기술력을 국내 현장에 그대로 전달합니다)</p>
+          </div>
+        </div>
+      </div>
+      <div class="ability-tail" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="section-voice">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Customer Voice</span>
+        <h2 class="reveal">이 기술을 도입한 현장들이 전하는 이야기</h2>
+      </div>
+      <div class="quote-strip">
+        <div class="quote-card reveal" style="--reveal-delay:0s">
+          <span class="mark">"</span>
+          <span class="tag">주조(Foundry)</span>
+          <p class="quote">예상했던 투자회수기간 6개월이 실제로는 <b>1개월</b>로 단축됐습니다.</p>
+          <p class="who"><b>Daryl Hesch</b> · Progress Casting</p>
+        </div>
+        <div class="quote-card reveal" style="--reveal-delay:.12s">
+          <span class="mark">"</span>
+          <span class="tag">문화재 보존</span>
+          <p class="quote">표면에 손상을 주지 않고 세척할 수 있다는 걸 직접 확인했습니다.</p>
+          <p class="who"><b>Will Hoffman</b> · The Mariners' Museum</p>
+        </div>
+        <div class="quote-card reveal" style="--reveal-delay:.24s">
+          <span class="mark">"</span>
+          <span class="tag">플라스틱</span>
+          <p class="quote">세척 시간이 줄고, 화학물질 사용량도 함께 줄었습니다.</p>
+          <p class="who"><b>Joe Pond</b> · Silgan Plastics</p>
+        </div>
+      </div>
+      <p class="stat-note reveal" style="--reveal-delay:.3s">(출처: Cold Jet 공식 웹사이트 고객 인터뷰 요약, 국문 재구성 — Cold Jet 글로벌 고객 사례이며, 국내 적용사례는 <a href="cases/library.html">적용사례</a>에서 별도 안내해 드립니다)</p>
+    </div>
+  </section>
+
+  <section class="bg-mint">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why VATEK</span>
+        <h2 class="reveal">왜 바테크를 선택해야 할까요</h2>
+        <p class="reveal" style="--reveal-delay:.08s">가격보다 중요한 건 신뢰입니다. 바테크는 이렇게 답합니다.</p>
+      </div>
+      <div class="icon-row">
+        <div class="item reveal-pop" style="--reveal-delay:0s"><div class="ic">🏅</div><span>공식 인증 파트너</span></div>
+        <div class="item reveal-pop" style="--reveal-delay:.08s"><div class="ic">🛠️</div><span>국내 기술지원</span></div>
+        <div class="item reveal-pop" style="--reveal-delay:.16s"><div class="ic">🧪</div><span>선(先) 테스트</span></div>
+        <div class="item reveal-pop" style="--reveal-delay:.24s"><div class="ic">♻️</div><span>2차 폐기물 없음</span></div>
+        <div class="item reveal-pop" style="--reveal-delay:.32s"><div class="ic">📞</div><span>빠른 응대</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-navy">
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="eyebrow">Official Partner</span>
+        <h2>우리는 Cold Jet<br />대한민국 공식 대리점입니다</h2>
+        <p>Cold Jet은 드라이아이스 블라스팅 기술을 세계 최초로 상용화한 이래, 오랜 기간 이 분야를 이끌어온 글로벌 리더입니다.
+        바테크는 Cold Jet의 대한민국 공식 대리점으로서 검증된 장비와 기술을 국내 현장에 가장 가까운 곳에서 지원합니다.</p>
+        <p>수입 장비이기 때문에 가격은 상대적으로 높을 수 있습니다. 하지만 문제 없이 오래 쓸 수 있는 장비를 선택하는 것,
+        그것이 결국 더 큰 신뢰와 비용 절감으로 이어집니다.</p>
+        <a class="cta-btn outline" href="company/partner.html">파트너십 자세히 보기 →</a>
+      </div>
+      <div class="img-ph reveal-scale" style="min-height:300px; border-color:rgba(255,255,255,0.4); color:rgba(255,255,255,0.85); --reveal-delay:.12s">[Cold Jet 장비/현장 이미지 예정]</div>
+    </div>
+  </section>
+
+  <section class="section-industries">
+    <div class="wrap">
+      <div class="section-head left">
+        <span class="eyebrow">Industries</span>
+        <h2 class="reveal">다양한 산업 현장에 적용됩니다</h2>
+      </div>
+      <div class="chip-grid">
+        <span class="chip reveal-pop" style="--reveal-delay:0s">자동차</span><span class="chip reveal-pop" style="--reveal-delay:.04s">식품·음료</span><span class="chip reveal-pop" style="--reveal-delay:.08s">반도체·PCB</span>
+        <span class="chip reveal-pop" style="--reveal-delay:.12s">금형·주조</span><span class="chip reveal-pop" style="--reveal-delay:.16s">인쇄</span><span class="chip reveal-pop" style="--reveal-delay:.2s">발전설비</span>
+        <span class="chip reveal-pop" style="--reveal-delay:.24s">조선</span><span class="chip reveal-pop" style="--reveal-delay:.28s">항공</span><span class="chip reveal-pop" style="--reveal-delay:.32s">플라스틱·고무</span>
+        <span class="chip reveal-pop" style="--reveal-delay:.36s">목재·합판</span>
+      </div>
+      <div class="cta-band reveal" style="--reveal-delay:.1s">
+        <div><h3>우리 현장에도 적용될까요?</h3><p>산업별 적용사례에서 직접 확인해보세요.</p></div>
+        <a class="cta-btn" href="cases/library.html">적용사례 보러가기</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-pale">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Comparison</span>
+        <h2 class="reveal">왜 드라이아이스 세척인가요</h2>
+      </div>
+      <table class="compare-table reveal-scale">
+        <tr><th>비교 항목</th><th>드라이아이스 세척</th><th>연마재·화학 세척</th></tr>
+        <tr><td>표면 손상</td><td class="good">없음 (비연마성)</td><td>발생 가능</td></tr>
+        <tr><td>2차 폐기물</td><td class="good">없음</td><td>폐수·폐기물 발생</td></tr>
+        <tr><td>설비 분해</td><td class="good">대부분 불필요</td><td>필요한 경우 많음</td></tr>
+        <tr><td>가동 중단 시간</td><td class="good">짧음</td><td>상대적으로 김</td></tr>
+        <tr><td>전기 안전성</td><td class="good">비전도성</td><td>제한적</td></tr>
+      </table>
+      <div class="reveal" style="text-align:center; margin-top:24px; --reveal-delay:.1s">
+        <a class="cta-btn outline" href="cleaning/compare.html">자세히 비교해보기 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-contact">
+    <div class="wrap">
+      <div class="cta-panel">
+        <div class="reveal">
+          <span class="eyebrow">Contact</span>
+          <h2>관심은 있는데<br />어디서부터 시작해야 할지<br />모르시겠다면</h2>
+          <p>현장 상황만 알려주세요. 바테크가 가장 적합한 방법을 안내해 드립니다.</p>
+        </div>
+        <form class="form-grid quote-form reveal-scale" style="--reveal-delay:.1s">
+          <input type="text" placeholder="성함" required />
+          <input type="text" placeholder="회사명" required />
+          <input type="tel" placeholder="연락처" required />
+          <input type="email" placeholder="이메일" required />
+          <textarea placeholder="문의 내용을 남겨주세요"></textarea>
+          <label class="consent"><input type="checkbox" required style="width:auto; margin-top:3px;" />개인정보 수집·이용에 동의합니다.</label>
+          <button type="submit">문의 보내기</button>
+        </form>
+      </div>
+    </div>
+  </section>
+"""
+    html = page_shell(
+        "바테크 | Cold Jet 대한민국 공식 대리점, 드라이아이스 세척 전문기업",
+        "바테크는 Cold Jet 대한민국 공식 대리점으로 드라이아이스 세척기, 제조기, 자동화 시스템과 소모품을 공급합니다.",
+        depth, None, body, is_home=True,
+    )
+    with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+
+
+def main():
+    for m in MENU:
+        os.makedirs(os.path.join(ROOT, m["code"]), exist_ok=True)
+        build_hub_page(m)
+        for s in m["subs"]:
+            if s.get("is_group"):
+                continue  # 제품 그룹(블라스터/펠렛타이저)은 products.py가 별도 생성
+            build_sub_page(m, s)
+    build_home()
+
+    import products
+    n_blaster = products.build_blaster(ROOT, nav_html, footer_html, page_shell, asset)
+    n_pelletizer = products.build_pelletizer(ROOT, nav_html, footer_html, page_shell, asset)
+    n_recovery = products.build_recovery(ROOT, nav_html, footer_html, page_shell, asset)
+
+    total = sum(len(m["subs"]) for m in MENU if True) - 3  # blaster/pelletizer/recovery는 is_group이라 별도 카운트
+    total_pages = 1 + len(MENU) + total + n_blaster + n_pelletizer + n_recovery
+    print(f"생성 완료: 홈 1개 + 허브 {len(MENU)}개 + 서브페이지 {total}개 "
+          f"+ 블라스터 {n_blaster}개 + 펠렛타이저 {n_pelletizer}개 + CO2 리커버리 {n_recovery}개 "
+          f"= 총 {total_pages}개")
+
+
+if __name__ == "__main__":
+    main()
