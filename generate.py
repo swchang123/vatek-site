@@ -667,7 +667,7 @@ def nav_html(depth, active_code=None):
         <ul>{''.join(items)}</ul>
       </nav>
       <div class="header-right">
-        <a class="cta-btn" href="{quote_href}">견적문의</a>
+        <a class="cta-btn" href="{quote_href}">문의</a>
         <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
         <img class="coldjet-badge" src="{asset('assets/img/coldjet-logo.png', depth)}" alt="Cold Jet" />
       </div>
@@ -1052,10 +1052,9 @@ def build_home():
       <div class="snap-flash"></div>
     </div>
     <div class="wrap">
-      <span class="tag">🧊 Cold Jet 대한민국 공식 대리점</span>
-      <h1>분해 없이, 손상 없이,<br />폐기물 없이 세척합니다.</h1>
-      <p class="lead">바테크는 전 세계 드라이아이스 블라스팅 1위 기업 Cold Jet의 대한민국 공식 대리점입니다.
-      검증된 장비와 국내 기술지원으로 산업 현장의 세척을 책임집니다.</p>
+      <h1>세계가 선택한 세척 기술,<br />생산의 <span class="accent">차이</span>를 만듭니다.</h1>
+      <p class="lead">바테크는 세계 최초이자 글로벌 리더 Cold Jet의 대한민국 공식 총판입니다.
+      압도적인 기술력과 현장 경험으로 더 정확하고 효율적인 산업 세척 솔루션을 제공합니다.</p>
       <div class="actions">
         <a class="cta-btn" href="products/quote.html">견적문의</a>
         <a class="cta-btn outline" href="rental/demo.html">데모 테스트 신청</a>
@@ -1079,6 +1078,46 @@ def build_home():
         </div>
       </div>
       {stackdo_items_html()}
+      <!-- (재설계 — 사용자 피드백: "우리의 가치 글씨가, 5번의 이미지와
+           글씨 위로 완전히 덮은 상태로 5번 제목 아래로 갔을 때 5번 글씨가
+           작아지면서 위로 올라가야해") 이 6번째 항목이 제자리로 슬라이드해
+           올라오면 `.stackdo-item`의 기존 불투명 배경(흰색)+z-index 덕분에
+           01~04번이 서로를 덮는 것과 완전히 같은 방식으로 05번의 사진·
+           텍스트를 완전히 덮으며 05번 제목 바로 아래 자리 잡고(main.js의
+           activeIndex/passedCount 로직 재사용), 동시에 05번 제목이
+           축소됨 — 여기까지는 유지.
+           (추가 피드백 — 사용자가 이 상태의 스크린샷을 보고 "기능은 그대로
+           두고 이 글씨만 없애줘. 그 밑의 '우리의 가치' 큰 글씨도 그대로
+           두고") 이 항목 자체에 눈에 보이는 "우리의 가치" 제목(h3)까지
+           넣었더니, 이 항목은 05번과 달리 뒤에 또 다른 항목이 없어
+           `.is-passed`가 절대 붙지 않아 글자가 계속 큰 채로(clamp 20~30px)
+           남아있었음 — 그 결과 05번이 스크롤로 화면 밖에 완전히 사라진
+           뒤에도 이 큰 "우리의 가치" 글씨 + 화살표만 있는 텅 빈 흰 화면이
+           꽤 오래 스크롤되며 마치 아무 콘텐츠도 없는 것처럼 보이는 문제가
+           있었음. 그래서 이 항목의 head에서 h3 텍스트만 제거 — `.stackdo-
+           head`는 콘텐츠와 무관하게 var(--stackdo-head-h) 고정 높이이므로
+           텍스트를 빼도 항목 전체 높이·release 타이밍(수식)은 전혀
+           바뀌지 않음. 즉 "덮기+05번 축소" 기능과 화살표 힌트는 그대로
+           작동하되, 중복될 뿐이던 텍스트 라벨만 사라짐 — 실제 "우리의
+           가치" 글씨는 바로 다음 .ability-section의 전체화면 고정 블록
+           (큰 제목)에서 그대로 유지.
+           (추가 피드백 — 사용자가 05번과 "우리의 가치" 사이 빈 여백
+           스크린샷을 보고 "5번과 우리의 가치 공백을 절반으로 줄여주고,
+           중간의 화살표를 빼줘") 이 항목의 본문(.stackdo-body)은 원래
+           "05번 자연높이 − head 높이"만큼의 빈 여백을 차지하도록 설계된
+           타이밍 전용 공간이었음 — 이 항목 자신의 높이는 뒤이은 다른
+           항목이 없어(6번째=마지막) 01~04번의 release 타이밍 계산에는
+           전혀 영향을 주지 않고(그 계산은 이 항목"이전" 누적 높이에만
+           의존), 오직 "이 항목이 다 지나가고 나서 전체가 화면 밖으로
+           풀려나기까지 걸리는 스크롤 거리"만 결정함 — 그래서 이 여백을
+           절반으로 줄여도 01~05번 타이밍은 전혀 바뀌지 않고, 05번이 덮인
+           뒤 다음 큰 제목이 나타나기까지의 간격만 짧아짐(아래 style.css
+           .stackdo-ability-teaser .stackdo-body min-height 절반으로 축소
+           참고). 화살표 힌트(teaser-hint)도 요청대로 완전히 제거. -->
+      <div class="stackdo-item stackdo-item-5 stackdo-ability-teaser" style="--i:5;" aria-hidden="true">
+        <div class="stackdo-head"></div>
+        <div class="stackdo-body"></div>
+      </div>
       <div class="stackdo-tail" aria-hidden="true"></div>
     </div>
   </section>
@@ -1086,7 +1125,7 @@ def build_home():
   <section class="ability-section">
     <div class="ability-list">
       <div class="ability-pin">
-        <div class="ability-pin-title"><h2>우리의 능력</h2></div>
+        <div class="ability-pin-title"><h2>우리의 가치</h2></div>
         <div class="ability-item">
           <div class="ability-body">
             <div class="ability-stats">

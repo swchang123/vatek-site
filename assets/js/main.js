@@ -319,6 +319,17 @@ document.addEventListener("DOMContentLoaded", function () {
   //     함 — "우리가 하는 일" 제목 글자는 건드리지 않고, 1번→2번→3번 순서로
   //     하나씩 작아지는 시각 효과는 이 클래스가 전담(공간 절감과는 무관한
   //     순수 시각 효과).
+  // (되돌림, 재설계 — 사용자 피드백: "5번 텍스트 축소 안되고 우리의 가치
+  // 글씨가 5번에 가서 붙지도 않아") 한때 ".ability-pin이 화면에 고정되는
+  // 순간"을 05번의 is-passed 트리거로 대신 썼었으나, 그 시점은 다음 섹션
+  // (100vh)이 화면 아래에서 다 올라와야 하므로 05번이 이미 한참 전에 화면
+  // 밖으로 사라진 뒤였음(축소되는 모습을 볼 수 없는 문제). "05번(마지막
+  // 실제 항목) 뒤에는 다음 항목이 없어 영원히 .is-passed가 붙지 않는다"는
+  // 원래 문제로 되돌아가, 이번엔 05번 뒤에 화면에 아무것도 그리지 않는
+  // "투명한 타이밍 전용" 6번째 항목(.stackdo-item-5, 위 generate.py/
+  // style.css 참고)을 추가해 해결 — 이 항목이 활성화되는 순간, 아래
+  // passedCount 로직이 그대로 재사용되어 05번도 01~04번과 완전히 같은
+  // 방식·타이밍(화면에 아직 보이는 상태)으로 축소됨.
   var stackdoList = document.querySelector(".stackdo-list");
   var stackdoItems = stackdoList
     ? Array.prototype.slice.call(stackdoList.querySelectorAll(".stackdo-item"))

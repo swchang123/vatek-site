@@ -48,21 +48,26 @@ p { margin: 0 0 12px; }
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
 /* ---------- Header / Nav ---------- */
-/* 상하좌우 여백을 두고 화면에 붙지 않게 "분리된 카드"로 떠 있는 헤더.
+/* (클로드 디자인 요청) 상하좌우 여백을 둔 "떠 있는 카드" 헤더에서, 화면
+   가장자리에 꽉 차는(edge-to-edge) 반투명 화이트 블러 바로 교체 —
+   top:16px+둥근 모서리+테두리 대신 top:0+전체 너비+backdrop-filter 블러
+   + 얇은 하단 보더 한 줄로 더 가볍고 현대적인 인상을 줌.
    모든 페이지에서 position:fixed로 문서 흐름과 분리하고, 아래로 스크롤하는
    동안에는 페이지와 함께 위로 올라가며 사라졌다가(.nav-hidden), 스크롤이
    멈추면 다시 위에서 슬라이드되어 나타난다(scrollHeaderVisibility, main.js). */
 .site-header {
   position: fixed;
-  top: 16px; left: 0; right: 0;
-  width: calc(100% - 32px);
-  margin: 0 auto;
+  top: 0; left: 0; right: 0;
+  width: 100%;
   z-index: 100;
-  background: rgba(255,255,255,0.98);
-  border: 1px solid rgba(40, 55, 57, 0.06);
-  border-radius: 20px;
-  box-shadow: var(--shadow-lift);
-  transition: transform .4s cubic-bezier(.4, 0, .2, 1);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: none;
+  border-bottom: 1px solid rgba(40, 55, 57, 0.08);
+  border-radius: 0;
+  box-shadow: 0 1px 0 rgba(40,55,57,0.03), 0 8px 24px rgba(40,55,57,0.05);
+  transition: transform .4s cubic-bezier(.4, 0, .2, 1), background .3s ease;
 }
 /* 대기 상태에서는 transform을 아예 지정하지 않음(초기값 none 유지) — 값이 있으면
    (translateY(0)이라도) 이 헤더가 하위 fixed 요소(모바일 전체화면 메뉴 패널 등)의
@@ -84,36 +89,50 @@ p { margin: 0 0 12px; }
 }
 /* 헤더가 fixed로 흐름에서 빠지므로, 홈 이외 페이지는 본문을 헤더 높이만큼 내려줌
    (홈은 헤더가 히어로 영상 위에 겹쳐 뜨는 디자인이라 별도 여백이 필요 없음) */
-body:not(.home) { padding-top: 104px; }
+body:not(.home) { padding-top: 76px; }
 /* 헤더는 3열 그리드: 좌측 로고(1fr, 카드 끝에 붙음) · 가운데 메뉴(auto, 항상
    진짜 가운데 정렬) · 우측 CTA+Cold Jet 로고(1fr, 카드 끝에 붙음). 좌우가
    서로 폭이 달라도 1fr 두 칸이 남는 공간을 나눠 가지므로 가운데 메뉴는
    양쪽 내용물 폭과 무관하게 항상 헤더 정중앙에 위치함 */
 .header-bar {
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-  height: 72px; padding: 0 24px; gap: 20px;
+  height: 76px; padding: 0 32px; gap: 20px;
 }
 .header-bar > .logo { justify-self: start; }
 .header-bar > .main-nav { justify-self: center; }
-.header-bar > .header-right { justify-self: end; display: flex; align-items: center; gap: 12px; }
-.logo { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 20px; color: var(--navy); letter-spacing: 0.3px; }
+.header-bar > .header-right { justify-self: end; display: flex; align-items: center; gap: 18px; }
+.logo { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 21px; color: var(--navy); letter-spacing: 0.3px; }
 .logo .dot {
   width: 11px; height: 11px; border-radius: 50%; display: inline-block;
   background: linear-gradient(135deg, var(--ice) 0%, var(--blue) 100%);
   box-shadow: 0 0 0 4px rgba(79, 173, 184, 0.14);
 }
-.logo-img { height: 48px; width: auto; display: block; }
-.coldjet-badge { height: 26px; width: auto; display: block; }
+.logo-img { height: 52px; width: auto; display: block; }
+.coldjet-badge {
+  height: 26px; width: auto; display: block;
+  padding-left: 16px; margin-left: 2px; border-left: 1px solid var(--gray-line);
+}
 
 .main-nav { display: flex; align-items: center; gap: 4px; }
-.main-nav > ul { display: flex; gap: 2px; }
+.main-nav > ul { display: flex; gap: 6px; }
 .main-nav > ul > li { position: relative; }
+/* (클로드 디자인 요청) 두꺼운 하단 보더가 즉시 나타나는 hover 대신, 얇은
+   밑줄이 스르륵 자라나는 애니메이션(::after, scaleX)으로 교체 */
 .main-nav > ul > li > a {
-  display: block; padding: 26px 12px; font-size: 15px; font-weight: 600; color: var(--text-dark);
+  display: block; padding: 27px 13px; font-size: 15.5px; font-weight: 600; color: var(--text-dark);
   border-bottom: 3px solid transparent;
+  position: relative;
+  transition: color .2s ease;
 }
+.main-nav > ul > li > a::after {
+  content: ""; position: absolute; left: 13px; right: 13px; bottom: 21px; height: 2px;
+  background: var(--blue); transform: scaleX(0); transform-origin: center;
+  transition: transform .25s cubic-bezier(.4,0,.2,1);
+}
+.main-nav > ul > li > a:hover::after,
+.main-nav > ul > li.active > a::after { transform: scaleX(1); }
 .main-nav > ul > li > a:hover,
-.main-nav > ul > li.active > a { color: var(--blue); border-bottom-color: var(--blue); }
+.main-nav > ul > li.active > a { color: var(--blue); }
 
 .main-nav .dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -132,13 +151,15 @@ body:not(.home) { padding-top: 104px; }
 .main-nav .dropdown li a:hover { background: var(--blue-pale); color: var(--blue-dark); }
 
 .cta-btn {
-  display: inline-block; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
   color: var(--white) !important;
-  padding: 13px 26px; border-radius: 999px; font-weight: 800; font-size: 15px;
+  padding: 12px 24px; border-radius: 999px; font-weight: 700; font-size: 15px; letter-spacing: 0.1px;
   white-space: nowrap; box-shadow: 0 6px 16px rgba(27, 109, 120, 0.22);
   transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
 }
 .cta-btn:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 10px 22px rgba(27, 109, 120, 0.28); }
+.cta-btn:active { transform: translateY(0) scale(.97); filter: brightness(.98); }
 .cta-btn.outline {
   background: transparent; border: 1.5px solid var(--blue); color: var(--blue) !important;
   box-shadow: none;
@@ -277,12 +298,14 @@ body:not(.home) { padding-top: 104px; }
   padding: 8px 16px; border-radius: 999px; font-size: 13.5px; font-weight: 700; letter-spacing: .3px; margin-bottom: 26px;
   backdrop-filter: blur(4px);
 }
-.hero h1 { color: var(--white); font-size: clamp(38px, 5.6vw, 78px); font-weight: 800; max-width: 880px; margin-bottom: 24px; letter-spacing: -0.02em; line-height: 1.14; }
+.hero h1 { color: var(--white); font-size: clamp(34px, 4.6vw, 62px); font-weight: 800; max-width: 780px; margin-bottom: 22px; letter-spacing: -0.02em; line-height: 1.16; }
+.hero h1 .accent { color: var(--ice); }
 .hero p.lead { color: rgba(255,255,255,0.88); font-size: clamp(16px, 1.3vw, 19px); line-height: 1.75; max-width: 620px; margin-bottom: 36px; }
-.hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero .actions .cta-btn { height: 52px; padding: 0 30px; display: inline-flex; align-items: center; font-size: 15.5px; letter-spacing: .1px; }
 .hero .cta-btn { box-shadow: 0 10px 26px rgba(9, 13, 14, 0.4); }
-.hero .cta-btn.outline { border-color: rgba(255,255,255,0.55); color: var(--white) !important; }
-.hero .cta-btn.outline:hover { background: rgba(255,255,255,0.10); }
+.hero .cta-btn.outline { border-color: rgba(255,255,255,0.4); color: var(--white) !important; font-weight: 600; }
+.hero .cta-btn.outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.65); }
 @keyframes heroTextIn {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
@@ -393,6 +416,10 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
      단계(stage) 주석 참고: 이 값은 "제목이 아직 줄어들지 않은 0단계" 기준이며,
      03번부터는 제목이 단계적으로 줄어들어 뒤쪽 항목이 화면에 필요로 하는
      실제 여유 공간을 대신 벌어준다. */
+  /* (신규) "우리의 능력" 라벨(여섯 번째 슬롯) 추가 — 라벨의 자연높이를
+     "05번 자연높이 - head-h"(474-48=426px)로 맞추면 01~05번의 target/margin
+     공식이 라벨 추가 전과 정확히 동일하게 나옴(아래 .stackdo-item-0~4,
+     .stackdo-ability-teaser 주석 참고) — pin-tail도 666px로 변경 없음. */
   --stackdo-pin-tail: 666px;
 }
 /* (후속65) "항목이 늘면서 뒤쪽(04·05번) 이미지·설명이 화면 밖으로 잘리는"
@@ -461,6 +488,17 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 .stackdo-section {
   background: var(--white);
   padding-top: 0;
+  /* (신규) "우리가 하는 일"에서 "우리의 능력"으로 넘어갈 때 섹션 자체의
+     장식용 하단 여백(빈 흰 공간)까지 없애 더 바로 이어지는 느낌을 줌 —
+     아래 .ability-section의 상단 여백 제거와 세트.
+     주의: --stackdo-tail-slack(아래 .stackdo-list)은 건드리면 안 됨 —
+     .stackdo-tail이 .stackdo-list 내부(마지막 자식)에 있어서, 이 값을
+     줄이면 컨테이너 전체 높이가 줄어들어 모든 고정 항목의 "동시-풀림"
+     시점 자체가 앞당겨짐(05번이 자기 차례로 고정되기도 전에 전부
+     풀려나 버리는 회귀 발견 — Playwright로 확인 후 원복). 이 값은 순수
+     섹션 padding과 달리 스크롤 동기화 수식의 일부이므로 절대 임의로
+     줄이지 말 것. */
+  padding-bottom: 0;
 }
 .stackdo-list::before {
   content: "";
@@ -609,31 +647,11 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    점선은 반복 그라데이션(대시 패턴)으로 그리고, 좌우로 갈수록 투명해지는
    페이드는 색상이 아니라 mask-image(알파 마스크)로 구현 — 대시 색은
    균일하게 유지하면서 양 끝만 자연스럽게 사라짐. */
-.stackdo-item::before {
-  content: "";
-  position: absolute; top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: clamp(300px, 225px + 23vw, 560px);
-  height: 1px;
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(70, 89, 91, 0.4) 0, rgba(70, 89, 91, 0.4) 2px,
-    transparent 2px, transparent 5px
-  );
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
-}
-.stackdo-item-0::before {
-  width: clamp(160px, 90px + 18vw, 350px);
-  height: 2px;
-  background-image: none;
-  background: linear-gradient(90deg, transparent 0%, var(--ice) 25%, var(--ice) 75%, transparent 100%);
-  opacity: 0.65;
-  -webkit-mask-image: none;
-  mask-image: none;
-}
-.stackdo-item-4::before { display: none; }
-.stackdo-item-4 .stackdo-head { border-bottom: none; }
+/* (클로드 디자인 연동 수정) 사용자 요청: "우리가 하는 일 섹션에 있는 모든
+   가로 선을 없애줘" — 위 ::before 액센트 라인(01번 teal, 02~05번 회색 점선)과
+   아래 .stackdo-head의 border-bottom(카드 제목 줄 밑선)을 전부 제거. 구분
+   기능은 카드 사이 여백(margin-bottom)만으로 유지. */
+.stackdo-item::before { display: none; }
 /* 위 margin-bottom 공식은 4개 항목의 "실제 콘텐츠 높이"가 서로 비슷하다고
    가정한 값인데, 실제 사진이 들어간 항목은 사진 때문에 다른 항목보다 실측
    높이가 훨씬 커져서 공식대로 두면 그 항목만 훨씬 먼저 풀려나 버림(사진이
@@ -654,15 +672,46 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    PLACEHOLDER_DESKTOP_MEASURE 참고, 클래스명도 사진 유무와 무관하게
    .stackdo-item-0~4로 통일 — 05번처럼 뒤로 밀린 사진 항목이 남는 공간에
    맞춰 margin이 정해짐). */
-.stackdo-item-0 { margin-bottom: 129px; } /* 01번: 최종 단계(3단계) 기준 목표 669px - 실측 540px */
-.stackdo-item-1 { margin-bottom: 81px; } /* 02번: 목표 621px - 실측 540px */
-.stackdo-item-2 { margin-bottom: 70px; } /* 03번: 목표 573px - 실측 503px */
+/* (재설계 — 위 generate.py .stackdo-ability-teaser 주석 참고) 여섯 번째
+   슬롯(--i:5)을 텍스트 있는 버전 ↔ 완전 투명 버전으로 오갔는데, 01~05번의
+   margin-bottom·pin-tail은 처음 이 항목을 추가했을 때도 대수적으로 동일하게
+   유지되도록 설계했으므로(당시 증명 완료) 어느 버전이든 이 값들은 전혀
+   바뀌지 않음. */
+.stackdo-item-0 { margin-bottom: 129px; } /* 01번: 목표 666px - 실측 537px */
+.stackdo-item-1 { margin-bottom: 81px; } /* 02번: 목표 618px - 실측 537px */
+.stackdo-item-2 { margin-bottom: 70px; } /* 03번: 목표 570px - 실측 500px */
 .stackdo-item-3 { margin-bottom: 48px; } /* 04번(후속68, 실사진 16:9): 목표 522px - 실측 474px */
-.stackdo-item-4 { margin-bottom: 0px; } /* 05번(기준): 목표 477px - 실측 477px */
+.stackdo-item-4 { margin-bottom: 0px; } /* 05번: 목표 474px - 실측 474px */
+/* 6번째 항목("우리의 가치" 도킹 라벨) — .stackdo-item은 이미 불투명 흰
+   배경과 `--i`에 비례하는 z-index를 갖고 있어(위 .stackdo-item 규칙 참고),
+   이 항목이 제자리로 슬라이드해 올라오면 자동으로 05번의 사진·텍스트를
+   완전히 덮으면서 05번 제목 바로 아래 자리 잡음 — 01~04번이 서로를 덮는
+   것과 완전히 같은 원리, 별도 처리 불필요. main.js의 기존 activeIndex/
+   passedCount 로직도 "이 항목이 활성화되는 순간"을 05번의 `.is-passed`
+   트리거로 그대로 재사용함(05번은 화면에 아직 보이는 상태에서 축소됨).
+   자연높이를 "05번 자연높이 − head 높이"(474−48=426px, 모바일
+   406−32=374px)로 맞춰 target(i) 공식이 이 항목 추가 "이전"과 정확히
+   같아지므로(수식 증명 완료) 위 01~05번 margin·pin-tail 값은 전혀
+   바뀌지 않음. */
+.stackdo-item-5 { margin-bottom: 0px; }
+/* (사용자 피드백: "5번과 우리의 가치 공백을 절반으로 줄여주고, 중간의
+   화살표를 빼줘") 화살표 힌트(teaser-hint)와 그 바운스 애니메이션은
+   요청대로 완전히 제거. 본문 높이(min-height)를 절반(378→189px)으로
+   줄여봤으나, 실측 결과 이 값이 "이 항목 이후 전체 release 타이밍"만이
+   아니라 `--stackdo-pin-tail` 공식 자체(target(5)=pin-tail-5*head-h=426px가
+   되도록 애초에 역산된 값)와 직결되어 있어, 줄이는 만큼 05번(margin-bottom
+   0)이 화면 밖으로 완전히 밀려나기 전에 컨테이너 전체가 먼저 풀려버려
+   05번 사진이 중간에 뚝 잘려 보이는 회귀가 발생함(Playwright 스크린샷으로
+   확인 후 원복) — 그래서 이 높이는 378px(모바일 342px)로 되돌림. 대신
+   아래 .ability-section의 padding-top(중복 텍스트 방지용으로 넣었던
+   지연)을 0으로 되돌려 그만큼(100px/64px)은 안전하게 줄임 — 이제 이
+   항목엔 텍스트가 전혀 없어 중복 우려가 없기 때문. */
+.stackdo-ability-teaser .stackdo-body {
+  min-height: 378px;
+}
 .stackdo-head {
   display: flex; align-items: baseline; justify-content: center; gap: 16px;
   height: var(--stackdo-head-h); padding: 0 32px;
-  border-bottom: 1px solid var(--gray-line);
   background: var(--white);
 }
 .stackdo-head .num { font-size: 14.5px; font-weight: 800; color: var(--ice-dark); letter-spacing: 1.5px; flex-shrink: 0; transition: font-size .3s ease; }
@@ -753,7 +802,8 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   .stackdo-item-1 { margin-bottom: 30px; } /* 02번: 목표 505px - 실측 475px */
   .stackdo-item-2 { margin-bottom: 24px; } /* 03번: 목표 473px - 실측 449px */
   .stackdo-item-3 { margin-bottom: 18px; } /* 04번(후속68, 실사진 16:9 + 03번 커버용 padding): 목표 438px - 실측 420px */
-  .stackdo-item-4 { margin-bottom: 0px; } /* 05번(기준): 목표 409px - 실측 409px */
+  .stackdo-item-4 { margin-bottom: 0px; } /* 05번: 목표 409px - 실측 409px */
+  .stackdo-ability-teaser .stackdo-body { min-height: 342px; }
 }
 
 /* stat bar */
@@ -806,6 +856,39 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    전체를 차지하며 고정되고, 여분 스크롤(--ability-tail-slack)만큼 더 스크롤하면
    제목과 콘텐츠가 항상 "함께 붙어 있는 한 덩어리"이므로 별도 동기화 계산 없이
    자연스럽게 같이 위로 사라진다. */
+/* (신규) "우리가 하는 일"(.stackdo-section) 바로 다음 섹션이라, 기본 section
+   상단 padding(clamp(64px,9vw,128px))이 그대로 있으면 05번이 풀려난 뒤
+   "우리의 능력"이 화면 상단에 고정되기까지 아무 일도 없는 빈 스크롤 구간이
+   생겨 두 섹션이 이어붙는 느낌이 아니라 뚝 끊기는 느낌이 남. 상단 여백만
+   제거해 05번 카드가 스크롤로 빠져나가는 즉시 "우리의 능력"이 화면 맨
+   위에 고정되도록 함(하단 여백은 다음 섹션과의 구분을 위해 유지). */
+/* (여러 차례 재설계 — 요약) ① 처음엔 padding-top:0으로 "05번이 풀려나는
+   즉시 다음 섹션이 화면을 채우도록" 했었음. ② "우리의 능력"을 05번 아래
+   도킹 라벨(6번째 스택 항목)로 넣었더니, 라벨이 화면에 아직 붙어있는 동안
+   이 큰 제목이 뷰포트 아래에서 미리 올라와 같은 글자가 두 번 보이는 문제가
+   생겨, 라벨 자체를 없애고 대신 padding-top을 "제목 높이의 300%"(408px/
+   234px)까지 키워봤음 — 그런데 이러면 05번의 `.is-passed`(텍스트 축소)
+   트리거를 ".ability-pin이 화면에 완전히 고정되는 순간"에 의존하게 되어,
+   05번이 이미 화면 밖으로 사라지고 한참 지난 뒤에야 축소가 일어나는
+   문제가 생김. ③ 도킹 라벨을 완전히 투명한 타이밍 전용 요소로 되돌려 이
+   문제는 해결했으나, 이번엔 "우리의 가치가 05번을 실제로 덮으며 올라오는
+   모습"이 안 보인다는 피드백을 받음. ④ (현재) 도킹 라벨을 다시 눈에
+   보이게 하되(위 generate.py .stackdo-ability-teaser 참고, 05번의 축소는
+   이제 이 라벨 자체의 activeIndex 타이밍이 담당 — .ability-pin과는 무관),
+   이 padding-top은 오직 "라벨이 사라진 뒤 다음 큰 제목이 너무 일찍
+   보이지 않도록"만 조절하는 역할로 되돌림 — 05번 축소 타이밍과는 이제
+   완전히 분리되어 있어 이 값을 조정해도 05번 관련 동작에는 영향 없음.
+   ⑤ (사용자 피드백: "5번과 우리의 가치 공백을 절반으로 줄여주고") 이후
+   도킹 라벨에서 h3 텍스트 자체를 완전히 제거해(위 generate.py 주석 참고)
+   화면에 아무 글자도 안 남게 되면서, 애초에 이 padding이 막으려던
+   "중복 텍스트" 위험이 완전히 사라짐 — 이제 0으로 되돌려도 안전하므로
+   되돌림. 남은 빈 여백(도킹 라벨 자신의 높이 + 다음 섹션이 100vh 전체를
+   차지하는 sticky라서 뷰포트 아래에서 서서히 올라오는 데 걸리는 자연스러운
+   스크롤 거리)은 --stackdo-pin-tail 등 01~05번 release 동기화 공식과
+   직결되어 있어 여기서 더 줄이려면 01~05번 margin·pin-tail 전체를
+   재계산해야 함(시도해봤다가 05번 사진이 중간에 잘리는 회귀 확인 후
+   원복 — 위 .stackdo-ability-teaser 주석 참고). */
+.ability-section { padding-top: 0; }
 .ability-list {
   position: relative;
   --ability-tail-slack: 80px;
@@ -1070,10 +1153,13 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   }
   /* 모바일 헤더는 공간이 좁아 로고+CTA+토글만으로도 빠듯함 — Cold Jet 배지는 숨김 */
   .coldjet-badge { display: none; }
-  .main-nav { display: none; position: fixed; z-index: 200; inset: 96px 0 0 0; background: var(--white); padding: 20px 24px; overflow-y: auto; }
+  .main-nav { display: none; position: fixed; z-index: 200; inset: 76px 0 0 0; background: var(--white); padding: 20px 24px; overflow-y: auto; }
   .main-nav.open { display: block; }
   .main-nav > ul { flex-direction: column; gap: 0; }
   .main-nav > ul > li > a { padding: 16px 4px; border-bottom: 1px solid var(--gray-line); }
+  /* (클로드 디자인 요청) 데스크톱 가로 메뉴용 밑줄 애니메이션은 모바일
+     전체화면 스택형 메뉴에는 필요 없어 숨김 */
+  .main-nav > ul > li > a::after { display: none; }
   .main-nav .dropdown { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; border: none; padding: 0 0 8px 12px; display: none; }
   .main-nav > ul > li.open .dropdown { display: block; }
   .pillar-grid { grid-template-columns: repeat(2,1fr); }
