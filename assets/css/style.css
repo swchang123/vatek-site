@@ -481,7 +481,18 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 .stackdo-gallery {
   position: absolute; inset: 0;
   display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(10px, 1.4vw, 18px);
-  align-items: start; align-content: start;
+  /* (2026-08-31 수정) align-items/content를 start→stretch로 변경 — 기존
+     start 방식은 사진 높이를 aspect-ratio(1/2)+max-height(72vh)로만 정해서,
+     브라우저 창 세로 높이가 낮을 때(노트북 등, 실제 뷰포트 750px 이하)는
+     이 72vh 계산값이 제목+탭 줄을 뺀 실제 남는 공간보다 커져 버려
+     `.stackdo-frame`의 overflow:hidden이 사진 하단을 사각형으로 잘라내고,
+     그 잘리는 지점이 사진 자신의 둥근 모서리보다 위쪽이라 모서리가 통째로
+     잘려 사각 모서리처럼 보이는 버그가 있었음(뷰포트가 넉넉할 때는 안 보임).
+     stretch로 바꾸면 각 카드가 항상 이 갤러리 영역(=우리가 하는 일 섹션의
+     실제 남는 공간)에 정확히 맞춰지므로 화면 높이와 무관하게 절대 넘치지
+     않음 — 아래 .stackdo-gallery-imgwrap/.stackdo-gallery-img-base·color의
+     height:100%와 함께 적용. */
+  align-items: stretch; align-content: stretch;
   width: 100%; padding: clamp(16px, 4vh, 36px) clamp(24px, 4vw, 64px) 0;
   opacity: 0; transform: translateY(10px); pointer-events: none;
   transition: opacity .45s ease, transform .45s ease;
@@ -492,11 +503,12 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   font-size: clamp(16px, 1.5vw, 18px); font-weight: 600; color: var(--text-muted); line-height: 1.6; white-space: nowrap;
 }
 .stackdo-gallery-item { position: relative; display: block; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); text-decoration: none; }
-.stackdo-gallery-imgwrap { position: relative; display: block; width: 100%; }
+.stackdo-gallery-imgwrap { position: relative; display: block; width: 100%; height: 100%; }
 /* 기본 상태: 어둡고 살짝 채도만 낮춘 베이스 이미지. 호버하면 다른 원색
    사본 이미지(.color)가 아래에서 위로 clip-path로 드러난다. */
 .stackdo-gallery-img-base, .stackdo-gallery-img-color {
-  width: 100%; aspect-ratio: 1 / 2; max-height: 72vh; object-fit: cover; display: block;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  border-radius: 20px;
   transition: transform .5s ease;
 }
 .stackdo-gallery-item:hover .stackdo-gallery-img-base,
