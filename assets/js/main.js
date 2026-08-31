@@ -188,63 +188,56 @@ document.addEventListener("DOMContentLoaded", function () {
     applyHeroParallax();
   }
 
-  // 홈 "우리의 능력": 숫자가 화면에 들어올 때마다 0에서 목표값까지 다시 카운트업.
-  // (사용자 요청: "스크롤로 사라졌다가 다시 돌아오면 숫자가 또 다시 카운트 되었으면
-  // 좋겠어") — 기존에는 IntersectionObserver.unobserve()로 최초 1회만 실행했으나,
-  // 화면을 벗어날 때(entry.isIntersecting === false) 0으로 리셋하고 계속 observe를
-  // 유지해 재진입 시마다 다시 실행되도록 변경. 같은 요소가 짧은 시간 안에 여러 번
-  // 드나들 때 이전 tick 루프와 새 tick 루프가 겹쳐 값이 튀는 것을 막기 위해 요소마다
-  // "실행 세대(runId)"를 두어, tick이 자기 세대가 최신일 때만 화면에 반영하도록 함.
-  // (후속69) "우리의 가치" 재설계로 .value-stats의 카운트업 숫자는 더 이상
-  // 화면에 "들어올 때마다"가 아니라 "자신이 속한 .value-block이 처음 포커스될
-  // 때 1회"만 실행되어야 함(data-count-on-focus 속성으로 표시) — 아래
-  // valueBlocks IntersectionObserver가 이 요소들을 직접 담당하므로, 여기
-  // 일반 스크롤-진입 카운트업 대상에서는 제외.
+  // 카운트업 공통 헬퍼(runCountUp/countUpResetText): 요소를 0에서 data-target까지
+  // ease-out으로 애니메이션. (후속70) "우리의 가치" 전면 개편으로 이 섹션의
+  // count-up 숫자(연혁 1986/1996/2005/2021 + 통계 3/120+/14/3)가 전부
+  // data-count-on-focus로 통일되어, 아래 일반 스크롤-진입 관찰자(countUpEls)의
+  // 대상에서는 빠지고 그 아래 valueBlocks 포커스 시스템이 전담한다. 다만
+  // runCountUp/countUpResetText 자체는 두 시스템이 공유해야 하므로 먼저
+  // 정의해둔다(예전에는 countUpEls.length가 0이 아닐 때만 정의되어 있었는데,
+  // "우리의 가치" 숫자가 전부 data-count-on-focus로 빠지면서 이 파일에 다른
+  // 일반 count-up이 없으면 countUpEls.length === 0이 되어 정의가 스킵되는
+  // 버그가 있었음 — 항상 정의되도록 밖으로 뺌).
+  var countUpRunId = new WeakMap();
+  var countUpResetText = new WeakMap();
+  var runCountUp = function (el) {
+    var target = parseInt(el.getAttribute("data-target"), 10) || 0;
+    var prefix = el.getAttribute("data-prefix") || "";
+    // (후속59) 숫자 뒤에 "개"/"개+" 같은 단위가 붙는 경우를 위해 data-suffix 지원.
+    var suffix = el.getAttribute("data-suffix") || "";
+    if (prefersReducedMotion) {
+      el.textContent = prefix + target + suffix;
+      return;
+    }
+    var myRunId = (countUpRunId.get(el) || 0) + 1;
+    countUpRunId.set(el, myRunId);
+    var duration = 1400;
+    var start = null;
+    var tick = function (ts) {
+      if (countUpRunId.get(el) !== myRunId) return; // 더 새로운 실행이 시작됨 — 중단
+      if (start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      var value = Math.round(target * eased);
+      el.textContent = prefix + value + suffix;
+      if (progress < 1) window.requestAnimationFrame(tick);
+    };
+    window.requestAnimationFrame(tick);
+  };
+  // 리셋 시 표시할 "0" 텍스트(prefix/suffix 포함)를 모든 count-up 요소에 대해 미리 기억
+  document.querySelectorAll(".count-up").forEach(function (el) {
+    var prefix = el.getAttribute("data-prefix") || "";
+    var suffix = el.getAttribute("data-suffix") || "";
+    countUpResetText.set(el, prefix + "0" + suffix);
+  });
+
+  // 홈 "우리의 능력" 등 일반 스크롤-진입 카운트업: 화면에 들어올 때마다 다시
+  // 카운트, 벗어나면 리셋. (후속69/70) "우리의 가치" 숫자는 전부
+  // data-count-on-focus로 이 selector에서 제외되어 있음 — 현재는 다른 절에
+  // 일반 count-up이 없다면 이 블록은 사실상 비어 있을 수 있으나, 추후 다른
+  // 섹션에 추가될 경우를 대비해 로직은 유지.
   var countUpEls = document.querySelectorAll(".count-up:not([data-count-on-focus])");
   if (countUpEls.length && "IntersectionObserver" in window) {
-    var countUpRunId = new WeakMap();
-    var countUpResetText = new WeakMap();
-    var runCountUp = function (el) {
-      var target = parseInt(el.getAttribute("data-target"), 10) || 0;
-      var prefix = el.getAttribute("data-prefix") || "";
-      // (후속59) "1986 등 숫자도 위와 같이 카운트 되게 해줘" — "우리의 능력"
-      // 하이라이트(1986/20개+/14개/3개)에도 카운트업을 적용하면서, 숫자 뒤에
-      // "개"/"개+" 같은 단위가 붙는 경우를 위해 data-suffix(접미사)도 지원.
-      var suffix = el.getAttribute("data-suffix") || "";
-      if (prefersReducedMotion) {
-        el.textContent = prefix + target + suffix;
-        return;
-      }
-      var myRunId = (countUpRunId.get(el) || 0) + 1;
-      countUpRunId.set(el, myRunId);
-      var duration = 1400;
-      var start = null;
-      var tick = function (ts) {
-        if (countUpRunId.get(el) !== myRunId) return; // 더 새로운 실행이 시작됨 — 중단
-        if (start === null) start = ts;
-        var progress = Math.min((ts - start) / duration, 1);
-        var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-        var value = Math.round(target * eased);
-        el.textContent = prefix + value + suffix;
-        if (progress < 1) window.requestAnimationFrame(tick);
-      };
-      window.requestAnimationFrame(tick);
-    };
-    countUpEls.forEach(function (el) {
-      // 리셋 시 표시할 "0" 텍스트(prefix/suffix 포함)를 최초 마크업 기준으로 미리 기억
-      var prefix = el.getAttribute("data-prefix") || "";
-      var suffix = el.getAttribute("data-suffix") || "";
-      countUpResetText.set(el, prefix + "0" + suffix);
-    });
-    // (후속69) data-count-on-focus 요소(.value-stats)는 위 countUpEls에서
-    // 제외되어 있지만, runCountUp()·countUpResetText는 아래 valueBlocks
-    // 블록(같은 함수 스코프, var 호이스팅으로 이 시점 이후에도 접근 가능)에서
-    // 그대로 재사용하므로 리셋용 "0" 텍스트만 여기서 동일하게 미리 기억해둠.
-    document.querySelectorAll(".count-up[data-count-on-focus]").forEach(function (el) {
-      var prefix = el.getAttribute("data-prefix") || "";
-      var suffix = el.getAttribute("data-suffix") || "";
-      countUpResetText.set(el, prefix + "0" + suffix);
-    });
     var countUpObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -268,65 +261,97 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // (후속69) "우리의 가치" 재설계: 구 .ability-pin(100vh 풀-락, CSS만으로 구현,
-  // 별도 JS 불필요)을 .section-value(.value-block 4개 + IntersectionObserver
-  // 기반 포커스/톤 전환)로 교체. 아래 블록이 그 동작을 전담한다.
+  // (후속70) "우리의 가치" 포커스 타이밍 개선: 기존에는 IntersectionObserver의
+  // intersectionRatio(화면에 "얼마나 많이" 보이는지)가 가장 큰 블록을 포커스했는데,
+  // 이 방식은 블록이 화면 중앙 부근까지 거의 다 들어와야 확대되어 사용자가
+  // 계속 스크롤을 내리면서 확대된 내용을 볼 수 있는 시간이 짧다는 피드백을 받음.
+  // 대신 뷰포트 상의 고정된 "포커스 라인"(상단에서 FOCUS_LINE_RATIO 지점)에 가장
+  // 가까운 블록을 포커스하는 스크롤+rAF 기반 방식으로 교체. 두 블록 사이의 전환은
+  // 두 블록 중심의 "라인까지 거리"가 같아지는 지점(정확히는 두 중심의 중점)에서
+  // 일어나므로, 라인을 화면 아래쪽으로 내릴수록(비율↑) 다음 블록이 아직 화면
+  // 하단에서 덜 들어온, 더 이른 시점에 전환이 일어나 확대 상태로 더 오래 볼 수
+  // 있게 된다. 단, 라인을 너무 내리면 전환 시점에 블록 아래쪽이 아직 화면 밖이라
+  // "덜 보인 채로 확대"되는 부자연스러움이 생긴다. Playwright로 0.4~0.65 구간을
+  // 각 블록의 "포커스되는 순간의 노출 비율"과 "포커스 유지 스크롤 거리"로 실측한
+  // 결과, 0.5 지점이 4개 블록 모두 대부분 온전히 보이는 상태에서 확대가 시작되면서도
+  // (가장 긴 "검증된 기술력" 블록만 하단 25% 정도가 아직 화면 밖) 기존보다 확대
+  // 유지 구간이 뚜렷이 길어지는 최적 지점으로 확인됨.
   var valueBlocks = document.querySelectorAll(".value-block");
-  if (valueBlocks.length && "IntersectionObserver" in window) {
+  if (valueBlocks.length) {
     var valueContent = document.querySelector(".value-content");
-    var valueRatios = new WeakMap();
-    var applyValueFocus = function () {
-      var focused = null;
-      var best = -1;
-      valueBlocks.forEach(function (block) {
-        var ratio = valueRatios.get(block) || 0;
-        if (ratio > best) {
-          best = ratio;
-          focused = block;
+    var VALUE_FOCUS_LINE_RATIO = 0.5;
+    var valueFocusedBlock = null;
+    var valueTicking = false;
+
+    var triggerValueFocusCountUp = function (block) {
+      block.querySelectorAll(".count-up[data-count-on-focus]").forEach(function (countEl) {
+        if (!countEl.dataset.counted) {
+          countEl.dataset.counted = "1";
+          runCountUp(countEl);
         }
       });
-      valueBlocks.forEach(function (block) {
-        block.classList.toggle("is-focused", block === focused && best > 0);
+    };
+    var resetValueFocusCountUp = function (block) {
+      block.querySelectorAll(".count-up[data-count-on-focus]").forEach(function (countEl) {
+        if (countEl.dataset.counted) {
+          delete countEl.dataset.counted;
+          // (버그 수정) runId를 갱신하지 않으면 아직 실행 중이던 runCountUp()의
+          // 이전 tick 루프가 다음 프레임에 자기 진행값으로 textContent를 다시
+          // 덮어써버려, 포커스를 잃어도 카운트가 끝까지 계속 올라가는 문제가
+          // 있었음(Playwright로 확인). 일반 스크롤-진입 카운트업 리셋과 동일하게
+          // runId를 새 세대로 올려 이전 tick이 스스로 멈추게 함.
+          countUpRunId.set(countEl, (countUpRunId.get(countEl) || 0) + 1);
+          if (!prefersReducedMotion) {
+            countEl.textContent = countUpResetText.get(countEl) || "0";
+          }
+        }
       });
-      if (focused && best > 0 && valueContent) {
-        var tone = focused.getAttribute("data-tone");
+    };
+
+    var applyValueFocus = function () {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var focusY = vh * VALUE_FOCUS_LINE_RATIO;
+      var best = null;
+      var bestDist = Infinity;
+      valueBlocks.forEach(function (block) {
+        var rect = block.getBoundingClientRect();
+        // 화면 위/아래로 완전히 벗어난 블록은 후보에서 제외
+        if (rect.bottom <= 0 || rect.top >= vh) return;
+        var center = rect.top + rect.height / 2;
+        var dist = Math.abs(center - focusY);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = block;
+        }
+      });
+      if (best !== valueFocusedBlock) {
+        if (valueFocusedBlock) resetValueFocusCountUp(valueFocusedBlock);
+        valueFocusedBlock = best;
+        // (요청#3) "확대가 되면 숫자 카운트가 되도록" — is-focused로 전환되는
+        // 바로 그 순간에만 카운트업을 트리거.
+        if (best) triggerValueFocusCountUp(best);
+      }
+      valueBlocks.forEach(function (block) {
+        block.classList.toggle("is-focused", block === best);
+      });
+      if (best && valueContent) {
+        var tone = best.getAttribute("data-tone");
         if (tone) valueContent.style.backgroundColor = tone;
       }
     };
-    var valueObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          var block = entry.target;
-          valueRatios.set(block, entry.intersectionRatio);
-          // data-count-on-focus 카운트업: 블록이 처음 화면에 걸리는 순간
-          // (intersectionRatio > 0) 1회 실행하고(el.dataset.counted로 재실행
-          // 방지), 화면 밖으로 완전히 벗어나(intersectionRatio === 0) 다시
-          // 들어올 때를 대비해 그때만 "0"으로 리셋 — runCountUp()과
-          // countUpResetText는 위 count-up 블록에서 이미 정의됨(var 호이스팅).
-          // (버그 수정) 블록 하나(.value-stats)에 카운트업 숫자가 4개 있을 수
-          // 있어 querySelector(단수)가 아니라 querySelectorAll로 전부 순회해야 함
-          // — querySelector만 쓰면 첫 번째 숫자만 카운트되고 나머지 3개는
-          // "0"에 멈춰있는 회귀가 있었음(Playwright로 확인 후 수정).
-          block.querySelectorAll(".count-up[data-count-on-focus]").forEach(function (countEl) {
-            if (entry.intersectionRatio > 0 && !countEl.dataset.counted) {
-              countEl.dataset.counted = "1";
-              runCountUp(countEl);
-            } else if (entry.intersectionRatio === 0 && countEl.dataset.counted) {
-              delete countEl.dataset.counted;
-              if (!prefersReducedMotion) {
-                countEl.textContent = countUpResetText.get(countEl) || "0";
-              }
-            }
-          });
+
+    var onValueScroll = function () {
+      if (!valueTicking) {
+        valueTicking = true;
+        window.requestAnimationFrame(function () {
+          applyValueFocus();
+          valueTicking = false;
         });
-        applyValueFocus();
-      },
-      { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] }
-    );
-    valueBlocks.forEach(function (block) {
-      valueRatios.set(block, 0);
-      valueObserver.observe(block);
-    });
+      }
+    };
+    window.addEventListener("scroll", onValueScroll, { passive: true });
+    window.addEventListener("resize", onValueScroll, { passive: true });
+    applyValueFocus();
   }
 
   // 스크롤 리빌 애니메이션 (후속61, 첫 페이지 정적 섹션 전용): 뷰포트에 들어오면
@@ -418,6 +443,19 @@ document.addEventListener("DOMContentLoaded", function () {
       var progress = total > 0 ? Math.min(1, Math.max(0, scrolled / total)) : 0;
       var idx = Math.min(stackdoZones - 1, Math.floor(progress * stackdoZones));
       if (progress <= 0) idx = 0;
+      // "우리가 하는 일" 틀고정이 완전히 풀린(scrolled > total) 직후부터
+      // 스크롤한 거리만큼 0~1로 증가하는 어둡기 진행률 — 화면 높이의 60%만큼
+      // 스크롤하면 완전히 어두워지고(빠른 전환), 그 이후(우리의 가치 섹션
+      // 내내)는 1로 유지된다. 매 프레임 실제 스크롤 위치로부터 다시 계산하므로
+      // 위로 스크롤하면 그대로 다시 밝아진다. :root의 --postdo-dark로 노출해
+      // .stackdo-frame::after / .value-content 배경의 어둡기·빗살무늬 세기를
+      // 함께 구동한다(어느 쪽도 실제 텍스트 색은 건드리지 않음 — 흰 카드 위
+      // 텍스트는 그대로, 카드 사이 배경만 어두워짐).
+      var darkFadeDistance = window.innerHeight * 0.6;
+      var darkProgress = darkFadeDistance > 0
+        ? Math.min(1, Math.max(0, (scrolled - total) / darkFadeDistance))
+        : 0;
+      document.documentElement.style.setProperty("--postdo-dark", darkProgress.toFixed(3));
       if (idx !== stackdoIdx) {
         stackdoIdx = idx;
         if (stackdoFrame) stackdoFrame.classList.toggle("is-gallery", idx >= stackdoPanels.length);
