@@ -789,9 +789,21 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    나머지 블록은 축소+회색조로 죽음) .value-content 배경색이 그 블록의
    data-tone으로 0.7s 크로스페이드된다. */
 .section-value {
-  background: var(--white);
+  background-color: var(--white);
   padding-top: 0; /* 구 .ability-section과 동일한 이유 — 05번이 풀려나는
     즉시 이 섹션이 바로 이어지도록 상단 여백 제거 */
+  /* (2026-08-31 발견/수정) 기본 `section { padding: clamp(64px,9vw,128px) 0; }`
+     때문에 .section-value 자신에게도 하단 padding이 남아있는데, 이 여백은
+     .value-list/.value-content 바깥(즉, 어두운 배경 레이어가 전혀 없는
+     이 요소 자신의 흰 배경)이라 --postdo-dark:1 상태에서도 항상 흰색으로
+     남아있었음 — "미디어 보도 및 수상" 카드 직후 배경이 뚝 끊기는 것처럼
+     보인 실제 원인이 바로 이 하단 padding 띠. .value-content/.stackdo-frame과
+     동일한 색·무늬·좌표(--navy-deep-rgb, 135deg 빗살, background-attachment:
+     fixed)를 이 섹션 자신에도 겹쳐 이 여백까지 완전히 이어지게 함. */
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, calc(var(--postdo-dark, 0) * .07)) 0px, rgba(255, 255, 255, calc(var(--postdo-dark, 0) * .07)) 1px, transparent 1px, transparent 14px),
+    linear-gradient(rgba(var(--navy-deep-rgb), var(--postdo-dark, 0)), rgba(var(--navy-deep-rgb), var(--postdo-dark, 0)));
+  background-attachment: fixed, fixed;
 }
 .value-list { position: relative; }
 .value-pin-title {
@@ -854,8 +866,8 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 }
 .value-label {
   display: block; text-align: center;
-  font-size: 13px; font-weight: 800; color: var(--blue-dark);
-  letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 18px;
+  font-size: 20px; font-weight: 800; color: var(--blue-dark);
+  letter-spacing: -0.01em; margin-bottom: 18px;
 }
 .value-block {
   max-width: var(--maxw);
@@ -883,28 +895,28 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   position: relative;
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
 }
-.value-timeline::before {
-  content: "";
-  position: absolute; top: 6px; left: 6%; right: 6%; height: 0;
-  border-top: 2px dotted var(--gray-line);
+.value-timeline-item {
+  position: relative; text-align: center; padding: 0 8px;
 }
-.value-timeline-item { position: relative; text-align: center; padding-top: 26px; }
-.value-timeline-item::before {
-  content: "";
-  position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
-  width: 12px; height: 12px; border-radius: 50%;
-  background: var(--blue); box-shadow: 0 0 0 3px var(--white), 0 0 0 4px var(--blue);
+.value-timeline-item:not(:first-child)::before {
+  content: ""; position: absolute; left: 0; top: 4px; bottom: 4px;
+  border-left: 1px solid var(--gray-line);
 }
 .value-timeline-item b {
-  display: block; font-size: clamp(24px, 3vw, 34px); font-weight: 800; color: var(--navy);
-  margin-bottom: 8px;
+  display: block; font-size: clamp(36px, 5vw, 60px); font-weight: 800; letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 70%, var(--ice-dark) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.value-timeline-item span { font-size: 13.5px; color: var(--text-muted); font-weight: 600; word-break: keep-all; }
+.value-timeline-item .rule { display: block; width: 24px; height: 2px; background: var(--ice); margin: 14px auto; }
+.value-timeline-item span {
+  display: block; font-size: 15.5px; line-height: 1.5; color: var(--text-dark); font-weight: 700;
+  word-break: keep-all;
+}
 .value-stats {
   position: relative;
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; text-align: center;
 }
-.value-stat { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.value-stat { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0; }
 .value-stat:not(:first-child)::before {
   content: ""; position: absolute; left: 0; top: 12%; bottom: 12%;
   border-left: 1px solid var(--gray-line);
@@ -912,21 +924,34 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 .value-stat b {
   display: block;
   font-size: clamp(36px, 5vw, 60px); font-weight: 800; letter-spacing: -0.02em;
-  color: var(--accent-red);
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 70%, var(--ice-dark) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.value-stat span { font-size: 14px; color: var(--text-body); font-weight: 600; }
+.value-stat .rule { display: block; width: 24px; height: 2px; background: var(--ice); margin: 14px auto; }
+.value-stat span {
+  font-size: 15.5px; color: var(--text-dark); font-weight: 700; word-break: keep-all;
+  width: 100%; text-align: center;
+}
 .value-feature {
-  display: grid; grid-template-columns: 0.8fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: center;
+  display: grid; grid-template-columns: 0.62fr auto 1fr; gap: clamp(28px, 4vw, 48px); align-items: center;
 }
-/* (2026-08-28 갱신) 실제 이미지 반영 완료 — .value-feature-img는 사진을 감싸는
-   1:1 비율 프레임(둥근 모서리), 내부 img는 object-fit:cover로 꽉 채움. */
-.value-feature-img {
-  aspect-ratio: 1 / 1;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--gray-bg);
+.value-feature-text { display: flex; flex-direction: column; }
+.value-feature-eyebrow { font-size: 15px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+.value-feature-num {
+  font-size: clamp(38px, 5.4vw, 60px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;
+  color: var(--ice-dark);
+  margin-bottom: 16px;
+  display: flex; align-items: baseline; gap: 4px;
 }
-.value-feature-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.value-feature-num .unit { font-size: 0.55em; font-weight: 800; color: var(--text-dark); margin-left: 4px; }
+.value-feature-headline { font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; color: var(--text-dark); margin: 0 0 14px; letter-spacing: -0.01em; }
+.value-feature-desc { font-size: 15.5px; line-height: 1.7; color: var(--text-body); font-weight: 500; margin: 0; word-break: keep-all; }
+.value-feature-divider { width: 1px; height: 100%; min-height: 160px; background: var(--gray-line); }
+/* (2026-08-31 갱신) "우리의 가치" 4개 카드 재설계(클로드 디자인 스펙) —
+   .value-feature-img는 더 이상 1:1 비율 프레임이 아니라 이미지 원본 비율
+   그대로 표시하는 단순 컨테이너로 교체됨. */
+.value-feature-img { width: 100%; }
+.value-feature-img img { width: 100%; height: auto; display: block; }
 .value-feature-list { list-style: none; margin: 0; padding: 0; counter-reset: vf; }
 .value-feature-list li {
   counter-increment: vf;
@@ -961,11 +986,12 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   grid-template-columns: repeat(6, 1fr);
   align-items: center;
   justify-items: center;
-  gap: clamp(22px, 3vw, 36px) clamp(16px, 2.5vw, 28px);
+  gap: clamp(32px, 4.4vw, 52px) clamp(16px, 2.5vw, 28px);
+  padding: clamp(12px, 2vw, 24px) 0;
 }
 .value-logo {
-  /* (요청#5) 로고 크기 확대: 40px → 60px */
-  height: 60px; width: auto; max-width: 100%; object-fit: contain;
+  /* (2026-08-31 갱신) 로고 크기 재확대: 60px → 76px */
+  height: 76px; width: auto; max-width: 100%; object-fit: contain;
   filter: grayscale(1) opacity(.65);
   transition: filter .3s ease;
 }
@@ -979,15 +1005,14 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   .value-content { padding: clamp(40px, 8vw, 64px) clamp(14px, 5vw, 32px); }
   .value-block { padding: 24px 20px; margin-bottom: 48px; }
   .value-timeline, .value-stats { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
-  .value-timeline::before { display: none; }
-  .value-timeline-item { padding-top: 0; }
-  .value-timeline-item::before { display: none; }
+  .value-timeline-item:nth-child(odd)::before { display: none; }
   .value-stat:nth-child(odd)::before { display: none; }
   .value-feature { grid-template-columns: 1fr; }
-  .value-feature-img { max-width: 240px; margin: 0 auto; }
+  .value-feature-divider { display: none; }
+  .value-feature-img { max-width: 100%; margin: 0 auto; }
   /* (요청#5) 모바일에서는 6열이 비좁아 3열×4행으로 재배치 */
-  .value-logos { grid-template-columns: repeat(3, 1fr); gap: 20px 14px; }
-  .value-logo { height: 40px; }
+  .value-logos { grid-template-columns: repeat(3, 1fr); gap: 24px 14px; padding: 8px 0; }
+  .value-logo { height: 48px; }
   .value-cert-mark { height: 44px; }
 }
 
@@ -1265,6 +1290,46 @@ body.home .section-contact::before {
   width: min(920px, 140%); height: 60%;
   background: radial-gradient(ellipse, rgba(34, 136, 150, 0.06), transparent 72%);
   pointer-events: none; z-index: -1;
+}
+
+/* ---- (2026-08-31 추가) 요청: "우리의 가치 섹션의 짙은 배경을 Customer Voice
+   섹션까지 이어줘" — 위 섹션(.section-value)이 끝나는 지점에서 배경이 뚝
+   끊기지 않도록, 이 섹션 상단을 같은 어두운 톤(--navy-deep)에서 시작해 아래로
+   내려가며 서서히 원래의 밝은 배경으로 옅어지게 함. (2026-08-31, 후속74 수정)
+   처음엔 "이 섹션은 --postdo-dark가 항상 1로 고정된 뒤에만 보인다"고 가정해
+   정적 그라디언트로 처리했으나, 이후 --postdo-dark의 기준 시점 자체가
+   "우리의 가치" 3번째 카드 이후로 늦춰지며 이 가정이 깨짐(4번째 카드 바로
+   다음이라 아직 어두워지는 중일 수 있음) — 다른 세 곳과 동일하게
+   --postdo-dark로 직접 구동하도록 되돌려, 실제 어두워지는 진행률과 항상
+   정확히 같은 상태로 보이게 함(진행률이 1이 아니어도 이 섹션 상단이 갑자기
+   완전히 어두워 보이는 어긋남 방지). 빗살무늬는 위 세 곳과 동일하게
+   background-attachment: fixed로 뷰포트에 고정해 이음매의 무늬 위상이
+   어긋나지 않게 하고, 색 그라디언트 레이어는 이 섹션 자신의 상단 기준으로
+   스크롤되게 두어(기본값) 콘텐츠와 무관하게 늘 같은 지점에서 옅어지도록 함.
+   카드(.quote-card)는 항상 불투명해 배경과 무관하게 그대로 보임. */
+body.home .section-voice {
+  background-color: var(--white);
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, calc(var(--postdo-dark, 0) * .07)) 0px, rgba(255, 255, 255, calc(var(--postdo-dark, 0) * .07)) 1px, transparent 1px, transparent 14px),
+    linear-gradient(to bottom, rgba(var(--navy-deep-rgb), var(--postdo-dark, 0)) 0, rgba(var(--navy-deep-rgb), var(--postdo-dark, 0)) 200px, rgba(var(--navy-deep-rgb), 0) 560px);
+  background-attachment: fixed, scroll;
+}
+/* (2026-08-31, 후속74 수정) 배경이 이제 --postdo-dark 진행률에 따라 실시간으로
+   옅어지는 중일 수 있어(위 .section-voice 수정 참고), 글자색도 고정 흰색이
+   아니라 .value-pin-title h2와 동일한 color-mix 크로스페이드로 배경 어둡기와
+   보조를 맞춰야 함(진행 중간에 옅은 배경 위 흰 글자가 뜨는 가독성 문제 방지).
+   그라디언트-클립-텍스트는 두 색을 섞을 수 없어 이 섹션에 한해 평범한 단색
+   (밝을 땐 --text-dark, 어두울 땐 흰색)으로 대체. */
+body.home .section-voice .section-head h2 {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--text-dark);
+}
+@supports (color: color-mix(in srgb, #fff 10%, #000)) {
+  body.home .section-voice .section-head h2 {
+    color: color-mix(in srgb, var(--white) calc(var(--postdo-dark, 0) * 100%), var(--text-dark));
+  }
 }
 
 /* ---- Customer Voice 카드 ---- */

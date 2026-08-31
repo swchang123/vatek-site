@@ -1167,43 +1167,51 @@ def build_home():
       <div class="value-pin-title"><h2>우리의 가치</h2></div>
       <div class="value-content">
         <div class="value-block" data-tone="#f3f9fa">
-          <span class="value-label">역사로 보는 신뢰</span>
+          <span class="value-label">업계 최초</span>
           <div class="value-timeline">
             <div class="value-timeline-item">
               <b class="count-up" data-target="1986" data-count-on-focus>0</b>
-              <span>최초의 산업용 드라이아이스 세척 시스템 개발</span>
+              <span class="rule"></span>
+              <span>최초의 산업용 블라스터 개발</span>
             </div>
             <div class="value-timeline-item">
               <b class="count-up" data-target="1996" data-count-on-focus>0</b>
-              <span>[1996년 연혁 내용 예정]</span>
+              <span class="rule"></span>
+              <span>최초로 NASA 기술 적용</span>
             </div>
             <div class="value-timeline-item">
               <b class="count-up" data-target="2005" data-count-on-focus>0</b>
-              <span>[2005년 연혁 내용 예정]</span>
+              <span class="rule"></span>
+              <span>최초의 블록형 블라스터 개발</span>
             </div>
             <div class="value-timeline-item">
               <b class="count-up" data-target="2021" data-count-on-focus>0</b>
-              <span>[2021년 연혁 내용 예정]</span>
+              <span class="rule"></span>
+              <span>최초의 스마트형 원격 시스템</span>
             </div>
           </div>
         </div>
         <div class="value-block" data-tone="#eaf6f7">
-          <span class="value-label">믿을 수 있는 규모</span>
+          <span class="value-label">업계 최대</span>
           <div class="value-stats">
             <div class="value-stat">
               <b class="count-up" data-target="3" data-count-on-focus>0</b>
-              <span>[통계 라벨 예정]</span>
+              <span class="rule"></span>
+              <span>글로벌 생산공장</span>
             </div>
             <div class="value-stat">
               <b class="count-up" data-target="120" data-suffix="+" data-count-on-focus>0</b>
-              <span>[통계 라벨 예정]</span>
+              <span class="rule"></span>
+              <span>최다 글로벌 특허 보유</span>
             </div>
             <div class="value-stat">
               <b class="count-up" data-target="14" data-count-on-focus>0</b>
+              <span class="rule"></span>
               <span>글로벌 자회사</span>
             </div>
             <div class="value-stat">
               <b class="count-up" data-target="3" data-count-on-focus>0</b>
+              <span class="rule"></span>
               <span>R&amp;D 연구소</span>
             </div>
           </div>
@@ -1211,23 +1219,23 @@ def build_home():
         <div class="value-block" data-tone="#f3f9fa">
           <span class="value-label">검증된 기술력</span>
           <div class="value-feature">
-            <div class="value-feature-img"><img src="{asset("assets/img/ability-tech-lineup.png", 0)}" alt="Cold Jet 기술 라인업" loading="lazy" /></div>
-            <ol class="value-feature-list">
-              <li>세계 판매량 1위 드라이아이스 블라스팅 장비</li>
-              <li>250개 이상의 특허 보유</li>
-              <li>세계 47개의 서비스센터 운영</li>
-            </ol>
-          </div>
-          <div class="value-cert-row">
-            <img class="value-cert-mark" src="{asset("assets/img/cert-ce.png", 0)}" alt="CE 인증" loading="lazy" />
-            <img class="value-cert-mark" src="{asset("assets/img/cert-ru.avif", 0)}" alt="EAC(러시아) 인증" loading="lazy" />
+            <div class="value-feature-text">
+              <span class="value-feature-eyebrow">블라스터만 전 세계</span>
+              <b class="value-feature-num"><span class="count-up" data-target="24000" data-comma data-count-on-focus>0</span><span class="unit">대 이상</span></b>
+              <h3 class="value-feature-headline">압도적인 세계 판매량 1위</h3>
+              <p class="value-feature-desc">24,000대가 넘는 글로벌 설치 실적과 다양한 산업 현장에서 축적된 경험을 통해, Cold Jet의 기술력과 신뢰성은 이미 검증되었습니다.</p>
+            </div>
+            <div class="value-feature-divider"></div>
+            <div class="value-feature-img"><img src="{asset("assets/img/ability-tech-lineup-new.jpg", 0)}" alt="Cold Jet 기술 라인업" loading="lazy" /></div>
           </div>
         </div>
-        <div class="value-block" data-tone="#e3f1f2">
-          <span class="value-label">미디어 보도 및 수상</span>
-          <div class="value-logos">
-            {"".join(f'<img class="value-logo" src="{asset("assets/img/" + file, 0)}" alt="{name}" loading="lazy" />' for name, file in VALUE_MEDIA_LOGOS)}
-          </div>
+      </div>
+    </div>
+    <div class="value-content value-content-tail">
+      <div class="value-block" data-tone="#e3f1f2">
+        <span class="value-label">미디어 보도 및 수상</span>
+        <div class="value-logos">
+          {"".join(f'<img class="value-logo" src="{asset("assets/img/" + file, 0)}" alt="{name}" loading="lazy" />' for name, file in VALUE_MEDIA_LOGOS)}
         </div>
       </div>
     </div>

@@ -205,8 +205,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var prefix = el.getAttribute("data-prefix") || "";
     // (후속59) 숫자 뒤에 "개"/"개+" 같은 단위가 붙는 경우를 위해 data-suffix 지원.
     var suffix = el.getAttribute("data-suffix") || "";
+    // (2026-08-31 갱신) data-comma: 24,000처럼 천 단위 구분 쉼표가 필요한 큰
+    // 숫자용 옵션 포맷.
+    var useComma = el.hasAttribute("data-comma");
+    var fmt = function (n) { return useComma ? n.toLocaleString("en-US") : String(n); };
     if (prefersReducedMotion) {
-      el.textContent = prefix + target + suffix;
+      el.textContent = prefix + fmt(target) + suffix;
       return;
     }
     var myRunId = (countUpRunId.get(el) || 0) + 1;
@@ -219,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var progress = Math.min((ts - start) / duration, 1);
       var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
       var value = Math.round(target * eased);
-      el.textContent = prefix + value + suffix;
+      el.textContent = prefix + fmt(value) + suffix;
       if (progress < 1) window.requestAnimationFrame(tick);
     };
     window.requestAnimationFrame(tick);
@@ -278,8 +282,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // 유지 구간이 뚜렷이 길어지는 최적 지점으로 확인됨.
   var valueBlocks = document.querySelectorAll(".value-block");
   if (valueBlocks.length) {
-    var valueContent = document.querySelector(".value-content");
+    // (후속74) 1~3번 카드를 담은 sticky 제목 컨테이너(.value-list)와
+    // 4번(미디어 보도 및 수상) 카드를 담은 별도 컨테이너(.value-content-tail)로
+    // 마크업이 분리되어 있으므로, .value-content가 이제 두 개 존재한다.
+    // 배경색은 항상 "포커스된 블록이 실제로 속한" 컨테이너에 적용해야 하므로,
+    // 더 이상 첫 번째 .value-content 하나만 고정 참조하지 않고 매번
+    // block.closest(".value-content")로 찾는다.
     var VALUE_FOCUS_LINE_RATIO = 0.5;
+    // (후속73) 라인까지 최대 허용 거리 비율 — 아래 applyValueFocus() 참고.
+    // Playwright로 0.35~0.8 구간을 실측한 결과 0.5(=vh의 절반)일 때, 첫 번째
+    // 블록이 "다른 블록들이 포커스를 넘겨받는 순간의 노출 비율(75~100%)"과
+    // 비슷하게 화면에 거의 다 들어온 뒤에야 확대되도록 맞춰짐(이보다 크게
+    // 잡으면 절반도 안 보인 채로 확대돼 여전히 "이미 확대돼 있던 것처럼"
+    // 보이는 문제가 남고, 이보다 작게 잡아도 큰 차이가 없음).
+    var VALUE_FOCUS_MAX_DIST_RATIO = 0.5;
     var valueFocusedBlock = null;
     var valueTicking = false;
 
@@ -311,6 +327,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var applyValueFocus = function () {
       var vh = window.innerHeight || document.documentElement.clientHeight;
       var focusY = vh * VALUE_FOCUS_LINE_RATIO;
+      var VALUE_FOCUS_MAX_DIST = vh * VALUE_FOCUS_MAX_DIST_RATIO;
       var best = null;
       var bestDist = Infinity;
       valueBlocks.forEach(function (block) {
@@ -319,6 +336,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (rect.bottom <= 0 || rect.top >= vh) return;
         var center = rect.top + rect.height / 2;
         var dist = Math.abs(center - focusY);
+        // (후속73) 두 번째~네 번째 블록은 "직전에 포커스였던 블록과의 라인까지
+        // 거리 경쟁"에서 이겨야만 포커스를 넘겨받으므로 자연스럽게 라인 근처에
+        // 어느 정도 다가와야 확대되지만, 맨 처음 블록(첫 번째)은 경쟁 상대가
+        // 없어 화면 바닥에 살짝 걸치기만 해도(= 유일한 후보) 즉시 확대돼버려
+        // "스크롤해서 나타나는 게 아니라 원래부터 확대돼 있던 것처럼" 보인다는
+        // 지적을 받음. VALUE_FOCUS_MAX_DIST(라인까지 최대 허용 거리)를 둬서,
+        // 후보가 하나뿐이더라도 라인에 충분히 가까워지기 전에는 아무도
+        // 포커스되지 않도록(best를 null로 유지) 제한 — 이후 블록들 사이의
+        // 자연스러운 교차 전환 타이밍(가장 큰 블록 기준 실측 401px)에는
+        // 영향이 없도록 그보다 넉넉하게 잡음.
+        if (dist > VALUE_FOCUS_MAX_DIST) return;
         if (dist < bestDist) {
           bestDist = dist;
           best = block;
@@ -334,9 +362,10 @@ document.addEventListener("DOMContentLoaded", function () {
       valueBlocks.forEach(function (block) {
         block.classList.toggle("is-focused", block === best);
       });
-      if (best && valueContent) {
+      if (best) {
         var tone = best.getAttribute("data-tone");
-        if (tone) valueContent.style.backgroundColor = tone;
+        var hostContent = best.closest(".value-content");
+        if (tone && hostContent) hostContent.style.backgroundColor = tone;
       }
     };
 
@@ -443,14 +472,15 @@ document.addEventListener("DOMContentLoaded", function () {
       var progress = total > 0 ? Math.min(1, Math.max(0, scrolled / total)) : 0;
       var idx = Math.min(stackdoZones - 1, Math.floor(progress * stackdoZones));
       if (progress <= 0) idx = 0;
-      // "우리가 하는 일" 틀고정이 완전히 풀린(scrolled > total) 직후부터
-      // 스크롤한 거리만큼 0~1로 증가하는 어둡기 진행률 — 화면 높이의 60%만큼
-      // 스크롤하면 완전히 어두워지고(빠른 전환), 그 이후(우리의 가치 섹션
-      // 내내)는 1로 유지된다. 매 프레임 실제 스크롤 위치로부터 다시 계산하므로
-      // 위로 스크롤하면 그대로 다시 밝아진다. :root의 --postdo-dark로 노출해
-      // .stackdo-frame::after / .value-content 배경의 어둡기·빗살무늬 세기를
-      // 함께 구동한다(어느 쪽도 실제 텍스트 색은 건드리지 않음 — 흰 카드 위
-      // 텍스트는 그대로, 카드 사이 배경만 어두워짐).
+      // (후속74 되돌림) --postdo-dark(어둡기 진행률)는 한때 "우리의 가치"
+      // 3번째 카드가 제목줄 밑으로 들어가며 제목이 틀고정에서 풀리는 시점
+      // 기준으로 재계산하도록 바꿨었으나, 그 결과 1~3번 카드 구간이 원래의
+      // 짙은 배경 없이 밝게 보여 기존에 이어붙여 놓은 어두운 배경(우리가
+      // 하는 일 → 우리의 가치 → Customer Voice)이 끊겨 보인다는 피드백을
+      // 받고 원래대로("우리가 하는 일" 자신의 틀고정 해제 시점 기준)
+      // 되돌림. 제목의 틀고정 해제 시점만 3번째 카드 직후로 앞당기는
+      // 구조(변경은 generate.py의 .value-list/.value-content-tail 분리로
+      // 유지)는 이 어둡기 계산과 무관하게 그대로 유지된다.
       var darkFadeDistance = window.innerHeight * 0.6;
       var darkProgress = darkFadeDistance > 0
         ? Math.min(1, Math.max(0, (scrolled - total) / darkFadeDistance))
