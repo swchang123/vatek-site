@@ -371,79 +371,70 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // (후속65) "우리가 하는 일" 스크롤 스택에 항목을 4개→5개로 늘리면서, 뒤로
-  // 갈수록(sticky top이 --stackdo-head-h씩 밀려) 화면에 남는 공간이 좁아져
-  // 05번(렌탈·데모, 실사진)의 이미지/설명이 화면 아래로 잘리는 문제가 생김.
-  // 스크롤 위치나 항목 개수에 의존하는 수식을 JS에 새로 만들지 않도록,
-  // "이 항목이 지금 화면에 고정(sticky)됐거나 이미 지나갔는지"만 각 항목의
-  // 실제 렌더링 결과(getBoundingClientRect().top vs 그 항목의 계산된 CSS
-  // top)로 판단해 가장 뒤쪽까지 도달한 인덱스(activeIndex)를 구한다.
-  // 이 값으로 두 가지를 갱신:
-  //  1) `.stackdo-list`의 `data-stage` — 각 항목 머리띠 높이(--stackdo-head-h,
-  //     CSS 참고)를 단계적으로 줄여 뒤쪽 항목의 top 오프셋을 줄여주는,
-  //     실제 화면 공간을 버는 부분(자리 이동/동기화 계산은 CSS가 전담).
-  //  2) (후속65, 사용자 요청 수정) 이미 지나간 항목에 `.is-passed` 클래스를
-  //     붙여 그 항목의 번호+제목(01, 02, 03...) 글자만 개별적으로 작아지게
-  //     함 — "우리가 하는 일" 제목 글자는 건드리지 않고, 1번→2번→3번 순서로
-  //     하나씩 작아지는 시각 효과는 이 클래스가 전담(공간 절감과는 무관한
-  //     순수 시각 효과).
-  // (되돌림, 재설계 — 사용자 피드백: "5번 텍스트 축소 안되고 우리의 가치
-  // 글씨가 5번에 가서 붙지도 않아") 한때 ".ability-pin이 화면에 고정되는
-  // 순간"을 05번의 is-passed 트리거로 대신 썼었으나, 그 시점은 다음 섹션
-  // (100vh)이 화면 아래에서 다 올라와야 하므로 05번이 이미 한참 전에 화면
-  // 밖으로 사라진 뒤였음(축소되는 모습을 볼 수 없는 문제). "05번(마지막
-  // 실제 항목) 뒤에는 다음 항목이 없어 영원히 .is-passed가 붙지 않는다"는
-  // 원래 문제로 되돌아가, 이번엔 05번 뒤에 화면에 아무것도 그리지 않는
-  // "투명한 타이밍 전용" 6번째 항목(.stackdo-item-5, 위 generate.py/
-  // style.css 참고)을 추가해 해결 — 이 항목이 활성화되는 순간, 아래
-  // passedCount 로직이 그대로 재사용되어 05번도 01~04번과 완전히 같은
-  // 방식·타이밍(화면에 아직 보이는 상태)으로 축소됨.
-  var stackdoList = document.querySelector(".stackdo-list");
-  var stackdoItems = stackdoList
-    ? Array.prototype.slice.call(stackdoList.querySelectorAll(".stackdo-item"))
+  // "우리가 하는 일" — 가로 적층 스크롤: .stackdo-scroll의 여유 높이만큼
+  // 스크롤되는 진행률(progress)로 활성 패널 인덱스를 구해, 지나간 항목은
+  // 위쪽 가로 탭 줄에 표시하고 현재 항목만 큰 패널로 보여준다.
+  var stackdoScroll = document.querySelector(".stackdo-scroll");
+  var stackdoPanels = stackdoScroll
+    ? Array.prototype.slice.call(stackdoScroll.querySelectorAll(".stackdo-panel"))
     : [];
-  if (stackdoList && stackdoItems.length) {
-    var stackdoStage = 0;
-    var stackdoPassedCount = 0;
-    var stackdoIsStacked = false;
+  var stackdoTabs = stackdoScroll
+    ? Array.prototype.slice.call(stackdoScroll.querySelectorAll(".stackdo-tab"))
+    : [];
+  var stackdoHeads = stackdoScroll
+    ? Array.prototype.slice.call(stackdoScroll.querySelectorAll(".stackdo-panel-head"))
+    : [];
+  if (stackdoScroll && stackdoPanels.length) {
+    var stackdoIdx = -1;
     var stackdoTicking = false;
-    var updateStackdoStage = function () {
+    // 지나간(passed) 항목의 번호+제목(.stackdo-panel-head)이 실제로 자신의
+    // 탭(.stackdo-tab) 위치·크기로 "변형되며 날아가 박히도록" 두 요소의
+    // 실측 bounding rect 차이를 매번 계산해 정확한 translate/scale을
+    // 인라인 style로 대입한다(하드코딩된 방향이 아닌 실측 기반 FLIP).
+    var flyHeadToTab = function (headEl, tabEl) {
+      headEl.style.transform = "none";
+      var hr = headEl.getBoundingClientRect();
+      var tr = tabEl.getBoundingClientRect();
+      if (!hr.width || !hr.height) return;
+      var scale = Math.max(0.28, Math.min(1, tr.height / hr.height));
+      var dx = (tr.left + tr.width / 2) - (hr.left + hr.width / 2);
+      var dy = (tr.top + tr.height / 2) - (hr.top + hr.height / 2);
+      headEl.style.transform =
+        "translate(" + dx.toFixed(1) + "px," + dy.toFixed(1) + "px) scale(" + scale.toFixed(3) + ")";
+    };
+    // 전체 구간을 (항목 수 + 1)단계로 나눔 — 마지막 단계(갤러리 단계)에서는
+    // 05번까지 전부 탭으로 날아간 뒤, 탭 5열과 같은 5열 그리드로 이미지
+    // 5장이 나란히 정렬되어 보인다. 이 갤러리 단계를 한 번 더 스크롤하면
+    // (진행률이 1을 넘어가며) sticky 래퍼가 자연스럽게 풀려 아래로 흘러간다.
+    var stackdoZones = stackdoPanels.length + 1;
+    var stackdoGallery = document.getElementById("stackdoGallery");
+    var stackdoFrame = stackdoScroll.querySelector(".stackdo-frame");
+    var updateStackdo = function () {
       stackdoTicking = false;
-      var activeIndex = -1;
-      for (var i = 0; i < stackdoItems.length; i++) {
-        var el = stackdoItems[i];
-        var rectTop = el.getBoundingClientRect().top;
-        var cssTop = parseFloat(window.getComputedStyle(el).top) || 0;
-        // 고정되어 있거나(rectTop === cssTop) 이미 풀려나 위로 지나간
-        // 상태(rectTop < cssTop)면 "이 항목까지는 도달했다"로 간주.
-        if (rectTop <= cssTop + 1) activeIndex = i;
-      }
-      // 02번(인덱스 1)이 고정되는 순간부터 1단계씩 줄어들기 시작해, 04번
-      // (인덱스 3)부터는 3단계(최소 높이)에 도달한 뒤 더는 변하지 않음.
-      // (실측 결과 낮은 뷰포트(예: 768px)에서는 02번이 고정되는 시점부터
-      // 이미 여유 공간이 부족해, 03번부터 줄이기 시작하는 것으로는 부족했음)
-      var stage = activeIndex >= 1 ? Math.min(activeIndex, 3) : 0;
-      if (stage !== stackdoStage) {
-        stackdoStage = stage;
-        if (stage > 0) stackdoList.setAttribute("data-stage", String(stage));
-        else stackdoList.removeAttribute("data-stage");
-      }
-      // activeIndex보다 앞선 항목(0..activeIndex-1)은 이미 다음 항목에
-      // 덮여 지나간 상태 — 이 개수만 바뀌었을 때만 클래스를 갱신.
-      var passedCount = activeIndex > 0 ? activeIndex : 0;
-      if (passedCount !== stackdoPassedCount) {
-        stackdoPassedCount = passedCount;
-        for (var p = 0; p < stackdoItems.length; p++) {
-          stackdoItems[p].classList.toggle("is-passed", p < passedCount);
+      var rect = stackdoScroll.getBoundingClientRect();
+      if (stackdoFrame) stackdoFrame.classList.toggle("is-pinned", rect.top <= 0);
+      var total = rect.height - window.innerHeight;
+      var scrolled = -rect.top;
+      var progress = total > 0 ? Math.min(1, Math.max(0, scrolled / total)) : 0;
+      var idx = Math.min(stackdoZones - 1, Math.floor(progress * stackdoZones));
+      if (progress <= 0) idx = 0;
+      if (idx !== stackdoIdx) {
+        stackdoIdx = idx;
+        if (stackdoFrame) stackdoFrame.classList.toggle("is-gallery", idx >= stackdoPanels.length);
+        for (var i = 0; i < stackdoPanels.length; i++) {
+          stackdoPanels[i].classList.remove("is-active", "is-passed", "is-upcoming");
+          stackdoPanels[i].classList.add(i === idx ? "is-active" : i < idx ? "is-passed" : "is-upcoming");
         }
-      }
-      // (후속67) 01번이라도 고정되기 시작하면(activeIndex>=0) 카드가 쌓이기
-      // 시작한 것으로 보고 `.stackdo-list`에 `is-stacked`를 붙임 — CSS가 이를
-      // 보고 고정 제목의 옅은 그라데이션 배경을 흰색으로 서서히 크로스페이드.
-      var isStacked = activeIndex >= 0;
-      if (isStacked !== stackdoIsStacked) {
-        stackdoIsStacked = isStacked;
-        stackdoList.classList.toggle("is-stacked", isStacked);
+        for (var t = 0; t < stackdoTabs.length; t++) {
+          stackdoTabs[t].classList.toggle("is-shown", t < idx);
+        }
+        for (var h = 0; h < stackdoHeads.length; h++) {
+          if (h < idx) flyHeadToTab(stackdoHeads[h], stackdoTabs[h]);
+          else stackdoHeads[h].style.transform = "";
+        }
+        if (stackdoGallery) {
+          stackdoGallery.classList.toggle("is-shown", idx >= stackdoPanels.length);
+        }
       }
     };
     window.addEventListener(
@@ -451,11 +442,29 @@ document.addEventListener("DOMContentLoaded", function () {
       function () {
         if (!stackdoTicking) {
           stackdoTicking = true;
-          window.requestAnimationFrame(updateStackdoStage);
+          window.requestAnimationFrame(updateStackdo);
         }
       },
       { passive: true }
     );
-    updateStackdoStage();
+    window.addEventListener("resize", updateStackdo);
+    updateStackdo();
+    // 소제목(탭)과 그 아래 이미지가 서로 다른 위치에 있어도 하나의 짝으로
+    // 동작하도록(하나에 마우스오버 하은 늘도 다른 하나에 is-hovered 토관) 연결.
+    var stackdoGalleryItems = stackdoGallery
+      ? Array.prototype.slice.call(stackdoGallery.querySelectorAll(".stackdo-gallery-item"))
+      : [];
+    stackdoTabs.forEach(function (tab, i) {
+      var img = stackdoGalleryItems[i];
+      if (!img) return;
+      tab.addEventListener("mouseenter", function () { img.classList.add("is-hovered"); });
+      tab.addEventListener("mouseleave", function () { img.classList.remove("is-hovered"); });
+    });
+    stackdoGalleryItems.forEach(function (img, i) {
+      var tab = stackdoTabs[i];
+      if (!tab) return;
+      img.addEventListener("mouseenter", function () { tab.classList.add("is-hovered"); });
+      img.addEventListener("mouseleave", function () { tab.classList.remove("is-hovered"); });
+    });
   }
 });

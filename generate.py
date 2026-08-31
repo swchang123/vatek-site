@@ -708,12 +708,39 @@ def footer_html(depth):
 """
 
 
+# (후속70) 사용자 요청: "임팩트 인트로(에너지 파티클+로고+플래시)는 최초 접속
+# 때만 나오고, 그 다음부터 로고·홈 버튼을 눌러 홈에 다시 올 때는 그 인트로 없이
+# 영상·헤더·본문 텍스트가 순서 없이 한 번에 나와야 한다" — 정적 사이트라 서버가
+# "몇 번째 방문인지" 알 수 없으므로, 브라우저 localStorage에 방문 여부를 남겨
+# 판별한다. CSS 애니메이션이 그리기 직전에 바로 시작되므로(레이스 없이) 이
+# 판별 스크립트는 반드시 <head> 최상단, 스타일시트보다도 먼저 동기(sync,
+# defer/async 없음)로 실행되어야 함 — 늦게 실행되면 인트로가 잠깐 보였다가
+# 사라지는 깜빡임이 생김. 처음 방문(localStorage에 기록 없음)이면 플래그만
+# 남기고 그대로 두어 인트로가 정상 재생되고, 이미 기록이 있으면 <html>에
+# no-hero-intro 클래스를 붙여 style.css의 관련 애니메이션을 전부 끈다(아래
+# .no-hero-intro 규칙 참고 — prefers-reduced-motion과 동일한 "즉시 전부 표시"
+# 방식 재사용).
+INTRO_GATE_SCRIPT = """<script>
+(function () {
+  try {
+    if (localStorage.getItem('vatekIntroSeen')) {
+      document.documentElement.classList.add('no-hero-intro');
+    } else {
+      localStorage.setItem('vatekIntroSeen', '1');
+    }
+  } catch (e) {}
+})();
+</script>
+"""
+
+
 def page_shell(title, description, depth, active_code, body, is_home=False):
     body_class = ' class="home"' if is_home else ""
+    intro_gate = INTRO_GATE_SCRIPT if is_home else ""
     return f"""<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8" />
+{intro_gate}<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{title} | VATEK</title>
 <meta name="description" content="{description}" />
@@ -1021,31 +1048,64 @@ STACKDO_ITEMS = [
 ]
 
 
-def stackdo_items_html():
+# (재설계 — "우리가 하는 일" 세로 적층(sticky-stack) 방식을 가로 적층형으로
+# 전면 교체: 클로드 디자인에서 받은 스펙 파일 참고. 제목만 sticky로 고정된 채
+# 01~05가 화면을 채우는 큰 패널로 하나씩 등장하고, 지나간 항목의 제목은
+# FLIP 애니메이션으로 위쪽 탭 줄에 축소되어 박히며, 5개를 모두 지나면 같은
+# 5열 그리드의 사진 갤러리가 나타난다. 아래 세 함수가 각각 탭 줄/갤러리/
+# 패널 HTML을 STACKDO_ITEMS로부터 생성 — 옛 stackdo_items_html()(세로
+# 적층용, .stackdo-item/.stackdo-head/.stackdo-body)을 대체.
+def stackdo_tabs_html():
+    tabs = []
+    for i, (num, title, desc, href, ph_text, img) in enumerate(STACKDO_ITEMS):
+        tabs.append(
+            f'<a class="stackdo-tab" data-i="{i}" href="{asset(href, 0)}"><span class="stackdo-tab-label">{title}</span></a>'
+        )
+    return "".join(tabs)
+
+
+def stackdo_gallery_html():
     items = []
     for i, (num, title, desc, href, ph_text, img) in enumerate(STACKDO_ITEMS):
-        visual_html = (
-            f'<img class="stackdo-visual stackdo-visual-photo" src="{asset("assets/img/" + img, 0)}" alt="{title}" loading="lazy" />'
-            if img
-            else f'<div class="img-ph stackdo-visual">{ph_text}</div>'
-        )
+        img_src = asset("assets/img/" + img, 0)
         items.append(
             f"""
-        <div class="stackdo-item stackdo-item-{i}{' has-photo' if img else ''}" style="--i:{i};">
-          <div class="stackdo-head">
-            <span class="num">{num}</span>
-            <h3>{title}</h3>
-          </div>
-          <div class="stackdo-body{' has-photo' if img else ''}">
-            <div class="stackdo-text">
-              <p>{desc}</p>
-              <a class="more" href="{asset(href, 0)}">자세히 보기 →</a>
+          <a class="stackdo-gallery-item" data-i="{i}" href="{asset(href, 0)}">
+            <span class="stackdo-gallery-imgwrap">
+              <img class="stackdo-gallery-img-base" src="{img_src}" alt="{title}" loading="lazy" />
+              <img class="stackdo-gallery-img-color" src="{img_src}" alt="" aria-hidden="true" loading="lazy" />
+            </span>
+            <span class="stackdo-gallery-cap">
+              <span class="stackdo-gallery-title">{title}</span>
+              <span class="stackdo-gallery-divider" aria-hidden="true"></span>
+              <span class="stackdo-gallery-desc">{desc}</span>
+              <span class="stackdo-gallery-more">자세히 보기 →</span>
+            </span>
+          </a>"""
+        )
+    return "".join(items)
+
+
+def stackdo_panels_html():
+    panels = []
+    for i, (num, title, desc, href, ph_text, img) in enumerate(STACKDO_ITEMS):
+        img_src = asset("assets/img/" + img, 0)
+        panels.append(
+            f"""
+        <div class="stackdo-panel" data-i="{i}">
+          <div class="stackdo-panel-body">
+            <div class="stackdo-panel-text">
+              <div class="stackdo-panel-head"><span class="num">{num}</span><h3>{title}</h3></div>
+              <div class="stackdo-panel-desc">
+                <p>{desc}</p>
+                <a class="more" href="{asset(href, 0)}">자세히 보기 →</a>
+              </div>
             </div>
-            {visual_html}
+            <img class="stackdo-panel-img" src="{img_src}" alt="{title}" loading="lazy" />
           </div>
         </div>"""
         )
-    return "".join(items)
+    return "".join(panels)
 
 
 def build_home():
@@ -1084,55 +1144,21 @@ def build_home():
   </section>
 
   <section class="stackdo-section">
-    <div class="stackdo-list">
-      <div class="stackdo-pin-title"><h2>우리가 하는 일</h2></div>
-      <div class="stackdo-intro">
-        <div class="stackdo-intro-photo">
-          <p>드라이아이스 기술의 도입부터 운영까지, 현장에 필요한 장비와 시스템을 바테크가 전문적으로 제공합니다.</p>
+    <div class="stackdo-scroll" id="stackdoScroll">
+      <div class="stackdo-frame">
+        <div class="stackdo-header">
+          <h2>우리가 하는 일</h2>
+        </div>
+        <div class="stackdo-tabs" id="stackdoTabs">
+          {stackdo_tabs_html()}
+        </div>
+        <div class="stackdo-stage">
+          <div class="stackdo-gallery" id="stackdoGallery">
+            {stackdo_gallery_html()}
+          </div>
+          {stackdo_panels_html()}
         </div>
       </div>
-      {stackdo_items_html()}
-      <!-- (재설계 — 사용자 피드백: "우리의 가치 글씨가, 5번의 이미지와
-           글씨 위로 완전히 덮은 상태로 5번 제목 아래로 갔을 때 5번 글씨가
-           작아지면서 위로 올라가야해") 이 6번째 항목이 제자리로 슬라이드해
-           올라오면 `.stackdo-item`의 기존 불투명 배경(흰색)+z-index 덕분에
-           01~04번이 서로를 덮는 것과 완전히 같은 방식으로 05번의 사진·
-           텍스트를 완전히 덮으며 05번 제목 바로 아래 자리 잡고(main.js의
-           activeIndex/passedCount 로직 재사용), 동시에 05번 제목이
-           축소됨 — 여기까지는 유지.
-           (추가 피드백 — 사용자가 이 상태의 스크린샷을 보고 "기능은 그대로
-           두고 이 글씨만 없애줘. 그 밑의 '우리의 가치' 큰 글씨도 그대로
-           두고") 이 항목 자체에 눈에 보이는 "우리의 가치" 제목(h3)까지
-           넣었더니, 이 항목은 05번과 달리 뒤에 또 다른 항목이 없어
-           `.is-passed`가 절대 붙지 않아 글자가 계속 큰 채로(clamp 20~30px)
-           남아있었음 — 그 결과 05번이 스크롤로 화면 밖에 완전히 사라진
-           뒤에도 이 큰 "우리의 가치" 글씨 + 화살표만 있는 텅 빈 흰 화면이
-           꽤 오래 스크롤되며 마치 아무 콘텐츠도 없는 것처럼 보이는 문제가
-           있었음. 그래서 이 항목의 head에서 h3 텍스트만 제거 — `.stackdo-
-           head`는 콘텐츠와 무관하게 var(--stackdo-head-h) 고정 높이이므로
-           텍스트를 빼도 항목 전체 높이·release 타이밍(수식)은 전혀
-           바뀌지 않음. 즉 "덮기+05번 축소" 기능과 화살표 힌트는 그대로
-           작동하되, 중복될 뿐이던 텍스트 라벨만 사라짐 — 실제 "우리의
-           가치" 글씨는 바로 다음 .section-value의 sticky 제목(.value-pin-title)
-           에서 그대로 유지(후속69: 구 .ability-section 전면 교체).
-           (추가 피드백 — 사용자가 05번과 "우리의 가치" 사이 빈 여백
-           스크린샷을 보고 "5번과 우리의 가치 공백을 절반으로 줄여주고,
-           중간의 화살표를 빼줘") 이 항목의 본문(.stackdo-body)은 원래
-           "05번 자연높이 − head 높이"만큼의 빈 여백을 차지하도록 설계된
-           타이밍 전용 공간이었음 — 이 항목 자신의 높이는 뒤이은 다른
-           항목이 없어(6번째=마지막) 01~04번의 release 타이밍 계산에는
-           전혀 영향을 주지 않고(그 계산은 이 항목"이전" 누적 높이에만
-           의존), 오직 "이 항목이 다 지나가고 나서 전체가 화면 밖으로
-           풀려나기까지 걸리는 스크롤 거리"만 결정함 — 그래서 이 여백을
-           절반으로 줄여도 01~05번 타이밍은 전혀 바뀌지 않고, 05번이 덮인
-           뒤 다음 큰 제목이 나타나기까지의 간격만 짧아짐(아래 style.css
-           .stackdo-ability-teaser .stackdo-body min-height 절반으로 축소
-           참고). 화살표 힌트(teaser-hint)도 요청대로 완전히 제거. -->
-      <div class="stackdo-item stackdo-item-5 stackdo-ability-teaser" style="--i:5;" aria-hidden="true">
-        <div class="stackdo-head"></div>
-        <div class="stackdo-body"></div>
-      </div>
-      <div class="stackdo-tail" aria-hidden="true"></div>
     </div>
   </section>
 

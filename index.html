@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="ko">
 <head>
+<script>
+(function () {
+  try {
+    if (localStorage.getItem('vatekIntroSeen')) {
+      document.documentElement.classList.add('no-hero-intro');
+    } else {
+      localStorage.setItem('vatekIntroSeen', '1');
+    }
+  } catch (e) {}
+})();
+</script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>바테크 | Cold Jet 대한민국 공식 대리점, 드라이아이스 세척 전문기업 | VATEK</title>
@@ -56,120 +67,141 @@
   </section>
 
   <section class="stackdo-section">
-    <div class="stackdo-list">
-      <div class="stackdo-pin-title"><h2>우리가 하는 일</h2></div>
-      <div class="stackdo-intro">
-        <div class="stackdo-intro-photo">
-          <p>드라이아이스 기술의 도입부터 운영까지, 현장에 필요한 장비와 시스템을 바테크가 전문적으로 제공합니다.</p>
+    <div class="stackdo-scroll" id="stackdoScroll">
+      <div class="stackdo-frame">
+        <div class="stackdo-header">
+          <h2>우리가 하는 일</h2>
+        </div>
+        <div class="stackdo-tabs" id="stackdoTabs">
+          <a class="stackdo-tab" data-i="0" href="products/index.html"><span class="stackdo-tab-label">드라이아이스 블라스터</span></a><a class="stackdo-tab" data-i="1" href="products/pelletizer/index.html"><span class="stackdo-tab-label">드라이아이스 제조기 · 리커버리</span></a><a class="stackdo-tab" data-i="2" href="rental/index.html"><span class="stackdo-tab-label">자동화 시스템</span></a><a class="stackdo-tab" data-i="3" href="products/supply.html"><span class="stackdo-tab-label">드라이아이스 생산 · 공급</span></a><a class="stackdo-tab" data-i="4" href="support/techsupport.html"><span class="stackdo-tab-label">렌탈 · 데모 서비스</span></a>
+        </div>
+        <div class="stackdo-stage">
+          <div class="stackdo-gallery" id="stackdoGallery">
+            
+          <a class="stackdo-gallery-item" data-i="0" href="products/index.html">
+            <span class="stackdo-gallery-imgwrap">
+              <img class="stackdo-gallery-img-base" src="assets/img/stackdo-blaster.jpg" alt="드라이아이스 블라스터" loading="lazy" />
+              <img class="stackdo-gallery-img-color" src="assets/img/stackdo-blaster.jpg" alt="" aria-hidden="true" loading="lazy" />
+            </span>
+            <span class="stackdo-gallery-cap">
+              <span class="stackdo-gallery-title">드라이아이스 블라스터</span>
+              <span class="stackdo-gallery-divider" aria-hidden="true"></span>
+              <span class="stackdo-gallery-desc">블라스터부터 자동화 세척 시스템까지, 현장에 맞는 장비를 공급합니다.</span>
+              <span class="stackdo-gallery-more">자세히 보기 →</span>
+            </span>
+          </a>
+          <a class="stackdo-gallery-item" data-i="1" href="products/pelletizer/index.html">
+            <span class="stackdo-gallery-imgwrap">
+              <img class="stackdo-gallery-img-base" src="assets/img/stackdo-pelletizer.jpg" alt="드라이아이스 제조기 · 리커버리" loading="lazy" />
+              <img class="stackdo-gallery-img-color" src="assets/img/stackdo-pelletizer.jpg" alt="" aria-hidden="true" loading="lazy" />
+            </span>
+            <span class="stackdo-gallery-cap">
+              <span class="stackdo-gallery-title">드라이아이스 제조기 · 리커버리</span>
+              <span class="stackdo-gallery-divider" aria-hidden="true"></span>
+              <span class="stackdo-gallery-desc">액체 CO2로 드라이아이스를 직접 만드는 펠렛타이저와, 배출 CO2를 회수해 재사용하는 리커버리 장비를 공급합니다.</span>
+              <span class="stackdo-gallery-more">자세히 보기 →</span>
+            </span>
+          </a>
+          <a class="stackdo-gallery-item" data-i="2" href="rental/index.html">
+            <span class="stackdo-gallery-imgwrap">
+              <img class="stackdo-gallery-img-base" src="assets/img/stackdo-automation.jpg" alt="자동화 시스템" loading="lazy" />
+              <img class="stackdo-gallery-img-color" src="assets/img/stackdo-automation.jpg" alt="" aria-hidden="true" loading="lazy" />
+            </span>
+            <span class="stackdo-gallery-cap">
+              <span class="stackdo-gallery-title">자동화 시스템</span>
+              <span class="stackdo-gallery-divider" aria-hidden="true"></span>
+              <span class="stackdo-gallery-desc">구매 전, 실제 현장에서 먼저 성능을 확인해보세요.</span>
+              <span class="stackdo-gallery-more">자세히 보기 →</span>
+            </span>
+          </a>
+          <a class="stackdo-gallery-item" data-i="3" href="products/supply.html">
+            <span class="stackdo-gallery-imgwrap">
+              <img class="stackdo-gallery-img-base" src="assets/img/stackdo-supply.jpg" alt="드라이아이스 생산 · 공급" loading="lazy" />
+              <img class="stackdo-gallery-img-color" src="assets/img/stackdo-supply.jpg" alt="" aria-hidden="true" loading="lazy" />
+            </span>
+            <span class="stackdo-gallery-cap">
+              <span class="stackdo-gallery-title">드라이아이스 생산 · 공급</span>
+              <span class="stackdo-gallery-divider" aria-hidden="true"></span>
+              <span class="stackdo-gallery-desc">펠렛타이저로 직접 생산하거나, 소모품으로 정기 공급받을 수 있습니다.</span>
+              <span class="stackdo-gallery-more">자세히 보기 →</span>
+            </span>
+          </a>
+          <a class="stackdo-gallery-item" data-i="4" href="support/techsupport.html">
+            <span class="stackdo-gallery-imgwrap">
+              <img class="stackdo-gallery-img-base" src="assets/img/stackdo-rental.jpg" alt="렌탈 · 데모 서비스" loading="lazy" />
+              <img class="stackdo-gallery-img-color" src="assets/img/stackdo-rental.jpg" alt="" aria-hidden="true" loading="lazy" />
+            </span>
+            <span class="stackdo-gallery-cap">
+              <span class="stackdo-gallery-title">렌탈 · 데모 서비스</span>
+              <span class="stackdo-gallery-divider" aria-hidden="true"></span>
+              <span class="stackdo-gallery-desc">설치부터 A/S까지, 도입 이후에도 끝까지 책임집니다.</span>
+              <span class="stackdo-gallery-more">자세히 보기 →</span>
+            </span>
+          </a>
+          </div>
+          
+        <div class="stackdo-panel" data-i="0">
+          <div class="stackdo-panel-body">
+            <div class="stackdo-panel-text">
+              <div class="stackdo-panel-head"><span class="num">01</span><h3>드라이아이스 블라스터</h3></div>
+              <div class="stackdo-panel-desc">
+                <p>블라스터부터 자동화 세척 시스템까지, 현장에 맞는 장비를 공급합니다.</p>
+                <a class="more" href="products/index.html">자세히 보기 →</a>
+              </div>
+            </div>
+            <img class="stackdo-panel-img" src="assets/img/stackdo-blaster.jpg" alt="드라이아이스 블라스터" loading="lazy" />
+          </div>
+        </div>
+        <div class="stackdo-panel" data-i="1">
+          <div class="stackdo-panel-body">
+            <div class="stackdo-panel-text">
+              <div class="stackdo-panel-head"><span class="num">02</span><h3>드라이아이스 제조기 · 리커버리</h3></div>
+              <div class="stackdo-panel-desc">
+                <p>액체 CO2로 드라이아이스를 직접 만드는 펠렛타이저와, 배출 CO2를 회수해 재사용하는 리커버리 장비를 공급합니다.</p>
+                <a class="more" href="products/pelletizer/index.html">자세히 보기 →</a>
+              </div>
+            </div>
+            <img class="stackdo-panel-img" src="assets/img/stackdo-pelletizer.jpg" alt="드라이아이스 제조기 · 리커버리" loading="lazy" />
+          </div>
+        </div>
+        <div class="stackdo-panel" data-i="2">
+          <div class="stackdo-panel-body">
+            <div class="stackdo-panel-text">
+              <div class="stackdo-panel-head"><span class="num">03</span><h3>자동화 시스템</h3></div>
+              <div class="stackdo-panel-desc">
+                <p>구매 전, 실제 현장에서 먼저 성능을 확인해보세요.</p>
+                <a class="more" href="rental/index.html">자세히 보기 →</a>
+              </div>
+            </div>
+            <img class="stackdo-panel-img" src="assets/img/stackdo-automation.jpg" alt="자동화 시스템" loading="lazy" />
+          </div>
+        </div>
+        <div class="stackdo-panel" data-i="3">
+          <div class="stackdo-panel-body">
+            <div class="stackdo-panel-text">
+              <div class="stackdo-panel-head"><span class="num">04</span><h3>드라이아이스 생산 · 공급</h3></div>
+              <div class="stackdo-panel-desc">
+                <p>펠렛타이저로 직접 생산하거나, 소모품으로 정기 공급받을 수 있습니다.</p>
+                <a class="more" href="products/supply.html">자세히 보기 →</a>
+              </div>
+            </div>
+            <img class="stackdo-panel-img" src="assets/img/stackdo-supply.jpg" alt="드라이아이스 생산 · 공급" loading="lazy" />
+          </div>
+        </div>
+        <div class="stackdo-panel" data-i="4">
+          <div class="stackdo-panel-body">
+            <div class="stackdo-panel-text">
+              <div class="stackdo-panel-head"><span class="num">05</span><h3>렌탈 · 데모 서비스</h3></div>
+              <div class="stackdo-panel-desc">
+                <p>설치부터 A/S까지, 도입 이후에도 끝까지 책임집니다.</p>
+                <a class="more" href="support/techsupport.html">자세히 보기 →</a>
+              </div>
+            </div>
+            <img class="stackdo-panel-img" src="assets/img/stackdo-rental.jpg" alt="렌탈 · 데모 서비스" loading="lazy" />
+          </div>
+        </div>
         </div>
       </div>
-      
-        <div class="stackdo-item stackdo-item-0 has-photo" style="--i:0;">
-          <div class="stackdo-head">
-            <span class="num">01</span>
-            <h3>드라이아이스 블라스터</h3>
-          </div>
-          <div class="stackdo-body has-photo">
-            <div class="stackdo-text">
-              <p>블라스터부터 자동화 세척 시스템까지, 현장에 맞는 장비를 공급합니다.</p>
-              <a class="more" href="products/index.html">자세히 보기 →</a>
-            </div>
-            <img class="stackdo-visual stackdo-visual-photo" src="assets/img/stackdo-blaster.jpg" alt="드라이아이스 블라스터" loading="lazy" />
-          </div>
-        </div>
-        <div class="stackdo-item stackdo-item-1 has-photo" style="--i:1;">
-          <div class="stackdo-head">
-            <span class="num">02</span>
-            <h3>드라이아이스 제조기 · 리커버리</h3>
-          </div>
-          <div class="stackdo-body has-photo">
-            <div class="stackdo-text">
-              <p>액체 CO2로 드라이아이스를 직접 만드는 펠렛타이저와, 배출 CO2를 회수해 재사용하는 리커버리 장비를 공급합니다.</p>
-              <a class="more" href="products/pelletizer/index.html">자세히 보기 →</a>
-            </div>
-            <img class="stackdo-visual stackdo-visual-photo" src="assets/img/stackdo-pelletizer.jpg" alt="드라이아이스 제조기 · 리커버리" loading="lazy" />
-          </div>
-        </div>
-        <div class="stackdo-item stackdo-item-2 has-photo" style="--i:2;">
-          <div class="stackdo-head">
-            <span class="num">03</span>
-            <h3>자동화 시스템</h3>
-          </div>
-          <div class="stackdo-body has-photo">
-            <div class="stackdo-text">
-              <p>구매 전, 실제 현장에서 먼저 성능을 확인해보세요.</p>
-              <a class="more" href="rental/index.html">자세히 보기 →</a>
-            </div>
-            <img class="stackdo-visual stackdo-visual-photo" src="assets/img/stackdo-automation.jpg" alt="자동화 시스템" loading="lazy" />
-          </div>
-        </div>
-        <div class="stackdo-item stackdo-item-3 has-photo" style="--i:3;">
-          <div class="stackdo-head">
-            <span class="num">04</span>
-            <h3>드라이아이스 생산 · 공급</h3>
-          </div>
-          <div class="stackdo-body has-photo">
-            <div class="stackdo-text">
-              <p>펠렛타이저로 직접 생산하거나, 소모품으로 정기 공급받을 수 있습니다.</p>
-              <a class="more" href="products/supply.html">자세히 보기 →</a>
-            </div>
-            <img class="stackdo-visual stackdo-visual-photo" src="assets/img/stackdo-supply.jpg" alt="드라이아이스 생산 · 공급" loading="lazy" />
-          </div>
-        </div>
-        <div class="stackdo-item stackdo-item-4 has-photo" style="--i:4;">
-          <div class="stackdo-head">
-            <span class="num">05</span>
-            <h3>렌탈 · 데모 서비스</h3>
-          </div>
-          <div class="stackdo-body has-photo">
-            <div class="stackdo-text">
-              <p>설치부터 A/S까지, 도입 이후에도 끝까지 책임집니다.</p>
-              <a class="more" href="support/techsupport.html">자세히 보기 →</a>
-            </div>
-            <img class="stackdo-visual stackdo-visual-photo" src="assets/img/stackdo-rental.jpg" alt="렌탈 · 데모 서비스" loading="lazy" />
-          </div>
-        </div>
-      <!-- (재설계 — 사용자 피드백: "우리의 가치 글씨가, 5번의 이미지와
-           글씨 위로 완전히 덮은 상태로 5번 제목 아래로 갔을 때 5번 글씨가
-           작아지면서 위로 올라가야해") 이 6번째 항목이 제자리로 슬라이드해
-           올라오면 `.stackdo-item`의 기존 불투명 배경(흰색)+z-index 덕분에
-           01~04번이 서로를 덮는 것과 완전히 같은 방식으로 05번의 사진·
-           텍스트를 완전히 덮으며 05번 제목 바로 아래 자리 잡고(main.js의
-           activeIndex/passedCount 로직 재사용), 동시에 05번 제목이
-           축소됨 — 여기까지는 유지.
-           (추가 피드백 — 사용자가 이 상태의 스크린샷을 보고 "기능은 그대로
-           두고 이 글씨만 없애줘. 그 밑의 '우리의 가치' 큰 글씨도 그대로
-           두고") 이 항목 자체에 눈에 보이는 "우리의 가치" 제목(h3)까지
-           넣었더니, 이 항목은 05번과 달리 뒤에 또 다른 항목이 없어
-           `.is-passed`가 절대 붙지 않아 글자가 계속 큰 채로(clamp 20~30px)
-           남아있었음 — 그 결과 05번이 스크롤로 화면 밖에 완전히 사라진
-           뒤에도 이 큰 "우리의 가치" 글씨 + 화살표만 있는 텅 빈 흰 화면이
-           꽤 오래 스크롤되며 마치 아무 콘텐츠도 없는 것처럼 보이는 문제가
-           있었음. 그래서 이 항목의 head에서 h3 텍스트만 제거 — `.stackdo-
-           head`는 콘텐츠와 무관하게 var(--stackdo-head-h) 고정 높이이므로
-           텍스트를 빼도 항목 전체 높이·release 타이밍(수식)은 전혀
-           바뀌지 않음. 즉 "덮기+05번 축소" 기능과 화살표 힌트는 그대로
-           작동하되, 중복될 뿐이던 텍스트 라벨만 사라짐 — 실제 "우리의
-           가치" 글씨는 바로 다음 .section-value의 sticky 제목(.value-pin-title)
-           에서 그대로 유지(후속69: 구 .ability-section 전면 교체).
-           (추가 피드백 — 사용자가 05번과 "우리의 가치" 사이 빈 여백
-           스크린샷을 보고 "5번과 우리의 가치 공백을 절반으로 줄여주고,
-           중간의 화살표를 빼줘") 이 항목의 본문(.stackdo-body)은 원래
-           "05번 자연높이 − head 높이"만큼의 빈 여백을 차지하도록 설계된
-           타이밍 전용 공간이었음 — 이 항목 자신의 높이는 뒤이은 다른
-           항목이 없어(6번째=마지막) 01~04번의 release 타이밍 계산에는
-           전혀 영향을 주지 않고(그 계산은 이 항목"이전" 누적 높이에만
-           의존), 오직 "이 항목이 다 지나가고 나서 전체가 화면 밖으로
-           풀려나기까지 걸리는 스크롤 거리"만 결정함 — 그래서 이 여백을
-           절반으로 줄여도 01~05번 타이밍은 전혀 바뀌지 않고, 05번이 덮인
-           뒤 다음 큰 제목이 나타나기까지의 간격만 짧아짐(아래 style.css
-           .stackdo-ability-teaser .stackdo-body min-height 절반으로 축소
-           참고). 화살표 힌트(teaser-hint)도 요청대로 완전히 제거. -->
-      <div class="stackdo-item stackdo-item-5 stackdo-ability-teaser" style="--i:5;" aria-hidden="true">
-        <div class="stackdo-head"></div>
-        <div class="stackdo-body"></div>
-      </div>
-      <div class="stackdo-tail" aria-hidden="true"></div>
     </div>
   </section>
 
