@@ -298,6 +298,22 @@ document.addEventListener("DOMContentLoaded", function () {
     var VALUE_FOCUS_MAX_DIST_RATIO = 0.5;
     var valueFocusedBlock = null;
     var valueTicking = false;
+    // (후속75) "우리의 신념" 제목(.belief-pin-title)이 화면 하단에서 올라와
+    // 정확히 상단(top:0)에 틀고정되는 순간까지의 진행률을 --postdo-light로
+    // 매 프레임 갱신 — 아래 applyValueFocus() 참고. 이 요소 자신의 위치로
+    // 계산하므로 "제목이 화면에 나타나기 시작하는 순간"과 "완전히
+    // 틀고정되는 순간"이 항상 정확히 일치한다(요청 #2, #3 통합).
+    var beliefPinTitleEl = document.querySelector(".belief-pin-title");
+    // (후속80) "우리가 하는 일"의 제목줄(.stackdo-header)이 실제로 화면
+    // 최상단에 틀고정되는 순간 흰 배경+하단 구분선으로 바뀌는 것과 완전히
+    // 같은 방식을, sticky로 구현된 이 두 제목(.value-pin-title/
+    // .belief-pin-title)에도 적용하기 위한 요소 참조 — 아래 applyValueFocus()가
+    // 매 프레임 각자의 rect.top<=0 여부로 is-pinned 클래스를 토글한다
+    // (.stackdo-header가 main.js의 updateStackdo()에서 stackdoScroll의
+    // rect.top<=0으로 is-pinned를 토글하는 것과 동일한 방식 — 다만 이
+    // 둘은 프레임 전체가 아니라 제목 자신이 sticky이므로 자기 자신의
+    // rect.top을 본다).
+    var valuePinTitleEl = document.querySelector(".value-pin-title");
 
     var triggerValueFocusCountUp = function (block) {
       block.querySelectorAll(".count-up[data-count-on-focus]").forEach(function (countEl) {
@@ -326,6 +342,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var applyValueFocus = function () {
       var vh = window.innerHeight || document.documentElement.clientHeight;
+      // (후속80) "우리가 하는 일" 제목줄과 완전히 같은 방식 — sticky 제목
+      // 자신의 rect.top이 0 이하가 되는(=실제로 상단에 들러붙는) 그 순간
+      // is-pinned를 붙여 흰 배경+하단 구분선으로 바뀌게 함. .value-pin-title은
+      // .value-list 맨 위에 여백 없이 바로 있어 이 섹션에 들어오자마자
+      // 거의 즉시 stuck 상태가 되고, .belief-pin-title은 --postdo-light가
+      // 1에 도달하는(= rect.top이 0에 닿는) 순간과 정확히 일치한다.
+      if (valuePinTitleEl) {
+        valuePinTitleEl.classList.toggle("is-pinned", valuePinTitleEl.getBoundingClientRect().top <= 0);
+      }
+      if (beliefPinTitleEl) {
+        beliefPinTitleEl.classList.toggle("is-pinned", beliefPinTitleEl.getBoundingClientRect().top <= 0);
+      }
       var focusY = vh * VALUE_FOCUS_LINE_RATIO;
       var VALUE_FOCUS_MAX_DIST = vh * VALUE_FOCUS_MAX_DIST_RATIO;
       var best = null;
@@ -352,6 +380,19 @@ document.addEventListener("DOMContentLoaded", function () {
           best = block;
         }
       });
+      // (후속75) "우리의 신념" 제목 진행률(--postdo-light) 계산 — 제목이
+      // 화면 하단(rect.top === vh)에서 막 나타나기 시작할 때 0, 스크롤이
+      // 진행되어 정확히 화면 상단(rect.top === 0)에 닿아 틀고정될 때 1이
+      // 되도록 (vh - rect.top) / vh로 구함. sticky이므로 top:0에 도달한
+      // 뒤에는 rect.top이 0에 머물러 자연스럽게 1로 유지되고, 위로
+      // 스크롤하면 다시 0으로 돌아가 가역적으로 동작한다.
+      if (beliefPinTitleEl) {
+        var beliefRect = beliefPinTitleEl.getBoundingClientRect();
+        var lightProgress = vh > 0
+          ? Math.min(1, Math.max(0, (vh - beliefRect.top) / vh))
+          : 0;
+        document.documentElement.style.setProperty("--postdo-light", lightProgress.toFixed(3));
+      }
       if (best !== valueFocusedBlock) {
         if (valueFocusedBlock) resetValueFocusCountUp(valueFocusedBlock);
         valueFocusedBlock = best;
