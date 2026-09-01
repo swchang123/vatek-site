@@ -1247,11 +1247,12 @@ def build_home():
             <source src="{asset("assets/video/belief-co2.webm", 0)}" type="video/webm">
             <source src="{asset("assets/video/belief-co2.mp4", 0)}" type="video/mp4">
           </video>
-          <div class="belief-video-box">
+          <div class="belief-video-box belief-video-box-lead">
             <h3 class="belief-video-heading">우리의 신념</h3>
-            <p class="belief-video-sub"><span class="hl-blue">CO<sub>2</sub></span>에 새로운 <span class="hl-green">가치</span>를 더합니다.</p>
-            <p class="belief-video-desc">우리는 CO<sub>2</sub> 기술의 혁신으로 지속가능한 산업 생태계를 만들고, 더 나은 환경과 사회적 가치를 함께 실현합니다.</p>
+            <p class="belief-video-sub"><span class="hl-blue">CO<sub>2</sub></span>에 새로운<br><span class="hl-green">가치</span>를 더합니다.</p>
+            <img class="belief-video-logo" src="{asset("assets/img/co2-ribbon-logo.png", 0)}" alt="CO2" width="480" height="241" loading="lazy">
           </div>
+          <p class="belief-video-desc-text">우리는 CO<sub>2</sub> 기술의 혁신으로,<br>지속가능한 산업 생태계를 만들고,<br>더 나은 환경과 사회적 가치를 함께 실현합니다.</p>
         </div>
       </div>
     </div>

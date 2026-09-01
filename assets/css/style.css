@@ -1045,11 +1045,17 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 @supports (height: 100dvh) {
   .belief-video-scroll { height: calc(100dvh + 3 * 65vh); }
 }
+/* (2026-09-01, 후속85) 영상이 고정 배너 비율이 아니라 "제목 아래 남은
+   화면 전체"를 가득 채우도록 변경 — width만 CSS로 100% 고정하고, height는
+   더 이상 aspect-ratio로 정하지 않는다. 매 프레임 JS(applyValueFocus)가
+   (뷰포트 높이 - 제목 실측 높이)를 인라인 style.height로 갱신 — 기존에
+   top을 제목 높이로 갱신하던 것과 같은 방식이라, 제목(위)+영상(아래)이
+   서로 여백 없이 꼭 맞물려 뷰포트 전체를 정확히 채운다. */
 .belief-video-wrap {
   position: sticky;
   top: 0; /* JS가 .belief-pin-title 실측 높이로 매 프레임 갱신 */
   width: 100%;
-  aspect-ratio: 1897 / 665;
+  height: 70vh; /* JS 개입 전 대체값 — 실제 높이는 JS가 매 프레임 갱신 */
   overflow: hidden;
   opacity: 0;
   transform: translateY(-28px);
@@ -1068,69 +1074,113 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 }
 /* (2026-09-01, 후속83) 참고 이미지의 실제 텍스트 비율을 픽셀 단위로 실측
    (헤딩 "우리의 신념" 대역 높이 117px, 부제 "CO2에 새로운/가치를 더합니다."
-   대역 높이 147px, 본문 대역 높이 53px — 부제가 헤딩보다 약 1.26배 더
-   크고, 본문은 헤딩의 약 0.45배) — 기존엔 헤딩이 부제보다 크게 잡혀
-   있었으나 실제 참고 이미지는 부제(컬러 강조 문구)가 가장 크고 헤딩은
-   그 위의 작은 킥커처럼 쓰임. 이 비율대로 폰트 크기를 다시 잡고, 커진
-   텍스트에 맞춰 박스 폭/높이(패딩)도 함께 확대. */
+   대역 높이 147px — 부제가 헤딩보다 약 1.26배 더 큼) — 부제(컬러 강조
+   문구)가 가장 크고 헤딩은 그 위의 작은 킥커처럼 쓰임.
+   (2026-09-01, 후속85) "우리의 신념" 텍스트는 반투명 흰색 박스(왼쪽 중간
+   배치, .belief-video-box-lead)로 스크롤 한 번에 떠오르고, 한 번 더
+   스크롤하면 이 박스는 위로 사라짐과 동시에 본문 문장은 더 이상 박스
+   없이 흰색 글씨만 영상 중앙에 부드럽게 떠오른다(.belief-video-desc-text,
+   아래 별도 정의). 영상 자체가 이제 배너가 아니라 뷰포트에 가까운
+   크기라 박스 높이 대비 프레임 높이가 훨씬 커졌으므로, is-exited의
+   상승 거리를 박스 자신의 %(고정값)가 아니라 "-50%(중앙 정지 위치) -
+   100vh"로 재정의 — 100vh는 어떤 화면에서도 영상 높이(항상 100vh 미만:
+   뷰포트 - 제목 높이)보다 크므로 프레임 크기와 무관하게 항상 완전히
+   빠져나감이 보장된다. 숨김(기본) 상태도 같은 이유로 130%(박스 자신의
+   높이 기준) 대신 100vh(뷰포트 기준)로 변경 — 영상이 배너였을 때는
+   130%만으로 충분히 아래로 숨었지만, 영상이 훨씬 커진 지금은 130%로는
+   박스 상단이 프레임 하단 경계 안쪽으로 다시 올라와(둘 다 실측 확인:
+   데스크톱 095px, 모바일도 유사) 살짝 보이는 문제가 있었음 — 100vh는
+   프레임 높이(<100vh)보다 항상 크므로 어떤 화면에서도 완전히 가려짐이
+   보장된다. */
 .belief-video-box {
   position: absolute;
   left: clamp(20px, 5vw, 64px);
   top: 50%;
-  width: min(52%, 700px);
-  background: rgba(var(--navy-deep-rgb), .62);
-  backdrop-filter: blur(6px);
   border-radius: clamp(14px, 1.6vw, 22px);
   padding: clamp(26px, 3.4vw, 46px);
   box-sizing: border-box;
-  /* 좌측 "아래"에서 올라와 정확히 중앙에 멈췄다가, 한 번 더 스크롤하면
-     위로 올라가며 사라짐 — overflow:hidden인 .belief-video-wrap이 자연스레
-     프레임 밖 위/아래 구간을 가려준다. 퍼센트값은 박스 자신의 높이 기준이라
-     (실측 결과 박스 높이가 프레임 높이의 절반 정도) 완전히 프레임 밖으로
-     나가려면 130%/-260% 정도의 여유가 필요 — 100%/-190%로는 박스 일부가
-     여전히 프레임 안쪽 가장자리에 살짝 걸쳐 보이는 문제가 있어 넉넉히 잡음. */
-  transform: translateY(130%);
+  transform: translateY(100vh);
   transition: transform .75s cubic-bezier(.22, .61, .28, 1);
 }
 .belief-video-box.is-risen { transform: translateY(-50%); }
-.belief-video-box.is-exited { transform: translateY(-260%); }
+.belief-video-box.is-exited { transform: translateY(calc(-50% - 100vh)); }
+.belief-video-box-lead {
+  width: min(46%, 520px);
+  background: rgba(255, 255, 255, .5);
+  backdrop-filter: blur(10px);
+}
 .belief-video-heading {
-  margin: 0 0 8px;
-  font-size: clamp(16px, 1.5vw, 20px);
+  margin: 0 0 10px;
+  font-size: clamp(20px, 2vw, 26px);
   font-weight: 800;
   letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, .82);
+  color: rgba(0, 0, 0, .6);
 }
 .belief-video-sub {
-  margin: 0 0 16px;
-  font-size: clamp(24px, 2.7vw, 34px);
+  margin: 0;
+  font-size: clamp(32px, 3.6vw, 46px);
   font-weight: 800;
-  line-height: 1.32;
+  line-height: 1.28;
   letter-spacing: -0.02em;
-  color: var(--white);
+  color: var(--text-dark);
   word-break: keep-all;
 }
-.belief-video-sub .hl-blue { color: #7c96e6; }
-.belief-video-sub .hl-green { color: #8ac661; }
-.belief-video-desc {
+.belief-video-sub .hl-blue { color: #1e3c8d; }
+.belief-video-sub .hl-green { color: #507d32; }
+/* (2026-09-01, 후속86) 박스가 더 투명해진 만큼(요청) 글자 자체의 대비가
+   더 중요해져 heading의 색을 rgba(0,0,0,.55)->.6으로 살짝 더 진하게.
+   로고는 "가치를 더합니다." 바로 아래, 텍스트와 같은 왼쪽 정렬로 배치 —
+   가로 폭만 제한하고(원본 비율 유지, height:auto) 위쪽에 여백을 둬
+   문단과 분리되어 보이게 함. */
+.belief-video-logo {
+  display: block;
+  width: clamp(120px, 15vw, 180px);
+  height: auto;
+  margin: 16px 0 0;
+}
+/* (2026-09-01, 후속85) 본문 문장 — 더 이상 박스가 아니라 영상 위에 바로
+   놓이는 흰색 텍스트. 뒤 배경(영상)이 매 순간 달라질 수 있어 가독성을
+   위해 은은한 text-shadow만 두르고, 폭을 제한한 채(word-break:keep-all)
+   가운데 정렬. .belief-video-box 계열과 달리 left:50%+translateX(-50%)로
+   수평 중앙에 고정하고 translateY만 애니메이션시켜 아래에서 중앙으로
+   부드럽게 떠오르게 함 — 숨김 상태의 하강 거리도 박스와 같은 이유로
+   "-50%(중앙) + 55vh"처럼 뷰포트 기준으로 잡아, 영상이 아무리 커도
+   항상 프레임 아래로 충분히 숨겨지도록 함. */
+.belief-video-desc-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* (2026-09-01, 후속86) 3줄 강제 줄바꿈(<br>)이 실제로 3줄로 보이려면 가장
+     긴 셋째 줄("더 나은 환경과 사회적 가치를 함께 실현합니다.")이 커진
+     폰트 크기에서도 한 줄에 다 들어갈 만큼 폭이 넉넉해야 함 — 860px로는
+     4번째 줄로 흘러넘쳐 의도한 3줄 배치가 깨졌음(실측 확인). */
+  width: min(84%, 1160px);
   margin: 0;
-  font-size: clamp(14.5px, 1.4vw, 16px);
-  font-weight: 500;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, .86);
+  text-align: center;
+  color: var(--white);
+  font-size: clamp(28px, 3.6vw, 45px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
   word-break: keep-all;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .55), 0 12px 34px rgba(0, 0, 0, .4);
+  transform: translate(-50%, calc(-50% + 55vh));
+  transition: transform .8s cubic-bezier(.22, .61, .28, 1);
+}
+.belief-video-desc-text.is-risen {
+  transform: translate(-50%, -50%);
 }
 @media (max-width: 860px) {
-  .belief-video-wrap { aspect-ratio: 3 / 4; }
-  .belief-video-box {
+  .belief-video-box-lead {
     left: 16px; right: 16px;
     width: auto;
     max-width: none;
     padding: 22px 20px;
   }
-  .belief-video-heading { font-size: 15px; }
-  .belief-video-sub { font-size: clamp(22px, 6.6vw, 27px); }
-  .belief-video-desc { font-size: 14px; }
+  .belief-video-heading { font-size: 18px; }
+  .belief-video-sub { font-size: clamp(27px, 7.8vw, 33px); }
+  .belief-video-logo { width: clamp(100px, 26vw, 140px); margin-top: 12px; }
+  .belief-video-desc-text { width: 88%; font-size: clamp(22px, 6.2vw, 29px); }
 }
 
 .value-content {

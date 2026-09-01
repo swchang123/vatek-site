@@ -322,8 +322,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var beliefVideoWrap = beliefVideoScroll
       ? beliefVideoScroll.querySelector(".belief-video-wrap")
       : null;
-    var beliefVideoBox = beliefVideoWrap
-      ? beliefVideoWrap.querySelector(".belief-video-box")
+    // (후속85) 흰색 lead 박스(제목/부제)가 중앙 정지 후 퇴장(exited)하는 것과
+    // "동시에" 본문 문장(더 이상 박스가 아닌 순수 텍스트, .belief-video-desc-text)이
+    // 같은 자리로 올라와 정지(risen)하도록 아래 applyValueFocus()에서 같은
+    // 구간(idx>=2)에 맞춰 두 클래스를 함께 토글한다.
+    var beliefVideoBoxLead = beliefVideoWrap
+      ? beliefVideoWrap.querySelector(".belief-video-box-lead")
+      : null;
+    var beliefVideoDescText = beliefVideoWrap
+      ? beliefVideoWrap.querySelector(".belief-video-desc-text")
       : null;
 
     var triggerValueFocusCountUp = function (block) {
@@ -374,7 +381,13 @@ document.addEventListener("DOMContentLoaded", function () {
       // 위치에서 동시에 stuck되므로, 제목의 is-pinned 판정을 그대로 재사용.
       if (beliefVideoWrap) {
         if (beliefPinTitleEl) {
-          beliefVideoWrap.style.top = beliefPinTitleEl.getBoundingClientRect().height + "px";
+          // (후속85) 영상이 이제 고정 배너 비율이 아니라 "제목 아래 남은
+          // 화면 전체"를 채우므로, top(제목 높이)뿐 아니라 height(뷰포트
+          // 높이 - 제목 높이)도 매 프레임 함께 갱신 — 제목+영상이 여백
+          // 없이 위아래로 꼭 맞물려 뷰포트를 정확히 채우게 됨.
+          var beliefTitleH = beliefPinTitleEl.getBoundingClientRect().height;
+          beliefVideoWrap.style.top = beliefTitleH + "px";
+          beliefVideoWrap.style.height = Math.max(0, vh - beliefTitleH) + "px";
         }
         beliefVideoWrap.classList.toggle("is-pinned", beliefTitlePinned);
       }
@@ -383,7 +396,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // 진행률을 3구간(0:숨김/1:중앙 정지/2:퇴장)으로 나눠 텍스트 박스에
       // 반영 — "한 번 더 스크롤"할 때마다 다음 구간으로 넘어가는 계단식
       // 연출이 되도록 각 구간에 65vh의 스크롤 여유를 둔다.
-      if (beliefVideoScroll && beliefVideoBox) {
+      if (beliefVideoScroll && (beliefVideoBoxLead || beliefVideoDescText)) {
         var beliefScrollRect = beliefVideoScroll.getBoundingClientRect();
         var beliefTotal = beliefScrollRect.height - vh;
         var beliefScrolled = -beliefScrollRect.top;
@@ -394,8 +407,13 @@ document.addEventListener("DOMContentLoaded", function () {
         var beliefIdx = beliefProgress > 0
           ? Math.min(beliefZones - 1, Math.floor(beliefProgress * beliefZones))
           : 0;
-        beliefVideoBox.classList.toggle("is-risen", beliefIdx >= 1);
-        beliefVideoBox.classList.toggle("is-exited", beliefIdx >= 2);
+        if (beliefVideoBoxLead) {
+          beliefVideoBoxLead.classList.toggle("is-risen", beliefIdx >= 1);
+          beliefVideoBoxLead.classList.toggle("is-exited", beliefIdx >= 2);
+        }
+        if (beliefVideoDescText) {
+          beliefVideoDescText.classList.toggle("is-risen", beliefIdx >= 2);
+        }
       }
       var focusY = vh * VALUE_FOCUS_LINE_RATIO;
       var VALUE_FOCUS_MAX_DIST = vh * VALUE_FOCUS_MAX_DIST_RATIO;
