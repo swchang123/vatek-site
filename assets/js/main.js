@@ -314,6 +314,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // 둘은 프레임 전체가 아니라 제목 자신이 sticky이므로 자기 자신의
     // rect.top을 본다).
     var valuePinTitleEl = document.querySelector(".value-pin-title");
+    // (후속82) "우리의 신념" 제목 바로 아래 CO2 영상 — 제목이 틀고정되는
+    // 순간 영상도 함께 틀고정(position:sticky)되고, 그 안의 텍스트 박스는
+    // 이후 스크롤에 따라 숨김→중앙 정지→위로 퇴장의 3단계로 움직인다.
+    // 아래 applyValueFocus()에서 매 프레임 계산.
+    var beliefVideoScroll = document.querySelector(".belief-video-scroll");
+    var beliefVideoWrap = beliefVideoScroll
+      ? beliefVideoScroll.querySelector(".belief-video-wrap")
+      : null;
+    var beliefVideoBox = beliefVideoWrap
+      ? beliefVideoWrap.querySelector(".belief-video-box")
+      : null;
 
     var triggerValueFocusCountUp = function (block) {
       block.querySelectorAll(".count-up[data-count-on-focus]").forEach(function (countEl) {
@@ -351,8 +362,40 @@ document.addEventListener("DOMContentLoaded", function () {
       if (valuePinTitleEl) {
         valuePinTitleEl.classList.toggle("is-pinned", valuePinTitleEl.getBoundingClientRect().top <= 0);
       }
+      var beliefTitlePinned = beliefPinTitleEl
+        ? beliefPinTitleEl.getBoundingClientRect().top <= 0
+        : false;
       if (beliefPinTitleEl) {
-        beliefPinTitleEl.classList.toggle("is-pinned", beliefPinTitleEl.getBoundingClientRect().top <= 0);
+        beliefPinTitleEl.classList.toggle("is-pinned", beliefTitlePinned);
+      }
+      // (후속82) 영상(.belief-video-wrap)은 top:제목 실측 높이로 sticky —
+      // .belief-pin-title(top:0)과 .belief-video-wrap(top:제목높이)은 같은
+      // 부모 흐름 안에 여백 없이 붙어 있어 수학적으로 항상 같은 스크롤
+      // 위치에서 동시에 stuck되므로, 제목의 is-pinned 판정을 그대로 재사용.
+      if (beliefVideoWrap) {
+        if (beliefPinTitleEl) {
+          beliefVideoWrap.style.top = beliefPinTitleEl.getBoundingClientRect().height + "px";
+        }
+        beliefVideoWrap.classList.toggle("is-pinned", beliefTitlePinned);
+      }
+      // (후속82 계속) 영상이 틀고정된 뒤 추가로 스크롤되는 여유 구간
+      // (.belief-video-scroll, .stackdo-scroll과 동일한 "100vh + N*Xvh" 공식)의
+      // 진행률을 3구간(0:숨김/1:중앙 정지/2:퇴장)으로 나눠 텍스트 박스에
+      // 반영 — "한 번 더 스크롤"할 때마다 다음 구간으로 넘어가는 계단식
+      // 연출이 되도록 각 구간에 65vh의 스크롤 여유를 둔다.
+      if (beliefVideoScroll && beliefVideoBox) {
+        var beliefScrollRect = beliefVideoScroll.getBoundingClientRect();
+        var beliefTotal = beliefScrollRect.height - vh;
+        var beliefScrolled = -beliefScrollRect.top;
+        var beliefProgress = beliefTotal > 0
+          ? Math.min(1, Math.max(0, beliefScrolled / beliefTotal))
+          : 0;
+        var beliefZones = 3;
+        var beliefIdx = beliefProgress > 0
+          ? Math.min(beliefZones - 1, Math.floor(beliefProgress * beliefZones))
+          : 0;
+        beliefVideoBox.classList.toggle("is-risen", beliefIdx >= 1);
+        beliefVideoBox.classList.toggle("is-exited", beliefIdx >= 2);
       }
       var focusY = vh * VALUE_FOCUS_LINE_RATIO;
       var VALUE_FOCUS_MAX_DIST = vh * VALUE_FOCUS_MAX_DIST_RATIO;

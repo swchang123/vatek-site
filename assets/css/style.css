@@ -936,10 +936,9 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
      뷰포트 폭에 따라 두 실측값을 선형 보간하는 calc(120px + 13vw)를 사용
      (390px→약 171px, 1440px→약 307px로 목표치에 근접). */
   margin-top: clamp(150px, calc(120px + 13vw), 320px);
-  /* 아직 "우리의 신념"의 실제 콘텐츠가 없어 임시로 확보한 스티키 유지
-     구간 — 실제 콘텐츠가 추가되면 이 값 대신 콘텐츠 자체의 높이로
-     자연스럽게 대체될 예정. */
-  min-height: 90vh;
+  /* (2026-09-01, 후속82) 실제 콘텐츠(.belief-video-wrap)가 추가되어 더 이상
+     임시 min-height가 필요 없음 — 스티키 유지 구간은 이제 콘텐츠 자체의
+     높이로 자연스럽게 결정됨. */
 }
 .belief-pin-title {
   position: sticky;
@@ -1023,6 +1022,117 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   border-bottom: 1px solid var(--gray-line);
 }
 .belief-pin-title.is-pinned h2 { color: var(--text-dark) !important; }
+
+/* (2026-09-01, 후속82) "우리의 신념" 제목이 틀고정(is-pinned)되는 순간, 영상도
+   함께 그 자리에 틀고정(position:sticky, top=제목 자신의 실측 높이 — 매
+   프레임 assets/js/main.js가 갱신)되어 다음 스크롤 신호가 올 때까지
+   움직이지 않는다. .belief-video-scroll(여유 높이를 가진 바깥 컨테이너,
+   .stackdo-scroll과 동일한 패턴)이 스크롤 진행률을 만들고, 그 진행률을
+   3구간(0: 박스 숨김/2: 중앙 정지/3: 위로 퇴장)으로 나눠 .belief-video-box에
+   is-risen/is-exited 클래스를 토글 — "한 번 더 스크롤"할 때마다 다음
+   구간으로 넘어가는 것처럼 느껴지도록 각 구간에 65vh의 스크롤 여유를 둠
+   (.stackdo-scroll이 각 패널에 62~78vh를 쓰는 것과 동일한 사고방식).
+   영상 틀고정 여부(.belief-pin-title과 정확히 같은 스크롤 위치에서
+   동시에 발생 — 제목이 top:0에 sticky, 영상은 top:제목높이에 sticky이므로
+   수학적으로 항상 같은 지점에서 stuck된다)와 박스 구간 전환 모두
+   assets/js/main.js의 applyValueFocus()가 매 프레임 계산한다. 박스 톤은
+   순수 검정 대신 사이트 다크 네이비(--navy-deep-rgb)를 재사용해 브랜드
+   일관성 유지. */
+.belief-video-scroll {
+  position: relative;
+  height: calc(100vh + 3 * 65vh);
+}
+@supports (height: 100dvh) {
+  .belief-video-scroll { height: calc(100dvh + 3 * 65vh); }
+}
+.belief-video-wrap {
+  position: sticky;
+  top: 0; /* JS가 .belief-pin-title 실측 높이로 매 프레임 갱신 */
+  width: 100%;
+  aspect-ratio: 1897 / 665;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.belief-video-wrap.is-pinned {
+  opacity: 1;
+  transform: translateY(0);
+}
+.belief-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  background: var(--navy-deep);
+}
+/* (2026-09-01, 후속83) 참고 이미지의 실제 텍스트 비율을 픽셀 단위로 실측
+   (헤딩 "우리의 신념" 대역 높이 117px, 부제 "CO2에 새로운/가치를 더합니다."
+   대역 높이 147px, 본문 대역 높이 53px — 부제가 헤딩보다 약 1.26배 더
+   크고, 본문은 헤딩의 약 0.45배) — 기존엔 헤딩이 부제보다 크게 잡혀
+   있었으나 실제 참고 이미지는 부제(컬러 강조 문구)가 가장 크고 헤딩은
+   그 위의 작은 킥커처럼 쓰임. 이 비율대로 폰트 크기를 다시 잡고, 커진
+   텍스트에 맞춰 박스 폭/높이(패딩)도 함께 확대. */
+.belief-video-box {
+  position: absolute;
+  left: clamp(20px, 5vw, 64px);
+  top: 50%;
+  width: min(52%, 700px);
+  background: rgba(var(--navy-deep-rgb), .62);
+  backdrop-filter: blur(6px);
+  border-radius: clamp(14px, 1.6vw, 22px);
+  padding: clamp(26px, 3.4vw, 46px);
+  box-sizing: border-box;
+  /* 좌측 "아래"에서 올라와 정확히 중앙에 멈췄다가, 한 번 더 스크롤하면
+     위로 올라가며 사라짐 — overflow:hidden인 .belief-video-wrap이 자연스레
+     프레임 밖 위/아래 구간을 가려준다. 퍼센트값은 박스 자신의 높이 기준이라
+     (실측 결과 박스 높이가 프레임 높이의 절반 정도) 완전히 프레임 밖으로
+     나가려면 130%/-260% 정도의 여유가 필요 — 100%/-190%로는 박스 일부가
+     여전히 프레임 안쪽 가장자리에 살짝 걸쳐 보이는 문제가 있어 넉넉히 잡음. */
+  transform: translateY(130%);
+  transition: transform .75s cubic-bezier(.22, .61, .28, 1);
+}
+.belief-video-box.is-risen { transform: translateY(-50%); }
+.belief-video-box.is-exited { transform: translateY(-260%); }
+.belief-video-heading {
+  margin: 0 0 8px;
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, .82);
+}
+.belief-video-sub {
+  margin: 0 0 16px;
+  font-size: clamp(24px, 2.7vw, 34px);
+  font-weight: 800;
+  line-height: 1.32;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  word-break: keep-all;
+}
+.belief-video-sub .hl-blue { color: #7c96e6; }
+.belief-video-sub .hl-green { color: #8ac661; }
+.belief-video-desc {
+  margin: 0;
+  font-size: clamp(14.5px, 1.4vw, 16px);
+  font-weight: 500;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, .86);
+  word-break: keep-all;
+}
+@media (max-width: 860px) {
+  .belief-video-wrap { aspect-ratio: 3 / 4; }
+  .belief-video-box {
+    left: 16px; right: 16px;
+    width: auto;
+    max-width: none;
+    padding: 22px 20px;
+  }
+  .belief-video-heading { font-size: 15px; }
+  .belief-video-sub { font-size: clamp(22px, 6.6vw, 27px); }
+  .belief-video-desc { font-size: 14px; }
+}
+
 .value-content {
   position: relative;
   /* (요청#2 대응) 좌우에 여유 패딩을 둬 .value-block이 확대(scale)될 때 뷰포트
