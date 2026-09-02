@@ -627,7 +627,6 @@ MENU = [
 
 CODE_ORDER = [m["code"] for m in MENU]
 
-
 def find_menu(code):
     return next(m for m in MENU if m["code"] == code)
 
@@ -677,26 +676,42 @@ def nav_html(depth, active_code=None):
 
 
 def footer_html(depth):
+    # footer는 4칸 그리드(브랜드 1 + 카테고리 3)이므로 6개 대메뉴 중 대표 3개만
+    # 노출하고 나머지는 위 홈 하단 "메뉴 선택" 카드 섹션(menu_picker_html)에서
+    # 전부 다룬다.
+    # (2026-09-02, 후속9) 사용자 요청 — 홈의 새 "메뉴 선택" 카드 섹션처럼 푸터도
+    # 등장할 때 효과가 있으면 좋겠다는 요청. footer_html()은 57개 페이지 전체가
+    # 공유하는 공통 partial이라, 여기 붙인 리빌 클래스는 홈뿐 아니라 사이트
+    # 전체 페이지의 푸터에 똑같이 적용된다(어차피 스크롤 리빌 관찰자
+    # assets/js/main.js가 클래스 유무만으로 전 페이지에서 동일하게 동작하므로
+    # 별도 분기 불필요). 브랜드 영역 → 3개 카테고리 컬럼(인덱스 순 0.08초씩
+    # 지연) 순서로 나타나도록 지연을 늦춘다. 맨 아래 저작권 바(.footer-bottom)는
+    # 리빌 효과를 주지 않고 항상 그대로 보이게 둠 — 이 바는 페이지의 진짜
+    # 마지막 요소라 "화면 하단 8% 안쪽은 아직 등장 전으로 치는" 관찰자
+    # rootMargin(-8%) 규칙상, 문서 끝까지 스크롤해도 이 짧은 바(수십 px)는
+    # 그 8% 구간을 넘어 올라올 수 없어 is-visible이 영원히 붙지 않고
+    # opacity:0로 사라져 보이는 문제가 실제로 발생함(다른 리빌 요소는 아래에
+    # 더 콘텐츠가 있어 스크롤로 8% 구간 위로 밀어올릴 수 있지만, 문서의 맨
+    # 마지막 요소는 구조적으로 불가능). 그래서 이 요소만 리빌 대상에서 제외.
     cols = []
-    for m in MENU:
+    for i, m in enumerate(MENU[:3]):
         links = "".join(
             f'<li><a href="{asset(m["code"] + "/" + s["slug"] + ("/index.html" if s.get("is_group") else ".html"), depth)}">{s["title"]}</a></li>'
             for s in m["subs"][:4]
         )
-        cols.append(f'<div class="footer-col"><h4>{m["label"]}</h4><ul>{links}</ul></div>')
-    # footer는 4칸 그리드이므로 6개 메뉴 중 대표 4개만 노출하고 나머지는 브랜드 영역에 통합
-    main_cols = cols[:3]
+        delay = 0.06 + i * 0.08
+        cols.append(f'<div class="footer-col reveal-pop" style="--reveal-delay:{delay:.2f}s"><h4>{m["label"]}</h4><ul>{links}</ul></div>')
     return f"""
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-top">
-        <div class="footer-brand">
+        <div class="footer-brand reveal">
           <a class="logo" href="{asset('index.html', depth)}">VATEK<span class="dot"></span></a>
           <p>주식회사 바테크 | 드라이아이스 블라스터·펠렛타이저·리커버리 및 관련 소모품 공급</p>
           <p>[사업자등록번호 입력] · [주소 입력]</p>
           <span class="partner-badge">🧊 Cold Jet 대한민국 공식 대리점</span>
         </div>
-        {''.join(main_cols)}
+        {''.join(cols)}
       </div>
       <div class="footer-bottom">
         <span>© VATEK Corporation. All rights reserved. (본 페이지는 리뉴얼 시안이며 실제 배포용이 아닙니다)</span>
@@ -1108,6 +1123,43 @@ def stackdo_panels_html():
     return "".join(panels)
 
 
+# (2026-09-02, 후속9) 홈 하단 "메뉴 선택" 카드 6개를 생성한다. 상단 nav_html()의
+# 드롭다운과 정확히 같은 6개 대메뉴(MENU)를 그대로 재사용해 정보구조를 두 번
+# 정의하지 않으며, 각 카드 안에는 대메뉴 링크(제목)와 함께 하위 서브메뉴 중
+# 최대 3개를 칩 형태 바로가기로 노출해 "상단 메뉴보다 더 쉽고 빠르게" 원하는
+# 페이지를 바로 찾아갈 수 있게 한다(서브메뉴가 3개보다 많으면 "+N개" 칩이
+# 허브 페이지로 안내). 카드 자체(.menu-picker-title-link)와 칩들이 모두
+# <a>라 마크업상 앵커 중첩을 피하기 위해, 카드 전체를 감싸는 진짜 링크는
+# 제목에만 걸고 CSS의 ::after 스트레치드 링크로 카드 전체 클릭 영역을 넓힌
+# 뒤(assets/css/style.css .menu-picker-title-link::after), 칩들은 z-index를
+# 그 위로 올려 각자 독립적으로 클릭되게 한다(표준적인 "카드 안에 보조
+# 링크가 있는 카드" 패턴). 등장 애니메이션은 새 JS 없이 기존 공용 리빌
+# 시스템(.reveal-pop + --reveal-delay)을 그대로 타 카드 인덱스 순서로
+# 0.07초씩 늦게 나타나 좌상단→우하단으로 순서대로 튀어 오르는 느낌을 준다.
+def menu_picker_html():
+    cards = []
+    for i, m in enumerate(MENU):
+        hub_href = asset(f"{m['code']}/index.html", 0)
+        delay = i * 0.07
+        shown_subs = m["subs"][:3]
+        chips = "".join(
+            f'<a class="menu-picker-chip" href="{asset(m["code"] + "/" + s["slug"] + ("/index.html" if s.get("is_group") else ".html"), 0)}">{s["title"]}</a>'
+            for s in shown_subs
+        )
+        more_count = len(m["subs"]) - len(shown_subs)
+        if more_count > 0:
+            chips += f'<a class="menu-picker-chip menu-picker-chip-more" href="{hub_href}">+{more_count}개</a>'
+        cards.append(f"""
+        <div class="menu-picker-card reveal-pop" style="--reveal-delay:{delay:.2f}s">
+          <span class="menu-picker-num">{i + 1:02d}</span>
+          <h3><a class="menu-picker-title-link" href="{hub_href}">{m['label']}</a></h3>
+          <p>{m['tagline']}</p>
+          <div class="menu-picker-chips">{chips}</div>
+          <span class="menu-picker-arrow" aria-hidden="true">→</span>
+        </div>""")
+    return "".join(cards)
+
+
 def build_home():
     depth = 0
 
@@ -1258,94 +1310,44 @@ def build_home():
     </div>
   </section>
 
-  <section class="bg-mint">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Why VATEK</span>
-        <h2 class="reveal">왜 바테크를 선택해야 할까요</h2>
-        <p class="reveal" style="--reveal-delay:.08s">가격보다 중요한 건 신뢰입니다. 바테크는 이렇게 답합니다.</p>
-      </div>
-      <div class="icon-row">
-        <div class="item reveal-pop" style="--reveal-delay:0s"><div class="ic">🏅</div><span>공식 인증 파트너</span></div>
-        <div class="item reveal-pop" style="--reveal-delay:.08s"><div class="ic">🛠️</div><span>국내 기술지원</span></div>
-        <div class="item reveal-pop" style="--reveal-delay:.16s"><div class="ic">🧪</div><span>선(先) 테스트</span></div>
-        <div class="item reveal-pop" style="--reveal-delay:.24s"><div class="ic">♻️</div><span>2차 폐기물 없음</span></div>
-        <div class="item reveal-pop" style="--reveal-delay:.32s"><div class="ic">📞</div><span>빠른 응대</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-navy">
-    <div class="wrap split">
-      <div class="reveal">
-        <span class="eyebrow">Official Partner</span>
-        <h2>우리는 Cold Jet<br />대한민국 공식 대리점입니다</h2>
-        <p>Cold Jet은 드라이아이스 블라스팅 기술을 세계 최초로 상용화한 이래, 오랜 기간 이 분야를 이끌어온 글로벌 리더입니다.
-        바테크는 Cold Jet의 대한민국 공식 대리점으로서 검증된 장비와 기술을 국내 현장에 가장 가까운 곳에서 지원합니다.</p>
-        <p>수입 장비이기 때문에 가격은 상대적으로 높을 수 있습니다. 하지만 문제 없이 오래 쓸 수 있는 장비를 선택하는 것,
-        그것이 결국 더 큰 신뢰와 비용 절감으로 이어집니다.</p>
-        <a class="cta-btn outline" href="company/partner.html">파트너십 자세히 보기 →</a>
-      </div>
-      <div class="img-ph reveal-scale" style="min-height:300px; border-color:rgba(255,255,255,0.4); color:rgba(255,255,255,0.85); --reveal-delay:.12s">[Cold Jet 장비/현장 이미지 예정]</div>
-    </div>
-  </section>
-
-  <section class="section-industries">
-    <div class="wrap">
-      <div class="section-head left">
-        <span class="eyebrow">Industries</span>
-        <h2 class="reveal">다양한 산업 현장에 적용됩니다</h2>
-      </div>
-      <div class="chip-grid">
-        <span class="chip reveal-pop" style="--reveal-delay:0s">자동차</span><span class="chip reveal-pop" style="--reveal-delay:.04s">식품·음료</span><span class="chip reveal-pop" style="--reveal-delay:.08s">반도체·PCB</span>
-        <span class="chip reveal-pop" style="--reveal-delay:.12s">금형·주조</span><span class="chip reveal-pop" style="--reveal-delay:.16s">인쇄</span><span class="chip reveal-pop" style="--reveal-delay:.2s">발전설비</span>
-        <span class="chip reveal-pop" style="--reveal-delay:.24s">조선</span><span class="chip reveal-pop" style="--reveal-delay:.28s">항공</span><span class="chip reveal-pop" style="--reveal-delay:.32s">플라스틱·고무</span>
-        <span class="chip reveal-pop" style="--reveal-delay:.36s">목재·합판</span>
-      </div>
-      <div class="cta-band reveal" style="--reveal-delay:.1s">
-        <div><h3>우리 현장에도 적용될까요?</h3><p>산업별 적용사례에서 직접 확인해보세요.</p></div>
-        <a class="cta-btn" href="cases/library.html">적용사례 보러가기</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-pale">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Comparison</span>
-        <h2 class="reveal">왜 드라이아이스 세척인가요</h2>
-      </div>
-      <table class="compare-table reveal-scale">
-        <tr><th>비교 항목</th><th>드라이아이스 세척</th><th>연마재·화학 세척</th></tr>
-        <tr><td>표면 손상</td><td class="good">없음 (비연마성)</td><td>발생 가능</td></tr>
-        <tr><td>2차 폐기물</td><td class="good">없음</td><td>폐수·폐기물 발생</td></tr>
-        <tr><td>설비 분해</td><td class="good">대부분 불필요</td><td>필요한 경우 많음</td></tr>
-        <tr><td>가동 중단 시간</td><td class="good">짧음</td><td>상대적으로 김</td></tr>
-        <tr><td>전기 안전성</td><td class="good">비전도성</td><td>제한적</td></tr>
-      </table>
-      <div class="reveal" style="text-align:center; margin-top:24px; --reveal-delay:.1s">
-        <a class="cta-btn outline" href="cleaning/compare.html">자세히 비교해보기 →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-contact">
-    <div class="wrap">
-      <div class="cta-panel">
-        <div class="reveal">
-          <span class="eyebrow">Contact</span>
-          <h2>관심은 있는데<br />어디서부터 시작해야 할지<br />모르시겠다면</h2>
-          <p>현장 상황만 알려주세요. 바테크가 가장 적합한 방법을 안내해 드립니다.</p>
+  <section class="section-coldjet">
+    <div class="coldjet-list">
+      <div class="coldjet-pin-title"><h2>우리는 <span class="hl-coldjet">'콜드젯 팀'</span>입니다.</h2></div>
+      <div class="coldjet-video-scroll">
+        <div class="coldjet-video-wrap">
+          <video class="coldjet-video" autoplay muted loop playsinline poster="{asset("assets/video/coldjet-video-poster.jpg", 0)}">
+            <source src="{asset("assets/video/coldjet-video.webm", 0)}" type="video/webm">
+            <source src="{asset("assets/video/coldjet-video.mp4", 0)}" type="video/mp4">
+          </video>
+          <div class="coldjet-video-box coldjet-video-box-lead">
+            <h3 class="coldjet-video-heading">WE ARE ONE TEAM</h3>
+            <p class="coldjet-video-sub">콜드젯은 장비의 연구·개발·생산과 기술 교육을 담당하고 있으며,<br>바테크는 대한민국 공식 총판으로서 제품 판매부터 기술 지원 및 관련 서비스를 제공합니다.</p>
+          </div>
+          <div class="coldjet-scroll-hint" aria-hidden="true">
+            <span>Scroll down</span>
+            <span class="coldjet-scroll-hint-chevrons">
+              <span class="chevron"></span>
+              <span class="chevron"></span>
+            </span>
+          </div>
+          <div class="coldjet-video-desc-text coldjet-brand-row">
+            <span class="coldjet-brand-chip"><img class="coldjet-brand-logo coldjet-brand-logo-vatek" src="{asset("assets/img/vatek-logo-mark.png", 0)}" alt="VATEK"></span>
+            <span class="coldjet-brand-x">×</span>
+            <span class="coldjet-brand-chip"><img class="coldjet-brand-logo coldjet-brand-logo-coldjet" src="{asset("assets/img/coldjet-logo.png", 0)}" alt="Cold Jet"></span>
+          </div>
         </div>
-        <form class="form-grid quote-form reveal-scale" style="--reveal-delay:.1s">
-          <input type="text" placeholder="성함" required />
-          <input type="text" placeholder="회사명" required />
-          <input type="tel" placeholder="연락처" required />
-          <input type="email" placeholder="이메일" required />
-          <textarea placeholder="문의 내용을 남겨주세요"></textarea>
-          <label class="consent"><input type="checkbox" required style="width:auto; margin-top:3px;" />개인정보 수집·이용에 동의합니다.</label>
-          <button type="submit">문의 보내기</button>
-        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-menu-picker">
+    <div class="wrap">
+      <div class="section-head menu-picker-head">
+        <h2 class="reveal">필요한 메뉴를 선택해보세요</h2>
+        <p class="reveal" style="--reveal-delay:.08s">위쪽 메뉴에서도 확인할 수 있지만, 여기서 더 쉽고 빠르게 원하시는 정보를 찾아보세요.</p>
+      </div>
+      <div class="menu-picker-grid">
+        {menu_picker_html()}
       </div>
     </div>
   </section>

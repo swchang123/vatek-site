@@ -280,6 +280,54 @@ document.addEventListener("DOMContentLoaded", function () {
   // 결과, 0.5 지점이 4개 블록 모두 대부분 온전히 보이는 상태에서 확대가 시작되면서도
   // (가장 긴 "검증된 기술력" 블록만 하단 25% 정도가 아직 화면 밖) 기존보다 확대
   // 유지 구간이 뚜렷이 길어지는 최적 지점으로 확인됨.
+  // (2026-09-02, 후속8) "우리는 콜드젯 팀입니다" 제목에서 처음 선보인
+  // "화면 아래에서 아주 크게 나타났다가, 틀고정 위치에 가까워질수록
+  // 원래 크기로 줄어들며 안착하는" 확대→축소 연출이 좋다는 피드백을 받아
+  // 다른 sticky 제목(우리가 하는 일/우리의 가치/우리의 신념)에도 똑같이
+  // 적용 — 여러 곳에서 재사용할 수 있도록 공용 함수로 뽑음(아래
+  // if(valueBlocks.length) 블록 안이 아니라 이 조건과 무관한 최상위 스코프에
+  // 둬서, 이 페이지에 .value-block이 없어도 항상 정의되도록 함). pinEl
+  // 자신의 rect.top이 한 화면 높이(viewportH)만큼 남은 시점부터 정확히
+  // 0(틀고정)에 닿는 순간까지의 구간에서 h2에 큰 배율→1배로 줄어드는
+  // transform:scale을 인라인으로 준다.
+  // 화면 폭이 좁아 원래(1배) 텍스트조차 이미 폭에 거의 꽉 차 있는 경우
+  // (모바일 등) 그대로 목표 배율(3.6)을 곱하면 화면 밖으로 넘쳐 가로
+  // 스크롤이 생기는 문제가 콜드젯 제목에서 실제로 있었음(Playwright로
+  // scrollLeft가 움직이는 것까지 확인) — h2의 실측 너비(offsetWidth,
+  // transform의 영향을 받지 않음) 기준으로 현재 화면 폭 안에 안전하게
+  // 들어가는 최대 배율을 매 프레임 다시 계산해, 원래 목표 배율과 비교해
+  // 더 작은(더 안전한) 쪽을 사용한다.
+  // clearOnSettle=false로 넘기면 틀고정된 뒤(progress>=1) 이 함수는
+  // transform을 아예 건드리지 않는다 — "우리의 신념" 제목처럼 틀고정 이후
+  // 또 다른 코드(콜드젯 섹션으로 넘어가는 전환용 translateY, belief
+  // 전환 블록)가 같은 요소의 transform을 자체 관리하는 경우, 이 함수가 그
+  // 값을 지워버리지 않도록 반드시 그 블록보다 "뒤에서" 호출해야 한다.
+  // (2026-09-02, 후속13) 사용자 요청 — 이 확대→축소 연출이 시작되는 순간
+  // (큰 글씨로 처음 나타날 때)에는 글씨가 아예 안 보이는 상태(투명)였다가,
+  // 축소되어 정위치에 와서 박히는 동안 서서히 불투명해지도록(자연스럽게
+  // "나타나면서 안착") 추가. 이미 있던 scale과 정확히 같은 progress(0→1)를
+  // 그대로 opacity(0→1)에도 써서 "제일 클 때 완전 투명 → 제 크기로 줄어들어
+  // 틀고정되는 순간 완전 불투명"이 항상 같은 속도로 함께 일어난다.
+  var applyTitleShrinkZoom = function (pinEl, h2El, viewportH, clearOnSettle) {
+    if (!pinEl || !h2El || !viewportH) return;
+    var top = pinEl.getBoundingClientRect().top;
+    var progress = Math.min(1, Math.max(0, 1 - top / viewportH));
+    if (progress >= 1) {
+      if (clearOnSettle !== false) {
+        h2El.style.transform = "";
+        h2El.style.opacity = "";
+      }
+      return;
+    }
+    var naturalW = h2El.offsetWidth;
+    var winW = window.innerWidth || document.documentElement.clientWidth;
+    var safeMaxScale = naturalW > 0 ? Math.max(1, (winW - 32) / naturalW) : 1;
+    var scaleMax = Math.min(3.6, safeMaxScale);
+    var scale = scaleMax - (scaleMax - 1) * progress;
+    h2El.style.transform = "scale(" + scale.toFixed(3) + ")";
+    h2El.style.opacity = progress.toFixed(3);
+  };
+
   var valueBlocks = document.querySelectorAll(".value-block");
   if (valueBlocks.length) {
     // (후속74) 1~3번 카드를 담은 sticky 제목 컨테이너(.value-list)와
@@ -304,6 +352,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // 계산하므로 "제목이 화면에 나타나기 시작하는 순간"과 "완전히
     // 틀고정되는 순간"이 항상 정확히 일치한다(요청 #2, #3 통합).
     var beliefPinTitleEl = document.querySelector(".belief-pin-title");
+    var beliefPinTitleH2 = beliefPinTitleEl
+      ? beliefPinTitleEl.querySelector("h2")
+      : null;
     // (후속80) "우리가 하는 일"의 제목줄(.stackdo-header)이 실제로 화면
     // 최상단에 틀고정되는 순간 흰 배경+하단 구분선으로 바뀌는 것과 완전히
     // 같은 방식을, sticky로 구현된 이 두 제목(.value-pin-title/
@@ -314,6 +365,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // 둘은 프레임 전체가 아니라 제목 자신이 sticky이므로 자기 자신의
     // rect.top을 본다).
     var valuePinTitleEl = document.querySelector(".value-pin-title");
+    var valuePinTitleH2 = valuePinTitleEl
+      ? valuePinTitleEl.querySelector("h2")
+      : null;
     // (후속82) "우리의 신념" 제목 바로 아래 CO2 영상 — 제목이 틀고정되는
     // 순간 영상도 함께 틀고정(position:sticky)되고, 그 안의 텍스트 박스는
     // 이후 스크롤에 따라 숨김→중앙 정지→위로 퇴장의 3단계로 움직인다.
@@ -331,6 +385,29 @@ document.addEventListener("DOMContentLoaded", function () {
       : null;
     var beliefVideoDescText = beliefVideoWrap
       ? beliefVideoWrap.querySelector(".belief-video-desc-text")
+      : null;
+    // (2026-09-02) "우리는 콜드젯입니다" — .belief-list 바로 다음 섹션. 구조와
+    // JS 처리 모두 위 belief* 요소들과 완전히 동일한 패턴을 재사용한다(제목
+    // sticky pin 여부 → 영상 sticky top/height 갱신 → 3구간 박스/문장 등장).
+    var coldjetPinTitleEl = document.querySelector(".coldjet-pin-title");
+    var coldjetPinTitleH2 = coldjetPinTitleEl
+      ? coldjetPinTitleEl.querySelector("h2")
+      : null;
+    var coldjetVideoScroll = document.querySelector(".coldjet-video-scroll");
+    var coldjetVideoWrap = coldjetVideoScroll
+      ? coldjetVideoScroll.querySelector(".coldjet-video-wrap")
+      : null;
+    var coldjetVideoBoxLead = coldjetVideoWrap
+      ? coldjetVideoWrap.querySelector(".coldjet-video-box-lead")
+      : null;
+    var coldjetVideoDescText = coldjetVideoWrap
+      ? coldjetVideoWrap.querySelector(".coldjet-video-desc-text")
+      : null;
+    // (2026-09-02, 후속5) 히어로와 동일한 Scroll down 힌트 — 박스가 뜬 첫 구간
+    // (zone 0)에서만 보이고, 한 번 더 스크롤해 로고 조합으로 넘어가면(zone 1)
+    // 더 이상 안내가 필요 없으므로 숨긴다.
+    var coldjetScrollHintEl = coldjetVideoWrap
+      ? coldjetVideoWrap.querySelector(".coldjet-scroll-hint")
       : null;
 
     var triggerValueFocusCountUp = function (block) {
@@ -369,6 +446,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (valuePinTitleEl) {
         valuePinTitleEl.classList.toggle("is-pinned", valuePinTitleEl.getBoundingClientRect().top <= 0);
       }
+      applyTitleShrinkZoom(valuePinTitleEl, valuePinTitleH2, vh, true);
       var beliefTitlePinned = beliefPinTitleEl
         ? beliefPinTitleEl.getBoundingClientRect().top <= 0
         : false;
@@ -398,10 +476,15 @@ document.addEventListener("DOMContentLoaded", function () {
       // 연출이 되도록 각 구간에 65vh의 스크롤 여유를 둔다.
       if (beliefVideoScroll && (beliefVideoBoxLead || beliefVideoDescText)) {
         var beliefScrollRect = beliefVideoScroll.getBoundingClientRect();
-        var beliefTotal = beliefScrollRect.height - vh;
         var beliefScrolled = -beliefScrollRect.top;
-        var beliefProgress = beliefTotal > 0
-          ? Math.min(1, Math.max(0, beliefScrolled / beliefTotal))
+        // (2026-09-02) 박스 3구간(zone 0~2)의 타이밍은 항상 고정된 "3*65vh"
+        // 예산만 기준으로 계산 — .belief-video-scroll 자신의 높이엔 아래
+        // 콜드젯 전환용 여유(+100vh, style.css 참고)가 이미 포함돼 있어,
+        // rect.height를 그대로 분모로 쓰면 3구간 전환이 그만큼 느려져 버린다.
+        // 늘어난 여유는 순수하게 그 뒤에 이어지는 전환 구간의 몫으로만 쓴다.
+        var beliefBoxTotalPx = 3 * 0.65 * vh;
+        var beliefProgress = beliefBoxTotalPx > 0
+          ? Math.min(1, Math.max(0, beliefScrolled / beliefBoxTotalPx))
           : 0;
         var beliefZones = 3;
         var beliefIdx = beliefProgress > 0
@@ -414,7 +497,154 @@ document.addEventListener("DOMContentLoaded", function () {
         if (beliefVideoDescText) {
           beliefVideoDescText.classList.toggle("is-risen", beliefIdx >= 2);
         }
+        // (2026-09-02) "우리의 신념" → "우리는 콜드젯입니다" 전환 — 박스 3구간
+        // 예산을 다 쓴 뒤 추가로 스크롤되는 여유(+100vh, 위 beliefBoxTotalPx
+        // 이후분)를 이 전환 구간의 예산으로 삼는다. 이 구간에서는:
+        //   - 제목(beliefPinTitleEl): 스크롤과 같은 속도(1:1)로 위로 이동
+        //     (=스크롤이 멈추지 않았다면 원래 sticky가 풀려 자연스럽게
+        //     화면 밖으로 나갔을 움직임을 인라인 transform으로 대신 흉내)
+        //   - 영상(beliefVideoWrap): 제목보다 느린 속도(0.35배)로 위로 이동
+        //     (아직 화면에 남아 스크롤이 "정상 속도"로 보이는 새 섹션에
+        //     서서히 덮이는 동안 자기 자신은 천천히 빠져나가는 효과)
+        //   - 본문 문장(beliefVideoDescText): 움직이지 않고 제자리에서
+        //     서서히 투명해짐(opacity)
+        // 두 요소(제목/영상) 모두 이 구간 내내 CSS상으로는 여전히 sticky로
+        // "고정"된 상태다(전환용 여유가 각자의 sticky 컨테이너 높이에 포함돼
+        // 있으므로) — 인라인 transform이 그 고정을 상쇄해 서로 다른 속도로
+        // 풀려나는 것처럼 보이게 하는 방식. 구간 예산을 다 쓰는 순간(=아래
+        // beliefTransitionScrolled가 상한에 도달하는 순간) 두 컨테이너의
+        // sticky 범위도 정확히 함께 끝나므로, 그 이후 자연스러운 문서 흐름
+        // 스크롤과 인라인 transform이 매끄럽게 이어진다.
+        var beliefTransitionTotalPx = 1.0 * vh;
+        var beliefTransitionScrolled = Math.min(
+          beliefTransitionTotalPx,
+          Math.max(0, beliefScrolled - beliefBoxTotalPx)
+        );
+        var beliefTransitionProgress = beliefTransitionTotalPx > 0
+          ? beliefTransitionScrolled / beliefTransitionTotalPx
+          : 0;
+        if (beliefPinTitleEl) {
+          beliefPinTitleEl.style.transform = beliefTransitionScrolled > 0
+            ? "translateY(-" + beliefTransitionScrolled + "px)"
+            : "";
+        }
+        if (beliefVideoWrap) {
+          var beliefVideoLagPx = beliefTransitionScrolled * 0.35;
+          beliefVideoWrap.style.transform = beliefTransitionScrolled > 0
+            ? "translateY(-" + beliefVideoLagPx + "px)"
+            : "";
+        }
+        if (beliefVideoDescText) {
+          beliefVideoDescText.style.opacity = beliefTransitionProgress > 0
+            ? String(Math.max(0, 1 - beliefTransitionProgress * 1.4))
+            : "";
+        }
       }
+      // (2026-09-02, 후속8) 반드시 위 belief 전환 블록"뒤에서" 호출 — 그
+      // 블록이 beliefPinTitleEl.style.transform을 매 프레임 무조건 쓰기
+      // 때문에(전환 구간이 아니면 ""로 지움), 순서가 바뀌면 이 함수가 준
+      // scale이 곧바로 지워져 버린다. clearOnSettle:false로 넘겨 틀고정된
+      // 뒤(progress>=1)에는 이 함수가 transform을 아예 건드리지 않게 하고,
+      // 그 이후의 값은 전적으로 위 블록(정지 시 ""/전환 구간엔 translateY)에
+      // 맡긴다.
+      applyTitleShrinkZoom(beliefPinTitleEl, beliefPinTitleH2, vh, false);
+      // (2026-09-02) "우리는 콜드젯입니다" 섹션 자체의 제목 sticky pin 여부 →
+      // 영상 sticky top/height 갱신 → 2구간 박스/문장 등장 — 위 belief* 블록과
+      // 완전히 같은 패턴.
+      // (2026-09-02, 후속15) 사용자 요청 — 이 섹션도 "우리의 신념 → 우리는
+      // 콜드젯입니다" 전환과 완전히 같은 방식으로 다음 섹션(메뉴 선택)에게
+      // 화면을 넘겨주도록, 더 이상 "이 섹션 자신은 전환 로직이 필요 없다"가
+      // 아니게 됨 — 아래 coldjetVideoScroll 블록 끝에 belief와 동일한 전환
+      // 블록을 추가했다(이 섹션 다음의 .section-menu-picker가 그 여유만큼
+      // 음수 margin-top으로 겹쳐 올라오는 CSS 트릭도 style.css에 함께 추가).
+      var coldjetTitlePinned = coldjetPinTitleEl
+        ? coldjetPinTitleEl.getBoundingClientRect().top <= 0
+        : false;
+      if (coldjetPinTitleEl) {
+        coldjetPinTitleEl.classList.toggle("is-pinned", coldjetTitlePinned);
+      }
+      // (2026-09-02, 후속4) 영상 프레임이 이제 "제목 아래 남은 영역"이 아니라
+      // 뷰포트 전체(top:0/height:100vh, style.css의 .coldjet-video-wrap 참고)로
+      // 고정값이 되어, 예전처럼 제목 실측 높이로 top/height를 매 프레임 갱신할
+      // 필요가 없어짐 — is-pinned 토글만 남는다.
+      if (coldjetVideoWrap) {
+        coldjetVideoWrap.classList.toggle("is-pinned", coldjetTitlePinned);
+      }
+      // (2026-09-02, 후속2) "박스가 영상 나올 때 함께 올라오게" — 더 이상 박스의
+      // 첫 등장(is-risen)을 스크롤 구간(idx)에 걸어두지 않고, 영상 자체가
+      // 틀고정되는 순간(coldjetTitlePinned, 위에서 이미 계산됨)과 동시에 뜨도록
+      // 바꿈. 이후 "한 번 더 스크롤"하면 박스는 퇴장하고 문장이 그 자리로
+      // 올라오는 것은 기존과 동일 — 구간이 2개(0: 박스만 정지/1: 박스 퇴장+문장
+      // 등장).
+      if (coldjetVideoScroll && (coldjetVideoBoxLead || coldjetVideoDescText)) {
+        var coldjetScrollRect = coldjetVideoScroll.getBoundingClientRect();
+        var coldjetScrolled = -coldjetScrollRect.top;
+        // (2026-09-02, 후속15) belief와 동일하게, 2구간 박스 진행률은 컨테이너
+        // 전체 높이(이제 전환 여유 +100vh가 추가돼 있음)와 무관하게 고정
+        // 예산(2 * 0.65 * vh)만 기준으로 계산 — 아래 전환 블록이 그 이후분을
+        // 별도로 가져다 쓴다(belief의 beliefBoxTotalPx와 정확히 같은 방식).
+        var coldjetBoxTotalPx = 2 * 0.65 * vh;
+        var coldjetProgress = coldjetBoxTotalPx > 0
+          ? Math.min(1, Math.max(0, coldjetScrolled / coldjetBoxTotalPx))
+          : 0;
+        var coldjetZones = 2;
+        var coldjetIdx = coldjetProgress > 0
+          ? Math.min(coldjetZones - 1, Math.floor(coldjetProgress * coldjetZones))
+          : 0;
+        if (coldjetVideoBoxLead) {
+          coldjetVideoBoxLead.classList.toggle("is-risen", coldjetTitlePinned);
+          coldjetVideoBoxLead.classList.toggle("is-exited", coldjetIdx >= 1);
+        }
+        if (coldjetVideoDescText) {
+          coldjetVideoDescText.classList.toggle("is-risen", coldjetIdx >= 1);
+        }
+        if (coldjetScrollHintEl) {
+          coldjetScrollHintEl.classList.toggle("is-hidden", coldjetIdx >= 1);
+        }
+        // (2026-09-02, 후속15) "우리의 신념" → "우리는 콜드젯입니다" 전환
+        // 블록(위 beliefTransition* 부분)과 완전히 동일한 방식·속도 —
+        // 박스 2구간 예산(coldjetBoxTotalPx)을 다 쓴 뒤 추가로 스크롤되는
+        // 여유(+100vh, style.css의 .coldjet-video-scroll 참고)를 이 전환
+        // 구간의 예산으로 삼는다:
+        //   - 제목(coldjetPinTitleEl): 스크롤과 같은 속도(1:1)로 위로 이동
+        //   - 영상(coldjetVideoWrap): 제목보다 느린 속도(0.35배)로 위로 이동
+        //   - 본문 문장(coldjetVideoDescText): 제자리에서 서서히 투명해짐
+        // 다음 섹션(.section-menu-picker)은 이 전환 여유만큼 음수
+        // margin-top으로 끌어올려 겹쳐 두어(style.css 참고), 이 구간을
+        // 스크롤하는 동안 순수 문서 흐름 속도(=스크롤과 1:1)로 아래에서
+        // 위로 올라오며 이 영상 화면을 덮는다 — .section-coldjet이
+        // .belief-video-scroll의 전환 여유를 덮던 것과 정확히 같은 트릭.
+        var coldjetTransitionTotalPx = 1.0 * vh;
+        var coldjetTransitionScrolled = Math.min(
+          coldjetTransitionTotalPx,
+          Math.max(0, coldjetScrolled - coldjetBoxTotalPx)
+        );
+        var coldjetTransitionProgress = coldjetTransitionTotalPx > 0
+          ? coldjetTransitionScrolled / coldjetTransitionTotalPx
+          : 0;
+        if (coldjetPinTitleEl) {
+          coldjetPinTitleEl.style.transform = coldjetTransitionScrolled > 0
+            ? "translateY(-" + coldjetTransitionScrolled + "px)"
+            : "";
+        }
+        if (coldjetVideoWrap) {
+          var coldjetVideoLagPx = coldjetTransitionScrolled * 0.35;
+          coldjetVideoWrap.style.transform = coldjetTransitionScrolled > 0
+            ? "translateY(-" + coldjetVideoLagPx + "px)"
+            : "";
+        }
+        if (coldjetVideoDescText) {
+          coldjetVideoDescText.style.opacity = coldjetTransitionProgress > 0
+            ? String(Math.max(0, 1 - coldjetTransitionProgress * 1.4))
+            : "";
+        }
+      }
+      // (2026-09-02, 후속15) 반드시 위 콜드젯 전환 블록 "뒤에서" 호출 — belief
+      // 쪽(위 applyTitleShrinkZoom(beliefPinTitleEl...) 호출부 주석)과 정확히
+      // 같은 이유로 clearOnSettle:false로 변경(기존 true) — 전환 블록이
+      // coldjetPinTitleEl.style.transform을 매 프레임 관리하므로, 이 함수가
+      // 그 값을 지워버리지 않게 한다.
+      applyTitleShrinkZoom(coldjetPinTitleEl, coldjetPinTitleH2, vh, false);
       var focusY = vh * VALUE_FOCUS_LINE_RATIO;
       var VALUE_FOCUS_MAX_DIST = vh * VALUE_FOCUS_MAX_DIST_RATIO;
       var best = null;
@@ -485,10 +715,15 @@ document.addEventListener("DOMContentLoaded", function () {
     applyValueFocus();
   }
 
-  // 스크롤 리빌 애니메이션 (후속61, 첫 페이지 정적 섹션 전용): 뷰포트에 들어오면
+  // 스크롤 리빌 애니메이션 (후속61, 원래는 첫 페이지 정적 섹션 전용이었으나
+  // 후속9에서 홈 하단 "메뉴 선택" 카드 섹션 + 사이트 공통 푸터(모든 57개
+  // 페이지가 공유)까지 확장됨): 뷰포트에 들어오면
   // .reveal/.reveal-scale/.reveal-pop 요소에 is-visible을 붙여 CSS 트랜지션으로
   // 나타나게 함. 카운트업과 달리 1회성 연출이므로 재생 뒤 관련 클래스를 전부
-  // 제거해 :hover 등 요소 자체의 transform과 충돌하지 않도록 정리한다.
+  // 제거해 :hover 등 요소 자체의 transform과 충돌하지 않도록 정리한다. 이
+  // querySelectorAll은 페이지 로드 시 한 번만 실행되므로, 해당 클래스가 없는
+  // 페이지에서는 revealEls.length가 0이라 관찰자 자체가 아예 설치되지 않는다
+  // (기존 56개 서브페이지가 그랬듯, 오버헤드 없이 자동으로 안전하게 스킵됨).
   var revealEls = document.querySelectorAll(".reveal, .reveal-scale, .reveal-pop");
   if (revealEls.length) {
     var clearRevealClasses = function (el) {
@@ -565,10 +800,20 @@ document.addEventListener("DOMContentLoaded", function () {
     var stackdoZones = stackdoPanels.length + 1;
     var stackdoGallery = document.getElementById("stackdoGallery");
     var stackdoFrame = stackdoScroll.querySelector(".stackdo-frame");
+    // (2026-09-02, 후속8) "우리가 하는 일" 제목줄에도 콜드젯 제목과 같은
+    // 확대→축소 연출 적용 — .stackdo-header는 그 자체가 sticky는 아니고
+    // sticky인 .stackdo-frame의 맨 위 자식(오프셋 없음)이라, 이 요소 자신의
+    // rect.top이 0에 닿는 순간이 곧 프레임이 틀고정되는 순간과 정확히
+    // 일치한다(아래 is-pinned 토글에 쓰는 stackdoScroll 기준과도 동일).
+    var stackdoHeaderEl = stackdoScroll.querySelector(".stackdo-header");
+    var stackdoHeaderH2 = stackdoHeaderEl
+      ? stackdoHeaderEl.querySelector("h2")
+      : null;
     var updateStackdo = function () {
       stackdoTicking = false;
       var rect = stackdoScroll.getBoundingClientRect();
       if (stackdoFrame) stackdoFrame.classList.toggle("is-pinned", rect.top <= 0);
+      applyTitleShrinkZoom(stackdoHeaderEl, stackdoHeaderH2, window.innerHeight, true);
       var total = rect.height - window.innerHeight;
       var scrolled = -rect.top;
       var progress = total > 0 ? Math.min(1, Math.max(0, scrolled / total)) : 0;

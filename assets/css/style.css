@@ -90,6 +90,10 @@
 }
 
 * { box-sizing: border-box; }
+/* (2026-09-02, 후속14) 인덱스 페이지 스크롤 스냅(scroll-snap-type: y
+   proximity + .section-menu-picker/body.home .site-footer의
+   scroll-snap-align) — 사용자 요청으로 도입했다가, 이후 사용자 요청으로
+   다시 완전히 제거함. html에는 scroll-behavior/overflow-x만 남긴다. */
 html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   margin: 0;
@@ -101,7 +105,8 @@ body {
      그 컨테이너 기준으로만 붙으려 하면서 사실상 sticky가 작동을 멈춤 —
      루트 요소(html)의 overflow는 뷰포트 자체로 전파되어 안전하지만 body는
      그렇지 않음. 가로 스크롤 방지는 위 html { overflow-x: hidden }
-     하나로만 충분(아래 .bg-navy 수정이 실제 원인 해결, 이건 안전망). */
+     하나로만 충분(당시 실제 원인은 문제였던 섹션 자체의 CSS 수정으로
+     해결했고, 그 섹션은 이후 개편으로 제거됨 — 이 html 규칙은 안전망). */
   font-family: "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", -apple-system,
     BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, sans-serif;
   color: var(--text-body);
@@ -458,17 +463,13 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 .bg-pale { background: var(--blue-pale); }
 .bg-gray { background: var(--gray-bg); }
 .bg-mint { background: var(--mint); }
-/* (2026-08-28) position:relative + overflow:hidden 추가 — 아래
-   body.home .bg-navy::before(장식용 은은한 광원 원, top:-15%/right:-8%로 일부러
-   섹션 밖으로 살짝 걸치게 만든 요소)가 이 section 자체엔 position이 없어
-   containing block을 찾지 못해 문서 전체 기준으로 배치되면서 페이지 전체에
-   불필요한 가로 스크롤(빈 공간)을 만들던 버그를 수정. overflow:hidden으로
-   그 광원이 섹션 밖으로 새지 않고 정확히 이 섹션 안에서만 살짝 걸치도록 클립. */
-.bg-navy { position: relative; overflow: hidden; background: linear-gradient(160deg, var(--navy-deep), var(--navy)); color: rgba(255,255,255,0.92); }
-.bg-navy h2, .bg-navy h3 { color: var(--white); }
-.bg-navy .section-head p { color: rgba(255,255,255,0.7); }
-.split h2 { font-size: clamp(28px, 3.4vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.28; }
-.split p { font-size: 16.5px; line-height: 1.75; }
+/* (2026-09-02, 후속9) 이 세 유틸리티(.bg-pale/.bg-gray/.bg-mint)를 쓰던 홈의
+   정적 소개 섹션들과, 아래에 있던 .bg-navy(Cold Jet 공식 대리점 섹션)·
+   .split(그 섹션의 2단 레이아웃)은 "우리는 콜드젯 팀입니다" 섹션 다음에 있던
+   5개 섹션을 전부 "메뉴 선택" 카드 섹션으로 교체하며 함께 제거됨(generate.py
+   build_home() 참고). .bg-pale/.bg-gray/.bg-mint 세 톤 유틸리티 자체는 다른
+   곳에서도 재사용할 수 있어 남겨두고, 그 섹션에만 쓰이던 .bg-navy/.split
+   전용 규칙은 정리함. */
 
 .stackdo-section { background: var(--white); padding: 0; }
 .stackdo-scroll { position: relative; height: calc(100vh + 6 * 62vh); }
@@ -524,8 +525,23 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    sticky로 고정되는 그 순간(main.js가 stackdoScroll의 rect.top<=0을
    감지해 .stackdo-frame에 is-pinned를 붙임) 제목 줄만 불투명한 흰
    블러 바 + 하단 경계선으로 바뀌며 색이 빠지고 도드라져 보인다. */
+/* (2026-09-02, 후속10) 사용자 피드백 — 히어로 영상이 끝나고 이 제목이 화면을
+   채우는 순간, 제목 위쪽 여백(패딩)이 30px로 좁아 히어로에서 곧바로 이어질
+   때 답답해 보인다는 요청으로 상단 패딩을 늘림(좌우·하단은 탭·갤러리
+   레이아웃에 영향을 주지 않도록 유지). .stackdo-frame이 position:sticky +
+   height:100vh인 flex column이라 여기서 늘어난 만큼은 아래
+   .stackdo-stage(flex:1 1 auto)가 자동으로 줄어들어 흡수하므로, 전체 스크롤
+   높이 계산(.stackdo-scroll의 calc(100vh + 6*62vh) 등)에는 영향 없다.
+   (2026-09-02, 후속11) 처음엔 clamp(56px, 8vw, 88px)까지 늘렸으나 오히려
+   위쪽 여백이 너무 많이 비어 보인다는 후속 피드백 → clamp(36px, 4.5vw,
+   52px)로 축소.
+   (2026-09-02, 후속12) 그래도 다른 "우리..." 섹션(우리의 가치/신념 —
+   .value-pin-title·.belief-pin-title, 우리는 콜드젯 팀입니다 —
+   .coldjet-pin-title)과 간격이 다르다는 지적 — 그 셋은 모두 정확히
+   동일한 padding: 28px 24px(모바일 20px 20px)를 쓰는 sticky 제목 줄이다.
+   .stackdo-header도 완전히 같은 값으로 맞춰 통일. */
 .stackdo-header {
-  flex-shrink: 0; text-align: center; padding: 30px 24px; z-index: 2;
+  flex-shrink: 0; text-align: center; padding: 28px 24px; z-index: 2;
   background: transparent; border-bottom: 1px solid transparent;
   transition: background-color .35s ease, border-color .35s ease;
 }
@@ -533,7 +549,14 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   background: rgba(255, 255, 255, .96); backdrop-filter: blur(6px);
   border-bottom-color: var(--gray-line);
 }
-.stackdo-header h2 { margin: 0; font-size: clamp(31px, 4vw, 53px); font-weight: 800; letter-spacing: -0.02em; }
+/* (2026-09-02, 후속8) display:inline-block로 바꿔 h2 자신의 박스가 부모
+   전체 너비가 아니라 텍스트 내용 크기에 맞춰지도록 함 — 부모의
+   text-align:center가 그대로 중앙 정렬해주므로 보이는 모습은 이전과 동일하지만,
+   이제 h2.offsetWidth가 실제 글자 너비를 정확히 반영해 main.js의
+   applyTitleShrinkZoom(확대→축소 연출)이 화면 폭 대비 안전한 배율을 올바르게
+   계산할 수 있다(전에는 offsetWidth가 부모의 전체 너비를 그대로 반환해
+   버려, 이 제목만 확대 효과가 거의 나타나지 않는 문제가 있었음). */
+.stackdo-header h2 { display: inline-block; margin: 0; font-size: clamp(31px, 4vw, 53px); font-weight: 800; letter-spacing: -0.02em; }
 /* tabs와 gallery가 동일한 5열 grid(동일 간꺩/패덤)를 쎄서 열 i의 소제목과 이미지가
    수직으로 정렬된다. 둘 다 <a> 럎퍼로 변경되어 해당 페이지로 바로 이동하고, 토을
    가리키띌은 둘 중 하나에 올리대맜 동일한 설뭅(열)이 하이니트되어(JS가 서로
@@ -742,7 +765,7 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   }
 }
 @media (max-width: 860px) {
-  .stackdo-header { padding: 24px 20px; }
+  .stackdo-header { padding: 20px 20px; }
   .stackdo-header h2 { font-size: clamp(24px, 6.5vw, 32px); }
   .stackdo-tab-label { font-size: 12px; }
   .stackdo-panel { padding: 0 20px; }
@@ -1038,12 +1061,17 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    assets/js/main.js의 applyValueFocus()가 매 프레임 계산한다. 박스 톤은
    순수 검정 대신 사이트 다크 네이비(--navy-deep-rgb)를 재사용해 브랜드
    일관성 유지. */
+/* (2026-09-02, 콜드젯 전환) 뒤이어 붙는 "우리는 콜드젯입니다" 섹션으로 넘어가는
+   전환 구간을 위해 여유를 +100vh 추가. 기존 3구간(박스 등장/정지/퇴장) 예산인
+   "3*65vh"는 assets/js/main.js에서 이 요소의 실제 높이가 아니라 고정값으로
+   따로 계산하도록 바꿔뒀으므로, 이 추가분이 3구간의 타이밍을 늘리지는 않는다 —
+   순수하게 그 뒤에 이어지는 새 전환 전용 스크롤 여유다. */
 .belief-video-scroll {
   position: relative;
-  height: calc(100vh + 3 * 65vh);
+  height: calc(100vh + 3 * 65vh + 100vh);
 }
 @supports (height: 100dvh) {
-  .belief-video-scroll { height: calc(100dvh + 3 * 65vh); }
+  .belief-video-scroll { height: calc(100dvh + 3 * 65vh + 100dvh); }
 }
 /* (2026-09-01, 후속85) 영상이 고정 배너 비율이 아니라 "제목 아래 남은
    화면 전체"를 가득 채우도록 변경 — width만 CSS로 100% 고정하고, height는
@@ -1181,6 +1209,429 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   .belief-video-sub { font-size: clamp(27px, 7.8vw, 33px); }
   .belief-video-logo { width: clamp(100px, 26vw, 140px); margin-top: 12px; }
   .belief-video-desc-text { width: 88%; font-size: clamp(22px, 6.2vw, 29px); }
+}
+
+/* (2026-09-02) "우리는 콜드젯입니다" — "우리의 신념" 바로 다음 섹션. .belief-list와
+   완전히 같은 스크롤잭 구조(제목 sticky → 영상 sticky+3구간 박스/문장 등장)를
+   그대로 재사용하되, 브랜드색을 화이트/CO2톤 대신 사이트 다크 네이비로 바꿔
+   구분한다. margin-top의 음수값(-100vh)이 핵심 트릭 — 문서 흐름상 바로 이전
+   .belief-video-scroll에 추가해 둔 전환용 여유(+100vh)만큼 이 섹션을 위로
+   끌어올려 겹쳐 두면, 그 구간을 스크롤하는 동안 이 섹션이 순수 문서 흐름
+   속도(=스크롤과 1:1)로 아래에서 위로 올라오며 "우리의 신념" 화면을 덮게 된다
+   — 이 섹션 자신의 위치엔 별도 JS 개입이 전혀 필요 없다(반대로 "우리의 신념"
+   쪽 제목/영상은 서로 다른 속도로 움직여야 해서 JS가 개입 — assets/js/main.js
+   applyValueFocus() 중 beliefTransition* 관련 부분 참고). z-index를 올려
+   불투명한 배경으로 이전 섹션 위에 확실히 덮이도록 함. */
+.section-coldjet {
+  position: relative;
+  z-index: 10;
+  /* (2026-09-02, 후속7) 제목이 아주 크게(scale) 등장했다가 줄어드는 연출을
+     넣으면서, 확대된 글자가 화면 좌우 경계를 실제로 넘어가 documentElement의
+     scrollWidth를 늘려 가로 스크롤이 생기는 문제가 발견됨(Playwright로
+     scrollLeft가 실제 움직이는 것까지 확인). 위쪽 html{overflow-x:hidden}만으론
+     완전히 막이지 못했음. 다만 위 94번째 줄 주석대로 이 섹션 안에는 여러
+     position:sticky 요소(.coldjet-pin-title, .coldjet-video-wrap)가 있어
+     overflow:hidden을 쓰면 sticky가 전체적으로 깨지는 전례가 있었으므로,
+     그 대신 "스크롤 컨테이너를 새로 만들지 않으면서 시각적으로만 자르는"
+     overflow-x: clip을 사용 — sticky 동작에 영향 없이 좌우로 넘치는 부분만
+     안전하게 잘라낸다(Playwright로 sticky pin 회귀 재확인 완료). */
+  overflow-x: clip;
+  background-color: var(--navy-deep);
+  /* (2026-09-02, 후속3) "'우리의 가치' 배경과 동일한 패턴" 요청 — .value-content가
+     완전히 어두워졌을 때(--postdo-dark:1) 쓰는 것과 정확히 같은 대각선 빗살무늬
+     (135deg, 흰색 7% 불투명도, 14px 반복)를 그대로 가져옴. 이 섹션은 스크롤에
+     따라 밝기가 바뀌지 않고 처음부터 항상 짙은 네이비이므로 --postdo-dark 같은
+     변수 없이 고정값으로 적용. */
+  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, .07) 0px, rgba(255, 255, 255, .07) 1px, transparent 1px, transparent 14px);
+  background-attachment: fixed;
+  margin-top: calc(-1 * 100vh);
+}
+@supports (height: 100dvh) {
+  .section-coldjet { margin-top: calc(-1 * 100dvh); }
+}
+.coldjet-list {
+  position: relative;
+}
+.coldjet-pin-title {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex; align-items: center; justify-content: center;
+  padding: 28px 24px;
+  background: transparent;
+}
+.coldjet-pin-title h2 {
+  margin: 0; text-align: center;
+  font-size: clamp(31px, 4vw, 53px); font-weight: 800; letter-spacing: -0.02em;
+  color: var(--white);
+}
+/* (2026-09-02, 후속5) 첨부 이미지 색을 실측한 #1c4f8e는 네이비 배경 위에서
+   너무 어두워 눈에 안 띈다는 피드백 — 같은 파랑 계열 색조(hue)를 유지한 채
+   훨씬 밝게 올린 값으로 교체. 강조 대상도 "콜드젯 팀" 글자뿐 아니라 그것을
+   감싸는 따옴표(' ')까지 함께 이 색으로 — 마크업에서 따옴표를 span 안쪽으로
+   옮겨 감쌌다(generate.py 참고). */
+.coldjet-pin-title h2 .hl-coldjet {
+  color: #4da3ff;
+}
+/* (2026-09-02, 후속4) 영상이 다시 화면 전체(위 .coldjet-video-wrap 참고)를 채우게
+   되면서 이 제목바가 영상 위에 그대로 겹쳐 뜨게 됨 — 예전처럼 거의 불투명한
+   바(.92)로 두면 영상을 그만큼 가려 답답해 보이므로, 틀고정된 뒤에도 옅게
+   비치는 유리판처럼 반투명하게(그 아래 영상이 은은히 비치도록) 낮춤. */
+.coldjet-pin-title.is-pinned {
+  background: rgba(27, 36, 38, .4);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+/* (2026-09-02, 후속2) 박스(coldjet-video-box-lead)가 더 이상 별도의 스크롤
+   구간을 기다리지 않고 영상이 나타나는 시점에 함께 떠오르도록 바뀌면서(자세한
+   내용은 assets/js/main.js의 coldjetIdx 처리 참고) 구간이 2개로 줄어듦
+   (0: 박스만 정지 / 1: 박스 퇴장 + 문장 등장) — 그만큼 필요한 스크롤 여유도
+   3*65vh에서 2*65vh로 줄인다.
+   (2026-09-02, 후속15) 사용자 요청 — "우리의 신념 → 우리는 콜드젯입니다"
+   전환(.belief-video-scroll의 마지막 +100vh)과 완전히 같은 방식으로, 이
+   섹션도 박스 2구간을 다 쓴 뒤 다음 섹션(.section-menu-picker)에게 화면을
+   넘겨주는 전환 여유(+100vh)를 추가 — assets/js/main.js의 coldjetTransition*
+   부분이 이 여유를 소비하며 제목/영상을 서로 다른 속도로 밀어 올린다. */
+.coldjet-video-scroll {
+  position: relative;
+  height: calc(100vh + 2 * 65vh + 100vh);
+}
+@supports (height: 100dvh) {
+  .coldjet-video-scroll { height: calc(100dvh + 2 * 65vh + 100dvh); }
+}
+/* (2026-09-02, 후속4) "영상을 다시 크게, 대신 전체 화면에 다 보이게" — 영상
+   프레임을 더 이상 "제목 아래 남은 영역"이 아니라 뷰포트 전체(top:0,
+   height:100vh)로 키움. 대신 .coldjet-pin-title이 그 위에 반투명하게 겹쳐
+   뜨도록(z-index로 순서 보장) 해서, 제목바가 화면을 잡아먹어 영상이 작아
+   보이던 답답함을 줄인다. 이제 높이가 항상 뷰포트 100%로 고정값이라 더 이상
+   JS가 매 프레임 top/height를 갱신할 필요가 없다(예전엔 제목 실측 높이만큼
+   빼야 했으므로 JS가 필요했음). */
+.coldjet-video-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+@supports (height: 100dvh) {
+  .coldjet-video-wrap { height: 100dvh; }
+}
+.coldjet-video-wrap.is-pinned {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* (2026-09-02, 후속5-2) 영상 전체 구간이 밝은/흰 장면 위주라 스크롤다운 표시에
+   그림자만으로는 대비가 부족 — 프레임 하단에 은은한 그라디언트 스크림을 깔아
+   어떤 장면이 나와도 텍스트가 항상 또렷이 보이게 함. 영상 시청 자체를
+   방해하지 않도록 아주 옅게, 하단 일부에만 적용. */
+.coldjet-video-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 200px;
+  background: linear-gradient(to top, rgba(8, 12, 14, .5), rgba(8, 12, 14, 0));
+  pointer-events: none;
+  z-index: 1;
+}
+/* (2026-09-02, 후속4) 다시 cover로 — contain(후속2)이 위아래 잘림은 없앴지만
+   영상이 작아 보이는 문제가 생겨, "크게 보이되 잘림의 답답함은 제목바
+   반투명화로 상쇄"하는 방향으로 바꿈(위 .coldjet-pin-title.is-pinned 참고). */
+.coldjet-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  background: var(--navy-deep);
+}
+/* (2026-09-02, 후속5) "중앙에 배치해줘" — 왼쪽 정렬(belief 박스와 같던 방식)을
+   버리고 belief-video-desc-text와 같은 원리(left:50%+translateX(-50%))로
+   수평 중앙에 고정, 세로 이동만 애니메이션시킨다. */
+.coldjet-video-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: clamp(14px, 1.6vw, 22px);
+  padding: clamp(26px, 3.4vw, 46px);
+  box-sizing: border-box;
+  transform: translate(-50%, 100vh);
+  transition: transform .75s cubic-bezier(.22, .61, .28, 1);
+}
+.coldjet-video-box.is-risen { transform: translate(-50%, -50%); }
+.coldjet-video-box.is-exited { transform: translate(-50%, calc(-50% - 100vh)); }
+.coldjet-video-box-lead {
+  width: min(85%, 900px);
+  text-align: center;
+  background: rgba(27, 36, 38, .55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, .14);
+}
+/* (2026-09-02, 후속5) "WE ARE ONE TEAM" 영문 헤드라인 — 더 이상 위에 딸린
+   작은 킥커가 아니라 이 박스의 주 타이틀이므로 눈에 띄게 크고 굵게, 자간을
+   살짝 넓혀(대문자 영문 특유의 리듬) 강조. */
+.coldjet-video-heading {
+  margin: 0 0 14px;
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--white);
+}
+/* (2026-09-02, 후속5) 콜드젯/바테크 역할 분담을 설명하는 문단으로 내용이
+   바뀌면서, 기존의 크고 굵은 한 줄짜리 강조 문구 스타일 대신 편하게 읽히는
+   본문 문단 스타일로 교체. */
+.coldjet-video-sub {
+  margin: 0;
+  font-size: clamp(15.5px, 1.7vw, 19px);
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, .92);
+  word-break: keep-all;
+}
+/* (2026-09-02, 후속5) "히어로 영상과 동일한" Scroll down 인디케이터 —
+   .hero-scroll과 완전히 같은 구조/애니메이션(@keyframes heroChevronFlow 공유)을
+   쓰되, 페이지 로드 후 6.3초 뒤에 뜨는 히어로 전용 타이머 대신 영상 자체가
+   틀고정되는 순간 함께 나타나고(부모 .coldjet-video-wrap의 opacity 전환에
+   자연히 실려 감), 박스가 퇴장하는 다음 단계로 넘어가면(coldjetIdx>=1)
+   더 이상 필요 없으므로 assets/js/main.js가 is-hidden을 붙여 사라지게 한다. */
+.coldjet-scroll-hint {
+  position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%);
+  z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+  opacity: 1;
+  transition: opacity .5s ease;
+  /* (2026-09-02, 후속5-1) hero-scroll은 항상 어두운 히어로 영상 위에만 놓이지만
+     이 영상은 밝은/흰 장면도 많이 섞여 있어(다큐 몽타주), 흰 글자가 흰 배경
+     위에서 통째로 사라져 안 보이는 문제가 있었음 — 어떤 밝기의 장면 위에서도
+     항상 보이도록 진한 그림자를 둘러 대비를 확보. */
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .7), 0 3px 14px rgba(0, 0, 0, .5);
+}
+.coldjet-scroll-hint.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.coldjet-scroll-hint-chevrons {
+  position: relative; width: 20px; height: 22px;
+  filter: drop-shadow(0 1px 5px rgba(0, 0, 0, .7));
+}
+.coldjet-scroll-hint-chevrons .chevron {
+  position: absolute; top: 0; left: 50%;
+  width: 12px; height: 12px; margin-left: -6px;
+  border-right: 2px solid rgba(255, 255, 255, 0.9); border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: heroChevronFlow 1.6s ease-in infinite;
+}
+.coldjet-scroll-hint-chevrons .chevron:nth-child(2) { animation-delay: .5s; }
+@media (prefers-reduced-motion: reduce) {
+  .coldjet-scroll-hint-chevrons .chevron {
+    animation: none; opacity: .8; transform: translateY(0) rotate(45deg);
+  }
+}
+/* (2026-09-02, 후속5) 두 번째로 스크롤했을 때 나오던 문장(1986년...)을 없애고,
+   "원팀" 느낌을 주는 바테크 × 콜드젯 로고 조합으로 교체 — 위치·등장 애니메이션
+   (숨김→중앙 등장)은 기존 그대로 재사용.
+   (2026-09-02, 후속6) 흰색 카드 배경을 없애고 로고 자체를 투명 배경으로 영상
+   위에 바로 얹음 — 대신 밝은/어두운 장면 어디서든 또렷이 보이도록 로고 실루엣
+   둘레에 흰색 후광(drop-shadow)을 둘러 대비를 확보. 바테크 로고는 새 마크(레드
+   아웃라인, "beyond value" 태그라인 없는 버전)로 교체. 두 로고는 원본 캔버스
+   비율이 서로 크게 달라(바테크 ~2.87:1, 콜드젯 ~5.89:1) 높이나 너비를 그대로
+   맞추면 한쪽이 왜소해 보이므로, 두 로고의 "면적(시각적 크기)"이 비슷해지도록
+   너비를 따로 계산해 둘의 존재감이 비슷하게 보이도록 함. */
+.coldjet-video-desc-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 2.6vw, 34px);
+  transform: translate(-50%, calc(-50% + 100vh));
+  transition: transform .8s cubic-bezier(.22, .61, .28, 1);
+}
+.coldjet-video-desc-text.is-risen {
+  transform: translate(-50%, -50%);
+}
+.coldjet-brand-chip {
+  display: flex; align-items: center; justify-content: center;
+}
+.coldjet-brand-logo {
+  display: block;
+  height: auto;
+  /* 전역 img{max-width:100%}(112번째 줄) 리셋이 부모(.coldjet-brand-chip)의
+     자동 계산 너비를 기준으로 이 로고를 다시 눌러버려, 아래 width:clamp(...)로
+     지정한 값이 실제로는 적용되지 않고 훨씬 작게 렌더링되는 문제가 있었음 —
+     이 클래스에서는 크기를 width로 직접 통제하므로 전역 max-width 제한을
+     해제. */
+  max-width: none;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, .85)) drop-shadow(0 2px 14px rgba(0, 0, 0, .3));
+}
+/* (2026-09-02, 후속7) "로고 X 로고 크기를 지금의 두 배로" — 기본값(최소 너비)은
+   요청대로 정확히 두 배로 올리되, 뷰포트에 비례해 커지는 vw 계수는 원래보다
+   살짝 낮춰(그대로 두 배로 하면 1024px 안팎의 노트북 화면에서 좌우 여백이
+   몇 px 안 남아 잘릴 위험이 있었음) 중간 크기 데스크톱에서도 로고가 화면
+   양옆으로 잘리지 않으면서 확실히 커진 걸 체감할 수 있게 함. */
+.coldjet-brand-logo-vatek {
+  width: clamp(300px, 30vw, 440px);
+}
+.coldjet-brand-logo-coldjet {
+  width: clamp(430px, 43vw, 630px);
+}
+.coldjet-brand-x {
+  font-size: clamp(96px, 10.5vw, 168px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .5);
+}
+@media (max-width: 860px) {
+  .coldjet-video-box-lead {
+    width: auto;
+    left: 16px; right: 16px;
+    max-width: none;
+    padding: 22px 20px;
+    transform: translateY(100vh);
+  }
+  .coldjet-video-box-lead.is-risen { transform: translateY(-50%); }
+  .coldjet-video-box-lead.is-exited { transform: translateY(calc(-50% - 100vh)); }
+  .coldjet-video-heading { font-size: 22px; }
+  .coldjet-video-sub { font-size: 15px; }
+  .coldjet-video-desc-text { gap: 12px; }
+  /* (2026-09-02, 후속7) 모바일은 화면 폭 자체가 좁아 데스크톱처럼 그대로 두 배를
+     적용하면 로고 두 개 + X가 화면 좌우로 잘려나감 — .coldjet-video-wrap의
+     overflow:hidden 때문에 실제 겹치는 대신 시각적으로 잘려 보이게 됨. 잘리지
+     않는 한도 내에서 최대한 키워 이전보다 뚜렷하게 커진 걸 체감하게 함. */
+  .coldjet-brand-logo-vatek { width: clamp(95px, 30vw, 135px); }
+  .coldjet-brand-logo-coldjet { width: clamp(136px, 43vw, 195px); }
+  .coldjet-brand-x { font-size: clamp(32px, 10vw, 48px); }
+}
+
+/* ---------- 메뉴 선택 (홈 하단 내비게이션 카드) ----------
+   (2026-09-02, 후속9) 사용자 요청: "우리는 콜드젯 팀입니다" 섹션 다음에 있던
+   5개 정적 소개 섹션(왜 바테크를 선택해야 할까요 / 우리는 Cold Jet 대한민국
+   공식 대리점입니다 / 다양한 산업 현장에 적용됩니다 / 왜 드라이아이스
+   세척인가요 / 문의 폼)을 전부 제거하고, 그 자리에 "상단 메뉴 말고 여기서도
+   더 쉽고 편하게 원하는 메뉴를 고를 수 있게" 6개 대메뉴 바로가기 카드
+   섹션을 새로 넣음(카드 내용은 generate.py의 menu_picker_html() 참고 —
+   상단 nav_html()과 동일한 MENU 데이터를 그대로 재사용해 정보구조를 두 번
+   정의하지 않는다).
+   카드 등장 애니메이션은 이미 검증된 공용 리빌 시스템(.reveal-pop +
+   --reveal-delay, assets/js/main.js의 IntersectionObserver, 위 bg-mint 등
+   기존 정적 섹션들이 쓰던 것과 동일)을 그대로 재사용 — 새 스크롤 연동 JS를
+   추가하지 않아 리스크가 낮다. 카드마다 인덱스 순서로 0.07초씩 지연을 줘
+   왼쪽 위부터 오른쪽 아래로 순서대로 "톡톡톡" 튀어 오르는 느낌을 준다.
+   카드 자체(제목)와 하위 서브메뉴 칩이 모두 <a>라 앵커 중첩을 피하기 위해
+   "스트레치드 링크" 패턴을 사용 — .menu-picker-title-link::after가 카드
+   전체를 덮는 투명 링크 레이어이고, .menu-picker-chips는 그 위(z-index)에
+   있어 각 칩이 독립적으로 클릭된다.
+   (2026-09-02, 후속10) 사용자 피드백 — 처음엔 바로 위 콜드젯 섹션과 같은
+   어두운 네이비를 그대로 이어받았으나, "이 섹션 배경은 밝았으면 좋겠고
+   콜드젯에서 넘어올 때 화면 전체가 밝아지는 느낌이면 좋겠다"는 요청으로
+   교체. 섹션 시작 지점(콜드젯과 맞닿는 곳)은 콜드젯의 --navy-deep에서
+   시작해 480px 스크롤 구간 동안 흰색으로 밝아지는 세로 그라디언트를 배경에
+   깔아, 스크롤해서 이 경계를 지날 때 화면 전체(가로 폭 전체가 같은 그라디언트
+   단계를 보여주므로)가 실제로 밝아지는 것처럼 보이게 했다 — 별도의 스크롤
+   연동 JS 없이 순수 CSS 그라디언트만으로 구현(콜드젯 쪽은 스크롤 위치에 따라
+   밝기가 바뀌는 변수가 없는 고정 배경이라, 반대쪽도 고정 그라디언트로 맞추는
+   편이 더 안전하고 간단함). 480px는 제목+부제(.menu-picker-head, 보통
+   250~350px 안팎)가 아직 살짝 어두운 구간 위에 걸치도록(그래서 흰 글자 유지)
+   하면서, 카드 그리드(.menu-picker-grid, margin-top 이후)는 항상 완전히
+   흰 배경 위에 오도록 잡은 값 — 실측 스크린샷으로 확인 후 필요하면 조정.
+   같은 요청으로 눈에 띄던 "Explore VATEK" eyebrow와 카드마다 있던 원색
+   이모지 아이콘(🧊⚙️🏆 등, "얼룩덜룩한 아이콘")도 모두 제거해 더 차분하고
+   깔끔한 인상으로 정리 — 카드는 이제 배경이 흰색이므로 다른 화이트 배경
+   카드들(.sub-card 등)과 톤을 맞춰 밝은 테마로 다시 칠함.
+   (2026-09-02, 후속15) 사용자 요청 — "우리는 콜드젯 팀입니다" 섹션도
+   "우리의 신념 → 우리는 콜드젯입니다" 전환과 똑같은 방식으로 이 섹션에게
+   화면을 넘기도록 함. .section-coldjet이 .belief-video-scroll의 전환
+   여유(+100vh)를 음수 margin-top으로 덮던 것과 정확히 같은 트릭 —
+   .coldjet-video-scroll에 추가해 둔 전환 여유(+100vh, 위 참고)만큼 이
+   섹션을 위로 끌어올려 겹쳐 두면, 그 구간을 스크롤하는 동안 이 섹션이
+   순수 문서 흐름 속도(=스크롤과 1:1)로 아래에서 위로 올라오며 콜드젯
+   영상 화면을 덮는다. z-index는 .section-coldjet(10)보다 높게 잡아 겹치는
+   동안 확실히 그 위에 그려지도록 함. 이 섹션 배경(위 그라디언트)의 0%
+   지점(navy-deep)이 이제 이 겹침 구간의 맨 앞부분과 만나 콜드젯의 짙은
+   네이비와 이음매 없이 이어지고, 480px 지점부터는 이미 흰색이라 겹침이
+   끝나갈 무렵엔 화면이 거의 다 밝아져 있다 — 별도 계산 없이도 기존
+   브라이트닝 그라디언트가 그대로 이 전환의 커버 배경 역할을 겸한다. */
+.section-menu-picker {
+  position: relative;
+  z-index: 11;
+  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--white) 480px, var(--white) 100%);
+  color: var(--text-body);
+  margin-top: calc(-1 * 100vh);
+}
+@supports (height: 100dvh) {
+  .section-menu-picker { margin-top: calc(-1 * 100dvh); }
+}
+.menu-picker-head { max-width: 640px; }
+.menu-picker-head h2 { color: var(--white); }
+.menu-picker-head p { color: rgba(255, 255, 255, 0.78); }
+
+.menu-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 12px;
+}
+.menu-picker-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--gray-line);
+  border-radius: var(--radius);
+  padding: 30px 28px 44px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.menu-picker-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(79, 173, 184, 0.45);
+  box-shadow: var(--shadow-lift);
+}
+.menu-picker-num {
+  display: block; margin-bottom: 16px;
+  font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted);
+}
+.menu-picker-card h3 { margin: 0 0 10px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+.menu-picker-title-link { color: var(--text-dark); }
+/* 카드 전체를 클릭 영역으로 만드는 스트레치드 링크 — 실제 <a>는 제목에만
+   걸려 있지만 ::after가 카드 전체(inset:0)를 덮어 어디를 눌러도 이동한다.
+   아래 .menu-picker-chips가 z-index로 그 위에 있어 칩은 각자 따로 클릭됨. */
+.menu-picker-title-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.menu-picker-card p {
+  margin: 0 0 20px; font-size: 14.5px; line-height: 1.65; color: var(--text-muted);
+}
+.menu-picker-chips { display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 2; }
+.menu-picker-chip {
+  font-size: 12.5px; font-weight: 600; color: var(--text-body);
+  background: var(--blue-pale); border: 1px solid var(--gray-line);
+  padding: 6px 12px; border-radius: 999px;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.menu-picker-chip:hover { background: var(--ice-pale); border-color: var(--ice); color: var(--ice-dark); }
+.menu-picker-chip-more { color: var(--blue-dark); font-weight: 800; }
+.menu-picker-arrow {
+  position: absolute; right: 24px; bottom: 20px; font-size: 18px; color: var(--gray-line);
+  transition: transform .25s ease, color .25s ease;
+}
+.menu-picker-card:hover .menu-picker-arrow { transform: translate(4px, -4px); color: var(--ice-dark); }
+
+@media (max-width: 960px) {
+  .menu-picker-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .menu-picker-grid { grid-template-columns: 1fr; }
+  .menu-picker-card { padding: 26px 24px 40px; }
+  .menu-picker-arrow { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-picker-card, .menu-picker-arrow, .menu-picker-chip { transition: none; }
 }
 
 .value-content {
@@ -1421,10 +1872,6 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 }
 .icon-row .item span { font-size: 14px; font-weight: 800; color: var(--text-dark); }
 
-/* two-col with image */
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-.split .img-ph { min-height: 320px; }
-
 /* comparison table */
 .compare-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-line); }
 .compare-table th, .compare-table td { padding: 18px 20px; border-bottom: 1px solid var(--gray-line); font-size: 15.5px; text-align: left; }
@@ -1440,25 +1887,6 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   font-size: 15px; font-weight: 700; color: var(--text-dark); transition: border-color .15s ease, color .15s ease, background .15s ease;
 }
 .chip:hover, a.chip:hover { border-color: var(--ice); color: var(--ice-dark); background: var(--ice-pale); }
-
-/* CTA / contact form */
-.cta-panel {
-  background: var(--white); border: 1px solid var(--gray-line); border-radius: 20px;
-  box-shadow: var(--shadow); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-}
-.cta-panel h2 { font-size: clamp(26px, 3.2vw, 38px); font-weight: 800; letter-spacing: -0.02em; }
-.cta-panel > div > p { font-size: 17px; line-height: 1.7; }
-.form-grid { display: grid; gap: 12px; }
-.form-grid input, .form-grid select, .form-grid textarea {
-  width: 100%; padding: 14px 16px; border: 1px solid var(--gray-line); border-radius: 8px;
-  font-size: 15.5px; font-family: inherit; background: var(--gray-bg);
-}
-.form-grid textarea { min-height: 90px; resize: vertical; }
-.form-grid .consent { font-size: 12.5px; color: var(--text-muted); display: flex; gap: 6px; align-items: flex-start; }
-.form-grid button {
-  background: var(--blue); color: var(--white); border: none; padding: 15px 22px; border-radius: 8px;
-  font-weight: 800; font-size: 16px; cursor: pointer;
-}
 
 /* footer */
 .site-footer { background: linear-gradient(180deg, var(--navy-deep) 0%, #0e1415 100%); color: rgba(255,255,255,0.72); padding: 56px 0 28px; font-size: 13.5px; }
@@ -1530,8 +1958,6 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   .pillar-grid.cols-4 { grid-template-columns: repeat(2,1fr); }
   .stat-bar { grid-template-columns: repeat(2,1fr); }
   .icon-row { grid-template-columns: repeat(3,1fr); }
-  .split { grid-template-columns: 1fr; }
-  .cta-panel { grid-template-columns: 1fr; padding: 28px; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .sub-grid { grid-template-columns: 1fr; }
   .quote-strip { grid-template-columns: 1fr; }
@@ -1539,8 +1965,14 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
      쿼리에서 일괄 처리 — WHAT WE DO(.stackdo-list)와 동일한 860px 기준을 맞춤. */
 }
 
-/* ===== 스크롤 리빌 애니메이션 (첫 페이지 정적 섹션 전용) =====
-   Customer Voice / Why VATEK / Cold Jet 파트너 / Industries / Comparison / 문의 CTA
+/* ===== 스크롤 리빌 애니메이션 =====
+   원래는 첫 페이지의 정적 소개 섹션 전용이었음(당시엔 Customer Voice / Why
+   VATEK / Cold Jet 파트너 / Industries / Comparison / 문의 CTA — 이 중
+   Customer Voice를 제외한 5개는 이후 개편으로 제거·교체됨). 후속9에서 홈 하단
+   "메뉴 선택" 카드 섹션(.menu-picker-card)과, 모든 57개 페이지가 공유하는
+   공통 푸터(.footer-brand/.footer-col/.footer-bottom, generate.py의
+   footer_html() 참고)까지 확장 적용 — 이제 이 리빌 시스템은 홈 전용이
+   아니라 사이트 전체에서 동작한다.
    섹션의 텍스트·이미지가 스크롤로 뷰포트에 들어올 때 아래에서 위로 자리를 잡으며
    나타나는 연출. WHAT WE DO(.stackdo-*)와 우리의 능력(.ability-*)은 이미 각자의
    스크롤 연출(핀 고정)이 있으므로 여기서는 다루지 않음. 1회성 연출이라 재생 후
@@ -1599,16 +2031,27 @@ body.home .eyebrow::after {
   width: 20px; height: 1.5px; flex: 0 0 auto;
   background: linear-gradient(90deg, var(--ice), var(--blue));
 }
-body.home .bg-navy .eyebrow::before,
-body.home .bg-navy .eyebrow::after {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.28), var(--ice));
-}
+/* (2026-09-02, 후속9→후속10) .bg-navy(Cold Jet 공식 대리점 섹션) 제거 후
+   "메뉴 선택" 섹션(.section-menu-picker)의 eyebrow에 잠시 재사용했었으나,
+   후속10에서 그 eyebrow("Explore VATEK") 자체를 완전히 제거하기로 하며
+   이 보정도 함께 정리함. */
 
 /* ---- 섹션 헤드 제목 — 사이트에 이미 쓰이던 그라디언트 텍스트 톤(stat-bar 등)을
    재사용해 톤을 유지하면서 임팩트만 살짝 더함 ---- */
 body.home .section-head h2 {
   background: linear-gradient(135deg, var(--navy) 0%, var(--blue-dark) 55%, var(--ice-dark) 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+/* (2026-09-02, 후속9) 위 그라디언트 텍스트는 밝은 배경을 전제로 만들어진
+   톤이라, 어두운 네이비 배경인 "메뉴 선택" 섹션에 그대로 두면 글자가 배경과
+   거의 같은 톤으로 묻혀 잘 안 보인다 — 아래 body.home .section-voice의
+   같은 문제(어두운 배경 위 그라디언트-클립-텍스트) 해법을 그대로 재사용해
+   일반 단색(흰색)으로 되돌린다. */
+body.home .menu-picker-head h2 {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--white);
 }
 
 /* ---- 6개 정적 섹션 공통 리듬: 여백을 조금 더 넉넉하게 + 은은한 배경 광원으로
@@ -1617,19 +2060,11 @@ body.home .section-head h2 {
 body.home section:not(.hero):not(.stackdo-section):not(.section-value) {
   padding: clamp(76px, 9.5vw, 144px) 0;
 }
-body.home .section-voice,
-body.home .bg-mint,
-body.home .section-industries,
-body.home .bg-pale,
-body.home .section-contact {
+body.home .section-voice {
   position: relative;
   isolation: isolate;
 }
-body.home .section-voice::before,
-body.home .bg-mint::before,
-body.home .section-industries::before,
-body.home .bg-pale::before,
-body.home .section-contact::before {
+body.home .section-voice::before {
   content: "";
   position: absolute; top: -8%; left: 50%; transform: translateX(-50%);
   width: min(920px, 140%); height: 60%;
@@ -1717,25 +2152,6 @@ body.home .icon-row .item .ic {
 }
 body.home .icon-row .item span { font-size: 14.5px; }
 
-/* ---- Cold Jet 공식 대리점(bg-navy) — 은은한 광원 + 플레이스홀더 이미지 영역을
-   더 정제된 "준비 중" 패널 느낌으로 ---- */
-body.home .bg-navy {
-  background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 60%, #24393c 100%);
-}
-body.home .bg-navy::before {
-  content: "";
-  position: absolute; top: -15%; right: -8%; z-index: -1;
-  width: 480px; height: 480px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(79, 173, 184, 0.16), transparent 70%);
-  pointer-events: none;
-}
-body.home .bg-navy .split > div:first-child p { color: rgba(255, 255, 255, 0.78); }
-body.home .bg-navy .img-ph {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
-  border: 1px dashed rgba(255, 255, 255, 0.35);
-  border-radius: 18px;
-}
-
 /* ---- Industries 칩 + CTA 밴드 (.chip-grid/.cta-band는 서브페이지와도 공유하므로
    body.home 스코프 필수) ---- */
 body.home .chip {
@@ -1769,38 +2185,6 @@ body.home .compare-table th {
 }
 body.home .compare-table tr:nth-child(even) td { background: rgba(243, 249, 250, 0.6); }
 body.home .compare-table tr:hover td { background: var(--blue-pale); }
-
-/* ---- 문의 CTA 패널 ---- */
-body.home .section-contact::before {
-  background: radial-gradient(ellipse, rgba(79, 173, 184, 0.10), transparent 72%);
-}
-body.home .cta-panel {
-  border-radius: 24px;
-  box-shadow: var(--shadow-lift);
-  border: 1px solid rgba(40, 55, 57, 0.06);
-  background: linear-gradient(165deg, var(--white) 0%, var(--blue-pale) 170%);
-}
-body.home .form-grid input,
-body.home .form-grid textarea {
-  transition: border-color .15s ease, box-shadow .15s ease;
-}
-body.home .form-grid input:focus,
-body.home .form-grid textarea:focus {
-  outline: none;
-  border-color: var(--ice);
-  box-shadow: 0 0 0 3px rgba(79, 173, 184, 0.15);
-  background: var(--white);
-}
-body.home .form-grid button {
-  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
-  box-shadow: 0 6px 16px rgba(27, 109, 120, 0.22);
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-}
-body.home .form-grid button:hover {
-  filter: brightness(1.06);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(27, 109, 120, 0.28);
-}
 
 @media (max-width: 860px) {
   body.home .cta-band { padding: 26px 24px; }
