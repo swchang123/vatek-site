@@ -44,6 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var smoothTarget = window.scrollY;
     var SMOOTH_EASE = 0.09;
     var smoothRaf = null;
+    // (2026-09-02, 후속N) 체크포인트 점프의 감속률 — 기본은 SMOOTH_EASE와
+    // 같지만, 아래 hsAnimateTo()가 매 점프 시작 시 "이동 거리"를 보고 이
+    // 값을 필요할 때만 낮춘다(smoothScrollLoop는 이 값을 매 프레임 읽음).
+    var currentEase = SMOOTH_EASE;
 
     // CSS의 scroll-behavior:smooth(html 요소, 앵커 이동용)가 켜져 있으면
     // 아래에서 매 프레임 호출하는 window.scrollTo()마다 브라우저가 자체
@@ -60,18 +64,295 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     };
 
+    // (2026-09-02, 후속16/18) 사용자 요청 — 인덱스 페이지 한정, 맨 위(히어로)
+    // 부터 "필요한 메뉴를 선택해보세요"(메뉴 선택 섹션)가 보이는 지점까지는
+    // 위 자유 누적 스크롤 대신 "휠 한 번(제스처) = 다음/이전 체크포인트로
+    // 정확히 이동"하도록 함. 체크포인트 순서:
+    //   [0] 맨 위
+    //   [1] "우리가 하는 일" 제목 상단 틀고정
+    //   [2]~[6] 5개 탭(드라이아이스 블라스터/제조기·리커버리/자동화 시스템/
+    //           드라이아이스 생산·공급/렌탈·데모 서비스)이 하나씩 위 탭
+    //           자리로 날아가 붙는 순간들 — [6]에서 5개 탭이 전부 붙지만
+    //           아직 갤러리(이미지 5장)는 나오지 않는다(후속18 버그수정,
+    //           위 stackdoZones 주석 참고)
+    //   [7] 갤러리(이미지 5장) 등장
+    //   [8] "우리의 가치" 제목 상단 틀고정(첫 카드 "업계 최초"가 이 지점에서
+    //       이미 포커스 라인 안에 들어와 함께 보임 — 실측 확인, 별도
+    //       체크포인트 아님)
+    //   [9]~[11] 나머지 가치 카드 3개(업계 최대/검증된 기술력/미디어 보도 및
+    //            수상)가 하나씩 포커스(확대)되는 순간들 — 위
+    //            applyValueFocus()의 "포커스 라인"(화면 세로 중앙) 공식을
+    //            그대로 재사용해 각 카드 중심이 그 라인에 오는 위치를 계산
+    //   [12] "우리의 신념" 제목 상단 틀고정
+    //   [13] "우리의 신념" 텍스트 박스(제목/부제/로고) 등장
+    //   [14] "우리는.. 실현합니다" 문장 등장
+    //   [15] "우리는 '콜드젯 팀'입니다" 제목 상단 틀고정
+    //   [16] VATEK×Cold Jet 로고 등장
+    //   [17] "필요한 메뉴를 선택해보세요"(메뉴 선택 섹션) 도착 — 자동
+    //        스크롤은 여기까지, 그 아래(푸터 등)는 이 기능의 대상이 아니므로
+    //        마지막 체크포인트를 벗어나는 즉시 아래 원래의 자유 누적
+    //        스크롤로 자연스럽게 넘어간다.
+    // "처음엔 빠르게, 갈수록 느려지다 딱 멈추는" 감속 요청은 새 애니메이션을
+    // 따로 만들지 않고 위 smoothScrollLoop의 lerp(SMOOTH_EASE) 감쇠를 그대로
+    // 재사용 — smoothTarget을 체크포인트 값으로 지정하기만 하면 기존과 동일한
+    // 감속으로 도착한다. 체크포인트 위치는 레이아웃(뷰포트 높이 등)에 따라
+    // 달라질 수 있어 캐시하지 않고, 실제로 필요한 그 순간(휠 제스처 시작 시)
+    // 마다 새로 계산해 항상 최신 상태를 보장한다. 각 구간의 실제 시각적
+    // 상태(틀고정/포커스/등장 등)는 이 체크포인트 계산과 무관하게 이미 매
+    // 프레임 scrollY를 기준으로 동작하는 기존 로직(updateStackdo/
+    // applyValueFocus 등)이 그대로 담당 — 여기서는 그 로직들이 쓰는 것과
+    // 동일한 공식으로 "그 상태가 시작되는 스크롤 위치"만 미리 계산해 그
+    // 지점으로 점프시킬 뿐이다.
+    // 실측 위치 그대로 목표로 삼으면, 지금 당장은 아직 화면에 들어오지 않은
+    // (이미지 lazy-load 전이거나 그 사이 다른 요소의 실측이 살짝 달라질 수
+    // 있는) 아래쪽 지점일수록 도착했을 때 레이아웃이 미세하게 달라져 있어
+    // "정확히 그 스크롤 위치"가 요구하는 임계값(예: rect.top<=0)을 겨우
+    // 못 넘는 경우가 실측 결과 확인됨(예: 콜드젯 제목 — 계산 시점엔
+    // 11261.375였는데 도착해보니 rect.top이 0.375로 0을 살짝 못 넘겨
+    // is-pinned가 안 켜짐). 사람 눈에는 안 보이는 수 px를 더 보태 항상
+    // 임계값을 확실히 넘도록 함.
+    var HS_EPS = 2;
+    // (2026-09-02, 후속18) 뒤로(위로) 스크롤할 때 체크포인트가 어긋나는 문제
+    // 발견 — "우리의 가치"/"우리의 신념"/"콜드젯 팀" 제목처럼 자기 자신이
+    // position:sticky인 요소는, 한 번 상단에 틀고정된 뒤에는 아무리 더
+    // 스크롤해도 getBoundingClientRect().top이 0 부근에 계속 머무른다(브라우저의
+    // sticky 동작 자체가 그럼). 그래서 이미 그 지점을 지나친 뒤에(즉 아래쪽
+    // 체크포인트에서 위쪽 체크포인트로 되돌아가려 할 때) 이 요소의 위치를
+    // 다시 재는 순간 "진짜 원래 위치"가 아니라 "지금 화면에 고정된
+    // scrollY 근처 값"이 나와버려, 위로 갈수록 목표 지점이 자꾸 지금
+    // 위치 바로 근처로 다시 계산되는 문제가 있었음(실측으로 확인). 아직
+    // 고정되지 않아(rect.top이 뚜렷하게 양수) 값이 신뢰할 수 있을 때마다
+    // 그 값을 캐시해두고, 이미 고정되어 못 미더울 때는 그 캐시값을 대신
+    // 쓰는 방식으로 해결 — 페이지에 처음 들어와 위에서부터 훑어 내려오는
+    // 동안 자연히 한 번은 신뢰할 수 있는 값이 캐시되므로 별도 준비 없이도
+    // 항상 정확한 값을 쓸 수 있다.
+    var hsStableTop = {};
+    var stableDocTopOf = function (el, key) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top > 1) {
+        hsStableTop[key] = rect.top + window.scrollY;
+      }
+      return hsStableTop[key] !== undefined
+        ? hsStableTop[key]
+        : rect.top + window.scrollY;
+    };
+    window.addEventListener("resize", function () {
+      hsStableTop = {};
+    });
+    // (2026-09-02, 후속N) 사용자 요청 — "우리가 하는 일/우리의 가치/우리의
+    // 신념" 제목이 화면 하단에서 크게 나타났다가 줄어들며 상단에 박히는
+    // 연출(applyTitleShrinkZoom)이 방문자가 제목을 미처 인지하기도 전에
+    // 너무 빨리 끝나버림 — 이 연출은 순전히 스크롤 위치로 구동되므로(시간
+    // 기반 애니메이션이 아님), 그 스크롤을 만드는 체크포인트 점프 자체를
+    // 아래 hsAnimateTo()에서 더 천천히 흐르게 해야 실제로 더 오래 보인다.
+    // computeHeroStepCheckpoints()가 실행될 때마다, "그 체크포인트에 도착하는
+    // 순간 = 제목이 막 다 줄어들어 박히는 순간"인 인덱스들을 여기에 채워둔다.
+    var hsTitleDockIndices = [];
+    var computeHeroStepCheckpoints = function () {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var docTopOf = function (el) {
+        return el.getBoundingClientRect().top + window.scrollY;
+      };
+
+      var stackdoScrollEl = document.querySelector(".stackdo-scroll");
+      var valuePinTitleEl = document.querySelector(".value-pin-title");
+      var panelCount = document.querySelectorAll(".stackdo-panel").length;
+      if (!stackdoScrollEl || !valuePinTitleEl || !panelCount) return null;
+
+      var stackdoTop = docTopOf(stackdoScrollEl);
+      var stackdoTotal =
+        stackdoScrollEl.getBoundingClientRect().height - vh;
+      // main.js의 updateStackdo() stackdoZones와 반드시 같은 값이어야 함
+      // (후속18 — panelCount+1이 아니라 +2, 위 stackdoZones 주석 참고).
+      var zones = panelCount + 2;
+      var stackdoZoneW = stackdoTotal / zones;
+      var points = [0, stackdoTop + HS_EPS];
+      hsTitleDockIndices = [1]; // "우리가 하는 일" 제목 박힘 = 이 시점의 인덱스
+      // (2026-09-02, 후속19) 사용자 피드백 — 탭(드라이아이스 블라스터 등)이
+      // "스크롤이 멎고 난 뒤 시차를 두고" 위로 날아가 붙는 것처럼 보임. 실은
+      // 탭 전환은 updateStackdo()가 각 구간의 시작 경계에서 idx가 바뀌는
+      // 순간 CSS 전환(.stackdo-panel-head, transform .5s)을 트리거하는데,
+      // 지금까지는 체크포인트를 그 "구간이 막 시작되는 지점"에 그대로 뒀기
+      // 때문에 이 스크롤 애니메이션이 목적지에 거의 다 도착해서야 비로소
+      // 전환이 시작돼, 도착 후에도 한참 더 움직이는 것처럼 보였음. 체크포인트
+      // 목적지를 그 구간의 "시작"이 아니라 "안쪽 깊숙한 지점"(HS_LEAD)으로
+      // 당겨두면, 실제 경계를 넘는 순간(=이번 스크롤 애니메이션의 초반부)
+      // 곧바로 전환이 시작되고, 애니메이션이 목적지까지 감속하며 계속
+      // 진행되는 동안 그 0.5s짜리 전환도 함께 재생돼 "스크롤과 동시에"
+      // 움직이는 것처럼 보임(다음 구간 경계를 넘지 않도록 1 미만으로 유지해
+      // 상태 자체는 그대로 유지). 아래 신념/콜드젯 체크포인트에도 동일하게 적용.
+      var HS_LEAD = 0.7;
+      for (var i = 1; i <= zones - 1; i++) {
+        points.push(stackdoTop + stackdoZoneW * (i + HS_LEAD) + HS_EPS);
+      }
+      // 우리의 가치 제목
+      points.push(stableDocTopOf(valuePinTitleEl, "value") + HS_EPS);
+      hsTitleDockIndices.push(points.length - 1);
+
+      // 가치 카드 4개(업계 최초/업계 최대/검증된 기술력/미디어 보도 및 수상)
+      // 중 첫 번째(업계 최초)는 제목이 틀고정되는 바로 그 지점에서 이미
+      // 포커스 라인 안에 들어와 함께 보이므로(실측 확인) 별도 체크포인트가
+      // 아니라 바로 위 "우리의 가치 제목" 체크포인트에 자연히 포함됨 —
+      // 나머지 3개(업계 최대/검증된 기술력/미디어 보도 및 수상)만 각각의
+      // 체크포인트로 추가. applyValueFocus()의 focusY(=vh*0.5) 공식과
+      // 동일하게, 각 카드의 세로 중심이 그 라인에 오는 스크롤 위치를 계산.
+      var valueBlocks = document.querySelectorAll(".value-block");
+      var focusY = vh * 0.5;
+      for (var vb = 1; vb < valueBlocks.length; vb++) {
+        var blockRect = valueBlocks[vb].getBoundingClientRect();
+        var blockDocTop = blockRect.top + window.scrollY;
+        points.push(blockDocTop + blockRect.height / 2 - focusY + HS_EPS);
+      }
+
+      // 우리의 신념 — 제목 틀고정 → applyValueFocus()의 beliefBoxTotalPx(3
+      // 구간, 구간당 0.65vh)와 동일한 공식으로 텍스트 박스/문장 등장 지점 계산.
+      var beliefPinTitleEl = document.querySelector(".belief-pin-title");
+      var beliefVideoScrollEl = document.querySelector(".belief-video-scroll");
+      if (beliefPinTitleEl) {
+        points.push(stableDocTopOf(beliefPinTitleEl, "belief") + HS_EPS);
+        hsTitleDockIndices.push(points.length - 1);
+      }
+      if (beliefVideoScrollEl) {
+        var beliefTop = docTopOf(beliefVideoScrollEl);
+        var beliefZoneW = 0.65 * vh;
+        // 위 stackdoZoneW 루프와 같은 이유(HS_LEAD) — 박스(.75s)/문장(.8s)
+        // 전환이 스크롤과 함께 진행되도록 각 구간 안쪽으로 당김.
+        points.push(beliefTop + beliefZoneW * (1 + HS_LEAD) + HS_EPS); // 텍스트 박스(제목/부제/로고) 등장
+        points.push(beliefTop + beliefZoneW * (2 + HS_LEAD) + HS_EPS); // "우리는.. 실현합니다" 등장
+      }
+
+      // 우리는 콜드젯 팀입니다 — 제목이 틀고정되는 순간 영상(.coldjet-video-wrap,
+      // opacity/transform .7s)과 박스(.coldjet-video-box, is-risen)도 함께
+      // 틀고정/등장하는데, 이 역시 위와 같은 이유로 "제목 체크포인트"를 그
+      // 트리거 지점 그대로 두면 영상이 멎은 뒤 뒤늦게 자리를 잡는 것처럼
+      // 보임 — coldjetVideoScrollEl 기준 0구간(제목 고정~로고 등장 전) 안쪽
+      // 깊숙한 지점으로 당겨, 영상의 0.7s 전환이 이 체크포인트로 이동하는
+      // 스크롤 애니메이션과 함께 재생되도록 함(로고 체크포인트도 동일).
+      var coldjetPinTitleEl = document.querySelector(".coldjet-pin-title");
+      var coldjetVideoScrollEl = document.querySelector(".coldjet-video-scroll");
+      if (coldjetVideoScrollEl) {
+        var coldjetTop = docTopOf(coldjetVideoScrollEl);
+        var coldjetZoneW = 0.65 * vh;
+        points.push(coldjetTop + coldjetZoneW * HS_LEAD + HS_EPS); // 제목 틀고정 + 영상 등장
+        // (2026-09-02, 후속N+1) "우리는 콜드젯 팀입니다" 제목도 다른 3개
+        // 제목(우리가 하는 일/우리의 가치/우리의 신념)과 똑같이 여기서
+        // applyTitleShrinkZoom()이 완료되므로, 동일하게 title-dock 인덱스로
+        // 등록해야 hsAnimateTo()가 같은 속도로 늦춰준다.
+        hsTitleDockIndices.push(points.length - 1);
+        points.push(coldjetTop + coldjetZoneW * (1 + HS_LEAD) + HS_EPS); // VATEK×Cold Jet 로고 등장
+      } else if (coldjetPinTitleEl) {
+        // (대비책) coldjetVideoScrollEl을 못 찾을 때만 예전 방식으로 대체
+        points.push(stableDocTopOf(coldjetPinTitleEl, "coldjet") + HS_EPS);
+        hsTitleDockIndices.push(points.length - 1);
+      }
+
+      // 필요한 메뉴를 선택해보세요 — 자동 스크롤의 마지막 지점
+      var menuPickerEl = document.querySelector(".section-menu-picker");
+      if (menuPickerEl) points.push(docTopOf(menuPickerEl) + HS_EPS);
+
+      return points;
+    };
+    var nearestHeroStepIndex = function (points, y) {
+      var bestI = 0;
+      var bestDist = Infinity;
+      for (var i = 0; i < points.length; i++) {
+        var d = Math.abs(points[i] - y);
+        if (d < bestDist) {
+          bestDist = d;
+          bestI = i;
+        }
+      }
+      return bestI;
+    };
+    // (2026-09-02, 후속17/18) 사용자 요청 반영:
+    // 1) 체크포인트로 이동(감속)하는 도중에 또 스크롤(드르르륵)하면, 그 애니메이션을
+    //    무시하지 않고 "다음" 체크포인트로 이어서 이동(연속 동작 허용). 이를 위해
+    //    지금 향하고 있는(또는 막 도착한) 체크포인트 인덱스를 추적해두고, 다음
+    //    제스처가 오면 실제 스크롤 위치가 아니라 이 추적값을 기준으로 다음 칸을
+    //    계산한다 — 애니메이션이 끝나기 전이라 실제 위치가 아직 목표에 못 미친
+    //    상태여도 정확히 한 칸씩 더 이어갈 수 있도록.
+    // 2) 델타값이 작은 "느린" 휠 입력(트랙패드/휠을 아주 천천히 미는 등)에는 이
+    //    체크포인트 이동 방식을 아예 적용하지 않고 아래 기존의 자유 누적 스크롤로
+    //    흘려보낸다.
+    // 3) (후속18) 실제 마우스 휠을 한 번 "드르르륵" 돌리면 브라우저는 그 한 번의
+    //    물리적 동작을 짧은 시간 안에 여러 개의 개별 wheel 이벤트로 잘게 쪼개어
+    //    보낸다 — 이걸 그대로 "이벤트 하나 = 체크포인트 한 칸"으로 처리하면 한 번
+    //    돌렸을 뿐인데 여러 칸이 순식간에 넘어가 버림. 그래서 "빠른" 이벤트들을
+    //    시간 간격으로 묶어(제스처) 한 번의 물리적 동작 안에서는 맨 처음 이벤트만
+    //    한 칸 이동을 트리거하고, 같은 동작이 이어지는 동안 오는 나머지 이벤트는
+    //    (기본 스크롤만 막고) 무시한다. 이후 충분한 공백(HS_GESTURE_GAP_MS 이상)
+    //    없이 오던 이벤트가 끊기고 — 즉 실제로 휠을 멈췄다가 — 다시 오면 그건 새
+    //    동작으로 보고 한 칸 더 이동한다. 이렇게 하면 "드르르륵" 한 번 = 한 동작,
+    //    "드르륵드르륵" 두 번(사이에 손을 뗀 공백이 있으면) = 두 동작이 된다.
+    var hsTargetIndex = null;
+    var HS_FAST_THRESHOLD = 32;
+    var HS_GESTURE_GAP_MS = 180;
+    var hsLastFastEventTime = -Infinity;
+
+    // (2026-09-02, 후속N) "스크롤이 움직이는 동안에는 SCROLL DOWN 힌트가 안
+    // 보이게" — 이 rAF 루프가 실제로 목표값을 향해 움직이고 있는 프레임에서만
+    // <html>에 is-scrolling을 붙이고, 다 도착해 멈추는 즉시 뗀다. 각 힌트
+    // 요소는 style.css의 html.is-scrolling .autoscroll-hint 규칙으로 이
+    // 클래스가 붙어 있는 동안만 자기 자신의 opacity/애니메이션 상태와 무관하게
+    // 강제로 숨겨진다.
+    var hsScrolling = false;
+    var setHsScrolling = function (v) {
+      if (hsScrolling === v) return;
+      hsScrolling = v;
+      document.documentElement.classList.toggle("is-scrolling", v);
+    };
+
     var smoothScrollLoop = function () {
       var diff = smoothTarget - smoothCurrent;
       if (Math.abs(diff) < 0.5) {
         smoothCurrent = smoothTarget;
       } else {
-        smoothCurrent += diff * SMOOTH_EASE;
+        smoothCurrent += diff * currentEase;
       }
       window.scrollTo(0, smoothCurrent);
       if (smoothCurrent !== smoothTarget) {
+        setHsScrolling(true);
         smoothRaf = window.requestAnimationFrame(smoothScrollLoop);
       } else {
         smoothRaf = null;
+        setHsScrolling(false);
+      }
+    };
+
+    // (2026-09-02, 후속N) 사용자 요청 — "우리는..실현합니다"에서 "우리는
+    // 콜드젯팀입니다"로 넘어갈 때만 유독 너무 순식간에(빠르게) 전환됨.
+    // 원인: 두 체크포인트 사이 실제 이동 거리가 다른 구간들(대부분
+    // 550~1200px)보다 훨씬 커서(신념→콜드젯 섹션 전환용 여유 1.0vh가 이
+    // 한 번의 점프에 통째로 포함됨, 약 1800px 이상) — lerp 감쇠율
+    // (SMOOTH_EASE)은 거리와 무관하게 항상 같은 "비율"만큼 남은 거리를
+    // 좁혀가므로, 거리가 클수록 화면이 움직이는 절대 속도(px/프레임)도 그만큼
+    // 커져 "휙" 하고 순간이동하는 것처럼 보인다.
+    // 해결: 체크포인트로 점프를 시작하는 이 순간(=아직 smoothCurrent가 실제
+    // 현재 위치일 때) 이동해야 할 거리를 미리 재서, 그 거리가 크면
+    // currentEase를 낮춰(느리게) 첫 프레임의 이동 속도가 HS_JUMP_MAX_STEP(px)를
+    // 넘지 않도록 한다 — 짧은 구간(대부분의 체크포인트, ~1300px 이하)은 원래
+    // 감쇠율(SMOOTH_EASE) 그대로라 기존에 이미 다듬어둔 체감 속도·전환
+    // 타이밍(HS_LEAD 등)이 전혀 바뀌지 않고, 유독 먼 이 구간만 더 느리고
+    // 부드럽게 흐르도록 자동으로 낮아진다.
+    var HS_JUMP_MAX_STEP = 90;
+    // (2026-09-02, 후속N) 사용자 요청 — "우리가 하는 일/우리의 가치/우리의
+    // 신념" 제목이 확대→축소되며 상단에 박히는 연출이 너무 빨리 끝나 미처
+    // 인지하기 전에 지나가버림. 위 HS_JUMP_MAX_STEP과 같은 원리지만, 이
+    // 연출은 순전히 이 점프의 스크롤 진행에 얹혀 재생되므로 일반적인
+    // "거리가 큰 구간만 완화" 기준보다 더 낮은 상한을 둬 도착 인덱스가 위
+    // hsTitleDockIndices에 있을 때만 한 번 더 느리게 만든다.
+    var HS_TITLE_DOCK_MAX_STEP = 45;
+    var hsAnimateTo = function (targetY, targetIndex) {
+      var dist = Math.abs(targetY - window.scrollY);
+      var maxStep =
+        targetIndex != null && hsTitleDockIndices.indexOf(targetIndex) !== -1
+          ? HS_TITLE_DOCK_MAX_STEP
+          : HS_JUMP_MAX_STEP;
+      currentEase = dist > 0 ? Math.min(SMOOTH_EASE, maxStep / dist) : SMOOTH_EASE;
+      smoothCurrent = window.scrollY;
+      smoothTarget = targetY;
+      if (smoothRaf === null) {
+        smoothRaf = window.requestAnimationFrame(smoothScrollLoop);
       }
     };
 
@@ -97,13 +378,66 @@ document.addEventListener("DOMContentLoaded", function () {
         if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
           return;
         }
+        // (2026-09-02, 후속16/17) 위 hsTargetIndex 주석 참고 — 인덱스 페이지의
+        // 히어로~"우리가 하는 일"~"우리의 가치" 제목 직전 구간에서는, "빠른"
+        // 휠 제스처 한 번에 다음/이전 체크포인트로 이동(진행 중이어도 이어서
+        // 다음 칸으로 계속 이동 가능). "느린" 스크롤은 아래 자유 누적 스크롤로
+        // 흘려보낸다.
         var deltaY = e.deltaY;
         if (e.deltaMode === 1) {
           deltaY *= 16; // line → px 근사치
         } else if (e.deltaMode === 2) {
           deltaY *= window.innerHeight; // page → px
         }
+        if (document.body.classList.contains("home")) {
+          var hsPoints = computeHeroStepCheckpoints();
+          var hsInZone =
+            hsPoints &&
+            (hsTargetIndex !== null ||
+              window.scrollY <= hsPoints[hsPoints.length - 1] + 2);
+          if (hsInZone && Math.abs(deltaY) >= HS_FAST_THRESHOLD) {
+            var hsNow = performance.now();
+            var hsIsNewGesture =
+              hsNow - hsLastFastEventTime >= HS_GESTURE_GAP_MS;
+            hsLastFastEventTime = hsNow;
+            if (!hsIsNewGesture) {
+              // 방금 시작된 같은 물리적 동작(드르르륵)의 후속 이벤트 —
+              // 첫 이벤트에서 이미 한 칸 이동을 시작했으므로 추가로는
+              // 반응하지 않되, 기본 스크롤은 계속 막아 어긋나지 않게 함.
+              e.preventDefault();
+              return;
+            }
+            var hsDir = deltaY > 0 ? 1 : deltaY < 0 ? -1 : 0;
+            if (hsDir !== 0) {
+              var hsBaseIndex =
+                hsTargetIndex !== null
+                  ? hsTargetIndex
+                  : nearestHeroStepIndex(hsPoints, window.scrollY);
+              var hsNext = hsBaseIndex + hsDir;
+              if (hsNext >= 0 && hsNext < hsPoints.length) {
+                e.preventDefault();
+                hsAnimateTo(hsPoints[hsNext], hsNext);
+                hsTargetIndex = hsNext;
+                return;
+              }
+              // 맨 위에서 더 위로(hsNext<0) 또는 마지막 체크포인트에서 더
+              // 아래로(hsNext>=length) — 이 기능의 대상 밖이므로 아래 기존
+              // 자유 누적 스크롤로 자연스럽게 넘어간다.
+              hsTargetIndex = null;
+            }
+          } else {
+            // 느린 스크롤이거나 체크포인트 구간 밖 — 추적 상태를 비우고 아래
+            // 자유 스크롤로 넘어간다(다음 빠른 스크롤에서는 실제 위치 기준으로
+            // 다시 가장 가까운 체크포인트를 계산).
+            hsTargetIndex = null;
+          }
+        }
         e.preventDefault();
+        // (2026-09-02, 후속N) 체크포인트 점프가 아닌 일반 자유 스크롤은 항상
+        // 기본 감쇠율 그대로 — 위 hsAnimateTo()가 직전 점프에서 낮춰뒀을 수
+        // 있는 currentEase를 여기서 되돌려, 자유 스크롤 특유의 체감 속도가
+        // 점프 이후에도 계속 유지되도록 한다.
+        currentEase = SMOOTH_EASE;
         if (smoothRaf === null) {
           // 휠 입력이 새로 시작될 때, 그사이 다른 방식(키보드 등)으로
           // 위치가 바뀌었을 수 있으니 실제 현재 위치로 맞춰서 시작
@@ -121,16 +455,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 키보드/스크롤바 드래그/앵커 링크 등 휠이 아닌 방식으로 스크롤이 바뀐
     // 경우, 우리 애니메이션이 돌고 있지 않을 때만 목표값을 그 위치로 재동기화
+    // (2026-09-02, 후속N) 버그 수정 — 브라우저 스크롤바를 직접 드래그해
+    // 위치를 옮기면(휠 이벤트가 전혀 발생하지 않으므로) hsTargetIndex가
+    // 예전 위치의 값으로 그대로 남아있었음. 예를 들어 "우리의 신념" 근처까지
+    // 스크롤한 뒤 스크롤바를 맨 위로 드래그해도 hsTargetIndex는 여전히 그때의
+    // 인덱스를 가리키고 있어, 맨 위에서 마우스 휠을 "한 번"만 굴려도(다음
+    // 체크포인트 계산의 기준을 실제 위치가 아니라 이 낡은 인덱스로 삼아버려)
+    // 그 낡은 인덱스+1 지점(페이지 훨씬 아래쪽)로 곧장 점프해버리는 게
+    // 원인이었음. 이 리스너가 실행되는 시점(=우리 애니메이션이 돌고 있지
+    // 않을 때, 즉 스크롤바 드래그·키보드·앵커 이동처럼 우리가 모르는 경로로
+    // 위치가 바뀐 경우)마다 추적 상태를 함께 비워, 다음 빠른 휠 입력은 항상
+    // "실제 현재 위치에서 가장 가까운 체크포인트"부터 다시 계산하게 한다.
     window.addEventListener(
       "scroll",
       function () {
         if (smoothRaf === null) {
           smoothCurrent = window.scrollY;
           smoothTarget = window.scrollY;
+          hsTargetIndex = null;
+          currentEase = SMOOTH_EASE;
         }
       },
       { passive: true }
     );
+
+    // (2026-09-02, 후속N) "SCROLL DOWN을 클릭하면 다음 화면으로 자동
+    // 스크롤" — 위 wheel 핸들러의 체크포인트 이동 로직과 동일한 방식(현재
+    // 추적 중인 hsTargetIndex가 있으면 그다음, 없으면 현재 위치에서 가장
+    // 가까운 체크포인트의 그다음)으로 다음 칸을 계산해 이동한다. 인덱스
+    // 페이지가 아니거나 체크포인트를 계산할 수 없으면(예: 하위 페이지) 아무
+    // 것도 하지 않는다.
+    var hsJumpToNext = function () {
+      if (!document.body.classList.contains("home")) return;
+      var hsPoints = computeHeroStepCheckpoints();
+      if (!hsPoints || !hsPoints.length) return;
+      var hsBase =
+        hsTargetIndex !== null
+          ? hsTargetIndex
+          : nearestHeroStepIndex(hsPoints, window.scrollY);
+      var hsNext = hsBase + 1;
+      if (hsNext < 0 || hsNext >= hsPoints.length) return;
+      hsAnimateTo(hsPoints[hsNext], hsNext);
+      hsTargetIndex = hsNext;
+    };
+    document.querySelectorAll(".autoscroll-hint").forEach(function (hintEl) {
+      hintEl.addEventListener("click", function (e) {
+        e.preventDefault();
+        hsJumpToNext();
+      });
+    });
   }
 
   // 헤더: 아래로 스크롤하는 동안에는 페이지와 함께 위로 올라가며 사라지고,
@@ -403,12 +776,19 @@ document.addEventListener("DOMContentLoaded", function () {
     var coldjetVideoDescText = coldjetVideoWrap
       ? coldjetVideoWrap.querySelector(".coldjet-video-desc-text")
       : null;
-    // (2026-09-02, 후속5) 히어로와 동일한 Scroll down 힌트 — 박스가 뜬 첫 구간
-    // (zone 0)에서만 보이고, 한 번 더 스크롤해 로고 조합으로 넘어가면(zone 1)
-    // 더 이상 안내가 필요 없으므로 숨긴다.
-    var coldjetScrollHintEl = coldjetVideoWrap
-      ? coldjetVideoWrap.querySelector(".coldjet-scroll-hint")
-      : null;
+    // (2026-09-02, 후속5→후속N) 히어로와 동일한 Scroll down 힌트(.coldjet-scroll-hint/
+    // .belief-scroll-hint, 각각 .coldjet-video-wrap/.belief-video-wrap 안에
+    // 절대 위치). 한때는 박스가 뜬 첫 구간에서만 보이고 다음 구간(로고/CO2
+    // 문장)으로 넘어가면 숨겼으나, 사용자 피드백(그 화면들엔 SCROLL DOWN이
+    // 안 보임)에 따라 콘텐츠 구간과 무관하게 각 섹션이 화면에 틀고정돼 있는
+    // 동안은 항상 보이도록 바꿈 — 더 이상 이 JS가 별도로 숨기지 않고,
+    // style.css의 html.is-scrolling 규칙으로 스크롤이 실제로 움직이는
+    // 동안에만 숨는다.
+    // (2026-09-02, 후속N) "우리의 가치" 힌트 — 이 섹션엔 화면 전체를 덮는
+    // sticky 프레임이 없어(제목만 sticky) position:fixed로 뷰포트에 고정해두고,
+    // "우리의 가치" 제목이 틀고정된 뒤부터 "우리의 신념" 제목이 틀고정되기
+    // 전까지만 아래 applyValueFocus()가 is-shown을 토글한다.
+    var valueScrollHintEl = document.querySelector(".value-scroll-hint");
 
     var triggerValueFocusCountUp = function (block) {
       block.querySelectorAll(".count-up[data-count-on-focus]").forEach(function (countEl) {
@@ -443,8 +823,11 @@ document.addEventListener("DOMContentLoaded", function () {
       // .value-list 맨 위에 여백 없이 바로 있어 이 섹션에 들어오자마자
       // 거의 즉시 stuck 상태가 되고, .belief-pin-title은 --postdo-light가
       // 1에 도달하는(= rect.top이 0에 닿는) 순간과 정확히 일치한다.
+      var valueTitlePinned = valuePinTitleEl
+        ? valuePinTitleEl.getBoundingClientRect().top <= 0
+        : false;
       if (valuePinTitleEl) {
-        valuePinTitleEl.classList.toggle("is-pinned", valuePinTitleEl.getBoundingClientRect().top <= 0);
+        valuePinTitleEl.classList.toggle("is-pinned", valueTitlePinned);
       }
       applyTitleShrinkZoom(valuePinTitleEl, valuePinTitleH2, vh, true);
       var beliefTitlePinned = beliefPinTitleEl
@@ -452,6 +835,16 @@ document.addEventListener("DOMContentLoaded", function () {
         : false;
       if (beliefPinTitleEl) {
         beliefPinTitleEl.classList.toggle("is-pinned", beliefTitlePinned);
+      }
+      // (2026-09-02, 후속N) "우리의 가치" SCROLL DOWN 힌트 — 이 제목이
+      // 틀고정된 뒤(=이 섹션이 화면을 채운 뒤)부터 "우리의 신념" 제목이
+      // 틀고정되기 전까지만("우리의 신념" 구간에 들어서면 그쪽 자신의 힌트가
+      // 대신함) 보이도록.
+      if (valueScrollHintEl) {
+        valueScrollHintEl.classList.toggle(
+          "is-shown",
+          valueTitlePinned && !beliefTitlePinned
+        );
       }
       // (후속82) 영상(.belief-video-wrap)은 top:제목 실측 높이로 sticky —
       // .belief-pin-title(top:0)과 .belief-video-wrap(top:제목높이)은 같은
@@ -597,9 +990,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (coldjetVideoDescText) {
           coldjetVideoDescText.classList.toggle("is-risen", coldjetIdx >= 1);
-        }
-        if (coldjetScrollHintEl) {
-          coldjetScrollHintEl.classList.toggle("is-hidden", coldjetIdx >= 1);
         }
         // (2026-09-02, 후속15) "우리의 신념" → "우리는 콜드젯입니다" 전환
         // 블록(위 beliefTransition* 부분)과 완전히 동일한 방식·속도 —
@@ -797,7 +1187,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // 05번까지 전부 탭으로 날아간 뒤, 탭 5열과 같은 5열 그리드로 이미지
     // 5장이 나란히 정렬되어 보인다. 이 갤러리 단계를 한 번 더 스크롤하면
     // (진행률이 1을 넘어가며) sticky 래퍼가 자연스럽게 풀려 아래로 흘러간다.
-    var stackdoZones = stackdoPanels.length + 1;
+    // (2026-09-02, 후속18) 원래는 +1(=6단계)이라 마지막 탭이 붙는 순간과
+    // 갤러리(이미지 5장) 등장이 같은 구간 경계에서 동시에 일어나 "렌탈·데모
+    // 서비스" 탭이 붙은 화면을 볼 틈이 없었음 — +2(=7단계)로 늘려 "5개 탭
+    // 전부 붙음(갤러리 아직)"과 "갤러리 등장"을 서로 다른 구간으로 분리
+    // (아래 is-gallery/stackdoGallery의 임계값도 stackdoPanels.length+1로
+    // 함께 늦춤). style.css의 .stackdo-scroll 높이 배수도 6→7로 맞춰
+    // 늘렸으므로(총 스크롤 길이 자체가 한 단계만큼 늘어남), 기존 단계들의
+    // 체감 속도는 그대로 유지된다.
+    var stackdoZones = stackdoPanels.length + 2;
     var stackdoGallery = document.getElementById("stackdoGallery");
     var stackdoFrame = stackdoScroll.querySelector(".stackdo-frame");
     // (2026-09-02, 후속8) "우리가 하는 일" 제목줄에도 콜드젯 제목과 같은
@@ -835,7 +1233,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.documentElement.style.setProperty("--postdo-dark", darkProgress.toFixed(3));
       if (idx !== stackdoIdx) {
         stackdoIdx = idx;
-        if (stackdoFrame) stackdoFrame.classList.toggle("is-gallery", idx >= stackdoPanels.length);
+        if (stackdoFrame) stackdoFrame.classList.toggle("is-gallery", idx >= stackdoPanels.length + 1);
         for (var i = 0; i < stackdoPanels.length; i++) {
           stackdoPanels[i].classList.remove("is-active", "is-passed", "is-upcoming");
           stackdoPanels[i].classList.add(i === idx ? "is-active" : i < idx ? "is-passed" : "is-upcoming");
@@ -848,7 +1246,7 @@ document.addEventListener("DOMContentLoaded", function () {
           else stackdoHeads[h].style.transform = "";
         }
         if (stackdoGallery) {
-          stackdoGallery.classList.toggle("is-shown", idx >= stackdoPanels.length);
+          stackdoGallery.classList.toggle("is-shown", idx >= stackdoPanels.length + 1);
         }
       }
     };

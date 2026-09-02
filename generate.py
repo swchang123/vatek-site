@@ -1151,7 +1151,6 @@ def menu_picker_html():
             chips += f'<a class="menu-picker-chip menu-picker-chip-more" href="{hub_href}">+{more_count}개</a>'
         cards.append(f"""
         <div class="menu-picker-card reveal-pop" style="--reveal-delay:{delay:.2f}s">
-          <span class="menu-picker-num">{i + 1:02d}</span>
           <h3><a class="menu-picker-title-link" href="{hub_href}">{m['label']}</a></h3>
           <p>{m['tagline']}</p>
           <div class="menu-picker-chips">{chips}</div>
@@ -1186,13 +1185,13 @@ def build_home():
         <a class="cta-btn outline" href="rental/demo.html">데모 테스트 신청</a>
       </div>
     </div>
-    <div class="hero-scroll" aria-hidden="true">
+    <button type="button" class="hero-scroll autoscroll-hint" aria-label="다음 화면으로 스크롤">
       <span>Scroll down</span>
       <span class="hero-scroll-chevrons">
         <span class="chevron"></span>
         <span class="chevron"></span>
       </span>
-    </div>
+    </button>
   </section>
 
   <section class="stackdo-section">
@@ -1210,6 +1209,13 @@ def build_home():
           </div>
           {stackdo_panels_html()}
         </div>
+        <button type="button" class="stackdo-scroll-hint autoscroll-hint" aria-label="다음 화면으로 스크롤">
+          <span>Scroll down</span>
+          <span class="stackdo-scroll-hint-chevrons">
+            <span class="chevron"></span>
+            <span class="chevron"></span>
+          </span>
+        </button>
       </div>
     </div>
   </section>
@@ -1217,6 +1223,13 @@ def build_home():
   <section class="section-value">
     <div class="value-list">
       <div class="value-pin-title"><h2>우리의 가치</h2></div>
+      <button type="button" class="value-scroll-hint autoscroll-hint" aria-label="다음 화면으로 스크롤">
+        <span>Scroll down</span>
+        <span class="value-scroll-hint-chevrons">
+          <span class="chevron"></span>
+          <span class="chevron"></span>
+        </span>
+      </button>
       <div class="value-content">
         <div class="value-block" data-tone="#f3f9fa">
           <span class="value-label">업계 최초</span>
@@ -1304,6 +1317,13 @@ def build_home():
             <p class="belief-video-sub"><span class="hl-blue">CO<sub>2</sub></span>에 새로운<br><span class="hl-green">가치</span>를 더합니다.</p>
             <img class="belief-video-logo" src="{asset("assets/img/co2-ribbon-logo.png", 0)}" alt="CO2" width="480" height="241" loading="lazy">
           </div>
+          <button type="button" class="belief-scroll-hint autoscroll-hint" aria-label="다음 화면으로 스크롤">
+            <span>Scroll down</span>
+            <span class="belief-scroll-hint-chevrons">
+              <span class="chevron"></span>
+              <span class="chevron"></span>
+            </span>
+          </button>
           <p class="belief-video-desc-text">우리는 CO<sub>2</sub> 기술의 혁신으로,<br>지속가능한 산업 생태계를 만들고,<br>더 나은 환경과 사회적 가치를 함께 실현합니다.</p>
         </div>
       </div>
@@ -1323,13 +1343,13 @@ def build_home():
             <h3 class="coldjet-video-heading">WE ARE ONE TEAM</h3>
             <p class="coldjet-video-sub">콜드젯은 장비의 연구·개발·생산과 기술 교육을 담당하고 있으며,<br>바테크는 대한민국 공식 총판으로서 제품 판매부터 기술 지원 및 관련 서비스를 제공합니다.</p>
           </div>
-          <div class="coldjet-scroll-hint" aria-hidden="true">
+          <button type="button" class="coldjet-scroll-hint autoscroll-hint" aria-label="다음 화면으로 스크롤">
             <span>Scroll down</span>
             <span class="coldjet-scroll-hint-chevrons">
               <span class="chevron"></span>
               <span class="chevron"></span>
             </span>
-          </div>
+          </button>
           <div class="coldjet-video-desc-text coldjet-brand-row">
             <span class="coldjet-brand-chip"><img class="coldjet-brand-logo coldjet-brand-logo-vatek" src="{asset("assets/img/vatek-logo-mark.png", 0)}" alt="VATEK"></span>
             <span class="coldjet-brand-x">×</span>
@@ -1343,8 +1363,7 @@ def build_home():
   <section class="section-menu-picker">
     <div class="wrap">
       <div class="section-head menu-picker-head">
-        <h2 class="reveal">필요한 메뉴를 선택해보세요</h2>
-        <p class="reveal" style="--reveal-delay:.08s">위쪽 메뉴에서도 확인할 수 있지만, 여기서 더 쉽고 빠르게 원하시는 정보를 찾아보세요.</p>
+        <h2 class="reveal">무엇을 도와드릴까요?</h2>
       </div>
       <div class="menu-picker-grid">
         {menu_picker_html()}

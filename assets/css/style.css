@@ -396,6 +396,30 @@ html.no-hero-intro .hero-intro { display: none; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* (2026-09-02, 후속N) "Scroll down" 인디케이터 공통 기반 — 원래는 각 섹션마다
+   장식용 <div aria-hidden>이었으나, 사용자 요청으로 (1) 자동 스크롤 여정에
+   포함된 모든 섹션(히어로/우리가 하는 일/우리의 가치/우리의 신념/콜드젯팀)
+   하단에 이 표시가 있어야 하고 (2) 클릭하면 다음 화면으로 자동 스크롤되며
+   (3) 스크롤이 실제로 움직이는 동안에는 안 보여야 한다는 요구가 추가돼,
+   전부 클릭 가능한 <button>으로 통일하고 이 공통 클래스를 부여한다.
+   브라우저 기본 버튼 테두리/배경/폰트는 걷어내 기존 겉모습을 그대로 유지.
+   html.is-scrolling는 assets/js/main.js의 smoothScrollLoop가 실제로
+   스크롤을 이동시키는 프레임에서만 <html>에 붙는 클래스 — 이 상태에서는
+   어느 섹션의 힌트든 전부 즉시 숨겨(각 힌트 자신의 opacity/애니메이션보다
+   우선하도록 !important) 화면이 움직이는 도중에 문구가 함께 흔들리며
+   어지럽게 보이지 않게 한다. */
+.autoscroll-hint {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+html.is-scrolling .autoscroll-hint {
+  opacity: 0 !important;
+  pointer-events: none;
+}
 /* 하단 Scroll down 인디케이터 (삼천리 홈페이지 참고) */
 .hero-scroll {
   position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%);
@@ -472,9 +496,16 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    전용 규칙은 정리함. */
 
 .stackdo-section { background: var(--white); padding: 0; }
-.stackdo-scroll { position: relative; height: calc(100vh + 6 * 62vh); }
+/* (2026-09-02, 후속18) 5개 탭이 전부 붙은 상태와 갤러리(이미지 5장) 등장이
+   같은 구간 경계에서 동시에 일어나 "렌탈·데모 서비스" 탭이 붙은 화면을 볼
+   틈이 없다는 피드백 → main.js updateStackdo()의 zones를 5+1에서 5+2로 한
+   단계 늘려 그 사이에 쉬어가는 구간을 하나 추가함. 기존 6단계가 쓰던
+   6*62vh(각 단계 62vh)의 폭을 그대로 유지한 채 새 단계 몫만 추가되도록
+   여기 배수도 6→7로 함께 늘림(그대로 두면 총 스크롤 길이는 안 늘어난 채
+   7등분만 돼 기존 6단계가 전부 더 빨라져 버림). */
+.stackdo-scroll { position: relative; height: calc(100vh + 7 * 62vh); }
 @supports (height: 100dvh) {
-  .stackdo-scroll { height: calc(100dvh + 6 * 62vh); }
+  .stackdo-scroll { height: calc(100dvh + 7 * 62vh); }
 }
 .stackdo-frame {
   position: sticky; top: 0; height: 100vh;
@@ -531,7 +562,7 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    레이아웃에 영향을 주지 않도록 유지). .stackdo-frame이 position:sticky +
    height:100vh인 flex column이라 여기서 늘어난 만큼은 아래
    .stackdo-stage(flex:1 1 auto)가 자동으로 줄어들어 흡수하므로, 전체 스크롤
-   높이 계산(.stackdo-scroll의 calc(100vh + 6*62vh) 등)에는 영향 없다.
+   높이 계산(.stackdo-scroll의 calc(100vh + 7*62vh) 등)에는 영향 없다.
    (2026-09-02, 후속11) 처음엔 clamp(56px, 8vw, 88px)까지 늘렸으나 오히려
    위쪽 여백이 너무 많이 비어 보인다는 후속 피드백 → clamp(36px, 4.5vw,
    52px)로 축소.
@@ -757,11 +788,11 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   .stackdo-panel-text { flex: 0 0 42%; }
 }
 @media (max-width: 860px) {
-  .stackdo-scroll { height: calc(100vh + 6 * 78vh); }
+  .stackdo-scroll { height: calc(100vh + 7 * 78vh); }
 }
 @supports (height: 100dvh) {
   @media (max-width: 860px) {
-    .stackdo-scroll { height: calc(100dvh + 6 * 78vh); }
+    .stackdo-scroll { height: calc(100dvh + 7 * 78vh); }
   }
 }
 @media (max-width: 860px) {
@@ -1394,9 +1425,10 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 /* (2026-09-02, 후속5) "히어로 영상과 동일한" Scroll down 인디케이터 —
    .hero-scroll과 완전히 같은 구조/애니메이션(@keyframes heroChevronFlow 공유)을
    쓰되, 페이지 로드 후 6.3초 뒤에 뜨는 히어로 전용 타이머 대신 영상 자체가
-   틀고정되는 순간 함께 나타나고(부모 .coldjet-video-wrap의 opacity 전환에
-   자연히 실려 감), 박스가 퇴장하는 다음 단계로 넘어가면(coldjetIdx>=1)
-   더 이상 필요 없으므로 assets/js/main.js가 is-hidden을 붙여 사라지게 한다. */
+   틀고정되는 순간 함께 나타난다(부모 .coldjet-video-wrap의 opacity 전환에
+   자연히 실려 감). (후속N) 한때는 박스가 퇴장하는 다음 단계로 넘어가면
+   숨겼으나, 이 섹션이 화면에 있는 동안은 계속 보이는 편이 낫다는 피드백에
+   따라 제거 — 이제 아래 html.is-scrolling 규칙으로 스크롤 중에만 숨는다. */
 .coldjet-scroll-hint {
   position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%);
   z-index: 2;
@@ -1410,10 +1442,6 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
      위에서 통째로 사라져 안 보이는 문제가 있었음 — 어떤 밝기의 장면 위에서도
      항상 보이도록 진한 그림자를 둘러 대비를 확보. */
   text-shadow: 0 1px 6px rgba(0, 0, 0, .7), 0 3px 14px rgba(0, 0, 0, .5);
-}
-.coldjet-scroll-hint.is-hidden {
-  opacity: 0;
-  pointer-events: none;
 }
 .coldjet-scroll-hint-chevrons {
   position: relative; width: 20px; height: 22px;
@@ -1430,6 +1458,71 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 .coldjet-scroll-hint-chevrons .chevron:nth-child(2) { animation-delay: .5s; }
 @media (prefers-reduced-motion: reduce) {
   .coldjet-scroll-hint-chevrons .chevron {
+    animation: none; opacity: .8; transform: translateY(0) rotate(45deg);
+  }
+}
+/* (2026-09-02, 후속N) "우리가 하는 일"/"우리의 신념" — 위 .coldjet-scroll-hint와
+   완전히 같은 스타일(흰 글자 + 그림자로 어떤 밝기의 배경 위에서도 또렷하게)을
+   그대로 재사용. .stackdo-scroll-hint는 .stackdo-frame(틀고정된 프레임) 안에,
+   .belief-scroll-hint는 .belief-video-wrap(마찬가지로 틀고정된 영상 래퍼) 안에
+   절대 위치로 놓여, 각 섹션이 화면에 틀고정돼 있는 동안 자연스럽게 하단에
+   나타난다. */
+.stackdo-scroll-hint,
+.belief-scroll-hint {
+  position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%);
+  z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+  opacity: 1;
+  transition: opacity .5s ease;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .7), 0 3px 14px rgba(0, 0, 0, .5);
+}
+/* (2026-09-02, 후속N) "우리의 가치"는 다른 섹션들과 달리 화면 전체를 덮는
+   sticky "프레임"이 없이(제목만 sticky, 카드들은 일반 문서 흐름) 진행되므로,
+   이 힌트만 뷰포트 자체에 고정(position:fixed)해두고 assets/js/main.js의
+   applyValueFocus()가 "우리의 가치" 제목이 틀고정된 뒤(is-shown) ~ "우리의
+   신념" 제목이 틀고정되기 전까지만 보이도록 매 프레임 토글한다. */
+.value-scroll-hint {
+  position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%);
+  z-index: 40;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s ease;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .7), 0 3px 14px rgba(0, 0, 0, .5);
+}
+.value-scroll-hint.is-shown {
+  opacity: 1;
+  pointer-events: auto;
+}
+.stackdo-scroll-hint-chevrons,
+.value-scroll-hint-chevrons,
+.belief-scroll-hint-chevrons {
+  position: relative; width: 20px; height: 22px;
+  filter: drop-shadow(0 1px 5px rgba(0, 0, 0, .7));
+}
+.stackdo-scroll-hint-chevrons .chevron,
+.value-scroll-hint-chevrons .chevron,
+.belief-scroll-hint-chevrons .chevron {
+  position: absolute; top: 0; left: 50%;
+  width: 12px; height: 12px; margin-left: -6px;
+  border-right: 2px solid rgba(255, 255, 255, 0.9); border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: heroChevronFlow 1.6s ease-in infinite;
+}
+.stackdo-scroll-hint-chevrons .chevron:nth-child(2),
+.value-scroll-hint-chevrons .chevron:nth-child(2),
+.belief-scroll-hint-chevrons .chevron:nth-child(2) {
+  animation-delay: .5s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stackdo-scroll-hint-chevrons .chevron,
+  .value-scroll-hint-chevrons .chevron,
+  .belief-scroll-hint-chevrons .chevron {
     animation: none; opacity: .8; transform: translateY(0) rotate(45deg);
   }
 }
@@ -1560,10 +1653,28 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    네이비와 이음매 없이 이어지고, 480px 지점부터는 이미 흰색이라 겹침이
    끝나갈 무렵엔 화면이 거의 다 밝아져 있다 — 별도 계산 없이도 기존
    브라이트닝 그라디언트가 그대로 이 전환의 커버 배경 역할을 겸한다. */
+/* (2026-09-02, 후속N) 사용자 요청 — "필요한 메뉴를 선택해보세요" 배경을
+   "우리의 신념" 섹션이 다 밝아진 뒤의 배경(흰 바탕 + 코너 라디얼 그라디언트
+   워시 + 옅은 남색 빗살무늬)과 완전히 동일하게. --belief-solid/--belief-wash/
+   --belief-stripe(:root 참고)를 그대로 재사용하는 대신, 이 시점에는 이미
+   --postdo-light가 위쪽 "우리의 신념"/"우리는 콜드젯팀입니다" 구간을 지나며
+   1로 고정된 뒤라 값이 같으므로 완전히 밝아진 최종 값을 그대로 정적으로
+   적어 넣는다(직접 URL로 이 섹션까지 스크롤 복원되는 등, 스크롤 이벤트가
+   한 번도 안 일어난 예외 상황에서도 항상 올바른 밝은 배경이 보이도록).
+   기존의 짙은 네이비→흰색 그라디언트(콜드젯 영상이 겹쳐 올라오는 전환 구간을
+   덮던 용도)는 더 이상 쓰지 않으므로, 제목/부제 글자색도 어두운 배경용
+   흰색에서 밝은 배경용 어두운색으로 함께 바꾼다. */
 .section-menu-picker {
   position: relative;
   z-index: 11;
-  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--white) 480px, var(--white) 100%);
+  background-color: #ffffff;
+  background-image:
+    radial-gradient(circle at 12% 16%, rgba(79, 173, 184, .26), transparent 42%),
+    radial-gradient(circle at 88% 10%, rgba(216, 229, 140, .27), transparent 46%),
+    radial-gradient(circle at 72% 86%, rgba(34, 136, 150, .23), transparent 46%),
+    radial-gradient(circle at 14% 88%, rgba(227, 241, 242, .90), transparent 50%),
+    repeating-linear-gradient(135deg, rgba(27, 36, 38, .10) 0px, rgba(27, 36, 38, .10) 1px, transparent 1px, transparent 14px);
+  background-attachment: fixed;
   color: var(--text-body);
   margin-top: calc(-1 * 100vh);
 }
@@ -1571,8 +1682,6 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   .section-menu-picker { margin-top: calc(-1 * 100dvh); }
 }
 .menu-picker-head { max-width: 640px; }
-.menu-picker-head h2 { color: var(--white); }
-.menu-picker-head p { color: rgba(255, 255, 255, 0.78); }
 
 .menu-picker-grid {
   display: grid;
@@ -1593,10 +1702,6 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   transform: translateY(-6px);
   border-color: rgba(79, 173, 184, 0.45);
   box-shadow: var(--shadow-lift);
-}
-.menu-picker-num {
-  display: block; margin-bottom: 16px;
-  font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted);
 }
 .menu-picker-card h3 { margin: 0 0 10px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
 .menu-picker-title-link { color: var(--text-dark); }
@@ -2042,17 +2147,11 @@ body.home .section-head h2 {
   background: linear-gradient(135deg, var(--navy) 0%, var(--blue-dark) 55%, var(--ice-dark) 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-/* (2026-09-02, 후속9) 위 그라디언트 텍스트는 밝은 배경을 전제로 만들어진
-   톤이라, 어두운 네이비 배경인 "메뉴 선택" 섹션에 그대로 두면 글자가 배경과
-   거의 같은 톤으로 묻혀 잘 안 보인다 — 아래 body.home .section-voice의
-   같은 문제(어두운 배경 위 그라디언트-클립-텍스트) 해법을 그대로 재사용해
-   일반 단색(흰색)으로 되돌린다. */
-body.home .menu-picker-head h2 {
-  background: none;
-  -webkit-background-clip: initial;
-  background-clip: initial;
-  color: var(--white);
-}
+/* (2026-09-02, 후속9) 이 섹션이 한때 어두운 네이비 배경이었을 때는 위
+   그라디언트 텍스트(밝은 배경 전제)가 묻혀 보여 흰색으로 강제 override했었음
+   — 이후(후속N) 배경을 "우리의 신념"과 같은 밝은 빗살무늬로 바꾸면서 더 이상
+   묻히지 않으므로, 다른 section-head 제목들과 통일되게 이 override를 제거해
+   위 그라디언트 텍스트를 그대로 쓴다. */
 
 /* ---- 6개 정적 섹션 공통 리듬: 여백을 조금 더 넉넉하게 + 은은한 배경 광원으로
    섹션 사이 흐름에 깊이감을 더함(히어로/WHAT WE DO/우리의 능력은 자체 리듬이
