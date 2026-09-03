@@ -492,134 +492,187 @@ LOCATION_BODY = """
 # ---------------------------------------------------------------------------
 MENU = [
     {
-        "code": "cleaning", "label": "드라이아이스 세척이란", "short": "세척이란",
+        # (2026-09-03, 메가메뉴) 클로드 디자인 핸드오프 요청으로 "세척이란" →
+        # "세척가이드"로 개명 — 이 label은 nav_html()/footer_html()/허브
+        # 페이지 타이틀·브레드크럼/menu_picker_html() 등 사이트 전역에서
+        # 공유되므로 한 곳만 바꾸면 전체에 일괄 반영된다.
+        "code": "cleaning", "label": "드라이아이스 세척가이드", "short": "세척이란",
         "tagline": "드라이아이스 블라스팅의 원리와 장점, 우리 현장에 맞는 솔루션을 알아보세요.",
+        "nav_eyebrow": "DRY ICE CLEANING",
+        "nav_intro": "기술의 원리부터 산업별 적용까지 한눈에 살펴보세요.",
         "subs": [
             {"slug": "guide", "title": "드라이아이스 세척 가이드",
              "desc": "드라이아이스 세척의 원리, 장점, 안전 수칙과 자주 묻는 질문을 한 곳에 정리했습니다.",
+             "nav_desc": "원리부터 적용 방법까지, 드라이아이스 세척을 쉽고 명확하게 알아보세요.",
+             "nav_img": "assets/img/guide-principle-thumb.jpg",
              "body": GUIDE_BODY},
             {"slug": "compare", "title": "타 세척방식과 비교",
              "desc": "연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.",
+             "nav_desc": "기존 세척 방식과 비교해 드라이아이스 세척만의 차이를 확인하세요.",
+             "nav_img": "assets/img/compare-thumb.jpg",
              "body": COMPARE_BODY},
             {"slug": "industry", "title": "산업별 솔루션",
              "desc": "자동차, 식품, 반도체·PCB, 금형, 인쇄, 발전, 조선 등 산업별로 어떤 문제를 해결하는지 설명합니다.",
+             "nav_desc": "자동차·식품·전자 등 산업별 맞춤 세척 솔루션을 안내합니다.",
+             "nav_img": "assets/img/industry-thumb.jpg",
              "body": INDUSTRY_BODY},
             {"slug": "task", "title": "작업별 솔루션",
              "desc": "이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.",
+             "nav_desc": "금형 세척부터 표면처리까지, 작업 목적에 맞는 방법을 제안합니다.",
+             "nav_img": "assets/img/task-thumb.jpg",
              "body": TASK_BODY},
             {"slug": "adopt", "title": "도입 가이드",
              "desc": "도입 전 검토사항부터 설치 준비, 운영 체크리스트까지 순서대로 안내합니다.",
+             "nav_desc": "도입 검토부터 설치까지, 필요한 절차를 단계별로 안내합니다.",
+             "nav_img": "assets/img/adopt-thumb.jpg",
              "body": ADOPT_BODY},
         ],
     },
     {
         "code": "products", "label": "제품·자동화·공급", "short": "제품",
         "tagline": "세척기부터 제조기, 자동화 시스템, 소모품 공급까지 한 번에 확인하세요.",
+        "nav_eyebrow": "PRODUCTS",
+        "nav_intro": "세척기부터 제조기, 자동화까지 필요한 장비를 만나보세요.",
         "subs": [
             {"slug": "blaster", "title": "드라이아이스 세척기 (블라스터)",
              "desc": "스마트 · 펠릿 · 마이크로파티클 · 특수 목적, 4개 카테고리 8개 모델 라인업을 소개합니다.",
+             "nav_desc": "현장 규모와 작업에 맞는 블라스터 라인업을 소개합니다.",
              "is_group": True},
             {"slug": "pelletizer", "title": "드라이아이스 제조기 (펠렛타이저)",
              "desc": "액체 CO2로 드라이아이스 펠릿을 직접 생산하는 제조 장비를 소개합니다.",
+             "nav_desc": "드라이아이스를 직접 생산하는 펠렛타이저를 소개합니다.",
              "is_group": True},
             {"slug": "recovery", "title": "CO2 리커버리",
              "desc": "드라이아이스 생산 중 배출되는 CO2 가스를 회수해 재사용하는 리커버리 시스템을 소개합니다.",
+             "nav_desc": "배출 CO2를 회수해 재사용하는 리커버리 장비입니다.",
              "is_group": True},
             {"slug": "automation", "title": "자동화 시스템",
              "desc": "생산 라인에 통합 가능한 자동화 드라이아이스 세척 시스템을 소개합니다.",
+             "nav_desc": "생산 라인에 통합되는 자동화 세척 시스템을 안내합니다.",
              "body": AUTOMATION_BODY},
             {"slug": "nozzle", "title": "노즐·액세서리",
              "desc": "작업 목적에 맞는 노즐과 각종 액세서리 구성품을 안내합니다.",
+             "nav_desc": "작업 효율을 높이는 다양한 노즐과 액세서리입니다.",
              "body": NOZZLE_BODY},
             {"slug": "supply", "title": "드라이아이스 구매 (소모품 공급 안내)",
              "desc": "장비가 아닌 소모품으로서의 드라이아이스 정기 공급 및 구매 방법을 안내합니다.",
+             "nav_desc": "정기 공급부터 단건 구매까지 안내합니다.",
              "body": SUPPLY_BODY},
             {"slug": "compare-equip", "title": "장비 비교·추천받기",
              "desc": "보유 현장 조건을 입력하면 적합한 장비 모델을 비교·추천해 드립니다.",
+             "nav_desc": "현장에 맞는 장비를 비교하고 추천받으세요.",
              "body": COMPARE_EQUIP_BODY},
             {"slug": "process", "title": "구매 프로세스 안내",
              "desc": "테스트 → 사내 품의 → 계약으로 이어지는 실제 구매 절차를 단계별로 설명합니다.",
+             "nav_desc": "상담부터 설치까지 구매 절차를 안내합니다.",
              "body": PROCESS_BODY},
             {"slug": "quote", "title": "견적 요청",
              "desc": "필요한 장비와 현장 조건을 알려주시면 담당자가 맞춤 견적을 안내해 드립니다.",
+             "nav_desc": "필요한 장비의 맞춤 견적을 요청하세요.",
              "body": QUOTE_BODY},
         ],
     },
     {
         "code": "cases", "label": "적용사례", "short": "적용사례",
         "tagline": "다양한 산업 현장에서 검증된 실제 도입 사례를 확인하세요.",
+        "nav_eyebrow": "CASE STUDIES",
+        "nav_intro": "다양한 산업 현장의 실제 도입 사례를 확인하세요.",
         "subs": [
             {"slug": "library", "title": "적용사례 라이브러리",
              "desc": "산업별·작업별·Before & After 필터로 원하는 적용사례를 빠르게 찾아보세요.",
+             "nav_desc": "산업별, 장비별 실제 적용 사례를 모아봤습니다.",
              "body": LIBRARY_BODY},
             {"slug": "testimonials", "title": "고객 후기·추천사",
              "desc": "실제 도입 담당자들이 남긴 사용 후기와 추천의 말을 모았습니다.",
+             "nav_desc": "바테크와 함께한 고객들의 이야기를 들어보세요.",
              "body": TESTIMONIALS_BODY},
         ],
     },
     {
         "code": "rental", "label": "렌탈·데모", "short": "렌탈·데모",
         "tagline": "구매 전, 먼저 테스트해보세요. 렌탈과 데모로 적합성을 확인할 수 있습니다.",
+        "nav_eyebrow": "RENTAL & DEMO",
+        "nav_intro": "구매 전, 실제 현장에서 먼저 성능을 확인해보세요.",
         "subs": [
             {"slug": "vrental", "title": "V RENTAL 안내",
              "desc": "단기·장기로 장비를 빌려 쓸 수 있는 V RENTAL 프로그램을 소개합니다.",
+             "nav_desc": "필요한 기간만큼 합리적으로 이용하는 렌탈 서비스입니다.",
              "body": VRENTAL_BODY},
             {"slug": "recommend", "title": "렌탈 추천 상황",
              "desc": "구매보다 렌탈이 더 적합한 현장 상황과 사례를 안내합니다.",
+             "nav_desc": "이런 경우라면 렌탈을 추천합니다.",
              "body": RECOMMEND_BODY},
             {"slug": "demo", "title": "데모 테스트 신청",
              "desc": "실제 현장 시료로 세척 테스트를 진행하는 데모 신청 절차를 안내합니다.",
+             "nav_desc": "도입 전, 현장에서 직접 성능을 확인해보세요.",
              "body": DEMO_BODY},
             {"slug": "faq", "title": "절차/조건/FAQ",
              "desc": "렌탈·데모 이용 절차와 조건, 자주 묻는 질문을 정리했습니다.",
+             "nav_desc": "렌탈 신청 절차와 자주 묻는 질문을 안내합니다.",
              "body": D_FAQ_BODY},
             {"slug": "visit", "title": "방문 시연·상담 신청",
              "desc": "담당자가 직접 현장을 방문해 시연과 상담을 진행하는 일정을 신청할 수 있습니다.",
+             "nav_desc": "전문 상담원이 직접 방문해 시연해드립니다.",
              "body": VISIT_BODY},
         ],
     },
     {
         "code": "support", "label": "지원·자료", "short": "지원·자료",
         "tagline": "설치부터 A/S, 기술자료까지 도입 이후 필요한 모든 것을 지원합니다.",
+        "nav_eyebrow": "SUPPORT",
+        "nav_intro": "설치부터 A/S까지, 도입 이후에도 끝까지 책임집니다.",
         "subs": [
             {"slug": "install", "title": "설치/시운전",
              "desc": "장비 설치와 초기 시운전 과정에서 안내드리는 절차를 소개합니다.",
+             "nav_desc": "전문 인력이 설치부터 시운전까지 진행합니다.",
              "body": INSTALL_BODY},
             {"slug": "education", "title": "교육/A·S",
              "desc": "운용 인력 교육 프로그램과 A/S 접수·대응 절차를 안내합니다.",
+             "nav_desc": "장비 운용 교육과 사후 관리를 지원합니다.",
              "body": EDUCATION_BODY},
             {"slug": "techsupport", "title": "기술지원 서비스",
              "desc": "현장 문제 해결을 위한 기술지원 서비스 범위와 대응 방식을 소개합니다.",
+             "nav_desc": "현장에서 발생하는 문제를 신속하게 해결합니다.",
              "body": TECHSUPPORT_BODY},
             {"slug": "catalog", "title": "카탈로그 다운로드",
              "desc": "제품 카탈로그와 사양서를 PDF로 내려받을 수 있습니다.",
+             "nav_desc": "제품별 상세 카탈로그를 내려받으세요.",
              "body": CATALOG_BODY},
             {"slug": "knowledge", "title": "Knowledge Center",
              "desc": "드라이아이스 세척 관련 백서와 업계 트렌드 콘텐츠를 제공합니다.",
+             "nav_desc": "드라이아이스 세척 관련 지식 자료를 모았습니다.",
              "body": KNOWLEDGE_BODY},
             {"slug": "news", "title": "공지사항·뉴스",
              "desc": "보도자료, 전시회 참가 소식 등 회사의 최신 소식을 전합니다.",
+             "nav_desc": "바테크의 최신 소식을 확인하세요.",
              "body": NEWS_BODY},
         ],
     },
     {
         "code": "company", "label": "회사소개", "short": "VATEK",
         "tagline": "Cold Jet 대한민국 공식 대리점, 바테크를 소개합니다.",
+        "nav_eyebrow": "COMPANY",
+        "nav_intro": "세계 최초이자 글로벌 리더 Cold Jet의 대한민국 공식 총판입니다.",
         "subs": [
             {"slug": "about", "title": "회사소개",
              "desc": "바테크의 사업 영역과 연혁, 비전을 소개합니다.",
+             "nav_desc": "바테크의 비전과 연혁을 소개합니다.",
              "body": ABOUT_BODY},
             {"slug": "partner", "title": "Cold Jet 대한민국 공식 대리점",
              "desc": "세계 1위 드라이아이스 블라스팅 기업 Cold Jet과의 공식 파트너십을 소개합니다.",
+             "nav_desc": "Cold Jet과의 파트너십을 소개합니다.",
              "body": PARTNER_BODY},
             {"slug": "capability", "title": "기술·서비스 역량",
              "desc": "설치, 기술지원, A/S로 이어지는 국내 대응 역량을 소개합니다.",
+             "nav_desc": "축적된 기술력과 서비스 역량을 소개합니다.",
              "body": CAPABILITY_BODY},
             {"slug": "facility", "title": "시설/인증/파트너",
              "desc": "보유 시설과 인증 현황, 협력 파트너사를 소개합니다.",
+             "nav_desc": "생산 시설과 보유 인증, 파트너사를 소개합니다.",
              "body": FACILITY_BODY},
             {"slug": "location", "title": "위치/연락처",
              "desc": "찾아오시는 길과 대표 연락처를 안내합니다.",
+             "nav_desc": "오시는 길과 연락처를 안내합니다.",
              "body": LOCATION_BODY},
         ],
     },
@@ -640,21 +693,72 @@ def asset(path, depth):
     return prefix + path
 
 
+def megamenu_html(m, depth):
+    # (2026-09-03) 클로드 디자인 핸드오프(handoff_megamenu) 적용 — 기존
+    # 카드형 .dropdown(호버 시 서브메뉴만 작게 뜨는 방식)을 화면 전체
+    # 가로폭을 쓰는 4단 풀와이드 메가메뉴로 교체. 정적으로 넘겨받은
+    # megamenu-nav.html.txt는 루트 기준 상대경로(예: "cleaning/index.html")로
+    # 고정돼 있어 그대로 쓰면 depth가 있는 하위 페이지(예:
+    # products/blaster/index.html)에서 링크가 깨지므로, 기존 nav_html()과
+    # 동일하게 MENU 데이터 + asset(path, depth)로 매 페이지마다 올바른
+    # 상대경로를 계산해 동적으로 생성한다. 서브메뉴 항목의 슬라이딩
+    # 하이라이트/미리보기 이미지 교체/우측 설명 갱신은 assets/js/main.js
+    # 하단에 그대로 이식한 megamenu JS가 담당(여긴 초기 HTML만 구성).
+    index_items = []
+    for i, s in enumerate(m["subs"]):
+        active = " is-active" if i == 0 else ""
+        href = asset(m["code"] + "/" + s["slug"] + ("/index.html" if s.get("is_group") else ".html"), depth)
+        img_attr = f' data-img="{asset(s["nav_img"], depth)}"' if s.get("nav_img") else ""
+        index_items.append(
+            f'<li class="megamenu-index-item{active}" data-i="{i}">'
+            f'<a href="{href}" data-desc="{s["nav_desc"]}"{img_attr}>{s["title"]}</a>'
+            f'</li>'
+        )
+    first = m["subs"][0]
+    first_href = asset(m["code"] + "/" + first["slug"] + ("/index.html" if first.get("is_group") else ".html"), depth)
+    if first.get("nav_img"):
+        preview = (
+            f'<div class="megamenu-preview-img is-active" data-i="0">'
+            f'<div class="megamenu-preview-img-bg is-shown" style="background-image:url(\'{asset(first["nav_img"], depth)}\')"></div>'
+            f'</div>'
+        )
+    else:
+        preview = f'<div class="megamenu-preview-img img-ph is-active" data-i="0">{first["title"]}</div>'
+    return f"""<div class="megamenu">
+    <div class="megamenu-inner">
+      <div class="megamenu-intro">
+        <span class="megamenu-eyebrow">{m["nav_eyebrow"]}</span>
+        <h3>{m["label"]}</h3>
+        <p>{m["nav_intro"]}</p>
+      </div>
+      <div class="megamenu-index">
+        <span class="megamenu-index-label">MENU INDEX</span>
+        <ul class="megamenu-index-list">
+          <span class="megamenu-index-highlight" aria-hidden="true"></span>
+          {''.join(index_items)}
+        </ul>
+      </div>
+      <div class="megamenu-preview">
+        {preview}
+      </div>
+      <div class="megamenu-detail">
+        <span class="megamenu-detail-title">{first["title"]}</span>
+        <p class="megamenu-detail-desc">{first["nav_desc"]}</p>
+        <a class="megamenu-detail-link" href="{first_href}">자세히 보기 →</a>
+      </div>
+    </div>
+  </div>"""
+
+
 def nav_html(depth, active_code=None):
     items = []
     for m in MENU:
         li_active = " active" if m["code"] == active_code else ""
         hub_href = asset(f"{m['code']}/index.html", depth)
-        subs = "".join(
-            f'<li><a href="{asset(m["code"] + "/" + s["slug"] + ("/index.html" if s.get("is_group") else ".html"), depth)}">{s["title"]}</a></li>'
-            for s in m["subs"]
-        )
         items.append(
             f'<li class="{li_active.strip()}">'
-            f'<a href="{hub_href}">{m["label"]}</a>'
-            f'<div class="dropdown">'
-            f'<ul>{subs}</ul>'
-            f'</div>'
+            f'<a href="{hub_href}">{m["label"]}<span class="nav-chevron" aria-hidden="true"></span></a>'
+            f'{megamenu_html(m, depth)}'
             f'</li>'
         )
     quote_href = asset("products/quote.html", depth)

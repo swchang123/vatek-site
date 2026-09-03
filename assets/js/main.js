@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".main-nav > ul > li > a").forEach(function (a) {
     a.addEventListener("click", function (e) {
       var li = a.parentElement;
-      if (li.querySelector(".dropdown") && window.innerWidth <= 960) {
+      if (li.querySelector(".megamenu") && window.innerWidth <= 960) {
         e.preventDefault();
         li.classList.toggle("open");
       }
@@ -1280,4 +1280,79 @@ document.addEventListener("DOMContentLoaded", function () {
       img.addEventListener("mouseleave", function () { tab.classList.remove("is-hovered"); });
     });
   }
+
+  // (2026-09-03) 클로드 디자인 핸드오프(handoff_megamenu) 적용 — 메가메뉴:
+  // 서브메뉴 항목에 마우스를 올리면 슬라이딩 하이라이트 필이 그 항목
+  // 위치/높이로 이동하고, 미리보기 이미지·우측 설명이 함께 크로스페이드로
+  // 갱신된다(각 대메뉴 패널마다 독립적으로 동작).
+  document.querySelectorAll(".megamenu").forEach(function (menu) {
+    var items = Array.prototype.slice.call(menu.querySelectorAll(".megamenu-index-item"));
+    var highlight = menu.querySelector(".megamenu-index-highlight");
+    var previewImg = menu.querySelector(".megamenu-preview-img");
+    var detail = menu.querySelector(".megamenu-detail");
+    var detailTitle = menu.querySelector(".megamenu-detail-title");
+    var detailDesc = menu.querySelector(".megamenu-detail-desc");
+    var detailLink = menu.querySelector(".megamenu-detail-link");
+    var switchTimer = null;
+    var moveHighlight = function (li) {
+      if (!highlight) return;
+      highlight.style.top = li.offsetTop + "px";
+      highlight.style.height = li.offsetHeight + "px";
+      highlight.style.opacity = "1";
+    };
+    var selectItem = function (item, a) {
+      items.forEach(function (it) { it.classList.remove("is-active"); });
+      item.classList.add("is-active");
+      moveHighlight(item);
+      var label = a.textContent.replace(/\s+$/, "");
+      var desc = a.getAttribute("data-desc") || "";
+      var href = a.getAttribute("href");
+      var imgUrl = a.getAttribute("data-img");
+      if (previewImg) {
+        if (imgUrl) {
+          // 새 배경 레이어를 만들어 살짝 확대된 상태에서 즉시 스케일+페이드로
+          // "팝인"시키고, 이전 레이어는 제거 — setTimeout으로 페이드아웃을
+          // 기다리지 않아 반응이 즉각적으로 느껴진다.
+          previewImg.classList.remove("img-ph");
+          previewImg.style.color = "";
+          var oldBgs = previewImg.querySelectorAll(".megamenu-preview-img-bg");
+          var bg = document.createElement("div");
+          bg.className = "megamenu-preview-img-bg";
+          bg.style.backgroundImage = "url('" + imgUrl + "')";
+          previewImg.appendChild(bg);
+          window.requestAnimationFrame(function () {
+            bg.classList.add("is-shown");
+          });
+          oldBgs.forEach(function (old) { old.remove(); });
+        } else {
+          previewImg.innerHTML = "";
+          previewImg.textContent = label;
+          previewImg.classList.add("img-ph");
+        }
+      }
+      if (detail) detail.classList.add("is-fading");
+      window.clearTimeout(switchTimer);
+      switchTimer = window.setTimeout(function () {
+        if (detailTitle) detailTitle.textContent = label;
+        if (detailDesc) detailDesc.textContent = desc;
+        if (detailLink) detailLink.setAttribute("href", href);
+        if (detail) detail.classList.remove("is-fading");
+      }, 60);
+    };
+    items.forEach(function (item) {
+      var a = item.querySelector("a");
+      if (!a) return;
+      item.addEventListener("mouseenter", function () { selectItem(item, a); });
+    });
+    var activeItem = menu.querySelector(".megamenu-index-item.is-active") || items[0];
+    // 하이라이트 필의 최초 위치를 페이지 로드 시 한 번 계산해둔다(패널이
+    // opacity:0으로 숨겨져 있을 뿐 display:none은 아니므로 레이아웃 치수는
+    // 이미 읽을 수 있음). li의 mouseenter에 걸면 서브메뉴 항목 자신의
+    // mouseenter가 버블링되어 매번 활성 항목으로 되돌리는 버그가 있어 제거.
+    if (activeItem) moveHighlight(activeItem);
+    window.addEventListener("resize", function () {
+      var current = menu.querySelector(".megamenu-index-item.is-active");
+      if (current) moveHighlight(current);
+    });
+  });
 });
