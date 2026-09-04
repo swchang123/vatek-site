@@ -2116,6 +2116,82 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   background: var(--navy-deep);
 }
 .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.video-embed-sm { max-width: 640px; margin-left: auto; margin-right: auto; }
+
+/* quick-summary chip block (paragraph recap) */
+.quick-summary {
+  background: var(--blue-pale); border: 1px solid var(--gray-line); border-radius: var(--radius);
+  padding: 20px 22px; margin: 20px 0 8px;
+}
+.quick-summary-label {
+  display: block; color: var(--blue-dark); font-weight: 800; font-size: 13px;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;
+}
+.quick-summary .chip-grid { gap: 10px; }
+.quick-summary .chip { background: var(--white); }
+
+/* CO2 / 드라이아이스 소개 (탄소 포집·활용 스토리) 패널
+   배경은 홈 "우리가 하는 일"(.stackdo-frame::before)과 완전히 동일한
+   다색 워시 + 대각선 빗살무늬 패턴을 그대로 재사용 — 화면 전체 폭(full-bleed)
+   으로 깔아 위쪽 대표이미지 하단 경계에 바로 이어지게 하고, 내부 콘텐츠는
+   .wrap으로 다시 감싸 다른 본문과 같은 폭에 맞춘다. */
+.co2-story {
+  position: relative; left: 50%; right: 50%; width: 100vw; z-index: 2;
+  margin-left: -50vw; margin-right: -50vw; margin-top: -64px; margin-bottom: 28px;
+  background-color: var(--white);
+  background-image:
+    radial-gradient(circle at 12% 16%, rgba(79, 173, 184, .17), transparent 42%),
+    radial-gradient(circle at 88% 10%, rgba(216, 229, 140, .18), transparent 46%),
+    radial-gradient(circle at 72% 86%, rgba(34, 136, 150, .15), transparent 46%),
+    radial-gradient(circle at 14% 88%, rgba(227, 241, 242, .6), transparent 50%),
+    repeating-linear-gradient(135deg, rgba(40, 55, 57, .035) 0px, rgba(40, 55, 57, .035) 1px, transparent 1px, transparent 14px);
+  padding: 48px 0 44px;
+  /* (2026-09-04 v3) 참고 사이트(SDI Presence)처럼 대표이미지 위로 카드가
+     올라와 덮는 느낌을 주기 위해 위로 겹치고, 네 모서리를 크게 둥글려
+     "떠 있는 카드"처럼 보이게 함 — overflow:hidden으로 co2-story 자신의
+     배경만 둥근 모서리 모양으로 잘라내므로, 모서리 바깥의 빈 공간은
+     co2-story가 전혀 칠하지 않는 완전한 투명 영역이 되어 그 뒤(위쪽은
+     대표이미지, 아래쪽은 흰 배경)가 그대로 비쳐 보인다.
+     (2026-09-04 v6) "모서리에 회색/흰색 경계가 보인다" 피드백의 실제 원인은
+     라운드나 그림자 자체가 아니라 .subhero-cover 쪽의 마진 상쇄 문제였음
+     (자세한 내용과 수정은 .subhero-cover 규칙의 v6 주석 참고). 모서리를
+     자르는 방식은 border-radius+overflow:hidden 대신 clip-path를 사용 —
+     100vw 풀블리드 + position:relative 조합에서 border-radius보다 더
+     안정적으로 동작함. */
+  clip-path: inset(0 round 72px);
+}
+.co2-story > .wrap { position: relative; z-index: 1; }
+@media (max-width: 640px) {
+  .co2-story { margin-top: -28px; clip-path: inset(0 round 40px); }
+}
+.co2-story h2 { margin-top: 0 !important; }
+.co2-story-eyebrow {
+  color: var(--ice-dark); font-weight: 800; font-size: 15px; margin: 4px 0 18px;
+}
+.co2-story p { color: var(--text-body); }
+.co2-story .content-photo {
+  background: var(--white); border-radius: 10px; padding: 22px 18px; margin: 22px 0 8px;
+  box-shadow: var(--shadow-sm);
+}
+.co2-story .content-photo img { display: block; width: 100%; height: auto; }
+.co2-story-sub {
+  font-size: 16.5px; font-weight: 800; color: var(--navy); margin: 28px 0 10px;
+}
+.cite-quote {
+  border-left: 4px solid var(--ice); background: var(--white); border-radius: 0 10px 10px 0;
+  padding: 18px 22px; margin: 20px 0;
+}
+.cite-quote p { font-size: 15px; line-height: 1.7; color: var(--text-dark); margin: 0 0 10px; font-style: italic; }
+.cite-quote cite { display: block; font-size: 13px; color: var(--text-muted); font-style: normal; font-weight: 700; }
+.co2-story-tagline {
+  text-align: center; font-size: 18px; font-weight: 800; color: var(--navy);
+  line-height: 1.6; margin: 30px 0 4px; letter-spacing: -0.01em;
+}
+@media (max-width: 640px) {
+  .co2-story { padding: 32px 0; }
+  .co2-story .content-photo { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .co2-story .content-photo img { width: auto; max-width: none; height: 120px; }
+}
 
 .photo-pair { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 24px 0 8px; }
 .photo-pair .content-photo { margin: 0; }
@@ -2202,7 +2278,12 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   overflow: hidden; background: var(--navy-deep);
 }
 .subhero-parallax-img {
-  position: absolute; top: -80px; left: 0; width: 100%; height: calc(100% + 160px);
+  /* (2026-09-04 v4) 680px 버퍼는 이미지를 커버하기 위해 확대(object-fit:
+     cover) 비율이 너무 커져 "사진이 확대돼 답답하다"는 피드백을 받음 —
+     버퍼를 늘릴수록 그만큼 확대율도 같이 커지는 구조적 트레이드오프라,
+     확대감이 불편하지 않은 선인 420px로 되돌림(assets/js/main.js의
+     SUBHERO_BUFFER와 반드시 동일한 값 유지). */
+  position: absolute; top: -210px; left: 0; width: 100%; height: calc(100% + 420px);
   object-fit: cover; display: block; will-change: transform, filter;
 }
 .subhero-parallax::after {
@@ -2226,6 +2307,24 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 .subhero-textbox h1 { font-size: clamp(26px, 3.4vw, 38px); font-weight: 800; letter-spacing: -0.02em; color: var(--white); white-space: nowrap; }
 .subhero-textbox p { font-size: 16px; line-height: 1.7; margin-top: 12px; color: rgba(255,255,255,0.92); white-space: nowrap; }
 .subhero-cover { position: relative; background: var(--white); }
+/* (2026-09-04) 대표이미지 바로 아래 co2-story 패널을 대표이미지 하단
+   경계에 빈틈없이 붙이기 위해, 이 섹션의 상단 패딩(공통 section 규칙의
+   clamp(64px,9vw,128px))만 0으로 상쇄. 하단 패딩은 그대로 유지되어
+   cover_tail(같은 카테고리 카드 · CTA 밴드) 앞뒤 여백에는 영향 없음. */
+.subhero-cover { padding-top: 0; }
+/* (2026-09-04 v6) "모서리 노치에 회색/흰색이 보인다" 피드백의 진짜 원인 —
+   co2-story의 margin-top:-64px(대표이미지 위로 겹치는 음수 마진)이 이
+   .subhero-cover의 첫 자식이다 보니, 위쪽 여백이 없는 부모와 만나
+   "마진 상쇄(margin collapsing)"가 일어나 .subhero-cover 박스 자체의
+   상단 경계가 덩달아 64px 위로 끌려 올라갔음. 그 결과 co2-story가 대표
+   이미지 위로 겹쳐 올라가는 구간에서, 노치(둥근 모서리로 잘려나가 투명해야
+   할 부분)에 실제로는 .subhero-cover의 흰 배경이 이미 깔려 있어 대표이미지
+   대신 흰색(또는 아래쪽 .subhero-parallax의 overflow:hidden 클리핑과 겹치며
+   회색 얼룩)이 비쳤던 것 — 라운드/그림자 자체의 렌더링 버그가 아니었음.
+   display:flow-root로 새 블록 서식 맥락을 만들면 오버플로를 자르지 않고도
+   (co2-story가 여전히 위로 튀어나와 보이면서) 이 마진 상쇄만 막아, 노치가
+   진짜로 투명해져 뒤의 대표이미지가 스크롤에 따라 그대로 비쳐 보인다. */
+.subhero-cover { display: flow-root; }
 @media (max-width: 900px) {
   .subhero-textbox { padding: 26px 28px; max-width: 92vw; }
   .subhero-textbox h1, .subhero-textbox p { white-space: normal; }

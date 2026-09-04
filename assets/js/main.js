@@ -1368,7 +1368,11 @@ document.addEventListener("DOMContentLoaded", function () {
   var subheroStage = document.querySelector(".subhero-parallax");
   if (subheroStage) {
     var subheroImg = subheroStage.querySelector(".subhero-parallax-img");
-    var SUBHERO_BUFFER = 160; // px — CSS 버퍼량과 반드시 일치시킬 것
+    // (2026-09-04 v4) 680px는 이미지 확대율이 너무 커져 "사진이 답답하게
+    // 확대돼 보인다"는 피드백 — 버퍼가 클수록 object-fit:cover 확대율도
+    // 함께 커지는 구조라, 확대감이 무리 없는 420px로 되돌림(css
+    // .subhero-parallax-img의 top/height 버퍼값과 반드시 일치시킬 것).
+    var SUBHERO_BUFFER = 420; // px — CSS 버퍼량과 반드시 일치시킬 것
     var SUBHERO_BLUR_MAX = 10; // px
     var subheroTicking = false;
 

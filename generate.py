@@ -16,19 +16,66 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 # ---------------------------------------------------------------------------
 
 GUIDE_BODY = """
+<div class="co2-story">
+  <div class="wrap">
+  <h2 style="font-size:20px;">드라이아이스란 무엇인가?</h2>
+  <p class="co2-story-eyebrow">포집된 CO<sub>2</sub>에 새로운 가치를 더합니다</p>
+
+  <p>드라이아이스는 이산화탄소(CO<sub>2</sub>)의 고체 형태입니다. 산업시설이나 바이오가스 시설 등에서
+  포집된 CO<sub>2</sub>를 정제 · 액화한 뒤 다시 고체로 전환하여 만들어지며, 이는 탄소 포집 및 활용(CCU,
+  Carbon Capture and Utilization)의 한 형태로, 원래 배출될 수 있었던 CO<sub>2</sub>를 회수해 냉각과
+  세정에 활용할 수 있는 유용한 자원으로 다시 사용하는 방식입니다.</p>
+  <p>포집된 CO<sub>2</sub>는 정제와 압축 과정을 거쳐 액체 상태로 저장 · 운송되며, 이후 펠레타이저를 통해
+  드라이아이스로 생산됩니다. 이렇게 만들어진 드라이아이스는 산업 현장에서 냉각 및 친환경 세정 매체로
+  다시 활용됩니다.</p>
+
+  <h3 class="co2-story-sub">CO<sub>2</sub>에 두 번째 생명을</h3>
+  <div class="content-photo">
+    <img src="../assets/img/adopt-carbon-cycle.jpg" alt="CO2 포집부터 드라이아이스 생산까지의 순환 과정" loading="lazy" />
+  </div>
+  <p class="photo-caption" style="text-align:center;">포집 → 정제 · 액화 → 저장 → 운송 → 현장 저장 → 고체화 →
+  드라이아이스로 이어지는 순환 과정</p>
+  <p>한 번 배출된 CO<sub>2</sub>를 그대로 버리는 대신, 다시 산업에 활용할 수 있는 자원으로 전환합니다.</p>
+
+  <blockquote class="cite-quote">
+    <p>드라이아이스는 재활용된 CO<sub>2</sub>를 사용하기 때문에 탄소발자국 산정 시 CO<sub>2</sub>가 사용
+    단계에서 다시 계산되지 않습니다. CO<sub>2</sub>는 생산자 단계에서 이미 산정됩니다.</p>
+    <cite>— California Air Resources Board (캘리포니아 대기자원위원회)</cite>
+  </blockquote>
+
+  <h3 class="co2-story-sub">더 깨끗한 산업을 위한 CO<sub>2</sub>의 순환</h3>
+  <p>드라이아이스는 새로운 CO<sub>2</sub>를 만들어 사용하는 것이 아니라, 이미 포집된 CO<sub>2</sub>를 다시
+  활용하는 순환형 자원입니다.</p>
+  <p>세정 과정에서는 물이나 화학 세정제를 사용하지 않으며, 드라이아이스 자체는 사용 후 다시 기체로
+  승화합니다. 이러한 특성은 물 사용과 2차 폐기물 발생을 줄이는 산업 세정 방식으로 이어집니다.</p>
+
+  <p class="co2-story-tagline">회수된 CO<sub>2</sub>를 다시 가치 있는 자원으로.<br />
+  드라이아이스는 탄소를 순환시키는 또 하나의 방법입니다.</p>
+  </div>
+</div>
+
 <p>드라이아이스 세척은 고체 이산화탄소(CO<sub>2</sub>) 펠릿 또는 미세 입자를 압축공기로 가속하여 표면의
 오염물과 잔류물을 제거하는 산업용 세정 방식입니다. 드라이아이스는 표면과 충돌한 직후 고체에서 기체로
-바로 승화하므로, 세정 매체 자체가 2차 잔류물로 남지 않는다는 점이 가장 큰 특징입니다.</p>
-<p>모래 · 소다처럼 표면을 깎아내는 연마재 세척과 달리, 드라이아이스 입자는 표면을 마모시키지 않으면서도
-강력한 세정력을 낼 수 있어 정밀 부품과 민감한 표면에도 폭넓게 적용됩니다.</p>
+바로 승화하므로, 세정 매체 자체가 2차 잔류물로 남지 않는다는 점이 가장 큰 특징입니다. 모래 · 소다처럼
+표면을 깎아내는 연마재 세척과 달리, 드라이아이스 입자는 표면을 마모시키지 않으면서도 강력한 세정력을
+낼 수 있어 정밀 부품과 민감한 표면에도 폭넓게 적용됩니다.</p>
 
-<div class="video-embed">
+<div class="quick-summary">
+  <span class="quick-summary-label">핵심 요약</span>
+  <div class="chip-grid">
+    <span class="chip">압축공기로 펠릿 · 미세입자를 가속해 오염물 제거</span>
+    <span class="chip">충돌 즉시 기체로 승화 → 2차 잔류물 없음</span>
+    <span class="chip">비마모성 → 정밀 부품 · 민감한 표면에도 적용</span>
+  </div>
+</div>
+
+<div class="video-embed video-embed-sm">
   <iframe src="https://www.youtube.com/embed/jtnrk4n3kDA" title="드라이아이스 세척 소개 영상 (VATEK 유튜브 채널)"
     loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen></iframe>
 </div>
-<p class="photo-caption">영상으로 보는 드라이아이스 세척 (출처: VATEK 유튜브 채널)</p>
+<p class="photo-caption" style="text-align:center;">영상으로 보는 드라이아이스 세척 (출처: VATEK 유튜브 채널)</p>
 
 <h2 style="font-size:20px; margin-top:36px;">세척 원리 — Impact · Cold · Expansion</h2>
 <p>드라이아이스 세척의 세정 메커니즘은 아래 세 가지 효과가 결합되어 나타납니다.</p>
