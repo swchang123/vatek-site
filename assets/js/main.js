@@ -1355,4 +1355,41 @@ document.addEventListener("DOMContentLoaded", function () {
       if (current) moveHighlight(current);
     });
   });
+
+  // ---------------------------------------------------------------------
+  // 서브페이지 패럴랙스 히어로 + 스크롤 블러 (2026-09-04 v2 프로토타입)
+  // .subhero-parallax가 있는 페이지에서만 동작(없으면 즉시 종료). 이미지에
+  // 위아래 160px 버퍼(assets/css/style.css의 .subhero-parallax-img
+  // top:-80px / height:calc(100% + 160px)와 반드시 일치)를 깔아두고, 그
+  // 버퍼 안에서만 이동시켜 가장자리가 비는 문제 없이 "본문보다 느리게
+  // 움직이는" 패럴랙스를 구현. 동시에 스크롤 진행률(0~1)에 비례해 이미지
+  // blur를 키워 방문자 시선이 자연스럽게 본문으로 옮겨가도록 유도한다.
+  // ---------------------------------------------------------------------
+  var subheroStage = document.querySelector(".subhero-parallax");
+  if (subheroStage) {
+    var subheroImg = subheroStage.querySelector(".subhero-parallax-img");
+    var SUBHERO_BUFFER = 160; // px — CSS 버퍼량과 반드시 일치시킬 것
+    var SUBHERO_BLUR_MAX = 10; // px
+    var subheroTicking = false;
+
+    var updateSubhero = function () {
+      subheroTicking = false;
+      var rect = subheroStage.getBoundingClientRect();
+      var stageHeight = subheroStage.offsetHeight || 1;
+      var scrolled = Math.min(Math.max(-rect.top, 0), stageHeight);
+      var progress = scrolled / stageHeight;
+      var shift = progress * SUBHERO_BUFFER - SUBHERO_BUFFER / 2;
+      subheroImg.style.transform = "translate3d(0, " + shift.toFixed(1) + "px, 0)";
+      subheroImg.style.filter = "blur(" + (progress * SUBHERO_BLUR_MAX).toFixed(2) + "px)";
+    };
+    var onSubheroScroll = function () {
+      if (!subheroTicking) {
+        subheroTicking = true;
+        requestAnimationFrame(updateSubhero);
+      }
+    };
+    window.addEventListener("scroll", onSubheroScroll, { passive: true });
+    window.addEventListener("resize", onSubheroScroll);
+    updateSubhero();
+  }
 });

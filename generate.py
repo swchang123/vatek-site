@@ -16,114 +16,266 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 # ---------------------------------------------------------------------------
 
 GUIDE_BODY = """
-<p>드라이아이스 블라스팅은 재활용된 이산화탄소(CO<sub>2</sub>)로 만든 드라이아이스 펠릿을 압축공기로
-초음속에 가깝게 가속해 표면에 분사하는 세척 기술입니다. 모래나 소다처럼 표면을 깎아내는 연마재 세척과
-달리, 드라이아이스 입자는 표면에 부딪히는 순간 고체에서 기체로 바로 승화합니다.</p>
+<p>드라이아이스 세척은 고체 이산화탄소(CO<sub>2</sub>) 펠릿 또는 미세 입자를 압축공기로 가속하여 표면의
+오염물과 잔류물을 제거하는 산업용 세정 방식입니다. 드라이아이스는 표면과 충돌한 직후 고체에서 기체로
+바로 승화하므로, 세정 매체 자체가 2차 잔류물로 남지 않는다는 점이 가장 큰 특징입니다.</p>
+<p>모래 · 소다처럼 표면을 깎아내는 연마재 세척과 달리, 드라이아이스 입자는 표면을 마모시키지 않으면서도
+강력한 세정력을 낼 수 있어 정밀 부품과 민감한 표면에도 폭넓게 적용됩니다.</p>
 
-<h2 style="font-size:20px; margin-top:32px;">세척 원리</h2>
-<ul style="padding-left:20px; display:grid; gap:8px;">
-  <li><b>운동 에너지</b> — 초음속으로 분사된 펠릿이 오염물질에 물리적 충격을 가해 표면에서 떼어냅니다.</li>
-  <li><b>열 에너지</b> — 영하 78.5℃의 드라이아이스가 오염물질을 급속히 냉각시켜 기저 표면과의 접착력을 약화시킵니다.</li>
-  <li><b>승화 팽창</b> — 표면에 닿은 펠릿이 즉시 기체로 승화하며 부피가 급격히 팽창해, 남아있던 오염물질을 밀어냅니다.</li>
-</ul>
+<div class="video-embed">
+  <iframe src="https://www.youtube.com/embed/jtnrk4n3kDA" title="드라이아이스 세척 소개 영상 (VATEK 유튜브 채널)"
+    loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+</div>
+<p class="photo-caption">영상으로 보는 드라이아이스 세척 (출처: VATEK 유튜브 채널)</p>
 
-<h2 style="font-size:20px; margin-top:32px;">주요 장점</h2>
-<div class="icon-row" style="grid-template-columns:repeat(3,1fr);">
-  <div class="item"><div class="ic">🛡️</div><span>비연마성 · 표면 손상 없음</span></div>
-  <div class="item"><div class="ic">♻️</div><span>2차 폐기물 · 화학잔류물 없음</span></div>
-  <div class="item"><div class="ic">⚡</div><span>비전도성 · 통전 상태 세척 가능</span></div>
-  <div class="item"><div class="ic">🍽️</div><span>식품 등급, 인체에 무해</span></div>
-  <div class="item"><div class="ic">🛠️</div><span>대부분 분해 없이 즉시 세척</span></div>
-  <div class="item"><div class="ic">⏱️</div><span>가동 중단 시간 단축</span></div>
+<h2 style="font-size:20px; margin-top:36px;">세척 원리 — Impact · Cold · Expansion</h2>
+<p>드라이아이스 세척의 세정 메커니즘은 아래 세 가지 효과가 결합되어 나타납니다.</p>
+<div class="principle-row">
+  <div class="principle-card">
+    <img src="../assets/img/ice-impact.jpg" alt="Impact 원리" loading="lazy" />
+    <h4>① Impact (충격)</h4>
+    <p>초음속에 가깝게 가속된 펠릿이 오염층에 운동에너지를 전달해 표면에서 떼어냅니다.</p>
+  </div>
+  <div class="principle-card">
+    <img src="../assets/img/ice-cold.jpg" alt="Cold 원리" loading="lazy" />
+    <h4>② Cold (냉각)</h4>
+    <p>영하 78.5℃의 저온 충격이 오염물과 기재 사이의 결합력을 급속히 약화시킵니다.</p>
+  </div>
+  <div class="principle-card">
+    <img src="../assets/img/ice-expansion.jpg" alt="Expansion 원리" loading="lazy" />
+    <h4>③ Expansion (팽창)</h4>
+    <p>펠릿이 순간적으로 승화 · 팽창하며 균열된 오염층을 표면에서 완전히 분리시킵니다.</p>
+  </div>
 </div>
 
-<h2 style="font-size:20px; margin-top:32px;">안전 수칙</h2>
+<h2 style="font-size:20px; margin-top:36px;">핵심 특징</h2>
+<div class="icon-row" style="grid-template-columns:repeat(3,1fr);">
+  <div class="item"><div class="ic">🛡️</div><span>비마모성 · 표면 손상 위험 낮음</span></div>
+  <div class="item"><div class="ic">♻️</div><span>2차 폐기물 없음 (세정 매체 승화)</span></div>
+  <div class="item"><div class="ic">🧪</div><span>화학물질 · 폐수 부담 저감</span></div>
+  <div class="item"><div class="ic">⚡</div><span>비전도성 · 통전 상태 세척 가능</span></div>
+  <div class="item"><div class="ic">🍽️</div><span>식품 등급, 인체에 무해</span></div>
+  <div class="item"><div class="ic">⏱️</div><span>분해 최소화로 비가동 시간 단축</span></div>
+</div>
+
+<div class="content-photo"><img src="../assets/img/guide-effect-work.jpg" alt="드라이아이스 세척 효과를 보여주는 작업 장면" loading="lazy" /></div>
+<p class="photo-caption">세척 전후 차이를 직관적으로 보여주는 작업 현장 사진 (참고: Cold Jet 공식 기술자료 p.13)</p>
+
+<h2 style="font-size:20px; margin-top:36px;">안전 수칙</h2>
 <p>드라이아이스 블라스팅 자체는 위험한 작업이 아니지만, 다음 사항은 반드시 지켜야 합니다.</p>
 <ul style="padding-left:20px; display:grid; gap:8px;">
   <li>밀폐 공간 작업 시 충분한 환기를 확보해 CO<sub>2</sub> 농도 상승을 방지합니다.</li>
-  <li>장갑 · 보안경 등 개인보호장비(PPE)를 착용합니다.</li>
+  <li>장갑 · 보안경 · 청력 보호구 등 개인보호장비(PPE)를 착용합니다.</li>
   <li>CO<sub>2</sub>가 정체될 수 있는 저지대 · 밀폐구역을 사전에 확인하고 표시합니다.</li>
   <li>연속 노출 시간 제한을 준수합니다.</li>
 </ul>
 
-<h2 style="font-size:20px; margin-top:32px;">자주 묻는 질문</h2>
-<p><b>Q. 전자 · 정밀 장비에도 사용할 수 있나요?</b><br />
-A. 네. 비전도성 · 비마모성 특성 덕분에 통전 중인 전기 패널이나 정밀 금형에도 널리 사용됩니다.
-다만 장비 민감도에 따라 압력 · 노즐을 조정해야 하므로 사전 테스트를 권장합니다.</p>
-<p><b>Q. 세척 후 남는 것이 있나요?</b><br />
-A. 드라이아이스 입자는 세척 즉시 기체로 승화하기 때문에 남는 것은 원래 있던 오염물질뿐입니다.
-별도 건조나 폐수 처리가 필요 없습니다.</p>
-<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(출처: Cold Jet 공식 웹사이트)</p>
+<h2 style="font-size:20px; margin-top:36px;">자주 묻는 질문</h2>
+<div class="faq-list">
+  <details class="faq-item">
+    <summary>전자 · 정밀 장비에도 사용할 수 있나요?</summary>
+    <p class="faq-a">네. 비전도성 · 비마모성 특성 덕분에 통전 중인 전기 패널이나 정밀 금형에도 널리
+    사용됩니다. 다만 장비 민감도에 따라 압력 · 노즐을 조정해야 하므로 사전 테스트를 권장합니다.</p>
+  </details>
+  <details class="faq-item">
+    <summary>세척 후 남는 것이 있나요?</summary>
+    <p class="faq-a">드라이아이스 입자는 세척 즉시 기체로 승화하기 때문에 남는 것은 원래 있던
+    오염물질뿐입니다. 별도 건조나 폐수 처리가 필요 없습니다.</p>
+  </details>
+  <details class="faq-item">
+    <summary>다른 세척 방식과는 어떻게 다른가요?</summary>
+    <p class="faq-a">연마재 · 화학용제 · 고압수 세척 등과의 구체적인 차이는
+    <a href="compare.html">타 세척방식과 비교</a> 페이지에서 항목별로 확인하실 수 있습니다.</p>
+  </details>
+</div>
+<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(참고: Cold Jet 공식 기술자료
+The Definitive Guide to Dry Ice Blasting 및 coldjet.com)</p>
 """
 
 COMPARE_BODY = """
-<p>드라이아이스 세척은 연마재 블라스팅(유리 · 호두껍질 · 실리콘), 샌드 · 소다 블라스팅, 고압수 세척,
-화학용제, 수작업 등 기존 세척 방식을 대체할 수 있습니다. 방식별 차이는 다음과 같습니다.</p>
+<div class="hero-photo"><img src="../assets/img/compare-hero.jpg" alt="드라이아이스 블라스팅 작업 장면" loading="lazy" /></div>
+<p class="photo-caption">드라이아이스 블라스팅 작업 장면 (참고: Cold Jet 공식 기술자료 p.16)</p>
+
+<p>산업 현장에서 세정 방식을 선정할 때는 제거 성능뿐 아니라 기재의 손상 가능성, 2차 폐기물, 건조 및
+폐수 처리, 작업자 안전, 설비 비가동 시간 등을 종합적으로 검토해야 합니다.</p>
+<p>드라이아이스 세척은 비마모성 · 건식 · 승화라는 특성 덕분에 이러한 운용 요소를 동시에 단순화할 수
+있다는 장점이 있습니다. 특히 기재의 표면 상태를 유지하면서 후처리 공정을 줄여야 하는 환경에서
+검토 가치가 높습니다.</p>
+
+<h2 style="font-size:20px; margin-top:32px;">세척 방식 비교표</h2>
+<div style="overflow-x:auto;">
 <table class="compare-table">
-  <tr><th>비교 항목</th><th>드라이아이스 세척</th><th>연마재 · 샌드 · 소다 블라스팅</th><th>고압수 세척</th><th>화학용제</th></tr>
-  <tr><td>표면 손상</td><td class="good">없음 (비연마성)</td><td>있음 (마모 · 긁힘)</td><td>고압에서 발생 가능</td><td>재질에 따라 손상 가능</td></tr>
-  <tr><td>2차 폐기물</td><td class="good">없음 (승화)</td><td>매체 잔여물 발생</td><td>폐수 발생</td><td>유해 폐기물 발생</td></tr>
-  <tr><td>전기 안전성</td><td class="good">비전도성</td><td>제한적</td><td>감전 위험</td><td>제한적</td></tr>
-  <tr><td>설비 분해</td><td class="good">대부분 불필요</td><td>필요한 경우 많음</td><td>필요한 경우 많음</td><td>필요한 경우 많음</td></tr>
-  <tr><td>건조 공정</td><td class="good">불필요</td><td>불필요</td><td>필요</td><td>필요</td></tr>
-  <tr><td>식품 · 인체 안전</td><td class="good">식품 등급</td><td>매체에 따라 다름</td><td>비교적 안전</td><td>유해할 수 있음</td></tr>
+  <tr><th>세척 방식</th><th>기재 영향</th><th>2차 잔류물 · 폐기물</th><th>수분 · 건조</th><th>운영상 특징</th></tr>
+  <tr><td><b>드라이아이스 세척</b></td><td class="good">비마모성</td><td class="good">승화되어 잔류하지 않음</td><td class="good">건식</td><td class="good">기재 보호와 후처리 단순화에 유리</td></tr>
+  <tr><td>연마 블라스팅</td><td>연마재 종류에 따라 마모 · 요철 발생 가능</td><td>연마재 · 분진 발생</td><td>건식</td><td>표면 변화와 매체 처리 필요</td></tr>
+  <tr><td>샌드 블라스팅</td><td>강한 연마작용으로 마모 · 요철 발생 가능</td><td>폐사 · 분진 발생</td><td>건식</td><td>분진 관리와 폐사 처리 필요</td></tr>
+  <tr><td>레이저 세정</td><td>조건 설정에 따라 표면 영향 가능</td><td>증기화된 오염물 환기 관리 필요</td><td>건식</td><td>초기 투자와 전문적 운전조건 관리 필요</td></tr>
+  <tr><td>수작업 · 화학용제</td><td>반복적 물리 접촉으로 민감 표면 손상 가능</td><td>용제 · 제거 오염물 취급 · 처리 필요</td><td class="bad">습식 · 용제</td><td>작업시간 · 인력 부담, 복잡 형상 접근성 고려 필요</td></tr>
+  <tr><td>소다 블라스팅</td><td>비교적 부드러운 연마작용으로 표면 영향 가능</td><td>미세 소다 분말 잔류</td><td>건식</td><td>잔류 분말의 추가 제거 및 관리 필요</td></tr>
+  <tr><td>고압 세척</td><td>고압수에 의해 민감 표면 손상 가능성</td><td>오 · 폐수 발생</td><td class="bad">습식</td><td>건조 · 부식 방지, 전기 · 정밀부품 보호 필요</td></tr>
 </table>
-<p style="margin-top:18px;">Cold Jet은 이 같은 특성 덕분에 드라이아이스 세척이 미국 EPA · FDA · USDA 기준을
-충족하는 친환경 세척 대안이라고 설명합니다. (출처: Cold Jet 공식 웹사이트)</p>
+</div>
+<p style="font-size:13px; color:var(--text-muted); margin-top:14px;">※ 실제 세정 결과와 적용 가능성은
+기재의 재질, 오염물의 종류와 두께, 분사 압력, 입자 크기, 노즐 및 작업 환경에 따라 달라질 수 있으므로
+사전 테스트를 통한 조건 확인이 필요합니다.</p>
+
+<h2 style="font-size:20px; margin-top:36px;">방식별 특징 한눈에 보기</h2>
+<div class="method-card-grid">
+  <div class="method-card"><img src="../assets/img/method-abrasive.jpg" alt="연마 블라스팅" loading="lazy" /><div class="mc-body"><h4>연마 블라스팅</h4><p>유리 · 호두껍질 등 연마재를 사용하며, 매체 종류에 따라 표면 마모나 요철이 발생할 수 있습니다.</p></div></div>
+  <div class="method-card"><img src="../assets/img/method-sand.jpg" alt="샌드 블라스팅" loading="lazy" /><div class="mc-body"><h4>샌드 블라스팅</h4><p>강한 연마력으로 두꺼운 오염물 제거에 쓰이지만, 분진과 폐사 처리 부담이 있습니다.</p></div></div>
+  <div class="method-card"><img src="../assets/img/method-laser.jpg" alt="레이저 세정" loading="lazy" /><div class="mc-body"><h4>레이저 세정</h4><p>비접촉 방식이지만 초기 장비 투자비가 높고 전문적인 운전 조건 관리가 필요합니다.</p></div></div>
+  <div class="method-card"><img src="../assets/img/method-chemical.jpg" alt="수작업 및 화학용제 세정" loading="lazy" /><div class="mc-body"><h4>수작업 · 화학용제</h4><p>복잡한 형상에도 접근할 수 있지만, 반복적인 물리적 접촉과 용제 취급 부담이 있습니다.</p></div></div>
+  <div class="method-card"><img src="../assets/img/method-soda.jpg" alt="소다 블라스팅" loading="lazy" /><div class="mc-body"><h4>소다 블라스팅</h4><p>비교적 부드러운 연마 방식이지만, 잔류 분말을 추가로 제거 · 관리해야 합니다.</p></div></div>
+  <div class="method-card"><img src="../assets/img/method-highpressure.jpg" alt="고압 세척" loading="lazy" /><div class="mc-body"><h4>고압 세척</h4><p>강력한 세정력을 내지만 폐수가 발생하고, 전기 · 정밀 부품은 별도 보호가 필요합니다.</p></div></div>
+</div>
+
+<div class="placeholder-note">
+  <b>도입 전 이렇게 확인해보세요</b><br />
+  · 실제 시편 또는 부품을 이용한 세정 테스트를 통해 적용성을 확인할 수 있습니다.<br />
+  · 오염물, 기재, 작업 조건을 바탕으로 적합한 세정 방식을 함께 검토해 드립니다.
+</div>
+<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(참고: Cold Jet 공식 기술자료
+The Definitive Guide to Dry Ice Blasting 및 coldjet.com)</p>
 """
 
-_INDUSTRIES = [
-    ("항공우주 · 항공", "엔진 부품, 랜딩기어 등 정밀 부품의 도장 전처리 및 세척"),
-    ("자동차 제조", "도장 전 금형 · 지그 세척, 로봇 자동화 라인 통합"),
-    ("외주 세척 서비스", "그래피티 제거, 화재 · 연기 피해 복구 등 방문형 세척"),
-    ("목재 · 합판", "프레스 · 성형몰드의 수지 · 접착제 잔여물 제거"),
-    ("식품 · 음료", "오븐 · 컨베이어 등 식품설비를 분해 없이 위생적으로 세척"),
-    ("주조(Foundry)", "주조 금형의 이형제 · 탄화물 잔여물 제거"),
-    ("의료기기", "정밀 의료기기 표면 오염물 제거"),
-    ("광업", "중장비 부품의 카본 · 오일 잔여물 제거"),
-    ("오일 · 가스", "배관 · 밸브 등 설비의 스케일 · 잔류물 제거"),
-    ("포장", "포장 라인 금형 · 롤러 세척"),
-    ("플라스틱 · 복합소재", "사출 · 복합소재 성형몰드 세척"),
-    ("발전설비", "터빈 · 모터의 카본 및 오염물 제거"),
-    ("인쇄", "인쇄기 롤러 · 인쇄판의 잉크 잔여물 제거"),
-    ("철도", "철도 차량 부품 세척"),
-    ("화재 · 곰팡이 복구", "화재 · 누수 피해 시설의 그을음 · 곰팡이 제거"),
-    ("고무 · 타이어", "타이어 금형 세척으로 사이클타임 단축"),
-    ("반도체 · PCB", "정밀 전자부품 · PCB 세척"),
-    ("섬유", "섬유 설비 잔여물 제거"),
-]
 INDUSTRY_BODY = """
-<p>Cold Jet의 드라이아이스 세척은 전 세계 18개 이상의 산업에서 활용되고 있습니다.
-바테크는 이 중 국내 제조 현장에서 특히 수요가 많은 산업을 중심으로 대응하고 있습니다.</p>
+<p>Cold Jet의 드라이아이스 세척은 자동차, 식품, 전자 · 반도체, 고무 · 타이어, 주조, 발전설비 등 전 세계
+다양한 산업에서 활용되고 있습니다. 동일한 장비를 사용하더라도 오염물의 성상과 기재 특성에 따라 분사
+압력, 드라이아이스 입자 크기, 공급량, 노즐 구성 등 운전 조건을 작업 목적에 맞추어 조정합니다.</p>
+
+<h2 style="font-size:20px; margin-top:32px;">8대 핵심 산업 솔루션</h2>
 <div class="sub-grid">
-""" + "".join(
-    f'<div class="sub-card"><h3>{name}</h3><p>{desc}</p></div>' for name, desc in _INDUSTRIES
-) + """
+  <div class="sub-card"><h3>자동차 · 모빌리티</h3><p>금형 · 설비 표면 오염 제거, 도장 전처리 및 생산설비 유지보수에 활용됩니다.</p></div>
+  <div class="sub-card"><h3>식품 · 포장</h3><p>생산설비 표면의 잔여물 제거 등 분해 없이 건식 세정이 필요한 공정에 적합합니다.</p></div>
+  <div class="sub-card"><h3>전자 · 반도체</h3><p>민감한 표면과 전기 · 전자 부품을 세정하며, 화학 세정제 사용을 줄일 수 있습니다.</p></div>
+  <div class="sub-card"><h3>고무 · 타이어 · 플라스틱</h3><p>금형 세정, 디플래싱 및 반복적인 유지보수 공정에 사용됩니다.</p></div>
+  <div class="sub-card"><h3>주조 · 중공업</h3><p>대형 설비의 표면 오염 및 잔류물 제거, 정기 유지보수 작업에 적용됩니다.</p></div>
+  <div class="sub-card"><h3>발전 · 에너지</h3><p>주요 설비의 세정 및 유지보수, 예방 보전 작업에 활용됩니다.</p></div>
+  <div class="sub-card"><h3>복원 · 시설관리</h3><p>화재 복구, 곰팡이 제거, 건축물 · 시설 표면의 세정 및 복원에 사용됩니다.</p></div>
+  <div class="sub-card"><h3>일반 제조</h3><p>기계 · 금형 · 완제품 표면 세정 및 일반 유지보수 작업에 널리 적용됩니다.</p></div>
 </div>
-<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(출처: Cold Jet 공식 웹사이트 Industries 목록 기준)</p>
+
+<h2 style="font-size:20px; margin-top:36px;">20개 세부 적용 산업</h2>
+<p style="color:var(--text-muted); font-size:14.5px;">Cold Jet 공식 기술자료가 소개하는 세부 적용 산업입니다.</p>
+<div class="industry-icon-grid">
+  <div class="icon-card"><img src="../assets/img/industry-aerospace.jpg" alt="우주항공" loading="lazy" /><span>우주항공</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-automotive.jpg" alt="자동차" loading="lazy" /><span>자동차</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-detailing.jpg" alt="세차 · 복원 · 디테일링" loading="lazy" /><span>세차 · 복원 · 디테일링</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-cleaning-service.jpg" alt="세정 서비스" loading="lazy" /><span>세정 서비스</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-wood.jpg" alt="가공 목재" loading="lazy" /><span>가공 목재</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-fire-restoration.jpg" alt="화재 복구" loading="lazy" /><span>화재 복구</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-food.jpg" alt="식품산업" loading="lazy" /><span>식품산업</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-foundry.jpg" alt="주조(Foundry)" loading="lazy" /><span>주조(Foundry)</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-maintenance.jpg" alt="일반 유지보수 · 시설관리" loading="lazy" /><span>일반 유지보수 · 시설관리</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-heritage.jpg" alt="문화재 · 건축물 복원" loading="lazy" /><span>문화재 · 건축물 복원</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-medical.jpg" alt="의료 장비 제조" loading="lazy" /><span>의료 장비 제조</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-mold-removal.jpg" alt="곰팡이 제거" loading="lazy" /><span>곰팡이 제거</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-oilgas.jpg" alt="석유 및 가스" loading="lazy" /><span>석유 및 가스</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-plastics.jpg" alt="플라스틱 및 복합소재" loading="lazy" /><span>플라스틱 및 복합소재</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-packaging.jpg" alt="포장 산업" loading="lazy" /><span>포장 산업</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-power.jpg" alt="발전소 설비 · 원자력 제염" loading="lazy" /><span>발전소 설비 · 원자력 제염</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-printing.jpg" alt="인쇄" loading="lazy" /><span>인쇄</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-rubber-tire.jpg" alt="고무 및 타이어" loading="lazy" /><span>고무 및 타이어</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-semiconductor.jpg" alt="반도체" loading="lazy" /><span>반도체</span></div>
+  <div class="icon-card"><img src="../assets/img/industry-textile.jpg" alt="섬유 산업" loading="lazy" /><span>섬유 산업</span></div>
+</div>
+
+<h2 style="font-size:20px; margin-top:36px;">기술 신뢰도를 높이는 구성 원칙</h2>
+<ul style="padding-left:20px; display:grid; gap:8px;">
+  <li>산업별로 오염물의 성상과 기재 특성이 다르므로, 동일한 장비를 사용하더라도 분사 압력 · 입자 크기 ·
+  공급량 · 노즐 구성 등 운전 조건을 작업 목적에 맞추어 조정합니다.</li>
+  <li>업종명만 나열하기보다 주요 세정 대상 · 적용 목적 · 공정상의 이점을 함께 확인할 수 있도록 안내해
+  드립니다.</li>
+  <li>현장 테스트, 작업 전후 비교 자료, 기술지원 절차를 통해 실제 적용 가능성을 확인하실 수 있습니다.</li>
+</ul>
+<div class="placeholder-note">
+  <b>바테크가 제공하는 것</b> — 현장 테스트 지원 · 산업별 세정 조건 검토 · 장비 · 드라이아이스 · 운영
+  지원의 연계를 통해 장비 판매를 넘어 공정 솔루션을 함께 검토해 드립니다.
+</div>
+<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(참고: Cold Jet 공식 기술자료
+The Definitive Guide to Dry Ice Blasting 및 coldjet.com Industries 자료 기준)</p>
 """
 
-_TASKS = [
-    ("접착제 · 실란트 제거", "굳은 접착제, 실란트 잔여물을 표면 손상 없이 제거합니다."),
-    ("자동차 디테일링 · 복원", "클래식카 복원, 엔진룸 디테일링 등에 활용됩니다."),
-    ("복합소재 몰드 세척", "복합소재 성형몰드의 수지 잔여물을 제거합니다."),
-    ("버 · 플래시 제거(디버링)", "사출 · 다이캐스팅 부품의 버(burr)와 플래시를 제거합니다."),
-    ("전자기기 리퍼브", "리퍼브 시 기판 · 부품 표면을 정밀 세척합니다."),
-    ("설비 유지보수 세척", "생산설비의 정기 유지보수 세척에 활용됩니다."),
-    ("고무 · 플라스틱 금형 세척", "사출 · 고무 금형을 세척해 사이클타임을 단축합니다."),
-]
 TASK_BODY = """
-<p>세척 대상이 아니라 <b>어떤 작업</b>을 하려는지로도 적합한 방식을 찾을 수 있습니다.
-아래는 Cold Jet이 소개하는 대표적인 작업 유형입니다.</p>
-<div class="sub-grid">
-""" + "".join(
-    f'<div class="sub-card"><h3>{name}</h3><p>{desc}</p></div>' for name, desc in _TASKS
-) + """
+<p>세척 대상이 아니라 <b>어떤 작업</b>을 하려는지로도 적합한 방식을 찾을 수 있습니다. 표면 세척, 표면
+처리 · 전처리, 디버링 · 디플래싱, 설비 유지보수까지 — 작업 목적에 따라 장비 사양보다 먼저 어떤 오염물을
+어떤 조건에서 제거할 수 있는지를 확인하는 것이 중요합니다.</p>
+
+<div class="task-card-grid">
+  <div class="task-card">
+    <div class="tc-photo"><img src="../assets/img/task-surface-food.jpg" alt="표면 세척 - 식품설비" loading="lazy" /><img src="../assets/img/task-surface-industrial.jpg" alt="표면 세척 - 산업설비" loading="lazy" /></div>
+    <div class="tc-body">
+      <h3>표면 세척</h3>
+      <ul>
+        <li>기계, 금형, 완제품 표면의 오염물 및 잔류물을 제거합니다.</li>
+        <li>압력 · 입자 크기 · 공급량 조정을 통해 세정 강도를 조절할 수 있습니다.</li>
+      </ul>
+      <a class="tc-link" href="industry.html">관련 산업: 일반 제조 · 식품 →</a>
+    </div>
+  </div>
+  <div class="task-card">
+    <div class="tc-photo single"><img src="../assets/img/task-pretreatment.jpg" alt="표면 처리 · 전처리" loading="lazy" /></div>
+    <div class="tc-body">
+      <h3>표면 처리 · 전처리</h3>
+      <ul>
+        <li>도장 · 코팅 전 이형제, 윤활유, 먼지 등 표면 오염물을 제거합니다.</li>
+        <li>물을 사용하지 않아 별도의 건조 공정을 줄이고 후속 공정과 바로 연계할 수 있습니다.</li>
+      </ul>
+      <a class="tc-link" href="industry.html">관련 산업: 자동차 · 도장 공정 →</a>
+    </div>
+  </div>
+  <div class="task-card">
+    <div class="tc-photo"><img src="../assets/img/task-deburring-precision.jpg" alt="디버링 · 디플래싱 - 정밀부품" loading="lazy" /><img src="../assets/img/task-deburring-plastic.jpg" alt="디버링 · 디플래싱 - 플라스틱부품" loading="lazy" /></div>
+    <div class="tc-body">
+      <h3>디버링 · 디플래싱</h3>
+      <ul>
+        <li>부품의 버(burr)와 플래시(flash)를 선택적으로 제거합니다.</li>
+        <li>부품의 치수 정밀도와 주요 형상을 유지하는 데 유리합니다.</li>
+      </ul>
+      <a class="tc-link" href="industry.html">관련 산업: 고무 · 타이어 · 플라스틱 →</a>
+    </div>
+  </div>
+  <div class="task-card">
+    <div class="tc-icon">🔧</div>
+    <div class="tc-body">
+      <h3>설비 유지보수 · 예방보전</h3>
+      <ul>
+        <li>설비 오염 제거와 정기 세정 · 유지보수 작업에 적용됩니다.</li>
+        <li>분해와 반복 수작업을 줄여 유지보수 공정의 효율화에 기여합니다.</li>
+      </ul>
+      <a class="tc-link" href="industry.html">관련 산업: 발전 · 에너지 →</a>
+    </div>
+  </div>
 </div>
-<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(출처: Cold Jet 공식 웹사이트 Applications 목록 기준)</p>
+<p style="font-size:13px; color:var(--text-muted); margin-top:8px;">(참고: Cold Jet 공식 기술자료
+The Definitive Guide to Dry Ice Blasting 및 coldjet.com Applications 자료 기준)</p>
 """
 
 ADOPT_BODY = """
+<div class="hero-photo"><img src="../assets/img/adopt-basic-setup.jpg" alt="드라이아이스 블라스터 기본 구성도" loading="lazy" /></div>
+<p class="photo-caption">드라이아이스 블라스터 기본 구성 — 블라스터, 압축공기, 드라이아이스 공급 (참고: Cold Jet 공식 기술자료 p.23)</p>
+
+<p>도입 가이드는 기술에 대한 관심을 실제 검토 단계로 전환하는 역할을 합니다. 필요한 인프라와 운전
+조건을 미리 확인하면 현장 여건에 맞춰 적용 가능성을 보다 합리적으로 판단할 수 있습니다.</p>
+
+<h2 style="font-size:20px; margin-top:32px;">도입 가이드 핵심 항목</h2>
+<table class="spec-table">
+  <tr><th>필요한 기본 구성</th><td>드라이아이스 블라스터, 압축공기 공급원, 드라이아이스, 전원, 개인보호장비(PPE)</td></tr>
+  <tr><th>장비 선택 기준</th><td>세정 능력, 사용 환경, 장시간 운전 안정성, 안전 장치, 기술지원 및 부품 공급 체계</td></tr>
+  <tr><th>드라이아이스 공급</th><td>펠릿과 마이크로파티클의 특성, 공급 방식, 보관 조건, 작업별 사용량 검토</td></tr>
+  <tr><th>압축공기 조건</th><td>장비 유형과 작업 조건에 따른 압력 · 유량 요구사항 및 현장 에어 인프라 확인</td></tr>
+  <tr><th>안전 가이드</th><td>환기 조건 확인, 제한된 공간에서의 CO<sub>2</sub> 농도 관리, 장갑 · 보안경 · 청력 보호구 등 PPE 착용</td></tr>
+</table>
+
+<div class="photo-pair">
+  <div class="content-photo"><img src="../assets/img/adopt-lineup.jpg" alt="Cold Jet 드라이아이스 장비 라인업" loading="lazy" /></div>
+  <div class="content-photo"><img src="../assets/img/adopt-compressor.jpg" alt="이동식 콤프레서 예시" loading="lazy" /></div>
+</div>
+<p class="photo-caption">Cold Jet 드라이아이스 장비 라인업(왼쪽)과 이동식 콤프레서 예시(오른쪽) (참고: Cold Jet 공식 기술자료 p.23)</p>
+
+<h2 style="font-size:20px; margin-top:36px;">도입 방식</h2>
 <p>Cold Jet 장비를 도입하는 방법에는 여러 옵션이 있습니다. 바테크 상담을 통해 현장에 맞는 방식을
 확인하실 수 있습니다.</p>
 <table class="compare-table">
@@ -137,7 +289,74 @@ ADOPT_BODY = """
 <p style="font-size:13px; color:var(--text-muted);">* 위 옵션은 Cold Jet 글로벌 기준이며, 국내 적용 가능 여부와
 세부 조건은 바테크 상담을 통해 확인하실 수 있습니다.</p>
 
-<h2 style="font-size:20px; margin-top:32px;">도입 전 체크리스트</h2>
+<h2 style="font-size:20px; margin-top:36px;">펠릿 vs 마이크로파티클</h2>
+<div class="content-photo"><img src="../assets/img/adopt-pellet-vs-micro.jpg" alt="펠릿과 마이크로파티클 비교" loading="lazy" /></div>
+<p class="photo-caption">약 3mm 펠릿(왼쪽)과 약 0.3mm 마이크로파티클(오른쪽) 비교 (참고: Cold Jet 공식 기술자료 p.27)</p>
+<p>매뉴얼은 약 3&nbsp;mm 펠릿을 고착된 오염물이나 강한 세정력이 필요한 작업에, 약 0.3&nbsp;mm
+마이크로파티클을 섬세하고 민감한 표면 세정에 적합한 형태로 설명합니다. 적절한 단열 용기에 보관할 경우
+최대 약 1주일간 사용할 수 있으나, 기후와 용기 성능에 따라 하루 약 2~10%가 승화할 수 있으므로 사용
+일정에 맞춘 공급 계획이 중요합니다.</p>
+<div class="content-photo" style="max-width:380px;"><img src="../assets/img/adopt-pelletizer.jpg" alt="드라이아이스 펠레타이저" loading="lazy" /></div>
+<p class="photo-caption">현장에서 직접 생산할 경우 사용하는 드라이아이스 펠레타이저 예시 (참고: Cold Jet 공식 기술자료 p.27)</p>
+
+<h2 style="font-size:20px; margin-top:36px;">압축공기 조건</h2>
+<table class="spec-table">
+  <tr><th>펠릿 타입</th><td>약 2.8 m³/min(100 CFM), 5.5 bar(80 PSI) 수준</td></tr>
+  <tr><th>마이크로파티클 시스템</th><td>약 0.9 m³/min(30 CFM) 수준</td></tr>
+</table>
+<p style="font-size:13px; color:var(--text-muted);">* 매뉴얼의 일반 기준이며, 실제 요구 조건은 노즐과
+세정 대상에 따라 달라질 수 있으므로 현장 확인이 필요합니다.</p>
+
+<h2 style="font-size:20px; margin-top:36px;">안전 가이드</h2>
+<ul style="padding-left:20px; display:grid; gap:8px;">
+  <li>작업자는 장갑, 보안경, 청력 보호구 등 적절한 PPE를 착용해야 합니다.</li>
+  <li>밀폐되거나 환기가 제한된 공간에서는 환기 시스템과 CO<sub>2</sub> 농도 모니터링을 갖추어야 합니다.</li>
+</ul>
+
+<h2 style="font-size:20px; margin-top:36px;">기술 FAQ</h2>
+<div class="faq-list">
+  <details class="faq-item">
+    <summary>어떤 형태의 드라이아이스를 사용하나요?</summary>
+    <p class="faq-a">매뉴얼은 약 3mm 펠릿을 고착된 오염물과 강한 세정이 필요한 경우에, 약 0.3mm
+    마이크로파티클을 섬세하고 민감한 표면 세정에 적합한 형태로 설명합니다.</p>
+  </details>
+  <details class="faq-item">
+    <summary>드라이아이스는 얼마나 보관할 수 있나요?</summary>
+    <p class="faq-a">매뉴얼 기준으로 적절한 단열 용기에 보관할 경우 최대 약 1주일간 사용할 수 있으나,
+    기후와 용기 성능에 따라 하루 약 2~10%가 승화할 수 있으므로 사용 일정에 맞춘 공급 계획이
+    중요합니다.</p>
+  </details>
+  <details class="faq-item">
+    <summary>압축공기 조건은 어떻게 되나요?</summary>
+    <p class="faq-a">매뉴얼의 일반 기준은 펠릿 타입 약 2.8 m³/min(100 CFM), 5.5 bar(80 PSI),
+    마이크로파티클 시스템 약 0.9 m³/min(30 CFM) 수준입니다. 실제 요구 조건은 노즐과 세정 대상에 따라
+    달라질 수 있으므로 현장 확인이 필요합니다.</p>
+  </details>
+  <details class="faq-item">
+    <summary>안전 운용을 위해 무엇을 확인해야 하나요?</summary>
+    <p class="faq-a">작업자는 장갑, 보안경, 청력 보호구 등 적절한 PPE를 착용해야 하며, 밀폐되거나
+    환기가 제한된 공간에서는 환기 시스템과 CO<sub>2</sub> 농도 모니터링을 갖추어야 합니다.</p>
+  </details>
+</div>
+
+<h2 style="font-size:20px; margin-top:36px;">도입 검토 프로세스</h2>
+<div class="process-flow">
+  <div class="step"><div class="num">1</div><h4>상담</h4><p>오염물 · 기재 · 세정 목표 확인</p></div>
+  <div class="step"><div class="num">2</div><h4>테스트</h4><p>시편 또는 현장 테스트</p></div>
+  <div class="step"><div class="num">3</div><h4>제안</h4><p>장비 · 노즐 · 운전조건 제안</p></div>
+  <div class="step"><div class="num">4</div><h4>도입</h4><p>설치 · 교육 · 운전조건 확인</p></div>
+  <div class="step"><div class="num">5</div><h4>운영지원</h4><p>A/S · 소모품 · 드라이아이스 공급</p></div>
+</div>
+
+<h2 style="font-size:20px; margin-top:36px;">친환경 공정</h2>
+<div class="content-photo"><img src="../assets/img/adopt-carbon-cycle.jpg" alt="탄소 포집·활용 및 친환경 공정 도식" loading="lazy" /></div>
+<p class="photo-caption">공장에서 포집된 CO<sub>2</sub>가 드라이아이스로 전환되어 세정에 쓰이는 순환 과정
+(참고: Cold Jet 공식 기술자료 p.29)</p>
+<p>드라이아이스 세척에 쓰이는 CO<sub>2</sub>는 산업 공정에서 이미 발생한 것을 포집해 재사용한 것으로,
+세정 후에는 다시 대기 중으로 승화합니다. 별도로 새롭게 생산해 배출하는 방식이 아니라는 점에서, 화학
+세정제나 폐수 처리 부담을 줄이는 공정으로 소개되고 있습니다.</p>
+
+<h2 style="font-size:20px; margin-top:36px;">도입 전 체크리스트</h2>
 <ul style="padding-left:20px; display:grid; gap:8px;">
   <li>세척 대상과 오염물질 종류 파악 (재질, 민감도)</li>
   <li>필요 압축공기 용량 확인 (모델별로 상이)</li>
@@ -146,6 +365,8 @@ ADOPT_BODY = """
   <li>데모 테스트로 실제 세척 결과 사전 확인</li>
 </ul>
 <p>설치 · 시운전 절차는 <a href="../support/install.html">설치/시운전</a> 페이지에서도 확인하실 수 있습니다.</p>
+<p style="font-size:13px; color:var(--text-muted); margin-top:18px;">(참고: Cold Jet 공식 기술자료
+The Definitive Guide to Dry Ice Blasting 및 coldjet.com)</p>
 """
 
 AUTOMATION_BODY = """
@@ -505,26 +726,33 @@ MENU = [
              "desc": "드라이아이스 세척의 원리, 장점, 안전 수칙과 자주 묻는 질문을 한 곳에 정리했습니다.",
              "nav_desc": "원리부터 적용 방법까지, 드라이아이스 세척을 쉽고 명확하게 알아보세요.",
              "nav_img": "assets/img/guide-principle-thumb.jpg",
+             "rich_content": True,
+             "hero_parallax": True,
+             "hero_img": "../assets/img/guide-hero-work.jpg",
              "body": GUIDE_BODY},
             {"slug": "compare", "title": "타 세척방식과 비교",
              "desc": "연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.",
              "nav_desc": "기존 세척 방식과 비교해 드라이아이스 세척만의 차이를 확인하세요.",
              "nav_img": "assets/img/compare-thumb.jpg",
+             "rich_content": True,
              "body": COMPARE_BODY},
             {"slug": "industry", "title": "산업별 솔루션",
              "desc": "자동차, 식품, 반도체·PCB, 금형, 인쇄, 발전, 조선 등 산업별로 어떤 문제를 해결하는지 설명합니다.",
              "nav_desc": "자동차·식품·전자 등 산업별 맞춤 세척 솔루션을 안내합니다.",
              "nav_img": "assets/img/industry-thumb.jpg",
+             "rich_content": True,
              "body": INDUSTRY_BODY},
             {"slug": "task", "title": "작업별 솔루션",
              "desc": "이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.",
              "nav_desc": "금형 세척부터 표면처리까지, 작업 목적에 맞는 방법을 제안합니다.",
              "nav_img": "assets/img/task-thumb.jpg",
+             "rich_content": True,
              "body": TASK_BODY},
             {"slug": "adopt", "title": "도입 가이드",
              "desc": "도입 전 검토사항부터 설치 준비, 운영 체크리스트까지 순서대로 안내합니다.",
              "nav_desc": "도입 검토부터 설치까지, 필요한 절차를 단계별로 안내합니다.",
              "nav_img": "assets/img/adopt-thumb.jpg",
+             "rich_content": True,
              "body": ADOPT_BODY},
         ],
     },
@@ -933,7 +1161,12 @@ def build_sub_page(m, s):
     )
     has_real_content = bool(s.get("body"))
     if has_real_content:
-        main_block = f"""
+        if s.get("rich_content"):
+            # 실제 사진·도식이 본문 안에 이미 포함된 페이지(세척가이드 5종)는
+            # 일반 플레이스홀더 박스를 다시 얹지 않는다.
+            main_block = s['body']
+        else:
+            main_block = f"""
       <div class="img-ph" style="min-height:220px; margin-bottom:28px;">[제품 사진/영상 영역]</div>
       {s['body']}
 """
@@ -943,8 +1176,49 @@ def build_sub_page(m, s):
       <h2 style="font-size:20px;">{s['title']}</h2>
       <p>{s['desc']}</p>
 """
-    body = f"""
-  <div class="wrap breadcrumb"><a href="../index.html">홈</a> &gt; <a href="index.html">{m['label']}</a> &gt; {s['title']}</div>
+    breadcrumb_html = f'<div class="wrap breadcrumb"><a href="../index.html">홈</a> &gt; <a href="index.html">{m["label"]}</a> &gt; {s["title"]}</div>'
+    cover_tail = f"""
+      <h2 style="font-size:20px; margin-top:32px;">같은 카테고리의 다른 페이지</h2>
+      <div class="sub-grid">{sib_cards}</div>
+      <div class="cta-band">
+        <div>
+          <h3>바테크에 직접 문의해보세요</h3>
+          <p>현장 상황에 맞는 가장 정확한 답변을 담당자가 안내해 드립니다.</p>
+        </div>
+        <a class="cta-btn" href="../products/quote.html">견적문의 하기</a>
+      </div>
+"""
+    if s.get("hero_parallax"):
+        # (2026-09-04 v2, 프로토타입) 1차 시안(핀+커버)에서 사용자 피드백을
+        # 반영해 패럴랙스 방식으로 교체: 대표 이미지가 메뉴바 바로 아래
+        # 전체화면으로 표시되고, 브레드크럼도 이미지 위로 올라옴, 반투명
+        # 텍스트 박스는 이미지 정중앙에 배치(설명문 줄바꿈 없이 한 줄).
+        # 스크롤하면 이미지와 본문이 "같이" 올라가되 이미지가 더 느리게
+        # 움직이고(패럴랙스), 스크롤할수록 이미지에 블러가 점점 강해져
+        # 방문자 시선이 자연스럽게 본문으로 옮겨가도록 함. position:sticky가
+        # 아닌 순수 스크롤 흐름 + JS 기반 transform/filter(assets/js/main.js
+        # 하단 subhero 패럴랙스 블록)로 구현 — 우선 "드라이아이스 세척 가이드"
+        # 1개 페이지에서만 틀을 잡아보고, 반응이 좋으면 다른 서브페이지에도
+        # hero_parallax 플래그만 추가해 확장할 예정.
+        body = f"""
+  <section class="subhero-parallax">
+    <img class="subhero-parallax-img" src="{s['hero_img']}" alt="{s['title']}" />
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">{m['label']}</a> &gt; {s['title']}</div>
+    <div class="subhero-textbox">
+      <h1>{s['title']}</h1>
+      <p>{s['desc']}</p>
+    </div>
+  </section>
+  <section class="subhero-cover">
+    <div class="wrap">
+      {main_block}
+      {cover_tail}
+    </div>
+  </section>
+"""
+    else:
+        body = f"""
+  {breadcrumb_html}
   <section class="page-hero" style="padding-top:24px;">
     <div class="wrap">
       <span class="cat">{m['short']}</span>
@@ -955,15 +1229,7 @@ def build_sub_page(m, s):
   <section>
     <div class="wrap">
       {main_block}
-      <h2 style="font-size:20px; margin-top:32px;">같은 카테고리의 다른 페이지</h2>
-      <div class="sub-grid">{sib_cards}</div>
-      <div class="cta-band">
-        <div>
-          <h3>바테크에 직접 문의해보세요</h3>
-          <p>현장 상황에 맞는 가장 정확한 답변을 담당자가 안내해 드립니다.</p>
-        </div>
-        <a class="cta-btn" href="../products/quote.html">견적문의 하기</a>
-      </div>
+      {cover_tail}
     </div>
   </section>
 """

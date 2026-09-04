@@ -2102,6 +2102,136 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 .cta-band h3 { margin-bottom: 6px; font-size: 21px; font-weight: 800; }
 .cta-band p { margin: 0; color: var(--text-muted); font-size: 15px; }
 
+/* ---- 세척가이드 5개 서브페이지 콘텐츠 컴포넌트 (2026-09-03, GPT 자문 기획안 기반 콘텐츠 보강) ---- */
+.hero-photo { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 6px; }
+.hero-photo img { width: 100%; height: auto; max-height: 440px; object-fit: cover; display: block; }
+.photo-caption { font-size: 13px; color: var(--text-muted); margin: 10px 0 28px; }
+
+.content-photo { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-line); margin: 24px 0 8px; }
+.content-photo img { width: 100%; height: auto; display: block; }
+
+.video-embed {
+  position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 24px 0 8px;
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-line);
+  background: var(--navy-deep);
+}
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+
+.photo-pair { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 24px 0 8px; }
+.photo-pair .content-photo { margin: 0; }
+
+.principle-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 24px 0; }
+.principle-card { background: var(--white); border: 1px solid var(--gray-line); border-radius: 14px; padding: 20px; text-align: center; box-shadow: var(--shadow-sm); }
+.principle-card img { width: 84px; height: 84px; border-radius: 50%; margin: 0 auto 14px; display: block; }
+.principle-card h4 { font-size: 15.5px; font-weight: 800; margin-bottom: 6px; }
+.principle-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+.method-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+.method-card { background: var(--white); border: 1px solid var(--gray-line); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform .15s ease, box-shadow .15s ease; }
+.method-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.method-card img { width: 100%; height: 140px; object-fit: cover; display: block; }
+.method-card .mc-body { padding: 14px 16px 18px; }
+.method-card h4 { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+.method-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+.industry-icon-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin: 20px 0 8px; }
+.industry-icon-grid .icon-card { text-align: center; }
+.industry-icon-grid .icon-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 50%; box-shadow: var(--shadow-sm); }
+.industry-icon-grid .icon-card span { display: block; margin-top: 8px; font-size: 12.5px; font-weight: 700; color: var(--text-dark); line-height: 1.4; }
+
+.task-card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 20px 0; }
+.task-card { background: var(--white); border: 1px solid var(--gray-line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-sm); }
+.task-card .tc-photo { display: grid; grid-template-columns: 1fr 1fr; }
+.task-card .tc-photo img { width: 100%; height: 130px; object-fit: cover; display: block; }
+.task-card .tc-photo.single { grid-template-columns: 1fr; }
+.task-card .tc-photo.single img { height: 170px; }
+.task-card .tc-icon { height: 170px; display: flex; align-items: center; justify-content: center; font-size: 46px; background: var(--blue-pale); }
+.task-card .tc-body { padding: 18px 20px 20px; }
+.task-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+.task-card ul { padding-left: 18px; display: grid; gap: 6px; margin: 0 0 12px; font-size: 14px; color: var(--text-body); line-height: 1.6; }
+.task-card .tc-link { font-size: 13px; font-weight: 700; color: var(--blue-dark); }
+.task-card .tc-link:hover { color: var(--ice-dark); }
+
+.faq-list { display: grid; gap: 10px; margin: 16px 0 8px; }
+.faq-item { background: var(--white); border: 1px solid var(--gray-line); border-radius: 12px; padding: 4px 20px; box-shadow: var(--shadow-sm); }
+.faq-item summary { cursor: pointer; padding: 16px 0; font-weight: 800; font-size: 15.5px; color: var(--text-dark); list-style: none; position: relative; padding-right: 28px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; position: absolute; right: 2px; top: 13px; font-size: 20px; color: var(--blue); }
+.faq-item[open] summary::after { content: "\2212"; }
+.faq-item .faq-a { padding: 0 0 18px; margin: 0; color: var(--text-body); font-size: 14.5px; line-height: 1.75; }
+
+.process-flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 22px 0; }
+.process-flow .step { background: var(--white); border: 1px solid var(--gray-line); border-radius: 12px; padding: 18px 14px; text-align: center; box-shadow: var(--shadow-sm); }
+.process-flow .step .num { width: 30px; height: 30px; border-radius: 50%; background: var(--blue); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 10px; font-size: 14px; }
+.process-flow .step h4 { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
+.process-flow .step p { font-size: 12px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+.spec-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-line); margin: 16px 0; }
+.spec-table th, .spec-table td { padding: 16px 20px; border-bottom: 1px solid var(--gray-line); font-size: 14.5px; text-align: left; vertical-align: top; }
+.spec-table th { width: 190px; background: var(--blue-light); color: var(--navy); font-weight: 800; font-size: 14px; }
+.spec-table tr:last-child th, .spec-table tr:last-child td { border-bottom: none; }
+.compare-table td.bad { color: var(--accent-red); }
+
+@media (max-width: 960px) {
+  .photo-pair, .principle-row, .method-card-grid, .task-card-grid { grid-template-columns: 1fr 1fr; }
+  .industry-icon-grid { grid-template-columns: repeat(3, 1fr); }
+  .process-flow { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .photo-pair, .principle-row, .method-card-grid, .task-card-grid, .process-flow { grid-template-columns: 1fr; }
+  .industry-icon-grid { grid-template-columns: repeat(3, 1fr); }
+  .task-card .tc-photo { grid-template-columns: 1fr 1fr; }
+  .spec-table th { width: 120px; }
+}
+
+/* ---- 서브페이지 패럴랙스 히어로 (2026-09-04 v2 프로토타입) -------------------
+   1차 시안(핀+커버)에서 사용자 피드백을 받아 패럴랙스 방식으로 교체.
+   .subhero-parallax는 메뉴바(76px) 바로 아래 남은 화면을 꽉 채우는 평범한
+   섹션(position:sticky 아님)이고, 그 안의 이미지만 assets/js/main.js의
+   스크롤 리스너가 transform(translateY)/filter(blur)를 매 프레임 갱신해
+   ① 본문보다 느리게 움직이는 패럴랙스, ② 스크롤할수록 점점 강해지는
+   블러(방문자 시선을 본문으로 유도)를 만든다. 이미지는 상하로
+   PARALLAX_BUFFER(160px)만큼 여유 있게 깔아두고 그 안에서만 이동시켜
+   가장자리가 비는 문제를 방지(정확한 버퍼량은 main.js 상단 상수 참고).
+   브레드크럼도 이미지 위 오버레이로 올라왔고, 텍스트 박스는 이미지
+   정중앙에 배치, 설명문은 데스크톱에서 줄바꿈 없이 한 줄로 표시된다.
+   세척가이드 5개 서브페이지 중 "가이드" 1개에만 hero_parallax 플래그로
+   우선 적용 — 틀을 잡아본 뒤 반응 보고 확장 예정. */
+.subhero-parallax {
+  position: relative; height: calc(100vh - 76px); min-height: 420px;
+  overflow: hidden; background: var(--navy-deep);
+}
+.subhero-parallax-img {
+  position: absolute; top: -80px; left: 0; width: 100%; height: calc(100% + 160px);
+  object-fit: cover; display: block; will-change: transform, filter;
+}
+.subhero-parallax::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background: linear-gradient(to bottom, rgba(15,22,23,0.55) 0%, rgba(15,22,23,0.1) 24%, rgba(15,22,23,0.28) 100%);
+}
+.subhero-breadcrumb {
+  position: absolute; top: 22px; left: 0; right: 0; z-index: 2;
+  font-size: 13px; color: rgba(255,255,255,0.88); text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.subhero-breadcrumb a { color: rgba(255,255,255,0.88); }
+.subhero-breadcrumb a:hover { color: #fff; }
+.subhero-textbox {
+  position: absolute; z-index: 2; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: max-content; max-width: 90vw;
+  background: rgba(20,28,29,0.5); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px; padding: 36px 52px; color: var(--white); box-shadow: var(--shadow-lift);
+  text-align: center;
+}
+.subhero-textbox h1 { font-size: clamp(26px, 3.4vw, 38px); font-weight: 800; letter-spacing: -0.02em; color: var(--white); white-space: nowrap; }
+.subhero-textbox p { font-size: 16px; line-height: 1.7; margin-top: 12px; color: rgba(255,255,255,0.92); white-space: nowrap; }
+.subhero-cover { position: relative; background: var(--white); }
+@media (max-width: 900px) {
+  .subhero-textbox { padding: 26px 28px; max-width: 92vw; }
+  .subhero-textbox h1, .subhero-textbox p { white-space: normal; }
+  .subhero-textbox p { font-size: 14.5px; }
+}
+
 .nav-toggle { display: none; }
 
 @media (max-width: 960px) {
