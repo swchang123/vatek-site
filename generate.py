@@ -16,99 +16,144 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 # ---------------------------------------------------------------------------
 
 GUIDE_BODY = """
-<div class="co2-story">
+<div class="co2-story" style="margin-bottom: 50px">
   <div class="wrap">
-  <h2 style="font-size:20px;">드라이아이스란 무엇인가?</h2>
-  <p class="co2-story-eyebrow">포집된 CO<sub>2</sub>에 새로운 가치를 더합니다</p>
+  <h2 style="font-size: 45px; color: #000000; position: static; margin-bottom: 40px; margin-top: 0px; padding-top: 10px">드라이아이스란 무엇인가?</h2>
 
-  <p>드라이아이스는 이산화탄소(CO<sub>2</sub>)의 고체 형태입니다. 산업시설이나 바이오가스 시설 등에서
-  포집된 CO<sub>2</sub>를 정제 · 액화한 뒤 다시 고체로 전환하여 만들어지며, 이는 탄소 포집 및 활용(CCU,
-  Carbon Capture and Utilization)의 한 형태로, 원래 배출될 수 있었던 CO<sub>2</sub>를 회수해 냉각과
-  세정에 활용할 수 있는 유용한 자원으로 다시 사용하는 방식입니다.</p>
-  <p>포집된 CO<sub>2</sub>는 정제와 압축 과정을 거쳐 액체 상태로 저장 · 운송되며, 이후 펠레타이저를 통해
-  드라이아이스로 생산됩니다. 이렇게 만들어진 드라이아이스는 산업 현장에서 냉각 및 친환경 세정 매체로
-  다시 활용됩니다.</p>
-
-  <h3 class="co2-story-sub">CO<sub>2</sub>에 두 번째 생명을</h3>
-  <div class="content-photo">
-    <img src="../assets/img/adopt-carbon-cycle.jpg" alt="CO2 포집부터 드라이아이스 생산까지의 순환 과정" loading="lazy" />
+  <div>
+    <div>드라이아이스는 이산화탄소(CO₂)를 고체 상태로 만든 것입니다.<br>산업시설이나 바이오가스 시설 등에서 포집된 CO₂를 정제·액화한 뒤, 다시 고체로 전환하여 생산합니다.</div>
+    <div style="padding-top: 20px">이 과정은 탄소 포집 및 활용(CCU, Carbon Capture and Utilization)의 한 형태로, 포집된 CO₂를 그대로 배출하지 않고 다시 자원으로 활용함으로써, 냉각과 산업용 세정 등 다양한 용도로 사용할 수 있습니다.</div>
+    <div style="padding-top: 20px">포집된 CO₂는 정제와 압축 과정을 거쳐 액체 상태로 저장·운송되며, 이후 펠레타이저(Pelletizer)를 통해 드라이아이스로 생산됩니다. 이렇게 만들어진 드라이아이스는 산업 현장에서 냉각뿐 아니라 물이나 화학 세정제를 사용하지 않는 건식 세정 매체로도 활용됩니다.</div>
+    <div><br></div>
   </div>
-  <p class="photo-caption" style="text-align:center;">포집 → 정제 · 액화 → 저장 → 운송 → 현장 저장 → 고체화 →
-  드라이아이스로 이어지는 순환 과정</p>
-  <p>한 번 배출된 CO<sub>2</sub>를 그대로 버리는 대신, 다시 산업에 활용할 수 있는 자원으로 전환합니다.</p>
+  <div><b style="color: #000000">'포집된 CO₂를 다시 활용 가능한 자원으로 전환하는 것'</b>, 이것이 드라이아이스가 만들어지는 과정입니다.</div>
 
-  <blockquote class="cite-quote">
-    <p>드라이아이스는 재활용된 CO<sub>2</sub>를 사용하기 때문에 탄소발자국 산정 시 CO<sub>2</sub>가 사용
-    단계에서 다시 계산되지 않습니다. CO<sub>2</sub>는 생산자 단계에서 이미 산정됩니다.</p>
-    <cite>— California Air Resources Board (캘리포니아 대기자원위원회)</cite>
-  </blockquote>
+  <div class="co2-second-life-card">
+    <h3 class="co2-story-sub" style="font-size: 25px; margin-top: 0;">CO<sub>2</sub>에 두 번째 생명을</h3>
+    <div class="co2-second-life-img">
+      <img src="../assets/img/co2-second-life-infographic.png" alt="Giving CO2 a Second Life — 공장 배출부터 드라이아이스까지의 CO2 순환 경로 인포그래픽" loading="lazy" />
+    </div>
+    <p>한 번 배출된 CO<sub>2</sub>를 그대로 버리는 대신, 다시 산업에 활용할 수 있는 자원으로 전환합니다.</p>
 
-  <h3 class="co2-story-sub">더 깨끗한 산업을 위한 CO<sub>2</sub>의 순환</h3>
+    <blockquote class="cite-quote">
+      <p>드라이아이스는 재활용된 CO<sub>2</sub>를 사용하기 때문에 탄소발자국 산정 시 CO<sub>2</sub>가 사용
+      단계에서 다시 계산되지 않습니다. CO<sub>2</sub>는 생산자 단계에서 이미 산정됩니다.</p>
+      <cite>— California Air Resources Board (캘리포니아 대기자원위원회)</cite>
+    </blockquote>
+    <div class="co2-scoop-photo">
+      <img src="../assets/img/dry-ice-scoop-wide.png" alt="드라이아이스 펠렛 위의 투명 스쿱" loading="lazy" />
+    </div>
+  </div>
+
+  <h3 class="co2-story-sub" style="font-size: 25px; color: #000000; padding-top: 60px">더 깨끗한 산업을 위한 CO<sub>2</sub>의 순환</h3>
   <p>드라이아이스는 새로운 CO<sub>2</sub>를 만들어 사용하는 것이 아니라, 이미 포집된 CO<sub>2</sub>를 다시
   활용하는 순환형 자원입니다.</p>
-  <p>세정 과정에서는 물이나 화학 세정제를 사용하지 않으며, 드라이아이스 자체는 사용 후 다시 기체로
+  <p style="color: #46595B">세정 과정에서는 물이나 화학 세정제를 사용하지 않으며, 드라이아이스 자체는 사용 후 다시 기체로
   승화합니다. 이러한 특성은 물 사용과 2차 폐기물 발생을 줄이는 산업 세정 방식으로 이어집니다.</p>
 
-  <p class="co2-story-tagline">회수된 CO<sub>2</sub>를 다시 가치 있는 자원으로.<br />
+  <img src="../assets/img/co2-ribbon-logo.png" alt="co2-ribbon-logo" width="480" height="241" style="max-width: 100%; height: 120px; display: block; object-fit: cover; width: 256px; aspect-ratio: 480 / 241; position: static; margin-left: auto; margin-right: auto; margin-top: 50px" />
+  <p class="co2-story-tagline" style="color: #000000; margin-top: 50px; margin-bottom: 50px; line-height: 2; padding-top: 10px">회수된 CO<sub>2</sub>를 다시 가치 있는 자원으로.<br />
   드라이아이스는 탄소를 순환시키는 또 하나의 방법입니다.</p>
   </div>
 </div>
 
-<p>드라이아이스 세척은 고체 이산화탄소(CO<sub>2</sub>) 펠릿 또는 미세 입자를 압축공기로 가속하여 표면의
-오염물과 잔류물을 제거하는 산업용 세정 방식입니다. 드라이아이스는 표면과 충돌한 직후 고체에서 기체로
-바로 승화하므로, 세정 매체 자체가 2차 잔류물로 남지 않는다는 점이 가장 큰 특징입니다. 모래 · 소다처럼
-표면을 깎아내는 연마재 세척과 달리, 드라이아이스 입자는 표면을 마모시키지 않으면서도 강력한 세정력을
-낼 수 있어 정밀 부품과 민감한 표면에도 폭넓게 적용됩니다.</p>
-
-<div class="quick-summary">
-  <span class="quick-summary-label">핵심 요약</span>
-  <div class="chip-grid">
-    <span class="chip">압축공기로 펠릿 · 미세입자를 가속해 오염물 제거</span>
-    <span class="chip">충돌 즉시 기체로 승화 → 2차 잔류물 없음</span>
-    <span class="chip">비마모성 → 정밀 부품 · 민감한 표면에도 적용</span>
+<div style="color: #000000">
+  <div><b style="font-size: 45px; padding-top: 30px">왜 드라이아이스인가?</b></div>
+  <div>
+    <div style="padding-top: 20px; padding-bottom: 20px; line-height: 2; color: #46595B">드라이아이스는 고체 상태의 이산화탄소(CO₂)이므로, 일반 얼음과 달리 녹아 물이 되지 않고, 승화를 통해 고체에서 기체로 바로 변합니다.<br>온도는 약 -78.5°C로 매우 낮아, 냉각뿐 아니라 산업용 세정 매체로도 널리 활용됩니다.</div>
+    <div style="text-align: center; padding: 20px 0"><b style="font-size: 25px">이러한 독특한 성질들 덕분에<br>드라이아이스는 여러 가지 용도에 활용될 수 있습니다.</b></div>
+    <div class="use-trio">
+      <div class="use-item">
+        <img src="../assets/img/use-cleaning.png" alt="드라이아이스 세척 작업" loading="lazy" />
+        <h4>세척 (Cleaning)</h4>
+        <p style="width: 340px; height: 133px">화학물질이나 연마제를 사용하지 않고, 드라이아이스 펠렛을 이용하여 표면을 세척하는 방법입니다.</p>
+      </div>
+      <div class="use-item">
+        <img src="../assets/img/use-cooling.png" alt="식품 냉각·보존" loading="lazy" />
+        <h4>냉각/보존 (Cooling)</h4>
+        <p>드라이아이스는 일반 얼음보다 훨씬 낮은 온도를 가지며, 물기를 남기지 않기 때문에 냉동식품, 의약품 등 온도에 민감한 물품을 운송할 때 냉매로 활용됩니다.</p>
+      </div>
+      <div class="use-item">
+        <img src="../assets/img/use-science.png" alt="연구실 저온 시료 처리" loading="lazy" />
+        <h4>과학적 용도 (Science)</h4>
+        <p>드라이아이스는 시료를 냉동하거나, 정확하게 제어된 저온 환경을 조성하기 위해 연구실에서 사용됩니다.</p>
+      </div>
+    </div>
+    <b style="display: block; font-size: 26px; margin-top: 40px">드라이아이스 세척이 다른 이유</b>
+    <div style="padding-top: 20px; padding-bottom: 20px; line-height: 2; color: #46595B">
+      <div>드라이아이스는 비마모성 세정 매체로, 세척 대상의 표면이나 장비를 손상시키지 않습니다.또한 표면에 충돌하는 순간 기체로 승화하기 때문에 2차 폐기물이 남지 않습니다. 비독성이며 화학 세정제 사용을 줄일 수 있어 작업자 안전과 환경 측면에서도 유리합니다. 물을 사용하지 않는 건식 세정 방식이므로, 세척 후 별도의 건조 공정이 필요하지 않는 것도 큰 장점입니다.</div>
+    </div>
+    <div class="eco-icons">
+      <div class="eco-icon"><img src="../assets/img/eco-reduce-emissions.png" alt="배출 저감" loading="lazy" /><span>배출 저감</span></div>
+      <div class="eco-icon"><img src="../assets/img/eco-water-free.png" alt="물 사용 없음" loading="lazy" /><span>물 사용 없음</span></div>
+      <div class="eco-icon"><img src="../assets/img/eco-recycled.png" alt="재활용 자원" loading="lazy" /><span>재활용 자원</span></div>
+      <div class="eco-icon"><img src="../assets/img/eco-chemical-free.png" alt="화학약품 없음" loading="lazy" /><span>화학약품 없음</span></div>
+      <div class="eco-icon"><img src="../assets/img/eco-waste-free.png" alt="폐기물 없음" loading="lazy" /><span>폐기물 없음</span></div>
+      <div class="eco-icon"><img src="../assets/img/eco-non-abrasive.png" alt="비마모성·비손상" loading="lazy" /><span>비마모성·비손상</span></div>
+      <div class="eco-icon"><img src="../assets/img/eco-non-toxic.png" alt="무독성" loading="lazy" /><span>무독성</span></div>
+      <div class="eco-icon"><img src="../assets/img/eco-non-flammable.png" alt="비전도성·비인화성" loading="lazy" /><span>비전도성·비인화성</span></div>
+    </div>
+    <div class="clean-compare">
+      <div class="clean-compare-col">
+        <h4 class="clean-compare-title" style="color: #000000; font-size: 20px; padding-top: 50px">기존 세척 방식</h4>
+        <div class="clean-compare-fig">
+          <ul class="clean-compare-legend">
+            <li class="lg-water" style="font-style: normal">물</li>
+            <li class="lg-chem" style="font-style: normal">화학약품</li>
+            <li class="lg-dirt" style="font-style: normal">오염물</li>
+          </ul>
+          <img src="../assets/img/compare-traditional.png" alt="기존 세척 — 물과 화학약품이 필요하고 생산을 멈춰야 함" loading="lazy" />
+        </div>
+        <p class="clean-compare-note" style="font-style: normal">생산 중단 → 냉각 → 분리 → 이송 → 세척 → 이송 → 재설치 → 재가열 → 생산 재개</p>
+      </div>
+      <div class="clean-compare-col">
+        <h4 class="clean-compare-title is-dryice" style="color: #000000; font-size: 20px; padding-top: 50px">드라이아이스 세척</h4>
+        <div class="clean-compare-fig">
+          <ul class="clean-compare-legend">
+            <li class="lg-dirt" style="font-style: normal">오염물</li>
+          </ul>
+          <img src="../assets/img/compare-dryice.png" alt="드라이아이스 세척 — 오염물만 제거, 생산 중 온라인 세척" loading="lazy" />
+        </div>
+        <p class="clean-compare-note" style="font-style: normal">생산 중 온라인 세척</p>
+      </div>
+    </div>
+    <b style="display: block; font-size: 26px; margin-top: 64px">드라이아이스의 세척원리</b>
+    <div style="padding-top: 20px; padding-bottom: 20px; line-height: 2; color: #46595B">
+      <div>드라이아이스 세척은 압축공기로 세정 매체를 가속해 표면을 세척한다는 점에서 샌드, 비드, 소다 블라스팅과 유사합니다.</div>
+      <div style="padding-top: 20px">차이점은 드라이아이스 세척이 고체 CO₂ 펠렛 또는 마이크로파티클을 사용한다는 점입니다. 이 입자들은 초음속으로 분사되어 오염물에 충돌한 뒤 즉시 승화하면서, 표면의 오염물과 이물질을 들어 올려 제거합니다.</div>
+    </div>
+    <div class="principle-grid">
+      <div class="principle-col">
+        <img class="principle-icon" src="../assets/img/icon-kinetic.png" alt="" />
+        <h5>운동 에너지</h5>
+        <img class="principle-img" src="../assets/img/principle-kinetic.png" alt="운동 에너지 — 펠렛 충격" loading="lazy" />
+        <span class="principle-letter">I</span>
+        <p><b>충격(Impact)</b>으로 운동 에너지 효과가 발생합니다. 부드러운 드라이아이스가 특수 설계된 노즐을 통해 압축공기로 초음속까지 가속됩니다. 운동 에너지는 선택한 입자 크기와 분사 압력으로 제어되며, 드라이아이스가 오염물에 충돌해 미세 균열을 만듭니다.</p>
+      </div>
+      <div class="principle-col">
+        <img class="principle-icon" src="../assets/img/icon-thermal.png" alt="" />
+        <h5>열역학적 충격</h5>
+        <img class="principle-img" src="../assets/img/principle-thermal.png" alt="열역학적 충격 — 저온 취성화" loading="lazy" />
+        <span class="principle-letter">C</span>
+        <p>드라이아이스 펠렛의 <b>저온(Cold)</b>이 열 효과를 만듭니다. 드라이아이스의 온도(-78.5°C)는 오염물을 취성화(부서지기 쉽게)시켜 모재와 오염물 사이의 결합을 끊는 데 도움을 줍니다. 열 효과의 기여도는 체류 시간·이동 속도와 드라이아이스 공급량 설정에 따라 달라집니다. 이 세정 효과로 이미 미세 균열이 생긴 오염물이 수축하며 모재와의 결합력을 잃게 됩니다.</p>
+      </div>
+      <div class="principle-col">
+        <img class="principle-icon" src="../assets/img/icon-explosion.png" alt="" />
+        <h5>CO₂ 팽창</h5>
+        <img class="principle-img" src="../assets/img/principle-expansion.png" alt="CO2 팽창 — 800배 부피 팽창" loading="lazy" />
+        <span class="principle-letter">E</span>
+        <p>드라이아이스 펠렛의 <b>팽창(Expansion)</b>입니다. 펠렛은 충돌 즉시 승화하며 부피가 800배로 팽창해, 오염물을 안쪽에서부터 밀어내어 제거(블라스팅)합니다.</p>
+      </div>
+      <div class="principle-col">
+        <img class="principle-icon" src="../assets/img/icon-sublimation.png" alt="" />
+        <h5>승화</h5>
+        <img class="principle-img" src="../assets/img/principle-sublimation.png" alt="승화 — 잔류물 없는 깨끗한 표면" loading="lazy" />
+        <span class="principle-letter">&nbsp;</span>
+        <p>드라이아이스는 비마모성이며 기체로 변해 사라지기 때문에, 깨끗한 표면만 남아 금형의 수명을 연장시킵니다.</p>
+      </div>
+    </div>
   </div>
 </div>
-
-<div class="video-embed video-embed-sm">
-  <iframe src="https://www.youtube.com/embed/jtnrk4n3kDA" title="드라이아이스 세척 소개 영상 (VATEK 유튜브 채널)"
-    loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen></iframe>
-</div>
-<p class="photo-caption" style="text-align:center;">영상으로 보는 드라이아이스 세척 (출처: VATEK 유튜브 채널)</p>
-
-<h2 style="font-size:20px; margin-top:36px;">세척 원리 — Impact · Cold · Expansion</h2>
-<p>드라이아이스 세척의 세정 메커니즘은 아래 세 가지 효과가 결합되어 나타납니다.</p>
-<div class="principle-row">
-  <div class="principle-card">
-    <img src="../assets/img/ice-impact.jpg" alt="Impact 원리" loading="lazy" />
-    <h4>① Impact (충격)</h4>
-    <p>초음속에 가깝게 가속된 펠릿이 오염층에 운동에너지를 전달해 표면에서 떼어냅니다.</p>
-  </div>
-  <div class="principle-card">
-    <img src="../assets/img/ice-cold.jpg" alt="Cold 원리" loading="lazy" />
-    <h4>② Cold (냉각)</h4>
-    <p>영하 78.5℃의 저온 충격이 오염물과 기재 사이의 결합력을 급속히 약화시킵니다.</p>
-  </div>
-  <div class="principle-card">
-    <img src="../assets/img/ice-expansion.jpg" alt="Expansion 원리" loading="lazy" />
-    <h4>③ Expansion (팽창)</h4>
-    <p>펠릿이 순간적으로 승화 · 팽창하며 균열된 오염층을 표면에서 완전히 분리시킵니다.</p>
-  </div>
-</div>
-
-<h2 style="font-size:20px; margin-top:36px;">핵심 특징</h2>
-<div class="icon-row" style="grid-template-columns:repeat(3,1fr);">
-  <div class="item"><div class="ic">🛡️</div><span>비마모성 · 표면 손상 위험 낮음</span></div>
-  <div class="item"><div class="ic">♻️</div><span>2차 폐기물 없음 (세정 매체 승화)</span></div>
-  <div class="item"><div class="ic">🧪</div><span>화학물질 · 폐수 부담 저감</span></div>
-  <div class="item"><div class="ic">⚡</div><span>비전도성 · 통전 상태 세척 가능</span></div>
-  <div class="item"><div class="ic">🍽️</div><span>식품 등급, 인체에 무해</span></div>
-  <div class="item"><div class="ic">⏱️</div><span>분해 최소화로 비가동 시간 단축</span></div>
-</div>
-
-<div class="content-photo"><img src="../assets/img/guide-effect-work.jpg" alt="드라이아이스 세척 효과를 보여주는 작업 장면" loading="lazy" /></div>
-<p class="photo-caption">세척 전후 차이를 직관적으로 보여주는 작업 현장 사진 (참고: Cold Jet 공식 기술자료 p.13)</p>
 
 <h2 style="font-size:20px; margin-top:36px;">안전 수칙</h2>
 <p>드라이아이스 블라스팅 자체는 위험한 작업이 아니지만, 다음 사항은 반드시 지켜야 합니다.</p>
