@@ -1,4 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // preload="none" 자동재생 영상: 뷰포트에 들어올 때만 로드·재생, 벗어나면 정지
+  // (모바일 데이터·초기 로딩 부담 최소화).
+  var lazyVideos = document.querySelectorAll('video[preload="none"][autoplay]');
+  if (lazyVideos.length && "IntersectionObserver" in window) {
+    var vidObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) {
+          if (v.preload === "none") { v.preload = "auto"; v.load(); }
+          v.play().catch(function () {});
+        } else {
+          v.pause();
+        }
+      });
+    }, { rootMargin: "200px 0px" });
+    lazyVideos.forEach(function (v) { vidObs.observe(v); });
+  }
+
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".main-nav");
   if (toggle && nav) {

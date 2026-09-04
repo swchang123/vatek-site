@@ -117,37 +117,49 @@ GUIDE_BODY = """
         <p class="clean-compare-note" style="font-style: normal">생산 중 온라인 세척</p>
       </div>
     </div>
-    <b style="display: block; font-size: 26px; margin-top: 64px">드라이아이스의 세척원리</b>
-    <div style="padding-top: 20px; padding-bottom: 20px; line-height: 2; color: #46595B">
-      <div>드라이아이스 세척은 압축공기로 세정 매체를 가속해 표면을 세척한다는 점에서 샌드, 비드, 소다 블라스팅과 유사합니다.</div>
-      <div style="padding-top: 20px">차이점은 드라이아이스 세척이 고체 CO₂ 펠렛 또는 마이크로파티클을 사용한다는 점입니다. 이 입자들은 초음속으로 분사되어 오염물에 충돌한 뒤 즉시 승화하면서, 표면의 오염물과 이물질을 들어 올려 제거합니다.</div>
+  </div>
+</div>
+
+<div class="co2-story principle-story">
+  <div class="wrap">
+    <h2 style="font-size: 45px; color: #000000; position: static; margin-bottom: 40px; margin-top: 0px; padding-top: 10px">드라이아이스의 세척원리</h2>
+    <div class="principle-intro">
+      <div class="principle-intro-text" style="line-height: 2; color: #46595B">
+        <div>드라이아이스 세척은 압축공기로 세정 매체를 가속해 표면을 세척한다는 점에서 샌드, 비드, 소다 블라스팅과 유사합니다.</div>
+        <div style="padding-top: 20px">차이점은 드라이아이스 세척이 고체 CO₂ 펠렛 또는 마이크로파티클을 사용한다는 점입니다. 이 입자들은 초음속으로 분사되어 오염물에 충돌한 뒤 즉시 승화하면서, 표면의 오염물과 이물질을 들어 올려 제거합니다.</div>
+      </div>
+      <div class="video-embed principle-intro-video">
+        <video autoplay muted loop playsinline preload="none" poster="../assets/img/principle-kinetic-t.png">
+          <source src="../assets/video/principle-nozzle.mp4" type="video/mp4" />
+        </video>
+      </div>
     </div>
     <div class="principle-grid">
       <div class="principle-col">
-        <img class="principle-icon" src="../assets/img/icon-kinetic.png" alt="" />
+        <img class="principle-icon" src="../assets/img/icon-kinetic-t.png" alt="" />
         <h5>운동 에너지</h5>
-        <img class="principle-img" src="../assets/img/principle-kinetic.png" alt="운동 에너지 — 펠렛 충격" loading="lazy" />
+        <img class="principle-img" src="../assets/img/principle-kinetic-t.png" alt="운동 에너지 — 펠렛 충격" loading="lazy" />
         <span class="principle-letter">I</span>
         <p><b>충격(Impact)</b>으로 운동 에너지 효과가 발생합니다. 부드러운 드라이아이스가 특수 설계된 노즐을 통해 압축공기로 초음속까지 가속됩니다. 운동 에너지는 선택한 입자 크기와 분사 압력으로 제어되며, 드라이아이스가 오염물에 충돌해 미세 균열을 만듭니다.</p>
       </div>
       <div class="principle-col">
-        <img class="principle-icon" src="../assets/img/icon-thermal.png" alt="" />
+        <img class="principle-icon" src="../assets/img/icon-thermal-t.png" alt="" />
         <h5>열역학적 충격</h5>
-        <img class="principle-img" src="../assets/img/principle-thermal.png" alt="열역학적 충격 — 저온 취성화" loading="lazy" />
+        <img class="principle-img" src="../assets/img/principle-thermal-t.png" alt="열역학적 충격 — 저온 취성화" loading="lazy" />
         <span class="principle-letter">C</span>
         <p>드라이아이스 펠렛의 <b>저온(Cold)</b>이 열 효과를 만듭니다. 드라이아이스의 온도(-78.5°C)는 오염물을 취성화(부서지기 쉽게)시켜 모재와 오염물 사이의 결합을 끊는 데 도움을 줍니다. 열 효과의 기여도는 체류 시간·이동 속도와 드라이아이스 공급량 설정에 따라 달라집니다. 이 세정 효과로 이미 미세 균열이 생긴 오염물이 수축하며 모재와의 결합력을 잃게 됩니다.</p>
       </div>
       <div class="principle-col">
-        <img class="principle-icon" src="../assets/img/icon-explosion.png" alt="" />
+        <img class="principle-icon" src="../assets/img/icon-explosion-t.png" alt="" />
         <h5>CO₂ 팽창</h5>
-        <img class="principle-img" src="../assets/img/principle-expansion.png" alt="CO2 팽창 — 800배 부피 팽창" loading="lazy" />
+        <img class="principle-img" src="../assets/img/principle-expansion-t.png" alt="CO2 팽창 — 800배 부피 팽창" loading="lazy" />
         <span class="principle-letter">E</span>
         <p>드라이아이스 펠렛의 <b>팽창(Expansion)</b>입니다. 펠렛은 충돌 즉시 승화하며 부피가 800배로 팽창해, 오염물을 안쪽에서부터 밀어내어 제거(블라스팅)합니다.</p>
       </div>
       <div class="principle-col">
-        <img class="principle-icon" src="../assets/img/icon-sublimation.png" alt="" />
+        <img class="principle-icon" src="../assets/img/icon-sublimation-t.png" alt="" />
         <h5>승화</h5>
-        <img class="principle-img" src="../assets/img/principle-sublimation.png" alt="승화 — 잔류물 없는 깨끗한 표면" loading="lazy" />
+        <img class="principle-img" src="../assets/img/principle-sublimation-t.png" alt="승화 — 잔류물 없는 깨끗한 표면" loading="lazy" />
         <span class="principle-letter">&nbsp;</span>
         <p>드라이아이스는 비마모성이며 기체로 변해 사라지기 때문에, 깨끗한 표면만 남아 금형의 수명을 연장시킵니다.</p>
       </div>
@@ -155,14 +167,40 @@ GUIDE_BODY = """
   </div>
 </div>
 
-<h2 style="font-size:20px; margin-top:36px;">안전 수칙</h2>
-<p>드라이아이스 블라스팅 자체는 위험한 작업이 아니지만, 다음 사항은 반드시 지켜야 합니다.</p>
-<ul style="padding-left:20px; display:grid; gap:8px;">
-  <li>밀폐 공간 작업 시 충분한 환기를 확보해 CO<sub>2</sub> 농도 상승을 방지합니다.</li>
-  <li>장갑 · 보안경 · 청력 보호구 등 개인보호장비(PPE)를 착용합니다.</li>
-  <li>CO<sub>2</sub>가 정체될 수 있는 저지대 · 밀폐구역을 사전에 확인하고 표시합니다.</li>
-  <li>연속 노출 시간 제한을 준수합니다.</li>
-</ul>
+<div class="co2-story blaster-story">
+  <div class="wrap">
+    <h2 style="font-size: 45px; color: #000000; position: static; margin-bottom: 40px; margin-top: 0px; padding-top: 10px">드라이아이스 세척기?</h2>
+    <div class="blaster-intro">
+    <div class="blaster-intro-text" style="line-height: 2; color: #46595B">
+      <div>
+        <div>드라이아이스 세척기는 드라이아이스 펠렛 또는 마이크로파티클을 압축공기로 가속해 노즐로 고속 분사하는 산업용 세정 장비입니다. 분사 압력과 드라이아이스 공급량을 조절해 세정 대상과 오염 상태에 맞게 사용할 수 있습니다.<br>기술적으로는 드라이아이스 블라스터(Dry Ice Blaster)라고 부릅니다. 샌드 블라스터나 비드 블라스터처럼 세정 매체를 압축공기로 가속해 분사하는 방식이기 때문입니다. 다만 모래나 비드 대신 고체 이산화탄소(CO₂)인 드라이아이스를 사용합니다. 드라이아이스는 표면에 충돌한 뒤 곧바로 승화해 기체로 변하므로 세정 매체가 남지 않습니다.<br>국내에서는 주로 세척 목적으로 사용되기 때문에 ‘드라이아이스 세척기’라는 이름으로 더 익숙하게 불립니다.</div>
+        <div><br></div>
+      </div>
+    </div>
+    <div class="blaster-intro-img">
+      <img src="../assets/img/blaster-operator-t.png" alt="Cold Jet 드라이아이스 블라스터로 세척 작업 중인 작업자" loading="lazy" />
+    </div>
+    </div>
+  </div>
+</div>
+
+<h2 style="font-size: 26px; margin-top: 36px; color: #000000">드라이아이스 블라스팅의 시작, Cold Jet</h2>
+<figure class="history-collage">
+  <img src="../assets/img/coldjet-history-collage-teal.png" alt="1986년 미국 특허 도면, 초기 항공기 세척 작업 사진, 초기 Cold Jet 장비 라인업" loading="lazy" />
+  <figcaption>1986년 미국 특허(No. 4,617,064) 도면 · 초기 항공기 세척 작업 · 초기 장비 라인업</figcaption>
+</figure>
+<p style="line-height: 2">콜드젯(Cold Jet)은, 1986년 최초의 드라이아이스 블라스터를 개발했으며, 1989년에는 산업용 드라이아이스 블라스터 관련 최초 특허를 확보하며 본격적인 기술 상용화의 기반을 마련했습니다.<br>이후 Cold Jet는 단순한 분사 장비를 넘어 드라이아이스 입자 제어, 노즐 설계, 정밀 세정, 자동화 및 공정 통합 기술을 지속적으로 개발하며 드라이아이스 블라스팅의 적용 범위를 확대해 왔습니다.</p>
+
+<h2 style="font-size: 26px; margin-top: 36px; padding-top: 20px; color: #000000">산업 현장에서 검증된 드라이아이스 블라스터</h2>
+<div class="proven-block">
+  <div class="proven-text" style="line-height: 2">
+    <p>드라이아이스 블라스터는 금형, 생산설비, 주조·자동차·전자·반도체 등 다양한 산업 현장에서 사용되며, 먼지와 오염, 장시간 운전 등 비교적 가혹한 조건에 노출되는 경우가 많습니다. 따라서 단순한 세정력뿐 아니라 장비의 내구성, 장시간 운전 시 성능 안정성, 유지보수성과 부품 공급 체계까지 중요한 선택 기준이 됩니다.</p>
+    <p>Cold Jet는 이러한 산업 환경을 고려해 견고한 프레임 구조, 고품질 스테인리스 부품, 정밀하게 설계된 공압 시스템을 적용하고 있으며, 장시간 연속 운전에서도 안정적인 세정 성능을 유지하도록 설계되어 있습니다. 이러한 성능과 내구성은 전 세계 다양한 산업 현장에서 축적된 적용 경험을 통해 검증되어 왔습니다.</p>
+  </div>
+  <figure class="proven-lineup">
+    <img src="../assets/img/lineup-trimmed-t.png" alt="Cold Jet 드라이아이스 블라스터 전 제품 라인업" loading="lazy" style="padding-top: 15px" />
+  </figure>
+</div>
 
 <h2 style="font-size:20px; margin-top:36px;">자주 묻는 질문</h2>
 <div class="faq-list">
