@@ -202,26 +202,26 @@ GUIDE_BODY = """
   </figure>
 </div>
 
-<section class="faq-section" style="width: 1100px">
+<section class="faq-section">
   <div class="faq-head">
     <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>
     <p class="faq-intro">드라이아이스 세척을 처음 검토하실 때 가장 많이 받는 질문을 정리했습니다.</p>
   </div>
   <div class="faq-list">
     <details class="faq-item">
-      <summary><span class="faq-q">드라이아이스를 보관해 두고 사용할 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+      <summary><span class="faq-q" style="font-size: 25px">드라이아이스를 보관해 두고 사용할 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
       <div class="faq-a"><p>보관은 가능하지만, 드라이아이스는 시간이 지나면서 고체에서 기체로 승화하여 양이 줄어들고 품질도 떨어집니다. 따라서 장기간 보관하기보다는 필요한 시점에 공급받아 가급적 빠르게 사용하는 것이 좋습니다.</p><p>바테크에서는 드라이아이스 보관을 위한 스티로폼 박스와 드라이아이스 전용 보냉용기도 판매하고 있습니다. 일반적으로 스티로폼 박스에 보관할 경우 하루 약 5~10%, 단열 성능이 높은 드라이아이스 전용 보냉용기의 경우 약 2~5% 정도의 승화 손실이 발생할 수 있습니다. 다만 실제 손실률은 외부 온도, 드라이아이스의 양과 크기, 용기의 단열 성능, 개폐 횟수 등에 따라 달라집니다.</p><p>드라이아이스는 승화하면서 CO₂ 가스가 발생하므로 완전히 밀폐된 용기에 보관해서는 안 됩니다.</p></div>
     </details>
     <details class="faq-item">
-      <summary><span class="faq-q">드라이아이스는 어떤 크기를 사용하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+      <summary><span class="faq-q" style="font-size: 25px">드라이아이스는 어떤 크기를 사용하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
       <div class="faq-a"><p>드라이아이스 세척에는 일반적으로 직경 3mm의 드라이아이스 펠렛을 사용합니다.</p><p>Cold Jet의 마이크로파티클(MicroParticle) 시스템은 3mm 펠렛을 미세하게 절단하여 0.3mm부터 3.0mm까지 0.1mm 간격으로 입자 크기를 조절할 수 있습니다. 세척 대상의 재질과 오염 정도에 따라 입자 크기를 세밀하게 설정할 수 있어 정밀 부품부터 강한 세척력이 필요한 산업용 설비까지 폭넓게 적용할 수 있습니다.</p></div>
     </details>
     <details class="faq-item">
-      <summary><span class="faq-q">세척기를 사용하려면 무엇이 필요한가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+      <summary><span class="faq-q" style="font-size: 25px">세척기를 사용하려면 무엇이 필요한가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
       <div class="faq-a"><p>기본적으로 드라이아이스 세척기, 드라이아이스, 압축공기, 전원이 필요합니다.</p><p>필요한 압력과 공기량은 사용하는 장비와 노즐, 세척 대상에 따라 달라집니다. 또한 작업 중 드라이아이스가 CO₂ 가스로 승화하므로 충분한 환기가 필요하며, 작업 환경에 맞는 보호장비와 안전수칙을 준수해야 합니다.</p></div>
     </details>
     <details class="faq-item">
-      <summary><span class="faq-q">드라이아이스 세척으로 모든 오염물을 제거할 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+      <summary><span class="faq-q" style="font-size: 25px">드라이아이스 세척으로 모든 오염물을 제거할 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
       <div class="faq-a"><p>모든 오염물을 제거할 수 있는 것은 아닙니다. 드라이아이스 세척은 기름, 그리스, 이형제, 접착제, 수지, 잉크, 먼지 및 각종 생산 잔여물 등 다양한 오염물 제거에 효과적이지만, 오염물의 종류와 부착 정도, 세척 대상의 재질에 따라 세척 결과가 달라질 수 있습니다.</p><p>특히 소재 내부까지 깊게 진행된 녹이나 표면 자체를 깎아내야 하는 경우에는 연마재를 사용하는 다른 세척 방식이 더 적합할 수 있습니다. 적용 가능 여부가 확실하지 않다면 실제 샘플 테스트를 통해 세척 가능 여부와 적합한 조건을 확인하는 것이 가장 정확합니다.</p></div>
     </details>
   </div>
@@ -1142,49 +1142,57 @@ def nav_html(depth, active_code=None):
 
 
 def footer_html(depth):
-    # footer는 4칸 그리드(브랜드 1 + 카테고리 3)이므로 6개 대메뉴 중 대표 3개만
-    # 노출하고 나머지는 위 홈 하단 "메뉴 선택" 카드 섹션(menu_picker_html)에서
-    # 전부 다룬다.
-    # (2026-09-02, 후속9) 사용자 요청 — 홈의 새 "메뉴 선택" 카드 섹션처럼 푸터도
-    # 등장할 때 효과가 있으면 좋겠다는 요청. footer_html()은 57개 페이지 전체가
-    # 공유하는 공통 partial이라, 여기 붙인 리빌 클래스는 홈뿐 아니라 사이트
-    # 전체 페이지의 푸터에 똑같이 적용된다(어차피 스크롤 리빌 관찰자
-    # assets/js/main.js가 클래스 유무만으로 전 페이지에서 동일하게 동작하므로
-    # 별도 분기 불필요). 브랜드 영역 → 3개 카테고리 컬럼(인덱스 순 0.08초씩
-    # 지연) 순서로 나타나도록 지연을 늦춘다. 맨 아래 저작권 바(.footer-bottom)는
-    # 리빌 효과를 주지 않고 항상 그대로 보이게 둠 — 이 바는 페이지의 진짜
-    # 마지막 요소라 "화면 하단 8% 안쪽은 아직 등장 전으로 치는" 관찰자
-    # rootMargin(-8%) 규칙상, 문서 끝까지 스크롤해도 이 짧은 바(수십 px)는
-    # 그 8% 구간을 넘어 올라올 수 없어 is-visible이 영원히 붙지 않고
-    # opacity:0로 사라져 보이는 문제가 실제로 발생함(다른 리빌 요소는 아래에
-    # 더 콘텐츠가 있어 스크롤로 8% 구간 위로 밀어올릴 수 있지만, 문서의 맨
-    # 마지막 요소는 구조적으로 불가능). 그래서 이 요소만 리빌 대상에서 제외.
-    cols = []
-    for i, m in enumerate(MENU[:3]):
-        links = "".join(
-            f'<li><a href="{asset(m["code"] + "/" + s["slug"] + ("/index.html" if s.get("is_group") else ".html"), depth)}">{s["title"]}</a></li>'
-            for s in m["subs"][:4]
-        )
-        delay = 0.06 + i * 0.08
-        cols.append(f'<div class="footer-col reveal-pop" style="--reveal-delay:{delay:.2f}s"><h4>{m["label"]}</h4><ul>{links}</ul></div>')
+    # (2026-09-05, 후속: 4차 디자인 개선 핸드오프) 푸터 전면 재설계 — 1)선언/CTA
+    # 행, 2)5칼럼(브랜드+세척가이드+제품·자동화·공급+사례·지원+문의하기),
+    # 3)하단 바(저작권+약관/개인정보 링크+맨위로) 3단 구성. 화면 높이에 맞춰
+    # 딱 한 화면(100vh)만 차지하도록 style.css 쪽에서 vh 기반 clamp()로
+    # 크기를 조절하므로 여기서는 마크업 구조만 고정 — 카테고리 컬럼도 더는
+    # MENU 순회로 자동 생성하지 않고(5칼럼 레이아웃에 맞춰 항목 구성이
+    # MENU 대표 3개 노출 규칙과 달라짐) 디자인 그대로 하드코딩한다.
     return f"""
   <div class="footer-reveal-wrap">
     <div class="footer-spacer" aria-hidden="true"></div>
 
   <footer class="site-footer">
+    <div class="footer-watermark" aria-hidden="true">
+      <span class="footer-wm-text">VATEK</span>
+      <span class="footer-wm-ko">바테크</span>
+    </div>
     <div class="wrap">
-      <div class="footer-top">
-        <div class="footer-brand reveal">
-          <a class="logo footer-logo" href="{asset('index.html', depth)}"><img src="{asset('assets/img/vatek-logo.png', depth)}" alt="VATEK" /></a>
-          <p>주식회사 바테크 | 드라이아이스 블라스터·펠렛타이저·리커버리 및 관련 소모품 공급</p>
-          <p>[사업자등록번호 입력] · [주소 입력]</p>
-          <span class="partner-badge">🧊 Cold Jet 대한민국 공식 대리점</span>
+      <div class="footer-hero">
+        <div class="footer-hero-main">
+          <span class="footer-eyebrow">VATEK · COLD JET KOREA</span>
+          <h2>도입 검토부터 현장 적용, <br>교육과 A/S까지<br><em>바테크</em>가 전 과정을 지원합니다.</h2>
+          <p>설비 특성, 오염 상태, 작업 환경을 고려해 현장에 맞는 최적의 솔루션을 제안합니다.</p>
+          <div class="footer-cta">
+            <a class="footer-btn is-primary" href="{asset('products/index.html', depth)}">제품 살펴보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="footer-btn" href="{asset('rental/index.html', depth)}">렌탈 · 데모 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </div>
-        {''.join(cols)}
+      </div>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="logo footer-logo" href="{asset('index.html', depth)}"><img src="{asset('assets/img/vatek-logo-wordmark.png', depth)}" alt="VATEK" /></a>
+          <p>드라이아이스 블라스터·펠렛타이저·리커버리 및 관련 소모품을 공급하는 Cold Jet 대한민국 공식 대리점</p>
+          <span class="partner-badge"><img src="{asset('assets/img/coldjet-logo.png', depth)}" alt="Cold Jet" /><b>대한민국 <br>공식 대리점</b></span>
+          <span class="footer-microcap">OFFICIAL DISTRIBUTOR IN KOREA</span>
+        </div>
+        <div class="footer-col"><h4>세척 가이드</h4><ul><li><a href="{asset('cleaning/guide.html', depth)}">드라이아이스 세척 가이드</a></li><li><a href="{asset('cleaning/compare.html', depth)}">타 세척방식과 비교</a></li><li><a href="{asset('cleaning/industry.html', depth)}">산업별 솔루션</a></li><li><a href="{asset('cleaning/task.html', depth)}">작업별 솔루션</a></li><li><a href="{asset('cleaning/adopt.html', depth)}">도입 가이드</a></li></ul></div>
+        <div class="footer-col"><h4>제품·자동화·공급</h4><ul><li><a href="{asset('products/blaster/index.html', depth)}">드라이아이스 세척기</a></li><li><a href="{asset('products/pelletizer/index.html', depth)}">드라이아이스 제조기</a></li><li><a href="{asset('products/recovery/index.html', depth)}">CO<sub>2</sub> 리커버리</a></li><li><a href="{asset('products/automation.html', depth)}">자동화 시스템</a></li><li><a href="{asset('products/supply.html', depth)}">드라이아이스 구매</a></li></ul></div>
+        <div class="footer-col"><h4>사례·지원</h4><ul><li><a href="{asset('cases/library.html', depth)}">적용사례 라이브러리</a></li><li><a href="{asset('cases/testimonials.html', depth)}">고객 후기·추천사</a></li><li><a href="{asset('rental/index.html', depth)}">렌탈·데모</a></li><li><a href="{asset('support/catalog.html', depth)}">카탈로그 다운로드</a></li><li><a href="{asset('support/techsupport.html', depth)}">기술지원 서비스</a></li></ul></div>
+        <div class="footer-contact">
+          <h4>문의하기</h4>
+          <a class="footer-tel" href="tel:0317964300"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6.2 6.2l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>031-796-4300</span></a>
+          <a class="footer-line" href="mailto:sales@vatek.co.kr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>sales@vatek.co.kr</span></a>
+          <p class="footer-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>평일 09:00 – 18:00 <i>|</i> 주말·공휴일 휴무</span></p>
+          <p class="footer-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>경기도 하남시 산곡동로14번길 20</span></p>
+          <span class="footer-microcap footer-microcap-line">CLEANER INDUSTRY<br>GREENER TOMORROW</span>
+        </div>
       </div>
       <div class="footer-bottom">
-        <span>© VATEK Corporation. All rights reserved. (본 페이지는 리뉴얼 시안이며 실제 배포용이 아닙니다)</span>
-        <span>[대표전화 입력] · [이메일 입력]</span>
+        <span>© 주식회사 바테크. All rights reserved.</span>
+        <nav class="footer-legal"><a href="{asset('company/about.html', depth)}">회사소개</a><a href="{asset('company/location.html', depth)}">위치·연락처</a><a href="#">이용약관</a><a href="#">개인정보처리방침</a></nav>
+        <a class="footer-totop" href="#" aria-label="맨 위로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg> TOP</a>
       </div>
     </div>
   </footer>
@@ -1360,8 +1368,8 @@ def build_sub_page(m, s):
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3>타 세척방식과 비교</h3>
-      <p>연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
+      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
   </a>
@@ -1369,8 +1377,8 @@ def build_sub_page(m, s):
     <div class="sub-card-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">산업별 적용</span>
-      <h3>산업별 솔루션</h3>
-      <p>자동차, 식품, 반도체·PCB, 금형, 인쇄, 발전, 조선 등 산업별로 어떤 문제를 해결하는지 설명합니다.</p>
+      <h3 style="font-size: 25px">산업별 솔루션</h3>
+      <p style="font-size: 20px">자동차, 식품, 반도체·PCB, 금형, 인쇄, 발전, 조선 등 산업별로 어떤 문제를 해결하는지 설명합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
   </a>
@@ -1378,8 +1386,8 @@ def build_sub_page(m, s):
     <div class="sub-card-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">작업별 적용</span>
-      <h3>작업별 솔루션</h3>
-      <p>이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.</p>
+      <h3 style="font-size: 25px">작업별 솔루션</h3>
+      <p style="font-size: 20px">이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
   </a>
@@ -1387,16 +1395,16 @@ def build_sub_page(m, s):
     <div class="sub-card-media"><img src="../assets/img/adopt-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">도입 절차</span>
-      <h3>도입 가이드</h3>
-      <p>도입 전 검토사항부터 설치 준비, 운영 체크리스트까지 순서대로 안내합니다.</p>
+      <h3 style="font-size: 25px">도입 가이드</h3>
+      <p style="font-size: 20px">도입 전 검토사항부터 설치 준비, 운영 체크리스트까지 순서대로 안내합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
   </a>
 </div>
       <div class="cta-band">
         <div>
-          <h3>바테크에 직접 문의해보세요</h3>
-          <p>현장 상황에 맞는 가장 정확한 답변을 담당자가 안내해 드립니다.</p>
+          <h3 style="font-size: 25px">바테크에 직접 문의해보세요</h3>
+          <p style="font-size: 20px">현장 상황에 맞는 가장 정확한 답변을 담당자가 안내해 드립니다.</p>
         </div>
         <a class="cta-btn" href="../products/quote.html">견적문의 하기</a>
       </div>

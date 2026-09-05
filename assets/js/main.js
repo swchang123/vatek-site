@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+
   // (참고) "함께 보면 좋은 페이지" 카드는 이제 순수 CSS 호버(이미지 확대 +
   // 카드 리프트 + 링크 슬라이드업)로만 동작 — 별도 JS 불필요.
   // 푸터 리빌 블러: 푸터(.site-footer)가 화면 아래에서 올라와 고정 화면
   // (.last-freeze)을 덮는 비율(0~1)에 맞춰 --freeze-blur를 0~10px로 갱신.
   // 히어로 이미지의 스크롤 블러(SUBHERO_BLUR_MAX)와 같은 감도.
+  // (2026-09-05) 푸터 내용이 뷰포트보다 높으면 sticky 리빌로는 윗부분에
+  // 닿을 수 없어 .is-tall을 붙여 일반 플로우로 전환(리사이즈 시 재판정).
+  var revealWrap = document.querySelector(".footer-reveal-wrap");
   var freezeEl = document.querySelector(".last-freeze");
   var revealFooter = document.querySelector(".site-footer");
   if (freezeEl && revealFooter) {

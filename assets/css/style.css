@@ -121,6 +121,20 @@ h1, h2, h3, h4 { color: var(--text-dark); margin: 0 0 12px; line-height: 1.35; }
 p { margin: 0 0 12px; }
 
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+/* (2026-09-05) 서브페이지 본문(.subhero-cover) — 폭을 화면 전체로 넓히고
+   본문 글자를 키워 시원한 인상. 최대 1560px, 좌우 여백 clamp로 큰 화면에서도
+   가장자리에 붙지 않게. .co2-story 등 풀블리드 카드 내부 .wrap도 같은 폭. */
+.subhero-cover > .wrap,
+.subhero-cover .co2-story > .wrap,
+.last-freeze > .wrap { max-width: 1560px; padding: 0 clamp(24px, 4vw, 64px); }
+.subhero-cover { font-size: 17.5px; line-height: 1.85; }
+.subhero-cover p { font-size: inherit; line-height: inherit; }
+.subhero-cover .co2-story .wrap > div > div { font-size: inherit; }
+.subhero-cover h2 { font-size: clamp(28px, 2.6vw, 40px); }
+.subhero-cover .faq-item summary { font-size: 18px; }
+.subhero-cover .faq-a p { font-size: 16.5px; }
+.subhero-cover .sub-card-body p { font-size: 15.5px; }
+.subhero-cover .clean-compare-note, .subhero-cover .value-feature-desc, .subhero-cover .principle-desc { font-size: 16px; }
 
 /* ---------- Header / Nav ---------- */
 /* (클로드 디자인 요청) 상하좌우 여백을 둔 "떠 있는 카드" 헤더에서, 화면
@@ -2106,7 +2120,7 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
     radial-gradient(circle at 88% 8%, rgba(216, 229, 140, .16), transparent 46%),
     radial-gradient(circle at 70% 90%, rgba(34, 136, 150, .22), transparent 46%),
     repeating-linear-gradient(135deg, rgba(255, 255, 255, .06) 0px, rgba(255, 255, 255, .06) 1px, transparent 1px, transparent 14px);
-  color: rgba(255,255,255,0.72); padding: 64px 0 32px; font-size: 13.5px;
+  color: rgba(255,255,255,0.72); padding: clamp(28px, 4.5vh, 56px) 0 clamp(16px, 2.5vh, 28px); font-size: clamp(13px, 1.55vh, 16.5px);
   display: flex; flex-direction: column; justify-content: space-between;
 }
 .footer-reveal-wrap .site-footer {
@@ -2114,22 +2128,96 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   /* 상단 양 모서리 라운드 — 페이지 맨 위 메인글 카드(.co2-story)와 동일한 72px.
      100vw 풀블리드에서 border-radius보다 안정적인 clip-path 사용(같은 이유). */
   clip-path: inset(0 round 72px 72px 0 0);
-  padding-top: 100px; min-height: 100vh;
+  padding-top: clamp(28px, 5vh, 64px); height: 100vh; min-height: 0; overflow: hidden;
 }
-.footer-logo img { display: block; height: 40px; width: auto; }
-.site-footer > .wrap { display: flex; flex-direction: column; justify-content: space-between; height: 100%; flex: 1; }
-.footer-top { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.12); }
-.footer-brand .logo { color: var(--white); font-size: 23px; }
-.footer-brand p { color: rgba(255,255,255,0.55); font-size: 13.5px; line-height: 1.65; margin-top: 14px; }
-.partner-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(79, 173, 184, 0.10); border: 1px solid rgba(79, 173, 184, 0.35);
-  padding: 9px 16px; border-radius: 999px; font-size: 13px; font-weight: 700; margin-top: 18px; color: var(--white);
+/* 푸터 내용이 뷰포트보다 높으면 sticky bottom:0 상태에서 윗부분(선언문/CTA)에
+   절대 닿을 수 없다. main.js가 실측해 .is-tall을 붙이면 일반 플로우로 전환
+   (리빌 대신 그냥 이어서 스크롤) — 스페이서도 함께 제거. */
+/* (2026-09-05) 푸터는 스크롤 없이 한 화면(100vh)에 딱 맞게 — 내부 여백·글자를
+   vh 기준 clamp로 잡아 어떤 높이에서도 넘치지 않게 한다. is-tall 폴백 제거. */
+.footer-brand { display: flex; flex-direction: column; align-items: flex-start; }
+.footer-logo { display: inline-flex; flex-direction: column; gap: 4px; margin-left: -4px; }
+.footer-logo img { display: block; height: clamp(44px, 9vh, 168px); width: auto; max-width: 100%; object-fit: contain; }
+.footer-watermark { position: absolute; right: clamp(16px, 3vw, 48px); top: clamp(12px, 3vh, 48px); max-width: 55%; overflow: hidden; text-align: left; pointer-events: none; user-select: none; }
+.footer-wm-text { display: block; font-size: clamp(100px, 26vh, 360px); font-weight: 900; line-height: .85; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)); -webkit-background-clip: text; background-clip: text; }
+.footer-wm-ko { display: block; text-align: right; margin-top: -0.32em; position: relative; z-index: 1; font-size: clamp(40px, 10vh, 120px); font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)); -webkit-background-clip: text; background-clip: text; }
+.footer-wm-sub { display: block; margin-top: 14px; font-size: 13px; letter-spacing: 8px; color: rgba(255,255,255,.28); padding-left: 6px; }
+/* 세 줄(선언문 / 브랜드·링크 / 하단바)의 세로 비중: 1줄 > 2줄 > 3줄.
+   남는 높이를 flex-grow 5:3으로 선언문·그리드에 배분하고, 각 블록 내부는
+   세로 중앙 정렬해 여백이 위·아래로 고르게 퍼지도록 함. 하단바는 고정 높이. */
+.site-footer > .wrap { position: relative; display: flex; flex-direction: column; justify-content: flex-start; height: 100%; flex: 1; gap: 0; min-height: 0; max-width: 1560px; padding: 0 clamp(24px, 4vw, 64px); }
+.footer-hero { display: flex; flex-direction: column; justify-content: center; flex: 5 1 0; min-height: 45vh; max-width: none; padding-bottom: clamp(14px, 2.6vh, 32px); border-bottom: 1px solid rgba(255,255,255,.14); }
+.footer-eyebrow { display: block; font-size: clamp(11px, 1.3vh, 13px); font-weight: 800; letter-spacing: 3px; color: var(--ice); margin-bottom: clamp(8px, 1.6vh, 18px); }
+.footer-hero h2 { color: var(--white); font-size: clamp(20px, 3.8vh, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin: 0 0 clamp(8px, 1.4vh, 16px); word-break: keep-all; }
+.footer-hero h2 em { font-style: normal; color: var(--ice); }
+.footer-hero p { color: rgba(255,255,255,.66); font-size: clamp(13.5px, 1.7vh, 17px); line-height: 1.6; margin: 0 0 clamp(12px, 2.2vh, 24px); word-break: keep-all; }
+.footer-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.footer-btn { display: inline-flex; align-items: center; gap: 10px; padding: clamp(9px, 1.4vh, 14px) clamp(16px, 2.4vh, 24px); border-radius: 10px; font-size: clamp(13px, 1.5vh, 15.5px); font-weight: 800; color: var(--white); border: 1px solid rgba(255,255,255,.3); transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+.footer-btn svg { width: 18px; height: 18px; transition: transform .2s ease; }
+.footer-btn:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); }
+.footer-btn:hover svg { transform: translateX(4px); }
+.footer-btn.is-primary { background: var(--ice); border-color: var(--ice); color: #0f1c1e; }
+.footer-btn.is-primary:hover { background: #63bfc9; border-color: #63bfc9; }
+.footer-top { display: grid; grid-template-columns: 1.3fr 1.1fr 1.1fr 1.1fr 1.3fr; gap: 0; padding: clamp(10px, 2vh, 32px) 0; min-height: 0; align-items: start; align-content: center; flex: 3 1 auto; border-bottom: 1px solid rgba(255,255,255,0.14); }
+.footer-top > * { padding: 0 clamp(12px, 1.6vw, 28px); border-left: 1px solid rgba(255,255,255,.12); min-width: 0; }
+.footer-top > *:first-child { padding-left: 0; border-left: none; }
+.footer-brand p { color: rgba(255,255,255,0.62); font-size: clamp(12.5px, 1.45vh, 15px); line-height: 1.55; margin-top: clamp(10px, 1.8vh, 18px); word-break: keep-all; max-width: 30ch; }
+.partner-badge { display: inline-flex; align-items: center; gap: 12px; max-width: 100%; box-sizing: border-box; border: 1px solid rgba(255,255,255,.28); border-radius: 12px; padding: clamp(7px, 1.1vh, 11px) clamp(12px, 1.6vh, 16px); margin-top: clamp(8px, 1.4vh, 16px); color: var(--white); background: rgba(255,255,255,.04); }
+.partner-badge img { height: clamp(18px, 2.4vh, 26px); width: auto; display: block; filter: brightness(0) invert(1); opacity: .95; }
+.partner-badge b { font-size: clamp(11px, 1.3vh, 12.5px); line-height: 1.3; font-weight: 700; border-left: 1px solid rgba(255,255,255,.25); padding-left: 14px; }
+.footer-microcap { display: block; margin-top: clamp(8px, 1.4vh, 14px); font-size: 10px; white-space: nowrap; letter-spacing: 3px; color: rgba(255,255,255,.38); line-height: 1.9; }
+.footer-microcap-line { margin-top: clamp(8px, 1.6vh, 18px); position: relative; }
+.footer-microcap-line::after { content: ""; position: absolute; left: 190px; bottom: 6px; width: 26px; height: 1px; background: var(--ice); }
+.footer-col h4, .footer-contact h4 { color: var(--white); font-size: clamp(13.5px, 1.55vh, 16px); font-weight: 800; margin-bottom: clamp(6px, 1.2vh, 18px); }
+.footer-col ul li { margin-bottom: clamp(3px, .8vh, 12px); font-size: clamp(13px, 1.5vh, 15.5px); }
+.footer-col ul li a { color: rgba(255,255,255,.68); transition: color .2s ease, padding-left .2s ease; word-break: keep-all; }
+.footer-col ul li a:hover { color: var(--white); padding-left: 4px; }
+.footer-tel { display: flex; align-items: center; gap: 12px; white-space: nowrap; color: var(--white); font-size: clamp(17px, 2.2vh, 26px); font-weight: 800; letter-spacing: -0.01em; margin-bottom: clamp(4px, .9vh, 12px); }
+.footer-tel svg, .footer-line svg { width: 20px; height: 20px; color: var(--ice); flex-shrink: 0; }
+.footer-line { display: flex; align-items: center; gap: 12px; word-break: keep-all; color: rgba(255,255,255,.7); font-size: clamp(12.5px, 1.45vh, 15px); margin: 0 0 clamp(4px, .9vh, 12px); }
+.footer-line i { font-style: normal; color: rgba(255,255,255,.3); margin: 0 6px; }
+a.footer-line:hover { color: var(--white); }
+.footer-bottom { flex: 0 0 auto; padding-top: clamp(10px, 2vh, 20px); display: flex; justify-content: space-between; align-items: center; font-size: clamp(12px, 1.35vh, 14px); color: rgba(255,255,255,0.5); flex-wrap: wrap; gap: 12px 24px; }
+.footer-legal { display: flex; align-items: center; }
+.footer-legal a { color: rgba(255,255,255,.62); padding: 0 16px; border-left: 1px solid rgba(255,255,255,.18); }
+.footer-legal a:first-child { border-left: none; }
+.footer-legal a:hover { color: var(--white); }
+.footer-totop { display: inline-flex; align-items: center; gap: 8px; color: var(--white); font-weight: 800; font-size: 13px; letter-spacing: 1px; }
+.footer-totop svg { width: 16px; height: 16px; }
+@media (max-height: 640px) and (min-width: 901px) {
+  /* 낮은 창: 장식용 소문구·배지 줄바꿈을 줄여 한 화면에 맞춤 */
+  .footer-microcap { display: none; }
+  .partner-badge b br { display: none; }
+  .partner-badge { max-width: 100%; gap: 6px; padding: 8px 12px; flex-direction: column; align-items: flex-start; }
+  .partner-badge b { white-space: nowrap; font-size: 11px; border-left: none; padding-left: 0; }
+  .partner-badge img { height: 16px; }
+  .footer-hero p { display: none; }
+  .footer-hero h2 br:first-of-type { display: none; }
+  .footer-hero h2 em { display: inline; }
+  .footer-hero h2 { word-spacing: normal; }
 }
-.footer-col h4 { color: var(--white); font-size: 14.5px; font-weight: 800; margin-bottom: 16px; }
-.footer-col ul li { margin-bottom: 9px; }
-.footer-col ul li a:hover { color: var(--white); }
-.footer-bottom { display: flex; justify-content: space-between; padding-top: 20px; font-size: 12px; color: rgba(255,255,255,0.45); flex-wrap: wrap; gap: 10px; }
+@media (max-width: 900px) {
+  /* 좁은 화면: 한 화면에 5열이 들어갈 수 없으므로 고정 100vh/리빌을 풀고
+     일반 플로우로 자연스럽게 늘어나게 한다(내용이 잘리지 않게). */
+  .footer-reveal-wrap .site-footer { position: relative; height: auto; min-height: 0; overflow: visible; }
+  .footer-reveal-wrap .footer-spacer { display: none; }
+  .footer-watermark { display: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px 0; }
+  .footer-top > * { border-left: none; padding: 0; }
+  .footer-brand, .footer-contact { grid-column: 1 / -1; }
+  .footer-contact { border-top: 1px solid rgba(255,255,255,.12); padding-top: 24px; }
+}
+@media (max-width: 560px) {
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  /* (2026-09-05, 자체 발견/수정) .footer-legal이 4개 링크를 한 줄
+     flex(nowrap)로 배치해, 폭이 좁아지면 링크 텍스트 자체가 줄바꿈되어
+     "위치·연/락처"처럼 단어 중간이 끊기는 문제가 있었음 — 각 링크는
+     한 줄을 유지(white-space:nowrap)하고 행 전체는 여러 줄로
+     감싸지도록(flex-wrap) 수정. */
+  .footer-legal { flex-wrap: wrap; row-gap: 6px; }
+  .footer-legal a { white-space: nowrap; }
+}
 
 /* breadcrumb + inner pages */
 .breadcrumb { font-size: 13px; color: var(--text-muted); padding: 18px 0 0; }
@@ -2499,7 +2587,6 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   .pillar-grid.cols-4 { grid-template-columns: repeat(2,1fr); }
   .stat-bar { grid-template-columns: repeat(2,1fr); }
   .icon-row { grid-template-columns: repeat(3,1fr); }
-  .footer-top { grid-template-columns: 1fr 1fr; }
   .sub-grid { flex-wrap: wrap; }
   .quote-strip { grid-template-columns: 1fr; }
   /* .ability-stats 모바일 레이아웃은 아래 .ability-list 블록의 (max-width:860px)
@@ -2776,7 +2863,7 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
    높이별(물→위, 화학약품→중간, 오염물→아래) 배치. */
 .clean-compare {
   display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px);
-  width: 90%; margin: 50px auto 8px; align-items: start;
+  width: 90%; max-width: 900px; margin: 50px auto 8px; align-items: start;
 }
 .clean-compare-title {
   margin: 0 0 18px; text-align: center; font-size: 17px; font-weight: 700;
