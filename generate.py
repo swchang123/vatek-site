@@ -1138,6 +1138,9 @@ def nav_html(depth, active_code=None):
       </div>
     </div>
   </header>
+  <div class="header-peek">
+    <button class="peek-toggle" aria-label="메뉴 열기">☰</button>
+  </div>
 """
 
 

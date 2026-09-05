@@ -642,6 +642,41 @@ document.addEventListener("DOMContentLoaded", function () {
       };
       window.addEventListener("scroll", onHeaderScroll, { passive: true });
     }
+
+    // (2026-09-05, 사용자 요청) 헤더가 스크롤로 완전히 사라진 동안에도, 남은
+    // "peek bar"(.header-peek)의 햄버거 버튼을 누르면 스크롤을 올리지 않고도
+    // 즉시 전체 메뉴바가 다시 내려오도록 함 — nav-hidden만 제거하면 되므로
+    // 스크롤로 다시 나타나는 것과 동일한 동작.
+    var peekToggle = document.querySelector(".peek-toggle");
+    if (peekToggle) {
+      peekToggle.addEventListener("click", function () {
+        // (2026-09-05, 버그 수정) 사용자가 휠을 멈춘 직후에도 자체 lerp
+        // 스무스 스크롤(smoothScrollLoop)이 관성처럼 목표 위치까지 몇 프레임
+        // 더 움직이는데, 그 사이에 이 버튼을 누르면 매 프레임 발생하는 scroll
+        // 이벤트를 onHeaderScroll이 "계속 아래로 스크롤 중"으로 오인해 방금
+        // 뗀 nav-hidden을 즉시 다시 붙여버림 — 그래서 스크롤 중/직후에는
+        // 첫 클릭이 무시된 것처럼 보이고, 완전히 멈춘 뒤 두 번째 클릭에서만
+        // 열리는 문제가 있었음. 클릭 시 진행 중인 관성 스크롤 애니메이션
+        // 자체를 즉시 멈춰(smoothRaf 취소 + 목표/현재값을 지금 위치로 스냅,
+        // is-scrolling 해제) 더 이상 그런 scroll 이벤트가 발생하지 않게 한
+        // 뒤 헤더를 보여준다 — 스크롤이 한창 진행 중이어도 바로 열림.
+        if (typeof smoothRaf !== "undefined" && smoothRaf !== null) {
+          window.cancelAnimationFrame(smoothRaf);
+          smoothRaf = null;
+        }
+        if (typeof smoothCurrent !== "undefined") {
+          smoothCurrent = window.scrollY;
+          smoothTarget = window.scrollY;
+        }
+        if (typeof setHsScrolling === "function") {
+          setHsScrolling(false);
+        }
+        if (typeof lastScrollY !== "undefined") {
+          lastScrollY = window.scrollY;
+        }
+        header.classList.remove("nav-hidden");
+      });
+    }
   }
 
   // 홈 히어로: 영상이 페이지 스크롤 속도의 20%로만 움직이는 패럴랙스 효과
