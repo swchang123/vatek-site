@@ -615,16 +615,18 @@ document.addEventListener("DOMContentLoaded", function () {
       var lastScrollY = window.scrollY;
       var onHeaderScroll = function () {
         var currentY = window.scrollY;
-        // (2026-09-05) 체크포인트 자동 스크롤(html.is-scrolling)이 진행되는
-        // 동안이나 1~2px 수준의 미세한 되돌림(sticky 전환 시 레이아웃 보정 등)
-        // 에는 헤더를 다시 내리지 않는다 — "우리의 신념" 제목이 도킹되는 순간
-        // 메뉴바가 잠깐 내려왔다 올라가던 깜빡임의 원인.
-        var autoScrolling = document.documentElement.classList.contains("is-scrolling");
+        // (2026-09-05, 수정) 이전에 html.is-scrolling(체크포인트 자동 스크롤 +
+        // 일반 휠 입력의 이징 스크롤 모두가 공유하는 플래그)이 켜져 있는 동안
+        // 무조건 헤더를 숨기도록 했더니, 이 플래그가 일반적인 위로 스크롤
+        // 동작 중에도 한동안(관성이 잦아들 때까지) 켜져 있어 "위로 스크롤하면
+        // 바로 메뉴바가 나타나야" 하는 원래 동작이 막혀버렸음. 실제로 고쳐야
+        //했던 건 "우리의 신념" 제목이 도킹되는 순간 생기던 1~4px 수준의 미세한
+        // 되돌림(sticky 전환 시 레이아웃 보정)뿐이었으므로, is-scrolling 체크는
+        // 완전히 제거하고 아래 델타 임계값(4px)만으로 그 미세한 되돌림을
+        // 무시한다 — 진짜 위로 스크롤(4px 초과)은 항상 즉시 헤더를 보여준다.
         var delta = currentY - lastScrollY;
         if (currentY <= 8) {
           header.classList.remove("nav-hidden");
-        } else if (autoScrolling) {
-          header.classList.add("nav-hidden");
         } else if (delta < -4) {
           // 위로 스크롤할 때만 다시 나타남
           header.classList.remove("nav-hidden");
