@@ -2,69 +2,6 @@
    컬러 톤: 사용자 지정 팔레트 (딥차콜네이비 #283739 / 틸블루 #228896 / 라임그린 #A9C52F / 라이트그레이 #F5F5F5)
 */
 
-/* (2026-09-07) 폰트: Pretendard — 그동안 font-family 목록 맨 앞에 이름만
-   적혀 있었을 뿐 실제 폰트 파일을 로드하는 @font-face가 어디에도 없어서,
-   방문자 브라우저는 항상 그 다음 폴백(맑은 고딕/Apple SD Gothic Neo 등
-   OS 기본 서체)으로 렌더링되고 있었다 — 클로드 디자인 캡처가 실제
-   Pretendard로 렌더링되어 더 굵고 또렷해 보인 것과 실제 사이트가
-   흐릿해 보인 차이의 원인이 바로 이것. 외부 CDN(jsdelivr 등)에 의존하면
-   CDN 장애·광고 차단 확장 프로그램·사내망 차단 등으로 다시 폴백될 수
-   있으므로, assets/fonts/pretendard/에 site에서 실제로 쓰는 굵기
-   (300/400/500/600/700/800/900)의 정적 woff2 파일을 직접 포함해
-   외부 의존성 없이 항상 로드되도록 한다. font-display: swap으로 폰트
-   로딩 중에는 폴백 서체로 먼저 보여줘 텍스트가 안 보이는 시간이 없게
-   한다. 라이선스: SIL Open Font License 1.1 (assets/fonts/pretendard/LICENSE.txt),
-   재배포 허용. 출처: https://github.com/orioncactus/pretendard */
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-  src: url('../fonts/pretendard/woff2/Pretendard-Black.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-  src: url('../fonts/pretendard/woff2/Pretendard-ExtraBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  src: url('../fonts/pretendard/woff2/Pretendard-Bold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-  src: url('../fonts/pretendard/woff2/Pretendard-SemiBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-  src: url('../fonts/pretendard/woff2/Pretendard-Medium.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url('../fonts/pretendard/woff2/Pretendard-Regular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-  src: url('../fonts/pretendard/woff2/Pretendard-Light.woff2') format('woff2');
-}
-
 :root {
   --navy: #283739;
   --navy-deep: #1b2426;
@@ -170,7 +107,15 @@ body {
      그렇지 않음. 가로 스크롤 방지는 위 html { overflow-x: hidden }
      하나로만 충분(당시 실제 원인은 문제였던 섹션 자체의 CSS 수정으로
      해결했고, 그 섹션은 이후 개편으로 제거됨 — 이 html 규칙은 안전망). */
-  font-family: "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", -apple-system,
+  /* (2026-09-07) 서체: 맑은 고딕(Malgun Gothic)을 맨 앞에 둔다. 클로드 디자인
+     시안 캡처가 바로 Windows 기본 서체인 맑은 고딕 Bold로 렌더링된 모습이고,
+     "눈에 잘 들어오는" 룩으로 확정된 것이 그것. 예전엔 "Pretendard"가 맨
+     앞에 있었지만 실제 폰트 파일을 로드하지 않아 결국 맑은 고딕으로 폴백되고
+     있었고, 잠시 Pretendard woff2를 자체 호스팅해 봤더니 오히려 시안보다
+     글자가 좁고 빽빽해져 되돌림. Pretendard가 PC에 설치된 방문자에게도 시안과
+     같은 모습이 나오도록 목록에서 Pretendard를 뺀다. Mac/iOS는 맑은 고딕이
+     없으므로 Apple SD Gothic Neo로 자연 폴백. */
+  font-family: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", -apple-system,
     BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, sans-serif;
   color: var(--text-body);
   background: var(--white);
@@ -2229,26 +2174,16 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 .footer-brand { display: flex; flex-direction: column; align-items: flex-start; }
 .footer-logo { display: inline-flex; flex-direction: column; gap: 4px; margin-left: -4px; }
 .footer-logo img { display: block; height: clamp(44px, 9vh, 168px); width: auto; max-width: 100%; object-fit: contain; }
-<<<<<<< HEAD
 .footer-watermark { position: absolute; right: 0; top: 50%; transform: translateY(-50%); max-width: 66%; overflow: hidden; text-align: left; pointer-events: none; user-select: none; z-index: 0; }
 .footer-hero-main { position: relative; z-index: 1; }
 .footer-wm-text { display: block; font-size: clamp(120px, 31vh, 432px); font-weight: 900; line-height: .85; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)); -webkit-background-clip: text; background-clip: text; }
 .footer-wm-ko { display: block; text-align: right; margin-top: -0.32em; position: relative; z-index: 1; font-size: clamp(48px, 12vh, 144px); font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)); -webkit-background-clip: text; background-clip: text; }
-=======
-.footer-watermark { position: absolute; right: clamp(16px, 3vw, 48px); top: clamp(12px, 3vh, 48px); max-width: 55%; overflow: hidden; text-align: left; pointer-events: none; user-select: none; }
-.footer-wm-text { display: block; font-size: clamp(100px, 26vh, 360px); font-weight: 900; line-height: .85; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)); -webkit-background-clip: text; background-clip: text; }
-.footer-wm-ko { display: block; text-align: right; margin-top: -0.32em; position: relative; z-index: 1; font-size: clamp(40px, 10vh, 120px); font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)); -webkit-background-clip: text; background-clip: text; }
->>>>>>> 4a264ccc2151e7a9f012918dccbf95fc7d06e935
 .footer-wm-sub { display: block; margin-top: 14px; font-size: 13px; letter-spacing: 8px; color: rgba(255,255,255,.28); padding-left: 6px; }
 /* 세 줄(선언문 / 브랜드·링크 / 하단바)의 세로 비중: 1줄 > 2줄 > 3줄.
    남는 높이를 flex-grow 5:3으로 선언문·그리드에 배분하고, 각 블록 내부는
    세로 중앙 정렬해 여백이 위·아래로 고르게 퍼지도록 함. 하단바는 고정 높이. */
 .site-footer > .wrap { position: relative; display: flex; flex-direction: column; justify-content: flex-start; height: 100%; flex: 1; gap: 0; min-height: 0; max-width: 1560px; padding: 0 clamp(24px, 4vw, 64px); }
-<<<<<<< HEAD
 .footer-hero { position: relative; display: flex; flex-direction: column; justify-content: center; flex: 5 1 0; min-height: 45vh; max-width: none; padding-bottom: clamp(14px, 2.6vh, 32px); border-bottom: 1px solid rgba(255,255,255,.14); }
-=======
-.footer-hero { display: flex; flex-direction: column; justify-content: center; flex: 5 1 0; min-height: 45vh; max-width: none; padding-bottom: clamp(14px, 2.6vh, 32px); border-bottom: 1px solid rgba(255,255,255,.14); }
->>>>>>> 4a264ccc2151e7a9f012918dccbf95fc7d06e935
 .footer-eyebrow { display: block; font-size: clamp(11px, 1.3vh, 13px); font-weight: 800; letter-spacing: 3px; color: var(--ice); margin-bottom: clamp(8px, 1.6vh, 18px); }
 .footer-hero h2 { color: var(--white); font-size: clamp(20px, 3.8vh, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin: 0 0 clamp(8px, 1.4vh, 16px); word-break: keep-all; }
 .footer-hero h2 em { font-style: normal; color: var(--ice); }
@@ -3080,7 +3015,6 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 .proven-text p { margin: 0 0 16px; color: var(--text-body); }
 .proven-text p:last-child { margin-bottom: 0; }
 .proven-lineup { margin: 15px 0 0; }
-<<<<<<< HEAD
 .proven-lineup img { display: block; width: 100%; height: auto; }
 
 /* ============================================================
@@ -3326,6 +3260,3 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 @media (max-width: 900px) { .cmp-rule-photo img { aspect-ratio: 16 / 9; } }
 
 .cmp-page p.cmp-pull small, .subhero-cover p.cmp-pull small { display: block; margin-top: 12px; font-size: 15px; font-weight: 500; color: var(--text-muted); letter-spacing: 0; }
-=======
-.proven-lineup img { display: block; width: 100%; height: auto; }
->>>>>>> 4a264ccc2151e7a9f012918dccbf95fc7d06e935
