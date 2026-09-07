@@ -3260,3 +3260,112 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 @media (max-width: 900px) { .cmp-rule-photo img { aspect-ratio: 16 / 9; } }
 
 .cmp-page p.cmp-pull small, .subhero-cover p.cmp-pull small { display: block; margin-top: 12px; font-size: 15px; font-weight: 500; color: var(--text-muted); letter-spacing: 0; }
+
+/* ============================================================
+   (2026-09-07) 산업별 솔루션 HUB — cleaning/industry.html 전용 (.ind-*)
+   compare.html의 .cmp-* 어휘를 재사용하고, 카드 그리드/기타 산업/공정 흐름만 추가.
+   ============================================================ */
+.ind-hero-eyebrow { display: block; font-size: 12px; font-weight: 800; letter-spacing: 3px; color: var(--ice); margin-bottom: 10px; }
+.ind-criteria { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 28px; }
+.ind-criteria small { font-size: 14.5px; line-height: 1.6; color: var(--text-body); }
+.ind-hub-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 24px clamp(32px, 5vw, 96px); align-items: end; margin-bottom: clamp(32px, 3.5vw, 48px); }
+.ind-hub-head .cmp-h2 { margin-bottom: 0; }
+.ind-hub-note { margin: 0 0 8px; color: var(--text-body); line-height: 1.85; }
+.ind-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.ind-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--white); border: 1px solid var(--gray-line); border-radius: 6px; overflow: hidden; transition: transform .3s cubic-bezier(.22,.61,.36,1), border-color .3s, box-shadow .3s; }
+.ind-card:hover { transform: translateY(-3px); border-color: rgba(79,173,184,.6); box-shadow: 0 8px 22px rgba(27,36,38,.06); }
+.ind-card-media { aspect-ratio: 16 / 10; overflow: hidden; background: var(--navy-deep); }
+.ind-card-media img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.7) contrast(1.04) brightness(.96); image-rendering: auto; transform: scale(1); transition: transform .7s cubic-bezier(.22,.61,.36,1), filter .5s; }
+.ind-card:hover .ind-card-media img { transform: scale(1.05); filter: saturate(.95); }
+.ind-card-body { display: flex; flex-direction: column; flex: 1; padding: 20px 22px 22px; position: relative; }
+.ind-card-num { position: absolute; right: 22px; top: 18px; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); }
+.ind-card-en { font-size: 10.5px; font-weight: 800; letter-spacing: 2px; color: var(--ice-dark); }
+.ind-card h3 { margin: 8px 0 10px; font-size: 22px; font-weight: 800; letter-spacing: -0.015em; color: var(--navy); word-break: keep-all; transition: color .25s; }
+.ind-card:hover h3 { color: var(--ice-dark); }
+.ind-card p { margin: 0 0 18px; font-size: 14.5px; line-height: 1.65; color: var(--text-body); word-break: keep-all; }
+.ind-card-more { margin-top: auto; font-size: 14px; font-weight: 700; color: var(--navy); display: inline-flex; align-items: center; gap: 6px; }
+.ind-card-more i { font-style: normal; display: inline-block; transition: transform .3s cubic-bezier(.22,.61,.36,1); color: var(--ice); }
+.ind-card:hover .ind-card-more i { transform: translateX(4px); }
+.ind-other-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: clamp(28px, 5vw, 96px); align-items: start; }
+.ind-other-title { margin: 14px 0 0; font-size: clamp(22px, 2vw, 28px); font-weight: 800; color: var(--navy); letter-spacing: -0.015em; line-height: 1.35; word-break: keep-all; }
+.ind-other-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+.ind-other-list li { padding: 14px 0; border-bottom: 1px solid var(--gray-line); font-size: 16px; font-weight: 600; color: var(--text-body); display: flex; align-items: center; gap: 12px; }
+.ind-other-list li::before { content: ""; width: 14px; height: 1px; background: var(--ice); flex: none; }
+.ind-dark-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 120px); align-items: center; }
+.ind-dark .cmp-dark-body { margin-top: 0; }
+.ind-flow { border: 1px solid rgba(255,255,255,.16); padding: clamp(24px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 14px; }
+.ind-flow-label { font-size: 11px; font-weight: 800; letter-spacing: 3px; color: var(--ice); }
+.ind-flow-row { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.ind-flow-row li { padding: 9px 14px; border: 1px solid rgba(255,255,255,.28); font-size: 15px; font-weight: 600; color: #fff; }
+.ind-flow-row li.ind-x { border: none; padding: 0 2px; color: var(--ice); font-weight: 400; font-size: 18px; }
+.ind-flow-row.is-out li { border-color: var(--ice); background: rgba(79,173,184,.12); color: #fff; }
+.ind-flow-arrow { display: block; width: 22px; height: 22px; color: var(--ice); margin: 2px 0; }
+.ind-flow-arrow svg { width: 100%; height: 100%; }
+@media (max-width: 1100px) { .ind-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ind-criteria { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px; } }
+@media (max-width: 900px) { .ind-hub-head, .ind-other-grid, .ind-dark-grid { grid-template-columns: 1fr; } .ind-other-list { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .ind-grid { grid-template-columns: 1fr; } .ind-criteria { grid-template-columns: 1fr; } .cmp-cta-btns .cta-btn, .cmp-cta-btns .cmp-btn-ghost { width: 100%; justify-content: center; } }
+
+/* ALL INDUSTRIES — coldjet.com 산업 목록 방식(3열 텍스트 링크 + ›) */
+.ind-other .ind-other-title { margin-bottom: 14px; }
+.ind-all-list { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 4vw, 72px); }
+.ind-all-list li { border-bottom: 1px solid var(--gray-line); }
+.ind-all-list a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: none; transition: color .25s; }
+.ind-all-list a i { font-style: normal; color: var(--ice); font-size: 20px; line-height: 1; transition: transform .3s cubic-bezier(.22,.61,.36,1); }
+.ind-all-list a:hover { color: var(--ice-dark); }
+.ind-all-list a:hover i { transform: translateX(4px); }
+@media (max-width: 900px) { .ind-all-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ind-all-list { grid-template-columns: 1fr; } }
+
+/* ALL INDUSTRIES — 사진 없는 컴팩트 카드 그리드(4열). 얇은 선·타이포 중심, 호버는 teal 상단선 + 화살표 이동 */
+.ind-mini-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; padding: 1px; }
+.ind-mini { position: relative; display: flex; flex-direction: column; min-height: 168px; padding: 22px 22px 20px; background: var(--white); color: inherit; text-decoration: none; transition: background .3s; box-shadow: 0 0 0 1px var(--gray-line); }
+.ind-mini::before { content: ""; position: absolute; left: 0; top: 0; height: 2px; width: 0; background: var(--ice); transition: width .45s cubic-bezier(.22,.61,.36,1); }
+.ind-mini:hover { background: var(--blue-pale); }
+.ind-mini:hover::before { width: 100%; }
+.ind-mini-num { font-size: 11.5px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); }
+.ind-mini-en { margin-top: auto; padding-top: 22px; font-size: 10.5px; font-weight: 800; letter-spacing: 2px; color: var(--ice-dark); word-break: keep-all; }
+.ind-mini b { display: block; margin-top: 6px; font-size: 20px; font-weight: 800; letter-spacing: -0.015em; color: var(--navy); line-height: 1.3; word-break: keep-all; padding-right: 28px; transition: color .25s; }
+.ind-mini:hover b { color: var(--ice-dark); }
+.ind-mini i { position: absolute; right: 20px; bottom: 20px; font-style: normal; font-size: 18px; line-height: 1; color: var(--ice); transition: transform .3s cubic-bezier(.22,.61,.36,1); }
+.ind-mini:hover i { transform: translateX(4px); }
+@media (max-width: 1100px) { .ind-mini-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .ind-mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ind-mini { min-height: 140px; } }
+@media (max-width: 560px) { .ind-mini-grid { grid-template-columns: 1fr; } .ind-mini { min-height: 0; } .ind-mini-en { padding-top: 16px; } }
+
+/* 산업 카드 통합(19개) — 첫 8개는 2행 대형, 나머지는 같은 카드 언어로 이어짐. 사진 없는 항목은 사이트 빗금 텍스처 플레이스홀더 */
+.ind-grid { gap: 20px; }
+.ind-card-media.is-ph { display: flex; align-items: flex-end; padding: 14px 16px; background-color: var(--navy-deep); background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 1px, transparent 1px, transparent 14px), radial-gradient(circle at 80% 20%, rgba(79,173,184,.28), transparent 55%); }
+.ind-card-media.is-ph span { font-size: 11px; font-weight: 800; letter-spacing: 2.5px; color: rgba(255,255,255,.55); }
+.ind-card-media img { filter: saturate(.85) contrast(1.04) brightness(.96); }
+.ind-card { border-radius: 4px; }
+.ind-card-body { padding: 18px 20px 20px; }
+.ind-card h3 { font-size: 21px; }
+
+/* 산업 카드 세로 비율 확대(약 +50%) — 사진 4:5 세로형, 본문 여백·행간 확대 */
+.ind-card-media { aspect-ratio: 16 / 11; }
+.ind-card { min-height: 450px; }
+.ind-card-body { padding: 20px 22px 22px; }
+.ind-card-en { margin-bottom: 2px; }
+.ind-card h3 { margin-top: 8px; font-size: 25px; letter-spacing: -0.02em; }
+.ind-card p { margin-top: 10px; line-height: 1.7; font-size: 14.5px; }
+.ind-card-more { margin-top: auto; padding-top: 18px; }
+@media (max-width: 900px) { .ind-card { min-height: 0; } }
+
+/* 산업 카드 본문 2단 — 키워드 줄(teal) + 설명문 */
+.ind-card-kw { margin-top: 10px; font-size: 13.5px; font-weight: 700; letter-spacing: -0.01em; color: var(--ice-dark); line-height: 1.6; word-break: keep-all; }
+.ind-card-desc { margin-top: 10px; font-size: 14px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.ind-card { min-height: 0; }
+
+/* (2026-09-07, 코드 반영 시 보정) 위 핸드오프 규칙 두 가지가 실제로는 적용되지 않던 문제:
+   1) .ind-card-kw / .ind-card-desc 는 클래스 하나(0,1,0)라서 바로 위의 .ind-card p(0,1,1)에
+      밀려 키워드 줄이 teal 13.5px가 아니라 본문색 14.5px로, 설명문이 14px/1.75가 아니라
+      14.5px/1.7로 렌더링됨 — 핸드오프 README의 "최종 유효값"(kw 13.5px/700 ice-dark,
+      desc 14px/1.75)이 나오도록 특이성을 올려 다시 선언.
+   2) 영문 분류(.ind-card-en)가 길면(SEMICONDUCTOR & ELECTRONICS 등) 우측 상단에 절대
+      배치된 번호(.ind-card-num, 약 21px)와 겹침 — 번호 폭 + 간격만큼만 오른쪽 여백을
+      둔다(더 크게 두면 4열 폭에서 보통 길이의 라벨까지 두 줄로 꺾여 옆 카드와 제목
+      높이가 어긋남). 가장 긴 라벨 두어 개는 4열에서 두 줄로 꺾이는데, 겹치는 것보다
+      낫고 3열 이하에서는 한 줄로 돌아온다. */
+.ind-card p.ind-card-kw { font-size: 13.5px; font-weight: 700; color: var(--ice-dark); line-height: 1.6; }
+.ind-card p.ind-card-desc { font-size: 14px; line-height: 1.75; color: var(--text-body); }
+.ind-card-en { padding-right: 30px; }
