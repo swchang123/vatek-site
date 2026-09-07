@@ -1,4 +1,68 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  // (참고) "함께 보면 좋은 페이지" 카드는 이제 순수 CSS 호버(이미지 확대 +
+  // 카드 리프트 + 링크 슬라이드업)로만 동작 — 별도 JS 불필요.
+  // 푸터 리빌 블러: 푸터(.site-footer)가 화면 아래에서 올라와 고정 화면
+  // (.last-freeze)을 덮는 비율(0~1)에 맞춰 --freeze-blur를 0~10px로 갱신.
+  // 히어로 이미지의 스크롤 블러(SUBHERO_BLUR_MAX)와 같은 감도.
+  // (2026-09-05) 푸터 내용이 뷰포트보다 높으면 sticky 리빌로는 윗부분에
+  // 닿을 수 없어 .is-tall을 붙여 일반 플로우로 전환(리사이즈 시 재판정).
+  var revealWrap = document.querySelector(".footer-reveal-wrap");
+  var freezeEl = document.querySelector(".last-freeze");
+  var revealFooter = document.querySelector(".site-footer");
+  if (freezeEl && revealFooter) {
+    var FREEZE_BLUR_MAX = 10;
+    var freezeTick = false;
+    var updateFreezeBlur = function () {
+      freezeTick = false;
+      var vh = window.innerHeight || 1;
+      var top = revealFooter.getBoundingClientRect().top;
+      var covered = Math.min(1, Math.max(0, (vh - top) / vh));
+      // (2026-09-05) 푸터 상단 경계가 화면 중간(covered 0.5)에 올 때까지는
+      // 블러 없이 두고, 그 지점부터 완전히 덮이는 순간(1)까지 0→최대로 증가.
+      var blurT = Math.min(1, Math.max(0, (covered - 0.5) / 0.5));
+      freezeEl.style.setProperty("--freeze-blur", (blurT * FREEZE_BLUR_MAX).toFixed(2) + "px");
+    };
+    window.addEventListener("scroll", function () {
+      if (!freezeTick) { freezeTick = true; requestAnimationFrame(updateFreezeBlur); }
+    }, { passive: true });
+    window.addEventListener("resize", updateFreezeBlur);
+    updateFreezeBlur();
+  }
+  // FAQ 아코디언 슬라이드: 기본 <details> 토글을 가로채 .faq-a 높이를 애니메이션.
+  document.querySelectorAll(".faq-item").forEach(function (item) {
+    var summary = item.querySelector("summary");
+    var panel = item.querySelector(".faq-a");
+    if (!summary || !panel) return;
+    var animating = false;
+    if (item.hasAttribute("open")) { item.classList.add("is-open"); panel.style.height = "auto"; }
+    summary.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (animating) return;
+      animating = true;
+      if (item.hasAttribute("open")) {
+        panel.style.height = panel.scrollHeight + "px";
+        item.classList.remove("is-open");
+        requestAnimationFrame(function () { panel.style.height = "0px"; });
+        panel.addEventListener("transitionend", function done(ev) {
+          if (ev.propertyName !== "height") return;
+          panel.removeEventListener("transitionend", done);
+          item.removeAttribute("open"); animating = false;
+        });
+      } else {
+        item.setAttribute("open", "");
+        item.classList.add("is-open");
+        panel.style.height = "0px";
+        requestAnimationFrame(function () { panel.style.height = panel.scrollHeight + "px"; });
+        panel.addEventListener("transitionend", function done(ev) {
+          if (ev.propertyName !== "height") return;
+          panel.removeEventListener("transitionend", done);
+          panel.style.height = "auto"; animating = false;
+        });
+      }
+    });
+  });
+
   // preload="none" 자동재생 영상: 뷰포트에 들어올 때만 로드·재생, 벗어나면 정지
   // (모바일 데이터·초기 로딩 부담 최소화).
   var lazyVideos = document.querySelectorAll('video[preload="none"][autoplay]');
@@ -251,7 +315,16 @@ document.addEventListener("DOMContentLoaded", function () {
       if (coldjetVideoScrollEl) {
         var coldjetTop = docTopOf(coldjetVideoScrollEl);
         var coldjetZoneW = 0.65 * vh;
-        points.push(coldjetTop + coldjetZoneW * HS_LEAD + HS_EPS); // 제목 틀고정 + 영상 등장
+        // (2026-09-05) 제목 도킹 체크포인트를 정확히 "제목이 상단에 닿는 지점"
+        // 으로 — 기존처럼 구간 안쪽(HS_LEAD)으로 당겨두면 감속(lerp)의 느린
+        // 꼬리 구간이 제목 축소 연출이 아니라 그 뒤 여백에 쓰여, 다른 세
+        // 제목(~3초)보다 훨씬 빨리(~0.7초) 박혔음. 영상은 is-pinned 전환(.7s)
+        // 으로 도착 직후 자연스럽게 나타난다.
+        points.push(
+          coldjetPinTitleEl
+            ? stableDocTopOf(coldjetPinTitleEl, "coldjet") + HS_EPS
+            : coldjetTop + HS_EPS
+        ); // 제목 틀고정 + 영상 등장
         // (2026-09-02, 후속N+1) "우리는 콜드젯 팀입니다" 제목도 다른 3개
         // 제목(우리가 하는 일/우리의 가치/우리의 신념)과 똑같이 여기서
         // applyTitleShrinkZoom()이 완료되므로, 동일하게 title-dock 인덱스로
@@ -360,13 +433,20 @@ document.addEventListener("DOMContentLoaded", function () {
     // "거리가 큰 구간만 완화" 기준보다 더 낮은 상한을 둬 도착 인덱스가 위
     // hsTitleDockIndices에 있을 때만 한 번 더 느리게 만든다.
     var HS_TITLE_DOCK_MAX_STEP = 45;
+    // (2026-09-05) 사용자 요청 — "우리의 신념" 제목 도킹이 "우리는 콜드젯
+    // 팀입니다"보다 눈에 띄게 느림. 원인: 두 점프 모두 첫 프레임 이동량을
+    // HS_TITLE_DOCK_MAX_STEP으로 제한하는데, 신념 구간은 이동 거리가 콜드젯
+    // 구간의 약 2배(.belief-list의 큰 margin-top 포함)라 같은 px/프레임으로
+    // 두 배의 시간이 걸림. 거리 대신 "기준 거리"(콜드젯 구간과 비슷한 1200px)
+    // 로 감쇠율을 정해, 제목 도킹은 거리와 무관하게 늘 같은 체감 속도가 되게 함.
+    var HS_TITLE_DOCK_REF_DIST = 1200;
     var hsAnimateTo = function (targetY, targetIndex) {
       var dist = Math.abs(targetY - window.scrollY);
-      var maxStep =
-        targetIndex != null && hsTitleDockIndices.indexOf(targetIndex) !== -1
-          ? HS_TITLE_DOCK_MAX_STEP
-          : HS_JUMP_MAX_STEP;
-      currentEase = dist > 0 ? Math.min(SMOOTH_EASE, maxStep / dist) : SMOOTH_EASE;
+      var isTitleDock =
+        targetIndex != null && hsTitleDockIndices.indexOf(targetIndex) !== -1;
+      var maxStep = isTitleDock ? HS_TITLE_DOCK_MAX_STEP : HS_JUMP_MAX_STEP;
+      var easeDist = isTitleDock ? Math.min(dist, HS_TITLE_DOCK_REF_DIST) : dist;
+      currentEase = easeDist > 0 ? Math.min(SMOOTH_EASE, maxStep / easeDist) : SMOOTH_EASE;
       smoothCurrent = window.scrollY;
       smoothTarget = targetY;
       if (smoothRaf === null) {
@@ -539,18 +619,63 @@ document.addEventListener("DOMContentLoaded", function () {
       var lastScrollY = window.scrollY;
       var onHeaderScroll = function () {
         var currentY = window.scrollY;
+        // (2026-09-05, 수정) 이전에 html.is-scrolling(체크포인트 자동 스크롤 +
+        // 일반 휠 입력의 이징 스크롤 모두가 공유하는 플래그)이 켜져 있는 동안
+        // 무조건 헤더를 숨기도록 했더니, 이 플래그가 일반적인 위로 스크롤
+        // 동작 중에도 한동안(관성이 잦아들 때까지) 켜져 있어 "위로 스크롤하면
+        // 바로 메뉴바가 나타나야" 하는 원래 동작이 막혀버렸음. 실제로 고쳐야
+        //했던 건 "우리의 신념" 제목이 도킹되는 순간 생기던 1~4px 수준의 미세한
+        // 되돌림(sticky 전환 시 레이아웃 보정)뿐이었으므로, is-scrolling 체크는
+        // 완전히 제거하고 아래 델타 임계값(4px)만으로 그 미세한 되돌림을
+        // 무시한다 — 진짜 위로 스크롤(4px 초과)은 항상 즉시 헤더를 보여준다.
+        var delta = currentY - lastScrollY;
         if (currentY <= 8) {
           header.classList.remove("nav-hidden");
-        } else if (currentY < lastScrollY) {
+        } else if (delta < -4) {
           // 위로 스크롤할 때만 다시 나타남
           header.classList.remove("nav-hidden");
-        } else if (currentY > lastScrollY) {
+        } else if (delta > 0) {
           // 아래로 스크롤하는 동안 숨김 — 멈춰도 그대로 숨겨진 채 유지
           header.classList.add("nav-hidden");
         }
         lastScrollY = currentY;
       };
       window.addEventListener("scroll", onHeaderScroll, { passive: true });
+    }
+
+    // (2026-09-05, 사용자 요청) 헤더가 스크롤로 완전히 사라진 동안에도, 남은
+    // "peek bar"(.header-peek)의 햄버거 버튼을 누르면 스크롤을 올리지 않고도
+    // 즉시 전체 메뉴바가 다시 내려오도록 함 — nav-hidden만 제거하면 되므로
+    // 스크롤로 다시 나타나는 것과 동일한 동작.
+    var peekToggle = document.querySelector(".peek-toggle");
+    if (peekToggle) {
+      peekToggle.addEventListener("click", function () {
+        // (2026-09-05, 버그 수정) 사용자가 휠을 멈춘 직후에도 자체 lerp
+        // 스무스 스크롤(smoothScrollLoop)이 관성처럼 목표 위치까지 몇 프레임
+        // 더 움직이는데, 그 사이에 이 버튼을 누르면 매 프레임 발생하는 scroll
+        // 이벤트를 onHeaderScroll이 "계속 아래로 스크롤 중"으로 오인해 방금
+        // 뗀 nav-hidden을 즉시 다시 붙여버림 — 그래서 스크롤 중/직후에는
+        // 첫 클릭이 무시된 것처럼 보이고, 완전히 멈춘 뒤 두 번째 클릭에서만
+        // 열리는 문제가 있었음. 클릭 시 진행 중인 관성 스크롤 애니메이션
+        // 자체를 즉시 멈춰(smoothRaf 취소 + 목표/현재값을 지금 위치로 스냅,
+        // is-scrolling 해제) 더 이상 그런 scroll 이벤트가 발생하지 않게 한
+        // 뒤 헤더를 보여준다 — 스크롤이 한창 진행 중이어도 바로 열림.
+        if (typeof smoothRaf !== "undefined" && smoothRaf !== null) {
+          window.cancelAnimationFrame(smoothRaf);
+          smoothRaf = null;
+        }
+        if (typeof smoothCurrent !== "undefined") {
+          smoothCurrent = window.scrollY;
+          smoothTarget = window.scrollY;
+        }
+        if (typeof setHsScrolling === "function") {
+          setHsScrolling(false);
+        }
+        if (typeof lastScrollY !== "undefined") {
+          lastScrollY = window.scrollY;
+        }
+        header.classList.remove("nav-hidden");
+      });
     }
   }
 
@@ -877,6 +1002,14 @@ document.addEventListener("DOMContentLoaded", function () {
           var beliefTitleH = beliefPinTitleEl.getBoundingClientRect().height;
           beliefVideoWrap.style.top = beliefTitleH + "px";
           beliefVideoWrap.style.height = Math.max(0, vh - beliefTitleH) + "px";
+          // (2026-09-05) 제목이 한 화면 아래에서 날아오기 시작(0)해 상단에
+          // 박히는(1) 진행률 — applyTitleShrinkZoom과 같은 공식 — 을
+          // --belief-reveal로 넘겨 영상이 제목과 함께 스르륵 나타나게 함.
+          var beliefApproach = Math.min(
+            1,
+            Math.max(0, 1 - beliefPinTitleEl.getBoundingClientRect().top / vh)
+          );
+          beliefVideoWrap.style.setProperty("--belief-reveal", beliefApproach.toFixed(3));
         }
         beliefVideoWrap.classList.toggle("is-pinned", beliefTitlePinned);
       }
@@ -980,6 +1113,15 @@ document.addEventListener("DOMContentLoaded", function () {
       // 필요가 없어짐 — is-pinned 토글만 남는다.
       if (coldjetVideoWrap) {
         coldjetVideoWrap.classList.toggle("is-pinned", coldjetTitlePinned);
+        // (2026-09-05) 제목 접근 진행률(0→1)을 --coldjet-reveal로 넘겨 영상이
+        // 제목과 함께 스르륵 나타나게 함(belief와 동일).
+        if (coldjetPinTitleEl) {
+          var coldjetApproach = Math.min(
+            1,
+            Math.max(0, 1 - coldjetPinTitleEl.getBoundingClientRect().top / vh)
+          );
+          coldjetVideoWrap.style.setProperty("--coldjet-reveal", coldjetApproach.toFixed(3));
+        }
       }
       // (2026-09-02, 후속2) "박스가 영상 나올 때 함께 올라오게" — 더 이상 박스의
       // 첫 등장(is-risen)을 스크롤 구간(idx)에 걸어두지 않고, 영상 자체가
