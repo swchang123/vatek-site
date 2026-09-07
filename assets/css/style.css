@@ -2229,16 +2229,26 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
 .footer-brand { display: flex; flex-direction: column; align-items: flex-start; }
 .footer-logo { display: inline-flex; flex-direction: column; gap: 4px; margin-left: -4px; }
 .footer-logo img { display: block; height: clamp(44px, 9vh, 168px); width: auto; max-width: 100%; object-fit: contain; }
+<<<<<<< HEAD
 .footer-watermark { position: absolute; right: 0; top: 50%; transform: translateY(-50%); max-width: 66%; overflow: hidden; text-align: left; pointer-events: none; user-select: none; z-index: 0; }
 .footer-hero-main { position: relative; z-index: 1; }
 .footer-wm-text { display: block; font-size: clamp(120px, 31vh, 432px); font-weight: 900; line-height: .85; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)); -webkit-background-clip: text; background-clip: text; }
 .footer-wm-ko { display: block; text-align: right; margin-top: -0.32em; position: relative; z-index: 1; font-size: clamp(48px, 12vh, 144px); font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)); -webkit-background-clip: text; background-clip: text; }
+=======
+.footer-watermark { position: absolute; right: clamp(16px, 3vw, 48px); top: clamp(12px, 3vh, 48px); max-width: 55%; overflow: hidden; text-align: left; pointer-events: none; user-select: none; }
+.footer-wm-text { display: block; font-size: clamp(100px, 26vh, 360px); font-weight: 900; line-height: .85; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)); -webkit-background-clip: text; background-clip: text; }
+.footer-wm-ko { display: block; text-align: right; margin-top: -0.32em; position: relative; z-index: 1; font-size: clamp(40px, 10vh, 120px); font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)); -webkit-background-clip: text; background-clip: text; }
+>>>>>>> 4a264ccc2151e7a9f012918dccbf95fc7d06e935
 .footer-wm-sub { display: block; margin-top: 14px; font-size: 13px; letter-spacing: 8px; color: rgba(255,255,255,.28); padding-left: 6px; }
 /* 세 줄(선언문 / 브랜드·링크 / 하단바)의 세로 비중: 1줄 > 2줄 > 3줄.
    남는 높이를 flex-grow 5:3으로 선언문·그리드에 배분하고, 각 블록 내부는
    세로 중앙 정렬해 여백이 위·아래로 고르게 퍼지도록 함. 하단바는 고정 높이. */
 .site-footer > .wrap { position: relative; display: flex; flex-direction: column; justify-content: flex-start; height: 100%; flex: 1; gap: 0; min-height: 0; max-width: 1560px; padding: 0 clamp(24px, 4vw, 64px); }
+<<<<<<< HEAD
 .footer-hero { position: relative; display: flex; flex-direction: column; justify-content: center; flex: 5 1 0; min-height: 45vh; max-width: none; padding-bottom: clamp(14px, 2.6vh, 32px); border-bottom: 1px solid rgba(255,255,255,.14); }
+=======
+.footer-hero { display: flex; flex-direction: column; justify-content: center; flex: 5 1 0; min-height: 45vh; max-width: none; padding-bottom: clamp(14px, 2.6vh, 32px); border-bottom: 1px solid rgba(255,255,255,.14); }
+>>>>>>> 4a264ccc2151e7a9f012918dccbf95fc7d06e935
 .footer-eyebrow { display: block; font-size: clamp(11px, 1.3vh, 13px); font-weight: 800; letter-spacing: 3px; color: var(--ice); margin-bottom: clamp(8px, 1.6vh, 18px); }
 .footer-hero h2 { color: var(--white); font-size: clamp(20px, 3.8vh, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin: 0 0 clamp(8px, 1.4vh, 16px); word-break: keep-all; }
 .footer-hero h2 em { font-style: normal; color: var(--ice); }
@@ -3070,6 +3080,7 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 .proven-text p { margin: 0 0 16px; color: var(--text-body); }
 .proven-text p:last-child { margin-bottom: 0; }
 .proven-lineup { margin: 15px 0 0; }
+<<<<<<< HEAD
 .proven-lineup img { display: block; width: 100%; height: auto; }
 
 /* ============================================================
@@ -3315,3 +3326,6 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 @media (max-width: 900px) { .cmp-rule-photo img { aspect-ratio: 16 / 9; } }
 
 .cmp-page p.cmp-pull small, .subhero-cover p.cmp-pull small { display: block; margin-top: 12px; font-size: 15px; font-weight: 500; color: var(--text-muted); letter-spacing: 0; }
+=======
+.proven-lineup img { display: block; width: 100%; height: auto; }
+>>>>>>> 4a264ccc2151e7a9f012918dccbf95fc7d06e935
