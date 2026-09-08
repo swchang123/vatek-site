@@ -3766,6 +3766,9 @@ video.auto-hero-video { object-fit: cover; background: var(--navy-deep); }
 .auto-logos.is-flex li { flex: 0 0 calc(100% / 7); transform: none !important; }
 @media (max-width: 1200px) { .auto-why.is-4, .auto-why.is-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; } .auto-relind.is-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .auto-logos.is-flex li { flex-basis: 25%; } }
 @media (max-width: 800px) { .auto-logos.is-flex { gap: 24px 0; } .auto-logos.is-flex li { flex-basis: 33.333%; } }
+/* .auto-logos.is-blend : 흰 배경이 있는 JPG 로고 — 배경을 페이지에 녹여 흰 박스 제거 (복원 4종) */
+.auto-logos.is-blend img { mix-blend-mode: multiply; filter: grayscale(1) brightness(1.08) contrast(1.15); }
+.auto-logos.is-blend li:hover img { filter: brightness(1.08) contrast(1.15); }
 @media (max-width: 700px) { .auto-why.is-4, .auto-why.is-6, .auto-relind.is-2, .auto-relind.is-4 { grid-template-columns: 1fr; } }
 
 
@@ -3885,3 +3888,47 @@ video.auto-hero-video { object-fit: cover; background: var(--navy-deep); }
   .mtc-quote { padding-left: 18px; }
   .mtc-preserve-pics { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── 복원 4종 (2026-09-08): 다크 feature 섹션 안의 2단 목록 (제거할 것/보존할 것, 작업 전/후 절차 등) ── */
+.auto-feature-cols { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 64px; margin-top: clamp(20px, 2.4vw, 36px); padding-top: 28px; border-top: 1px solid rgba(255,255,255,.14); }
+.auto-feature-cols small { display: block; font-size: 11.5px; font-weight: 800; letter-spacing: 2px; color: var(--ice); margin-bottom: 14px; }
+.auto-feature-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.auto-feature-cols li { position: relative; padding-left: 18px; font-size: 16.5px; line-height: 1.55; color: rgba(255,255,255,.88); word-break: keep-all; }
+.auto-feature-cols li::before { content: ""; position: absolute; left: 0; top: .78em; width: 8px; height: 1px; background: var(--ice); }
+@media (max-width: 700px) { .auto-feature-cols { grid-template-columns: 1fr; gap: 24px; } }
+
+/* ── 생산설비·시설 유지보수 (2026-09-08): 대표 대상 8타일(4열) · 오염물 4열 옵션 · AE 사례 4(2×2) · 장비 선택 섹션 ── */
+.auto-cont.is-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.auto-tgrid-sec { padding-bottom: 0; }
+.auto-cont-after-tgrid { padding-top: clamp(56px, 6vw, 96px); }
+.auto-tgrid li { aspect-ratio: 1 / 1; }
+.auto-tgrid img { filter: saturate(.75) contrast(1.04) brightness(.86); }
+.auto-ae-cases.is-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.auto-ae-cases.is-4 img { aspect-ratio: 16 / 9; }
+.auto-mach-sec { padding-top: clamp(56px, 6vw, 96px); border-top: 1px solid var(--gray-line); }
+.auto-mach { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.auto-mach a { display: flex; flex-direction: column; height: 100%; color: inherit; text-decoration: none; }
+.auto-mach-img { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 3px; background: #f1f3f4; }
+.auto-mach-img img { display: block; width: 100%; height: 100%; object-fit: contain; padding: 8%; box-sizing: border-box; mix-blend-mode: multiply; transition: transform .9s cubic-bezier(.22,.61,.36,1); }
+.auto-mach a:hover .auto-mach-img img { transform: scale(1.04); }
+.auto-mach small { display: block; margin-top: 18px; font-size: 11.5px; font-weight: 800; letter-spacing: 2px; color: var(--ice-dark); }
+.auto-mach b { display: block; margin-top: 6px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--navy); }
+.auto-mach p { margin: 10px 0 0; font-size: 15.5px; line-height: 1.65; color: var(--text-body); word-break: keep-all; }
+.auto-mach-foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: clamp(28px, 3vw, 44px) 0 0; padding-top: 24px; border-top: 1px solid var(--gray-line); }
+.auto-mach-foot span { font-size: 14.5px; line-height: 1.6; color: var(--text-muted); word-break: keep-all; max-width: 720px; }
+@media (max-width: 1000px) { .auto-cont.is-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .auto-mach { grid-template-columns: repeat(2, minmax(0, 1fr)); } .auto-mach-foot { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 600px) { .auto-mach { grid-template-columns: 1fr; } .auto-mach-img { aspect-ratio: 16 / 9; } }
+@media (max-width: 700px) { .auto-ae-cases.is-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* 도입 가이드(adopt.html) — Plant Air vs Mobile Compressor 2단, 7단계 전체 Flow */
+.adopt-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 22px; }
+.adopt-2col > div { background: var(--white); border: 1px solid var(--gray-line); border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow-sm); }
+.adopt-2col h4 { font-size: 15.5px; font-weight: 800; letter-spacing: 1px; color: var(--ice-dark); margin: 0 0 6px; text-transform: uppercase; }
+.adopt-2col p.adopt-2col-b { margin: 0 0 14px; font-size: 15px; color: var(--text-muted); }
+.adopt-2col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 15.5px; color: var(--navy); font-weight: 600; }
+.adopt-2col li { padding-left: 16px; position: relative; }
+.adopt-2col li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--ice); }
+.adopt-note { margin: 18px 0 0; padding: 16px 20px; background: var(--blue-light); border-radius: 10px; font-size: 15px; color: var(--navy); line-height: 1.7; }
+.process-flow.is-7 { grid-template-columns: repeat(7, 1fr); }
+@media (max-width: 1100px) { .process-flow.is-7 { grid-template-columns: repeat(4, 1fr); } .adopt-2col { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .process-flow.is-7 { grid-template-columns: 1fr 1fr; } }
