@@ -1290,9 +1290,13 @@ document.addEventListener("DOMContentLoaded", function () {
             var el = entry.target;
             revealObserver.unobserve(el);
             el.classList.add("is-visible");
+            // 정리 시점은 고정 1.5s가 아니라 실제 transition-delay + duration 기준.
+            // 지연이 큰 요소(순차 등장 목록 뒤쪽)의 트랜지션이 도중에 잘려 스냅되던 문제 방지.
+            var cs = window.getComputedStyle(el);
+            var revealMs = ((parseFloat(cs.transitionDelay) || 0) + (parseFloat(cs.transitionDuration) || 0)) * 1000;
             window.setTimeout(function () {
               clearRevealClasses(el);
-            }, 1500);
+            }, Math.max(1500, revealMs + 250));
           });
         },
         { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }

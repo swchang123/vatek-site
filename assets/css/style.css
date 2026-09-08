@@ -3719,7 +3719,7 @@ video.auto-hero-video { object-fit: cover; background: var(--navy-deep); }
 .auto-proven-sec .cmp-lead-p { max-width: 560px; justify-self: end; text-align: left; }
 .auto-logos { list-style: none; margin: clamp(40px, 4.5vw, 64px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 36px 0; align-items: center; }
 .auto-logos li:nth-child(8) { grid-column: 1; }
-.auto-logos li:nth-child(n+8) { transform: translateX(50%); }
+@media (min-width: 1201px) { .auto-logos li:nth-child(n+8) { transform: translateX(50%); } }
 .auto-logos li { display: flex; align-items: center; justify-content: center; height: 120px; padding: 0 12px; }
 .auto-logos img { width: var(--w, 60%); max-height: 100px; height: auto; object-fit: contain; filter: grayscale(1); opacity: .6; transform: scale(1); transition: filter .35s, opacity .35s, transform .45s cubic-bezier(.22,.61,.36,1); }
 .auto-logos li:hover img { filter: none; opacity: 1; transform: scale(1.1); }
@@ -3742,7 +3742,28 @@ video.auto-hero-video { object-fit: cover; background: var(--navy-deep); }
 
 /* 자동차 상세 — 스크롤 리빌 세분화: 제목 → 사진(살짝 확대→정착) → 본문 순서로 시차. 타일·목록·로고는 순차 등장 */
 .auto-page .reveal-scale { transform: translateY(24px) scale(.96); }
+.auto-page .reveal-scale.is-visible { transform: none; } /* 위 규칙이 공통 .is-visible보다 뒤에 있어 덮어쓰던 문제 — 없으면 정리 시점에 .96→1로 스냅 */
 .auto-page .auto-app-media figure { overflow: hidden; border-radius: 3px; }
-.auto-page .auto-app-media figure img { transform: scale(1.06); transition: transform 1.6s cubic-bezier(.22,.61,.36,1); }
-.auto-page .auto-app-media figure:not(.reveal-scale) img { transform: scale(1); }
-.auto-page .auto-cont li.reveal-scale img { transform: scale(1.08); }
+/* 사진 확대→정착은 페이드와 "동시에" 시작(같은 지연). 이전엔 리빌 클래스가 제거되는 1.5s 시점에야 시작돼
+   페이드 → 멈춤 → 줌아웃으로 끊어져 보였다. is-visible 붙는 순간 목표값이 scale(1)로 바뀌고, 클래스 제거 후에도 목표가 같아 스냅 없음 */
+.auto-page .auto-app-media figure img { transform: scale(1); transition: transform 1.6s cubic-bezier(.22,.61,.36,1) var(--reveal-delay, 0s); }
+.auto-page .auto-app-media figure.reveal-scale:not(.is-visible) img { transform: scale(1.06); }
+.auto-page .auto-cont img { transition-delay: var(--reveal-delay, 0s); }
+.auto-page .auto-cont li.reveal-scale:not(.is-visible) img { transform: scale(1.08); }
+
+/* ============================================================
+   산업 상세 공통 변형 (2026-09-08) — automotive.html 을 마스터로 한 15개 산업 페이지용
+   - .auto-why.is-4 / .is-6 : 검토 이유 개수 변형 (기본 5열)
+   - .auto-relind.is-2 / .is-4 : 관련 산업 개수 변형 (기본 3열)
+   - .auto-logos.is-flex : 로고 개수가 7/14가 아닐 때 — 7열 폭 유지하며 중앙 정렬 줄바꿈
+   ============================================================ */
+.auto-why.is-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.auto-why.is-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: clamp(36px, 4vw, 56px); }
+.auto-why.is-6 li:nth-child(n+4)::before { display: none; }
+.auto-relind.is-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.auto-relind.is-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.auto-logos.is-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: 36px 0; }
+.auto-logos.is-flex li { flex: 0 0 calc(100% / 7); transform: none !important; }
+@media (max-width: 1200px) { .auto-why.is-4, .auto-why.is-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; } .auto-relind.is-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .auto-logos.is-flex li { flex-basis: 25%; } }
+@media (max-width: 800px) { .auto-logos.is-flex { gap: 24px 0; } .auto-logos.is-flex li { flex-basis: 33.333%; } }
+@media (max-width: 700px) { .auto-why.is-4, .auto-why.is-6, .auto-relind.is-2, .auto-relind.is-4 { grid-template-columns: 1fr; } }
