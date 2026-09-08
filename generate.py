@@ -650,6 +650,397 @@ COMPARE_RAIL_SCRIPT = """  <script>
   </script>
 """
 
+# (2026-09-08, 8차 핸드오프) 산업 상세 페이지 "자동차 제조" — industries/automotive.html.
+# 메가메뉴에는 나오지 않는 상세 페이지라 MENU가 아니라 아래 DETAIL_PAGES로 생성한다
+# (헤더·메가메뉴·푸터는 cleaning/*와 같은 depth=1 셸, active_code는 "cleaning").
+# 본문(히어로~함께 보면 좋은 페이지)은 핸드오프 HTML이 정본이라 통째로 보관.
+AUTOMOTIVE_BODY = """
+  <section class="subhero-parallax auto-hero-stage">
+    <video class="subhero-parallax-img auto-hero-video" autoplay muted loop playsinline preload="auto" poster="../assets/img/ind-card-automotive.png" aria-label="자동차 제조 현장 드라이아이스 세척">
+      <source src="../assets/video/auto-hero-banner.mp4" type="video/mp4" />
+    </video>
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="../cleaning/index.html">드라이아이스 세척가이드</a> &gt; <a href="../cleaning/industry.html">산업별 솔루션</a> &gt; 자동차 제조</div>
+    <div class="subhero-textbox auto-hero-box">
+      <span class="ind-hero-eyebrow">AUTOMOTIVE MANUFACTURING</span>
+      <h1>자동차 제조</h1>
+      <p class="cmp-hero-p auto-hero-lead">자동차 생산의 여러 공정에서 세척은 품질과 설비 관리의 중요한 과정입니다.</p>
+    </div>
+  </section>
+  <section class="subhero-cover cmp-page ind-page auto-page">
+    <div class="wrap">
+
+<div class="cmp-panel">
+<div class="wrap">
+<div class="cmp-section is-first auto-intro">
+  <div class="auto-intro-grid">
+    <div class="reveal">
+      <span class="cmp-eyebrow">AUTOMOTIVE PRODUCTION</span>
+      <h2 class="cmp-h2">하나의 자동차가 만들어지는 동안,<br>세척해야 할 대상도 계속 달라집니다.</h2>
+    </div>
+    <div class="cmp-lead auto-intro-lead reveal" style="--reveal-delay:0.14s">
+      <p>자동차 생산라인에는 플라스틱과 고무 부품의 성형공정부터 차체 용접, 도장, 다이캐스팅, 부품 조립과 각종 후처리 공정까지 서로 다른 생산설비가 함께 운영됩니다.</p>
+      <p>금형에는 이형제와 수지, 성형 과정에서 발생한 잔류물이 쌓이고, 용접 지그와 로봇 주변에는 용접 스패터와 슬래그가 축적됩니다. 도장라인에는 도료 비산 잔류물(오버스프레이)이, 다이캐스팅 공정에는 이형제와 윤활제, 카본 등이 남을 수 있습니다.</p>
+      <p>이러한 오염은 단순히 설비가 더러워지는 문제에 그치지 않습니다. 오염이 축적되면 금형과 치공구의 상태, 센서와 설비의 작동, 제품의 품질, 정비 주기와 생산 중단시간에도 영향을 줄 수 있습니다.</p>
+      <p class="auto-intro-close">따라서 자동차 제조에서의 세척은 생산과 별개의 청소 작업이 아니라, <b>공정을 안정적으로 유지하기 위한 설비 관리의 한 부분</b>으로 볼 필요가 있습니다.</p>
+    </div>
+  </div>
+  <figure class="auto-intro-fig reveal"><img src="../assets/img/auto-production-line.jpg" alt="자동차 차체 조립라인의 산업용 로봇" loading="lazy" /></figure>
+</div>
+</div>
+</div>
+
+<div class="cmp-section auto-apps-sec" id="auto-apps">
+  <div class="auto-sec-head reveal">
+    <span class="cmp-eyebrow">KEY APPLICATIONS</span>
+    <h2 class="cmp-h2">자동차 제조에서<br>드라이아이스 세척이 활용되는 주요 공정</h2>
+  </div>
+<article class="auto-app is-wide" id="auto-01">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">01</span>
+    <div>
+      <span class="auto-en">PLASTIC & RUBBER MOLD CLEANING</span>
+      <h3>사출 · 성형 금형 세척</h3>
+    </div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/task-mold-tool-cleaning.webp" alt="" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/auto-rubber-mold.webp" alt="" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">금형의 정밀한 표면은 유지하면서<br>생산 잔류물을 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>자동차의 내·외장재와 씰, 가스켓, 커넥터 등 다양한 부품은 플라스틱과 고무 성형공정을 통해 생산됩니다.</p><p>생산이 반복되면 금형 표면에는 이형제, 수지, 안료와 성형 과정에서 발생한 잔류물이 축적될 수 있습니다. 이러한 오염은 성형 품질과 금형 관리에 영향을 줄 수 있기 때문에 정기적인 세척이 필요합니다.</p><p>드라이아이스 세척은 비마모성 세정 방식의 특성을 이용해 금형의 표면과 형상을 최대한 유지하면서 축적된 오염물을 제거하는 데 활용됩니다. 설비와 금형의 조건에 따라 금형을 완전히 분해하거나 충분히 냉각한 뒤 세척해야 하는 시간을 줄일 수 있는 경우도 있습니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>플라스틱 사출금형</li><li>고무 성형금형</li><li>우레탄 성형금형</li><li>정밀 성형금형</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app is-flip" id="auto-02">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">02</span>
+    <div>
+      <span class="auto-en">ROBOTIC WELD CELL CLEANING</span>
+      <h3>용접라인 · 지그 · 로봇 세척</h3>
+    </div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/task-weld-fixture.webp" alt="" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/auto-welding-robot.webp" alt="" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">용접 스패터는 제거하고,<br>지그와 센서의 상태는 유지합니다.</p>
+      <div class="cmp-text auto-text"><p>자동차 차체 용접공정에서는 용접 스패터와 슬래그가 지그, 클램프, 로봇과 센서 주변에 지속적으로 쌓일 수 있습니다.</p><p>오염이 심해지면 지그의 위치 정밀도나 센서의 정상적인 작동에 영향을 줄 수 있고, 결과적으로 정비가 필요한 시점도 빨라질 수 있습니다.</p><p>드라이아이스 세척은 연마나 강한 기계적 제거가 부담되는 지그와 로봇, 센서 주변의 오염물을 제거하는 방법으로 활용됩니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>용접 지그</li><li>클램프</li><li>용접 로봇</li><li>근접센서</li><li>용접 테이블</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app" id="auto-03">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">03</span>
+    <div>
+      <span class="auto-en">PAINT BOOTH & COATING LINE CLEANING</span>
+      <h3>도장부스 · 코팅라인 세척</h3>
+    </div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/auto-paint-booth-fixture.webp" alt="" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/auto-paint-prep.webp" alt="" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">도료가 축적되는 설비를<br>정기적으로 관리합니다.</p>
+      <div class="cmp-text auto-text"><p>도장공정에서는 분사된 도료의 일부가 부스 내부와 지그, 행거, 캐리어, 컨베이어 등에 지속적으로 쌓입니다.</p><p>이렇게 축적된 도료와 코팅 잔류물은 설비의 움직임이나 접지 상태, 도장환경 관리에 영향을 줄 수 있습니다.</p><p>드라이아이스 세척은 물을 사용하지 않는 건식 방식이며, 드라이아이스 자체가 작업 후 세정 잔재로 남지 않기 때문에 도장·코팅설비의 유지보수에 활용할 수 있습니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>도장부스</li><li>도장 지그</li><li>행거</li><li>캐리어</li><li>컨베이어</li><li>가이드레일</li><li>로봇</li><li>그레이팅</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app is-flip" id="auto-04">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">04</span>
+    <div>
+      <span class="auto-en">DIE CASTING & FOUNDRY</span>
+      <h3>다이캐스팅 · 주조 공정</h3>
+    </div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/auto-diecast-die.jpg" alt="" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/auto-diecast-corebox.jpg" alt="" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">반복적으로 오염되는 금형과 치공구를<br>표면 상태를 고려해 세척합니다.</p>
+      <div class="cmp-text auto-text"><p>자동차 제조에서는 알루미늄을 비롯한 다양한 금속 부품을 다이캐스팅과 주조공정으로 생산합니다.</p><p>반복 생산 과정에서 금형과 코어박스 등에는 이형제, 다이캐스팅용 윤활제, 수지, 카본, 내화성 코팅 잔류물 등이 축적될 수 있습니다.</p><p>드라이아이스 세척은 비마모성 세정 방식의 특성을 이용해 금형과 치공구의 주요 표면과 형상을 유지하면서 이러한 오염물을 제거하는 데 활용됩니다.</p></div>
+      <a class="auto-rel-link" href="../cleaning/industry.html#ind-core" data-target="../industries/foundry.html"><span>관련 산업</span>주조 · 다이캐스팅 <i>→</i></a>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app" id="auto-05">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">05</span>
+    <div>
+      <span class="auto-en">SURFACE PREPARATION</span>
+      <h3>표면 전처리</h3>
+    </div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/auto-adhesive-component.webp" alt="" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">도장과 접착 전에,<br>표면의 오염부터 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>자동차 부품의 도장이나 코팅, 접착과 실링 작업 전에는 표면에 남아 있는 오일, 이형제, 먼지와 공정 잔류물이 후속 공정에 영향을 주지 않도록 관리해야 합니다.</p><p>드라이아이스 세척은 물을 사용하지 않고 세정 매체가 표면에 남지 않는 특성을 이용해 도장이나 접착 전 표면을 준비하는 공정에 활용할 수 있습니다.</p><p>물세척과 달리 세척 후 수분 제거를 위한 별도 건조공정의 부담을 줄일 수 있다는 것도 장점 중 하나입니다.</p></div>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app is-flip" id="auto-06">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">06</span>
+    <div>
+      <span class="auto-en">DEBURRING & DEFLASHING <em class="auto-fin">PARTS FINISHING</em></span>
+      <h3>디버링 · 디플래싱</h3>
+    </div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/task-deburring-precision.jpg" alt="" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/task-deburring-plastic.jpg" alt="" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">불필요한 버와 플래시는 제거하고,<br>부품의 형상은 유지합니다.</p>
+      <div class="cmp-text auto-text"><p>플라스틱이나 고무 부품은 성형 또는 가공 후 가장자리나 작은 틈에 버(Burr) 또는 플래시(Flash)가 남을 수 있습니다.</p><p>드라이아이스 기술은 필요한 부분에 세척 강도를 조절해 버와 플래시를 제거하면서 부품의 주요 형상과 치수 변화를 최소화해야 하는 부품 마무리 공정에 활용됩니다.</p></div>
+    </div>
+  </div>
+</article>
+
+<div class="auto-freeze">
+<article class="auto-app is-wide" id="auto-07">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">07</span>
+    <div>
+      <span class="auto-en">PRODUCTION EQUIPMENT & FACILITY MAINTENANCE</span>
+      <h3>생산설비 · 시설 유지보수</h3>
+    </div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/auto-facility-panel.jpg" alt="" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/auto-facility-motor.jpg" alt="" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">자동차 공장에는 금형과 생산라인 외에도<br>관리해야 할 설비가 많습니다.</p>
+      <div class="cmp-text auto-text"><p>자동차 공장은 금형과 용접·도장설비뿐 아니라 가공장비, 컨베이어, 모터, 제어반, 냉각설비와 물류장비 등 수많은 생산지원설비로 구성됩니다.</p><p>이러한 설비에는 오일과 그리스, 카본, 먼지와 각종 공정 잔류물이 지속적으로 쌓일 수 있습니다.</p><p>드라이아이스의 건식·비마모 특성은 물이나 연마재 사용이 부담스러운 다양한 설비의 유지보수 세척에 활용할 수 있습니다.</p></div>
+      <p class="auto-note">전기·전자 장비의 경우 비전도성 세정 방식이라는 장점이 있지만, 실제 작업 가능 여부는 설비의 구조와 전원 상태, 현장의 안전조건을 반드시 함께 검토해야 합니다.</p>
+    </div>
+  </div>
+</article>
+</div>
+
+</div>
+
+<div class="cmp-panel auto-cont-panel">
+<div class="wrap">
+<div class="cmp-section is-first">
+  <span class="cmp-eyebrow">COMMON CONTAMINANTS</span>
+  <h2 class="cmp-h2 reveal">자동차 생산공정에서<br>반복적으로 발생하는 주요 오염물</h2>
+  <ul class="auto-cont" aria-label="주요 오염물">
+    <li class="reveal-scale" style="--reveal-delay:0.00s"><img src="../assets/img/task-mold-tool-cleaning.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>이형제</b><small>RELEASE AGENT</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.06s"><img src="../assets/img/auto-rubber-mold.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>수지 · 성형 잔류물</b><small>RESIN & PROCESS RESIDUE</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.12s"><img src="../assets/img/task-weld-fixture.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>용접 스패터</b><small>WELD SPATTER</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.18s"><img src="../assets/img/auto-weld-cell.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>슬래그</b><small>SLAG</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.24s"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /><span class="auto-cont-l"><b>도료 비산 잔류물</b><small>PAINT OVERSPRAY</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.30s"><img src="../assets/img/task-oil-tar-pipe.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>오일 · 그리스</b><small>OIL & GREASE</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.36s"><img src="../assets/img/auto-pur-mold.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>접착제</b><small>ADHESIVE</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.42s"><img src="../assets/img/ind-card-foundry.png" alt="" loading="lazy" /><span class="auto-cont-l"><b>카본</b><small>CARBON</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.48s"><img src="../assets/img/auto-pressing-tool.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>기타 공정 잔류물</b><small>OTHER PROCESS RESIDUE</small></span></li>
+  </ul>
+</div>
+</div>
+</div>
+
+<div class="cmp-section auto-why-sec">
+  <span class="cmp-eyebrow">WHY DRY ICE CLEANING</span>
+  <h2 class="cmp-h2 reveal">자동차 제조에서<br>드라이아이스 세척을 검토하는 이유</h2>
+  <ol class="auto-why">
+    <li class="reveal" style="--reveal-delay:0.00s"><b>표면을 연마하지 않는 세척</b><p>금형과 치공구, 정밀 부품처럼 표면 상태와 치수를 유지해야 하는 대상에 적용할 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.09s"><b>물을 사용하지 않는 건식 세척</b><p>수분 관리가 중요한 도장공정과 전기·전자 설비, 각종 정밀장치의 세척에 활용할 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.18s"><b>세정 매체가 남지 않는 방식</b><p>드라이아이스는 표면에 충돌한 뒤 기체로 승화하기 때문에 사용한 드라이아이스 자체를 별도로 회수할 필요가 없습니다. 제거된 오염물은 별도로 회수하고 처리해야 합니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.27s"><b>분해와 정비시간을 줄일 수 있는 가능성</b><p>설비와 작업 조건에 따라 부품이나 금형을 완전히 분리하지 않고 현장에서 세척할 수 있는 경우가 있습니다. 이를 통해 세척을 위한 냉각, 분해, 재조립 등에 필요한 시간을 줄일 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.36s"><b>한 공장 안의 다양한 공정에 적용</b><p>금형, 용접라인, 도장설비, 다이캐스팅, 표면 전처리, 부품 마무리, 생산지원설비까지 — 자동차 공장 안의 서로 다른 세척 과제에 적용 가능성을 검토할 수 있습니다.</p></li>
+  </ol>
+</div>
+
+    </div>
+  </section>
+
+  <section class="cmp-dark ind-dark auto-dark">
+    <div class="wrap">
+      <div class="auto-ae">
+        <div class="reveal">
+          <span class="cmp-eyebrow">APPLICATION ENGINEERING</span>
+          <h2 class="cmp-h2">같은 자동차 공장에서도,<br>공정마다 세척 조건은 다릅니다.</h2>
+          <div class="cmp-dark-body">
+            <p>사출금형에 쌓이는 이형제와 용접 지그의 스패터, 도장라인의 도료 잔류물은 같은 자동차 공장에서 발생하지만 오염물의 성질과 세척 대상, 작업 조건은 서로 다릅니다.</p>
+            <p>바테크는 오염물의 종류와 부착 정도, 세척 대상의 재질과 형상, 작업 환경과 원하는 결과를 확인한 뒤 실제 테스트를 통해 적용 조건을 검토합니다.</p>
+          </div>
+        </div>
+        <div class="auto-ae-side reveal" style="--reveal-delay:0.16s">
+          <ul class="auto-ae-cases">
+            <li class="reveal" style="--reveal-delay:0.45s"><img src="../assets/img/task-mold-tool-cleaning.webp" alt="" loading="lazy" /><b>사출금형</b><small>이형제 · 수지</small></li>
+            <li class="reveal" style="--reveal-delay:0.54s"><img src="../assets/img/task-weld-fixture.webp" alt="" loading="lazy" /><b>용접 지그</b><small>스패터 · 슬래그</small></li>
+            <li class="reveal" style="--reveal-delay:0.63s"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /><b>도장라인</b><small>도료 비산 잔류물</small></li>
+          </ul>
+          <p class="auto-ae-key">장비를 먼저 정하기보다,<br><em>먼저 적합한 세척 조건</em>을 확인합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="subhero-cover cmp-page cmp-tail ind-page auto-page">
+    <div class="wrap">
+
+<div class="cmp-section is-first auto-relapps-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div>
+      <span class="cmp-eyebrow">RELATED APPLICATIONS</span>
+      <h2 class="cmp-h2">자동차 제조에서 함께 살펴볼<br>작업별 솔루션</h2>
+    </div>
+    <p class="cmp-lead-p">자동차 생산 안에서도 세척 대상과 작업 목적에 따라 필요한 방법은 달라집니다.</p>
+  </div>
+  <ul class="auto-relapps">
+    <li class="reveal" style="--reveal-delay:0.00s"><a href="../cleaning/task.html#tsk-g1" data-target="../applications/mold-tool-cleaning.html"><img src="../assets/img/task-mold-tool-cleaning.webp" alt="" loading="lazy" /><span class="auto-relapp-body"><small>MOLD & TOOL CLEANING</small><b>금형 · 툴링 세척</b><span>이형제·수지·고무 잔사가 쌓이는 사출·고무·복합재 금형</span></span><i>→</i></a></li>
+    <li class="reveal" style="--reveal-delay:0.07s"><a href="../cleaning/task.html#tsk-g1" data-target="../applications/weld-fixture-robot.html"><img src="../assets/img/task-weld-fixture.webp" alt="" loading="lazy" /><span class="auto-relapp-body"><small>WELD LINE, FIXTURE & ROBOT CLEANING</small><b>용접라인 · 지그 · 로봇 세척</b><span>지그·클램프·로봇·센서 주변의 스패터와 슬래그</span></span><i>→</i></a></li>
+    <li class="reveal" style="--reveal-delay:0.14s"><a href="../cleaning/task.html#tsk-g1" data-target="../applications/paint-booth-coating-line.html"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /><span class="auto-relapp-body"><small>PAINT BOOTH & COATING LINE CLEANING</small><b>도장부스 · 코팅라인 세척</b><span>부스·행거·캐리어·컨베이어의 도료 비산 잔류물</span></span><i>→</i></a></li>
+    <li class="reveal" style="--reveal-delay:0.21s"><a href="../cleaning/task.html#tsk-g3" data-target="../applications/surface-preparation.html"><img src="../assets/img/auto-adhesive-component.webp" alt="" loading="lazy" /><span class="auto-relapp-body"><small>SURFACE PREPARATION</small><b>표면 전처리</b><span>도장·코팅·접착 전 오일·이형제·먼지 제거</span></span><i>→</i></a></li>
+    <li class="reveal" style="--reveal-delay:0.28s"><a href="../cleaning/task.html#tsk-g3" data-target="../applications/deburring-deflashing.html"><img src="../assets/img/task-deburring-precision.jpg" alt="" loading="lazy" /><span class="auto-relapp-body"><small>DEBURRING & DEFLASHING</small><b>디버링 · 디플래싱</b><span>성형·가공 후 버와 플래시를 제거하는 부품 마무리</span></span><i>→</i></a></li>
+    <li class="reveal" style="--reveal-delay:0.35s"><a href="../cleaning/task.html#tsk-g1" data-target="../applications/facility-maintenance.html"><img src="../assets/img/stackdo-automation.jpg" alt="" loading="lazy" /><span class="auto-relapp-body"><small>PRODUCTION & FACILITY MAINTENANCE</small><b>생산설비 · 시설 유지보수</b><span>컨베이어·모터·제어반·냉각설비 등 생산지원설비</span></span><i>→</i></a></li>
+  </ul>
+</div>
+
+<div class="cmp-section auto-relind-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div>
+      <span class="cmp-eyebrow">RELATED INDUSTRIES</span>
+      <h2 class="cmp-h2">자동차 생산과 연결되는<br>관련 산업</h2>
+    </div>
+    <p class="cmp-lead-p">자동차 제조에는 플라스틱 사출, 고무부품 성형, 다이캐스팅 등 서로 다른 제조기술이 함께 사용됩니다. 해당 공정을 산업 전체의 관점에서 더 자세히 보려면 관련 산업 페이지를 확인하세요.</p>
+  </div>
+  <ul class="auto-relind">
+    <li class="reveal" style="--reveal-delay:0.00s"><a href="../cleaning/industry.html#ind-core" data-target="../industries/plastics.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-plastics.png" alt="" loading="lazy" /></span><small>PLASTICS & COMPOSITES</small><b>플라스틱 · 복합소재</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.10s"><a href="../cleaning/industry.html#ind-core" data-target="../industries/rubber-tire.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-rubber-tire.png" alt="" loading="lazy" /></span><small>RUBBER & TIRES</small><b>고무 · 타이어</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.20s"><a href="../cleaning/industry.html#ind-core" data-target="../industries/foundry.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-foundry.png" alt="" loading="lazy" /></span><small>FOUNDRY & DIE CASTING</small><b>주조 · 다이캐스팅</b><span>산업 페이지 보기 →</span></a></li>
+  </ul>
+</div>
+
+<div class="cmp-section auto-proven-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div>
+      <span class="cmp-eyebrow">PROVEN IN AUTOMOTIVE PLANTS</span>
+      <h2 class="cmp-h2">글로벌 자동차 제조 현장에서<br>검증된 기술</h2>
+    </div>
+    <p class="cmp-lead-p">세계 주요 자동차 제조사와 부품업체가 다양한 생산공정에서 Cold Jet 드라이아이스 세척 기술을 활용하고 있습니다.</p>
+  </div>
+  <ul class="auto-logos" aria-label="Cold Jet 드라이아이스 세척을 사용하는 자동차 제조사">
+    <li class="reveal-pop" style="--reveal-delay:0.00s; --w:60%"><img src="../assets/img/logo-hyundai.webp" alt="Hyundai" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.04s; --w:66%"><img src="../assets/img/logo-kia.png" alt="Kia" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.08s; --w:44%"><img src="../assets/img/logo-honda.webp" alt="Honda" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.12s; --w:40%"><img src="../assets/img/logo-gm.webp" alt="General Motors" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.16s; --w:58%"><img src="../assets/img/logo-ford.webp" alt="Ford" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.20s; --w:46%"><img src="../assets/img/logo-citroen.webp" alt="Citroën" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.24s; --w:78%"><img src="../assets/img/logo-chrysler.webp" alt="Chrysler" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.28s; --w:42%"><img src="../assets/img/logo-bmw.webp" alt="BMW" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.32s; --w:42%"><img src="../assets/img/logo-volkswagen.webp" alt="Volkswagen" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.36s; --w:50%"><img src="../assets/img/logo-toyota.webp" alt="Toyota" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.40s; --w:44%"><img src="../assets/img/logo-tesla.webp" alt="Tesla" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.44s; --w:70%"><img src="../assets/img/logo-renault.webp" alt="Renault" loading="lazy" /></li>
+    <li class="reveal-pop" style="--reveal-delay:0.48s; --w:48%"><img src="../assets/img/logo-nissan.webp" alt="Nissan" loading="lazy" /></li>
+  </ul>
+</div>
+
+<div class="cmp-section cmp-cta auto-cta reveal">
+  <div class="cmp-cta-left">
+    <span class="cmp-eyebrow">TEST YOUR APPLICATION</span>
+    <h2 class="cmp-h2">우리 생산라인에도<br>적용할 수 있을까요?</h2>
+  </div>
+  <div class="cmp-cta-right">
+    <div class="cmp-text">
+      <p>같은 자동차 공정이라도 오염물의 종류와 부착 정도, 설비의 재질과 형상, 작업 온도와 접근성에 따라 적합한 세척 조건은 달라질 수 있습니다.</p>
+      <p>실제 부품이나 시편을 이용한 테스트를 통해 세척 가능 여부와 작업 조건을 확인해보세요. 바테크는 실제 테스트를 바탕으로 현장에 적합한 세척 조건과 장비 구성을 함께 검토합니다.</p>
+    </div>
+    <div class="cmp-cta-btns">
+      <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청 →</a>
+      <a class="cmp-btn-ghost" href="../products/quote.html">적용 상담 →</a>
+      <a class="cmp-btn-ghost" href="../cases/library.html">적용사례 보기 →</a>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+<div class="last-freeze">
+<div class="wrap">
+<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+      <div class="sub-grid" id="subGrid">
+  <a class="sub-card" href="../cleaning/guide.html">
+    <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">원리 · 기초</span>
+      <h3 style="font-size: 25px">드라이아이스 세척의 이해</h3>
+      <p style="font-size: 20px">드라이아이스의 물리적 특성부터 세척 원리와 장점, 세척 장비의 기본 개념까지 살펴봅니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/compare.html">
+    <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">비교 · 차이점</span>
+      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/task.html">
+    <div class="sub-card-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">작업별 적용</span>
+      <h3 style="font-size: 25px">작업별 솔루션</h3>
+      <p style="font-size: 20px">이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/industry.html">
+    <div class="sub-card-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">산업별 적용</span>
+      <h3 style="font-size: 25px">산업별 솔루션</h3>
+      <p style="font-size: 20px">자동차·반도체·식품·발전 등 산업별 주요 세척 대상과 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+</div>
+      <div class="cta-band">
+        <div>
+          <h3 style="font-size: 25px">우리 생산라인의 세척 조건을 함께 검토해보세요</h3>
+          <p style="font-size: 20px">세척 대상과 오염물을 알려주시면 적용 가능성과 적정 조건을 안내합니다.</p>
+        </div>
+        <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청</a>
+      </div>
+      </div>
+    </div>
+"""
+
+# 07 블록(.auto-freeze) 틀고정 패럴랙스 — main.js 다음, </body> 앞에 삽입.
+AUTOMOTIVE_SCRIPT = """  <script>
+  (function(){
+    // 07 생산설비·시설 유지보수 — 제목이 헤더 아래 도달하면 스크롤 속도의 15%로만 천천히 올라가고,
+    // 뒤따르는 COMMON CONTAMINANTS 패널(불투명·z-index 2)이 그 위를 덮으며 올라온다. 푸터 리빌과 같은 방식으로
+    // 덮이는 비율에 맞춰 블러(0~10px)를 준다.
+    var fz=document.querySelector('.auto-freeze'),panel=document.querySelector('.auto-cont-panel');
+    if(!fz||!panel||window.matchMedia('(max-width: 900px)').matches)return;
+    var HEADER=76,RATE=0.85,BLUR_MAX=10,ty=0;
+    function docTop(){return fz.getBoundingClientRect().top+window.pageYOffset-ty;}
+    function upd(){
+      var top=docTop(),h=fz.offsetHeight,p=window.pageYOffset+HEADER-top;
+      if(p<=0){ty=0;fz.style.transform='';fz.style.filter='';return;}
+      var max=h+240;ty=Math.min(p*RATE,max);
+      // 블러는 덮고 올라오는 패널이 화면 절반을 넘긴 시점부터 시작 → 패널 상단이 헤더에 닿을 때 최대
+      var vh=window.innerHeight,pt=panel.getBoundingClientRect().top;
+      var covered=(vh-pt)/vh; var ratio=Math.max(0,Math.min(1,(covered-0.5)/0.45));
+      fz.style.transform='translate3d(0,'+ty.toFixed(1)+'px,0)';
+      fz.style.filter=ratio>0.02?'blur('+(ratio*BLUR_MAX).toFixed(2)+'px)':'';
+    }
+    var t=false;
+    window.addEventListener('scroll',function(){if(t)return;t=true;requestAnimationFrame(function(){t=false;upd();});},{passive:true});
+    window.addEventListener('resize',upd);
+    upd();
+  })();
+  </script>
+"""
+
 # (2026-09-07 6차 → 2026-09-08 7차 핸드오프 "산업별 솔루션") compare.html과 같은
 # 편집형 구조(패럴랙스 히어로 + .cmp-panel 인트로 + 01 주요 산업 16 카드 / 02 산업
 # 공통 유지보수 Featured / 03 전문 세척·복원 리스트 + APPLICATION ENGINEERING
@@ -704,7 +1095,7 @@ INDUSTRY_BODY = """
     </div>
   </div>
   <div class="ind-grid">
-    <a class="ind-card reveal" href="#" data-target="../industries/automotive.html" aria-label="자동차 제조 솔루션 보기" style="--reveal-delay:0s">
+    <a class="ind-card reveal" href="../industries/automotive.html" aria-label="자동차 제조 솔루션 보기" style="--reveal-delay:0s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-automotive.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
         <span class="ind-card-num">01</span>
@@ -3055,6 +3446,28 @@ def build_home():
         f.write(html)
 
 
+# (2026-09-08) 메뉴에 속하지 않는 상세 페이지 — 산업별 솔루션 카드에서 들어가는
+# 산업 상세(industries/<slug>.html). 앞으로 작업별 상세(applications/)도 같은 방식으로 추가.
+DETAIL_PAGES = [
+    {"dir": "industries", "slug": "automotive", "active_code": "cleaning",
+     "page_title": "자동차 제조 | 산업별 솔루션",
+     "page_desc": "사출·성형 금형, 용접 지그와 로봇, 도장부스, 다이캐스팅, 표면 전처리, 디버링, 생산설비 유지보수까지 — 자동차 제조공정별 세척 과제와 드라이아이스 세척 적용 방법.",
+     "body": AUTOMOTIVE_BODY, "extra_script": AUTOMOTIVE_SCRIPT},
+]
+
+
+def build_detail_pages():
+    n = 0
+    for d in DETAIL_PAGES:
+        os.makedirs(os.path.join(ROOT, d["dir"]), exist_ok=True)
+        html = page_shell(d["page_title"], d["page_desc"], 1, d["active_code"], d["body"],
+                          extra_script=d.get("extra_script", ""))
+        with open(os.path.join(ROOT, d["dir"], f"{d['slug']}.html"), "w", encoding="utf-8") as f:
+            f.write(html)
+        n += 1
+    return n
+
+
 def main():
     for m in MENU:
         os.makedirs(os.path.join(ROOT, m["code"]), exist_ok=True)
@@ -3064,6 +3477,7 @@ def main():
                 continue  # 제품 그룹(블라스터/펠렛타이저)은 products.py가 별도 생성
             build_sub_page(m, s)
     build_home()
+    n_detail = build_detail_pages()
 
     import products
     n_blaster = products.build_blaster(ROOT, nav_html, footer_html, page_shell, asset)
@@ -3071,9 +3485,10 @@ def main():
     n_recovery = products.build_recovery(ROOT, nav_html, footer_html, page_shell, asset)
 
     total = sum(len(m["subs"]) for m in MENU if True) - 3  # blaster/pelletizer/recovery는 is_group이라 별도 카운트
-    total_pages = 1 + len(MENU) + total + n_blaster + n_pelletizer + n_recovery
+    total_pages = 1 + len(MENU) + total + n_blaster + n_pelletizer + n_recovery + n_detail
     print(f"생성 완료: 홈 1개 + 허브 {len(MENU)}개 + 서브페이지 {total}개 "
           f"+ 블라스터 {n_blaster}개 + 펠렛타이저 {n_pelletizer}개 + CO2 리커버리 {n_recovery}개 "
+          f"+ 산업 상세 {n_detail}개 "
           f"= 총 {total_pages}개")
 
 

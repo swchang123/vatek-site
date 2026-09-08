@@ -3587,3 +3587,162 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 @media (max-width: 1100px) { .tsk-test { grid-template-columns: 1fr; gap: 48px; } .tsk-test-side { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,.18); padding-top: 40px; } }
 @media (max-width: 900px) { .tsk-card, .tsk-card.is-wide { grid-template-columns: 1fr; gap: 28px 0; } .tsk-media { aspect-ratio: 16 / 9; min-height: 0; } }
 @media (max-width: 700px) { .tsk-keys { grid-template-columns: 1fr; } .tsk-row { grid-template-columns: 1fr; gap: 4px; } }
+
+
+/* ============================================================
+   (2026-09-08) 산업 상세 — 자동차 제조 (industries/automotive.html, .auto-*)
+   향후 다른 산업 상세페이지의 기준 템플릿. .cmp-*/.ind-* 어휘를 그대로 쓰고
+   적용 공정 7블록(좌우 교차) · 오염물 9타일 · 이유 5 · AE · 관련 작업/산업 링크만 추가.
+   ============================================================ */
+.subhero-textbox.auto-hero-box { max-width: 960px; }
+/* 히어로 영상 — img와 같은 .subhero-parallax-img 버퍼/패럴랙스 규칙을 그대로 받음 */
+video.auto-hero-video { object-fit: cover; background: var(--navy-deep); }
+/* 자동차 상세 히어로는 다른 서브페이지(100vh)보다 40% 낮게 — 영상이 화면을 다 채우지 않도록. 패럴랙스 버퍼(420px)는 그대로 */
+.auto-hero-stage { height: calc((100vh - 76px) * 0.6); min-height: 380px; }
+.auto-hero-stage .subhero-textbox { top: 50%; }
+.subhero-textbox p.auto-hero-lead { font-weight: 400; max-width: none; }
+
+/* 02 인트로 — 제목 좌 / 본문 우, 아래 와이드 사진 */
+.auto-intro-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 4vw, 72px); align-items: start; }
+.auto-intro-grid .cmp-h2 { margin-bottom: 0; }
+.auto-intro-lead { margin-top: 0; max-width: none; }
+.cmp-page p.auto-intro-close, .subhero-cover p.auto-intro-close { color: var(--navy); }
+.auto-intro-close b { font-weight: 800; color: var(--navy); }
+.auto-intro-fig { margin: clamp(40px, 4.5vw, 64px) 0 0; }
+.auto-intro-fig img { display: block; width: 100%; aspect-ratio: 21 / 9; object-fit: cover; border-radius: 3px; filter: saturate(.8) contrast(1.03); }
+.auto-intro-fig figcaption, .auto-app-media figcaption { margin-top: 10px; font-size: 13.5px; font-weight: 600; color: var(--text-muted); letter-spacing: .01em; }
+
+/* 03 생산 흐름 스트립 — 6단계, 화살표 연결 */
+.auto-line { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; }
+.auto-line li { position: relative; }
+.auto-line li + li::before { content: "→"; position: absolute; left: 0; top: 22px; font-size: 18px; line-height: 1; font-weight: 800; color: var(--ice); z-index: 1; }
+.auto-line a { display: flex; flex-direction: column; gap: 10px; padding: 24px 24px 22px 0; color: inherit; text-decoration: none; }
+.auto-line li + li a { padding-left: 32px; }
+.auto-line-n { font-size: 12.5px; font-weight: 800; letter-spacing: 2px; color: var(--ice-dark); }
+.auto-line-t { font-size: clamp(18px, 1.45vw, 22px); font-weight: 800; color: var(--navy); letter-spacing: -0.015em; word-break: keep-all; line-height: 1.3; }
+.auto-line-go { font-size: 13px; font-weight: 700; color: var(--text-muted); opacity: 0; transform: translateY(-4px); transition: opacity .3s, transform .3s; line-height: 1; height: 13px; }
+.auto-line a:hover .auto-line-go { opacity: 1; transform: none; }
+
+/* 04 주요 공정 7블록 */
+.auto-apps-sec { position: relative; }
+.auto-sec-head { margin-bottom: clamp(48px, 5vw, 80px); }
+.auto-sec-head-lead { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(28px, 4vw, 72px); align-items: end; }
+.auto-sec-head-lead .cmp-h2 { margin-bottom: 0; }
+.cmp-page p.cmp-lead-p, .subhero-cover p.cmp-lead-p { margin: 0; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.8; color: var(--text-body); word-break: keep-all; }
+.auto-app { padding: clamp(44px, 4.5vw, 72px) 0; scroll-margin-top: 100px; }
+.auto-app:last-child { padding-bottom: 0; }
+.auto-app-head { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 40px); align-items: start; margin-bottom: clamp(28px, 3vw, 44px); }
+.auto-num { font-size: clamp(44px, 4vw, 64px); font-weight: 800; line-height: .9; letter-spacing: -0.05em; color: var(--ice); font-variant-numeric: tabular-nums; }
+.auto-en { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; font-size: 12.5px; font-weight: 800; letter-spacing: 3px; color: var(--ice-dark); word-break: keep-all; }
+.auto-fin { font-style: normal; padding: 4px 10px; border: 1px solid var(--ice); color: var(--navy); font-size: 10.5px; letter-spacing: 2px; }
+.auto-app h3 { margin: 10px 0 0; font-size: clamp(28px, 2.4vw, 38px); font-weight: 800; letter-spacing: -0.025em; color: #000; line-height: 1.25; word-break: keep-all; }
+.auto-app-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(32px, 4vw, 72px); align-items: start; }
+.auto-app.is-flip .auto-app-media { order: 2; }
+.auto-app.is-wide .auto-app-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.auto-app-media figure { margin: 0; }
+.auto-app-media img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; background: var(--navy-deep); filter: saturate(.8) contrast(1.03); }
+.auto-app-media.is-pair { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px; align-items: start; }
+.auto-app-media.is-pair figure:first-child img { aspect-ratio: 4 / 3; }
+.auto-app-media.is-pair figure:last-child img { aspect-ratio: 4 / 3; }
+.cmp-page p.auto-app-h, .subhero-cover p.auto-app-h { margin: 0 0 22px; font-size: clamp(21px, 1.7vw, 26px); font-weight: 700; line-height: 1.45; color: var(--navy); letter-spacing: -0.015em; word-break: keep-all; }
+.auto-text p { font-size: 17px; line-height: 1.85; }
+.auto-targets { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 0 16px; margin-top: 26px; }
+.auto-targets span { font-size: 12.5px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); padding-top: 4px; }
+.auto-targets ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 0; font-size: 16.5px; font-weight: 600; color: var(--navy); }
+.auto-targets li { display: inline-flex; align-items: center; }
+.auto-targets li + li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--ice); margin: 0 12px; flex: none; }
+.auto-rel-link { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; width: 100%; font-size: 17px; font-weight: 800; color: var(--navy); text-decoration: none; }
+.auto-rel-link span { font-size: 12.5px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); }
+.auto-rel-link i { font-style: normal; color: var(--ice); transition: transform .3s; }
+.auto-rel-link:hover i { transform: translateX(5px); }
+.cmp-page p.auto-note, .subhero-cover p.auto-note { margin: 24px 0 0; padding: 16px 20px; border-left: 2px solid var(--ice); font-size: 15px; line-height: 1.75; color: var(--text-body); background: rgba(79,173,184,.05); word-break: keep-all; }
+
+/* 07 블록 틀고정(느린 패럴랙스) — JS(automotive.html 하단)가 translateY/blur를 갱신. 패널이 덮을 수 있게 z-index 낮게 */
+.auto-freeze { position: relative; z-index: 1; will-change: transform, filter; }
+.auto-apps-sec { position: relative; z-index: 1; }
+/* 05 오염물 9타일 — 07을 덮으며 올라오는 패널 */
+.auto-cont-panel { margin-top: clamp(64px, 7vw, 112px); z-index: 3; }
+.auto-cont { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.auto-cont li { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 3px; background: var(--navy-deep); }
+.auto-cont img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.6) contrast(1.05) brightness(.8); transform: scale(1); transition: transform 1.1s cubic-bezier(.22,.61,.36,1), filter .6s; }
+.auto-cont li:hover img { transform: scale(1.05); filter: saturate(.9) contrast(1.05) brightness(.92); }
+.auto-cont li::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,22,23,.1) 0%, rgba(15,22,23,0) 35%, rgba(15,22,23,.78) 100%); pointer-events: none; }
+.auto-cont-n { position: absolute; left: 18px; top: 16px; z-index: 1; font-size: 12.5px; font-weight: 800; letter-spacing: 2px; color: #fff; }
+.auto-cont-l { position: absolute; left: 20px; right: 20px; bottom: 18px; z-index: 1; display: flex; flex-direction: column; gap: 4px; }
+.auto-cont-l b { font-size: clamp(20px, 1.6vw, 24px); font-weight: 800; color: #fff; letter-spacing: -0.015em; }
+.auto-cont-l small { font-size: 11.5px; font-weight: 700; letter-spacing: 2px; color: var(--ice); }
+
+/* 06 검토하는 이유 5 */
+.auto-why { list-style: none; margin: clamp(40px, 4.5vw, 64px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 clamp(20px, 2.4vw, 36px); }
+.auto-why li { display: flex; flex-direction: column; gap: 14px; position: relative; }
+.auto-why span { font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--ice-dark); }
+.auto-why b { font-size: clamp(19px, 1.45vw, 22px); font-weight: 800; color: var(--navy); letter-spacing: -0.015em; line-height: 1.35; word-break: keep-all; }
+.cmp-page .auto-why p, .subhero-cover .auto-why p { margin: 0; font-size: 15.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; }
+
+/* 07 AE — 좌 메시지 / 우 사례 3 + 핵심 문장 */
+.auto-ae { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(48px, 6vw, 120px); align-items: start; }
+.auto-ae .cmp-dark-body { margin-top: 0; }
+.auto-ae-cases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 24px); }
+.auto-ae-cases li { display: flex; flex-direction: column; }
+.auto-ae-cases img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 3px; background: #0f1516; filter: saturate(.55) contrast(1.05) brightness(.82); }
+.auto-ae-cases b { margin-top: 14px; font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.015em; }
+.auto-ae-cases small { margin-top: 4px; font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,.55); }
+.cmp-dark p.auto-ae-key { margin: 36px 0 0; font-size: clamp(24px, 2.2vw, 34px); font-weight: 800; line-height: 1.35; letter-spacing: -0.02em; color: #fff; word-break: keep-all; }
+.auto-ae-key em { font-style: normal; color: var(--ice); }
+
+/* 08 관련 작업별 솔루션 — 에디토리얼 링크 리스트 */
+.auto-relapps { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px clamp(32px, 4vw, 64px); }
+.auto-relapps a { display: grid; grid-template-columns: 132px minmax(0, 1fr) 24px; gap: 0 22px; align-items: center; padding: 16px 0; color: inherit; text-decoration: none; }
+.auto-relind-sec { border-top: none; padding-top: 0; }
+.auto-relapps img { display: block; width: 132px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; background: var(--navy-deep); filter: saturate(.75) contrast(1.03); transition: filter .4s; }
+.auto-relapps a:hover img { filter: saturate(1) contrast(1.03); }
+.auto-relapp-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.auto-relapp-body small { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--ice-dark); }
+.auto-relapp-body b { font-size: clamp(19px, 1.5vw, 23px); font-weight: 800; color: var(--navy); letter-spacing: -0.02em; line-height: 1.3; word-break: keep-all; transition: color .25s; }
+.auto-relapps a:hover b { color: var(--ice-dark); }
+.auto-relapp-body span { font-size: 14.5px; line-height: 1.6; color: var(--text-body); word-break: keep-all; }
+.auto-relapps i { font-style: normal; font-size: 20px; color: var(--ice); transition: transform .3s; }
+.auto-relapps a:hover i { transform: translateX(5px); }
+
+/* 09 관련 산업 3 */
+.auto-relind { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.auto-relind a { display: flex; flex-direction: column; color: inherit; text-decoration: none; }
+.auto-relind-img { display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 3px; background: var(--navy-deep); }
+.auto-relind-img img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.7) contrast(1.04) brightness(.92); transform: scale(1); transition: transform 1s cubic-bezier(.22,.61,.36,1), filter .5s; }
+.auto-relind a:hover .auto-relind-img img { transform: scale(1.04); filter: saturate(.95) contrast(1.04); }
+.auto-relind small { margin-top: 18px; font-size: 11.5px; font-weight: 800; letter-spacing: 2px; color: var(--ice-dark); }
+.auto-relind b { margin-top: 6px; font-size: clamp(22px, 1.8vw, 26px); font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+.auto-relind span { margin-top: 12px; font-size: 15px; font-weight: 700; color: var(--navy); }
+.auto-cta .cmp-cta-btns { gap: 12px; }
+/* 검증 사례 — 고객 로고 그리드. 7×2 균등 셀, 로고별 --w(셀 대비 폭)로 체감 크기 통일. 흑백 → 호버 시 확대+원색 */
+.auto-proven-sec .auto-sec-head-lead { align-items: end; }
+.auto-proven-sec .cmp-lead-p { max-width: 560px; justify-self: end; text-align: left; }
+.auto-logos { list-style: none; margin: clamp(40px, 4.5vw, 64px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 36px 0; align-items: center; }
+.auto-logos li:nth-child(8) { grid-column: 1; }
+.auto-logos li:nth-child(n+8) { transform: translateX(50%); }
+.auto-logos li { display: flex; align-items: center; justify-content: center; height: 120px; padding: 0 12px; }
+.auto-logos img { width: var(--w, 60%); max-height: 100px; height: auto; object-fit: contain; filter: grayscale(1); opacity: .6; transform: scale(1); transition: filter .35s, opacity .35s, transform .45s cubic-bezier(.22,.61,.36,1); }
+.auto-logos li:hover img { filter: none; opacity: 1; transform: scale(1.1); }
+@media (max-width: 1200px) { .auto-logos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 800px) { .auto-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 0; } .auto-logos li { height: 90px; } .auto-logos img { max-height: 72px; } }
+
+@media (max-width: 1200px) { .auto-line { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 8px; } .auto-line li:nth-child(4)::before { display: none; } .auto-line li:nth-child(4) a { padding-left: 0; } .auto-why { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 32px; } .auto-relapps { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .auto-intro-grid, .auto-app-grid, .auto-app.is-wide .auto-app-grid, .auto-ae, .auto-sec-head-lead { grid-template-columns: 1fr; } .auto-app.is-flip .auto-app-media { order: 0; } .auto-cont { grid-template-columns: repeat(2, minmax(0, 1fr)); } .auto-app-head { grid-template-columns: 72px minmax(0, 1fr); } }
+@media (max-width: 700px) { .auto-line { grid-template-columns: repeat(2, minmax(0, 1fr)); } .auto-line li:nth-child(4)::before { display: block; } .auto-line li:nth-child(4) a { padding-left: 32px; } .auto-line li:nth-child(odd)::before { display: none; } .auto-line li:nth-child(odd) a { padding-left: 0; } .auto-why { grid-template-columns: 1fr; } .auto-relind { grid-template-columns: 1fr; } .auto-cont { grid-template-columns: 1fr; } .auto-app-media.is-pair { grid-template-columns: 1fr; } .auto-targets { grid-template-columns: 1fr; gap: 6px; } .auto-relapps a { grid-template-columns: 96px minmax(0, 1fr) 20px; } .auto-relapps img { width: 96px; } }
+
+/* 자동차 상세 — 섹션 구분 가로선 제거(여백으로만 구분) */
+.auto-page .cmp-section { border-top: none; }
+
+/* 자동차 상세 — 필요한 가로선만 복원: 공정 블록 사이 / '대표 대상' 위 / 관련 작업 목록 행 구분 */
+.auto-app + .auto-app, .auto-freeze { border-top: 1px solid var(--gray-line); }
+.auto-freeze .auto-app { border-top: none; }
+.auto-relapps { gap: 0 clamp(32px, 4vw, 64px); }
+.auto-relapps a { border-bottom: 1px solid var(--gray-line); padding: 20px 0; }
+.auto-relapps li:nth-last-child(-n+2) a { border-bottom: none; }
+
+/* 자동차 상세 — 스크롤 리빌 세분화: 제목 → 사진(살짝 확대→정착) → 본문 순서로 시차. 타일·목록·로고는 순차 등장 */
+.auto-page .reveal-scale { transform: translateY(24px) scale(.96); }
+.auto-page .auto-app-media figure { overflow: hidden; border-radius: 3px; }
+.auto-page .auto-app-media figure img { transform: scale(1.06); transition: transform 1.6s cubic-bezier(.22,.61,.36,1); }
+.auto-page .auto-app-media figure:not(.reveal-scale) img { transform: scale(1); }
+.auto-page .auto-cont li.reveal-scale img { transform: scale(1.08); }
