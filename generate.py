@@ -11701,6 +11701,288 @@ LOCATION_BODY = """
 # ---------------------------------------------------------------------------
 # 1. 정보구조(IA) 데이터
 # ---------------------------------------------------------------------------
+# (2026-09-09, 14차 핸드오프 — 통합 최종본) products/index.html("제품·자동화·공급"
+# 허브) 전면 리디자인 본문. SOLUTION ARCHITECTURE / SYSTEM ARCHITECTURE MAP /
+# OUR SOLUTIONS 6개 / WHAT DO YOU NEED / AUTOMATION SPOTLIGHT 3단계 /
+# COLD JET TECHNOLOGY 4개 / VATEK SUPPORT 6단계 / PURCHASE SUPPORT 3 / FINAL CTA.
+PRODUCTS_HUB_BODY = """
+  <div class="wrap breadcrumb"><a href="../index.html">홈</a> &gt; 제품·자동화·공급</div>
+
+  <!-- ============ HERO ============ -->
+  <section class="prd-hero">
+    <div class="wrap prd-hero-grid">
+      <div>
+        <span class="prd-hero-eyebrow">PRODUCTS · AUTOMATION · SUPPLY</span>
+        <h1>세척기 한 대부터,<br>생산·회수·자동화까지.</h1>
+        <p class="prd-hero-sub">VATEK은 Cold Jet 드라이아이스 블라스터, 펠렛타이저, CO<sub>2</sub> 리커버리, 자동화 시스템과 드라이아이스 공급을 현장 조건에 맞게 구성합니다.</p>
+        <p class="prd-hero-note">장비를 하나씩 판매하는 것이 아니라, 고객의 사용량과 공정, 생산 조건에 맞는 전체 시스템을 검토합니다.</p>
+        <div class="prd-hero-btns">
+          <a class="cta-btn" href="#prd-solutions">제품·시스템 보기 →</a>
+          <a class="cmp-btn-ghost" href="compare-equip.html">장비 추천받기 →</a>
+        </div>
+        <div class="prd-hero-trust"><img src="../assets/img/coldjet-logo.png" alt="Cold Jet" />Cold Jet 대한민국 공식 대리점 · 설치 · 교육 · A/S · 드라이아이스 공급</div>
+      </div>
+      <div class="prd-hero-media">
+        <figure class="is-tall"><img src="../assets/img/blaster-operator-t.png" alt="Cold Jet 드라이아이스 블라스터로 세척하는 작업자" /><figcaption>DRY ICE BLASTER</figcaption></figure>
+        <figure><img src="../assets/img/stackdo-pelletizer.jpg" alt="Cold Jet 펠렛타이저" /><figcaption>PELLETIZER</figcaption></figure>
+        <figure><img src="../assets/img/stackdo-automation.jpg" alt="자동화 드라이아이스 세척 시스템" /><figcaption>AUTOMATION</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOLUTION ARCHITECTURE ============ -->
+  <section class="prd-arch">
+    <div class="wrap prd-arch-grid">
+      <div>
+        <span class="cmp-eyebrow">SOLUTION ARCHITECTURE</span>
+        <h2>필요한 것은<br>장비 한 대가 아니라,<br>공정에 맞는 구성입니다.</h2>
+      </div>
+      <div class="prd-arch-body">
+        <p>세척 대상과 오염물, 압축공기 조건, 드라이아이스 사용량, 생산량과 자동화 수준에 따라 필요한 시스템은 달라집니다.</p>
+        <p>VATEK은 세척부터 드라이아이스 생산, CO<sub>2</sub> 회수와 자동화까지 전체 운용 조건을 함께 검토합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SYSTEM ARCHITECTURE MAP ============ -->
+  <section class="prd-map">
+    <div class="wrap">
+      <div class="prd-map-head">
+        <span class="cmp-eyebrow">SYSTEM ARCHITECTURE</span>
+        <h2>VATEK이 구성할 수 있는<br>시스템의 흐름입니다.</h2>
+      </div>
+      <div class="prd-map-grid">
+        <div class="prd-map-card">
+          <b>A · 구매하여 사용</b>
+          <div class="prd-map-flow">
+            <div class="prd-map-node"><img src="../assets/img/adopt-pelletizer.jpg" alt="" />드라이아이스 공급</div>
+            <div class="prd-map-arrow">↓</div>
+            <div class="prd-map-node"><img src="../assets/img/stackdo-blaster.jpg" alt="" />드라이아이스 블라스터</div>
+            <div class="prd-map-arrow">↓</div>
+            <div class="prd-map-node"><div class="ph"></div>세척 작업</div>
+          </div>
+        </div>
+        <div class="prd-map-card">
+          <b>B · 직접 생산</b>
+          <div class="prd-map-flow">
+            <div class="prd-map-node"><div class="ph"></div>액체 CO2</div>
+            <div class="prd-map-arrow">↓</div>
+            <div class="prd-map-node"><img src="../assets/img/stackdo-pelletizer.jpg" alt="" />펠렛타이저</div>
+            <div class="prd-map-arrow">↓</div>
+            <div class="prd-map-node"><div class="ph"></div>드라이아이스</div>
+            <div class="prd-map-arrow">↓</div>
+            <div class="prd-map-node"><img src="../assets/img/stackdo-blaster.jpg" alt="" />블라스터 · 세척</div>
+          </div>
+        </div>
+        <div class="prd-map-card">
+          <b>C · CO2 회수</b>
+          <div class="prd-map-flow">
+            <div class="prd-map-node"><img src="../assets/img/stackdo-pelletizer.jpg" alt="" />펠렛타이저</div>
+            <div class="prd-map-arrow">↓</div>
+            <div class="prd-map-node"><div class="ph"></div>배출 CO2</div>
+            <div class="prd-map-arrow">↓</div>
+            <div class="prd-map-node"><div class="ph"></div>CO2 리커버리</div>
+            <div class="prd-map-arrow">↓</div>
+            <div class="prd-map-node"><div class="ph"></div>액체 CO2</div>
+            <div class="prd-map-loop">↺ 펠렛타이저로 재투입</div>
+          </div>
+        </div>
+        <div class="prd-map-card">
+          <b>D · 자동화</b>
+          <div class="prd-map-flow">
+            <div class="prd-map-node"><img src="../assets/img/stackdo-pelletizer.jpg" alt="" />드라이아이스 생산</div>
+            <div class="prd-map-node"><div class="ph"></div>입자 제어</div>
+            <div class="prd-map-node"><img src="../assets/img/stackdo-blaster.jpg" alt="" />블라스팅 시스템</div>
+            <div class="prd-map-node"><img src="../assets/img/stackdo-automation.jpg" alt="" />로봇 · 생산라인</div>
+            <div class="prd-map-arrow">↓</div>
+            <div class="prd-map-node"><b style="font-weight:800">자동화 세척</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OUR SOLUTIONS ============ -->
+  <section class="prd-solutions" id="prd-solutions">
+    <div class="wrap">
+      <div class="prd-sol-head">
+        <div>
+          <span class="cmp-eyebrow">OUR SOLUTIONS</span>
+          <h2>필요한 구성만 선택하세요.</h2>
+        </div>
+      </div>
+      <div class="prd-sol-grid">
+        <a class="prd-sol-card" href="blaster/index.html">
+          <div class="prd-sol-media"><img src="../assets/img/stackdo-blaster.jpg" alt="드라이아이스 세척기" loading="lazy" /></div>
+          <div class="prd-sol-body">
+            <span class="prd-sol-num">01 / DRY ICE BLASTERS</span>
+            <h3>드라이아이스 세척기</h3>
+            <p>정밀 세정부터 강한 산업 오염 제거까지, 세척 대상과 필요한 세정력에 맞는 Cold Jet 블라스터를 선택합니다.</p>
+            <span class="prd-sol-kw">Smart · Pellet · MicroParticle · Specialty</span>
+            <span class="prd-sol-cta">블라스터 살펴보기 →</span>
+          </div>
+        </a>
+        <a class="prd-sol-card" href="pelletizer/index.html">
+          <div class="prd-sol-media"><img src="../assets/img/stackdo-pelletizer.jpg" alt="드라이아이스 제조기" loading="lazy" /></div>
+          <div class="prd-sol-body">
+            <span class="prd-sol-num">02 / DRY ICE PRODUCTION</span>
+            <h3>드라이아이스 제조기</h3>
+            <p>액체 CO2를 이용해 필요한 곳에서 신선한 드라이아이스를 직접 생산하는 펠렛타이저 시스템입니다.</p>
+            <span class="prd-sol-kw">On-demand production · Pelletizers</span>
+            <span class="prd-sol-cta">펠렛타이저 살펴보기 →</span>
+          </div>
+        </a>
+        <a class="prd-sol-card" href="recovery/index.html">
+          <div class="prd-sol-media img-ph" style="display:flex;align-items:center;justify-content:center;">[제품 이미지]</div>
+          <div class="prd-sol-body">
+            <span class="prd-sol-num">03 / CO2 RECOVERY</span>
+            <h3>CO2 리커버리</h3>
+            <p>드라이아이스 생산 과정에서 배출되는 CO2 가스를 회수·액화하여 다시 드라이아이스 생산에 활용할 수 있도록 구성하는 시스템입니다.</p>
+            <span class="prd-sol-kw">Recover · Reuse · CO2 utilization</span>
+            <span class="prd-sol-cta">CO2 리커버리 살펴보기 →</span>
+          </div>
+        </a>
+        <a class="prd-sol-card is-featured" href="automation.html">
+          <div class="prd-sol-media"><img src="../assets/img/stackdo-automation.jpg" alt="자동화 시스템" loading="lazy" /></div>
+          <div class="prd-sol-body">
+            <span class="prd-sol-num">04 / AUTOMATION</span>
+            <h3>자동화 시스템</h3>
+            <p>드라이아이스 블라스팅을 로봇과 생산라인에 통합하여 반복 세척, 표면 전처리 및 부품 마감 공정을 자동화합니다.</p>
+            <span class="prd-sol-kw">Robot integration · COMBI PCS</span>
+            <span class="prd-sol-cta">자동화 시스템 보기 →</span>
+          </div>
+        </a>
+        <a class="prd-sol-card" href="nozzle.html">
+          <div class="prd-sol-media"><img src="../assets/img/blaster-operator-t.png" alt="노즐·액세서리" loading="lazy" /></div>
+          <div class="prd-sol-body">
+            <span class="prd-sol-num">05 / NOZZLES &amp; ACCESSORIES</span>
+            <h3>노즐·액세서리</h3>
+            <p>같은 장비라도 노즐, 호스와 Applicator 구성에 따라 세정 범위와 작업성, 세정 효율이 달라집니다.</p>
+            <span class="prd-sol-kw">Nozzles · Applicators · Hoses</span>
+            <span class="prd-sol-cta">노즐·액세서리 보기 →</span>
+          </div>
+        </a>
+        <a class="prd-sol-card" href="supply.html">
+          <div class="prd-sol-media"><img src="../assets/img/adopt-pelletizer.jpg" alt="드라이아이스 구매·공급" loading="lazy" /></div>
+          <div class="prd-sol-body">
+            <span class="prd-sol-num">06 / DRY ICE SUPPLY</span>
+            <h3>드라이아이스 구매·공급</h3>
+            <p>장비 운용에 필요한 드라이아이스를 정기 공급부터 필요 시 단건 구매까지 지원합니다.</p>
+            <span class="prd-sol-kw">Dry ice · Regular supply</span>
+            <span class="prd-sol-cta">드라이아이스 공급 안내 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT DO YOU NEED ============ -->
+  <section class="prd-need">
+    <div class="wrap">
+      <span class="cmp-eyebrow">WHAT DO YOU NEED?</span>
+      <h2>무엇이 필요하신가요?</h2>
+      <div class="prd-need-list">
+        <a class="prd-need-row" href="blaster/index.html"><span class="prd-need-q">세척 장비가 필요합니다</span><span class="prd-need-a">드라이아이스 블라스터 →</span></a>
+        <a class="prd-need-row" href="pelletizer/index.html"><span class="prd-need-q">드라이아이스 사용량이 많아 직접 생산하고 싶습니다</span><span class="prd-need-a">펠렛타이저 →</span></a>
+        <a class="prd-need-row" href="recovery/index.html"><span class="prd-need-q">드라이아이스 생산 시 CO2 사용 효율을 높이고 싶습니다</span><span class="prd-need-a">CO2 리커버리 →</span></a>
+        <a class="prd-need-row" href="automation.html"><span class="prd-need-q">세척 공정을 로봇·생산라인에 넣고 싶습니다</span><span class="prd-need-a">자동화 시스템 →</span></a>
+        <a class="prd-need-row" href="nozzle.html"><span class="prd-need-q">현재 장비의 세정 성능과 작업성을 개선하고 싶습니다</span><span class="prd-need-a">노즐·액세서리 →</span></a>
+        <a class="prd-need-row" href="supply.html"><span class="prd-need-q">드라이아이스를 안정적으로 공급받고 싶습니다</span><span class="prd-need-a">드라이아이스 공급 →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUTOMATION SPOTLIGHT ============ -->
+  <section class="prd-auto">
+    <div class="wrap">
+      <div class="prd-auto-head">
+        <span class="cmp-eyebrow">FROM MANUAL TO FULL AUTOMATION</span>
+        <h2>작업자가 사용하는 한 대의 장비에서,<br>완전 자동화 생산라인까지.</h2>
+      </div>
+      <div class="prd-auto-grid">
+        <div class="prd-auto-card">
+          <span class="prd-auto-lv">LEVEL 01</span>
+          <h3>MANUAL CLEANING</h3>
+          <p>작업자가 이동형 블라스터를 직접 사용합니다.</p>
+          <div class="prd-auto-tags"><span>Flexible</span><span>Mobile</span><span>Multi-purpose</span></div>
+        </div>
+        <div class="prd-auto-card">
+          <span class="prd-auto-lv">LEVEL 02</span>
+          <h3>ROBOT INTEGRATED</h3>
+          <p>블라스터를 기존 로봇 셀 또는 생산설비와 연동합니다.</p>
+          <div class="prd-auto-tags"><span>Repeatability</span><span>Process Control</span><span>Line Integration</span></div>
+        </div>
+        <div class="prd-auto-card">
+          <span class="prd-auto-lv">LEVEL 03</span>
+          <h3>FULLY INTEGRATED</h3>
+          <p>드라이아이스 생산 + 입자 제어 + 블라스팅 + 로봇·생산라인까지 하나로 연결합니다.</p>
+          <div class="prd-auto-tags"><span>Continuous</span><span>Automated</span><span>COMBI PCS</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLD JET TECHNOLOGY ============ -->
+  <section class="prd-tech">
+    <div class="wrap">
+      <span class="cmp-eyebrow">COLD JET TECHNOLOGY</span>
+      <h2>장비 성능은 디테일에서 달라집니다.</h2>
+      <div class="prd-tech-grid">
+        <div class="prd-tech-card"><h3>FEEDER TECHNOLOGY</h3><p>드라이아이스 입자의 품질과 안정적인 공급을 고려한 공급 기술입니다.</p></div>
+        <div class="prd-tech-card"><h3>NOZZLE TECHNOLOGY</h3><p>작업 조건에 따라 분사 패턴과 세정 효율을 최적화하는 노즐 구성입니다.</p></div>
+        <div class="prd-tech-card"><h3>PARTICLE CONTROL</h3><p>민감한 표면부터 강한 오염까지 작업 목적에 맞게 입자 크기를 제어합니다.</p></div>
+        <div class="prd-tech-card"><h3>SYSTEM INTEGRATION</h3><p>블라스터부터 생산·회수·자동화 시스템까지 연결 가능한 시스템 구성입니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VATEK SUPPORT ============ -->
+  <section class="prd-support">
+    <div class="wrap">
+      <div class="prd-support-head">
+        <span class="cmp-eyebrow">VATEK SUPPORT</span>
+        <h2>제품을 공급하는 데서 끝나지 않습니다.</h2>
+        <p>실제 현장에서 장비가 제대로 작동하려면 제품 선택뿐 아니라 압축공기, 전원, CO2 공급, 설치 공간, 노즐 구성과 작업 조건을 함께 검토해야 합니다.</p>
+      </div>
+      <div class="prd-process">
+        <div class="prd-process-step"><div class="num">1</div><h4>공정 검토</h4></div>
+        <div class="prd-process-step"><div class="num">2</div><h4>세척 테스트·데모</h4></div>
+        <div class="prd-process-step"><div class="num">3</div><h4>장비·시스템 선정</h4></div>
+        <div class="prd-process-step"><div class="num">4</div><h4>설치·시운전</h4></div>
+        <div class="prd-process-step"><div class="num">5</div><h4>운영 교육</h4></div>
+        <div class="prd-process-step"><div class="num">6</div><h4>A/S · 기술지원</h4></div>
+      </div>
+      <p class="prd-support-final">도입 검토부터 현장 적용, 교육과 A/S까지 바테크가 전 과정을 지원합니다.</p>
+    </div>
+  </section>
+
+  <!-- ============ PURCHASE SUPPORT ============ -->
+  <section class="prd-purchase">
+    <div class="wrap">
+      <div class="prd-purchase-head">PURCHASE SUPPORT</div>
+      <div class="prd-purchase-grid">
+        <a class="prd-util-card" href="compare-equip.html"><h4>장비 비교·추천받기</h4><p>어떤 장비가 적합한지 현장 조건을 기준으로 비교해보세요.</p><span>비교해보기 →</span></a>
+        <a class="prd-util-card" href="process.html"><h4>구매 프로세스 안내</h4><p>테스트와 검토부터 견적, 계약, 설치까지 도입 절차를 확인하세요.</p><span>절차 보기 →</span></a>
+        <a class="prd-util-card" href="quote.html"><h4>견적 요청</h4><p>세척 대상과 현장 조건을 알려주시면 적합한 구성과 견적을 안내합니다.</p><span>견적 요청하기 →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="prd-cta">
+    <div class="wrap">
+      <span class="cmp-eyebrow" style="color:rgba(255,255,255,0.75)">FIND THE RIGHT SYSTEM</span>
+      <h2>어떤 장비가 필요한지<br>아직 결정하지 않으셔도 됩니다.</h2>
+      <p>세척 대상과 오염물, 드라이아이스 사용량과 현장 조건을 알려주세요. 필요한 장비와 시스템 구성을 함께 검토해드립니다.</p>
+      <div class="prd-cta-btns">
+        <a class="cta-btn" href="compare-equip.html">장비 추천받기 →</a>
+        <a class="cmp-btn-ghost" href="../rental/demo.html">세척 테스트·데모 신청 →</a>
+      </div>
+    </div>
+  </section>
+"""
+
+
 MENU = [
     {
         # (2026-09-03, 메가메뉴) 클로드 디자인 핸드오프 요청으로 "세척이란" →
@@ -11782,6 +12064,10 @@ MENU = [
         "tagline": "세척기부터 제조기, 자동화 시스템, 소모품 공급까지 한 번에 확인하세요.",
         "nav_eyebrow": "PRODUCTS",
         "nav_intro": "세척기부터 제조기, 자동화까지 필요한 장비를 만나보세요.",
+        "full_custom_body": True,
+        "page_title": "제품·자동화·공급",
+        "page_desc": "Cold Jet 드라이아이스 블라스터, 펠렛타이저, CO2 리커버리, 자동화 시스템과 드라이아이스 공급까지 — 현장 조건에 맞는 시스템을 구성합니다.",
+        "body": PRODUCTS_HUB_BODY,
         "subs": [
             {"slug": "blaster", "title": "드라이아이스 세척기 (블라스터)",
              "desc": "스마트 · 펠릿 · 마이크로파티클 · 특수 목적, 4개 카테고리 8개 모델 라인업을 소개합니다.",
@@ -11999,15 +12285,99 @@ def megamenu_html(m, depth):
   </div>"""
 
 
-def nav_html(depth, active_code=None):
+# (2026-09-09, 14차 핸드오프 — 통합 최종본) products 메가메뉴 전면 재설계.
+# EQUIPMENT & SYSTEMS 5개 + SUPPLY & BUYING GUIDE 4개 2그룹 구조와 하단
+# 트러스트 스트립은 기존 megamenu_html()의 단일 flat 리스트 템플릿으로
+# 표현할 수 없어 products 전용으로 별도 구성한다. products/index.html
+# 자기 자신을 렌더링할 때만(at_root=True) 같은 products/ 디렉터리 내
+# 형제 페이지로의 링크를 "blaster/index.html"처럼 상대경로로 줄이고,
+# 그 외 모든 페이지에서는 기존과 동일하게 asset("products/...", depth)로
+# 계산한다(핸드오프 원본 HTML과 재조립 대조로 두 경우 모두 확인됨).
+PRODUCTS_MEGA_ITEMS = [
+    ("blaster", True, "드라이아이스 세척기 (블라스터)",
+     "정밀 세정부터 강한 산업 오염 제거까지, 세척 대상에 맞는 Cold Jet 블라스터를 선택합니다.",
+     "assets/img/stackdo-blaster.jpg", "EQUIPMENT & SYSTEMS"),
+    ("pelletizer", True, "드라이아이스 제조기 (펠렛타이저)",
+     "액체 CO2를 이용해 필요한 곳에서 신선한 드라이아이스를 직접 생산하는 펠렛타이저 시스템입니다.",
+     "assets/img/stackdo-pelletizer.jpg", None),
+    ("recovery", True, "CO2 리커버리",
+     "드라이아이스 생산 중 배출되는 CO2 가스를 회수·액화해 다시 생산에 활용하는 시스템입니다.",
+     None, None),
+    ("automation", False, "자동화 시스템",
+     "드라이아이스 블라스팅을 로봇과 생산라인에 통합해 반복 세척과 표면 전처리를 자동화합니다.",
+     "assets/img/stackdo-automation.jpg", None),
+    ("nozzle", False, "노즐·액세서리",
+     "노즐과 호스, Applicator 구성에 따라 세정 범위와 작업성, 세정 효율이 달라집니다.",
+     "assets/img/blaster-operator-t.png", None),
+    ("supply", False, "드라이아이스 구매·공급",
+     "장비 운용에 필요한 드라이아이스를 정기 공급부터 필요 시 단건 구매까지 지원합니다.",
+     "assets/img/adopt-pelletizer.jpg", "SUPPLY & BUYING GUIDE"),
+    ("compare-equip", False, "장비 비교·추천받기",
+     "어떤 장비가 적합한지 현장 조건을 기준으로 비교해보세요.", None, None),
+    ("process", False, "구매 프로세스 안내",
+     "테스트와 검토부터 견적, 계약, 설치까지 도입 절차를 확인하세요.", None, None),
+    ("quote", False, "견적 요청",
+     "세척 대상과 현장 조건을 알려주시면 적합한 구성과 견적을 안내합니다.", None, None),
+]
+
+
+def products_megamenu_html(depth, at_root=False):
+    items_html = []
+    for i, (slug, is_group, title, desc, nav_img, group_label) in enumerate(PRODUCTS_MEGA_ITEMS):
+        if group_label:
+            items_html.append(f'<li class="megamenu-index-group">{group_label.replace("&", "&amp;")}</li>')
+        active = " is-active" if i == 0 else ""
+        if at_root:
+            href = slug + ("/index.html" if is_group else ".html")
+        else:
+            href = asset("products/" + slug + ("/index.html" if is_group else ".html"), depth)
+        img_attr = f' data-img="{asset(nav_img, depth)}"' if nav_img else ""
+        items_html.append(
+            f'<li class="megamenu-index-item{active}" data-i="{i}"><a href="{href}" data-desc="{desc}"{img_attr}>{title}</a></li>'
+        )
+    first_slug, first_is_group, first_title, first_desc, first_img, _ = PRODUCTS_MEGA_ITEMS[0]
+    first_href = (first_slug + "/index.html") if at_root else asset("products/" + first_slug + "/index.html", depth)
+    preview_bg = asset(first_img, depth)
+    joined = '\n          '.join(items_html)
+    return f"""<div class="megamenu" data-menu="products">
+    <div class="megamenu-inner">
+      <div class="megamenu-intro">
+        <span class="megamenu-eyebrow">PRODUCTS · AUTOMATION · SUPPLY</span>
+        <h3>세척부터 생산·회수·자동화까지</h3>
+        <p>현장과 생산 조건에 맞는 드라이아이스 시스템을 구성합니다.</p>
+      </div>
+      <div class="megamenu-index">
+        <span class="megamenu-index-label">MENU INDEX</span>
+        <ul class="megamenu-index-list">
+          <span class="megamenu-index-highlight" aria-hidden="true"></span>
+          {joined}
+        </ul>
+        <div class="megamenu-trust-strip">
+          <span>Cold Jet 대한민국 공식 대리점</span><span>세척 테스트·데모</span><span>설치·시운전</span><span>교육·A/S</span>
+        </div>
+      </div>
+      <div class="megamenu-preview">
+        <div class="megamenu-preview-img is-active" data-i="0"><div class="megamenu-preview-img-bg is-shown" style="background-image:url('{preview_bg}')"></div></div>
+      </div>
+      <div class="megamenu-detail">
+        <span class="megamenu-detail-title">{first_title}</span>
+        <p class="megamenu-detail-desc">{first_desc}</p>
+        <a class="megamenu-detail-link" href="{first_href}">자세히 보기 →</a>
+      </div>
+    </div>
+  </div>"""
+
+
+def nav_html(depth, active_code=None, is_products_hub=False):
     items = []
     for m in MENU:
         li_active = " active" if m["code"] == active_code else ""
         hub_href = asset(f"{m['code']}/index.html", depth)
+        menu_block = products_megamenu_html(depth, is_products_hub) if m["code"] == "products" else megamenu_html(m, depth)
         items.append(
             f'<li class="{li_active.strip()}">'
             f'<a href="{hub_href}">{m["label"]}<span class="nav-chevron" aria-hidden="true"></span></a>'
-            f'{megamenu_html(m, depth)}'
+            f'{menu_block}'
             f'</li>'
         )
     quote_href = asset("products/quote.html", depth)
@@ -12117,7 +12487,7 @@ INTRO_GATE_SCRIPT = """<script>
 """
 
 
-def page_shell(title, description, depth, active_code, body, is_home=False, extra_script=""):
+def page_shell(title, description, depth, active_code, body, is_home=False, extra_script="", is_products_hub=False):
     body_class = ' class="home"' if is_home else ""
     intro_gate = INTRO_GATE_SCRIPT if is_home else ""
     return f"""<!doctype html>
@@ -12130,7 +12500,7 @@ def page_shell(title, description, depth, active_code, body, is_home=False, extr
 <link rel="stylesheet" href="{asset('assets/css/style.css', depth)}" />
 </head>
 <body{body_class}>
-{nav_html(depth, active_code)}
+{nav_html(depth, active_code, is_products_hub)}
 {body}
 {footer_html(depth)}{extra_script}
 </body>
@@ -12144,6 +12514,22 @@ def page_shell(title, description, depth, active_code, body, is_home=False, extr
 
 def build_hub_page(m):
     depth = 1
+    if m.get("full_custom_body"):
+        # (2026-09-09, 14차 핸드오프 — 통합 최종본) products/index.html 전면
+        # 리디자인 — 기존 sub_grid 카드 나열 허브 템플릿 대신 핸드오프 본문
+        # 전체(히어로~FINAL CTA)를 있는 그대로 사용. is_products_hub=True로
+        # nav_html()에 전달해 자기 자신에 대한 products 메가메뉴 링크만
+        # products/ 디렉터리 상대경로로 줄인다(§ products_megamenu_html 참고).
+        html = page_shell(
+            m.get("page_title", m["label"]),
+            m.get("page_desc", m["tagline"]),
+            depth, m["code"], m["body"],
+            extra_script=m.get("extra_script", ""),
+            is_products_hub=True,
+        )
+        with open(os.path.join(ROOT, m["code"], "index.html"), "w", encoding="utf-8") as f:
+            f.write(html)
+        return
     cards = ""
     for s in m["subs"]:
         href = f"{s['slug']}/index.html" if s.get("is_group") else f"{s['slug']}.html"
