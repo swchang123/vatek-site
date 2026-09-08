@@ -650,9 +650,10 @@ COMPARE_RAIL_SCRIPT = """  <script>
   </script>
 """
 
-# (2026-09-07, 6차 디자인 개선 핸드오프 "산업별 솔루션") compare.html과 같은
-# 편집형 구조(패럴랙스 히어로 + .cmp-panel 인트로 + 22개 사진 카드 .ind-grid +
-# 신뢰 섹션 .cmp-dark + CTA + 함께 보면 좋은 페이지). 22개 카드의 영문 분류·
+# (2026-09-07 6차 → 2026-09-08 7차 핸드오프 "산업별 솔루션") compare.html과 같은
+# 편집형 구조(패럴랙스 히어로 + .cmp-panel 인트로 + 01 주요 산업 16 카드 / 02 산업
+# 공통 유지보수 Featured / 03 전문 세척·복원 리스트 + APPLICATION ENGINEERING
+# 어두운 섹션 + CTA + 함께 보면 좋은 페이지). 22개 카드의 영문 분류·
 # 키워드·설명문·slug는 핸드오프 HTML이 정본이라 데이터 배열로 풀지 않고
 # 본문을 통째로 보관한다(출력 HTML byte 동일). 카드 링크는 상세 페이지
 # (../industries/*.html)가 아직 없어 href="#" + data-target 로 둔다.
@@ -675,26 +676,32 @@ INDUSTRY_BODY = """
   <span class="cmp-eyebrow">INDUSTRIES</span>
   <h2 class="cmp-h2">산업마다 다른 세척 과제,<br>그에 맞는 솔루션이 필요합니다.</h2>
   <div class="cmp-lead">
-    <p>드라이아이스 세척은 하나의 고정된 방식으로 모든 산업에 동일하게 적용되지 않습니다.</p>
-    <p>오염물의 종류, 기재의 재질, 설비 구조와 공정 조건에 따라 적절한 장비와 운전 조건이 달라집니다. 해당 산업을 선택하면 주요 세척 대상과 적용 포인트를 자세히 확인할 수 있습니다.</p>
+    <p>드라이아이스 세척은 모든 산업에 하나의 방식으로 적용되지 않습니다.</p>
+    <p>오염물의 특성과 세척 대상의 재질, 설비 구조와 작업 환경, 원하는 결과에 따라 적합한 세척 조건과 적용 방법은 달라집니다.</p>
+    <p>각 산업을 선택하면 실제 생산 현장에서 무엇을 세척하는지, 어떤 오염물이 문제가 되는지, 드라이아이스 세척이 어떻게 활용되는지 확인할 수 있습니다.</p>
   </div>
-  <ul class="cmp-criteria ind-criteria reveal" aria-label="산업별 판단 요소">
+  <ul class="cmp-criteria ind-criteria reveal" aria-label="산업마다 달라지는 네 가지">
     <li><span>01</span><b>오염물</b><small>이형제 · 카본 · 오일 · 접착제 · 생산 잔류물</small></li>
-    <li><span>02</span><b>기재와 대상</b><small>금형 · 설비 · 부품 · 전기전자 · 완제품</small></li>
-    <li><span>03</span><b>공정 조건</b><small>온도 · 가동 여부 · 접근성 · 분해 여부</small></li>
-    <li><span>04</span><b>세정 목표</b><small>품질 · 표면 보호 · 다운타임 · 유지보수</small></li>
+    <li><span>02</span><b>세척 대상</b><small>금형 · 생산설비 · 부품 · 전기전자 · 제품 표면</small></li>
+    <li><span>03</span><b>작업 조건</b><small>온도 · 가동 여부 · 접근성 · 분해 여부</small></li>
+    <li><span>04</span><b>요구 결과</b><small>청정도 · 표면 보호 · 다운타임 · 유지보수</small></li>
   </ul>
 </div>
 </div>
 </div>
 
-<div class="cmp-section ind-hub">
-  <div class="ind-hub-head">
+<div class="cmp-section ind-hub" id="ind-core">
+  <span class="ind-ghost" aria-hidden="true">01</span>
+  <div class="cmp-vs-head ind-head">
+    <span class="cmp-num">01<span class="cmp-num-of">/ 03</span></span>
     <div>
-      <span class="cmp-eyebrow">OUR INDUSTRIES</span>
-      <h2 class="cmp-h2">주요 산업 분야</h2>
+      <span class="cmp-vs-title">CORE INDUSTRIES · 주요 산업 분야 16</span>
+      <h2 class="cmp-h2">자동차부터 광업까지,<br>주요 산업의 적용 분야</h2>
+      <div class="cmp-lead ind-lead">
+        <p>드라이아이스 세척은 자동차와 반도체부터 식품, 발전, 플랜트, 운송산업까지 다양한 생산 및 산업 현장에 적용됩니다.</p>
+        <p>각 산업마다 오염물, 세척 대상, 설비 구조와 공정 조건이 다릅니다. 해당 산업을 선택하면 주요 세척 대상과 적용 포인트를 상세 페이지에서 확인할 수 있습니다.</p>
+      </div>
     </div>
-    <p class="ind-hub-note">관심 있는 산업을 선택하면 해당 산업의 주요 세척 대상과 적용 방법을 상세 페이지에서 확인할 수 있습니다. Cold Jet의 웹사이트와 브로슈어 산업 분류를 통합해 정리했습니다.</p>
   </div>
   <div class="ind-grid">
     <a class="ind-card reveal" href="#" data-target="../industries/automotive.html" aria-label="자동차 제조 솔루션 보기" style="--reveal-delay:0s">
@@ -708,12 +715,12 @@ INDUSTRY_BODY = """
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/electronics-semiconductor.html" aria-label="반도체 · 전자 솔루션 보기" style="--reveal-delay:0.06s">
+    <a class="ind-card reveal" href="#" data-target="../industries/electronics-semiconductor.html" aria-label="반도체 · 전자 제조 솔루션 보기" style="--reveal-delay:0.06s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-semiconductor.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
         <span class="ind-card-num">02</span>
         <span class="ind-card-en">SEMICONDUCTOR & ELECTRONICS</span>
-        <h3>반도체 · 전자</h3>
+        <h3>반도체 · 전자 제조</h3>
         <p class="ind-card-kw">웨이퍼 공정 · CVD · 증착 툴링 · 진공펌프 · 이온주입기</p>
         <p class="ind-card-desc">웨이퍼 챔버와 공정 툴링의 미세 입자·오일·분진·연마제 잔류물 제거부터 반도체 몰딩 및 PCB 세정까지 정밀 세정에 활용됩니다.</p>
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
@@ -752,43 +759,21 @@ INDUSTRY_BODY = """
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/foundry.html" aria-label="주조 솔루션 보기" style="--reveal-delay:0.06s">
+    <a class="ind-card reveal" href="#" data-target="../industries/foundry.html" aria-label="주조 · 다이캐스팅 솔루션 보기" style="--reveal-delay:0.06s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-foundry.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
         <span class="ind-card-num">06</span>
-        <span class="ind-card-en">FOUNDRY</span>
-        <h3>주조</h3>
+        <span class="ind-card-en">FOUNDRY & DIE CASTING</span>
+        <h3>주조 · 다이캐스팅</h3>
         <p class="ind-card-kw">영구금형 · 코어박스 · 다이캐스팅 금형 · 주조설비</p>
         <p class="ind-card-desc">수지·바인더·이형제·내화 코팅과 다이 윤활제 등을 제거하면서 정밀한 금형면과 벤트의 형상을 보호합니다.</p>
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/power.html" aria-label="발전 솔루션 보기" style="--reveal-delay:0.12s">
-      <div class="ind-card-media"><img src="../assets/img/ind-card-power.png" alt="" loading="lazy" /></div>
-      <div class="ind-card-body">
-        <span class="ind-card-num">07</span>
-        <span class="ind-card-en">POWER GENERATION</span>
-        <h3>발전</h3>
-        <p class="ind-card-kw">터빈 · 발전기 · HRSG · 변압기 · 전기설비 · 원자력 · 제염</p>
-        <p class="ind-card-desc">터빈과 발전기, 보일러·열교환 설비부터 권선·변압기·스위치기어까지 발전설비의 정비와 예방보전에 활용되며, 원자력 시설의 방사성 오염 제염에도 2차 폐기물 없이 적용됩니다.</p>
-        <span class="ind-card-more">솔루션 보기 <i>→</i></span>
-      </div>
-    </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/general-manufacturing.html" aria-label="일반 제조 · 시설관리 솔루션 보기" style="--reveal-delay:0.18s">
-      <div class="ind-card-media"><img src="../assets/img/ind-card-maintenance.png" alt="" loading="lazy" /></div>
-      <div class="ind-card-body">
-        <span class="ind-card-num">08</span>
-        <span class="ind-card-en">GENERAL MAINTENANCE & FACILITIES</span>
-        <h3>일반 제조 · 시설관리</h3>
-        <p class="ind-card-kw">컨베이어 · 로봇 · 모터 · 열교환기 · 제어반</p>
-        <p class="ind-card-desc">생산라인과 보조설비의 오일·그리스·분진·공정 잔류물을 제거하고, 전기설비와 공장 인프라의 유지보수에도 폭넓게 적용됩니다.</p>
-        <span class="ind-card-more">솔루션 보기 <i>→</i></span>
-      </div>
-    </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/aerospace.html" aria-label="우주 · 항공 솔루션 보기" style="--reveal-delay:0s">
+    <a class="ind-card reveal" href="#" data-target="../industries/aerospace.html" aria-label="우주 · 항공 솔루션 보기" style="--reveal-delay:0.12s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-aerospace.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">09</span>
+        <span class="ind-card-num">07</span>
         <span class="ind-card-en">AEROSPACE & AVIATION</span>
         <h3>우주 · 항공</h3>
         <p class="ind-card-kw">복합재 툴링 · 금형 · 접착제 제거 · 표면 전처리</p>
@@ -796,32 +781,43 @@ INDUSTRY_BODY = """
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/medical.html" aria-label="의료기기 솔루션 보기" style="--reveal-delay:0.06s">
+    <a class="ind-card reveal" href="#" data-target="../industries/medical.html" aria-label="의료기기 제조 솔루션 보기" style="--reveal-delay:0.18s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-medical.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">10</span>
-        <span class="ind-card-en">MEDICAL EQUIPMENT</span>
-        <h3>의료기기</h3>
+        <span class="ind-card-num">08</span>
+        <span class="ind-card-en">MEDICAL DEVICE MANUFACTURING</span>
+        <h3>의료기기 제조</h3>
         <p class="ind-card-kw">정밀금형 · 임플란트 · 스텐트 · 카테터 · 의료부품</p>
         <p class="ind-card-desc">의료용 금형 세척과 함께 임플란트, 스텐트, 카테터 팁 등 정밀 의료부품의 디버링·디플래싱 및 클린룸 제조공정에 적용됩니다.</p>
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/oil-gas.html" aria-label="석유 · 가스 솔루션 보기" style="--reveal-delay:0.12s">
+    <a class="ind-card reveal" href="#" data-target="../industries/power.html" aria-label="발전 · 전력 솔루션 보기" style="--reveal-delay:0s">
+      <div class="ind-card-media"><img src="../assets/img/ind-card-power.png" alt="" loading="lazy" /></div>
+      <div class="ind-card-body">
+        <span class="ind-card-num">09</span>
+        <span class="ind-card-en">POWER GENERATION</span>
+        <h3>발전 · 전력</h3>
+        <p class="ind-card-kw">터빈 · 발전기 · HRSG · 변압기 · 전기설비 · 원자력 · 제염</p>
+        <p class="ind-card-desc">터빈과 발전기, 보일러·열교환 설비부터 권선·변압기·스위치기어까지 발전설비의 정비와 예방보전에 활용되며, 원자력 시설의 방사성 오염 제염에도 2차 폐기물 없이 적용됩니다.</p>
+        <span class="ind-card-more">솔루션 보기 <i>→</i></span>
+      </div>
+    </a>
+    <a class="ind-card reveal" href="#" data-target="../industries/oil-gas.html" aria-label="오일 · 가스 솔루션 보기" style="--reveal-delay:0.06s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-oilgas.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">11</span>
+        <span class="ind-card-num">10</span>
         <span class="ind-card-en">OIL & GAS</span>
-        <h3>석유 · 가스</h3>
+        <h3>오일 · 가스</h3>
         <p class="ind-card-kw">배관 · 탱크 · 열교환기 · 펌프 · 플랜트 설비</p>
         <p class="ind-card-desc">원유·중유, 역청, 파라핀, 카본과 염류 등 플랜트 오염물을 제거하고 점검·보수·재도장 전 표면 세정에 활용됩니다.</p>
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/packaging.html" aria-label="포장 솔루션 보기" style="--reveal-delay:0.18s">
+    <a class="ind-card reveal" href="#" data-target="../industries/packaging.html" aria-label="포장 솔루션 보기" style="--reveal-delay:0.12s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-packaging.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">12</span>
+        <span class="ind-card-num">11</span>
         <span class="ind-card-en">PACKAGING</span>
         <h3>포장</h3>
         <p class="ind-card-kw">포장기 · 라벨러 · 접착제 노즐 · 컨베이어 · 실링설비</p>
@@ -829,10 +825,10 @@ INDUSTRY_BODY = """
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/printing.html" aria-label="인쇄 솔루션 보기" style="--reveal-delay:0s">
+    <a class="ind-card reveal" href="#" data-target="../industries/printing.html" aria-label="인쇄 솔루션 보기" style="--reveal-delay:0.18s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-printing.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">13</span>
+        <span class="ind-card-num">12</span>
         <span class="ind-card-en">PRINTING</span>
         <h3>인쇄</h3>
         <p class="ind-card-kw">인쇄기 · 롤러 · 잉크 트레이 · 기어 · 피더</p>
@@ -840,10 +836,10 @@ INDUSTRY_BODY = """
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/textiles.html" aria-label="섬유 솔루션 보기" style="--reveal-delay:0.06s">
+    <a class="ind-card reveal" href="#" data-target="../industries/textiles.html" aria-label="섬유 솔루션 보기" style="--reveal-delay:0s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-textile.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">14</span>
+        <span class="ind-card-num">13</span>
         <span class="ind-card-en">TEXTILES</span>
         <h3>섬유</h3>
         <p class="ind-card-kw">카딩기 · 방적기 · 직기 · 텐터 · 염색 롤러</p>
@@ -851,10 +847,10 @@ INDUSTRY_BODY = """
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/engineered-wood.html" aria-label="엔지니어드 우드 솔루션 보기" style="--reveal-delay:0.12s">
+    <a class="ind-card reveal" href="#" data-target="../industries/engineered-wood.html" aria-label="엔지니어드 우드 솔루션 보기" style="--reveal-delay:0.06s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-wood.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">15</span>
+        <span class="ind-card-num">14</span>
         <span class="ind-card-en">ENGINEERED WOOD</span>
         <h3>엔지니어드 우드</h3>
         <p class="ind-card-kw">프레스 · 프레스 플레이트 · 건조기 · 접착제 도포설비</p>
@@ -862,65 +858,10 @@ INDUSTRY_BODY = """
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/contract-cleaning.html" aria-label="계약 청소 솔루션 보기" style="--reveal-delay:0.18s">
-      <div class="ind-card-media"><img src="../assets/img/ind-card-cleaning-service.png" alt="" loading="lazy" /></div>
-      <div class="ind-card-body">
-        <span class="ind-card-num">16</span>
-        <span class="ind-card-en">CONTRACT CLEANING</span>
-        <h3>계약 청소</h3>
-        <p class="ind-card-kw">산업설비 · 현장 세척 · 복원 · 전문 클리닝 서비스</p>
-        <p class="ind-card-desc">고객 현장의 설비와 오염 조건에 맞춰 산업세척, 유지보수, 복원·오염제거 작업을 제공하는 전문 서비스 분야입니다.</p>
-        <span class="ind-card-more">솔루션 보기 <i>→</i></span>
-      </div>
-    </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/restoration.html" aria-label="화재 · 수해 복원 솔루션 보기" style="--reveal-delay:0s">
-      <div class="ind-card-media"><img src="../assets/img/ind-card-fire-restoration.png" alt="" loading="lazy" /></div>
-      <div class="ind-card-body">
-        <span class="ind-card-num">17</span>
-        <span class="ind-card-en">FIRE & WATER RESTORATION</span>
-        <h3>화재 · 수해 복원</h3>
-        <p class="ind-card-kw">그을음 · 탄화물 · 연기 오염 · 수해 손상 · 악취</p>
-        <p class="ind-card-desc">화재 후 숯·그을음과 냄새의 원인이 되는 잔류물을 제거하고, 수해·침수로 오염된 구조물의 복원 세정에도 활용됩니다.</p>
-        <span class="ind-card-more">솔루션 보기 <i>→</i></span>
-      </div>
-    </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/mold-remediation.html" aria-label="곰팡이 제거 솔루션 보기" style="--reveal-delay:0.06s">
-      <div class="ind-card-media"><img src="../assets/img/ind-card-mold-removal.png" alt="" loading="lazy" /></div>
-      <div class="ind-card-body">
-        <span class="ind-card-num">18</span>
-        <span class="ind-card-en">MOLD REMEDIATION</span>
-        <h3>곰팡이 제거</h3>
-        <p class="ind-card-kw">목재 구조물 · 다락 · 크롤스페이스 · 벽체 내부</p>
-        <p class="ind-card-desc">보와 장선, 못·배선 주변처럼 접근하기 어려운 곳의 곰팡이 오염을 물과 연마재 없이 제거하는 복원 공정에 활용됩니다.</p>
-        <span class="ind-card-more">솔루션 보기 <i>→</i></span>
-      </div>
-    </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/historical-restoration.html" aria-label="역사적 건축물 복원 솔루션 보기" style="--reveal-delay:0.12s">
-      <div class="ind-card-media"><img src="../assets/img/ind-card-heritage.png" alt="" loading="lazy" /></div>
-      <div class="ind-card-body">
-        <span class="ind-card-num">19</span>
-        <span class="ind-card-en">HISTORICAL RESTORATION</span>
-        <h3>역사적 건축물 복원</h3>
-        <p class="ind-card-kw">석재 · 벽돌 · 목재 · 금속 · 조형물 · 문화재</p>
-        <p class="ind-card-desc">오래된 건축물과 기념물, 박물관 유물의 오염·그을음·생물성 침착물을 제거하면서 원래 표면과 세부 형상을 보존합니다.</p>
-        <span class="ind-card-more">솔루션 보기 <i>→</i></span>
-      </div>
-    </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/automotive-detailing.html" aria-label="자동차 복원 · 디테일링 솔루션 보기" style="--reveal-delay:0.18s">
-      <div class="ind-card-media"><img src="../assets/img/ind-card-detailing.png" alt="" loading="lazy" /></div>
-      <div class="ind-card-body">
-        <span class="ind-card-num">20</span>
-        <span class="ind-card-en">AUTOMOTIVE RESTORATION & DETAILING</span>
-        <h3>자동차 복원 · 디테일링</h3>
-        <p class="ind-card-kw">하부 · 엔진룸 · 휠하우스 · 섀시 · 정밀부품</p>
-        <p class="ind-card-desc">오일, 그리스와 도로 오염물을 제거하면서 도장면·고무·전기부품 등 차량의 원래 마감과 디테일을 최대한 보존합니다.</p>
-        <span class="ind-card-more">솔루션 보기 <i>→</i></span>
-      </div>
-    </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/transit.html" aria-label="철도 · 대중교통 솔루션 보기" style="--reveal-delay:0s">
+    <a class="ind-card reveal" href="#" data-target="../industries/transit.html" aria-label="철도 · 대중교통 솔루션 보기" style="--reveal-delay:0.12s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-transit.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">21</span>
+        <span class="ind-card-num">15</span>
         <span class="ind-card-en">RAIL & PUBLIC TRANSPORTATION</span>
         <h3>철도 · 대중교통</h3>
         <p class="ind-card-kw">대차 · 차축 · 견인모터 · 제어반 · 전기설비</p>
@@ -928,16 +869,105 @@ INDUSTRY_BODY = """
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
-    <a class="ind-card reveal" href="#" data-target="../industries/mining.html" aria-label="채광 솔루션 보기" style="--reveal-delay:0.06s">
+    <a class="ind-card reveal" href="#" data-target="../industries/mining.html" aria-label="광업 솔루션 보기" style="--reveal-delay:0.18s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-mining.png" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">22</span>
+        <span class="ind-card-num">16</span>
         <span class="ind-card-en">MINING</span>
-        <h3>채광</h3>
+        <h3>광업</h3>
         <p class="ind-card-kw">크러셔 · 컨베이어 · 중장비 · 펌프 · 전기설비</p>
         <p class="ind-card-desc">채굴·선광·운송설비에 축적되는 광물분진, 오일·그리스와 카본을 제거하고 중장비 및 전기설비의 정비를 지원합니다.</p>
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
+    </a>
+  </div>
+</div>
+
+<div class="ind-feat" id="ind-maint">
+  <span class="ind-ghost" aria-hidden="true">02</span>
+  <div class="ind-feat-wrap">
+    <div class="cmp-vs-head ind-head">
+      <span class="cmp-num">02<span class="cmp-num-of">/ 03</span></span>
+      <div>
+        <span class="cmp-vs-title">CROSS-INDUSTRY MAINTENANCE · FACILITY MAINTENANCE</span>
+        <h2 class="cmp-h2">산업을 넘어 공통으로 필요한<br>설비·시설 유지보수</h2>
+        <div class="cmp-lead ind-lead">
+          <p>생산설비와 공장 인프라의 유지보수는 특정 산업에만 해당하지 않습니다.</p>
+          <p>컨베이어, 로봇, 모터, 열교환기, 제어반, 배관 및 각종 생산 지원설비처럼 거의 모든 제조현장에 공통으로 존재하는 설비도 드라이아이스 세척의 중요한 적용 대상입니다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="ind-feat-inner">
+      <div class="ind-feat-media reveal">
+        <img src="../assets/img/ind-card-maintenance.png" alt="생산설비와 공장 인프라의 유지보수 세척" loading="lazy" />
+        <span class="ind-feat-tag">CROSS-INDUSTRY · ALL PLANTS</span>
+      </div>
+      <div class="ind-feat-body reveal" style="--reveal-delay:0.12s">
+        <span class="ind-feat-label">대표 대상 <em>08</em></span>
+        <ul class="ind-feat-list">
+          <li>생산설비</li>
+          <li>산업용 로봇</li>
+          <li>컨베이어</li>
+          <li>모터 · 발전기</li>
+          <li>전기 · 제어반</li>
+          <li>열교환기 · 냉각설비</li>
+          <li>배관 · 공장 인프라</li>
+          <li>물류 · 운반장비</li>
+        </ul>
+        <a class="ind-feat-more" href="#" data-target="../industries/general-manufacturing.html" aria-label="일반 제조 · 시설관리 솔루션 보기">일반 제조 · 시설관리 솔루션 보기 <i>→</i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cmp-section ind-hub ind-svc" id="ind-svc">
+  <span class="ind-ghost" aria-hidden="true">03</span>
+  <div class="cmp-vs-head ind-head">
+    <span class="cmp-num">03<span class="cmp-num-of">/ 03</span></span>
+    <div>
+      <span class="cmp-vs-title">SPECIALIZED SERVICES &amp; RESTORATION · 전문 세척 · 복원 분야 5</span>
+      <h2 class="cmp-h2">생산공정 밖, 전문 세척과<br>복원 현장에서도 쓰입니다.</h2>
+      <div class="cmp-lead ind-lead">
+        <p>제조산업뿐 아니라 전문 산업세척, 재해복구, 오염 제거 및 복원 작업에도 드라이아이스 세척이 활용됩니다.</p>
+        <p>생산공정이 아닌 현장 서비스와 복원 작업의 관점에서 적용 범위를 확인해보세요.</p>
+      </div>
+    </div>
+  </div>
+  <div class="ind-list">
+    <a class="ind-row reveal" href="#" data-target="../industries/contract-cleaning.html" aria-label="전문 세척 서비스 솔루션 보기" style="--reveal-delay:0s">
+      <span class="ind-row-num">17</span>
+      <span class="ind-row-media"><img src="../assets/img/ind-card-cleaning-service.png" alt="" loading="lazy" /></span>
+      <span class="ind-row-title"><span class="ind-row-en">CONTRACT CLEANING</span><b>전문 세척 서비스</b></span>
+      <span class="ind-row-text"><span class="ind-row-kw">산업설비 · 현장 세척 · 복원 · 전문 클리닝 서비스</span><span class="ind-row-desc">고객 현장의 설비와 오염 조건에 맞춰 산업세척, 유지보수, 복원·오염제거 작업을 제공하는 전문 서비스 분야입니다.</span></span>
+      <span class="ind-row-more">솔루션 보기 <i>→</i></span>
+    </a>
+    <a class="ind-row reveal" href="#" data-target="../industries/restoration.html" aria-label="화재 · 수해 복원 솔루션 보기" style="--reveal-delay:0.06s">
+      <span class="ind-row-num">18</span>
+      <span class="ind-row-media"><img src="../assets/img/ind-card-fire-restoration.png" alt="" loading="lazy" /></span>
+      <span class="ind-row-title"><span class="ind-row-en">FIRE & WATER RESTORATION</span><b>화재 · 수해 복원</b></span>
+      <span class="ind-row-text"><span class="ind-row-kw">그을음 · 탄화물 · 연기 오염 · 수해 손상 · 악취</span><span class="ind-row-desc">화재 후 숯·그을음과 냄새의 원인이 되는 잔류물을 제거하고, 수해·침수로 오염된 구조물의 복원 세정에도 활용됩니다.</span></span>
+      <span class="ind-row-more">솔루션 보기 <i>→</i></span>
+    </a>
+    <a class="ind-row reveal" href="#" data-target="../industries/mold-remediation.html" aria-label="곰팡이 제거 솔루션 보기" style="--reveal-delay:0.12s">
+      <span class="ind-row-num">19</span>
+      <span class="ind-row-media"><img src="../assets/img/ind-card-mold-removal.png" alt="" loading="lazy" /></span>
+      <span class="ind-row-title"><span class="ind-row-en">MOLD REMEDIATION</span><b>곰팡이 제거</b></span>
+      <span class="ind-row-text"><span class="ind-row-kw">목재 구조물 · 다락 · 크롤스페이스 · 벽체 내부</span><span class="ind-row-desc">보와 장선, 못·배선 주변처럼 접근하기 어려운 곳의 곰팡이 오염을 물과 연마재 없이 제거하는 복원 공정에 활용됩니다.</span></span>
+      <span class="ind-row-more">솔루션 보기 <i>→</i></span>
+    </a>
+    <a class="ind-row reveal" href="#" data-target="../industries/historical-restoration.html" aria-label="역사적 건축물 · 문화재 복원 솔루션 보기" style="--reveal-delay:0.18s">
+      <span class="ind-row-num">20</span>
+      <span class="ind-row-media"><img src="../assets/img/ind-card-heritage.png" alt="" loading="lazy" /></span>
+      <span class="ind-row-title"><span class="ind-row-en">HISTORICAL RESTORATION</span><b>역사적 건축물 · 문화재 복원</b></span>
+      <span class="ind-row-text"><span class="ind-row-kw">석재 · 벽돌 · 목재 · 금속 · 조형물 · 문화재</span><span class="ind-row-desc">오래된 건축물과 기념물, 박물관 유물의 오염·그을음·생물성 침착물을 제거하면서 원래 표면과 세부 형상을 보존합니다.</span></span>
+      <span class="ind-row-more">솔루션 보기 <i>→</i></span>
+    </a>
+    <a class="ind-row reveal" href="#" data-target="../industries/automotive-detailing.html" aria-label="자동차 복원 · 디테일링 솔루션 보기" style="--reveal-delay:0.24s">
+      <span class="ind-row-num">21</span>
+      <span class="ind-row-media"><img src="../assets/img/ind-card-detailing.png" alt="" loading="lazy" /></span>
+      <span class="ind-row-title"><span class="ind-row-en">AUTOMOTIVE RESTORATION & DETAILING</span><b>자동차 복원 · 디테일링</b></span>
+      <span class="ind-row-text"><span class="ind-row-kw">하부 · 엔진룸 · 휠하우스 · 섀시 · 정밀부품</span><span class="ind-row-desc">오일, 그리스와 도로 오염물을 제거하면서 도장면·고무·전기부품 등 차량의 원래 마감과 디테일을 최대한 보존합니다.</span></span>
+      <span class="ind-row-more">솔루션 보기 <i>→</i></span>
     </a>
   </div>
 </div>
@@ -947,25 +977,80 @@ INDUSTRY_BODY = """
 
   <section class="cmp-dark ind-dark">
     <div class="wrap">
-      <div class="ind-dark-grid">
-        <div>
+      <div class="ind-ae">
+        <div class="ind-ae-copy">
           <span class="cmp-eyebrow">APPLICATION ENGINEERING</span>
-          <h2 class="cmp-h2">같은 산업이라도,<br>세척 조건은 같지 않습니다.</h2>
+          <h2 class="cmp-h2">같은 산업이라도,<br>세척해야 할 것은 모두 다릅니다.</h2>
           <div class="cmp-dark-body">
-            <p>세척 대상의 재질과 오염물, 작업 환경에 따라 분사 압력, 드라이아이스 입자 크기, 공급량과 노즐 구성을 조정합니다.</p>
-            <p>바테크는 산업명만으로 장비를 권하기보다 실제 공정 조건을 확인하고 적용 방법을 검토합니다.</p>
+            <p>자동차 공장 안에서도 사출금형의 이형제, 용접 지그의 스패터, 도장라인의 오버스프레이는 오염물도, 세척 대상도, 필요한 세척 강도도 서로 다릅니다.</p>
+            <p>따라서 드라이아이스 세척은 산업이나 장비 모델만 보고 결정할 수 없습니다. 바테크는 실제 오염물의 종류와 부착 정도, 세척 대상의 재질과 형상, 작업 환경과 원하는 결과를 확인한 뒤 실제 세척 테스트를 통해 적절한 세척 조건을 찾습니다.</p>
+          </div>
+          <div class="ind-ae-key reveal">
+            <span class="ind-ae-key-en">APPLICATION FIRST. <em>MACHINE SECOND.</em></span>
+            <p class="ind-ae-key-main">장비를 먼저 고르는 것이 아니라,<br>세척 조건을 먼저 찾습니다.</p>
           </div>
         </div>
-        <div class="ind-flow reveal" aria-label="공정 조건에서 장비 설정으로">
-          <span class="ind-flow-label">INPUT</span>
-          <ul class="ind-flow-row">
-            <li>오염물</li><li class="ind-x">×</li><li>기재 · 대상</li><li class="ind-x">×</li><li>공정 조건</li><li class="ind-x">×</li><li>목표</li>
-          </ul>
-          <span class="ind-flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M6 14l6 6 6-6"/></svg></span>
-          <span class="ind-flow-label">SETTING</span>
-          <ul class="ind-flow-row is-out">
-            <li>입자 크기</li><li>압력</li><li>공급량</li><li>노즐</li><li>장비 구성</li>
-          </ul>
+        <div class="ind-ae-visual">
+          <div class="ind-ae-cases reveal">
+            <span class="ind-ae-label">ONE PLANT · THREE DIFFERENT JOBS</span>
+            <ul class="ind-ae-case-list">
+              <li>
+                <span class="ind-ae-case-img"><img src="../assets/img/ind-card-plastics.png" alt="" loading="lazy" /></span>
+                <b>사출금형</b><small>이형제 · 수지 잔류</small>
+              </li>
+              <li>
+                <span class="ind-ae-case-img"><img src="../assets/img/ind-card-automotive.png" alt="" loading="lazy" /></span>
+                <b>용접 지그</b><small>Weld Spatter</small>
+              </li>
+              <li>
+                <span class="ind-ae-case-img"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /></span>
+                <b>도장라인</b><small>Paint Overspray</small>
+              </li>
+            </ul>
+            <p class="ind-ae-case-note">오염물이 다르면 <em>세척 조건도 달라집니다.</em></p>
+          </div>
+          <ol class="ind-ae-steps">
+            <li class="ind-ae-step reveal">
+              <span class="ind-ae-num">01</span>
+              <span class="ind-ae-step-img"><img src="../assets/img/ind-card-rubber-tire.png" alt="오염된 금형 근접" loading="lazy" /></span>
+              <div class="ind-ae-step-body">
+                <span class="ind-ae-step-en">SITE ASSESSMENT</span>
+                <h3>현장 조건 확인</h3>
+                <p class="ind-ae-step-lead">무엇을, 어디서, 어떤 상태로 닦아야 하는지부터 봅니다.</p>
+                <ul class="ind-ae-tags"><li>오염물</li><li>재질</li><li>형상</li><li>작업환경</li><li>목표 결과</li></ul>
+              </div>
+            </li>
+            <li class="ind-ae-step reveal" style="--reveal-delay:0.06s">
+              <span class="ind-ae-num">02</span>
+              <span class="ind-ae-step-img"><img src="../assets/img/guide-hero-work.jpg" alt="실제 드라이아이스 세척 테스트" loading="lazy" /></span>
+              <div class="ind-ae-step-body">
+                <span class="ind-ae-step-en">CLEANING TEST</span>
+                <h3>실제 세척 테스트</h3>
+                <p class="ind-ae-step-lead">실제 오염물과 대상으로 직접 분사해 확인합니다.</p>
+                <ul class="ind-ae-tags"><li>분사 압력</li><li>드라이아이스 입자 크기</li><li>공급량</li><li>노즐</li><li>분사 거리 · 각도</li></ul>
+              </div>
+            </li>
+            <li class="ind-ae-step reveal" style="--reveal-delay:0.12s">
+              <span class="ind-ae-num">03</span>
+              <span class="ind-ae-step-img"><img src="../assets/img/compare-hero.jpg" alt="노즐과 분사 조건 디테일" loading="lazy" /></span>
+              <div class="ind-ae-step-body">
+                <span class="ind-ae-step-en">OPTIMIZATION</span>
+                <h3>조건 최적화</h3>
+                <p class="ind-ae-step-lead">닦이는 정도와 표면 영향, 작업성 사이의 균형을 맞춥니다.</p>
+                <ul class="ind-ae-tags"><li>세척 속도</li><li>표면 영향</li><li>오염물 제거 정도</li><li>작업성</li><li>드라이아이스 사용량</li></ul>
+              </div>
+            </li>
+            <li class="ind-ae-step reveal" style="--reveal-delay:0.18s">
+              <span class="ind-ae-num">04</span>
+              <span class="ind-ae-step-img"><img src="../assets/img/stackdo-automation.jpg" alt="Cold Jet 장비와 자동화 시스템" loading="lazy" /></span>
+              <div class="ind-ae-step-body">
+                <span class="ind-ae-step-en">PROPOSAL</span>
+                <h3>장비 및 적용방법 제안</h3>
+                <p class="ind-ae-step-lead">확인된 조건에 맞는 장비와 작업 방식을 제안합니다.</p>
+                <ul class="ind-ae-tags"><li>적합한 장비</li><li>노즐 구성</li><li>세척 조건</li><li>작업 방식</li><li>자동화 가능성 검토</li></ul>
+              </div>
+            </li>
+          </ol>
         </div>
       </div>
     </div>
@@ -1043,58 +1128,334 @@ INDUSTRY_BODY = """
 """
 
 TASK_BODY = """
-<p>세척 대상이 아니라 <b>어떤 작업</b>을 하려는지로도 적합한 방식을 찾을 수 있습니다. 표면 세척, 표면
-처리 · 전처리, 디버링 · 디플래싱, 설비 유지보수까지 — 작업 목적에 따라 장비 사양보다 먼저 어떤 오염물을
-어떤 조건에서 제거할 수 있는지를 확인하는 것이 중요합니다.</p>
+  <section class="subhero-parallax">
+    <img class="subhero-parallax-img" src="../assets/img/guide-hero-work.jpg" alt="산업설비에 적용되는 드라이아이스 세척" />
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">드라이아이스 세척가이드</a> &gt; 작업별 솔루션</div>
+    <div class="subhero-textbox tsk-hero-box">
+      <span class="ind-hero-eyebrow">APPLICATIONS</span>
+      <h1>작업별 솔루션</h1>
+      <p class="cmp-hero-p">같은 드라이아이스 세척이라도 무엇을 제거하고, 무엇을 보호해야 하는지에 따라<br>필요한 세척 조건과 적용 방법은 달라집니다.<br>금형 세척부터 생산설비 유지보수, 접착제·코팅 제거, 표면 전처리와 부품 마무리까지<br>작업 목적에 맞는 솔루션을 확인해보세요.</p>
+    </div>
+  </section>
+  <section class="subhero-cover cmp-page ind-page tsk-page">
+    <div class="wrap">
 
-<div class="task-card-grid">
-  <div class="task-card">
-    <div class="tc-photo"><img src="../assets/img/task-surface-food.jpg" alt="표면 세척 - 식품설비" loading="lazy" /><img src="../assets/img/task-surface-industrial.jpg" alt="표면 세척 - 산업설비" loading="lazy" /></div>
-    <div class="tc-body">
-      <h3>표면 세척</h3>
-      <ul>
-        <li>기계, 금형, 완제품 표면의 오염물 및 잔류물을 제거합니다.</li>
-        <li>압력 · 입자 크기 · 공급량 조정을 통해 세정 강도를 조절할 수 있습니다.</li>
-      </ul>
-      <a class="tc-link" href="industry.html">관련 산업: 일반 제조 · 식품 →</a>
+<div class="cmp-panel">
+<div class="wrap">
+<div class="cmp-section is-first">
+  <span class="cmp-eyebrow">FIND YOUR APPLICATION</span>
+  <h2 class="cmp-h2">산업이 달라도,<br>현장에서 반복되는 세척 과제는 비슷합니다.</h2>
+  <div class="cmp-lead">
+    <p>자동차, 반도체, 플라스틱, 식품, 발전과 같은 산업은 서로 다르지만 생산현장에서 발생하는 세척 과제에는 공통점이 있습니다.</p>
+    <p>금형에는 이형제와 수지가 쌓이고, 생산설비에는 오일과 공정 잔류물이 축적되며, 용접라인에는 스패터가, 도장라인에는 오버스프레이가 남습니다. 또한 접착제 제거, 표면 전처리, 디버링·디플래싱처럼 세척을 넘어 생산공정 자체를 지원하는 작업도 있습니다.</p>
+    <p>작업별 솔루션에서는 "어느 산업인가"보다 무엇을 제거해야 하는지, 어떤 표면을 보호해야 하는지, 어떤 결과가 필요한지를 기준으로 적합한 적용 방법을 살펴봅니다.</p>
+  </div>
+  <ul class="cmp-criteria ind-criteria tsk-keys reveal" aria-label="작업을 보는 세 가지 기준">
+    <li><span>01</span><b>REMOVE</b><small>무엇을 제거할 것인가</small></li>
+    <li><span>02</span><b>PROTECT</b><small>무엇을 보호할 것인가</small></li>
+    <li><span>03</span><b>RESULT</b><small>어떤 결과가 필요한가</small></li>
+  </ul>
+</div>
+</div>
+</div>
+
+<div class="cmp-section ind-hub tsk-group" id="tsk-g1">
+  <span class="ind-ghost" aria-hidden="true">01</span>
+  <div class="cmp-vs-head ind-head">
+    <span class="cmp-num">01<span class="cmp-num-of">/ 04</span></span>
+    <div>
+      <span class="cmp-vs-title">EQUIPMENT & TOOL CLEANING · 설비 · 툴링 세척</span>
+      <h2 class="cmp-h2">생산설비와 금형, 치공구의<br>본래 표면과 기능을 지키면서 세척합니다.</h2>
+      <div class="cmp-lead ind-lead"><p>생산설비와 금형, 치공구의 본래 표면과 기능을 유지하면서 생산 과정에서 축적된 오염물을 제거합니다.</p></div>
     </div>
   </div>
-  <div class="task-card">
-    <div class="tc-photo single"><img src="../assets/img/task-pretreatment.jpg" alt="표면 처리 · 전처리" loading="lazy" /></div>
-    <div class="tc-body">
-      <h3>표면 처리 · 전처리</h3>
-      <ul>
-        <li>도장 · 코팅 전 이형제, 윤활유, 먼지 등 표면 오염물을 제거합니다.</li>
-        <li>물을 사용하지 않아 별도의 건조 공정을 줄이고 후속 공정과 바로 연계할 수 있습니다.</li>
-      </ul>
-      <a class="tc-link" href="industry.html">관련 산업: 자동차 · 도장 공정 →</a>
-    </div>
-  </div>
-  <div class="task-card">
-    <div class="tc-photo"><img src="../assets/img/task-deburring-precision.jpg" alt="디버링 · 디플래싱 - 정밀부품" loading="lazy" /><img src="../assets/img/task-deburring-plastic.jpg" alt="디버링 · 디플래싱 - 플라스틱부품" loading="lazy" /></div>
-    <div class="tc-body">
-      <h3>디버링 · 디플래싱</h3>
-      <ul>
-        <li>부품의 버(burr)와 플래시(flash)를 선택적으로 제거합니다.</li>
-        <li>부품의 치수 정밀도와 주요 형상을 유지하는 데 유리합니다.</li>
-      </ul>
-      <a class="tc-link" href="industry.html">관련 산업: 고무 · 타이어 · 플라스틱 →</a>
-    </div>
-  </div>
-  <div class="task-card">
-    <div class="tc-icon">🔧</div>
-    <div class="tc-body">
-      <h3>설비 유지보수 · 예방보전</h3>
-      <ul>
-        <li>설비 오염 제거와 정기 세정 · 유지보수 작업에 적용됩니다.</li>
-        <li>분해와 반복 수작업을 줄여 유지보수 공정의 효율화에 기여합니다.</li>
-      </ul>
-      <a class="tc-link" href="industry.html">관련 산업: 발전 · 에너지 →</a>
-    </div>
+  <div class="tsk-grid">
+      <a class="tsk-card reveal is-wide" href="#" data-target="../applications/mold-tool-cleaning.html" aria-label="금형 · 툴링 세척 자세히 보기" style="--reveal-delay:0s">
+        <span class="tsk-media"><img src="../assets/img/task-mold-tool-cleaning.webp" alt="" loading="lazy" /><span class="tsk-num">01</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">MOLD & TOOL CLEANING</span>
+          <h3>금형 · 툴링 세척</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 대상</dt><dd>사출금형 · 고무금형 · 타이어금형 · 복합재 툴 · 다이캐스팅 툴 · 성형금형</dd></div>
+            <div class="tsk-row"><dt>대표 오염</dt><dd>이형제 · 수지 · 고무 잔사 · 카본 · 생산 잔류물</dd></div>
+          </dl>
+          <p class="tsk-desc">복잡한 형상과 정밀한 표면을 유지하면서 금형과 툴링에 축적된 공정 잔류물을 제거합니다. 플라스틱·고무 금형 세척과 복합재 툴 세척을 하나의 솔루션으로 다룹니다.</p>
+          <div class="tsk-rel"><span>관련 산업</span><ul><li>자동차 제조</li><li>플라스틱 · 복합소재</li><li>고무 · 타이어</li><li>주조 · 다이캐스팅</li><li>우주 · 항공</li></ul></div>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+      <a class="tsk-card reveal" href="#" data-target="../applications/facility-maintenance.html" aria-label="생산설비 · 시설 유지보수 자세히 보기" style="--reveal-delay:0.06s">
+        <span class="tsk-media"><img src="../assets/img/ind-card-maintenance.png" alt="" loading="lazy" /><span class="tsk-num">02</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">PRODUCTION & FACILITY MAINTENANCE</span>
+          <h3>생산설비 · 시설 유지보수</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 대상</dt><dd>컨베이어 · 체인 · 롤러 · 생산설비 · 팬 · 열교환기 · 배관 · 물류장비 · 공장 인프라</dd></div>
+          </dl>
+          <p class="tsk-desc">설비를 가능한 한 현장에서 유지한 상태로 축적된 오염물을 제거하여 정비시간과 생산 중단 부담을 줄이는 데 활용합니다.</p>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+      <a class="tsk-card reveal" href="#" data-target="../applications/weld-fixture-robot.html" aria-label="용접라인 · 지그 · 로봇 세척 자세히 보기" style="--reveal-delay:0.12s">
+        <span class="tsk-media"><img src="../assets/img/task-weld-fixture.webp" alt="" loading="lazy" /><span class="tsk-num">03</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">WELD LINE, FIXTURE & ROBOT CLEANING</span>
+          <h3>용접라인 · 지그 · 로봇 세척</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 대상</dt><dd>용접 지그 · 클램프 · 로봇 · 센서 · 치공구</dd></div>
+            <div class="tsk-row"><dt>대표 오염</dt><dd>Weld Spatter · Slag · Grease · 생산 잔류물</dd></div>
+          </dl>
+          <p class="tsk-desc">용접라인과 자동화 설비에 축적되는 스패터와 공정 오염물을 제거해 지그와 센서, 로봇의 정상적인 작동을 유지합니다.</p>
+          <div class="tsk-rel"><span>관련 산업</span><ul><li>자동차 제조</li><li>일반 제조</li><li>철도 · 대중교통</li><li>중공업</li></ul></div>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+      <a class="tsk-card reveal" href="#" data-target="../applications/paint-booth-coating-line.html" aria-label="도장부스 · 코팅라인 세척 자세히 보기" style="--reveal-delay:0.18s">
+        <span class="tsk-media"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /><span class="tsk-num">04</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">PAINT BOOTH & COATING LINE CLEANING</span>
+          <h3>도장부스 · 코팅라인 세척</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 대상</dt><dd>도장부스 · Grating · Paint Hook · Carrier · Conveyor · Robot</dd></div>
+            <div class="tsk-row"><dt>대표 오염</dt><dd>Paint Overspray · Coating Residue</dd></div>
+          </dl>
+          <p class="tsk-desc">도장공정 주변에 반복적으로 축적되는 오버스프레이와 코팅 잔류물을 제거하여 설비와 생산라인을 관리합니다.</p>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+      <a class="tsk-card reveal" href="#" data-target="../applications/electrical-electronic.html" aria-label="전기 · 전자 장비 세척 자세히 보기" style="--reveal-delay:0s">
+        <span class="tsk-media"><img src="../assets/img/method-electrical-terminal.png" alt="" loading="lazy" /><span class="tsk-num">05</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">ELECTRICAL & ELECTRONIC EQUIPMENT CLEANING</span>
+          <h3>전기 · 전자 장비 세척</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 대상</dt><dd>모터 · 발전기 · 제어반 · 센서 · 전기부품 · 전자부품 · 정밀장치</dd></div>
+          </dl>
+          <p class="tsk-desc">수분 사용을 피해야 하는 전기·전자 설비와 정밀 부품의 오염 제거에 건식 세척의 특성을 활용합니다.</p>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
   </div>
 </div>
-<p style="font-size:13px; color:var(--text-muted); margin-top:8px;">(참고: Cold Jet 공식 기술자료
-The Definitive Guide to Dry Ice Blasting 및 coldjet.com Applications 자료 기준)</p>
+
+<div class="cmp-section ind-hub tsk-group" id="tsk-g2">
+  <span class="ind-ghost" aria-hidden="true">02</span>
+  <div class="cmp-vs-head ind-head">
+    <span class="cmp-num">02<span class="cmp-num-of">/ 04</span></span>
+    <div>
+      <span class="cmp-vs-title">CONTAMINANT REMOVAL · 오염물 제거</span>
+      <h2 class="cmp-h2">오염물이 다르면<br>필요한 세척 강도와 입자 조건도 다릅니다.</h2>
+      <div class="cmp-lead ind-lead"><p>오염물의 종류와 부착 특성에 따라 필요한 세척 강도와 입자 조건은 달라집니다.</p></div>
+    </div>
+  </div>
+  <div class="tsk-grid">
+      <a class="tsk-card reveal" href="#" data-target="../applications/adhesive-resin-removal.html" aria-label="접착제 · 수지 제거 자세히 보기" style="--reveal-delay:0s">
+        <span class="tsk-media"><img src="../assets/img/task-adhesive-rollers.webp" alt="" loading="lazy" /><span class="tsk-num">06</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">ADHESIVE & RESIN REMOVAL</span>
+          <h3>접착제 · 수지 제거</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 오염</dt><dd>Glue · Hot Melt · Urethane · Epoxy · Sealant · Label Adhesive · Resin</dd></div>
+            <div class="tsk-row"><dt>대표 대상</dt><dd>롤러 · 노즐 · 지그 · 금형 · 생산설비</dd></div>
+          </dl>
+          <p class="tsk-desc">접착제와 수지가 축적되는 생산설비와 부품을 화학용제나 과도한 기계적 제거 없이 세척합니다.</p>
+          <div class="tsk-rel"><span>관련 산업</span><ul><li>포장</li><li>인쇄</li><li>자동차 제조</li><li>우주 · 항공</li><li>반도체 · 전자 제조</li></ul></div>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+      <a class="tsk-card reveal" href="#" data-target="../applications/ink-paint-coating-removal.html" aria-label="잉크 · 도료 · 코팅 제거 자세히 보기" style="--reveal-delay:0.06s">
+        <span class="tsk-media"><img src="../assets/img/ind-card-printing.png" alt="" loading="lazy" /><span class="tsk-num">07</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">INK, PAINT & COATING REMOVAL</span>
+          <h3>잉크 · 도료 · 코팅 제거</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 오염</dt><dd>Ink · Paint · Varnish · Overspray · Coating Residue</dd></div>
+            <div class="tsk-row"><dt>대표 대상</dt><dd>인쇄설비 · 롤러 · 도장설비 · 지그 · 생산라인</dd></div>
+          </dl>
+          <p class="tsk-desc">인쇄와 도장, 코팅공정에서 발생하는 잉크와 도료 잔류물을 설비와 표면 상태를 고려해 제거합니다.</p>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+      <a class="tsk-card reveal" href="#" data-target="../applications/oil-grease-residue-removal.html" aria-label="오일 · 그리스 · 고착 오염 제거 자세히 보기" style="--reveal-delay:0.12s">
+        <span class="tsk-media"><img src="../assets/img/task-oil-tar-pipe.webp" alt="" loading="lazy" /><span class="tsk-num">08</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">OIL, GREASE & HEAVY RESIDUE REMOVAL</span>
+          <h3>오일 · 그리스 · 고착 오염 제거</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 오염</dt><dd>Oil · Grease · Bitumen · Asphalt · Carbon · Paraffin · Process Residue</dd></div>
+            <div class="tsk-row"><dt>대표 대상</dt><dd>생산설비 · 기계부품 · 배관 · 중장비 · 플랜트 설비</dd></div>
+          </dl>
+          <p class="tsk-desc">설비에 축적된 유분과 고착된 생산 잔류물을 제거하여 유지보수와 점검을 용이하게 합니다.</p>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+      <a class="tsk-card reveal" href="#" data-target="../applications/rust-corrosion-removal.html" aria-label="녹 · 부식 · 산화물 제거 자세히 보기" style="--reveal-delay:0.18s">
+        <span class="tsk-media"><img src="../assets/img/task-surface-rust.webp" alt="" loading="lazy" /><span class="tsk-num">09</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">RUST, CORROSION & OXIDATION REMOVAL</span>
+          <h3>녹 · 부식 · 산화물 제거</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 오염</dt><dd>표면 녹 · 느슨한 산화물 · 부식 생성물</dd></div>
+            <div class="tsk-row"><dt>적용 범위</dt><dd>비마모성 세척 — 깊게 피팅된 녹이나 백색 금속면을 위한 강한 표면처리에는 한계가 있습니다</dd></div>
+          </dl>
+          <p class="tsk-desc">표면 녹과 느슨하게 부착된 산화물 등을 제거하여 검사 및 유지보수를 돕습니다.</p>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+  </div>
+</div>
+
+<div class="cmp-section ind-hub tsk-group" id="tsk-g3">
+  <span class="ind-ghost" aria-hidden="true">03</span>
+  <div class="cmp-vs-head ind-head">
+    <span class="cmp-num">03<span class="cmp-num-of">/ 04</span></span>
+    <div>
+      <span class="cmp-vs-title">PROCESS & PART FINISHING · 공정 · 부품 마무리</span>
+      <h2 class="cmp-h2">세척을 넘어,<br>다음 공정을 준비하고 부품을 마무리합니다.</h2>
+      <div class="cmp-lead ind-lead"><p>드라이아이스 기술은 단순한 설비 세척을 넘어 다음 생산공정을 준비하거나 부품을 마무리하는 공정에도 활용됩니다.</p></div>
+    </div>
+  </div>
+  <div class="tsk-grid">
+      <a class="tsk-card reveal" href="#" data-target="../applications/surface-preparation.html" aria-label="표면 전처리 자세히 보기" style="--reveal-delay:0s">
+        <span class="tsk-media"><img src="../assets/img/ind-card-aerospace.png" alt="" loading="lazy" /><span class="tsk-num">10</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">SURFACE PREPARATION</span>
+          <h3>표면 전처리</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 공정</dt><dd>도장 전 · 코팅 전 · 접착 전 · 용접 전 · 검사 전</dd></div>
+            <div class="tsk-row"><dt>대표 오염</dt><dd>Oil · Mold Release · Dust · Fingerprint · Process Residue</dd></div>
+          </dl>
+          <p class="tsk-desc">후속 공정에 영향을 줄 수 있는 오일, 이형제, 먼지와 생산 잔류물을 제거해 표면을 다음 공정에 적합한 상태로 준비합니다.</p>
+          <div class="tsk-rel"><span>관련 산업</span><ul><li>자동차 제조</li><li>우주 · 항공</li><li>플라스틱 · 복합소재</li><li>의료기기 제조</li><li>일반 제조</li></ul></div>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+      <a class="tsk-card reveal is-finishing" href="#" data-target="../applications/deburring-deflashing.html" aria-label="디버링 · 디플래싱 자세히 보기" style="--reveal-delay:0.06s">
+        <span class="tsk-media"><img src="../assets/img/task-deburring-precision.jpg" alt="" loading="lazy" /><span class="tsk-num">11</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">DEBURRING & DEFLASHING</span>
+          <h3>디버링 · 디플래싱</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row"><dt>대표 대상</dt><dd>플라스틱 · 고무 · 정밀부품 · 커넥터 · 의료부품 · 성형부품</dd></div>
+            <div class="tsk-row"><dt>구분</dt><dd>Cleaning이 아닌 Parts Finishing — 제품의 치수와 주요 형상을 유지하는 마무리 공정</dd></div>
+          </dl>
+          <p class="tsk-desc">성형 또는 가공 후 발생한 Burr와 Flash를 제거하면서 제품의 치수와 주요 형상을 유지하는 부품 마무리 공정에 활용합니다.</p>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+  </div>
+</div>
+
+<div class="cmp-section ind-hub tsk-group" id="tsk-g4">
+  <span class="ind-ghost" aria-hidden="true">04</span>
+  <div class="cmp-vs-head ind-head">
+    <span class="cmp-num">04<span class="cmp-num-of">/ 04</span></span>
+    <div>
+      <span class="cmp-vs-title">RESTORATION & REMEDIATION · 복원 · 오염 제거</span>
+      <h2 class="cmp-h2">생산공정 밖,<br>복원과 재해복구 현장에서도 쓰입니다.</h2>
+      <div class="cmp-lead ind-lead"><p>생산공정 외에도 화재, 수해, 곰팡이 및 각종 복원 작업에서 드라이아이스 세척의 건식·비마모 특성을 활용할 수 있습니다.</p></div>
+    </div>
+  </div>
+  <div class="tsk-grid">
+      <a class="tsk-card reveal is-wide" href="#" data-target="../applications/restoration-remediation.html" aria-label="복원 · 재해복구 자세히 보기" style="--reveal-delay:0s">
+        <span class="tsk-media"><img src="../assets/img/ind-card-fire-restoration.png" alt="" loading="lazy" /><span class="tsk-num">12</span></span>
+        <div class="tsk-body">
+          <span class="tsk-en">RESTORATION & REMEDIATION</span>
+          <h3>복원 · 재해복구</h3>
+          <dl class="tsk-rows">
+            <div class="tsk-row is-sub"><dt>세부 영역</dt><dd><ul class="tsk-sub"><li><b>곰팡이 제거</b><i>Mold Remediation</i></li><li><b>화재 · 그을음 복원</b><i>Fire &amp; Smoke Restoration</i></li><li><b>수해 복원</b><i>Water Damage Restoration</i></li><li><b>역사적 건축물 · 문화재 복원</b><i>Historical Restoration</i></li><li><b>자동차 복원 · 디테일링</b><i>Automotive Restoration &amp; Detailing</i></li><li><b>전자장비 복원</b><i>Electronic Device Refurbishing</i></li></ul></dd></div>
+          </dl>
+          <p class="tsk-desc">물과 연마재를 쓰기 어려운 구조물과 유물, 차량과 전자장비의 복원 작업에서 표면을 보존하며 오염을 제거합니다. 세부 영역은 콘텐츠가 갖춰지는 대로 개별 상세 페이지로 확장합니다.</p>
+          <span class="tsk-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+  </div>
+</div>
+
+
+    </div>
+  </section>
+
+  <section class="cmp-dark ind-dark tsk-dark">
+    <div class="wrap">
+      <div class="tsk-test">
+        <div class="tsk-test-copy">
+          <span class="cmp-eyebrow">APPLICATION TEST</span>
+          <h2 class="cmp-h2">같은 오염물이라도,<br>세척 조건은 달라질 수 있습니다.</h2>
+          <div class="cmp-dark-body">
+            <p>같은 접착제나 수지라도 부착된 표면의 재질, 오염물의 두께와 경화 상태, 작업 온도와 접근성에 따라 필요한 세척 조건은 달라집니다.</p>
+            <p>바테크는 실제 부품이나 시편을 이용해 적용 가능성을 확인하고, 드라이아이스 입자 크기, 분사 압력, 공급량, 노즐, 분사 거리와 각도 등을 조정해 적합한 세척 조건을 검토합니다.</p>
+          </div>
+        </div>
+        <div class="tsk-test-side reveal">
+          <span class="ind-ae-label">TEST VARIABLES</span>
+          <ul class="tsk-vars">
+            <li>드라이아이스 입자 크기</li>
+            <li>분사 압력</li>
+            <li>공급량</li>
+            <li>노즐</li>
+            <li>분사 거리 · 각도</li>
+          </ul>
+          <p class="tsk-test-key">결과는 장비가 아니라,<br><em>적절한 적용 조건</em>에서 시작됩니다.</p>
+          <div class="cmp-cta-btns">
+            <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청 →</a>
+            <a class="cmp-btn-ghost" href="../cases/library.html">적용사례 보기 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="last-freeze">
+<div class="wrap">
+<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+      <div class="sub-grid" id="subGrid">
+  <a class="sub-card" href="guide.html">
+    <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">원리 · 기초</span>
+      <h3 style="font-size: 25px">드라이아이스 세척의 이해</h3>
+      <p style="font-size: 20px">드라이아이스의 물리적 특성부터 세척 원리와 장점, 세척 장비의 기본 개념까지 살펴봅니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="compare.html">
+    <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">비교 · 차이점</span>
+      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="industry.html">
+    <div class="sub-card-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">산업별 적용</span>
+      <h3 style="font-size: 25px">산업별 솔루션</h3>
+      <p style="font-size: 20px">자동차·반도체·식품·발전 등 산업별 주요 세척 대상과 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="adopt.html">
+    <div class="sub-card-media"><img src="../assets/img/adopt-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">도입 절차</span>
+      <h3 style="font-size: 25px">도입 가이드</h3>
+      <p style="font-size: 20px">도입 전 검토사항부터 설치 준비, 운영 체크리스트까지 순서대로 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+</div>
+      <div class="cta-band">
+        <div>
+          <h3 style="font-size: 25px">우리 작업의 세척 조건을 함께 검토해보세요</h3>
+          <p style="font-size: 20px">제거할 오염물과 보호할 표면을 알려주시면 적용 가능성과 적정 조건을 안내합니다.</p>
+        </div>
+        <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청</a>
+      </div>
+      </div>
+    </div>
 """
 
 ADOPT_BODY = """
@@ -1600,7 +1961,7 @@ MENU = [
              # desc/nav_desc는 그대로 둔다. 핸드오프 HTML 하단의 인라인 스크립트는
              # compare의 우측 레일 스크립트와 동일(이 페이지엔 레일이 없어 즉시
              # return) — 출력 일치를 위해 같은 상수를 그대로 전달.
-             "page_desc": "자동차·전자·플라스틱·고무·식품·주조·발전·일반 제조 등 산업별 주요 세척 대상과 드라이아이스 세척 적용 방법을 확인하세요.",
+             "page_desc": "주요 산업 16개, 산업 공통 설비·시설 유지보수, 전문 세척·복원 분야까지 — 산업별 주요 세척 대상과 드라이아이스 세척 적용 방법을 확인하세요.",
              "full_custom_body": True,
              "extra_script": COMPARE_RAIL_SCRIPT,
              "body": INDUSTRY_BODY},
@@ -1609,6 +1970,12 @@ MENU = [
              "nav_desc": "금형 세척부터 표면처리까지, 작업 목적에 맞는 방법을 제안합니다.",
              "nav_img": "assets/img/task-thumb.jpg",
              "rich_content": True,
+             # (2026-09-08, 7차 핸드오프) compare/industry와 같은 편집형 구조로 전면
+             # 재설계 — full_custom_body 방식으로 전환. desc/nav_desc는 메가메뉴·허브
+             # 카드 공유값이라 유지, 페이지 자신의 메타 설명만 page_desc로 덮어쓴다.
+             "page_desc": "금형·툴링 세척, 설비 유지보수, 접착제·코팅 제거, 표면 전처리, 디버링·디플래싱, 복원까지 — 무엇을 제거하고 무엇을 보호해야 하는지 기준으로 정리한 드라이아이스 세척 작업별 솔루션.",
+             "full_custom_body": True,
+             "extra_script": COMPARE_RAIL_SCRIPT,
              "body": TASK_BODY},
             {"slug": "adopt", "title": "도입 가이드",
              "desc": "도입 전 검토사항부터 설치 준비, 운영 체크리스트까지 순서대로 안내합니다.",
