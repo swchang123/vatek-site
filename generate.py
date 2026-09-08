@@ -8921,6 +8921,1322 @@ ELECTRICAL_ELECTRONIC_BODY = """
     </div>
 """
 
+# (2026-09-08 12차 핸드오프, batch3) 작업별 솔루션 잔여 6페이지 — 신규 다운로드 없이 기존 로컬 이미지만 재사용.
+ADHESIVE_RESIN_REMOVAL_BODY = """
+  
+  <!-- 기술 내용·이미지 출처(Cold Jet 공식): https://www.coldjet.com/dry-ice-blasting/applications/adhesive-removal/
+       이미지: 기존 로컬 자료(task-adhesive-rollers.webp, printing-dry-ice-blasting-removing-burnished-ink-and-adhesive-from-packaging-line.webp,
+       packaging-dry-ice-blasting-cleaning-gears-and-star-wheels-on-packaging-line.webp) 재사용. -->
+  <section class="subhero-parallax auto-hero-stage">
+    <img class="subhero-parallax-img" src="../assets/img/task-adhesive-rollers.webp" alt="접착제가 축적된 롤러 세척" />
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="../cleaning/index.html">드라이아이스 세척가이드</a> &gt; <a href="../cleaning/task.html">작업별 솔루션</a> &gt; 접착제 · 수지 제거</div>
+    <div class="subhero-textbox auto-hero-box">
+      <span class="ind-hero-eyebrow">ADHESIVE &amp; RESIN REMOVAL</span>
+      <h1>접착제 · 수지 제거</h1>
+      <p class="cmp-hero-p auto-hero-lead">붙어야 할 곳에서는 중요한 접착제도,<br>설비에 쌓이면 생산을 방해하는 오염물이 됩니다.</p>
+    </div>
+  </section>
+  <section class="subhero-cover cmp-page ind-page auto-page">
+    <div class="wrap">
+<div class="cmp-panel">
+<div class="wrap">
+<div class="cmp-section is-first auto-intro">
+  <div class="auto-intro-grid">
+    <div class="reveal">
+      <span class="cmp-eyebrow">BUILDUP ON EQUIPMENT</span>
+      <h2 class="cmp-h2">접착제 자체가 아니라,<br>설비에 축적된 접착제가 문제입니다.</h2>
+    </div>
+    <div class="cmp-lead auto-intro-lead reveal" style="--reveal-delay:0.14s">
+      <p>글루건 노즐, 라벨링 헤드, 컨베이어 롤러, 박스 성형기, 포장설비, 접합 지그와 성형 다이에는 핫멜트, PSA(감압점착제), 라벨 접착제, 에폭시, 우레탄, 실리콘 실런트, 경화된 수지가 반복적으로 쌓입니다.</p>
+      <p>Cold Jet 자료에 따르면 이러한 잔류물은 노즐 막힘, 라벨 정렬 불량, 롤러 표면 오염으로 인한 제품 결함의 원인이 될 수 있습니다. 기존에는 화학용제나 스크레이퍼로 수작업 제거하는 경우가 많았습니다.</p>
+      <p class="auto-intro-close">드라이아이스 세척은 <b>화학용제 사용을 줄이면서 롤러와 노즐의 정밀한 표면을 고려하는</b> 방식으로 활용할 수 있습니다.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="cmp-section auto-apps-sec" id="auto-apps">
+  <div class="auto-sec-head reveal">
+    <span class="cmp-eyebrow">ADHESIVE REMOVAL APPLICATIONS</span>
+    <h2 class="cmp-h2">포장·인쇄 설비와<br>생산·조립 설비는 접착 오염 양상이 다릅니다.</h2>
+  </div>
+
+<article class="auto-app is-wide" id="auto-01">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">01</span>
+    <div><span class="auto-en">PACKAGING &amp; PRINTING EQUIPMENT</span><h3>포장 · 인쇄 설비</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/task-adhesive-rollers.webp" alt="접착제 롤러 세척" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/printing-dry-ice-blasting-removing-burnished-ink-and-adhesive-from-packaging-line.webp" alt="포장라인 접착제 세척" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">글루건과 롤러의 접착 잔류물을<br>정밀 표면을 고려하며 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>글루건 노즐, 라벨링 헤드, 컨베이어 롤러, 박스 성형기에는 핫멜트와 라벨 접착제가 굳어 붙습니다. 이 잔류물이 쌓이면 접착량이 불균일해지거나 라벨이 밀리는 등 제품 품질에 영향을 줄 수 있습니다.</p><p>드라이아이스 세척은 롤러의 정밀한 표면과 형상을 연마하지 않는 방식으로, 조건에 따라 라인을 분해하지 않고 세척할 수 있어 정기적인 관리 주기를 가져가는 데 도움이 될 수 있습니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>글루건 · 노즐</li><li>라벨링 헤드 · 박스 성형기</li><li>컨베이어 롤러 · 포장설비</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app is-flip" id="auto-02">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">02</span>
+    <div><span class="auto-en">MANUFACTURING &amp; ASSEMBLY</span><h3>생산 · 조립 설비</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/packaging-dry-ice-blasting-cleaning-gears-and-star-wheels-on-packaging-line.webp" alt="기어·스타휠 접착 잔류물 세척" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/task-adhesive-rollers.webp" alt="접합 지그 세척" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">경화된 에폭시와 실런트를<br>지그 형상을 고려하며 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>접합 지그, 복합재 툴링, 성형 다이, 프레스 공구에는 에폭시, 우레탄, 실리콘 실런트, 경화된 수지가 부착됩니다. 경화 정도와 표면 결합 상태에 따라 제거 난이도가 달라집니다.</p><p>드라이아이스 세척은 화학용제나 과도한 기계적 제거 없이 이러한 잔류물을 제거하는 데 활용할 수 있습니다. 다만 수지의 종류와 경화 상태에 따라 결과가 달라질 수 있어 사전 테스트를 권장합니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>접합 지그 · 복합재 툴링</li><li>성형 다이 · 프레스 공구</li><li>생산설비 부착부</li></ul></div>
+    </div>
+  </div>
+</article>
+</div>
+</div>
+</div>
+
+<div class="cmp-panel auto-cont-panel">
+<div class="wrap">
+<div class="cmp-section is-first">
+  <span class="cmp-eyebrow">COMMON CONTAMINANTS</span>
+  <h2 class="cmp-h2 reveal">접착제 · 수지 종류에 따라<br>부착 양상이 다릅니다.</h2>
+  <ul class="auto-cont" aria-label="주요 오염물">
+    <li class="reveal-scale" style="--reveal-delay:0.00s"><img src="../assets/img/task-adhesive-rollers.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>핫멜트 · PSA</b><small>HOT MELT &amp; PSA</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.06s"><img src="../assets/img/printing-dry-ice-blasting-removing-burnished-ink-and-adhesive-from-packaging-line.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>라벨 접착제</b><small>LABEL ADHESIVE</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.12s"><img src="../assets/img/packaging-dry-ice-blasting-cleaning-gears-and-star-wheels-on-packaging-line.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>에폭시 · 우레탄</b><small>EPOXY &amp; POLYURETHANE</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.18s"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /><span class="auto-cont-l"><b>실리콘 실런트</b><small>SILICONE SEALANT</small></span></li>
+  </ul>
+</div>
+
+<div class="cmp-section auto-why-sec">
+  <span class="cmp-eyebrow">WHY DRY ICE CLEANING</span>
+  <h2 class="cmp-h2 reveal">화학용제를 줄이면서,<br>정밀한 표면은 고려합니다.</h2>
+  <ol class="auto-why is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><b>화학용제 사용 감소</b><p>용제 기반 제거 방식과 비교해 화학약품 사용을 줄이는 방향으로 검토할 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.09s"><b>좁은 노즐 · 롤러 접근</b><p>노즐과 분사 조건을 조절해 좁은 틈과 롤러 표면, 지그의 복잡한 형상에 접근할 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.18s"><b>표면 형상 유지</b><p>비마모성 방식으로 롤러와 지그의 정밀한 형상과 표면 상태를 고려하면서 접착 잔류물을 제거합니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.27s"><b>현장 세척 가능성</b><p>적용 조건에 따라 설비를 분해하지 않고 라인 안에서 세척할 수 있는 경우가 있습니다.</p></li>
+  </ol>
+</div>
+</div>
+</div>
+
+    </div>
+  </section>
+
+  <section class="cmp-dark ind-dark auto-dark">
+    <div class="wrap">
+      <div class="auto-ae">
+        <div class="reveal">
+          <span class="cmp-eyebrow">APPLICATION ENGINEERING</span>
+          <h2 class="cmp-h2">얇은 라벨 접착제와<br>경화된 에폭시는 조건이 다릅니다.</h2>
+          <div class="cmp-dark-body">
+            <p>접착제의 종류, 경화 상태, 두께, 표면과의 결합 정도에 따라 필요한 세척 조건은 달라집니다. 수지를 모두 제거할 수 있다고 일반화하지 않습니다.</p>
+            <p>바테크는 실제 부품이나 시편을 확인하고 세척 테스트를 통해 입자 크기, 분사 압력, 노즐, 분사 거리와 각도를 조정해 적합한 조건을 찾습니다.</p>
+          </div>
+        </div>
+        <div class="auto-ae-side reveal" style="--reveal-delay:0.16s">
+          <ul class="auto-ae-cases">
+            <li class="reveal" style="--reveal-delay:0.45s"><img src="../assets/img/task-adhesive-rollers.webp" alt="" loading="lazy" /><b>라벨링 롤러</b><small>핫멜트 · PSA</small></li>
+            <li class="reveal" style="--reveal-delay:0.54s"><img src="../assets/img/packaging-dry-ice-blasting-cleaning-gears-and-star-wheels-on-packaging-line.webp" alt="" loading="lazy" /><b>포장라인 기어</b><small>라벨 접착제</small></li>
+            <li class="reveal" style="--reveal-delay:0.63s"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /><b>접합 지그</b><small>에폭시 · 실런트</small></li>
+          </ul>
+          <p class="auto-ae-key">장비를 먼저 정하기보다,<br><em>먼저 적합한 세척 조건</em>을 확인합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="subhero-cover cmp-page cmp-tail ind-page auto-page">
+    <div class="wrap">
+
+<div class="cmp-section is-first auto-relind-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div><span class="cmp-eyebrow">INDUSTRIES</span><h2 class="cmp-h2">접착제 오염은<br>여러 산업의 생산라인에 존재합니다.</h2></div>
+    <p class="cmp-lead-p">Cold Jet 공식 자료에서 확인되는 접착제 제거 적용 산업입니다.</p>
+  </div>
+  <ul class="auto-relind is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><a href="../industries/plastics-composites.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-plastics.png" alt="" loading="lazy" /></span><small>PLASTICS &amp; COMPOSITES</small><b>플라스틱 · 복합소재</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.07s"><a href="../industries/automotive.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-automotive.png" alt="" loading="lazy" /></span><small>AUTOMOTIVE MANUFACTURING</small><b>자동차 제조</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.14s"><a href="../industries/aerospace.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-aerospace.png" alt="" loading="lazy" /></span><small>AEROSPACE &amp; AVIATION</small><b>우주 · 항공</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.21s"><a href="../industries/semiconductor.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-semiconductor.png" alt="" loading="lazy" /></span><small>SEMICONDUCTOR &amp; ELECTRONICS</small><b>반도체 · 전자 제조</b><span>산업 페이지 보기 →</span></a></li>
+  </ul>
+</div>
+
+<div class="cmp-section auto-proven-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div><span class="cmp-eyebrow">ADHESIVE REMOVAL IN PRACTICE</span><h2 class="cmp-h2">포장 · 생산현장에서<br>확인된 적용 경험</h2></div>
+    <p class="cmp-lead-p">Cold Jet 공식 Adhesive Removal 자료에서 확인되는 적용 사례입니다. 아래 사례는 각 현장의 조건에서 확인된 결과이며, 모든 접착제·설비에 같은 결과를 보장하는 것은 아닙니다.</p>
+  </div>
+  <ul class="mtc-cases">
+    <li class="reveal" style="--reveal-delay:0.00s">
+      <div class="mtc-case-head"><small>PACKAGING LINE</small><b>라벨링 롤러 접착제 제거</b><span>Cold Jet 공식 사례</span></div>
+      <dl><div><dt>기존 방식</dt><dd>화학용제를 이용한 수작업 세척 — 라인 정지 시간 소요</dd></div><div><dt>적용</dt><dd>드라이아이스 세척으로 라인 내 세척</dd></div></dl>
+      <p class="mtc-case-result"><span>확인된 결과</span>화학용제 사용을 줄이고 세척시간을 단축했다고 보고</p>
+    </li>
+    <li class="reveal" style="--reveal-delay:0.10s">
+      <div class="mtc-case-head"><small>PRINTING &amp; PACKAGING</small><b>포장설비 접착 잔류물 관리</b><span>Cold Jet 공식 사례</span></div>
+      <dl><div><dt>세척 대상</dt><dd>기어 · 스타휠 · 컨베이어</dd></div><div><dt>적용</dt><dd>정기 예방정비 일정에 드라이아이스 세척 도입</dd></div></dl>
+      <p class="mtc-case-result"><span>확인된 결과</span>설비 분해 없이 정기 세척이 가능해졌다고 보고</p>
+    </li>
+  </ul>
+</div>
+
+<div class="cmp-section cmp-cta auto-cta reveal">
+  <div class="cmp-cta-left">
+    <span class="cmp-eyebrow">TEST YOUR APPLICATION</span>
+    <h2 class="cmp-h2">현재 사용 중인 접착제도<br>제거할 수 있을까요?</h2>
+  </div>
+  <div class="cmp-cta-right">
+    <div class="cmp-text">
+      <p>접착제의 종류와 경화 상태, 세척 대상의 재질과 형상에 따라 적합한 세척 조건은 달라집니다.</p>
+      <p>바테크는 실제 부품 또는 샘플을 확인하고 세척 테스트를 통해 적용 가능성과 작업 조건을 확인합니다.</p>
+    </div>
+    <div class="cmp-cta-btns">
+      <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청 →</a>
+      <a class="cmp-btn-ghost" href="../products/quote.html">적용 상담 →</a>
+      <a class="cmp-btn-ghost" href="../cases/library.html">적용사례 보기 →</a>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+<div class="last-freeze">
+<div class="wrap">
+<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+      <div class="sub-grid" id="subGrid">
+  <a class="sub-card" href="../cleaning/guide.html">
+    <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">원리 · 기초</span>
+      <h3 style="font-size: 25px">드라이아이스 세척의 이해</h3>
+      <p style="font-size: 20px">드라이아이스의 물리적 특성부터 세척 원리와 장점, 세척 장비의 기본 개념까지 살펴봅니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/compare.html">
+    <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">비교 · 차이점</span>
+      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/task.html">
+    <div class="sub-card-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">작업별 적용</span>
+      <h3 style="font-size: 25px">작업별 솔루션</h3>
+      <p style="font-size: 20px">이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/industry.html">
+    <div class="sub-card-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">산업별 적용</span>
+      <h3 style="font-size: 25px">산업별 솔루션</h3>
+      <p style="font-size: 20px">자동차·반도체·식품·발전 등 산업별 주요 세척 대상과 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+</div>
+      <div class="cta-band">
+        <div>
+          <h3 style="font-size: 25px">우리 생산라인의 세척 조건을 함께 검토해보세요</h3>
+          <p style="font-size: 20px">세척 대상과 오염물을 알려주시면 적용 가능성과 적정 조건을 안내합니다.</p>
+        </div>
+        <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청</a>
+      </div>
+      </div>
+    </div>
+"""
+
+
+INK_PAINT_COATING_REMOVAL_BODY = """
+  
+  <!-- 기술 내용·이미지 출처(Cold Jet 공식): https://www.coldjet.com/dry-ice-blasting/applications/printing/ (구 Ink & Coating Removal 성격 자료 포함)
+       + Coatings & Corrosion 자료 중 Abrasive-assisted 구분 언급만 참고(순수 드라이아이스 범위 밖은 별도 명시).
+       이미지: printing-*.webp, task-pretreatment.jpg 기존 로컬 자료 재사용. -->
+  <section class="subhero-parallax auto-hero-stage">
+    <img class="subhero-parallax-img" src="../assets/img/printing-dry-ice-blasting-removes-heavy-ink-and-grease-buildup-from-printing-press.webp" alt="인쇄기 잉크 잔류물 세척" />
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="../cleaning/index.html">드라이아이스 세척가이드</a> &gt; <a href="../cleaning/task.html">작업별 솔루션</a> &gt; 잉크 · 도료 · 코팅 제거</div>
+    <div class="subhero-textbox auto-hero-box">
+      <span class="ind-hero-eyebrow">INK, PAINT &amp; COATING REMOVAL</span>
+      <h1>잉크 · 도료 · 코팅 제거</h1>
+      <p class="cmp-hero-p auto-hero-lead">설비에 축적된 잉크와 도료,<br>코팅 잔류물을 관리합니다.</p>
+    </div>
+  </section>
+  <section class="subhero-cover cmp-page ind-page auto-page">
+    <div class="wrap">
+<div class="cmp-panel">
+<div class="wrap">
+<div class="cmp-section is-first auto-intro">
+  <div class="auto-intro-grid">
+    <div class="reveal">
+      <span class="cmp-eyebrow">SETTING EXPECTATIONS</span>
+      <h2 class="cmp-h2">드라이아이스 세척으로<br>다룰 수 있는 범위를 먼저 구분합니다.</h2>
+    </div>
+    <div class="cmp-lead auto-intro-lead reveal" style="--reveal-delay:0.14s">
+      <p>인쇄설비에 남는 잉크·바니시 잔류물과, 생산설비에 쌓이는 도료 비산 잔류물(오버스프레이)·코팅 부산물은 드라이아이스 세척의 대표적인 적용 영역입니다.</p>
+      <p class="auto-intro-close">다만 <b>강하게 부착된 산업용 도막 전체를 박리하거나, 재도장을 위한 표면 프로파일을 만드는 작업</b>은 순수 드라이아이스 세척과 목적이 다릅니다. 이런 경우 Cold Jet는 드라이아이스와 연마재를 함께 사용하는 별도의 공정을 안내하며, 이 페이지는 그 범위를 다루지 않습니다.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="cmp-section auto-apps-sec" id="auto-apps">
+  <div class="auto-sec-head reveal">
+    <span class="cmp-eyebrow">CLEANING APPLICATIONS</span>
+    <h2 class="cmp-h2">인쇄설비와 생산설비,<br>쌓이는 잔류물의 성질이 다릅니다.</h2>
+  </div>
+
+<article class="auto-app is-wide" id="auto-01">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">01</span>
+    <div><span class="auto-en">PRINTING EQUIPMENT</span><h3>인쇄설비의 잉크 · 바니시</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/printing-cleaning-ink-try-with-dry-ice-blasting.webp" alt="인쇄기 잉크 트레이 세척" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/printing-large-printing-press-cleaned-with-dry-ice-blasting.webp" alt="대형 인쇄기 세척" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">실린더와 잉크 트레이의<br>고착 잉크를 정밀하게 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>플렉소·그라비어·옵셋 인쇄기의 실린더, 롤러, 닥터블레이드, 잉크 트레이에는 잉크와 바니시가 굳어 붙습니다. Cold Jet 자료에 따르면 이 잔류물은 인쇄 품질과 색상 일관성에 영향을 줄 수 있습니다.</p><p>드라이아이스 세척은 실린더의 정밀한 표면을 연마하지 않는 방식으로, 색상 교체 시 세척시간을 줄이는 데 활용됩니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>인쇄 실린더 · 롤러</li><li>닥터블레이드 · 잉크 트레이</li><li>플렉시블 포장설비</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app is-flip" id="auto-02">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">02</span>
+    <div><span class="auto-en">PRODUCTION EQUIPMENT</span><h3>생산설비의 오버스프레이</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/task-pretreatment.jpg" alt="도장 지그 세척" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/printing-dry-ice-blasting-removes-heavy-ink-and-grease-buildup-from-printing-press.webp" alt="설비 코팅 잔류물 세척" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">도료 비산 잔류물과<br>코팅 부산물을 관리합니다.</p>
+      <div class="cmp-text auto-text"><p>도장 지그, 캐리어, 컨베이어, 코팅 어플리케이터에는 도료 비산 잔류물과 코팅 부산물이 겹겹이 쌓입니다. 방치하면 설비 움직임과 도장환경 관리에 영향을 줄 수 있습니다.</p><p>드라이아이스 세척은 이 잔류물을 설비 표면을 고려하며 제거하는 데 활용할 수 있습니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>도장 지그 · 캐리어</li><li>컨베이어 · 로봇</li><li>코팅 어플리케이터</li></ul></div>
+    </div>
+  </div>
+</article>
+</div>
+</div>
+</div>
+
+<div class="cmp-panel auto-cont-panel">
+<div class="wrap">
+<div class="cmp-section is-first">
+  <span class="cmp-eyebrow">COMMON CONTAMINANTS</span>
+  <h2 class="cmp-h2 reveal">인쇄 · 도장 · 코팅 공정에서<br>반복적으로 쌓이는 잔류물입니다.</h2>
+  <ul class="auto-cont" aria-label="주요 오염물">
+    <li class="reveal-scale" style="--reveal-delay:0.00s"><img src="../assets/img/printing-cleaning-ink-try-with-dry-ice-blasting.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>잉크</b><small>INK</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.06s"><img src="../assets/img/printing-large-printing-press-cleaned-with-dry-ice-blasting.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>바니시</b><small>VARNISH</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.12s"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /><span class="auto-cont-l"><b>도료 비산 잔류물</b><small>PAINT OVERSPRAY</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.18s"><img src="../assets/img/printing-dry-ice-blasting-removes-heavy-ink-and-grease-buildup-from-printing-press.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>코팅 부산물</b><small>COATING BUILDUP</small></span></li>
+  </ul>
+</div>
+
+<div class="cmp-section auto-why-sec">
+  <span class="cmp-eyebrow">WHY DRY ICE CLEANING</span>
+  <h2 class="cmp-h2 reveal">실린더와 롤러의 정밀도를<br>유지하면서 잔류물을 제거합니다.</h2>
+  <ol class="auto-why is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><b>비마모성 세척</b><p>인쇄 실린더의 정밀한 표면과 패턴을 연마하지 않는 방식으로 잔류물을 제거합니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.09s"><b>색상 교체 세척시간 단축 가능성</b><p>조건에 따라 분해 없이 세척할 수 있어 인쇄물 색상 전환 시 세척시간을 줄이는 데 도움이 될 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.18s"><b>세정 매체가 남지 않는 방식</b><p>드라이아이스는 승화하므로 매체 자체는 남지 않습니다. 제거된 잉크·도료는 별도로 회수·처리합니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.27s"><b>물 없는 건식 세척</b><p>수분이 인쇄 품질에 영향을 줄 수 있는 설비에서 건식 세척 방식을 검토할 수 있습니다.</p></li>
+  </ol>
+</div>
+</div>
+</div>
+
+    </div>
+  </section>
+
+  <section class="cmp-dark ind-dark auto-dark">
+    <div class="wrap">
+      <div class="auto-ae">
+        <div class="reveal">
+          <span class="cmp-eyebrow">APPLICATION ENGINEERING</span>
+          <h2 class="cmp-h2">인쇄 실린더의 얇은 잉크와<br>설비의 두꺼운 코팅은 조건이 다릅니다.</h2>
+          <div class="cmp-dark-body">
+            <p>실린더에 얇게 남은 잉크와, 도장 지그에 겹겹이 고착된 오버스프레이는 필요한 입자 크기와 분사 강도가 다릅니다.</p>
+            <p>바테크는 실제 설비와 잔류물 상태를 확인하고 세척 테스트를 통해 적합한 조건을 찾습니다.</p>
+          </div>
+        </div>
+        <div class="auto-ae-side reveal" style="--reveal-delay:0.16s">
+          <ul class="auto-ae-cases">
+            <li class="reveal" style="--reveal-delay:0.45s"><img src="../assets/img/printing-cleaning-ink-try-with-dry-ice-blasting.webp" alt="" loading="lazy" /><b>인쇄 실린더</b><small>잉크 · 바니시</small></li>
+            <li class="reveal" style="--reveal-delay:0.54s"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /><b>도장 지그</b><small>오버스프레이</small></li>
+          </ul>
+          <p class="auto-ae-key">장비를 먼저 정하기보다,<br><em>먼저 적합한 세척 조건</em>을 확인합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="subhero-cover cmp-page cmp-tail ind-page auto-page">
+    <div class="wrap">
+
+<div class="cmp-section is-first auto-relind-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div><span class="cmp-eyebrow">INDUSTRIES</span><h2 class="cmp-h2">인쇄 · 도장 · 코팅 공정은<br>다양한 산업에 걸쳐 있습니다.</h2></div>
+    <p class="cmp-lead-p">Cold Jet 공식 자료에서 확인되는 적용 산업입니다.</p>
+  </div>
+  <ul class="auto-relind is-3">
+    <li class="reveal" style="--reveal-delay:0.00s"><a href="../industries/printing.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-printing.png" alt="" loading="lazy" /></span><small>PRINTING</small><b>인쇄</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.07s"><a href="../industries/packaging.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-packaging.png" alt="" loading="lazy" /></span><small>PACKAGING</small><b>포장</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.14s"><a href="../industries/automotive.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-automotive.png" alt="" loading="lazy" /></span><small>AUTOMOTIVE MANUFACTURING</small><b>자동차 제조</b><span>산업 페이지 보기 →</span></a></li>
+  </ul>
+</div>
+
+<div class="cmp-section auto-proven-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div><span class="cmp-eyebrow">INK &amp; COATING REMOVAL IN PRACTICE</span><h2 class="cmp-h2">인쇄 · 도장설비 세척에서<br>확인된 적용 경험</h2></div>
+    <p class="cmp-lead-p">Cold Jet 공식 Printing 자료에서 확인되는 적용 사례입니다.</p>
+  </div>
+  <ul class="mtc-cases">
+    <li class="reveal" style="--reveal-delay:0.00s">
+      <div class="mtc-case-head"><small>PRINTING PRESS</small><b>실린더 잉크 잔류물 세척</b><span>Cold Jet 공식 사례</span></div>
+      <dl><div><dt>기존 방식</dt><dd>화학용제 · 수작업 스크래핑 — 실린더 표면 손상 우려</dd></div><div><dt>적용</dt><dd>드라이아이스 세척으로 색상 교체 시 세척</dd></div></dl>
+      <p class="mtc-case-result"><span>확인된 결과</span>실린더 표면 상태를 유지하며 세척시간을 줄였다고 보고</p>
+    </li>
+  </ul>
+</div>
+
+<div class="cmp-section cmp-cta auto-cta reveal">
+  <div class="cmp-cta-left">
+    <span class="cmp-eyebrow">TEST YOUR APPLICATION</span>
+    <h2 class="cmp-h2">우리 인쇄·도장설비의 잔류물도<br>관리할 수 있을까요?</h2>
+  </div>
+  <div class="cmp-cta-right">
+    <div class="cmp-text">
+      <p>잉크·도료·코팅의 종류와 부착 정도, 설비의 재질에 따라 적합한 세척 조건은 달라집니다.</p>
+      <p>바테크는 실제 설비 또는 샘플을 확인하고 세척 테스트를 통해 적용 가능성과 작업 조건을 확인합니다.</p>
+    </div>
+    <div class="cmp-cta-btns">
+      <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청 →</a>
+      <a class="cmp-btn-ghost" href="../products/quote.html">적용 상담 →</a>
+      <a class="cmp-btn-ghost" href="../cases/library.html">적용사례 보기 →</a>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+<div class="last-freeze">
+<div class="wrap">
+<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+      <div class="sub-grid" id="subGrid">
+  <a class="sub-card" href="../cleaning/guide.html">
+    <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">원리 · 기초</span>
+      <h3 style="font-size: 25px">드라이아이스 세척의 이해</h3>
+      <p style="font-size: 20px">드라이아이스의 물리적 특성부터 세척 원리와 장점, 세척 장비의 기본 개념까지 살펴봅니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/compare.html">
+    <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">비교 · 차이점</span>
+      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/task.html">
+    <div class="sub-card-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">작업별 적용</span>
+      <h3 style="font-size: 25px">작업별 솔루션</h3>
+      <p style="font-size: 20px">이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/industry.html">
+    <div class="sub-card-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">산업별 적용</span>
+      <h3 style="font-size: 25px">산업별 솔루션</h3>
+      <p style="font-size: 20px">자동차·반도체·식품·발전 등 산업별 주요 세척 대상과 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+</div>
+      <div class="cta-band">
+        <div>
+          <h3 style="font-size: 25px">우리 생산라인의 세척 조건을 함께 검토해보세요</h3>
+          <p style="font-size: 20px">세척 대상과 오염물을 알려주시면 적용 가능성과 적정 조건을 안내합니다.</p>
+        </div>
+        <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청</a>
+      </div>
+      </div>
+    </div>
+"""
+
+
+OIL_GREASE_RESIDUE_REMOVAL_BODY = """
+  
+  <!-- 기술 내용·이미지 출처(Cold Jet 공식): Facility Maintenance, Mining, Oil & Gas, Rail Transportation, Contract Cleaning 자료 조합.
+       단독 대표 Application 페이지가 없어 여러 산업 자료의 공통 오일·그리스 세척 내용을 조합해 작성.
+       이미지: task-oil-tar-pipe.webp, auto-facility-motor.jpg 등 기존 로컬 자료 재사용. -->
+  <section class="subhero-parallax auto-hero-stage">
+    <img class="subhero-parallax-img" src="../assets/img/task-oil-tar-pipe.webp" alt="배관에 축적된 오일·타르성 오염" />
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="../cleaning/index.html">드라이아이스 세척가이드</a> &gt; <a href="../cleaning/task.html">작업별 솔루션</a> &gt; 오일 · 그리스 · 고착 오염 제거</div>
+    <div class="subhero-textbox auto-hero-box">
+      <span class="ind-hero-eyebrow">OIL, GREASE &amp; HEAVY BUILDUP REMOVAL</span>
+      <h1>오일 · 그리스 · 고착 오염 제거</h1>
+      <p class="cmp-hero-p auto-hero-lead">두껍게 쌓인 오일과 그리스는,<br>설비의 상태까지 가릴 수 있습니다.</p>
+    </div>
+  </section>
+  <section class="subhero-cover cmp-page ind-page auto-page">
+    <div class="wrap">
+<div class="cmp-panel">
+<div class="wrap">
+<div class="cmp-section is-first auto-intro">
+  <div class="auto-intro-grid">
+    <div class="reveal">
+      <span class="cmp-eyebrow">HEAVY BUILDUP</span>
+      <h2 class="cmp-h2">시간이 지날수록,<br>오염은 더 두껍고 단단해집니다.</h2>
+    </div>
+    <div class="cmp-lead auto-intro-lead reveal" style="--reveal-delay:0.14s">
+      <p>기어, 베어링 하우징, 기계 프레임, 유압설비, 컨베이어, 펌프, 중장비에는 오일과 그리스, 윤활유, 타르성 잔류물, 탄화된 그리스가 시간이 지날수록 겹겹이 쌓입니다.</p>
+      <p class="auto-intro-close">드라이아이스 세척은 <b>화학용제나 스팀 세척 없이</b> 이러한 고착 오염물을 제거하는 데 활용할 수 있습니다.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="cmp-section auto-apps-sec" id="auto-apps">
+  <div class="auto-sec-head reveal">
+    <span class="cmp-eyebrow">HEAVY BUILDUP APPLICATIONS</span>
+    <h2 class="cmp-h2">기계설비와 중장비의<br>고착 오염을 관리합니다.</h2>
+  </div>
+
+<article class="auto-app is-wide" id="auto-01">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">01</span>
+    <div><span class="auto-en">MACHINERY &amp; MOVING PARTS</span><h3>기계설비 · 구동부</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/task-oil-tar-pipe.webp" alt="배관 오일 세척" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/auto-facility-motor.jpg" alt="기계 프레임 세척" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">기어와 베어링의 그리스를<br>분해 없이 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>기어, 베어링 하우징, 기계 프레임, 유압부품에는 오일과 그리스가 반복적으로 축적됩니다. 오염이 두꺼워지면 누유 위치나 균열, 마모 상태를 육안으로 확인하기 어려워질 수 있습니다.</p><p>드라이아이스 세척은 조건에 따라 설비를 완전히 분해하지 않고 세척할 수 있어, 정비 전 상태 확인을 위한 세척에 활용됩니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>기어 · 베어링 하우징</li><li>기계 프레임 · 유압부품</li><li>컨베이어 · 펌프 · 컴프레서</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app is-flip" id="auto-02">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">02</span>
+    <div><span class="auto-en">HEAVY &amp; RAIL EQUIPMENT</span><h3>중장비 · 철도설비</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/auto-facility-motor.jpg" alt="중장비 엔진 세척" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/task-oil-tar-pipe.webp" alt="타르성 오염 배관 세척" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">엔진과 대형 설비의<br>고착 오염을 관리합니다.</p>
+      <div class="cmp-text auto-text"><p>엔진, 중장비, 채광설비, 철도차량 대차와 언더캐리지에는 오일, 타르성 잔류물, 아스팔트, 탄화된 그리스가 두껍게 고착될 수 있습니다.</p><p>드라이아이스 세척은 물이나 연마재 사용이 부담스러운 대형 설비의 현장 유지보수 세척에 활용할 수 있습니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>엔진 · 중장비</li><li>채광설비 · 철도 대차</li><li>플랜트 배관 · 밸브</li></ul></div>
+    </div>
+  </div>
+</article>
+</div>
+</div>
+</div>
+
+<div class="cmp-panel auto-cont-panel">
+<div class="wrap">
+<div class="cmp-section is-first">
+  <span class="cmp-eyebrow">COMMON CONTAMINANTS</span>
+  <h2 class="cmp-h2 reveal">고착 오염은<br>종류에 따라 제거 난이도가 다릅니다.</h2>
+  <ul class="auto-cont" aria-label="주요 오염물">
+    <li class="reveal-scale" style="--reveal-delay:0.00s"><img src="../assets/img/task-oil-tar-pipe.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>오일 · 그리스</b><small>OIL &amp; GREASE</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.06s"><img src="../assets/img/auto-facility-motor.jpg" alt="" loading="lazy" /><span class="auto-cont-l"><b>유압유 · 윤활유</b><small>HYDRAULIC &amp; LUBRICANT</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.12s"><img src="../assets/img/task-oil-tar-pipe.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>타르성 잔류물 · 아스팔트</b><small>TAR-LIKE BUILDUP</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.18s"><img src="../assets/img/auto-facility-motor.jpg" alt="" loading="lazy" /><span class="auto-cont-l"><b>탄화된 그리스</b><small>CARBONIZED GREASE</small></span></li>
+  </ul>
+</div>
+
+<div class="cmp-section auto-why-sec">
+  <span class="cmp-eyebrow">WHY DRY ICE CLEANING</span>
+  <h2 class="cmp-h2 reveal">오염 제거는 정비의 끝이 아니라,<br>상태 점검의 시작일 수 있습니다.</h2>
+  <ol class="auto-why is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><b>분해 없이 현장 세척</b><p>적용 조건에 따라 설비를 완전히 분해하지 않고 세척할 수 있는 경우가 있어 정비시간을 줄이는 데 도움이 될 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.09s"><b>물을 사용하지 않는 건식 세척</b><p>세척 후 별도의 건조 작업을 줄이는 데 도움이 될 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.18s"><b>세정 매체가 남지 않는 방식</b><p>드라이아이스는 승화하므로 매체 자체는 남지 않습니다. 제거된 오일·그리스는 별도로 회수·처리합니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.27s"><b>상태 확인이 쉬운 표면</b><p>오염을 제거하면 누유, 균열, 마모 상태를 육안으로 확인하기 쉬운 환경을 만드는 데 도움이 될 수 있습니다.</p></li>
+  </ol>
+</div>
+</div>
+</div>
+
+    </div>
+  </section>
+
+  <section class="cmp-dark ind-dark auto-dark">
+    <div class="wrap">
+      <div class="auto-ae">
+        <div class="reveal">
+          <span class="cmp-eyebrow">APPLICATION ENGINEERING</span>
+          <h2 class="cmp-h2">얇은 오일막과<br>두껍게 고착된 그리스는 조건이 다릅니다.</h2>
+          <div class="cmp-dark-body">
+            <p>기어의 얇은 오일막과 중장비의 두껍게 탄화된 그리스는 필요한 분사 강도와 시간이 전혀 다릅니다.</p>
+            <p>바테크는 실제 설비와 오염 상태를 확인하고 세척 테스트를 통해 적합한 조건을 찾습니다.</p>
+          </div>
+        </div>
+        <div class="auto-ae-side reveal" style="--reveal-delay:0.16s">
+          <ul class="auto-ae-cases">
+            <li class="reveal" style="--reveal-delay:0.45s"><img src="../assets/img/task-oil-tar-pipe.webp" alt="" loading="lazy" /><b>배관 · 밸브</b><small>타르성 잔류물</small></li>
+            <li class="reveal" style="--reveal-delay:0.54s"><img src="../assets/img/auto-facility-motor.jpg" alt="" loading="lazy" /><b>기계 프레임</b><small>오일 · 그리스</small></li>
+          </ul>
+          <p class="auto-ae-key">장비를 먼저 정하기보다,<br><em>먼저 적합한 세척 조건</em>을 확인합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="subhero-cover cmp-page cmp-tail ind-page auto-page">
+    <div class="wrap">
+
+<div class="cmp-section is-first auto-relind-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div><span class="cmp-eyebrow">INDUSTRIES</span><h2 class="cmp-h2">오일 · 그리스 오염은<br>중장비가 있는 모든 현장에 존재합니다.</h2></div>
+    <p class="cmp-lead-p">Cold Jet 공식 자료에서 확인되는 적용 산업입니다.</p>
+  </div>
+  <ul class="auto-relind is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><a href="../industries/mining.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-mining.png" alt="" loading="lazy" /></span><small>MINING</small><b>채광</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.07s"><a href="../industries/oil-gas.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-oilgas.png" alt="" loading="lazy" /></span><small>OIL &amp; GAS</small><b>석유 · 가스</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.14s"><a href="../industries/rail.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-rail.png" alt="" loading="lazy" /></span><small>RAIL &amp; PUBLIC TRANSPORTATION</small><b>철도 · 대중교통</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.21s"><a href="../industries/facility-maintenance.html"><span class="auto-relind-img"><img src="../assets/img/facility-volpak-machine-cleaning.webp" alt="" loading="lazy" /></span><small>FACILITY MAINTENANCE</small><b>생산설비 · 시설 유지보수</b><span>산업 페이지 보기 →</span></a></li>
+  </ul>
+</div>
+
+<div class="cmp-section auto-proven-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div><span class="cmp-eyebrow">HEAVY BUILDUP REMOVAL IN PRACTICE</span><h2 class="cmp-h2">중장비 · 설비 유지보수에서<br>확인된 적용 경험</h2></div>
+    <p class="cmp-lead-p">Cold Jet 공식 Facility Maintenance · Mining 자료에서 확인되는 적용 사례입니다.</p>
+  </div>
+  <ul class="mtc-cases">
+    <li class="reveal" style="--reveal-delay:0.00s">
+      <div class="mtc-case-head"><small>FACILITY MAINTENANCE</small><b>기계설비 오일·그리스 세척</b><span>Cold Jet 공식 사례</span></div>
+      <dl><div><dt>기존 방식</dt><dd>화학세척제 · 스팀 세척</dd></div><div><dt>적용</dt><dd>드라이아이스 세척으로 정비 전 세척</dd></div></dl>
+      <p class="mtc-case-result"><span>확인된 결과</span>분해 없이 상태 점검이 쉬워졌다고 보고</p>
+    </li>
+  </ul>
+</div>
+
+<div class="cmp-section cmp-cta auto-cta reveal">
+  <div class="cmp-cta-left">
+    <span class="cmp-eyebrow">TEST YOUR APPLICATION</span>
+    <h2 class="cmp-h2">두껍게 쌓인 오염물도<br>세척할 수 있을까요?</h2>
+  </div>
+  <div class="cmp-cta-right">
+    <div class="cmp-text">
+      <p>오염물의 두께와 경화 상태, 설비의 재질과 형상에 따라 적합한 세척 조건은 달라집니다.</p>
+      <p>바테크는 실제 설비 또는 샘플을 확인하고 세척 테스트를 통해 적용 가능성과 작업 조건을 확인합니다.</p>
+    </div>
+    <div class="cmp-cta-btns">
+      <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청 →</a>
+      <a class="cmp-btn-ghost" href="../products/quote.html">적용 상담 →</a>
+      <a class="cmp-btn-ghost" href="../cases/library.html">적용사례 보기 →</a>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+<div class="last-freeze">
+<div class="wrap">
+<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+      <div class="sub-grid" id="subGrid">
+  <a class="sub-card" href="../cleaning/guide.html">
+    <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">원리 · 기초</span>
+      <h3 style="font-size: 25px">드라이아이스 세척의 이해</h3>
+      <p style="font-size: 20px">드라이아이스의 물리적 특성부터 세척 원리와 장점, 세척 장비의 기본 개념까지 살펴봅니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/compare.html">
+    <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">비교 · 차이점</span>
+      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/task.html">
+    <div class="sub-card-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">작업별 적용</span>
+      <h3 style="font-size: 25px">작업별 솔루션</h3>
+      <p style="font-size: 20px">이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/industry.html">
+    <div class="sub-card-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">산업별 적용</span>
+      <h3 style="font-size: 25px">산업별 솔루션</h3>
+      <p style="font-size: 20px">자동차·반도체·식품·발전 등 산업별 주요 세척 대상과 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+</div>
+      <div class="cta-band">
+        <div>
+          <h3 style="font-size: 25px">우리 생산라인의 세척 조건을 함께 검토해보세요</h3>
+          <p style="font-size: 20px">세척 대상과 오염물을 알려주시면 적용 가능성과 적정 조건을 안내합니다.</p>
+        </div>
+        <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청</a>
+      </div>
+      </div>
+    </div>
+"""
+
+
+RUST_CORROSION_REMOVAL_BODY = """
+  
+  <!-- 기술 내용·이미지 출처(Cold Jet 공식): https://www.coldjet.com/dry-ice-blasting/applications/rust-removal/
+       한계 설명(Sa 2.5 / White Metal / Anchor Profile 구분)은 Cold Jet Surface Rust Removal 공식 자료 기준.
+       이미지: task-surface-rust.webp, power-generation-...-surface-rust-...webp 기존 로컬 자료 재사용. -->
+  <section class="subhero-parallax auto-hero-stage">
+    <img class="subhero-parallax-img" src="../assets/img/power-generation-dry-ice-blasting-removing-surface-rust-from-turbine-compressor-component.webp" alt="터빈 부품 표면 녹 세척" />
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="../cleaning/index.html">드라이아이스 세척가이드</a> &gt; <a href="../cleaning/task.html">작업별 솔루션</a> &gt; 녹 · 부식 · 산화물 제거</div>
+    <div class="subhero-textbox auto-hero-box">
+      <span class="ind-hero-eyebrow">RUST, CORROSION &amp; OXIDATION REMOVAL</span>
+      <h1>녹 · 부식 · 산화물 제거</h1>
+      <p class="cmp-hero-p auto-hero-lead">드라이아이스 세척은<br>모든 녹을 깎아내는 방식이 아닙니다.</p>
+    </div>
+  </section>
+  <section class="subhero-cover cmp-page ind-page auto-page">
+    <div class="wrap">
+<div class="cmp-panel">
+<div class="wrap">
+<div class="cmp-section is-first auto-intro">
+  <div class="auto-intro-grid">
+    <div class="reveal">
+      <span class="cmp-eyebrow">SURFACE-LEVEL vs. DEEP CORROSION</span>
+      <h2 class="cmp-h2">표면 녹 제거와<br>연마 블라스팅은 목적이 다릅니다.</h2>
+    </div>
+    <div class="cmp-lead auto-intro-lead reveal" style="--reveal-delay:0.14s">
+      <p>표면 녹, 플래시 러스트, 초기 단계의 느슨한 산화물은 드라이아이스 세척으로 검토 가능한 영역입니다. 원래 표면 상태를 고려하면서 이러한 오염을 제거하는 데 활용할 수 있습니다.</p>
+      <p class="auto-intro-close">하지만 <b>깊게 진행된 피팅 부식, 두꺼운 스케일, Sa 2.5 이상의 백색 금속면, 재도장을 위한 표면 프로파일(Anchor Profile)이 필요한 작업</b>에는 순수 드라이아이스 세척이 적합한 방법이 아닐 수 있습니다. 이 경우 연마 블라스팅 등 다른 방식을 검토해야 합니다.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="cmp-section auto-apps-sec" id="auto-apps">
+  <div class="auto-sec-head reveal">
+    <span class="cmp-eyebrow">RUST REMOVAL APPLICATIONS</span>
+    <h2 class="cmp-h2">기계 표면과<br>구조물의 표면 녹을 관리합니다.</h2>
+  </div>
+
+<article class="auto-app is-wide" id="auto-01">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">01</span>
+    <div><span class="auto-en">MACHINE &amp; TOOLING SURFACES</span><h3>기계 · 툴링 표면</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/task-surface-rust.webp" alt="기계 표면 녹 세척" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/power-generation-dry-ice-blasting-removing-surface-rust-from-turbine-compressor-component.webp" alt="터빈 부품 세척" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">정밀 표면의 형상을 유지하며<br>표면 녹을 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>기계 프레임, 정밀 부품, 터빈·컴프레서 구성품, 금형 표면에 발생하는 표면 녹과 초기 산화물은 드라이아이스 세척으로 검토할 수 있습니다.</p><p>비마모성 방식이므로 정밀한 형상을 연마하지 않으면서 접근할 수 있지만, 부식 깊이와 정도에 따라 결과가 달라질 수 있어 사전 테스트를 권장합니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>기계 프레임 · 정밀 부품</li><li>터빈 · 컴프레서 구성품</li><li>금형 · 치공구 표면</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app is-flip" id="auto-02">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">02</span>
+    <div><span class="auto-en">STRUCTURAL &amp; RESTORATION SURFACES</span><h3>구조물 · 복원 대상 표면</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/power-generation-dry-ice-blasting-removing-surface-rust-from-turbine-compressor-component.webp" alt="철골 구조물 세척" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/task-surface-rust.webp" alt="자동차 하부 표면 녹 세척" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">느슨하게 부착된 산화물을<br>원형 표면을 고려하며 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>철골 구조물, 철도 인프라, 자동차 복원 대상의 언더바디 표면에 생긴 느슨한 표면 녹은 검사와 유지보수를 돕는 목적으로 세척할 수 있습니다.</p><p>다만 깊게 진행된 부식이나 강한 표면처리가 필요한 경우는 다른 방법을 검토해야 합니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>철골 구조물 · 철도 인프라</li><li>자동차 복원 언더바디</li><li>플랜트 배관 외부</li></ul></div>
+    </div>
+  </div>
+</article>
+</div>
+</div>
+</div>
+
+<div class="cmp-panel auto-cont-panel">
+<div class="wrap">
+<div class="cmp-section is-first">
+  <span class="cmp-eyebrow">WHAT DRY ICE CAN AND CANNOT DO</span>
+  <h2 class="cmp-h2 reveal">가능한 영역과<br>다른 방법이 필요한 영역을 구분합니다.</h2>
+  <div class="adopt-2col reveal" style="--reveal-delay:0.1s">
+    <div>
+      <h4>검토 가능한 영역</h4>
+      <p class="adopt-2col-b">표면 녹 · 플래시 러스트 · 초기 산화물 · 느슨하게 부착된 표면 오염</p>
+      <ul><li>정밀 표면의 형상 유지가 필요한 경우</li><li>연마 흔적을 남기지 않아야 하는 경우</li><li>검사·유지보수를 위한 표면 확인 목적</li></ul>
+    </div>
+    <div>
+      <h4>Dry Ice Only 범위 밖</h4>
+      <p class="adopt-2col-b">깊게 진행된 피팅 부식 · 두꺼운 스케일 · Sa 2.5 이상 백색 금속면 · Anchor Profile 형성</p>
+      <ul><li>재도장을 위한 표면 프로파일이 필요한 경우</li><li>연마 블라스팅 등 별도 방식 검토 필요</li></ul>
+    </div>
+  </div>
+</div>
+
+<div class="cmp-section auto-why-sec">
+  <span class="cmp-eyebrow">WHY DRY ICE CLEANING</span>
+  <h2 class="cmp-h2 reveal">표면 녹 제거와<br>표면 보호를 함께 고려합니다.</h2>
+  <ol class="auto-why is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><b>비마모성 세척</b><p>연마재로 깎아내는 방식이 아니므로 원래 표면 상태를 고려하면서 표면 녹을 제거합니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.09s"><b>표면 수준의 산화물 대응</b><p>표면 녹과 느슨한 산화물 제거에 활용하며, 깊은 부식에는 다른 방식이 필요할 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.18s"><b>수분을 남기지 않는 방식</b><p>물을 사용하지 않아 세척 직후 재부식 우려를 줄이는 데 도움이 될 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.27s"><b>연마재가 남지 않는 방식</b><p>드라이아이스는 승화하므로 모래·비드 같은 연마재가 표면에 남지 않습니다.</p></li>
+  </ol>
+</div>
+</div>
+</div>
+
+    </div>
+  </section>
+
+  <section class="cmp-dark ind-dark auto-dark">
+    <div class="wrap">
+      <div class="auto-ae">
+        <div class="reveal">
+          <span class="cmp-eyebrow">APPLICATION ENGINEERING</span>
+          <h2 class="cmp-h2">부식 깊이와 요구되는 표면 상태에 따라<br>적합한 방법이 달라집니다.</h2>
+          <div class="cmp-dark-body">
+            <p>표면 녹인지, 피팅 부식인지, 재도장을 위한 프로파일이 필요한지에 따라 드라이아이스 세척이 적합한지 여부부터 확인해야 합니다.</p>
+            <p>바테크는 실제 표면과 부식 상태를 확인하고 필요 시 세척 테스트를 통해 적용 가능성을 검토합니다.</p>
+          </div>
+        </div>
+        <div class="auto-ae-side reveal" style="--reveal-delay:0.16s">
+          <ul class="auto-ae-cases">
+            <li class="reveal" style="--reveal-delay:0.45s"><img src="../assets/img/task-surface-rust.webp" alt="" loading="lazy" /><b>정밀 부품</b><small>표면 녹</small></li>
+            <li class="reveal" style="--reveal-delay:0.54s"><img src="../assets/img/power-generation-dry-ice-blasting-removing-surface-rust-from-turbine-compressor-component.webp" alt="" loading="lazy" /><b>터빈 · 컴프레서</b><small>산화물</small></li>
+          </ul>
+          <p class="auto-ae-key">장비를 먼저 정하기보다,<br><em>적용 가능 여부부터</em> 확인합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="subhero-cover cmp-page cmp-tail ind-page auto-page">
+    <div class="wrap">
+
+<div class="cmp-section is-first auto-relind-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div><span class="cmp-eyebrow">INDUSTRIES</span><h2 class="cmp-h2">표면 녹 관리는<br>다양한 산업 설비에서 필요합니다.</h2></div>
+    <p class="cmp-lead-p">Cold Jet 공식 자료에서 확인되는 적용 산업입니다.</p>
+  </div>
+  <ul class="auto-relind is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><a href="../industries/oil-gas.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-oilgas.png" alt="" loading="lazy" /></span><small>OIL &amp; GAS</small><b>석유 · 가스</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.07s"><a href="../industries/power-generation.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-power.png" alt="" loading="lazy" /></span><small>POWER GENERATION</small><b>발전 · 전력</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.14s"><a href="../industries/mining.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-mining.png" alt="" loading="lazy" /></span><small>MINING</small><b>채광</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.21s"><a href="../industries/automotive-detailing.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-detailing.png" alt="" loading="lazy" /></span><small>AUTOMOTIVE RESTORATION &amp; DETAILING</small><b>자동차 복원 · 디테일링</b><span>산업 페이지 보기 →</span></a></li>
+  </ul>
+</div>
+
+<div class="cmp-section cmp-cta auto-cta reveal">
+  <div class="cmp-cta-left">
+    <span class="cmp-eyebrow">TEST YOUR APPLICATION</span>
+    <h2 class="cmp-h2">현재 부식 상태에<br>드라이아이스 세척이 적합할까요?</h2>
+  </div>
+  <div class="cmp-cta-right">
+    <div class="cmp-text">
+      <p>부식의 깊이와 진행 정도, 요구되는 표면 상태에 따라 적용 가능 여부가 달라집니다.</p>
+      <p>바테크는 실제 표면을 확인하고 필요 시 테스트를 통해 적용 가능성과 작업 조건을 확인합니다.</p>
+    </div>
+    <div class="cmp-cta-btns">
+      <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청 →</a>
+      <a class="cmp-btn-ghost" href="../products/quote.html">적용 상담 →</a>
+      <a class="cmp-btn-ghost" href="../cases/library.html">적용사례 보기 →</a>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+<div class="last-freeze">
+<div class="wrap">
+<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+      <div class="sub-grid" id="subGrid">
+  <a class="sub-card" href="../cleaning/guide.html">
+    <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">원리 · 기초</span>
+      <h3 style="font-size: 25px">드라이아이스 세척의 이해</h3>
+      <p style="font-size: 20px">드라이아이스의 물리적 특성부터 세척 원리와 장점, 세척 장비의 기본 개념까지 살펴봅니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/compare.html">
+    <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">비교 · 차이점</span>
+      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/task.html">
+    <div class="sub-card-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">작업별 적용</span>
+      <h3 style="font-size: 25px">작업별 솔루션</h3>
+      <p style="font-size: 20px">이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/industry.html">
+    <div class="sub-card-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">산업별 적용</span>
+      <h3 style="font-size: 25px">산업별 솔루션</h3>
+      <p style="font-size: 20px">자동차·반도체·식품·발전 등 산업별 주요 세척 대상과 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+</div>
+      <div class="cta-band">
+        <div>
+          <h3 style="font-size: 25px">우리 생산라인의 세척 조건을 함께 검토해보세요</h3>
+          <p style="font-size: 20px">세척 대상과 오염물을 알려주시면 적용 가능성과 적정 조건을 안내합니다.</p>
+        </div>
+        <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청</a>
+      </div>
+      </div>
+    </div>
+"""
+
+
+SURFACE_PREPARATION_BODY = """
+  
+  <!-- 기술 내용·이미지 출처(Cold Jet 공식): https://www.coldjet.com/dry-ice-blasting/applications/surface-preparation/
+       이미지: task-surface-industrial.jpg, task-surface-food.jpg, plastics-composites-...-automotive-parts-prior-to-painting.webp 등 기존 로컬 자료 재사용. -->
+  <section class="subhero-parallax auto-hero-stage">
+    <img class="subhero-parallax-img" src="../assets/img/task-surface-industrial.jpg" alt="도장 전 부품 표면 전처리" />
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="../cleaning/index.html">드라이아이스 세척가이드</a> &gt; <a href="../cleaning/task.html">작업별 솔루션</a> &gt; 표면 전처리</div>
+    <div class="subhero-textbox auto-hero-box">
+      <span class="ind-hero-eyebrow">SURFACE PREPARATION</span>
+      <h1>표면 전처리</h1>
+      <p class="cmp-hero-p auto-hero-lead">좋은 도장과 접착은,<br>깨끗한 표면에서 시작됩니다.</p>
+    </div>
+  </section>
+  <section class="subhero-cover cmp-page ind-page auto-page">
+    <div class="wrap">
+<div class="cmp-panel">
+<div class="wrap">
+<div class="cmp-section is-first auto-intro">
+  <div class="auto-intro-grid">
+    <div class="reveal">
+      <span class="cmp-eyebrow">CLEANLINESS, NOT PROFILE</span>
+      <h2 class="cmp-h2">깨끗하게 만드는 전처리와,<br>표면을 거칠게 만드는 전처리는 다릅니다.</h2>
+    </div>
+    <div class="cmp-lead auto-intro-lead reveal" style="--reveal-delay:0.14s">
+      <p>도장, 코팅, 접착, 실링, 용접 전에는 표면에 남아 있는 이형제, 오일, 먼지, 미세입자, 지문·피지, 생산 잔류물이 후속 공정에 영향을 주지 않도록 관리해야 합니다.</p>
+      <p class="auto-intro-close">드라이아이스 Surface Preparation은 <b>오염물을 제거하는 청정도 확보(Cleanliness Preparation)</b> 성격이 강합니다. 일반적인 연마 블라스팅처럼 재도장을 위한 표면 프로파일(Anchor Profile)을 만드는 방식은 아닙니다.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="cmp-section auto-apps-sec" id="auto-apps">
+  <div class="auto-sec-head reveal">
+    <span class="cmp-eyebrow">SURFACE PREPARATION APPLICATIONS</span>
+    <h2 class="cmp-h2">후속 공정에 따라<br>제거해야 할 오염물이 다릅니다.</h2>
+  </div>
+
+<article class="auto-app is-wide" id="auto-01">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">01</span>
+    <div><span class="auto-en">BEFORE PAINTING &amp; COATING</span><h3>도장 · 코팅 전</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/task-surface-industrial.jpg" alt="도장 전 부품 세척" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/plastics-composites-dry-ice-blasting-cleaning-automotive-parts-prior-to-painting.webp" alt="자동차 부품 도장 전처리" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">이형제와 먼지를 제거해<br>표면을 도장에 적합한 상태로 준비합니다.</p>
+      <div class="cmp-text auto-text"><p>자동차, 플라스틱, 항공 부품의 도장·코팅 전에는 이형제, 오일, 먼지와 생산 잔류물이 도막 부착에 영향을 줄 수 있습니다.</p><p>드라이아이스 세척은 물을 사용하지 않고 세정 매체가 표면에 남지 않는 방식으로, 도장 전 표면을 준비하는 데 활용됩니다. 물세척과 달리 세척 후 건조공정의 부담을 줄일 수 있는 것도 장점입니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>자동차 · 플라스틱 부품</li><li>항공 복합재 부품</li><li>가전 패널 · 고무 성형 부품</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app is-flip" id="auto-02">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">02</span>
+    <div><span class="auto-en">BEFORE BONDING &amp; FINISHING</span><h3>접착 · 실링 · 검사 전</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/task-surface-food.jpg" alt="전자부품 표면 전처리" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/task-surface-industrial.jpg" alt="정밀부품 표면 전처리" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">접착·실링 전<br>표면 오염물을 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>전자 하우징, 의료기기 부품에서는 접착이나 실링 전에 오일과 먼지, 미세입자, 지문·피지를 제거해야 접착 신뢰성을 확보하는 데 도움이 될 수 있습니다.</p><p>자동차 부품 등 반복 생산 라인에서는 로봇 기반 자동화 표면 전처리 사례도 활용됩니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>전자 하우징 · 의료기기 부품</li><li>정밀 조립부품</li><li>자동화 라인 부품(로봇 통합)</li></ul></div>
+    </div>
+  </div>
+</article>
+</div>
+</div>
+</div>
+
+<div class="cmp-panel auto-cont-panel">
+<div class="wrap">
+<div class="cmp-section is-first">
+  <span class="cmp-eyebrow">COMMON CONTAMINANTS</span>
+  <h2 class="cmp-h2 reveal">후속 공정에 영향을 줄 수 있는<br>표면 오염물입니다.</h2>
+  <ul class="auto-cont" aria-label="주요 오염물">
+    <li class="reveal-scale" style="--reveal-delay:0.00s"><img src="../assets/img/task-surface-industrial.jpg" alt="" loading="lazy" /><span class="auto-cont-l"><b>이형제</b><small>MOLD RELEASE AGENT</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.06s"><img src="../assets/img/plastics-composites-dry-ice-blasting-cleaning-automotive-parts-prior-to-painting.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>오일 · 윤활유</b><small>OIL &amp; LUBRICANT</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.12s"><img src="../assets/img/task-surface-food.jpg" alt="" loading="lazy" /><span class="auto-cont-l"><b>먼지 · 미세입자</b><small>DUST &amp; FINE PARTICULATE</small></span></li>
+    <li class="reveal-scale" style="--reveal-delay:0.18s"><img src="../assets/img/task-surface-industrial.jpg" alt="" loading="lazy" /><span class="auto-cont-l"><b>지문 · 생산 잔류물</b><small>FINGERPRINT &amp; PROCESS RESIDUE</small></span></li>
+  </ul>
+</div>
+
+<div class="cmp-section auto-why-sec">
+  <span class="cmp-eyebrow">WHY DRY ICE CLEANING</span>
+  <h2 class="cmp-h2 reveal">청정도를 높이는 전처리와<br>표면을 거칠게 만드는 전처리를 구분합니다.</h2>
+  <ol class="auto-why is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><b>수분이 남지 않는 방식</b><p>물을 사용하지 않아 도장·접착 전 표면에 수분이 남을 우려를 줄이는 데 도움이 될 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.09s"><b>세정 매체가 남지 않는 방식</b><p>드라이아이스는 승화하므로 매체 자체가 표면에 남지 않습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.18s"><b>오일 · 이형제 제거</b><p>후속 공정에 영향을 줄 수 있는 오일과 이형제를 표면 손상 없이 제거하는 데 활용됩니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.27s"><b>건조공정 부담 감소</b><p>물세척과 달리 세척 후 수분 제거를 위한 별도 건조공정의 부담을 줄일 수 있습니다.</p></li>
+  </ol>
+</div>
+</div>
+</div>
+
+    </div>
+  </section>
+
+  <section class="cmp-dark ind-dark auto-dark">
+    <div class="wrap">
+      <div class="auto-ae">
+        <div class="reveal">
+          <span class="cmp-eyebrow">APPLICATION ENGINEERING</span>
+          <h2 class="cmp-h2">후속 공정이 요구하는 청정도에 따라<br>세척 조건이 달라집니다.</h2>
+          <div class="cmp-dark-body">
+            <p>도장 전 요구되는 청정도와 접착 전 요구되는 청정도는 다를 수 있습니다. 부품의 재질과 형상, 오염물의 종류에 따라 조건을 조정합니다.</p>
+            <p>바테크는 실제 부품과 후속 공정 요구조건을 확인하고 세척 테스트를 통해 적합한 조건을 찾습니다.</p>
+          </div>
+        </div>
+        <div class="auto-ae-side reveal" style="--reveal-delay:0.16s">
+          <ul class="auto-ae-cases">
+            <li class="reveal" style="--reveal-delay:0.45s"><img src="../assets/img/plastics-composites-dry-ice-blasting-cleaning-automotive-parts-prior-to-painting.webp" alt="" loading="lazy" /><b>자동차 부품</b><small>도장 전 이형제 · 오일</small></li>
+            <li class="reveal" style="--reveal-delay:0.54s"><img src="../assets/img/task-surface-food.jpg" alt="" loading="lazy" /><b>전자 하우징</b><small>접착 전 먼지 · 지문</small></li>
+          </ul>
+          <p class="auto-ae-key">장비를 먼저 정하기보다,<br><em>후속 공정 요구조건부터</em> 확인합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="subhero-cover cmp-page cmp-tail ind-page auto-page">
+    <div class="wrap">
+
+<div class="cmp-section is-first auto-relind-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div><span class="cmp-eyebrow">INDUSTRIES</span><h2 class="cmp-h2">표면 전처리는<br>정밀 제조 전반에 걸쳐 있습니다.</h2></div>
+    <p class="cmp-lead-p">Cold Jet 공식 자료에서 확인되는 적용 산업입니다.</p>
+  </div>
+  <ul class="auto-relind is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><a href="../industries/automotive.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-automotive.png" alt="" loading="lazy" /></span><small>AUTOMOTIVE MANUFACTURING</small><b>자동차 제조</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.07s"><a href="../industries/plastics-composites.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-plastics.png" alt="" loading="lazy" /></span><small>PLASTICS &amp; COMPOSITES</small><b>플라스틱 · 복합소재</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.14s"><a href="../industries/aerospace.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-aerospace.png" alt="" loading="lazy" /></span><small>AEROSPACE &amp; AVIATION</small><b>우주 · 항공</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.21s"><a href="../industries/medical.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-medical.png" alt="" loading="lazy" /></span><small>MEDICAL EQUIPMENT MANUFACTURING</small><b>의료기기 제조</b><span>산업 페이지 보기 →</span></a></li>
+  </ul>
+</div>
+
+<div class="cmp-section cmp-cta auto-cta reveal">
+  <div class="cmp-cta-left">
+    <span class="cmp-eyebrow">TEST YOUR APPLICATION</span>
+    <h2 class="cmp-h2">우리 부품의 도장 전처리에<br>적용할 수 있을까요?</h2>
+  </div>
+  <div class="cmp-cta-right">
+    <div class="cmp-text">
+      <p>부품의 재질과 형상, 후속 공정이 요구하는 청정도에 따라 적합한 세척 조건은 달라집니다.</p>
+      <p>바테크는 실제 부품 또는 샘플을 확인하고 세척 테스트를 통해 적용 가능성과 작업 조건을 확인합니다.</p>
+    </div>
+    <div class="cmp-cta-btns">
+      <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청 →</a>
+      <a class="cmp-btn-ghost" href="../products/quote.html">적용 상담 →</a>
+      <a class="cmp-btn-ghost" href="../cases/library.html">적용사례 보기 →</a>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+<div class="last-freeze">
+<div class="wrap">
+<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+      <div class="sub-grid" id="subGrid">
+  <a class="sub-card" href="../cleaning/guide.html">
+    <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">원리 · 기초</span>
+      <h3 style="font-size: 25px">드라이아이스 세척의 이해</h3>
+      <p style="font-size: 20px">드라이아이스의 물리적 특성부터 세척 원리와 장점, 세척 장비의 기본 개념까지 살펴봅니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/compare.html">
+    <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">비교 · 차이점</span>
+      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/task.html">
+    <div class="sub-card-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">작업별 적용</span>
+      <h3 style="font-size: 25px">작업별 솔루션</h3>
+      <p style="font-size: 20px">이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/industry.html">
+    <div class="sub-card-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">산업별 적용</span>
+      <h3 style="font-size: 25px">산업별 솔루션</h3>
+      <p style="font-size: 20px">자동차·반도체·식품·발전 등 산업별 주요 세척 대상과 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+</div>
+      <div class="cta-band">
+        <div>
+          <h3 style="font-size: 25px">우리 생산라인의 세척 조건을 함께 검토해보세요</h3>
+          <p style="font-size: 20px">세척 대상과 오염물을 알려주시면 적용 가능성과 적정 조건을 안내합니다.</p>
+        </div>
+        <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청</a>
+      </div>
+      </div>
+    </div>
+"""
+
+
+DEBURRING_DEFLASHING_BODY = """
+  
+  <!-- 기술 내용·이미지 출처(Cold Jet 공식): https://www.coldjet.com/dry-ice-blasting/applications/deburring-deflashing/
+       이미지: task-deburring-plastic.jpg, task-deburring-precision.jpg, aerospace-deburring-plastic-part-with-dry-ice-cleaning.webp,
+       plastics-composites-deburring-*.webp, medical-orthopedic-uhmw-implant-deburring.webp 기존 로컬 자료 재사용. -->
+  <section class="subhero-parallax auto-hero-stage">
+    <img class="subhero-parallax-img" src="../assets/img/plastics-composites-deburring-plastic-part.webp" alt="플라스틱 부품 디버링" />
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="../cleaning/index.html">드라이아이스 세척가이드</a> &gt; <a href="../cleaning/task.html">작업별 솔루션</a> &gt; 디버링 · 디플래싱</div>
+    <div class="subhero-textbox auto-hero-box">
+      <span class="ind-hero-eyebrow">DEBURRING &amp; DEFLASHING</span>
+      <h1>디버링 · 디플래싱</h1>
+      <p class="cmp-hero-p auto-hero-lead">불필요한 버와 플래시는 제거하고,<br>부품의 형상과 치수는 고려합니다.</p>
+    </div>
+  </section>
+  <section class="subhero-cover cmp-page ind-page auto-page">
+    <div class="wrap">
+<div class="cmp-panel">
+<div class="wrap">
+<div class="cmp-section is-first auto-intro">
+  <div class="auto-intro-grid">
+    <div class="reveal">
+      <span class="cmp-eyebrow">PARTS FINISHING, NOT CLEANING</span>
+      <h2 class="cmp-h2">이 페이지는 세척보다<br>부품 마무리(Parts Finishing)를 다룹니다.</h2>
+    </div>
+    <div class="cmp-lead auto-intro-lead reveal" style="--reveal-delay:0.14s">
+      <p>사출 성형, 가공, 3D 프린팅 부품에는 파팅라인, 게이트, 벤트 주변에 플래시가, 가공 후 모서리나 홀·나사산 주변에는 버가 남을 수 있습니다.</p>
+      <p class="auto-intro-close">드라이아이스 기술은 필요한 부분에 세척 강도를 조절해 <b>버와 플래시를 제거하면서 부품의 주요 형상과 치수 변화를 최소화</b>하는 부품 마무리 공정에 활용됩니다.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="cmp-section auto-apps-sec" id="auto-apps">
+  <div class="auto-sec-head reveal">
+    <span class="cmp-eyebrow">DEBURRING &amp; DEFLASHING APPLICATIONS</span>
+    <h2 class="cmp-h2">디버링과 디플래싱은<br>발생 원인이 다른 별개의 작업입니다.</h2>
+  </div>
+
+<article class="auto-app is-wide" id="auto-01">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">01</span>
+    <div><span class="auto-en">DEFLASHING — MOLDED PARTS</span><h3>성형 부품 디플래싱</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/plastics-composites-deburring-plastic-part.webp" alt="플라스틱 부품 플래시 제거" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/aerospace-deburring-plastic-part-with-dry-ice-cleaning.webp" alt="정밀 성형부품 디플래싱" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">파팅라인과 게이트 주변의<br>플래시를 정밀하게 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>사출성형·압축성형 플라스틱, 고무, 서모셋 부품은 파팅라인, 게이트, 벤트 주변에 플래시가 남습니다. ABS, PP, 나일론, 페놀릭 등 재질에 따라 필요한 세척 강도가 다릅니다.</p><p>드라이아이스 세척은 노즐과 분사 조건을 조절해 이 부위를 타겟팅하며, 연마재가 부품 내부에 잔류하지 않는 방식으로 활용됩니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>사출 · 압축성형 플라스틱 부품</li><li>고무 · 서모셋 부품</li><li>3D 프린팅 부품</li></ul></div>
+    </div>
+  </div>
+</article>
+
+<article class="auto-app is-flip" id="auto-02">
+  <div class="auto-app-head reveal">
+    <span class="auto-num">02</span>
+    <div><span class="auto-en">DEBURRING — MACHINED &amp; PRECISION PARTS</span><h3>가공 · 정밀부품 디버링</h3></div>
+  </div>
+  <div class="auto-app-grid">
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/medical-orthopedic-uhmw-implant-deburring.webp" alt="정밀 임플란트 부품 디버링" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/plastics-composites-deburring-machined-part.webp" alt="가공부품 디버링" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">홀과 나사산 주변의 버를<br>공차를 고려하며 제거합니다.</p>
+      <div class="cmp-text auto-text"><p>가공 후 남는 금속·플라스틱 버는 홀, 나사산, 모서리 주변에 발생합니다. 의료기기 부품, 커넥터, 자동차·항공 정밀부품처럼 공차가 중요한 대상에서는 형상 변화를 최소화하는 방식이 필요합니다.</p><p>드라이아이스는 세척 강도를 조절해 타겟 부위만 처리할 수 있어, 좁은 공차의 정밀부품 마무리에 검토됩니다. 다만 금속 버 전체를 모두 제거할 수 있다고 일반화하지 않으며, 버의 재질·형상·크기·부착 상태에 따라 적용 가능성이 달라집니다.</p></div>
+      <div class="auto-targets"><span>대표 대상</span><ul><li>의료기기 정밀부품</li><li>커넥터 · 전자부품</li><li>자동차 · 항공 정밀부품</li></ul></div>
+    </div>
+  </div>
+</article>
+</div>
+</div>
+</div>
+
+<div class="cmp-panel auto-cont-panel">
+<div class="wrap">
+<div class="cmp-section is-first">
+  <span class="cmp-eyebrow">WHY DRY ICE CLEANING</span>
+  <h2 class="cmp-h2 reveal">타겟팅된 처리로<br>공차와 형상을 함께 고려합니다.</h2>
+  <ol class="auto-why is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><b>타겟팅된 처리(Targeted Processing)</b><p>노즐과 분사 조건을 조절해 버·플래시가 있는 부위만 선택적으로 처리할 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.09s"><b>복잡한 형상 접근</b><p>홀, 나사산, 좁은 틈처럼 복잡한 형상에도 접근할 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.18s"><b>연마재가 부품에 남지 않음</b><p>드라이아이스는 승화하므로 모래·비드 매체가 부품 내부나 틈에 잔류하지 않습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.27s"><b>공차 변화 최소화 · 자동화 가능성</b><p>부품의 주요 치수 변화를 최소화하는 방향으로 조건을 설정하며, 반복 생산 부품은 자동화 라인에 통합할 수 있습니다.</p></li>
+  </ol>
+</div>
+</div>
+</div>
+
+    </div>
+  </section>
+
+  <section class="cmp-dark ind-dark auto-dark">
+    <div class="wrap">
+      <div class="auto-ae">
+        <div class="reveal">
+          <span class="cmp-eyebrow">APPLICATION ENGINEERING</span>
+          <h2 class="cmp-h2">성형 플래시와<br>가공 버는 발생 위치와 조건이 다릅니다.</h2>
+          <div class="cmp-dark-body">
+            <p>재질(플라스틱·고무·금속), 버·플래시의 크기와 부착 상태, 요구되는 공차에 따라 필요한 조건이 달라집니다. 금속 버를 모두 제거할 수 있다고 일반화하지 않습니다.</p>
+            <p>바테크는 실제 부품을 확인하고 세척 테스트를 통해 입자 크기, 분사 압력, 노즐, 거리와 각도를 조정해 적합한 조건을 찾습니다.</p>
+          </div>
+        </div>
+        <div class="auto-ae-side reveal" style="--reveal-delay:0.16s">
+          <ul class="auto-ae-cases">
+            <li class="reveal" style="--reveal-delay:0.45s"><img src="../assets/img/plastics-composites-deburring-plastic-part.webp" alt="" loading="lazy" /><b>사출성형 부품</b><small>파팅라인 플래시</small></li>
+            <li class="reveal" style="--reveal-delay:0.54s"><img src="../assets/img/medical-orthopedic-uhmw-implant-deburring.webp" alt="" loading="lazy" /><b>정밀 임플란트 부품</b><small>가공 버</small></li>
+          </ul>
+          <p class="auto-ae-key">장비를 먼저 정하기보다,<br><em>먼저 적합한 세척 조건</em>을 확인합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="subhero-cover cmp-page cmp-tail ind-page auto-page">
+    <div class="wrap">
+
+<div class="cmp-section is-first auto-relind-sec">
+  <div class="auto-sec-head auto-sec-head-lead reveal">
+    <div><span class="cmp-eyebrow">INDUSTRIES</span><h2 class="cmp-h2">정밀부품 마무리는<br>여러 산업의 생산 후공정입니다.</h2></div>
+    <p class="cmp-lead-p">Cold Jet 공식 자료에서 확인되는 적용 산업입니다.</p>
+  </div>
+  <ul class="auto-relind is-4">
+    <li class="reveal" style="--reveal-delay:0.00s"><a href="../industries/plastics-composites.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-plastics.png" alt="" loading="lazy" /></span><small>PLASTICS &amp; COMPOSITES</small><b>플라스틱 · 복합소재</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.07s"><a href="../industries/medical.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-medical.png" alt="" loading="lazy" /></span><small>MEDICAL EQUIPMENT MANUFACTURING</small><b>의료기기 제조</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.14s"><a href="../industries/automotive.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-automotive.png" alt="" loading="lazy" /></span><small>AUTOMOTIVE MANUFACTURING</small><b>자동차 제조</b><span>산업 페이지 보기 →</span></a></li>
+    <li class="reveal" style="--reveal-delay:0.21s"><a href="../industries/aerospace.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-aerospace.png" alt="" loading="lazy" /></span><small>AEROSPACE &amp; AVIATION</small><b>우주 · 항공</b><span>산업 페이지 보기 →</span></a></li>
+  </ul>
+</div>
+
+<div class="cmp-section cmp-cta auto-cta reveal">
+  <div class="cmp-cta-left">
+    <span class="cmp-eyebrow">TEST YOUR APPLICATION</span>
+    <h2 class="cmp-h2">현재 부품의 버와 플래시에도<br>적용할 수 있을까요?</h2>
+  </div>
+  <div class="cmp-cta-right">
+    <div class="cmp-text">
+      <p>부품의 재질과 형상, 버·플래시의 부착 상태와 요구 공차에 따라 적합한 세척 조건은 달라집니다.</p>
+      <p>바테크는 실제 부품 또는 샘플을 확인하고 세척 테스트를 통해 적용 가능성과 작업 조건을 확인합니다.</p>
+    </div>
+    <div class="cmp-cta-btns">
+      <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청 →</a>
+      <a class="cmp-btn-ghost" href="../products/quote.html">적용 상담 →</a>
+      <a class="cmp-btn-ghost" href="../cases/library.html">적용사례 보기 →</a>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+<div class="last-freeze">
+<div class="wrap">
+<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+      <div class="sub-grid" id="subGrid">
+  <a class="sub-card" href="../cleaning/guide.html">
+    <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">원리 · 기초</span>
+      <h3 style="font-size: 25px">드라이아이스 세척의 이해</h3>
+      <p style="font-size: 20px">드라이아이스의 물리적 특성부터 세척 원리와 장점, 세척 장비의 기본 개념까지 살펴봅니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/compare.html">
+    <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">비교 · 차이점</span>
+      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/task.html">
+    <div class="sub-card-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">작업별 적용</span>
+      <h3 style="font-size: 25px">작업별 솔루션</h3>
+      <p style="font-size: 20px">이물질 제거, 몰드 클리닝, 탈청, 도장 전처리 등 작업 유형별 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+  <a class="sub-card" href="../cleaning/industry.html">
+    <div class="sub-card-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" /></div>
+    <div class="sub-card-body">
+      <span class="sub-card-tag">산업별 적용</span>
+      <h3 style="font-size: 25px">산업별 솔루션</h3>
+      <p style="font-size: 20px">자동차·반도체·식품·발전 등 산업별 주요 세척 대상과 적용 방법을 안내합니다.</p>
+      <span class="sub-card-more">자세히 보기 →</span>
+    </div>
+  </a>
+</div>
+      <div class="cta-band">
+        <div>
+          <h3 style="font-size: 25px">우리 생산라인의 세척 조건을 함께 검토해보세요</h3>
+          <p style="font-size: 20px">세척 대상과 오염물을 알려주시면 적용 가능성과 적정 조건을 안내합니다.</p>
+        </div>
+        <a class="cta-btn" href="../rental/demo.html">세척 테스트 신청</a>
+      </div>
+      </div>
+    </div>
+"""
+
+
+
 
 
 # (2026-09-07 6차 → 2026-09-08 7차 핸드오프 "산업별 솔루션") compare.html과 같은
@@ -9522,7 +10838,7 @@ TASK_BODY = """
     </div>
   </div>
   <div class="tsk-grid">
-      <a class="tsk-card reveal" href="#" data-target="../applications/adhesive-resin-removal.html" aria-label="접착제 · 수지 제거 자세히 보기" style="--reveal-delay:0s">
+      <a class="tsk-card reveal" href="../applications/adhesive-resin-removal.html" aria-label="접착제 · 수지 제거 자세히 보기" style="--reveal-delay:0s">
         <span class="tsk-media"><img src="../assets/img/task-adhesive-rollers.webp" alt="" loading="lazy" /><span class="tsk-num">06</span></span>
         <div class="tsk-body">
           <span class="tsk-en">ADHESIVE & RESIN REMOVAL</span>
@@ -9536,7 +10852,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal" href="#" data-target="../applications/ink-paint-coating-removal.html" aria-label="잉크 · 도료 · 코팅 제거 자세히 보기" style="--reveal-delay:0.06s">
+      <a class="tsk-card reveal" href="../applications/ink-paint-coating-removal.html" aria-label="잉크 · 도료 · 코팅 제거 자세히 보기" style="--reveal-delay:0.06s">
         <span class="tsk-media"><img src="../assets/img/ind-card-printing.png" alt="" loading="lazy" /><span class="tsk-num">07</span></span>
         <div class="tsk-body">
           <span class="tsk-en">INK, PAINT & COATING REMOVAL</span>
@@ -9549,7 +10865,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal" href="#" data-target="../applications/oil-grease-residue-removal.html" aria-label="오일 · 그리스 · 고착 오염 제거 자세히 보기" style="--reveal-delay:0.12s">
+      <a class="tsk-card reveal" href="../applications/oil-grease-residue-removal.html" aria-label="오일 · 그리스 · 고착 오염 제거 자세히 보기" style="--reveal-delay:0.12s">
         <span class="tsk-media"><img src="../assets/img/task-oil-tar-pipe.webp" alt="" loading="lazy" /><span class="tsk-num">08</span></span>
         <div class="tsk-body">
           <span class="tsk-en">OIL, GREASE & HEAVY RESIDUE REMOVAL</span>
@@ -9562,7 +10878,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal" href="#" data-target="../applications/rust-corrosion-removal.html" aria-label="녹 · 부식 · 산화물 제거 자세히 보기" style="--reveal-delay:0.18s">
+      <a class="tsk-card reveal" href="../applications/rust-corrosion-removal.html" aria-label="녹 · 부식 · 산화물 제거 자세히 보기" style="--reveal-delay:0.18s">
         <span class="tsk-media"><img src="../assets/img/task-surface-rust.webp" alt="" loading="lazy" /><span class="tsk-num">09</span></span>
         <div class="tsk-body">
           <span class="tsk-en">RUST, CORROSION & OXIDATION REMOVAL</span>
@@ -9589,7 +10905,7 @@ TASK_BODY = """
     </div>
   </div>
   <div class="tsk-grid">
-      <a class="tsk-card reveal" href="#" data-target="../applications/surface-preparation.html" aria-label="표면 전처리 자세히 보기" style="--reveal-delay:0s">
+      <a class="tsk-card reveal" href="../applications/surface-preparation.html" aria-label="표면 전처리 자세히 보기" style="--reveal-delay:0s">
         <span class="tsk-media"><img src="../assets/img/ind-card-aerospace.png" alt="" loading="lazy" /><span class="tsk-num">10</span></span>
         <div class="tsk-body">
           <span class="tsk-en">SURFACE PREPARATION</span>
@@ -9603,7 +10919,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal is-finishing" href="#" data-target="../applications/deburring-deflashing.html" aria-label="디버링 · 디플래싱 자세히 보기" style="--reveal-delay:0.06s">
+      <a class="tsk-card reveal is-finishing" href="../applications/deburring-deflashing.html" aria-label="디버링 · 디플래싱 자세히 보기" style="--reveal-delay:0.06s">
         <span class="tsk-media"><img src="../assets/img/task-deburring-precision.jpg" alt="" loading="lazy" /><span class="tsk-num">11</span></span>
         <div class="tsk-body">
           <span class="tsk-en">DEBURRING & DEFLASHING</span>
@@ -9630,7 +10946,7 @@ TASK_BODY = """
     </div>
   </div>
   <div class="tsk-grid">
-      <a class="tsk-card reveal is-wide" href="#" data-target="../applications/restoration-remediation.html" aria-label="복원 · 재해복구 자세히 보기" style="--reveal-delay:0s">
+      <a class="tsk-card reveal is-wide" href="../cleaning/industry.html#ind-svc" aria-label="복원 · 재해복구 자세히 보기" style="--reveal-delay:0s">
         <span class="tsk-media"><img src="../assets/img/ind-card-fire-restoration.png" alt="" loading="lazy" /><span class="tsk-num">12</span></span>
         <div class="tsk-body">
           <span class="tsk-en">RESTORATION & REMEDIATION</span>
@@ -11638,6 +12954,31 @@ DETAIL_PAGES = [
      "page_title": "전기 · 전자 장비 세척 | 작업별 솔루션",
      "page_desc": "전동기·배전반·제어반 같은 산업용 전기설비와 PCB·커넥터 같은 정밀 전자부품의 먼지·오일·카본 트래킹·플럭스 잔류물을 절연 상태와 안전조건을 고려하며 제거하는 드라이아이스 세척.",
      "body": ELECTRICAL_ELECTRONIC_BODY, "extra_script": AUTOMOTIVE_SCRIPT},
+
+    {"dir": "applications", "slug": "adhesive-resin-removal", "active_code": "cleaning",
+     "page_title": "접착제 · 수지 제거 | 작업별 솔루션",
+     "page_desc": "글루건·라벨링헤드·롤러·접합지그에 쌓이는 핫멜트·PSA·에폭시·우레탄·실리콘 잔류물을 화학용제 사용을 줄이며 정밀 표면을 고려해 제거하는 드라이아이스 세척.",
+     "body": ADHESIVE_RESIN_REMOVAL_BODY, "extra_script": AUTOMOTIVE_SCRIPT},
+    {"dir": "applications", "slug": "ink-paint-coating-removal", "active_code": "cleaning",
+     "page_title": "잉크 · 도료 · 코팅 제거 | 작업별 솔루션",
+     "page_desc": "인쇄 실린더·롤러의 잉크·바니시, 도장 지그·컨베이어의 오버스프레이·코팅 부산물을 정밀 표면을 고려해 제거하는 드라이아이스 세척. 산업용 도막 전체 박리는 별도 공정.",
+     "body": INK_PAINT_COATING_REMOVAL_BODY, "extra_script": AUTOMOTIVE_SCRIPT},
+    {"dir": "applications", "slug": "oil-grease-residue-removal", "active_code": "cleaning",
+     "page_title": "오일 · 그리스 · 고착 오염 제거 | 작업별 솔루션",
+     "page_desc": "기어·베어링·기계프레임·중장비·철도설비에 두껍게 축적된 오일·그리스·타르성 잔류물을 분해 없이 현장에서 제거하는 드라이아이스 세척.",
+     "body": OIL_GREASE_RESIDUE_REMOVAL_BODY, "extra_script": AUTOMOTIVE_SCRIPT},
+    {"dir": "applications", "slug": "rust-corrosion-removal", "active_code": "cleaning",
+     "page_title": "녹 · 부식 · 산화물 제거 | 작업별 솔루션",
+     "page_desc": "표면 녹과 초기 산화물을 원래 표면 상태를 고려하며 제거하는 드라이아이스 세척. 깊은 피팅 부식이나 재도장용 표면 프로파일이 필요한 작업과의 범위 구분을 명확히 설명.",
+     "body": RUST_CORROSION_REMOVAL_BODY, "extra_script": AUTOMOTIVE_SCRIPT},
+    {"dir": "applications", "slug": "surface-preparation", "active_code": "cleaning",
+     "page_title": "표면 전처리 | 작업별 솔루션",
+     "page_desc": "도장·코팅·접착·실링 전 이형제·오일·먼지·지문 등 표면 오염물을 제거하는 드라이아이스 표면 전처리. 재도장용 표면 프로파일 형성과는 다른 청정도 확보 목적임을 명시.",
+     "body": SURFACE_PREPARATION_BODY, "extra_script": AUTOMOTIVE_SCRIPT},
+    {"dir": "applications", "slug": "deburring-deflashing", "active_code": "cleaning",
+     "page_title": "디버링 · 디플래싱 | 작업별 솔루션",
+     "page_desc": "사출성형 부품의 파팅라인·게이트 플래시와 가공부품의 버를 형상·공차 변화를 최소화하며 제거하는 드라이아이스 부품 마무리(Parts Finishing) 공정.",
+     "body": DEBURRING_DEFLASHING_BODY, "extra_script": AUTOMOTIVE_SCRIPT},
 ]
 
 
