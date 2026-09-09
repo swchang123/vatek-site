@@ -650,6 +650,38 @@ COMPARE_RAIL_SCRIPT = """  <script>
   </script>
 """
 
+# (2026-09-09, 15차 핸드오프 — 블라스터 페이지 신규 제작) task.html 카드
+# 리디자인에 맞춰 우측 고정 인덱스 레일 스크롤-스파이 대상을 COMPARE_RAIL_SCRIPT의
+# '.cmp-vs[id]'(비교 섹션)에서 '.tsk-card[id]'(작업별 카드 12개)로 바꾼 것만
+# 다르고 나머지 로직은 완전히 동일 — compare/industry는 기존 COMPARE_RAIL_SCRIPT
+# 그대로 유지.
+TASK_RAIL_SCRIPT = """  <script>
+  (function(){
+    var secs=[].slice.call(document.querySelectorAll('.tsk-card[id]')),rail=document.querySelector('.cmp-rail');
+    if(!secs.length||!rail)return;
+    var links={};rail.querySelectorAll('a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+    var pending=false;
+    function update(){
+      pending=false;
+      var line=window.innerHeight*0.35,active=null;
+      secs.forEach(function(s){var r=s.getBoundingClientRect();if(r.top<=line&&r.bottom>line)active=s.id;});
+      rail.classList.toggle('is-on',!!active);
+      Object.keys(links).forEach(function(k){links[k].classList.toggle('is-active',k===active);});
+    }
+    function onScroll(){if(!pending){pending=true;requestAnimationFrame(update);}}
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll);
+    update();
+    rail.addEventListener('click',function(e){
+      var a=e.target.closest('a[href^="#"]');if(!a)return;
+      var t=document.getElementById(a.getAttribute('href').slice(1));if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-96,behavior:'smooth'});
+    });
+  })();
+  </script>
+"""
+
 # (2026-09-08, 8차 핸드오프) 산업 상세 페이지 "자동차 제조" — industries/automotive.html.
 # 메가메뉴에는 나오지 않는 상세 페이지라 MENU가 아니라 아래 DETAIL_PAGES로 생성한다
 # (헤더·메가메뉴·푸터는 cleaning/*와 같은 depth=1 셸, active_code는 "cleaning").
@@ -10751,7 +10783,6 @@ TASK_BODY = """
 <div class="cmp-section ind-hub tsk-group" id="tsk-g1">
   <span class="ind-ghost" aria-hidden="true">01</span>
   <div class="cmp-vs-head ind-head">
-    <span class="cmp-num">01<span class="cmp-num-of">/ 04</span></span>
     <div>
       <span class="cmp-vs-title">EQUIPMENT & TOOL CLEANING · 설비 · 툴링 세척</span>
       <h2 class="cmp-h2">생산설비와 금형, 치공구의<br>본래 표면과 기능을 지키면서 세척합니다.</h2>
@@ -10759,7 +10790,7 @@ TASK_BODY = """
     </div>
   </div>
   <div class="tsk-grid">
-      <a class="tsk-card reveal is-wide" href="../applications/mold-tool-cleaning.html" aria-label="금형 · 툴링 세척 자세히 보기" style="--reveal-delay:0s">
+      <a class="tsk-card reveal is-wide" id="tsk-01" href="../applications/mold-tool-cleaning.html" aria-label="금형 · 툴링 세척 자세히 보기" style="--reveal-delay:0s">
         <span class="tsk-media"><img src="../assets/img/task-mold-tool-cleaning.webp" alt="" loading="lazy" /><span class="tsk-num">01</span></span>
         <div class="tsk-body">
           <span class="tsk-en">MOLD & TOOL CLEANING</span>
@@ -10773,7 +10804,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal" href="../industries/facility-maintenance.html" aria-label="생산설비 · 시설 유지보수 자세히 보기" style="--reveal-delay:0.06s">
+      <a class="tsk-card reveal" id="tsk-02" href="../industries/facility-maintenance.html" aria-label="생산설비 · 시설 유지보수 자세히 보기" style="--reveal-delay:0.06s">
         <span class="tsk-media"><img src="../assets/img/ind-card-maintenance.png" alt="" loading="lazy" /><span class="tsk-num">02</span></span>
         <div class="tsk-body">
           <span class="tsk-en">PRODUCTION & FACILITY MAINTENANCE</span>
@@ -10785,7 +10816,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal" href="../applications/weld-fixture-robot.html" aria-label="용접라인 · 지그 · 로봇 세척 자세히 보기" style="--reveal-delay:0.12s">
+      <a class="tsk-card reveal" id="tsk-03" href="../applications/weld-fixture-robot.html" aria-label="용접라인 · 지그 · 로봇 세척 자세히 보기" style="--reveal-delay:0.12s">
         <span class="tsk-media"><img src="../assets/img/task-weld-fixture.webp" alt="" loading="lazy" /><span class="tsk-num">03</span></span>
         <div class="tsk-body">
           <span class="tsk-en">WELD LINE, FIXTURE & ROBOT CLEANING</span>
@@ -10799,7 +10830,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal" href="../applications/paint-booth-coating-line.html" aria-label="도장부스 · 코팅라인 세척 자세히 보기" style="--reveal-delay:0.18s">
+      <a class="tsk-card reveal" id="tsk-04" href="../applications/paint-booth-coating-line.html" aria-label="도장부스 · 코팅라인 세척 자세히 보기" style="--reveal-delay:0.18s">
         <span class="tsk-media"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /><span class="tsk-num">04</span></span>
         <div class="tsk-body">
           <span class="tsk-en">PAINT BOOTH & COATING LINE CLEANING</span>
@@ -10812,7 +10843,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal" href="../applications/electrical-electronic.html" aria-label="전기 · 전자 장비 세척 자세히 보기" style="--reveal-delay:0s">
+      <a class="tsk-card reveal" id="tsk-05" href="../applications/electrical-electronic.html" aria-label="전기 · 전자 장비 세척 자세히 보기" style="--reveal-delay:0s">
         <span class="tsk-media"><img src="../assets/img/method-electrical-terminal.png" alt="" loading="lazy" /><span class="tsk-num">05</span></span>
         <div class="tsk-body">
           <span class="tsk-en">ELECTRICAL & ELECTRONIC EQUIPMENT CLEANING</span>
@@ -10830,7 +10861,6 @@ TASK_BODY = """
 <div class="cmp-section ind-hub tsk-group" id="tsk-g2">
   <span class="ind-ghost" aria-hidden="true">02</span>
   <div class="cmp-vs-head ind-head">
-    <span class="cmp-num">02<span class="cmp-num-of">/ 04</span></span>
     <div>
       <span class="cmp-vs-title">CONTAMINANT REMOVAL · 오염물 제거</span>
       <h2 class="cmp-h2">오염물이 다르면<br>필요한 세척 강도와 입자 조건도 다릅니다.</h2>
@@ -10838,7 +10868,7 @@ TASK_BODY = """
     </div>
   </div>
   <div class="tsk-grid">
-      <a class="tsk-card reveal" href="../applications/adhesive-resin-removal.html" aria-label="접착제 · 수지 제거 자세히 보기" style="--reveal-delay:0s">
+      <a class="tsk-card reveal" id="tsk-06" href="../applications/adhesive-resin-removal.html" aria-label="접착제 · 수지 제거 자세히 보기" style="--reveal-delay:0s">
         <span class="tsk-media"><img src="../assets/img/task-adhesive-rollers.webp" alt="" loading="lazy" /><span class="tsk-num">06</span></span>
         <div class="tsk-body">
           <span class="tsk-en">ADHESIVE & RESIN REMOVAL</span>
@@ -10852,7 +10882,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal" href="../applications/ink-paint-coating-removal.html" aria-label="잉크 · 도료 · 코팅 제거 자세히 보기" style="--reveal-delay:0.06s">
+      <a class="tsk-card reveal" id="tsk-07" href="../applications/ink-paint-coating-removal.html" aria-label="잉크 · 도료 · 코팅 제거 자세히 보기" style="--reveal-delay:0.06s">
         <span class="tsk-media"><img src="../assets/img/ind-card-printing.png" alt="" loading="lazy" /><span class="tsk-num">07</span></span>
         <div class="tsk-body">
           <span class="tsk-en">INK, PAINT & COATING REMOVAL</span>
@@ -10865,7 +10895,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal" href="../applications/oil-grease-residue-removal.html" aria-label="오일 · 그리스 · 고착 오염 제거 자세히 보기" style="--reveal-delay:0.12s">
+      <a class="tsk-card reveal" id="tsk-08" href="../applications/oil-grease-residue-removal.html" aria-label="오일 · 그리스 · 고착 오염 제거 자세히 보기" style="--reveal-delay:0.12s">
         <span class="tsk-media"><img src="../assets/img/task-oil-tar-pipe.webp" alt="" loading="lazy" /><span class="tsk-num">08</span></span>
         <div class="tsk-body">
           <span class="tsk-en">OIL, GREASE & HEAVY RESIDUE REMOVAL</span>
@@ -10878,7 +10908,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal" href="../applications/rust-corrosion-removal.html" aria-label="녹 · 부식 · 산화물 제거 자세히 보기" style="--reveal-delay:0.18s">
+      <a class="tsk-card reveal" id="tsk-09" href="../applications/rust-corrosion-removal.html" aria-label="녹 · 부식 · 산화물 제거 자세히 보기" style="--reveal-delay:0.18s">
         <span class="tsk-media"><img src="../assets/img/task-surface-rust.webp" alt="" loading="lazy" /><span class="tsk-num">09</span></span>
         <div class="tsk-body">
           <span class="tsk-en">RUST, CORROSION & OXIDATION REMOVAL</span>
@@ -10897,7 +10927,6 @@ TASK_BODY = """
 <div class="cmp-section ind-hub tsk-group" id="tsk-g3">
   <span class="ind-ghost" aria-hidden="true">03</span>
   <div class="cmp-vs-head ind-head">
-    <span class="cmp-num">03<span class="cmp-num-of">/ 04</span></span>
     <div>
       <span class="cmp-vs-title">PROCESS & PART FINISHING · 공정 · 부품 마무리</span>
       <h2 class="cmp-h2">세척을 넘어,<br>다음 공정을 준비하고 부품을 마무리합니다.</h2>
@@ -10905,7 +10934,7 @@ TASK_BODY = """
     </div>
   </div>
   <div class="tsk-grid">
-      <a class="tsk-card reveal" href="../applications/surface-preparation.html" aria-label="표면 전처리 자세히 보기" style="--reveal-delay:0s">
+      <a class="tsk-card reveal" id="tsk-10" href="../applications/surface-preparation.html" aria-label="표면 전처리 자세히 보기" style="--reveal-delay:0s">
         <span class="tsk-media"><img src="../assets/img/ind-card-aerospace.png" alt="" loading="lazy" /><span class="tsk-num">10</span></span>
         <div class="tsk-body">
           <span class="tsk-en">SURFACE PREPARATION</span>
@@ -10919,7 +10948,7 @@ TASK_BODY = """
           <span class="tsk-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="tsk-card reveal is-finishing" href="../applications/deburring-deflashing.html" aria-label="디버링 · 디플래싱 자세히 보기" style="--reveal-delay:0.06s">
+      <a class="tsk-card reveal is-finishing" id="tsk-11" href="../applications/deburring-deflashing.html" aria-label="디버링 · 디플래싱 자세히 보기" style="--reveal-delay:0.06s">
         <span class="tsk-media"><img src="../assets/img/task-deburring-precision.jpg" alt="" loading="lazy" /><span class="tsk-num">11</span></span>
         <div class="tsk-body">
           <span class="tsk-en">DEBURRING & DEFLASHING</span>
@@ -10938,7 +10967,6 @@ TASK_BODY = """
 <div class="cmp-section ind-hub tsk-group" id="tsk-g4">
   <span class="ind-ghost" aria-hidden="true">04</span>
   <div class="cmp-vs-head ind-head">
-    <span class="cmp-num">04<span class="cmp-num-of">/ 04</span></span>
     <div>
       <span class="cmp-vs-title">RESTORATION & REMEDIATION · 복원 · 오염 제거</span>
       <h2 class="cmp-h2">생산공정 밖,<br>복원과 재해복구 현장에서도 쓰입니다.</h2>
@@ -10946,7 +10974,7 @@ TASK_BODY = """
     </div>
   </div>
   <div class="tsk-grid">
-      <a class="tsk-card reveal is-wide" href="../cleaning/industry.html#ind-svc" aria-label="복원 · 재해복구 자세히 보기" style="--reveal-delay:0s">
+      <a class="tsk-card reveal is-wide" id="tsk-12" href="../cleaning/industry.html#ind-svc" aria-label="복원 · 재해복구 자세히 보기" style="--reveal-delay:0s">
         <span class="tsk-media"><img src="../assets/img/ind-card-fire-restoration.png" alt="" loading="lazy" /><span class="tsk-num">12</span></span>
         <div class="tsk-body">
           <span class="tsk-en">RESTORATION & REMEDIATION</span>
@@ -10994,6 +11022,10 @@ TASK_BODY = """
       </div>
     </div>
   </section>
+
+<nav class="cmp-rail tsk-rail" aria-label="작업별 솔루션 바로가기">
+    <a href="#tsk-01" data-title="금형 · 툴링 세척"><i></i>01</a><a href="#tsk-02" data-title="생산설비 · 시설 유지보수"><i></i>02</a><a href="#tsk-03" data-title="용접라인 · 지그 · 로봇 세척"><i></i>03</a><a href="#tsk-04" data-title="도장부스 · 코팅라인 세척"><i></i>04</a><a href="#tsk-05" data-title="전기 · 전자 장비 세척"><i></i>05</a><a href="#tsk-06" data-title="접착제 · 수지 제거"><i></i>06</a><a href="#tsk-07" data-title="잉크 · 도료 · 코팅 제거"><i></i>07</a><a href="#tsk-08" data-title="오일 · 그리스 · 고착 오염 제거"><i></i>08</a><a href="#tsk-09" data-title="녹 · 부식 · 산화물 제거"><i></i>09</a><a href="#tsk-10" data-title="표면 전처리"><i></i>10</a><a href="#tsk-11" data-title="디버링 · 디플래싱"><i></i>11</a><a href="#tsk-12" data-title="복원 · 재해복구"><i></i>12</a>
+  </nav>
 
 <div class="last-freeze">
 <div class="wrap">
@@ -12042,7 +12074,7 @@ MENU = [
              # 카드 공유값이라 유지, 페이지 자신의 메타 설명만 page_desc로 덮어쓴다.
              "page_desc": "금형·툴링 세척, 설비 유지보수, 접착제·코팅 제거, 표면 전처리, 디버링·디플래싱, 복원까지 — 무엇을 제거하고 무엇을 보호해야 하는지 기준으로 정리한 드라이아이스 세척 작업별 솔루션.",
              "full_custom_body": True,
-             "extra_script": COMPARE_RAIL_SCRIPT,
+             "extra_script": TASK_RAIL_SCRIPT,
              "body": TASK_BODY},
             {"slug": "adopt", "title": "도입 가이드",
              "desc": "도입 전 검토사항부터 설치 준비, 운영 체크리스트까지 순서대로 안내합니다.",
