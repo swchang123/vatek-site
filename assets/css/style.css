@@ -4210,18 +4210,30 @@ video.bls-hero-video { object-fit: cover; object-position: center 18%; backgroun
 .bls-sys-media { position: relative; height: clamp(300px, 28vw, 420px); padding: 28px 28px 0; display: flex; align-items: flex-end; justify-content: center; background: #fff; }
 .bls-sys-media img { display: block; max-height: 88%; width: auto; object-fit: contain; filter: drop-shadow(0 14px 14px rgba(27,36,38,.14)); }
 .bls-sys-media .is-main { max-height: 88%; z-index: 1; }
+.bls-sys.is-large-media .bls-sys-media { height: clamp(360px, 34vw, 480px); padding: 0; }
+.bls-sys.is-large-media .bls-sys-media .is-main { max-height: none; width: 100%; height: 100%; object-fit: cover; filter: none; }
+/* 원본이 작은(세로형/거의 정사각형) 사진은 cover로 늘리면 제품을 알아볼 수 없게 됨 — 넓은 사진대로 이보기 닫기 전까지 contain으로 유지(백공간 허용) */
+.bls-sys.is-large-media .bls-sys-media.is-contain { padding: 32px; }
+.bls-sys.is-large-media .bls-sys-media.is-contain .is-main { width: auto; height: 100%; max-width: 100%; object-fit: contain; }
+/* 가로 폭에 꽉 차게, 잘리지 않고 원본 비율 그대로 — 높이는 이미지 비율에 맞춰 자연스럽게 */
+.bls-sys.is-large-media .bls-sys-media.is-fullwidth { height: auto; padding: 0; }
+.bls-sys.is-large-media .bls-sys-media.is-fullwidth .is-main { width: 100%; height: auto; max-height: none; object-fit: unset; }
 .bls-sys-media .is-scene { position: absolute; right: 24px; top: 24px; width: 42%; aspect-ratio: 16 / 10; height: auto; max-height: none; object-fit: cover; border-radius: 3px; filter: saturate(.8) contrast(1.04); box-shadow: 0 12px 30px rgba(27,36,38,.15); }
 .bls-sys-media .is-wide { max-height: 92%; }
 .bls-sys-body { padding: clamp(26px, 2.6vw, 40px) clamp(26px, 2.8vw, 44px) clamp(28px, 2.8vw, 44px); display: flex; flex-direction: column; }
+.bls-sys-divider { height: 1px; margin: 0 0 22px; background: var(--gray-line); }
+.bls-sys-icon-inline { width: 34px; height: 34px; vertical-align: middle; margin-left: 4px; }
 .bls-sys-body .bls-en { margin-top: 10px; }
 .bls-sys h3 { margin: 8px 0 14px; font-size: clamp(24px, 2vw, 30px); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); }
 .bls-sys-head { margin: 0 0 18px; font-size: clamp(19px, 1.5vw, 23px); font-weight: 700; line-height: 1.45; color: #000; letter-spacing: -0.015em; word-break: keep-all; }
 .bls-sys-body > p { margin: 0 0 14px; font-size: 16px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.bls-sys-models { margin: 22px 0 26px; padding: 0; border-top: 1px solid var(--gray-line); }
+.bls-sys-models { margin: auto 0 26px; padding: 0; border-top: 1px solid var(--gray-line); }
 .bls-sys-models div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 0 20px; padding: 14px 0; border-bottom: 1px solid var(--gray-line); }
 .bls-sys-models dt { font-size: 11.5px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); padding-top: 4px; }
-.bls-sys-models dd { margin: 0; font-size: 16.5px; font-weight: 700; color: var(--navy); line-height: 1.7; }
-.bls-sys .bls-more { margin-top: auto; }
+.bls-sys-models dd { margin: 0; font-size: 16.5px; font-weight: 700; color: var(--navy); line-height: 1.7; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.bls-model-chip { display: inline-flex; align-items: center; padding: 7px 14px; border: 1px solid var(--gray-line); border-radius: 999px; font-size: 14px; font-weight: 700; color: var(--navy); text-decoration: none; transition: background .2s, border-color .2s; }
+.bls-model-chip:hover { background: var(--ice-pale); border-color: var(--ice); color: var(--ice-dark); }
+.bls-sys .bls-more { margin-top: 4px; }
 
 /* 04 PARTICLE CONTROL — 다크, 가운데 큰 스케일 그래픽 */
 .bls-pcs-head { max-width: 920px; }
@@ -4256,23 +4268,26 @@ video.bls-hero-video { object-fit: cover; object-position: center 18%; backgroun
 
 /* 06 PRODUCT LINEUP — 탭 필터 + 대형 사진 카드 */
 
-.bls-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
-.bls-tabs button { appearance: none; border: 1px solid var(--gray-line); background: var(--white); color: var(--text-muted); padding: 10px 18px; border-radius: 14px; font-size: 12.5px; font-weight: 800; letter-spacing: 1.5px; cursor: pointer; transition: all .25s; }
-.bls-tabs button:hover { border-color: var(--ice); color: var(--navy); }
-.bls-tabs button.is-active { background: var(--navy); border-color: var(--navy); color: #fff; }
+.bls-tabs { display: inline-flex; flex-wrap: wrap; gap: 3px; padding: 5px; background: #eef1f1; border-radius: 999px; }
+.bls-tabs button { appearance: none; border: none; background: transparent; color: var(--text-muted); padding: 11px 20px; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: .2px; cursor: pointer; transition: background .25s, color .25s, box-shadow .25s; }
+.bls-tabs button:hover { color: var(--navy); }
+.bls-tabs button.is-active { background: #fff; color: var(--navy); box-shadow: 0 3px 10px rgba(27,36,38,.14); }
 .bls-prod-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 24px); }
-.bls-prod { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--white); border: 1px solid var(--gray-line); border-radius: 4px; overflow: hidden; position: relative; transition: transform .35s cubic-bezier(.22,.61,.36,1), box-shadow .35s, border-color .3s; }
+.bls-prod-grid .bls-prod { transition: opacity .4s ease, transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .35s, border-color .3s; }
+.bls-prod-grid .bls-prod.is-filter-out { opacity: 0; transform: translateY(10px) scale(.96); pointer-events: none; }
+.bls-prod-grid .bls-prod.is-filter-in { opacity: 0; transform: translateY(14px) scale(.97); }
+.bls-prod { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--white); border: 1px solid var(--gray-line); border-radius: 10px; overflow: hidden; position: relative; box-shadow: 0 1px 2px rgba(27,36,38,.04); transition: transform .35s cubic-bezier(.22,.61,.36,1), box-shadow .35s, border-color .3s; }
 .bls-prod.is-hidden { display: none; }
-.bls-prod::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--ice); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.22,.61,.36,1); }
-.bls-prod:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(27,36,38,.08); border-color: rgba(79,173,184,.5); }
+.bls-prod::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: linear-gradient(90deg, var(--ice), var(--ice-dark)); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.22,.61,.36,1); }
+.bls-prod:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(27,36,38,.1); border-color: rgba(79,173,184,.5); }
 .bls-prod:hover::after { transform: scaleX(1); }
-.bls-prod-media { aspect-ratio: 1 / 1; display: flex; align-items: flex-end; justify-content: center; padding: 8% 8% 5%; background: #fff; border-bottom: 1px solid var(--gray-line); }
-.bls-prod-media img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 10px 10px rgba(27,36,38,.12)); transition: transform .8s cubic-bezier(.22,.61,.36,1); }
+.bls-prod-media { position: relative; aspect-ratio: 1 / 1; min-height: 0; overflow: hidden; padding: 0; background: radial-gradient(120% 100% at 50% 100%, #eef2f2 0%, #fff 62%); border-bottom: 1px solid var(--gray-line); }
+.bls-prod-media img { position: absolute; left: 8%; right: 8%; top: 10%; bottom: 6%; width: auto; height: auto; max-width: 84%; max-height: 84%; margin: auto; object-fit: contain; filter: drop-shadow(0 10px 10px rgba(27,36,38,.12)); transition: transform .8s cubic-bezier(.22,.61,.36,1); }
 .bls-prod:hover .bls-prod-media img { transform: scale(1.04); }
 .bls-prod-ph { font-size: clamp(36px, 3.4vw, 56px); font-weight: 900; letter-spacing: -0.04em; color: rgba(40,55,57,.18); }
 .bls-prod-body { display: flex; flex-direction: column; flex: 1; padding: 20px 22px 22px; }
 .bls-prod-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.bls-prod-cat { font-size: 11px; font-weight: 800; letter-spacing: 2.5px; color: var(--ice-dark); }
+.bls-prod-cat { display: inline-flex; font-size: 10.5px; font-weight: 800; letter-spacing: 2px; color: var(--ice-dark); background: var(--ice-pale); padding: 5px 10px; border-radius: 999px; }
 .bls-prod-tags .bls-badge { margin-left: 0; }
 .bls-prod h3 { margin: 10px 0 8px; font-size: clamp(19px, 1.5vw, 23px); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); }
 .bls-prod-pos { margin: 0 0 16px; font-size: 14.5px; line-height: 1.7; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }

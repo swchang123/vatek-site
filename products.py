@@ -755,12 +755,30 @@ BLASTER_SCRIPT = """  <script>
   (function(){
     var tabs=document.querySelectorAll('.bls-tabs button'),cards=document.querySelectorAll('#blsProdGrid .bls-prod');
     tabs.forEach(function(b){b.addEventListener('click',function(){
+      if (b.classList.contains('is-active')) return;
       tabs.forEach(function(t){t.classList.toggle('is-active',t===b);});
       var f=b.getAttribute('data-filter');
-      cards.forEach(function(c){var show=f==='all'||c.getAttribute('data-cat')===f;c.classList.toggle('is-hidden',!show);});
+      var toShow=[],toHide=[];
+      cards.forEach(function(c){
+        var cats=(c.getAttribute('data-cat')||'').split(' ');
+        var show=f==='all'||cats.indexOf(f)>-1;
+        var wasHidden=c.classList.contains('is-hidden');
+        if (show && wasHidden) toShow.push(c);
+        else if (!show && !wasHidden) toHide.push(c);
+      });
+      toHide.forEach(function(c){ c.classList.add('is-filter-out'); });
+      setTimeout(function(){
+        toHide.forEach(function(c){ c.classList.add('is-hidden'); c.classList.remove('is-filter-out'); });
+        toShow.forEach(function(c,i){
+          c.classList.remove('is-hidden');
+          c.classList.add('is-filter-in');
+          void c.offsetWidth;
+          setTimeout(function(){ c.classList.remove('is-filter-in'); }, 40 + i*60);
+        });
+      }, toHide.length ? 260 : 0);
     });});
   })();
-  </script>
+    </script>
 
 """
 BLASTER_HUB_BODY = """
@@ -840,77 +858,83 @@ BLASTER_HUB_BODY = """
         <p class="bls-sub">Cold Jet의 블라스터는 사용하는 드라이아이스 입자와 제어 방식, 필요한 세척 강도와 작업조건에 따라 서로 다른 제품군으로 구성되어 있습니다.</p>
       </div>
       <div class="bls-sys-grid">
-        <article class="bls-sys reveal" id="bls-sys-smart">
+        <article class="bls-sys reveal is-large-media" id="bls-sys-smart">
           <div class="bls-sys-media">
-            <img class="is-main" src="../../assets/img/blaster-aero2-pcs-ultra.png" alt="Aero2 PCS ULTRA" loading="lazy" />
+            <img class="is-main" src="../../assets/img/blaster-smart-lineup.png" alt="Cold Jet Aero2 PCS ULTRA · PLT ULTRA · i3 MicroClean" loading="lazy" />
           </div>
-          <div class="bls-sys-body">
+          <div class="bls-sys-body" style="position: relative">
+            <div class="bls-sys-divider"></div>
             <span class="bls-num">01</span>
             <span class="bls-en">SMART BLASTER</span>
-            <h3>스마트형 블라스터</h3>
+            <h3 style="color: #000000">스마트형 블라스터</h3>
             <p class="bls-sys-head">세척 조건을 세밀하게 제어하고,<br>반복해서 사용할 수 있도록.</p>
             <p>Smart 계열은 세척 조건을 디지털 방식으로 설정하고 작업에 맞게 세밀하게 조정할 수 있는 제품군입니다.</p>
-            <p>특히 PCS 기술이 적용된 모델은 3 mm 드라이아이스 펠렛을 입력해 0.3 mm부터 3.0 mm까지 입자 크기를 조절할 수 있어, 민감한 표면의 정밀 세척부터 보다 강한 세척이 필요한 작업까지 하나의 장비에서 폭넓게 조건을 설정할 수 있습니다.</p>
+            <p>특허 받은 PCS 기술이 적용된 모델은 3 mm 드라이아이스 펠렛을 입력해 0.3 mm부터 3.0 mm까지 0.1mm 단위로 입자 크기를 조절할 수 있어, 민감한 표면의 정밀 세척부터 강력한 세척이 필요한 작업까지 하나의 장비에서 폭넓게 조건을 설정할 수 있습니다.</p>
             <dl class="bls-sys-models">
-              <div><dt>대표 모델</dt><dd>Aero2 PCS ULTRA <span class="bls-badge">PARTICLE CONTROL SYSTEM</span><br>Aero2 PLT ULTRA</dd></div>
+              <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="aero2-ultra.html">Aero2 PCS ULTRA</a><span class="bls-badge">PARTICLE CONTROL SYSTEM</span><a class="bls-model-chip" href="aero2-ultra.html">Aero2 PLT ULTRA</a></dd></div>
               <div><dt>PCS ULTRA</dt><dd>0.3 – 3.0 mm · 28 Particle Sizes</dd></div>
             </dl>
             <a class="bls-more" href="aero2-ultra.html">Smart Blaster 자세히 보기 <i>→</i></a>
+            <img class="bls-sys-icon-inline" src="../../assets/img/icon-iot.png" alt="IoT" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
           </div>
         </article>
-        <article class="bls-sys reveal" id="bls-sys-pellet" style="--reveal-delay:0.06s">
+        <article class="bls-sys reveal is-large-media" id="bls-sys-pellet" style="--reveal-delay:0.06s">
           <div class="bls-sys-media">
-            <img class="is-main" src="../../assets/img/blaster-aero-80fp.png" alt="Aero 80FP" loading="lazy" />
-            <img class="is-scene" src="../../assets/img/app-pipe-cleaning.png" alt="생산설비 배관 세척 현장" loading="lazy" />
+            <img class="is-main" src="../../assets/img/blaster-pellet-lineup.png" alt="Cold Jet Aero Series · ELITE 20 · IceRocket PLT" loading="lazy" />
           </div>
-          <div class="bls-sys-body">
+            <div class="bls-sys-body" style="position: relative">
+            <div class="bls-sys-divider"></div>
             <span class="bls-num">02</span>
             <span class="bls-en">PELLET BLASTER</span>
-            <h3>펠렛형 블라스터</h3>
+            <h3 style="color: #000000">펠렛형 블라스터</h3>
             <p class="bls-sys-head">일반 산업 세척과<br>강한 오염 제거가 필요한 작업에.</p>
             <p>3 mm 드라이아이스 펠렛을 사용하는 대표적인 산업용 블라스터입니다.</p>
             <p>생산설비와 금형, 오일·그리스, 카본과 고착된 공정 잔류물처럼 상대적으로 높은 세척력이 필요한 작업에 폭넓게 활용됩니다.</p>
             <dl class="bls-sys-models">
-              <div><dt>대표 모델</dt><dd>Aero Series · ELITE 20 · IceRocket PLT</dd></div>
+              <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="aero-series.html">Aero Series</a><a class="bls-model-chip" href="elite20-icerocket.html">ELITE 20</a><a class="bls-model-chip" href="elite20-icerocket.html">IceRocket PLT</a></dd></div>
               <div><dt>사용 입자</dt><dd>3 mm PELLET</dd></div>
             </dl>
             <a class="bls-more" href="aero-series.html">Pellet Blaster 자세히 보기 <i>→</i></a>
+            <img class="bls-sys-icon-inline" src="../../assets/img/icon-pellet.png" alt="3mm Pellet" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
           </div>
         </article>
-        <article class="bls-sys reveal" id="bls-sys-micro">
+        <article class="bls-sys reveal is-large-media" id="bls-sys-micro">
           <div class="bls-sys-media">
-            <img class="is-main" src="../../assets/img/blaster-i3-microclean-2.png" alt="i3 MicroClean 2" loading="lazy" />
-            <img class="is-scene" src="../../assets/img/dryice-microparticles.png" alt="드라이아이스 마이크로파티클" loading="lazy" />
+            <img class="is-main" src="../../assets/img/blaster-micro-lineup.png" alt="Cold Jet i3 MicroClean · i3 MicroClean 2 · SDI Select 60" loading="lazy" />
           </div>
-          <div class="bls-sys-body">
+          <div class="bls-sys-body" style="position: relative">
+            <div class="bls-sys-divider"></div>
             <span class="bls-num">03</span>
             <span class="bls-en">MICRO PARTICLE BLASTER</span>
-            <h3>마이크로파티클 블라스터</h3>
+            <h3 style="color: #000000">마이크로파티클 블라스터</h3>
             <p class="bls-sys-head">충격에 민감한 표면에는<br>더 작은 입자로.</p>
             <p>MicroParticle 블라스터는 일반 3 mm 펠렛보다 작은 입자를 사용하여 상대적으로 부드럽고 세밀한 세척이 필요한 작업에 활용됩니다.</p>
             <p>정밀 금형, 부품 마무리, 민감한 표면, 역사적 복원 등 표면 상태를 세심하게 고려해야 하는 작업에 적합합니다.</p>
             <dl class="bls-sys-models">
-              <div><dt>대표 모델</dt><dd>i³ MicroClean 2 <span class="bls-badge">SMART MICRO PARTICLE</span><br>i³ MicroClean · SDI Select 60</dd></div>
+              <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="i3-microclean-2.html">i³ MicroClean 2</a><span class="bls-badge">SMART MICRO PARTICLE</span><a class="bls-model-chip" href="i3-microclean.html">i³ MicroClean</a><a class="bls-model-chip" href="sdi-select-60.html">SDI Select 60</a></dd></div>
               <div><dt>사용 입자</dt><dd>MICRO PARTICLE — 블록을 깎아 만든 미세 입자</dd></div>
             </dl>
             <a class="bls-more" href="i3-microclean-2.html">MicroParticle Blaster 자세히 보기 <i>→</i></a>
+            <img class="bls-sys-icon-inline" src="../../assets/img/icon-micro.png" alt="Micro Particle" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
           </div>
         </article>
-        <article class="bls-sys reveal" id="bls-sys-specialty" style="--reveal-delay:0.06s">
-          <div class="bls-sys-media">
-            <img class="is-main is-wide" src="../../assets/img/blaster-e-co2-150.png" alt="E-CO2 150" loading="lazy" />
+        <article class="bls-sys reveal is-large-media" id="bls-sys-specialty" style="--reveal-delay:0.06s">
+          <div class="bls-sys-media is-contain">
+            <img class="is-main" src="../../assets/img/blaster-specialty-lineup.png" alt="Cold Jet C100 · E-CO2 150" loading="lazy" style="position: absolute; left: 21px; top: 21px; width: 662px; height: 461px" />
           </div>
-          <div class="bls-sys-body">
+          <div class="bls-sys-body" style="position: relative">
+            <div class="bls-sys-divider"></div>
             <span class="bls-num">04</span>
             <span class="bls-en">SPECIALTY BLASTER</span>
-            <h3>특수형 블라스터</h3>
+            <h3 style="color: #000000">특수형 블라스터</h3>
             <p class="bls-sys-head">일반 블라스터로 해결하기 어려운<br>특수한 작업 조건에.</p>
             <p>전기를 사용할 수 없는 환경이나 연마재를 함께 사용해야 하는 표면처리처럼 일반적인 드라이아이스 세척과 다른 조건에는 특수 시스템을 검토할 수 있습니다.</p>
             <p>E-CO2 150은 Cold Jet 블라스터(PLT 60 · Aero 80 · C100)에 가압식 연마재 포트를 결합해 드라이아이스와 연마재를 함께 분사하는 별도의 혼합 블라스팅 시스템으로, 도막·코팅·부식 제거처럼 보다 공격적인 표면처리에 사용합니다.</p>
             <dl class="bls-sys-models">
-              <div><dt>대표 모델</dt><dd>C100 — 완전 공압식<br>E-CO2 150 — 드라이아이스 + 연마재</dd></div>
+              <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="c100.html">C100 — 완전 공압식</a><a class="bls-model-chip" href="e-co2-150.html">E-CO2 150 — 드라이아이스 + 연마재</a></dd></div>
             </dl>
             <a class="bls-more" href="c100.html">Specialty System 자세히 보기 <i>→</i></a>
+            <img class="bls-sys-icon-inline" src="../../assets/img/icon-specialty.png" alt="Specialty" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
           </div>
         </article>
       </div>
@@ -1020,10 +1044,10 @@ BLASTER_HUB_BODY = """
         </div>
       </div>
       <div class="bls-prod-grid" id="blsProdGrid">
-      <a class="bls-prod reveal" data-cat="smart" href="aero2-ultra.html" style="--reveal-delay:0s">
+      <a class="bls-prod reveal" data-cat="smart pellet micro" href="aero2-ultra.html" style="--reveal-delay:0s">
         <div class="bls-prod-media"><img src="../../assets/img/blaster-aero2-pcs-ultra.png" alt="Aero2® PCS ULTRA" loading="lazy" /></div>
         <div class="bls-prod-body">
-          <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-badge">PARTICLE CONTROL SYSTEM</span></div>
+          <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">PARTICLE CONTROL SYSTEM</span></div>
           <h3>Aero2® PCS ULTRA</h3>
           <p class="bls-prod-pos">입자 크기까지 설정하는 가장 넓은 조건 범위의 스마트 블라스터</p>
           <dl class="bls-prod-spec">
@@ -1033,10 +1057,10 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="smart" href="aero2-ultra.html" style="--reveal-delay:0.06s">
+      <a class="bls-prod reveal" data-cat="smart pellet" href="aero2-ultra.html" style="--reveal-delay:0.06s">
         <div class="bls-prod-media"><img src="../../assets/img/blaster-aero2-plt-ultra.png" alt="Aero2® PLT ULTRA" loading="lazy" /></div>
         <div class="bls-prod-body">
-          <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span></div>
+          <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero2® PLT ULTRA</h3>
           <p class="bls-prod-pos">3 mm 펠렛으로 세척 조건을 디지털 설정·저장하는 스마트 펠렛 블라스터</p>
           <dl class="bls-prod-spec">
@@ -1046,10 +1070,10 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="micro" href="i3-microclean-2.html" style="--reveal-delay:0.12s">
+      <a class="bls-prod reveal" data-cat="micro smart" href="i3-microclean-2.html" style="--reveal-delay:0.12s">
         <div class="bls-prod-media"><img src="../../assets/img/blaster-i3-microclean-2.png" alt="i³ MicroClean® 2" loading="lazy" /></div>
         <div class="bls-prod-body">
-          <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">SMART MICRO PARTICLE</span></div>
+          <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">SMART MICRO PARTICLE</span></div>
           <h3>i³ MicroClean® 2</h3>
           <p class="bls-prod-pos">정밀 세척 라인의 2세대 — 디지털 제어와 IoT를 갖춘 단일호스 마이크로파티클 블라스터</p>
           <dl class="bls-prod-spec">
@@ -1060,11 +1084,24 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="pellet" href="aero-series.html" style="--reveal-delay:0.18s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-aero-80fp.png" alt="Aero® Series (40FP · 80FP)" loading="lazy" /></div>
+        <div class="bls-prod-media"><img src="../../assets/img/blaster-aero-40fp.png" alt="Aero® 40FP" loading="lazy" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
-          <h3>Aero® Series (40FP · 80FP)</h3>
-          <p class="bls-prod-pos">풀프레셔 산업용 펠렛 블라스터 — 호퍼 용량별 2종</p>
+          <h3>Aero® 40FP</h3>
+          <p class="bls-prod-pos">풀프레셔 산업용 펠렛 블라스터 — 40 lb 호퍼 소형 모델</p>
+          <dl class="bls-prod-spec">
+            <div><dt>대표 적용</dt><dd>생산설비 유지보수 · 오일 · 그리스 · 고착 잔류물 · 이동이 잦은 현장</dd></div>
+            <div><dt>핵심 기술</dt><dd>SureFlow 시스템 · 래디얼 피더 · 정밀 공급량 제어 · 내장 압력 조절기</dd></div>
+          </dl>
+          <span class="bls-more">자세히 보기 <i>→</i></span>
+        </div>
+      </a>
+      <a class="bls-prod reveal" data-cat="pellet" href="aero-series.html" style="--reveal-delay:0.24s">
+        <div class="bls-prod-media"><img src="../../assets/img/blaster-aero-80fp.png" alt="Aero® 80FP" loading="lazy" /></div>
+        <div class="bls-prod-body">
+          <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
+          <h3>Aero® 80FP</h3>
+          <p class="bls-prod-pos">풀프레셔 산업용 펠렛 블라스터 — 80 lb 호퍼 대용량 모델</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>생산설비 유지보수 · 오일 · 그리스 · 고착 잔류물 · 주조 · 코어박스</dd></div>
             <div><dt>핵심 기술</dt><dd>SureFlow 시스템 · 래디얼 피더 · 정밀 공급량 제어 · 내장 압력 조절기</dd></div>
@@ -1072,10 +1109,10 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="pellet" href="elite20-icerocket.html" style="--reveal-delay:0s">
+      <a class="bls-prod reveal" data-cat="pellet micro" href="elite20-icerocket.html" style="--reveal-delay:0s">
         <div class="bls-prod-media"><img src="../../assets/img/blaster-elite-20.png" alt="ELITE 20" loading="lazy" /></div>
         <div class="bls-prod-body">
-          <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
+          <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span></div>
           <h3>ELITE 20</h3>
           <p class="bls-prod-pos">전문가급 성능을 갖춘 입문형 펠렛 블라스터</p>
           <dl class="bls-prod-spec">
@@ -1111,10 +1148,10 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="micro" href="sdi-select-60.html" style="--reveal-delay:0.18s">
+      <a class="bls-prod reveal" data-cat="micro pellet" href="sdi-select-60.html" style="--reveal-delay:0.18s">
         <div class="bls-prod-media"><img src="../../assets/img/blaster-sdi-select-60.png" alt="SDI Select™ 60" loading="lazy" /></div>
         <div class="bls-prod-body">
-          <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span></div>
+          <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-prod-cat">PELLET</span></div>
           <h3>SDI Select™ 60</h3>
           <p class="bls-prod-pos">더스팅 · 일반 · 고압 세 가지 방식을 한 대로 전환하는 범용 모델</p>
           <dl class="bls-prod-spec">
@@ -1125,7 +1162,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="specialty" href="c100.html" style="--reveal-delay:0s">
-        <div class="bls-prod-media"><span class="bls-prod-ph">C100</span></div>
+        <div class="bls-prod-media"><img src="../../assets/img/blaster-c100.png" alt="Cold Jet C100" loading="lazy" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SPECIALTY</span></div>
           <h3>Aero® C100</h3>
