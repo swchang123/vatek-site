@@ -1532,11 +1532,19 @@ document.addEventListener("DOMContentLoaded", function () {
   var subheroStage = document.querySelector(".subhero-parallax");
   if (subheroStage) {
     var subheroImg = subheroStage.querySelector(".subhero-parallax-img");
+    if (subheroImg && subheroImg.dataset.noParallax === "true") {
+      subheroImg = null;
+    }
+    if (subheroImg) {
     // (2026-09-04 v4) 680px는 이미지 확대율이 너무 커져 "사진이 답답하게
     // 확대돼 보인다"는 피드백 — 버퍼가 클수록 object-fit:cover 확대율도
     // 함께 커지는 구조라, 확대감이 무리 없는 420px로 되돌림(css
     // .subhero-parallax-img의 top/height 버퍼값과 반드시 일치시킬 것).
     var SUBHERO_BUFFER = 420; // px — CSS 버퍼량과 반드시 일치시킬 것
+    var customBuffer = parseFloat(subheroImg.dataset.buffer);
+    if (!isNaN(customBuffer)) SUBHERO_BUFFER = customBuffer;
+    var panScale = subheroImg.dataset.panScale ? parseFloat(subheroImg.dataset.panScale) : null;
+    var noBlur = subheroImg.dataset.noBlur === "true";
     var SUBHERO_BLUR_MAX = 10; // px
     var subheroTicking = false;
 
@@ -1547,8 +1555,12 @@ document.addEventListener("DOMContentLoaded", function () {
       var scrolled = Math.min(Math.max(-rect.top, 0), stageHeight);
       var progress = scrolled / stageHeight;
       var shift = progress * SUBHERO_BUFFER - SUBHERO_BUFFER / 2;
-      subheroImg.style.transform = "translate3d(0, " + shift.toFixed(1) + "px, 0)";
-      subheroImg.style.filter = "blur(" + (progress * SUBHERO_BLUR_MAX).toFixed(2) + "px)";
+      if (panScale) {
+        subheroImg.style.transform = "scale(" + panScale + ") translate3d(0, " + (shift / panScale).toFixed(2) + "px, 0)";
+      } else {
+        subheroImg.style.transform = "translate3d(0, " + shift.toFixed(1) + "px, 0)";
+      }
+      subheroImg.style.filter = noBlur ? "" : "blur(" + (progress * SUBHERO_BLUR_MAX).toFixed(2) + "px)";
     };
     var onSubheroScroll = function () {
       if (!subheroTicking) {
@@ -1559,5 +1571,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", onSubheroScroll, { passive: true });
     window.addEventListener("resize", onSubheroScroll);
     updateSubhero();
+    }
   }
 });

@@ -753,6 +753,63 @@ BLASTER_PAGE_TITLE = "드라이아이스 세척기 · DRY ICE BLASTERS"
 BLASTER_PAGE_DESC = "세척 대상이 다르면 필요한 블라스터도 달라집니다. Smart · Pellet · MicroParticle · Specialty — Cold Jet 드라이아이스 세척기의 차이와 선택 기준, 그리고 바테크의 테스트·지원을 안내합니다."
 BLASTER_SCRIPT = """  <script>
   (function(){
+    // 이미지: 로드 완료 시 부드럽게 나타남 (JS가 있을 때만 숨김 → 무-JS 환경 안전)
+    document.documentElement.classList.add('js-media-fade');
+    var imgs=document.querySelectorAll('.bls-sec img, .bls-pcs img, .bls-hero-stage img');
+    var mark=function(img){ img.classList.add('is-loaded'); };
+    imgs.forEach(function(img){
+      if (img.complete && img.naturalWidth>0) { mark(img); return; }
+      img.addEventListener('load',function(){ mark(img); },{once:true});
+      img.addEventListener('error',function(){ mark(img); },{once:true});
+    });
+    // 비디오: 뷰포트 근처에서만 다운로드 시작, 재생 가능해지면 페이드 인
+    var vids=document.querySelectorAll('video.bls-media-fade');
+    var prime=function(v){
+      if (v.dataset.primed) return; v.dataset.primed='1';
+      if (v.preload==='none') v.preload='auto';
+      v.load();
+    };
+    vids.forEach(function(v){
+      var show=function(){ v.classList.add('is-loaded'); };
+      if (v.readyState>=3) show();
+      v.addEventListener('loadeddata',show,{once:true});
+      v.addEventListener('canplay',show,{once:true});
+    });
+    if ('IntersectionObserver' in window) {
+      var vo=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ prime(e.target); vo.unobserve(e.target); } }); },{rootMargin:'600px 0px'});
+      vids.forEach(function(v){ vo.observe(v); });
+    } else { vids.forEach(prime); }
+  })();
+  </script>
+  <script>
+  (function(){
+    var v=document.getElementById('blsDetailVideo'),btn=document.getElementById('blsDetailPlayBtn');
+    if (v && btn) {
+      btn.addEventListener('click',function(){
+        if (v.paused) { v.play(); } else { v.pause(); }
+      });
+      v.addEventListener('play',function(){
+        btn.classList.add('is-playing');
+        btn.querySelector('.bls-play-label').textContent='일시정지';
+        btn.querySelector('.bls-play-icon').textContent='❙❙';
+      });
+      v.addEventListener('pause',function(){
+        btn.classList.remove('is-playing');
+        btn.querySelector('.bls-play-label').textContent='영상 재생';
+        btn.querySelector('.bls-play-icon').textContent='▶';
+      });
+    }
+    [['pcsVideo1','pcsPlayBtn1'],['pcsVideo2','pcsPlayBtn2']].forEach(function(pair){
+      var vv=document.getElementById(pair[0]), bb=document.getElementById(pair[1]);
+      if (!vv || !bb) return;
+      bb.addEventListener('click',function(){ if (vv.paused) { vv.play(); } else { vv.pause(); } });
+      vv.addEventListener('play',function(){ bb.classList.add('is-playing'); bb.querySelector('.bls-play-label').textContent='일시정지'; bb.querySelector('.bls-play-icon').textContent='❙❙'; });
+      vv.addEventListener('pause',function(){ bb.classList.remove('is-playing'); bb.querySelector('.bls-play-label').textContent='영상 재생'; bb.querySelector('.bls-play-icon').textContent='▶'; });
+    });
+  })();
+  </script>
+  <script>
+  (function(){
     var tabs=document.querySelectorAll('.bls-tabs button'),cards=document.querySelectorAll('#blsProdGrid .bls-prod');
     tabs.forEach(function(b){b.addEventListener('click',function(){
       if (b.classList.contains('is-active')) return;
@@ -778,81 +835,154 @@ BLASTER_SCRIPT = """  <script>
       }, toHide.length ? 260 : 0);
     });});
   })();
+  (function(){
+    var scaleEl=document.getElementById('blsScale'),fill=document.getElementById('blsScaleFill'),live=document.getElementById('blsScaleLive');
+    var dial=document.getElementById('pcsDial'),panelNum=document.getElementById('pcsLiveNum');
+    if (!scaleEl || !fill || !live) return;
+    var MIN=0.3, MAX=3.0, ticking=false;
+    var update=function(){
+      ticking=false;
+      var rect=scaleEl.getBoundingClientRect();
+      var start=window.innerHeight*0.85, end=window.innerHeight*0.25;
+      var progress=(start-rect.top)/(start-end+rect.height);
+      progress=Math.min(Math.max(progress,0),1);
+      var value=MAX-progress*(MAX-MIN);
+      var pct=((value-MIN)/(MAX-MIN))*100;
+      fill.style.width=pct+'%';
+      live.textContent=value.toFixed(1)+' mm';
+      if (dial) dial.style.transform='translate(-50%,-50%) rotate('+(135-progress*270).toFixed(1)+'deg)';
+      if (panelNum) panelNum.textContent=value.toFixed(1);
+    };
+    var onScroll=function(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll);
+    update();
+  })();
     </script>
 
 """
 BLASTER_HUB_BODY = """
   <!-- ============ 01 HERO ============ -->
   <section class="subhero-parallax bls-hero-stage">
-    <video class="subhero-parallax-img bls-hero-video" autoplay muted loop playsinline preload="auto" aria-label="드라이아이스 블라스터로 세척하는 장면">
-      <source src="../../assets/video/blaster-hero.mp4" type="video/mp4" />
-    </video>
+    <img class="subhero-parallax-img bls-hero-video" src="../../assets/img/blaster-catalog-hero-natural.png" alt="Cold Jet Aero2 PCS ULTRA · PLT ULTRA 블라스터" loading="eager" data-buffer="100" data-pan-scale="1.08" data-no-blur="true" />
     <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 세척기</div>
     <div class="subhero-textbox bls-hero-box">
-      <span class="ind-hero-eyebrow">DRY ICE BLASTERS</span>
-      <h1>드라이아이스 세척기</h1>
-      <p class="bls-hero-main">세척 대상이 다르면,<br>필요한 블라스터도 달라집니다.</p>
+      <span class="ind-hero-eyebrow">COLD JET × VATEK&nbsp;&nbsp;/&nbsp;&nbsp;DRY ICE BLASTERS</span>
+      <h1>세척의 차이를<br>만드는 <span class="bls-hero-accent">기술.</span></h1>
+      <p class="bls-hero-main">입자 제어부터 안정적인 분사까지.<br>Cold Jet 드라이아이스 블라스터의 기술을<br>바테크의 현장 지원과 함께 만나보세요.</p>
     </div>
   </section>
 
-  <!-- ============ 02 START WITH THE APPLICATION ============ -->
+  <!-- ============ 02 SEE IT IN ACTION ============ -->
   <section class="bls-sec bls-cover" id="bls-start">
     <div class="wrap">
-      <div class="bls-head">
-        <span class="cmp-eyebrow">START WITH THE APPLICATION</span>
-        <h2 class="cmp-h2">어떤 작업을 하시나요?</h2>
-        <p class="bls-sub">장비 이름을 먼저 고르기보다 무엇을 세척하고 어떤 오염물을 제거해야 하는지부터 확인하는 것이 좋습니다.</p>
+      <div class="bls-head is-row reveal">
+        <div>
+          <span class="bls-dot-eyebrow">BUILT WITH PRECISION</span>
+          <h2 class="cmp-h2">디테일에서 드러나는<br>Cold Jet의 완성도.</h2>
+        </div>
+        <p class="bls-sub is-side">Cold Jet 블라스터의 구조와 마감을<br>가까이에서 살펴보세요.</p>
       </div>
-      <div class="bls-app-grid">
-        <a class="bls-app reveal" href="#bls-sys-micro" style="--reveal-delay:0s">
-          <div class="bls-app-media"><img src="../../assets/img/method-electrical-terminal.png" alt="전기 단자대 정밀 세척" loading="lazy" /></div>
-          <div class="bls-app-body">
-            <span class="bls-num">01</span>
-            <span class="bls-en">PRECISION CLEANING</span>
-            <h3>정밀하고 민감한 표면</h3>
-            <p>금형 · 정밀 부품 · 전기·전자 부품 · 미세 오염 · 표면 상태가 중요한 작업</p>
-            <span class="bls-more">MicroParticle / PCS 계열 검토 <i>→</i></span>
-          </div>
-        </a>
-        <a class="bls-app reveal" href="#bls-sys-smart" style="--reveal-delay:0.06s">
-          <div class="bls-app-media"><img src="../../assets/img/task-mold-tool-cleaning.webp" alt="사출금형 세척" loading="lazy" /></div>
-          <div class="bls-app-body">
-            <span class="bls-num">02</span>
-            <span class="bls-en">VERSATILE CLEANING</span>
-            <h3>다양한 작업을 한 대로</h3>
-            <p>금형 · 생산설비 · 로봇 · 유지보수 · 서로 다른 작업을 한 대의 장비로 대응해야 하는 경우</p>
-            <span class="bls-more">Smart / PCS 계열 검토 <i>→</i></span>
-          </div>
-        </a>
-        <a class="bls-app reveal" href="#bls-sys-pellet" style="--reveal-delay:0.12s">
-          <div class="bls-app-media"><img src="../../assets/img/task-oil-tar-pipe.webp" alt="배관에 고착된 타르 · 오일 제거" loading="lazy" /></div>
-          <div class="bls-app-body">
-            <span class="bls-num">03</span>
-            <span class="bls-en">HEAVY-DUTY CLEANING</span>
-            <h3>두껍고 고착된 오염</h3>
-            <p>오일 · 그리스 · 카본 · 접착제 · 두껍게 축적되거나 고착된 공정 잔류물</p>
-            <span class="bls-more">Pellet 계열 검토 <i>→</i></span>
-          </div>
-        </a>
-        <a class="bls-app reveal" href="#bls-sys-specialty" style="--reveal-delay:0.18s">
-          <div class="bls-app-media is-product"><img src="../../assets/img/blaster-e-co2-150.png" alt="E-CO2 150 연마재 혼합 블라스팅 시스템" loading="lazy" /></div>
-          <div class="bls-app-body">
-            <span class="bls-num">04</span>
-            <span class="bls-en">SPECIAL APPLICATIONS</span>
-            <h3>특수한 작업 조건</h3>
-            <p>전기 사용이 제한되는 환경이나 연마재 혼합 등 일반 블라스터와 다른 조건이 필요한 작업</p>
-            <span class="bls-more">Specialty 계열 검토 <i>→</i></span>
-          </div>
-        </a>
+      <div class="bls-showcase-frame reveal">
+      <div class="bls-showcase">
+        <div class="bls-showcase-media">
+          <video id="blsDetailVideo" class="bls-media-fade" muted loop playsinline preload="metadata" poster="../../assets/img/blaster-detail-poster.png">
+            <source src="../../assets/video/blaster-hero.mp4" type="video/mp4" />
+          </video>
+          <span class="bls-showcase-cap">COLD JET&nbsp;&nbsp;/&nbsp;&nbsp;PRODUCT DETAILS</span>
+          <button type="button" class="bls-play-btn" id="blsDetailPlayBtn" aria-label="영상 재생">
+            <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
+          </button>
+        </div>
+        <div class="bls-showcase-body">
+          <span class="bls-dot-eyebrow">A CLOSER LOOK</span>
+          <h3>가까이 볼수록,<br>드러나는 디테일.</h3>
+          <p>장비의 형태와 구성, 각 부분의 마감까지. 짧은 제품 영상으로 Cold Jet 블라스터를 가까이에서 만나보세요.</p>
+          <p>그 안에서 세척을 제어하는 입자 · 공급 · 분사 기술도 이어서 살펴볼 수 있습니다.</p>
+          <a class="bls-textlink" href="#bls-systems">내부 기술 살펴보기 ↓</a>
+        </div>
       </div>
-      <p class="bls-quote reveal">“가장 좋은 장비는 가장 비싼 장비가 아니라,<br>현재 작업에 맞는 장비입니다.”</p>
+      </div>
     </div>
   </section>
 
-  <!-- ============ 03 DRY ICE BLASTER SYSTEMS ============ -->
+  <!-- ============ 03 PARTICLE CONTROL ============ -->
+  <section class="cmp-dark bls-pcs" id="bls-pcs">
+    <div class="wrap">
+      <div class="bls-pcs-head reveal">
+        <span class="cmp-eyebrow">PARTICLE CONTROL</span>
+        <h2 class="cmp-h2" style="line-height:61.2px; font-size:48px">더 섬세하게, 더 강력하게,<br /></h2>
+        <div class="cmp-dark-body">
+          <div><h2 class="cmp-h2" style="line-height:61.2px; font-size:31px; margin-top:0px">입자 크기가 달라지면 더 많은 걸 할 수 있습니다.</h2></div>
+        </div>
+      </div>
+      <div class="bls-scale-row">
+      <div class="bls-scale reveal" id="blsScale">
+        <div class="bls-scale-ends"><span>PRECISION</span><span>PERFORMANCE</span></div>
+        <div class="bls-scale-bar">
+          <b>0.3 mm</b>
+          <div class="bls-scale-line">
+            <div class="bls-scale-fill" id="blsScaleFill"></div>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <b id="blsScaleLive">3.0 mm</b>
+        </div>
+        <div class="bls-scale-ends is-sub"><span>Fine Particle</span><span>Full Pellet</span></div>
+        <span class="bls-scale-note" style="color:#ffffff">Aero2 PCS ULTRA 기준 · 0.1 mm 단위 28단계</span>
+      </div>
+      <div class="bls-pcs-panel reveal">
+        <div class="bls-pcs-panel-frame">
+          <img class="bls-pcs-panel-img" src="../../assets/img/pcs-panel-frame.png" alt="Cold Jet PCS 컨트롤 디스플레이" />
+          <span class="bls-pcs-panel-num" id="pcsLiveNum">3.0</span>
+          <img class="bls-pcs-panel-dial" id="pcsDial" src="../../assets/img/pcs-dial-knob.png" alt="PCS 조절 다이얼" />
+        </div>
+        <span class="bls-pcs-panel-cap" style="color:#ffffff; opacity:1; font-size:15px">다이얼을 돌려 입자 크기가 조절합니다.</span>
+      </div>
+      </div>
+      <div class="bls-pcs-grid">
+        <div class="cmp-dark-body bls-pcs-desc">
+          <p>Cold Jet의 PCS®는 3 mm 드라이아이스 펠렛을 투입해 0.3 mm에서 3.0 mm까지 0.1 mm 단위로 총 28개의 입자 크기를 선택할 수 있습니다.</p>
+          <p>작은 입자와 낮은 압력으로 민감한 표면을 세척하거나, 더 큰 입자와 적절한 압력을 사용해 보다 강한 오염 제거 조건을 설정할 수 있습니다.</p>
+          <div class="bls-pcs-demos reveal">
+            <div class="bls-pcs-demo">
+              <div class="bls-pcs-demo-media">
+                <video id="pcsVideo1" class="bls-media-fade" muted loop playsinline preload="none">
+                  <source src="../../assets/video/pcs-demo-namecard.mp4" type="video/mp4" />
+                </video>
+                <button type="button" class="bls-play-btn is-small" id="pcsPlayBtn1" aria-label="영상 재생">
+                  <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
+                </button>
+              </div>
+              <span class="bls-pcs-demo-cap"><b>낮은 입자·낮은 압력</b> — 인쇄된 잉크만 지우고, 명함 자체는 찢어지지 않습니다.</span>
+            </div>
+            <div class="bls-pcs-demo">
+              <div class="bls-pcs-demo-media">
+                <video id="pcsVideo2" class="bls-media-fade" muted loop playsinline preload="none">
+                  <source src="../../assets/video/pcs-demo-asphalt.mp4" type="video/mp4" />
+                </video>
+                <button type="button" class="bls-play-btn is-small" id="pcsPlayBtn2" aria-label="영상 재생">
+                  <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
+                </button>
+              </div>
+              <span class="bls-pcs-demo-cap"><b>큰 입자·높은 압력</b> — 설비에 찐득하게 굳은 아스콘 덩어리를 강하게 제거합니다.</span>
+            </div>
+          </div>
+        </div>
+        <ul class="bls-factors reveal">
+          <li><span>01</span><b>PARTICLE SIZE</b><small>입자 크기</small></li>
+          <li><span>02</span><b>PRESSURE</b><small>분사 압력</small></li>
+          <li><span>03</span><b>FEED RATE</b><small>드라이아이스 공급량</small></li>
+          <li><span>04</span><b>NOZZLE &amp; AIRFLOW</b><small>노즐과 공기 흐름</small></li>
+        </ul>
+      </div>
+      <p class="cmp-dark-final bls-dark-final">작업에 맞는 세척 조건을 찾는 것이<br><em>장비 선택의 출발점</em>입니다.</p>
+    </div>
+  </section>
+
+  <!-- ============ 04 DRY ICE BLASTER SYSTEMS ============ -->
   <section class="bls-sec bls-sys-sec tint-hatch" id="bls-systems">
     <div class="wrap">
-      <div class="bls-head">
+      <div class="bls-head reveal">
         <span class="cmp-eyebrow">DRY ICE BLASTER SYSTEMS</span>
         <h2 class="cmp-h2">작업 목적에 따라 선택하는<br>Cold Jet 블라스터</h2>
         <p class="bls-sub">Cold Jet의 블라스터는 사용하는 드라이아이스 입자와 제어 방식, 필요한 세척 강도와 작업조건에 따라 서로 다른 제품군으로 구성되어 있습니다.</p>
@@ -860,7 +990,7 @@ BLASTER_HUB_BODY = """
       <div class="bls-sys-grid">
         <article class="bls-sys reveal is-large-media" id="bls-sys-smart">
           <div class="bls-sys-media">
-            <img class="is-main" src="../../assets/img/blaster-smart-lineup.png" alt="Cold Jet Aero2 PCS ULTRA · PLT ULTRA · i3 MicroClean" loading="lazy" />
+            <img class="is-main" src="../../assets/img/blaster-smart-lineup.png" alt="Cold Jet Aero2 PCS ULTRA · PLT ULTRA · i3 MicroClean" loading="lazy" decoding="async" />
           </div>
           <div class="bls-sys-body" style="position: relative">
             <div class="bls-sys-divider"></div>
@@ -880,7 +1010,7 @@ BLASTER_HUB_BODY = """
         </article>
         <article class="bls-sys reveal is-large-media" id="bls-sys-pellet" style="--reveal-delay:0.06s">
           <div class="bls-sys-media">
-            <img class="is-main" src="../../assets/img/blaster-pellet-lineup.png" alt="Cold Jet Aero Series · ELITE 20 · IceRocket PLT" loading="lazy" />
+            <img class="is-main" src="../../assets/img/blaster-pellet-lineup.png" alt="Cold Jet Aero Series · ELITE 20 · IceRocket PLT" loading="lazy" decoding="async" />
           </div>
             <div class="bls-sys-body" style="position: relative">
             <div class="bls-sys-divider"></div>
@@ -900,7 +1030,7 @@ BLASTER_HUB_BODY = """
         </article>
         <article class="bls-sys reveal is-large-media" id="bls-sys-micro">
           <div class="bls-sys-media">
-            <img class="is-main" src="../../assets/img/blaster-micro-lineup.png" alt="Cold Jet i3 MicroClean · i3 MicroClean 2 · SDI Select 60" loading="lazy" />
+            <img class="is-main" src="../../assets/img/blaster-micro-lineup.png" alt="Cold Jet i3 MicroClean · i3 MicroClean 2 · SDI Select 60" loading="lazy" decoding="async" />
           </div>
           <div class="bls-sys-body" style="position: relative">
             <div class="bls-sys-divider"></div>
@@ -941,111 +1071,27 @@ BLASTER_HUB_BODY = """
     </div>
   </section>
 
-  <!-- ============ 04 PARTICLE CONTROL ============ -->
-  <section class="cmp-dark bls-pcs" id="bls-pcs">
-    <div class="wrap">
-      <div class="bls-pcs-head">
-        <span class="cmp-eyebrow">PARTICLE CONTROL</span>
-        <h2 class="cmp-h2">세척 강도는<br>압력 하나로 결정되지 않습니다.</h2>
-        <div class="cmp-dark-body">
-          <p>드라이아이스 세척의 결과는 압력만으로 결정되지 않습니다. 입자의 크기, 드라이아이스 공급량, 압축공기, 노즐의 형상과 분사 조건이 함께 작용합니다.</p>
-        </div>
-      </div>
-      <div class="bls-scale reveal">
-        <div class="bls-scale-ends"><span>PRECISION</span><span>PERFORMANCE</span></div>
-        <div class="bls-scale-bar">
-          <b>0.3 mm</b>
-          <div class="bls-scale-line"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <b>3.0 mm</b>
-        </div>
-        <div class="bls-scale-ends is-sub"><span>Fine Particle</span><span>Full Pellet</span></div>
-        <span class="bls-scale-note">Aero2 PCS ULTRA 기준 · 0.1 mm 단위 28단계</span>
-      </div>
-      <div class="bls-pcs-grid">
-        <div class="cmp-dark-body bls-pcs-desc">
-          <p>Cold Jet의 PCS®는 3 mm 드라이아이스 펠렛을 투입해 0.3 mm에서 3.0 mm까지 0.1 mm 단위로 총 28개의 입자 크기를 선택할 수 있습니다.</p>
-          <p>작은 입자와 낮은 압력으로 민감한 표면을 세척하거나, 더 큰 입자와 적절한 압력을 사용해 보다 강한 오염 제거 조건을 설정할 수 있습니다.</p>
-        </div>
-        <ul class="bls-factors reveal">
-          <li><span>01</span><b>PARTICLE SIZE</b><small>입자 크기</small></li>
-          <li><span>02</span><b>PRESSURE</b><small>분사 압력</small></li>
-          <li><span>03</span><b>FEED RATE</b><small>드라이아이스 공급량</small></li>
-          <li><span>04</span><b>NOZZLE &amp; AIRFLOW</b><small>노즐과 공기 흐름</small></li>
-        </ul>
-      </div>
-      <p class="cmp-dark-final bls-dark-final">작업에 맞는 세척 조건을 찾는 것이<br><em>장비 선택의 출발점</em>입니다.</p>
-    </div>
-  </section>
-
-  <!-- ============ 05 THE COLD JET DIFFERENCE ============ -->
-  <section class="bls-sec" id="bls-tech">
-    <div class="wrap">
-      <div class="bls-head">
-        <span class="cmp-eyebrow">THE COLD JET DIFFERENCE</span>
-        <h2 class="cmp-h2">블라스터의 차이는<br>외형보다 내부에서 만들어집니다.</h2>
-        <p class="bls-sub">실제 작업에서는 최대 압력이나 Hopper 용량만큼, 드라이아이스가 얼마나 안정적으로 공급되는지, 압축공기의 흐름을 어떻게 활용하는지, 노즐에서 어떤 형태로 분사되는지, 작업 조건을 얼마나 정확하게 설정하고 반복할 수 있는지도 중요합니다.</p>
-      </div>
-      <div class="bls-tech-list">
-        <article class="bls-tech reveal">
-          <div class="bls-tech-media"><img src="../../assets/img/coldjet-aero-family.png" alt="Cold Jet Aero 시리즈 블라스터" loading="lazy" /></div>
-          <div class="bls-tech-body">
-            <span class="bls-num">01</span>
-            <span class="bls-en">SUREFLOW SYSTEM</span>
-            <h3>안정적인 드라이아이스 흐름</h3>
-            <p>Cold Jet의 SureFlow 시스템은 단열 호퍼와 호퍼 교반 장치, 공기역학적 유로 설계로 드라이아이스의 공급 흐름을 안정적으로 유지하고 압력 손실을 줄이기 위한 기술입니다. 펄스 없는 일정한 분사 흐름을 목표로 설계되었습니다.</p>
-          </div>
-        </article>
-        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
-          <div class="bls-tech-media is-cad"><img src="../../assets/img/coldjet-feeder-cad.png" alt="Cold Jet 피더 시스템 구조" loading="lazy" /></div>
-          <div class="bls-tech-body">
-            <span class="bls-num">02</span>
-            <span class="bls-en">FEEDING SYSTEM</span>
-            <h3>일정한 공급이 만드는 안정적인 분사</h3>
-            <p>드라이아이스를 안정적으로 공급하는 Feeder 설계는 분사 흐름과 실제 작업성에 영향을 줍니다. Cold Jet의 래디얼 피더는 공기역학적 로딩으로 패드와 로터의 마모를 줄이고, 공급량을 정밀하게 제어할 수 있도록 설계되었습니다.</p>
-          </div>
-        </article>
-        <article class="bls-tech reveal">
-          <div class="bls-tech-media is-cad"><img src="../../assets/img/coldjet-nozzles.png" alt="Cold Jet 노즐 라인업" loading="lazy" /></div>
-          <div class="bls-tech-body">
-            <span class="bls-num">03</span>
-            <span class="bls-en">NOZZLE TECHNOLOGY</span>
-            <h3>작업에 맞는 분사폭과 세척 Impact</h3>
-            <p>같은 장비라도 노즐의 형상과 크기에 따라 분사폭과 집중도, 공기 소비량과 작업성이 달라질 수 있습니다. Cold Jet의 특허 노즐은 초음속 균일 분사와 낮은 승화 손실을 목표로 설계되어, 작업 대상에 맞게 다양한 형태로 제공됩니다.</p>
-          </div>
-        </article>
-        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
-          <div class="bls-tech-media is-product"><img src="../../assets/img/blaster-aero2-pcs-ultra.png" alt="Aero2 PCS ULTRA HMI" loading="lazy" /></div>
-          <div class="bls-tech-body">
-            <span class="bls-num">04</span>
-            <span class="bls-en">COLD JET CONNECT®</span>
-            <h3>장비 상태와 지원을 연결하다</h3>
-            <p>지원 모델에서는 Cold Jet CONNECT®를 통해 원격 모니터링과 진단, 교육자료와 장비 문서, 문제 해결과 서비스 지원 기능을 PC와 모바일에서 사용할 수 있습니다. Aero2 ULTRA 시리즈와 i³ MicroClean 2 등 IoT 지원 모델에 적용됩니다.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 06 PRODUCT LINEUP ============ -->
+  <!-- ============ 05 PRODUCT LINEUP ============ -->
   <section class="bls-sec bls-lineup-sec tint-hatch" id="bls-lineup">
     <div class="wrap">
-      <div class="bls-head is-row">
+      <div class="bls-head is-row reveal">
         <div>
           <span class="cmp-eyebrow">PRODUCT LINEUP</span>
           <h2 class="cmp-h2">Cold Jet 블라스터 라인업</h2>
           <p class="bls-sub">작업 목적과 필요한 세척 조건에 따라 적합한 제품을 비교해보세요.</p>
         </div>
         <div class="bls-tabs" role="tablist" aria-label="제품군 필터">
-          <button class="is-active" data-filter="all" type="button">ALL</button>
-          <button data-filter="smart" type="button">SMART</button>
-          <button data-filter="pellet" type="button">PELLET</button>
-          <button data-filter="micro" type="button">MICRO PARTICLE</button>
-          <button data-filter="specialty" type="button">SPECIALTY</button>
+          <button data-filter="core" type="button"><b>CORE</b><small>핵심 모델</small></button>
+          <button class="is-active" data-filter="all" type="button"><b>ALL</b><small>전체 모델</small></button>
+          <button data-filter="smart" type="button"><b>SMART</b><small>자동화, 모든 표면</small></button>
+          <button data-filter="pellet" type="button"><b>PELLET</b><small>설비 고착 오염</small></button>
+          <button data-filter="micro" type="button"><b>MICRO PARTICLE</b><small>정밀·민감한 표면</small></button>
+          <button data-filter="specialty" type="button"><b>SPECIALTY</b><small>특수작업</small></button>
         </div>
       </div>
       <div class="bls-prod-grid" id="blsProdGrid">
-      <a class="bls-prod reveal" data-cat="smart pellet micro" href="aero2-ultra.html" style="--reveal-delay:0s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-aero2-pcs-ultra.png" alt="Aero2® PCS ULTRA" loading="lazy" /></div>
+      <a class="bls-prod reveal" data-cat="core smart pellet micro" href="aero2-ultra.html" style="--reveal-delay:0s">
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-pcs-ultra.png" alt="Aero2® PCS ULTRA" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">PARTICLE CONTROL SYSTEM</span></div>
           <h3>Aero2® PCS ULTRA</h3>
@@ -1058,7 +1104,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="smart pellet" href="aero2-ultra.html" style="--reveal-delay:0.06s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-aero2-plt-ultra.png" alt="Aero2® PLT ULTRA" loading="lazy" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-plt-ultra.png" alt="Aero2® PLT ULTRA" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero2® PLT ULTRA</h3>
@@ -1070,8 +1116,8 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="micro smart" href="i3-microclean-2.html" style="--reveal-delay:0.12s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-i3-microclean-2.png" alt="i³ MicroClean® 2" loading="lazy" /></div>
+      <a class="bls-prod reveal" data-cat="core micro smart" href="i3-microclean-2.html" style="--reveal-delay:0.12s">
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-i3-microclean-2.png" alt="i³ MicroClean® 2" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">SMART MICRO PARTICLE</span></div>
           <h3>i³ MicroClean® 2</h3>
@@ -1084,7 +1130,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="pellet" href="aero-series.html" style="--reveal-delay:0.18s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-aero-40fp.png" alt="Aero® 40FP" loading="lazy" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-40fp.png" alt="Aero® 40FP" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero® 40FP</h3>
@@ -1097,7 +1143,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="pellet" href="aero-series.html" style="--reveal-delay:0.24s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-aero-80fp.png" alt="Aero® 80FP" loading="lazy" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-80fp.png" alt="Aero® 80FP" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero® 80FP</h3>
@@ -1109,8 +1155,8 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="pellet micro" href="elite20-icerocket.html" style="--reveal-delay:0s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-elite-20.png" alt="ELITE 20" loading="lazy" /></div>
+      <a class="bls-prod reveal" data-cat="core pellet micro" href="elite20-icerocket.html" style="--reveal-delay:0s">
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-elite-20.png" alt="ELITE 20" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span></div>
           <h3>ELITE 20</h3>
@@ -1122,8 +1168,8 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="pellet" href="elite20-icerocket.html" style="--reveal-delay:0.06s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-icerocket-plt.png" alt="IceRocket PLT" loading="lazy" /></div>
+      <a class="bls-prod reveal" data-cat="core pellet" href="elite20-icerocket.html" style="--reveal-delay:0.06s">
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-icerocket-plt.png" alt="IceRocket PLT" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>IceRocket PLT</h3>
@@ -1136,7 +1182,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="micro" href="i3-microclean.html" style="--reveal-delay:0.12s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-i3-microclean.png" alt="i³ MicroClean®" loading="lazy" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-i3-microclean.png" alt="i³ MicroClean®" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span></div>
           <h3>i³ MicroClean®</h3>
@@ -1149,7 +1195,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="micro pellet" href="sdi-select-60.html" style="--reveal-delay:0.18s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-sdi-select-60.png" alt="SDI Select™ 60" loading="lazy" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-sdi-select-60.png" alt="SDI Select™ 60" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-prod-cat">PELLET</span></div>
           <h3>SDI Select™ 60</h3>
@@ -1162,7 +1208,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="specialty" href="c100.html" style="--reveal-delay:0s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-c100.png" alt="Cold Jet C100" loading="lazy" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-c100.png" alt="Cold Jet C100" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SPECIALTY</span></div>
           <h3>Aero® C100</h3>
@@ -1175,7 +1221,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="specialty" href="e-co2-150.html" style="--reveal-delay:0.06s">
-        <div class="bls-prod-media"><img src="../../assets/img/blaster-e-co2-150.png" alt="E-CO2™ 150" loading="lazy" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-e-co2-150.png" alt="E-CO2™ 150" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SPECIALTY</span></div>
           <h3>E-CO2™ 150</h3>
@@ -1191,62 +1237,133 @@ BLASTER_HUB_BODY = """
     </div>
   </section>
 
-  <!-- ============ 07 FIND THE RIGHT SYSTEM ============ -->
-  <section class="bls-sec" id="bls-matrix">
+  <!-- ============ 06 THE COLD JET DIFFERENCE ============ -->
+  <section class="bls-sec" id="bls-tech">
     <div class="wrap">
-      <div class="bls-head">
-        <span class="cmp-eyebrow">FIND THE RIGHT SYSTEM</span>
-        <h2 class="cmp-h2">어떤 방식이 더 적합할까요?</h2>
+      <div class="bls-head reveal">
+        <span class="cmp-eyebrow">THE COLD JET DIFFERENCE</span>
+        <h2 class="cmp-h2">성능과 내구성은,<br>보이지 않는 곳에서 결정됩니다.</h2>
+        <p class="bls-sub">드라이아이스 블라스터의 성능은 최대 압력이나 최고 용량만으로 결정되지 않습니다. 드라이아이스를 얼마나 균일하게 공급하는지, 압축공기의 흐름을 얼마나 효율적으로 활용하는지, 노즐에서 원하는 형태로 분사하는지에 따라 실제 세척 결과와 작업 효율이 달라집니다. Cold Jet은 공급부터 분사까지 이어지는 전체 흐름을 하나의 시스템으로 설계합니다.</p>
       </div>
-      <div class="bls-matrix-wrap reveal">
-        <table class="bls-matrix">
-          <thead><tr><th></th><th>SMART</th><th>PELLET</th><th>MICRO PARTICLE</th><th>SPECIALTY</th></tr></thead>
-          <tbody>
-            <tr><th>대표적인 세척 성향</th><td>조건을 세밀하게 설정하고 반복</td><td>범용 산업 세척 · 강한 오염 제거</td><td>부드럽고 세밀한 세척</td><td>특수 작업 조건 대응</td></tr>
-            <tr><th>사용 입자</th><td>3 mm 펠렛<br><small>PCS ULTRA: 0.3 – 3.0 mm 조절</small></td><td>3 mm 펠렛</td><td>마이크로파티클<br><small>블록 쉐이빙 또는 소형 입자</small></td><td>3 mm 펠렛<br><small>E-CO2 150: 펠렛 + 연마재</small></td></tr>
-            <tr><th>정밀 제어</th><td>디지털 설정 · 레시피 저장 · HMI</td><td>압력 · 공급량 조절</td><td>낮은 압력 · 소량 공기로 운전<br><small>i³ MicroClean 2: 디지털 설정</small></td><td>모델별 상이</td></tr>
-            <tr><th>상대적으로 강한 오염</th><td>입자 · 압력을 높여 대응</td><td>적합</td><td>제한적</td><td>E-CO2 150: 도막 · 부식 제거</td></tr>
-            <tr><th>자동화 · 통신</th><td>PLC · Modbus 통신 · CONNECT®</td><td>—</td><td>i³ MicroClean 2: CONNECT®</td><td>—</td></tr>
-            <tr><th>대표 작업</th><td>금형 · 생산설비 · 자동화 라인</td><td>설비 유지보수 · 고착 오염</td><td>정밀 금형 · 전자부품 · 부품 마무리</td><td>전원 없는 현장 · 도막 · 부식 제거</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="bls-matrix-foot">
-        <p>실제 적합한 장비는 세척 대상과 오염물, 사용 가능한 압축공기와 작업조건을 함께 확인해 결정합니다.</p>
-        <a class="cta-btn" href="../compare-equip.html">내 작업에 맞는 장비 상담 →</a>
+      <div class="bls-tech-list">
+        <article class="bls-tech reveal">
+          <div class="bls-tech-media"><img src="../../assets/img/sureflow-feeder-system.png" alt="SureFlow 피더 시스템" loading="lazy" style="object-fit: contain; width: 420px; height: 412px" /></div>
+          <div class="bls-tech-body">
+            <span class="bls-num">01</span>
+            <span class="bls-en">SUREFLOW FEEDER SYSTEM</span>
+            <h3>드라이아이스의 균일하고 안정적인 공급</h3>
+            <p>특허받은 슈어플로우 피더 시스템은 험퍼(Thumper), 램로드(Ramrod), 진동기, 단열 호퍼를 하나로 통합한 시스템입니다. 호퍼를 최적의 상태로 진동·교반해 드라이아이스가 시스템 내부에 균일하게 공급되도록 하며, 안정적이고 일정한 분사 흐름을 유지합니다.</p>
+          </div>
+        </article>
+        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+          <div class="bls-tech-media is-cad is-lg"><img src="../../assets/img/coldjet-feeder-cad.png" alt="Cold Jet 피더 시스템 구조" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-body">
+            <span class="bls-num">02</span>
+            <span class="bls-en">FEEDING SYSTEM</span>
+            <h3>정밀한 공급으로 일정한 드라이아이스 분사 유지</h3>
+            <p>드라이아이스를 안정적으로 공급하는 Feeder 설계는 분사 흐름과 실제 작업성에 영향을 줍니다. Cold Jet의 래디얼 피더는 공기역학적 로딩으로 패드와 로터의 마모를 줄이고, 공급량을 정밀하게 제어할 수 있도록 설계되었습니다.</p>
+          </div>
+        </article>
+        <article class="bls-tech reveal">
+          <div class="bls-tech-media is-cad is-lg"><img src="../../assets/img/coldjet-nozzle-family.png" alt="Cold Jet 노즐 라인업" loading="lazy" style="object-fit: contain; width: 230%; height: 155%" /></div>
+          <div class="bls-tech-body">
+            <span class="bls-num">03</span>
+            <span class="bls-en">NOZZLE TECHNOLOGY</span>
+            <h3>작업에 적합한 기술 집약적 노즐</h3>
+            <p>같은 장비라도 노즐의 형상과 크기에 따라 분사폭과 집중도, 공기 소비량과 작업성이 달라질 수 있습니다. Cold Jet의 특허 노즐은 초음속 균일 분사와 낮은 승화 손실을 목표로 설계되어, 작업 대상에 맞게 다양한 형태로 제공됩니다.</p>
+          </div>
+        </article>
+        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+          <div class="bls-tech-media is-product is-lg"><img src="../../assets/img/coldjet-connect-dashboard.png" alt="Cold Jet Connect 대시보드" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-body">
+            <span class="bls-num">04</span>
+            <span class="bls-en">COLD JET CONNECT®</span>
+            <h3>온라인 장비 점검 및 자동 보고서</h3>
+            <p>Cold Jet CONNECT®를 이용하면 PC나 모바일에서 장비 상태를 실시간으로 확인하고 원격 진단할 수 있습니다. 교육 자료 확인, 문제 해결, 서비스 지원 등 필요한 기능도 편리하게 이용할 수 있습니다.<br /><br />이 기능은 Aero2 ULTRA 시리즈와 i³ MicroClean 2 등 IoT를 지원하는 모델에 적용됩니다.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ 08 PROVEN IN THE FIELD ============ -->
-  <section class="bls-sec bls-proven" id="bls-proven">
+  <!-- ============ 07 TRUSTED WORLDWIDE ============ -->
+  <section class="bls-sec bls-ref-sec tint-hatch" id="bls-ref">
     <div class="wrap">
-      <div class="bls-head is-row">
-        <div>
-          <span class="cmp-eyebrow">PROVEN IN THE FIELD</span>
-          <h2 class="cmp-h2">대한민국 산업현장에서<br>이미 사용되고 있습니다.</h2>
-        </div>
-        <p class="bls-sub is-side">자동차와 전자, 타이어와 소재, 항공과 제조업 등 국내 다양한 산업현장에서 Cold Jet 드라이아이스 세척 장비가 사용되어 왔습니다.</p>
+      <div class="bls-head reveal">
+        <span class="cmp-eyebrow">TRUSTED WORLDWIDE</span>
+        <h2 class="cmp-h2">국내외 다양한 산업 현장에서 Cold Jet과 함께하고 있습니다.</h2>
       </div>
-      <div class="bls-logos reveal">
-      <div class="bls-logo-group"><span class="bls-logo-label">AUTOMOTIVE</span><ul class="bls-logo-row"><li><img src="../../assets/img/client-hyundai.png" alt="Hyundai" loading="lazy" /></li><li><img src="../../assets/img/client-kia.png" alt="Kia" loading="lazy" /></li><li><img src="../../assets/img/client-hyundai-mobis.png" alt="Hyundai Mobis" loading="lazy" /></li><li><img src="../../assets/img/client-hanon-systems.png" alt="Hanon Systems" loading="lazy" /></li><li><img src="../../assets/img/client-continental.png" alt="Continental" loading="lazy" /></li></ul></div>
-      <div class="bls-logo-group"><span class="bls-logo-label">ELECTRONICS</span><ul class="bls-logo-row"><li><img src="../../assets/img/client-samsung-electronics.png" alt="삼성전자" loading="lazy" /></li><li><img src="../../assets/img/client-samsung-electro-mechanics.png" alt="삼성전기" loading="lazy" /></li><li><img src="../../assets/img/client-lg-electronics.png" alt="LG전자" loading="lazy" /></li><li><img src="../../assets/img/client-amkor.png" alt="Amkor Technology" loading="lazy" /></li><li><img src="../../assets/img/client-ket.png" alt="한국단자공업" loading="lazy" /></li></ul></div>
-      <div class="bls-logo-group"><span class="bls-logo-label">MATERIALS</span><ul class="bls-logo-row"><li><img src="../../assets/img/client-hankook.png" alt="Hankook" loading="lazy" /></li><li><img src="../../assets/img/client-kumho-tire.png" alt="Kumho Tire" loading="lazy" /></li><li><img src="../../assets/img/client-nexen-tire.png" alt="Nexen Tire" loading="lazy" /></li><li><img src="../../assets/img/client-lg-chem.png" alt="LG화학" loading="lazy" /></li><li><img src="../../assets/img/client-lg-energy-solution.png" alt="LG에너지솔루션" loading="lazy" /></li></ul></div>
-      <div class="bls-logo-group"><span class="bls-logo-label">GENERAL MANUFACTURING</span><ul class="bls-logo-row"><li><img src="../../assets/img/client-ecopro.png" alt="EcoPro" loading="lazy" /></li><li><img src="../../assets/img/client-doosan.png" alt="Doosan" loading="lazy" /></li><li><img src="../../assets/img/client-3m.png" alt="3M" loading="lazy" /></li><li><img src="../../assets/img/client-kolon-industries.png" alt="코오롱인더스트리" loading="lazy" /></li><li><img src="../../assets/img/client-wonik-qnc.png" alt="Wonik QnC" loading="lazy" /></li></ul></div>
+    </div>
+    <div class="bls-ref-row">
+      <div class="bls-ref-track">
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-hyundai.png" alt="Hyundai" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-kia.png" alt="Kia" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-kumho-tire.png" alt="Kumho Tire" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-nexen-tire.png" alt="Nexen Tire" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-aerospace-airbus_logo.png" alt="Airbus" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-aerospace-spacex_logo.png" alt="SpaceX" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-facility-maintenance-coca-cola_logo.png" alt="Coca-Cola" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-facility-maintenance-nestle_logo.png" alt="Nestle" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-facility-maintenance-p_and_g_procter_and_gamble_logo.png" alt="P&G" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-facility-maintenance-caterpillar-logo.png" alt="Caterpillar" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-rubber-tires-michelin_logo.png" alt="Michelin" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-rubber-tires-goodyear_logo.png" alt="Goodyear" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-hyundai.png" alt="Hyundai" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-kia.png" alt="Kia" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-kumho-tire.png" alt="Kumho Tire" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-nexen-tire.png" alt="Nexen Tire" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-aerospace-airbus_logo.png" alt="Airbus" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-aerospace-spacex_logo.png" alt="SpaceX" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-facility-maintenance-coca-cola_logo.png" alt="Coca-Cola" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-facility-maintenance-nestle_logo.png" alt="Nestle" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-facility-maintenance-p_and_g_procter_and_gamble_logo.png" alt="P&G" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-facility-maintenance-caterpillar-logo.png" alt="Caterpillar" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-rubber-tires-michelin_logo.png" alt="Michelin" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-rubber-tires-goodyear_logo.png" alt="Goodyear" loading="lazy" decoding="async" /></div>
+      </div>
+    </div>
+    <div class="bls-ref-row is-reverse">
+      <div class="bls-ref-track">
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-bmw.png" alt="BMW" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-toyota.png" alt="Toyota" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-honda.png" alt="Honda" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-ford.png" alt="Ford" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-tesla.png" alt="Tesla" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-power-generation-siemens_energy_logo.png" alt="Siemens Energy" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-mining-rio_tinto_logo.png" alt="Rio Tinto" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-packaging-ball_corporation_logo.png" alt="Ball Corporation" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-packaging-smurfit_kappa_logo.png" alt="Smurfit Kappa" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-rail-sncf-logo.png" alt="SNCF" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-medical-stryker_corporation_logo.png" alt="Stryker" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-medical-becton-dickinson-logo.png" alt="Becton Dickinson" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-bmw.png" alt="BMW" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-toyota.png" alt="Toyota" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-honda.png" alt="Honda" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-ford.png" alt="Ford" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-logo-tesla.png" alt="Tesla" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-power-generation-siemens_energy_logo.png" alt="Siemens Energy" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-mining-rio_tinto_logo.png" alt="Rio Tinto" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-packaging-ball_corporation_logo.png" alt="Ball Corporation" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-packaging-smurfit_kappa_logo.png" alt="Smurfit Kappa" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-rail-sncf-logo.png" alt="SNCF" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-medical-stryker_corporation_logo.png" alt="Stryker" loading="lazy" decoding="async" /></div>
+        <div class="ref-pill"><img src="../../assets/img/ref/ref-medical-becton-dickinson-logo.png" alt="Becton Dickinson" loading="lazy" decoding="async" /></div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 09 GLOBAL TECHNOLOGY · LOCAL SUPPORT ============ -->
+
+
+  <!-- ============ 10 GLOBAL TECHNOLOGY · LOCAL SUPPORT ============ -->
   <section class="bls-sec bls-partner" id="bls-partner">
     <div class="wrap">
-      <div class="bls-head">
+      <div class="bls-head reveal">
         <span class="cmp-eyebrow">GLOBAL TECHNOLOGY · LOCAL SUPPORT</span>
         <h2 class="cmp-h2">장비만큼 중요한 것은,<br>한국에서 누가 지원하느냐입니다.</h2>
       </div>
       <div class="bls-partner-grid">
         <article class="bls-partner-col reveal">
-          <div class="bls-partner-media"><img src="../../assets/img/coldjet-history-collage-teal.png" alt="Cold Jet 초기 개발 스케치와 장비" loading="lazy" /></div>
+          <div class="bls-partner-media"><img src="../../assets/img/coldjet-history-collage-teal.png" alt="Cold Jet 초기 개발 스케치와 장비" loading="lazy" decoding="async" /></div>
           <img class="bls-partner-logo" src="../../assets/img/coldjet-logo.png" alt="Cold Jet" />
           <h3>드라이아이스 블라스팅 기술의<br>개척자이자 글로벌 리더</h3>
           <p>Cold Jet는 현대식 드라이아이스 블라스팅 장비의 원천 특허를 기반으로 기술을 발전시켜 왔으며, 블라스터와 드라이아이스 생산설비, 노즐과 자동화 기술을 개발·공급하고 있습니다.</p>
@@ -1258,7 +1375,7 @@ BLASTER_HUB_BODY = """
           </ul>
         </article>
         <article class="bls-partner-col is-vatek reveal" style="--reveal-delay:0.08s">
-          <div class="bls-partner-media is-vatek"><img src="../../assets/img/stackdo-rental.jpg" alt="바테크 데모 · 렌탈 장비" loading="lazy" /></div>
+          <div class="bls-partner-media is-vatek"><img src="../../assets/img/stackdo-rental.jpg" alt="바테크 데모 · 렌탈 장비" loading="lazy" decoding="async" /></div>
           <img class="bls-partner-logo" src="../../assets/img/vatek-logo-wordmark.png" alt="VATEK" />
           <h3>Cold Jet 대한민국 공식 총판</h3>
           <p>1988년 설립한 바테크는 Cold Jet의 대한민국 공식 총판으로, 제품 판매뿐 아니라 세척 테스트, 렌탈·데모, 장비 선정, 기술 지원과 A/S 등 국내 고객의 도입과 운용을 지원합니다.</p>
@@ -1275,60 +1392,13 @@ BLASTER_HUB_BODY = """
     </div>
   </section>
 
-  <!-- ============ 10 TEST BEFORE YOU BUY ============ -->
-  <section class="bls-sec bls-test tint-hatch" id="bls-test">
-    <div class="wrap">
-      <div class="bls-test-grid">
-        <div class="bls-test-copy">
-          <span class="cmp-eyebrow">TEST BEFORE YOU BUY</span>
-          <h2 class="cmp-h2">구매하기 전에,<br>실제 오염물로 먼저 확인해보세요.</h2>
-          <div class="cmp-lead">
-            <p>드라이아이스 세척은 같은 오염물이라도 부착 정도, 재질, 형상, 온도와 작업조건에 따라 결과가 달라질 수 있습니다.</p>
-            <p>그래서 바테크는 장비를 먼저 추천하기보다 가능하면 실제 부품이나 금형, 오염 샘플을 이용해 세척 결과를 확인합니다.</p>
-          </div>
-          <p class="bls-quote is-left">“고가의 장비일수록,<br>구매 전에 실제 작업으로 확인하는 것이 중요합니다.”</p>
-          <div class="cmp-cta-btns">
-            <a class="cta-btn" href="../../rental/demo.html">세척 테스트 신청 →</a>
-            <a class="cmp-btn-ghost" href="../../rental/index.html">렌탈 · 데모 문의 →</a>
-          </div>
-        </div>
-        <ol class="bls-steps reveal">
-          <li><span class="bls-num">01</span><b>SAMPLE TEST</b><strong>시편 테스트</strong><p>실제 시편을 보내주시면 세척 가능성과 결과를 확인해 보고드립니다.</p><small>무료 진행 · 가장 빠른 방법</small></li>
-          <li><span class="bls-num">02</span><b>DEMO</b><strong>내방 · 방문 테스트</strong><p>실제 장비로 작업성과 세척 결과를 직접 확인할 수 있습니다.</p><small>내방 테스트 무료 · 방문 테스트는 일정 협의</small></li>
-          <li><span class="bls-num">03</span><b>RENTAL</b><strong>렌탈</strong><p>필요한 경우 실제 현장에서 일정기간 사용하며 작업 적합성을 검토할 수 있습니다.</p><small>V-RENTAL · 1일 단위</small></li>
-        </ol>
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ 11 WHAT YOU NEED ============ -->
-  <section class="bls-sec bls-need" id="bls-need">
-    <div class="wrap">
-      <div class="bls-head">
-        <span class="cmp-eyebrow">WHAT YOU NEED</span>
-        <h2 class="cmp-h2">드라이아이스 세척은<br>블라스터 한 대만으로 끝나지 않습니다.</h2>
-      </div>
-      <div class="bls-need-diagram reveal">
-        <div class="bls-need-item"><img src="../../assets/img/dryice-pellets-3mm.png" alt="3 mm 드라이아이스 펠렛" loading="lazy" /><b>DRY ICE</b><small>드라이아이스</small></div>
-        <span class="bls-need-plus">+</span>
-        <div class="bls-need-item"><img src="../../assets/img/adopt-compressor.jpg" alt="압축공기 컴프레서" loading="lazy" /><b>COMPRESSED AIR</b><small>압축공기</small></div>
-        <span class="bls-need-plus">+</span>
-        <div class="bls-need-item is-product"><img src="../../assets/img/blaster-aero2-plt-ultra.png" alt="드라이아이스 블라스터" loading="lazy" /><b>DRY ICE BLASTER</b><small>드라이아이스 블라스터</small></div>
-      </div>
-      <ul class="bls-need-secondary"><li>NOZZLE</li><li>HOSE</li><li>POWER</li><li>PPE</li><li>WORK ENVIRONMENT</li></ul>
-      <div class="bls-need-text cmp-lead">
-        <p>드라이아이스 블라스터는 압축공기를 이용해 드라이아이스를 고속으로 분사합니다. 따라서 장비뿐 아니라 사용할 드라이아이스, 사용 가능한 압축공기의 압력과 유량, 전원, 노즐과 호스, 작업환경과 안전조건을 함께 확인해야 합니다.</p>
-        <p class="bls-fine">압축공기 요구량은 모델과 노즐, 분사 압력과 작업조건에 따라 달라지므로 장비 선정 시 함께 검토합니다. 작업 시에는 극저온(-78.5 ℃)과 분사에 대비한 보호경 · 귀마개 · 방한장갑 · 안전화 등 보호장구가 필요합니다.</p>
-        <a class="bls-more" href="../../cleaning/adopt.html">드라이아이스 세척 도입 가이드 자세히 보기 <i>→</i></a>
-      </div>
-    </div>
-  </section>
 
   <!-- ============ 12 FROM MANUAL TO AUTOMATED ============ -->
   <section class="bls-sec bls-auto" id="bls-auto">
     <div class="wrap">
       <div class="bls-auto-grid">
-        <figure class="bls-auto-media reveal"><img src="../../assets/img/coldjet-robot-cell.png" alt="로봇에 통합된 드라이아이스 블라스팅" loading="lazy" /><figcaption>ROBOT-INTEGRATED DRY ICE BLASTING</figcaption></figure>
+        <figure class="bls-auto-media reveal"><img src="../../assets/img/coldjet-robot-cell.png" alt="로봇에 통합된 드라이아이스 블라스팅" loading="lazy" decoding="async" /><figcaption>ROBOT-INTEGRATED DRY ICE BLASTING</figcaption></figure>
         <div class="bls-auto-copy">
           <span class="cmp-eyebrow">FROM MANUAL TO AUTOMATED</span>
           <h2 class="cmp-h2">수동 세척에서<br>자동화 공정까지.</h2>
@@ -1342,27 +1412,9 @@ BLASTER_HUB_BODY = """
     </div>
   </section>
 
-  <!-- ============ 13 CHOOSING THE RIGHT BLASTER ============ -->
-  <section class="cmp-dark bls-choose" id="bls-choose">
-    <div class="wrap">
-      <div class="bls-choose-grid">
-        <div>
-          <span class="cmp-eyebrow">CHOOSING THE RIGHT BLASTER</span>
-          <h2 class="cmp-h2">가장 좋은 장비보다,<br>내 작업에 맞는 장비를 선택하세요.</h2>
-          <div class="cmp-dark-body">
-            <p>정밀 금형의 얇은 오염을 세척하는 작업과 생산설비에 두껍게 쌓인 그리스를 제거하는 작업은 같은 조건을 요구하지 않습니다. 적합한 블라스터를 선택하려면 아래 항목을 함께 검토해야 합니다.</p>
-          </div>
-        </div>
-        <ul class="bls-checklist reveal">
-          <li>세척 대상</li><li>오염물의 종류와 부착 정도</li><li>필요한 세척 속도</li><li>사용 가능한 압축공기</li><li>작업 빈도</li><li>이동성</li><li>자동화 여부</li>
-        </ul>
-      </div>
-      <p class="cmp-dark-final bls-dark-final">장비를 먼저 정하기보다,<br>먼저 <em>적합한 세척 조건</em>을 확인합니다.</p>
-    </div>
-  </section>
 
   <!-- ============ 14 FINAL CTA ============ -->
-  <section class="bls-sec bls-final" id="bls-final">
+  <section class="bls-sec bls-final last-freeze" id="bls-final">
     <div class="wrap">
       <div class="bls-final-grid">
         <div>
