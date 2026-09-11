@@ -799,12 +799,26 @@ BLASTER_SCRIPT = """  <script>
         btn.querySelector('.bls-play-icon').textContent='▶';
       });
     }
+    var bgToggle=document.getElementById('blsBgToggle'),prodGrid=document.getElementById('blsProdGrid');
+    if (bgToggle && prodGrid) {
+      bgToggle.addEventListener('change',function(){
+        prodGrid.classList.toggle('is-white-bg',bgToggle.checked);
+        prodGrid.querySelectorAll('img[data-bg-black]').forEach(function(img){
+          img.style.opacity=0;
+          setTimeout(function(){
+            img.src = bgToggle.checked ? img.getAttribute('data-bg-white') : img.getAttribute('data-bg-black');
+            img.style.opacity=1;
+          },180);
+        });
+      });
+    }
     [['pcsVideo1','pcsPlayBtn1'],['pcsVideo2','pcsPlayBtn2']].forEach(function(pair){
       var vv=document.getElementById(pair[0]), bb=document.getElementById(pair[1]);
       if (!vv || !bb) return;
+      var media=vv.closest('.bls-pcs-demo-media');
       bb.addEventListener('click',function(){ if (vv.paused) { vv.play(); } else { vv.pause(); } });
-      vv.addEventListener('play',function(){ bb.classList.add('is-playing'); bb.querySelector('.bls-play-label').textContent='일시정지'; bb.querySelector('.bls-play-icon').textContent='❙❙'; });
-      vv.addEventListener('pause',function(){ bb.classList.remove('is-playing'); bb.querySelector('.bls-play-label').textContent='영상 재생'; bb.querySelector('.bls-play-icon').textContent='▶'; });
+      vv.addEventListener('play',function(){ bb.classList.add('is-playing'); bb.querySelector('.bls-play-label').textContent='일시정지'; bb.querySelector('.bls-play-icon').textContent='❙❙'; if (media) media.classList.add('is-playing'); });
+      vv.addEventListener('pause',function(){ bb.classList.remove('is-playing'); bb.querySelector('.bls-play-label').textContent='영상 재생'; bb.querySelector('.bls-play-icon').textContent='▶'; if (media) media.classList.remove('is-playing'); });
     });
   })();
   </script>
@@ -839,24 +853,76 @@ BLASTER_SCRIPT = """  <script>
     var scaleEl=document.getElementById('blsScale'),fill=document.getElementById('blsScaleFill'),live=document.getElementById('blsScaleLive');
     var dial=document.getElementById('pcsDial'),panelNum=document.getElementById('pcsLiveNum');
     if (!scaleEl || !fill || !live) return;
-    var MIN=0.3, MAX=3.0, ticking=false;
+    var MIN=0.3, MAX=3.0, STEP=0.1, ticking=false;
+    var snapVal=function(v){ return Math.round((v-MIN)/STEP)*STEP+MIN; };
+    var sliderPath=document.getElementById('pcsSliderPath'),sliderThumbEl=document.getElementById('pcsSliderThumb');
+    var pathLen=sliderPath ? sliderPath.getTotalLength() : 0;
+    var placeThumb=function(progress){
+      if (!sliderPath || !sliderThumbEl) return;
+      var pt=sliderPath.getPointAtLength(progress*pathLen);
+      sliderThumbEl.setAttribute('cx',pt.x);
+      sliderThumbEl.setAttribute('cy',pt.y);
+    };
     var update=function(){
       ticking=false;
       var rect=scaleEl.getBoundingClientRect();
       var start=window.innerHeight*0.85, end=window.innerHeight*0.25;
       var progress=(start-rect.top)/(start-end+rect.height);
       progress=Math.min(Math.max(progress,0),1);
-      var value=MAX-progress*(MAX-MIN);
+      var value=snapVal(MAX-progress*(MAX-MIN));
       var pct=((value-MIN)/(MAX-MIN))*100;
+      progress=(MAX-value)/(MAX-MIN);
       fill.style.width=pct+'%';
       live.textContent=value.toFixed(1)+' mm';
       if (dial) dial.style.transform='translate(-50%,-50%) rotate('+(135-progress*270).toFixed(1)+'deg)';
       if (panelNum) panelNum.textContent=value.toFixed(1);
+      placeThumb(progress);
     };
     var onScroll=function(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } };
     window.addEventListener('scroll',onScroll,{passive:true});
     window.addEventListener('resize',onScroll);
     update();
+
+    // 슬라이더 바를 잡고 좌우로 움직여 다이얼 조작
+    var slider=document.getElementById('pcsSlider'),thumb=sliderThumbEl;
+    var applyProgress=function(progress){
+      progress=Math.min(Math.max(progress,0),1);
+      var value=snapVal(MAX-progress*(MAX-MIN));
+      var pct=((value-MIN)/(MAX-MIN))*100;
+      progress=(MAX-value)/(MAX-MIN);
+      fill.style.width=pct+'%';
+      live.textContent=value.toFixed(1)+' mm';
+      if (dial) dial.style.transform='translate(-50%,-50%) rotate('+(135-progress*270).toFixed(1)+'deg)';
+      if (panelNum) panelNum.textContent=value.toFixed(1);
+      placeThumb(progress);
+    };
+    if (slider && thumb) {
+      var sliding=false;
+      var progressFromEvent=function(e){
+        var r=slider.getBoundingClientRect();
+        return (e.clientX-r.left)/r.width;
+      };
+      slider.style.cursor='grab';
+      slider.addEventListener('pointerdown',function(e){
+        sliding=true;
+        slider.style.cursor='grabbing';
+        slider.setPointerCapture(e.pointerId);
+        applyProgress(progressFromEvent(e));
+        e.preventDefault();
+      });
+      slider.addEventListener('pointermove',function(e){
+        if (!sliding) return;
+        applyProgress(progressFromEvent(e));
+      });
+      var stopSlide=function(e){
+        if (!sliding) return;
+        sliding=false;
+        slider.style.cursor='grab';
+        try { slider.releasePointerCapture(e.pointerId); } catch(err){}
+      };
+      slider.addEventListener('pointerup',stopSlide);
+      slider.addEventListener('pointercancel',stopSlide);
+    }
   })();
     </script>
 
@@ -917,6 +983,7 @@ BLASTER_HUB_BODY = """
         </div>
       </div>
       <div class="bls-scale-row">
+      <div class="bls-pcs-left">
       <div class="bls-scale reveal" id="blsScale">
         <div class="bls-scale-ends"><span>PRECISION</span><span>PERFORMANCE</span></div>
         <div class="bls-scale-bar">
@@ -927,8 +994,32 @@ BLASTER_HUB_BODY = """
           </div>
           <b id="blsScaleLive">3.0 mm</b>
         </div>
-        <div class="bls-scale-ends is-sub"><span>Fine Particle</span><span>Full Pellet</span></div>
-        <span class="bls-scale-note" style="color:#ffffff">Aero2 PCS ULTRA 기준 · 0.1 mm 단위 28단계</span>
+        <div class="bls-scale-ends is-sub"><span>Micro Particle</span><span>Full Pellet</span></div>
+      </div>
+      <div class="bls-pcs-demos reveal">
+        <div class="bls-pcs-demo">
+          <div class="bls-pcs-demo-media">
+            <video id="pcsVideo1" class="bls-media-fade" muted loop playsinline preload="none">
+              <source src="../../assets/video/pcs-demo-namecard.mp4" type="video/mp4" />
+            </video>
+            <div class="bls-pcs-demo-overlay">Micro Particle<br />0.3mm</div>
+            <button type="button" class="bls-play-btn is-small" id="pcsPlayBtn1" aria-label="영상 재생">
+              <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
+            </button>
+          </div>
+        </div>
+        <div class="bls-pcs-demo">
+          <div class="bls-pcs-demo-media">
+            <video id="pcsVideo2" class="bls-media-fade" muted loop playsinline preload="none">
+              <source src="../../assets/video/pcs-demo-asphalt.mp4" type="video/mp4" />
+            </video>
+            <div class="bls-pcs-demo-overlay">Full Pellet<br />3.0mm</div>
+            <button type="button" class="bls-play-btn is-small" id="pcsPlayBtn2" aria-label="영상 재생">
+              <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
+            </button>
+          </div>
+        </div>
+      </div>
       </div>
       <div class="bls-pcs-panel reveal">
         <div class="bls-pcs-panel-frame">
@@ -936,37 +1027,26 @@ BLASTER_HUB_BODY = """
           <span class="bls-pcs-panel-num" id="pcsLiveNum">3.0</span>
           <img class="bls-pcs-panel-dial" id="pcsDial" src="../../assets/img/pcs-dial-knob.png" alt="PCS 조절 다이얼" />
         </div>
-        <span class="bls-pcs-panel-cap" style="color:#ffffff; opacity:1; font-size:15px">다이얼을 돌려 입자 크기가 조절합니다.</span>
+        <div class="bls-pcs-slider" id="pcsSlider">
+          <svg viewBox="0 0 500 74" preserveAspectRatio="none" width="100%" height="74" style="display:block;">
+            <defs>
+              <linearGradient id="pcsSliderGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#263238"></stop>
+                <stop offset="55%" stop-color="#2f6b74"></stop>
+                <stop offset="100%" stop-color="#6fd8cf"></stop>
+              </linearGradient>
+            </defs>
+            <path id="pcsSliderPath" d="M20,10 C20,64 480,64 480,10" fill="none" stroke="url(#pcsSliderGrad)" stroke-width="6" stroke-linecap="round"></path>
+            <circle id="pcsSliderThumb" r="9" fill="#fff" stroke="#1b6d78" stroke-width="2" cx="20" cy="10"></circle>
+          </svg>
+        </div>
+        <span class="bls-pcs-panel-cap" style="color:#ffffff; opacity:1; font-size:15px">바를 움직여 사이즈를 조절하세요</span>
       </div>
       </div>
       <div class="bls-pcs-grid">
         <div class="cmp-dark-body bls-pcs-desc">
           <p>Cold Jet의 PCS®는 3 mm 드라이아이스 펠렛을 투입해 0.3 mm에서 3.0 mm까지 0.1 mm 단위로 총 28개의 입자 크기를 선택할 수 있습니다.</p>
           <p>작은 입자와 낮은 압력으로 민감한 표면을 세척하거나, 더 큰 입자와 적절한 압력을 사용해 보다 강한 오염 제거 조건을 설정할 수 있습니다.</p>
-          <div class="bls-pcs-demos reveal">
-            <div class="bls-pcs-demo">
-              <div class="bls-pcs-demo-media">
-                <video id="pcsVideo1" class="bls-media-fade" muted loop playsinline preload="none">
-                  <source src="../../assets/video/pcs-demo-namecard.mp4" type="video/mp4" />
-                </video>
-                <button type="button" class="bls-play-btn is-small" id="pcsPlayBtn1" aria-label="영상 재생">
-                  <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
-                </button>
-              </div>
-              <span class="bls-pcs-demo-cap"><b>낮은 입자·낮은 압력</b> — 인쇄된 잉크만 지우고, 명함 자체는 찢어지지 않습니다.</span>
-            </div>
-            <div class="bls-pcs-demo">
-              <div class="bls-pcs-demo-media">
-                <video id="pcsVideo2" class="bls-media-fade" muted loop playsinline preload="none">
-                  <source src="../../assets/video/pcs-demo-asphalt.mp4" type="video/mp4" />
-                </video>
-                <button type="button" class="bls-play-btn is-small" id="pcsPlayBtn2" aria-label="영상 재생">
-                  <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
-                </button>
-              </div>
-              <span class="bls-pcs-demo-cap"><b>큰 입자·높은 압력</b> — 설비에 찐득하게 굳은 아스콘 덩어리를 강하게 제거합니다.</span>
-            </div>
-          </div>
         </div>
         <ul class="bls-factors reveal">
           <li><span>01</span><b>PARTICLE SIZE</b><small>입자 크기</small></li>
@@ -1079,6 +1159,11 @@ BLASTER_HUB_BODY = """
           <span class="cmp-eyebrow">PRODUCT LINEUP</span>
           <h2 class="cmp-h2">Cold Jet 블라스터 라인업</h2>
           <p class="bls-sub">작업 목적과 필요한 세척 조건에 따라 적합한 제품을 비교해보세요.</p>
+          <label class="bls-bg-toggle">
+            <input type="checkbox" id="blsBgToggle" />
+            <span class="bls-bg-toggle-track"><span class="bls-bg-toggle-thumb"></span></span>
+            <span class="bls-bg-toggle-label">흰색 배경으로 보기</span>
+          </label>
         </div>
         <div class="bls-tabs" role="tablist" aria-label="제품군 필터">
           <button data-filter="core" type="button"><b>CORE</b><small>핵심 모델</small></button>
@@ -1091,7 +1176,7 @@ BLASTER_HUB_BODY = """
       </div>
       <div class="bls-prod-grid" id="blsProdGrid">
       <a class="bls-prod reveal" data-cat="core smart pellet micro" href="aero2-ultra.html" style="--reveal-delay:0s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-pcs-ultra.png" alt="Aero2® PCS ULTRA" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-pcs-ultra.png" data-bg-black="../../assets/img/blaster-aero2-pcs-ultra.png" data-bg-white="../../assets/img/blaster-aero2-pcs-ultra-white.png" alt="Aero2® PCS ULTRA" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">PARTICLE CONTROL SYSTEM</span></div>
           <h3>Aero2® PCS ULTRA</h3>
@@ -1104,7 +1189,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="smart pellet" href="aero2-ultra.html" style="--reveal-delay:0.06s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-plt-ultra.png" alt="Aero2® PLT ULTRA" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-plt-ultra.png" data-bg-black="../../assets/img/blaster-aero2-plt-ultra.png" data-bg-white="../../assets/img/blaster-aero2-plt-ultra-white.png" alt="Aero2® PLT ULTRA" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero2® PLT ULTRA</h3>
@@ -1117,7 +1202,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="core micro smart" href="i3-microclean-2.html" style="--reveal-delay:0.12s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-i3-microclean-2.png" alt="i³ MicroClean® 2" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-i3-microclean-2.png" data-bg-black="../../assets/img/blaster-i3-microclean-2.png" data-bg-white="../../assets/img/blaster-i3-microclean-2-white.png" alt="i³ MicroClean® 2" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">SMART MICRO PARTICLE</span></div>
           <h3>i³ MicroClean® 2</h3>
@@ -1130,7 +1215,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="pellet" href="aero-series.html" style="--reveal-delay:0.18s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-40fp.png" alt="Aero® 40FP" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-40fp.png" data-bg-black="../../assets/img/blaster-aero-40fp.png" data-bg-white="../../assets/img/blaster-aero-40fp-white.png" alt="Aero® 40FP" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero® 40FP</h3>
@@ -1143,7 +1228,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="pellet" href="aero-series.html" style="--reveal-delay:0.24s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-80fp.png" alt="Aero® 80FP" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-80fp.png" data-bg-black="../../assets/img/blaster-aero-80fp.png" data-bg-white="../../assets/img/blaster-aero-80fp-white.png" alt="Aero® 80FP" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero® 80FP</h3>
@@ -1156,7 +1241,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="core pellet micro" href="elite20-icerocket.html" style="--reveal-delay:0s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-elite-20.png" alt="ELITE 20" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-elite-20.png" data-bg-black="../../assets/img/blaster-elite-20.png" data-bg-white="../../assets/img/blaster-elite-20-white.png" alt="ELITE 20" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span></div>
           <h3>ELITE 20</h3>
@@ -1169,7 +1254,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="core pellet" href="elite20-icerocket.html" style="--reveal-delay:0.06s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-icerocket-plt.png" alt="IceRocket PLT" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-icerocket-plt.png" data-bg-black="../../assets/img/blaster-icerocket-plt.png" data-bg-white="../../assets/img/blaster-icerocket-plt-white.png" alt="IceRocket PLT" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>IceRocket PLT</h3>
@@ -1182,7 +1267,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="micro" href="i3-microclean.html" style="--reveal-delay:0.12s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-i3-microclean.png" alt="i³ MicroClean®" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-i3-microclean.png" data-bg-black="../../assets/img/blaster-i3-microclean.png" data-bg-white="../../assets/img/blaster-i3-microclean-white.png" alt="i³ MicroClean®" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span></div>
           <h3>i³ MicroClean®</h3>
@@ -1195,7 +1280,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="micro pellet" href="sdi-select-60.html" style="--reveal-delay:0.18s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-sdi-select-60.png" alt="SDI Select™ 60" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-sdi-select-60.png" data-bg-black="../../assets/img/blaster-sdi-select-60.png" data-bg-white="../../assets/img/blaster-sdi-select-60-white.png" alt="SDI Select™ 60" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-prod-cat">PELLET</span></div>
           <h3>SDI Select™ 60</h3>
@@ -1208,7 +1293,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="specialty" href="c100.html" style="--reveal-delay:0s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-c100.png" alt="Cold Jet C100" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-c100.png" data-bg-black="../../assets/img/blaster-c100.png" data-bg-white="../../assets/img/blaster-c100-white.png" alt="Cold Jet C100" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SPECIALTY</span></div>
           <h3>Aero® C100</h3>
@@ -1221,7 +1306,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="specialty" href="e-co2-150.html" style="--reveal-delay:0.06s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-e-co2-150.png" alt="E-CO2™ 150" loading="lazy" decoding="async" /></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-e-co2-150.png" data-bg-black="../../assets/img/blaster-e-co2-150.png" data-bg-white="../../assets/img/blaster-e-co2-150-white.png" alt="E-CO2™ 150" loading="lazy" decoding="async" /></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SPECIALTY</span></div>
           <h3>E-CO2™ 150</h3>
@@ -1362,31 +1447,51 @@ BLASTER_HUB_BODY = """
         <h2 class="cmp-h2">장비만큼 중요한 것은,<br>한국에서 누가 지원하느냐입니다.</h2>
       </div>
       <div class="bls-partner-grid">
-        <article class="bls-partner-col reveal">
-          <div class="bls-partner-media"><img src="../../assets/img/coldjet-history-collage-teal.png" alt="Cold Jet 초기 개발 스케치와 장비" loading="lazy" decoding="async" /></div>
-          <img class="bls-partner-logo" src="../../assets/img/coldjet-logo.png" alt="Cold Jet" />
-          <h3>드라이아이스 블라스팅 기술의<br>개척자이자 글로벌 리더</h3>
-          <p>Cold Jet는 현대식 드라이아이스 블라스팅 장비의 원천 특허를 기반으로 기술을 발전시켜 왔으며, 블라스터와 드라이아이스 생산설비, 노즐과 자동화 기술을 개발·공급하고 있습니다.</p>
-          <ul class="bls-facts">
-            <li><b>1986</b><small>최초의 드라이아이스 블라스터 제조</small></li>
-            <li><b>100+</b><small>글로벌 특허</small></li>
-            <li><b>3 · 3</b><small>R&amp;D 연구소 · 생산공장</small></li>
-            <li><b>14</b><small>기술센터</small></li>
-          </ul>
-        </article>
-        <article class="bls-partner-col is-vatek reveal" style="--reveal-delay:0.08s">
-          <div class="bls-partner-media is-vatek"><img src="../../assets/img/stackdo-rental.jpg" alt="바테크 데모 · 렌탈 장비" loading="lazy" decoding="async" /></div>
-          <img class="bls-partner-logo" src="../../assets/img/vatek-logo-wordmark.png" alt="VATEK" />
-          <h3>Cold Jet 대한민국 공식 총판</h3>
+        <img class="bls-partner-logo reveal" src="../../assets/img/coldjet-logo.png" alt="Cold Jet" />
+        <img class="bls-partner-logo reveal" src="../../assets/img/vatek-logo-wordmark.png" alt="VATEK" />
+
+        <div class="bls-partner-name reveal">Cold Jet LLC<span class="bls-partner-tagline">드라이아이스 블라스팅 기술의 개척자이자 글로벌 리더</span></div>
+        <div class="bls-partner-name reveal">VATEK Corporation<span class="bls-partner-tagline">Cold Jet 대한민국 공식 총판</span></div>
+
+        <div class="bls-partner-media reveal"><img src="../../assets/img/coldjet-hq-building.jpg" alt="Cold Jet 본사" loading="lazy" decoding="async" /></div>
+        <div class="bls-partner-media reveal"><img src="../../assets/img/vatek-building.jpg" alt="바테크 사옥" loading="lazy" decoding="async" /></div>
+
+        <div class="bls-partner-desc reveal"><p>Cold Jet는 현대식 드라이아이스 블라스팅 장비의 원천 특허를 기반으로 기술을 발전시켜 왔으며, 블라스터와 드라이아이스 생산설비, 노즐과 자동화 기술을 개발·공급하고 있습니다.</p></div>
+        <div class="bls-partner-desc reveal">
           <p>1988년 설립한 바테크는 Cold Jet의 대한민국 공식 총판으로, 제품 판매뿐 아니라 세척 테스트, 렌탈·데모, 장비 선정, 기술 지원과 A/S 등 국내 고객의 도입과 운용을 지원합니다.</p>
           <p>Cold Jet의 Training, Seminar, Conference 등에 참여하며 관련 기술과 적용사례를 지속적으로 공유하고 있습니다.</p>
-          <ul class="bls-facts">
-            <li><b>1988</b><small>설립 · 제조업 기반</small></li>
-            <li><b>2014</b><small>기업부설연구소 설립 (하남)</small></li>
-            <li><b>TEST</b><small>시편 · 내방 · 방문 테스트</small></li>
-            <li><b>A/S</b><small>설치 · 교육 · 기술지원</small></li>
-          </ul>
-        </article>
+        </div>
+
+        <div class="bls-partner-photos reveal">
+          <img src="../../assets/img/coldjet-hq-photo-1.jpg" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-2.jpg" alt="Cold Jet 생산 공장" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-3.jpg" alt="Cold Jet 라운지" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-4.jpg" alt="Cold Jet 사내 카페" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-5.jpg" alt="Cold Jet 컨퍼런스" loading="lazy" decoding="async" />
+        </div>
+        <div class="bls-partner-photos reveal">
+          <img src="../../assets/img/vatek-coldjet-photo-1.jpg" alt="Cold Jet 본사 방문" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-2.jpg" alt="Cold Jet Asia Dealer Conference" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-3.jpg" alt="Cold Jet 글로벌 딜러 컨퍼런스" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-4.jpg" alt="Cold Jet 세미나 참석" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-5.jpg" alt="Cold Jet R&D 신제품 개발" loading="lazy" decoding="async" />
+        </div>
+
+        <div class="bls-partner-divider"></div>
+        <div class="bls-partner-divider"></div>
+
+        <ul class="bls-facts">
+          <li><b>1986</b><small>최초의 드라이아이스 블라스터 제조</small></li>
+          <li><b>100+</b><small>글로벌 특허</small></li>
+          <li><b>3 · 3</b><small>R&amp;D 연구소 · 생산공장</small></li>
+          <li><b>14</b><small>기술센터</small></li>
+        </ul>
+        <ul class="bls-facts is-vatek">
+          <li><b>1988</b><small>설립 · 제조업 기반</small></li>
+          <li><b>2014</b><small>기업부설연구소 설립 (하남)</small></li>
+          <li><b>TEST</b><small>시편 · 내방 · 방문 테스트</small></li>
+          <li><b>A/S</b><small>설치 · 교육 · 기술지원</small></li>
+        </ul>
       </div>
       <p class="bls-quote reveal">“Cold Jet의 기술과<br>바테크의 국내 현장 경험을 함께 제공합니다.”</p>
     </div>

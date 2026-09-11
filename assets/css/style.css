@@ -4268,24 +4268,30 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
 .bls-scale-line i { position: relative; z-index: 1; display: block; width: 1px; background: rgba(255,255,255,.55); height: 14px; }
 .bls-scale-line i:nth-child(1), .bls-scale-line i:nth-child(10), .bls-scale-line i:nth-child(19), .bls-scale-line i:nth-child(28) { height: 28px; background: #fff; }
 .bls-scale-note { display: block; margin-top: 22px; text-align: center; font-size: 13px; color: rgba(255,255,255,.55); letter-spacing: .5px; }
-.bls-pcs-demos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(24px, 3vw, 32px); }
+.bls-pcs-demos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-bottom: clamp(24px, 3vw, 32px); }
+.bls-pcs-demo-title { display: block; text-align: center; font-size: clamp(17px, 1.8vw, 22px); font-weight: 700; color: #fff; margin-bottom: 12px; }
 .bls-pcs-demo { display: flex; flex-direction: column; }
 .bls-pcs-demo-media { position: relative; aspect-ratio: 16/10; border-radius: 12px; overflow: hidden; background: var(--navy-deep); }
+.bls-pcs-demo-overlay { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; font-weight: 800; font-size: clamp(18px, 2vw, 26px); line-height: 1.3; color: #fff; background: rgba(10,16,18,.4); pointer-events: none; transition: opacity .3s ease; }
+.bls-pcs-demo-media.is-playing .bls-pcs-demo-overlay { opacity: 0; }
 .bls-pcs-demo-media video { display: block; width: 100%; height: 100%; object-fit: cover; }
 #pcsVideo1 { transform: scale(1.55); transform-origin: center; }
 .bls-pcs-demo-cap { display: block; margin-top: 10px; font-size: 13px; line-height: 1.55; color: rgba(255,255,255,.68); }
 .bls-pcs-demo-cap b { color: #fff; font-weight: 700; }
 .bls-play-btn.is-small { right: 12px; bottom: 10px; padding: 7px 14px 7px 16px; font-size: 12px; gap: 6px; }
 .bls-play-btn.is-small .bls-play-icon { font-size: 10px; }
-.bls-scale-row { display: flex; gap: clamp(40px, 5vw, 90px); align-items: center; margin: clamp(56px, 6vw, 96px) auto; max-width: 1400px; }
-.bls-scale-row .bls-scale { margin: 0; flex: 1 1 56%; max-width: none; }
-.bls-pcs-panel { position: relative; flex: 0 0 clamp(340px, 34vw, 460px); max-width: 460px; }
+.bls-scale-row { display: flex; gap: clamp(32px, 4vw, 60px); align-items: flex-start; margin: clamp(56px, 6vw, 96px) auto; max-width: 1600px; }
+.bls-pcs-left { flex: 1 1 640px; min-width: 0; display: flex; flex-direction: column; gap: clamp(14px, 1.6vw, 22px); }
+.bls-pcs-left .bls-scale { margin: 0; max-width: none; }
+.bls-scale-row .bls-scale-bar b { font-size: clamp(20px, 2.4vw, 36px); }
+.bls-pcs-panel { position: relative; flex: 0 0 clamp(480px, 48vw, 660px); max-width: 660px; }
 .bls-pcs-panel-frame { position: relative; }
 .bls-pcs-panel-img { display: block; width: 100%; filter: drop-shadow(0 16px 30px rgba(0,0,0,.35)); }
 .bls-pcs-panel-num { position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%); font-size: clamp(18px, 1.9vw, 24px); font-weight: 800; color: #17224d; letter-spacing: -0.02em; text-shadow: 0 0 5px rgba(255,255,255,.85), 0 0 2px rgba(255,255,255,.85); }
-.bls-pcs-panel-dial { position: absolute; left: 50%; top: 82%; width: 15%; transform: translate(-50%, -50%) rotate(135deg); transform-origin: center; transition: transform .05s linear; filter: drop-shadow(0 4px 8px rgba(0,0,0,.45)); }
+.bls-pcs-panel-dial { position: absolute; left: 50%; top: 82%; width: 15%; transform: translate(-50%, -50%) rotate(135deg); transform-origin: center; transition: transform .05s linear; touch-action: none; filter: drop-shadow(0 4px 8px rgba(0,0,0,.45)); }
 .bls-pcs-panel-cap { display: block; margin-top: 14px; text-align: center; font-size: 12px; color: rgba(255,255,255,.5); letter-spacing: .3px; }
-@media (max-width: 900px) { .bls-scale-row { flex-direction: column; } .bls-pcs-panel { max-width: 280px; } }
+.bls-pcs-slider { position: relative; width: 88%; margin: 18px auto 0; cursor: grab; touch-action: none; }
+@media (max-width: 900px) { .bls-scale-row { flex-direction: column; } .bls-pcs-panel { max-width: 340px; } }
 .bls-pcs-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(40px, 5vw, 100px); align-items: start; }
 .bls-pcs-desc { margin-top: 0; }
 .bls-factors { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
@@ -4343,7 +4349,15 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
 .bls-prod-media img { position: absolute; left: 8%; right: 8%; top: 10%; bottom: 6%; width: auto; height: auto; max-width: 84%; max-height: 84%; margin: auto; object-fit: contain; filter: drop-shadow(0 10px 10px rgba(27,36,38,.12)); transition: transform .8s cubic-bezier(.22,.61,.36,1); }
 .bls-prod:hover .bls-prod-media img { transform: scale(1.04); }
 .bls-prod-media.is-fill img { left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: cover; filter: none; }
-.bls-prod-media.is-fill { background: #000; }
+.bls-prod-media.is-fill { background: var(--navy-deep); transition: background .4s ease; }
+.bls-prod-media.is-fill img { transition: transform .3s, opacity .35s ease; }
+.bls-prod-grid.is-white-bg .bls-prod-media.is-fill { background: #fff; }
+.bls-bg-toggle { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--navy); }
+.bls-bg-toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+.bls-bg-toggle-track { position: relative; width: 44px; height: 24px; border-radius: 999px; background: rgba(40,55,57,.18); transition: background .2s; flex-shrink: 0; }
+.bls-bg-toggle-thumb { position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.3); transition: transform .2s; }
+.bls-bg-toggle input:checked + .bls-bg-toggle-track { background: var(--blue); }
+.bls-bg-toggle input:checked + .bls-bg-toggle-track .bls-bg-toggle-thumb { transform: translateX(20px); }
 .bls-prod-media.is-fill:hover img { transform: scale(1.04); }
 .bls-prod-ph { font-size: clamp(36px, 3.4vw, 56px); font-weight: 900; letter-spacing: -0.04em; color: rgba(40,55,57,.18); }
 .bls-prod-body { display: flex; flex-direction: column; flex: 1; padding: 20px 22px 22px; }
@@ -4379,19 +4393,26 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
 .bls-logo-row li:hover img { filter: none; opacity: 1; }
 
 /* 09 Cold Jet + VATEK */
-.bls-partner-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 48px); }
-.bls-partner-col { padding-top: 24px; border-top: 2px solid var(--navy); }
-.bls-partner-col.is-vatek { border-top-color: var(--ice); }
-.bls-partner-media { aspect-ratio: 16 / 9; overflow: hidden; border-radius: 4px; background: var(--navy-deep); margin-bottom: 26px; }
+.bls-partner-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(24px, 3vw, 48px); align-items: start; }
+.bls-partner-logo { display: block; height: 28px; width: auto; margin-bottom: 14px; }
+.bls-partner-name { margin: 0 0 22px; font-size: clamp(22px, 1.9vw, 28px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.3; color: var(--navy); word-break: keep-all; }
+.bls-partner-tagline { display: block; margin-top: 6px; font-size: 14px; font-weight: 600; color: rgba(40,55,57,.5); }
+.bls-partner-media { aspect-ratio: 16 / 10; overflow: hidden; border-radius: 4px; border: 1px solid rgba(40,55,57,.16); background: var(--navy-deep); margin-bottom: 22px; }
 .bls-partner-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.bls-partner-logo { display: block; height: 28px; width: auto; margin-bottom: 18px; }
-.bls-partner-col h3 { margin: 0 0 14px; font-size: clamp(22px, 1.9vw, 28px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.35; color: var(--navy); word-break: keep-all; }
-.bls-partner-col p { margin: 0 0 14px; font-size: 16px; line-height: 1.85; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.bls-facts { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 16px; border-top: 1px solid var(--gray-line); }
-.bls-facts li { padding: 16px 0 0; display: flex; flex-direction: column; gap: 6px; }
+.bls-partner-desc { margin: 0 0 22px; font-size: 16px; line-height: 1.85; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.bls-partner-desc p { margin: 0 0 14px; }
+.bls-partner-desc p:last-child { margin-bottom: 0; }
+.bls-partner-photos { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin: 0 0 22px; }
+.bls-partner-photos img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+.bls-partner-divider { border-top: 1px solid rgba(40,55,57,.14); margin: 0 0 22px; }
+.bls-facts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 16px; }
+.bls-facts li { padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .bls-facts b { font-size: clamp(22px, 2vw, 30px); font-weight: 800; letter-spacing: -0.03em; color: var(--navy); line-height: 1; }
-.bls-partner-col.is-vatek .bls-facts b { color: var(--ice-dark); }
+.bls-facts.is-vatek b { color: var(--ice-dark); }
 .bls-facts small { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; word-break: keep-all; }
+@media (max-width: 720px) {
+  .bls-partner-grid { grid-template-columns: 1fr; row-gap: 22px; }
+}
 
 /* 10 TEST BEFORE YOU BUY */
 
@@ -4447,7 +4468,7 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
   .bls-logo-group { grid-template-columns: 1fr; gap: 14px; }
 }
 @media (max-width: 1100px) {
-  .bls-hero-grid, .bls-sys-grid, .bls-tech-list, .bls-pcs-grid, .bls-partner-grid, .bls-test-grid, .bls-auto-grid, .bls-choose-grid, .bls-final-grid { grid-template-columns: 1fr; }
+  .bls-hero-grid, .bls-sys-grid, .bls-tech-list, .bls-pcs-grid, .bls-test-grid, .bls-auto-grid, .bls-choose-grid, .bls-final-grid { grid-template-columns: 1fr; }
   .bls-head.is-row { grid-template-columns: 1fr; align-items: start; }
   .bls-hero-visual { order: -1; }
   .bls-tech { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
