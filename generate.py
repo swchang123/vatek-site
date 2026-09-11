@@ -12519,7 +12519,7 @@ INTRO_GATE_SCRIPT = """<script>
 """
 
 
-def page_shell(title, description, depth, active_code, body, is_home=False, extra_script="", is_products_hub=False):
+def page_shell(title, description, depth, active_code, body, is_home=False, extra_script="", is_products_hub=False, extra_head=""):
     body_class = ' class="home"' if is_home else ""
     intro_gate = INTRO_GATE_SCRIPT if is_home else ""
     return f"""<!doctype html>
@@ -12529,7 +12529,7 @@ def page_shell(title, description, depth, active_code, body, is_home=False, extr
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{title} | VATEK</title>
 <meta name="description" content="{description}" />
-<link rel="stylesheet" href="{asset('assets/css/style.css', depth)}" />
+<link rel="stylesheet" href="{asset('assets/css/style.css', depth)}" />{extra_head}
 </head>
 <body{body_class}>
 {nav_html(depth, active_code, is_products_hub)}

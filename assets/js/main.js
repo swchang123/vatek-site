@@ -1545,22 +1545,35 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!isNaN(customBuffer)) SUBHERO_BUFFER = customBuffer;
     var panScale = subheroImg.dataset.panScale ? parseFloat(subheroImg.dataset.panScale) : null;
     var noBlur = subheroImg.dataset.noBlur === "true";
+    // (2026-09-11) data-blur-start="0.5" 등으로 블러 시작 지점을 지연할 수 있음(0~1, 기본 0 = 즉시).
+    var blurStart = parseFloat(subheroImg.dataset.blurStart);
+    if (isNaN(blurStart)) blurStart = 0;
+    blurStart = Math.min(Math.max(blurStart, 0), 0.95);
     var SUBHERO_BLUR_MAX = 10; // px
     var subheroTicking = false;
 
+    var stickyStage = subheroStage.classList.contains("subhero-sticky");
+    var subheroNext = subheroStage.nextElementSibling;
     var updateSubhero = function () {
       subheroTicking = false;
       var rect = subheroStage.getBoundingClientRect();
       var stageHeight = subheroStage.offsetHeight || 1;
-      var scrolled = Math.min(Math.max(-rect.top, 0), stageHeight);
+      var scrolled;
+      if (stickyStage && subheroNext) {
+        // sticky 히어로: 다음 섹션(본문 카드)이 위로 올라온 거리를 진행도로 사용
+        scrolled = Math.min(Math.max(stageHeight - subheroNext.getBoundingClientRect().top, 0), stageHeight);
+      } else {
+        scrolled = Math.min(Math.max(-rect.top, 0), stageHeight);
+      }
       var progress = scrolled / stageHeight;
-      var shift = progress * SUBHERO_BUFFER - SUBHERO_BUFFER / 2;
+      var shift = stickyStage ? (SUBHERO_BUFFER / 2 - progress * SUBHERO_BUFFER) : (progress * SUBHERO_BUFFER - SUBHERO_BUFFER / 2);
       if (panScale) {
         subheroImg.style.transform = "scale(" + panScale + ") translate3d(0, " + (shift / panScale).toFixed(2) + "px, 0)";
       } else {
         subheroImg.style.transform = "translate3d(0, " + shift.toFixed(1) + "px, 0)";
       }
-      subheroImg.style.filter = noBlur ? "" : "blur(" + (progress * SUBHERO_BLUR_MAX).toFixed(2) + "px)";
+      var blurProgress = blurStart > 0 ? Math.max(0, (progress - blurStart) / (1 - blurStart)) : progress;
+      subheroImg.style.filter = noBlur ? "" : "blur(" + (blurProgress * SUBHERO_BLUR_MAX).toFixed(2) + "px)";
     };
     var onSubheroScroll = function () {
       if (!subheroTicking) {
