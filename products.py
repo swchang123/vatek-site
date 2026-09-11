@@ -1452,7 +1452,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-partner-name reveal">Cold Jet LLC<span class="bls-partner-tagline">드라이아이스 블라스팅 기술의 개척자이자 글로벌 리더</span></div>
         <div class="bls-partner-name reveal">VATEK Corporation<span class="bls-partner-tagline">Cold Jet 대한민국 공식 총판</span></div>
 
-        <div class="bls-partner-media reveal"><img src="../../assets/img/coldjet-hq-building.jpg" alt="Cold Jet 본사" loading="lazy" decoding="async" /></div>
+        <div class="bls-partner-media reveal"><img src="../../assets/img/coldjet-hq-photo-1.jpg" alt="Cold Jet 본사" loading="lazy" decoding="async" /></div>
         <div class="bls-partner-media reveal"><img src="../../assets/img/vatek-building.jpg" alt="바테크 사옥" loading="lazy" decoding="async" /></div>
 
         <div class="bls-partner-desc reveal"><p>Cold Jet는 현대식 드라이아이스 블라스팅 장비의 원천 특허를 기반으로 기술을 발전시켜 왔으며, 블라스터와 드라이아이스 생산설비, 노즐과 자동화 기술을 개발·공급하고 있습니다.</p></div>
@@ -1462,7 +1462,7 @@ BLASTER_HUB_BODY = """
         </div>
 
         <div class="bls-partner-photos reveal">
-          <img src="../../assets/img/coldjet-hq-photo-1.jpg" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-building.jpg" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-2.jpg" alt="Cold Jet 생산 공장" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-3.jpg" alt="Cold Jet 라운지" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-4.jpg" alt="Cold Jet 사내 카페" loading="lazy" decoding="async" />
@@ -2024,7 +2024,7 @@ PELLETIZER_HUB_BODY = """
       <div class="wrap">
         <div class="plt-head">
           <div><span class="plt-eyebrow">WHAT IS A PELLETIZER?</span><h2 class="plt-title">펠렛타이저는<br>드라이아이스 펠렛을 만드는 장비입니다.</h2></div>
-          <p class="plt-lead">LCO<sub>2</sub>(액화이산화탄소) 탱크에서 공급된 <strong>액체 CO<sub>2</sub></strong>를 이용해 드라이아이스 펠렛 또는 너겟을 생산합니다.</p>
+          <p class="plt-lead">LCO<sub>2</sub>(액화이산화탄소)를 공급받아 고체로 변환하고, 압축·성형하여 드라이아이스 펠렛 또는 너겟을 생산합니다.</p>
         </div>
         <div class="bls-showcase-frame reveal">
         <div class="bls-showcase">
@@ -2039,40 +2039,41 @@ PELLETIZER_HUB_BODY = """
           </div>
           <div class="bls-showcase-body">
             <span class="bls-dot-eyebrow">DRY ICE PRODUCTION MACHINES</span>
-            <h3>액체 CO<sub>2</sub>에서 시작해,<br>드라이아이스로 완성되는 기술.</h3>
-            <p>압축과 팽창의 원리로 균일한 품질의 드라이아이스를 만들어내는 Cold Jet의 첨단 생산 기술은 전 세계 현장에서 검증되었습니다. 고객의 시간과 비용을 절감하는 것이 그 시작입니다.</p>
+            <h3>좋은 드라이아이스는,<br>만드는 기술부터 다릅니다.</h3>
+            <p>Cold Jet은 독자적인 Sub-Cooling Technology와 고밀도 압출 기술을 통해 균일하고 단단한 드라이아이스를 생산합니다. 오랜 경험을 바탕으로 한 높은 밀도, 뛰어난 CO<sub>2</sub> 전환 효율과 안정적인 생산 기술은 전 세계 다양한 산업 현장에서 이미 검증되었습니다.</p>
           </div>
         </div>
         </div>
       </div>
     </section>
 
-    <section class="plt-section plt-ecosystem" id="production-system">
+    <section class="plt-section plt-category-select" id="machine-categories">
       <div class="wrap">
         <div class="plt-head">
-          <div><span class="plt-eyebrow">ONE PRODUCTION ECOSYSTEM</span><h2 class="plt-title">만드는 장비를 넘어,<br>공급 공정 전체를 봅니다.</h2></div>
-          <p class="plt-lead">드라이아이스의 형태와 사용 시점이 달라지면 필요한 설비도 달라집니다. Cold Jet는 펠렛 생산부터 슬라이스 성형, 계량, 포장, 원격 생산과 CO<sub>2</sub> 회수까지 하나의 생산 흐름으로 구성합니다.</p>
+          <div><span class="plt-eyebrow">DRY ICE MACHINE CATEGORIES</span><h2 class="plt-title">생산 목적과 환경에 따라<br>선택하는 Cold Jet 제조기.</h2></div>
+          <p class="plt-lead">만들고자 하는 드라이아이스의 형태와 설치·운용 조건에 따라 다섯 가지 제품군으로 나뉩니다. 필요한 분류를 선택하면 해당 시리즈를 자세히 볼 수 있습니다.</p>
         </div>
-        <div class="plt-system-map" aria-label="Cold Jet 드라이아이스 생산 시스템 구성">
-          <article class="plt-system-card is-wide">
-            <div class="plt-system-media"><img src="../../assets/img/pelletizer-pr350h-official.jpg" alt="Cold Jet 펠렛타이저" loading="lazy" /></div>
-            <div class="plt-system-copy"><span>01 / MAKE PELLETS</span><h3>펠렛타이저</h3><p>액체 CO<sub>2</sub>로 3 mm 블라스팅 펠렛부터 냉각용 너겟까지 생산합니다. 자체 사용부터 상업 생산까지 용량별 모델을 선택할 수 있습니다.</p><a href="#pelletizer-lineup">모델 비교하기 →</a></div>
-          </article>
-          <article class="plt-system-card">
-            <div class="plt-system-media"><img src="../../assets/img/pelletizer-r500h-official.jpg" alt="Cold Jet R Series 드라이아이스 슬라이스 리포머" loading="lazy" /></div>
-            <div class="plt-system-copy"><span>02 / REFORM SLICES</span><h3>R Series 리포머</h3><p>별도의 펠렛타이저에서 생산한 펠렛을 밀도 높은 슬라이스와 블록으로 재성형합니다. R500H·R1000H·R2000H로 처리량과 규격에 맞춰 구성합니다.</p><b>600 / 1,000 / 2,500 kg/h 처리</b></div>
-          </article>
-          <article class="plt-system-card plt-system-process">
-            <div class="plt-system-copy"><span>03 / DOSE &amp; PACK</span><h3>정량 투입 · 자동 포장</h3><p>설정한 양의 펠렛·너겟을 배송 상자나 벌크 용기에 직접 투입하고 개별 포장까지 자동화해 반복 작업과 작업자의 접촉을 줄입니다.</p></div>
-            <div class="plt-process-pair"><img src="../../assets/img/pelletizer-dosing-official.jpg" alt="Cold Jet 정량 투입 시스템" loading="lazy" /><img src="../../assets/img/pelletizer-bagging-official.jpg" alt="Cold Jet 자동 포장 시스템" loading="lazy" /></div>
-          </article>
-          <article class="plt-system-card">
-            <div class="plt-system-media"><img src="../../assets/img/pelletizer-hub-official.png" alt="Cold Jet 원격 드라이아이스 생산 허브" loading="lazy" /></div>
-            <div class="plt-system-copy"><span>04 / REMOTE PRODUCTION</span><h3>Production Hub</h3><p>PR120H 또는 PR350H를 독립형 모듈에 구성해 설치 장소 변경이 예상되거나 원거리·임시 현장에서 펠렛과 너겟을 생산합니다.</p></div>
-          </article>
-          <article class="plt-system-card plt-system-recovery">
-            <div class="plt-system-copy"><span>05 / RECOVER CO<sub>2</sub></span><h3>RE-CO<sub>2</sub> 회수 시스템</h3><p>생산 중 발생하는 CO<sub>2</sub> 리버트 가스를 회수·액화해 다시 드라이아이스 생산에 활용합니다. 대규모 생산에서 원료 사용과 전환 효율을 함께 검토할 수 있습니다.</p><a href="../recovery/index.html">CO<sub>2</sub> 회수 시스템 보기 →</a></div>
-          </article>
+        <div class="plt-category-grid">
+          <a class="plt-category-card" href="#model-finder">
+            <div class="plt-category-media"><img src="../../assets/img/pelletizer-category-pellet-lineup.jpg" alt="Cold Jet 펠렛 제조기" loading="lazy" decoding="async" /></div>
+            <div class="plt-category-body"><span class="plt-category-num">01</span><h3>펠렛 제조기</h3><p>PE-80 · PR120H · PR350H · PR750H · PR1500H — 저용량 자체 생산에서 대형 상업 생산까지, 액체 CO<sub>2</sub>로 펠렛과 너겟을 생산하는 기반 라인업입니다.</p><span class="bls-more">시리즈 보기 <i>→</i></span></div>
+          </a>
+          <a class="plt-category-card" href="#model-finder">
+            <div class="plt-category-media"><img src="../../assets/img/pelletizer-category-slice-ds1000.jpg" alt="Cold Jet 슬라이스 제조기" loading="lazy" decoding="async" /></div>
+            <div class="plt-category-body"><span class="plt-category-num">02</span><h3>슬라이스 제조기</h3><p>DS500E · DS1000E — 펠렛 단계를 거치지 않고 액체 CO<sub>2</sub>에서 곧바로 드라이아이스 슬라이스를 생산하는 다이렉트 슬라이스 제조기입니다.</p><span class="bls-more">시리즈 보기 <i>→</i></span></div>
+          </a>
+          <a class="plt-category-card" href="#model-finder">
+            <div class="plt-category-media"><img src="../../assets/img/pelletizer-category-special-unit.jpg" alt="Cold Jet 특수 제조기" loading="lazy" decoding="async" /></div>
+            <div class="plt-category-body"><span class="plt-category-num">03</span><h3>특수 제조기</h3><p>다이렉트 슬라이스를 직접 생산하는 DS500E · DS1000E, 정량 통합형 Integrated Dosing System, 원거리·임시 현장용 Production Hub로 구성됩니다.</p><span class="bls-more">자세히 보기 <i>→</i></span></div>
+          </a>
+          <a class="plt-category-card" href="#model-finder">
+            <div class="plt-category-media"><img src="../../assets/img/pelletizer-category-dosing-system.jpg" alt="Cold Jet 통합 정량 공급 시스템" loading="lazy" decoding="async" /></div>
+            <div class="plt-category-body"><span class="plt-category-num">04</span><h3>통합 정량 공급 시스템</h3><p>펠렛 생산과 정량 투입을 하나의 설비로 통합해 계량·투입 공정 없이도 바로 이송·포장할 수 있습니다.</p><span class="bls-more">자세히 보기 <i>→</i></span></div>
+          </a>
+          <a class="plt-category-card" href="special-forms.html">
+            <div class="plt-category-media"><img src="../../assets/img/pelletizer-category-reformer.jpg" alt="Cold Jet R Series 리포머" loading="lazy" decoding="async" /></div>
+            <div class="plt-category-body"><span class="plt-category-num">05</span><h3>리포머</h3><p>R500H · R1000H · R2000H — 별도 펠렛타이저에서 생산한 펠렛을 원하는 슬라이스·블록으로 압축·재성형하는 리포머 시리즈입니다.</p><span class="bls-more">R Series 자세히 보기 <i>→</i></span></div>
+          </a>
         </div>
       </div>
     </section>
@@ -2109,44 +2110,55 @@ PELLETIZER_HUB_BODY = """
       </div>
     </section>
 
-    <section class="plt-section plt-lineup" id="pelletizer-lineup">
+    <section class="plt-section plt-tech" id="pelletizer-difference">
       <div class="wrap">
         <div class="plt-head">
-          <div><span class="plt-eyebrow">DRY ICE PRODUCTION LINEUP</span><h2 class="plt-title">생산 규모에 맞춘<br>Cold Jet 라인업.</h2></div>
-          <p class="plt-lead">소규모 현장 생산부터 대형 상업 생산, 슬라이스 성형까지 제품군을 먼저 살펴보세요. 각 제품을 선택하면 주요 특징과 상세 사양을 확인할 수 있습니다.</p>
+          <div><span class="plt-eyebrow">THE COLD JET DIFFERENCE</span><h2 class="plt-title">효율과 품질은,<br>보이지 않는 기술에서 시작됩니다.</h2></div>
+          <p class="plt-lead">CO<sub>2</sub> 전환 효율을 높이고, 부서지지 않는 밀도로 성형하고, 생산 시작부터 안정적인 품질을 유지하고, 필요에 따라 사이즈를 즉시 전환하는 것 — Cold Jet의 기술은 이 네 단계에서 드라이아이스 생산의 차이를 만듭니다.</p>
         </div>
-        <div class="plt-lineup-grid">
-          <a class="plt-product" data-capacity="80" href="pe-80.html">
-            <span class="plt-recommend">추천 모델</span>
-            <div class="plt-product-media"><img src="../../assets/img/pelletizer-pe80-official.jpg" alt="Cold Jet PE-80 드라이아이스 제조기" loading="lazy" /></div>
-            <div class="plt-product-body"><span class="plt-product-tag">LOW VOLUME</span><h3>PE-80</h3><p class="plt-product-desc">3 mm 블라스팅 펠렛 생산을 위한 저용량 드라이아이스 펠렛타이저.</p><dl class="plt-product-spec"><div><dt>생산능력</dt><dd>최대 80 kg/h</dd></div><div><dt>펠렛 크기</dt><dd>3 mm 전용</dd></div><div><dt>적합 용도</dt><dd>자체 사용 · 블라스팅</dd></div></dl><span class="plt-product-more">제품 상세 보기 <i>→</i></span></div>
-          </a>
-          <a class="plt-product" data-capacity="120" href="pr120h.html">
-            <span class="plt-recommend">추천 모델</span>
-            <div class="plt-product-media"><img src="../../assets/img/pelletizer-pr120h-official.jpg" alt="Cold Jet PR120H 드라이아이스 제조기" loading="lazy" /></div>
-            <div class="plt-product-body"><span class="plt-product-tag">HIGH VOLUME</span><h3>PR120H</h3><p class="plt-product-desc">컴팩트한 크기와 빠른 기동을 갖춘 자동화 펠렛타이저.</p><dl class="plt-product-spec"><div><dt>생산능력</dt><dd>최대 120 kg/h</dd></div><div><dt>펠렛 크기</dt><dd>3 / 10 / 16 mm</dd></div><div><dt>기동 시간</dt><dd>5분 이내</dd></div></dl><span class="plt-product-more">제품 상세 보기 <i>→</i></span></div>
-          </a>
-          <a class="plt-product is-recommended" data-capacity="350" href="pr350h.html">
-            <span class="plt-recommend">추천 모델</span>
-            <div class="plt-product-media"><img src="../../assets/img/pelletizer-pr350h-official.jpg" alt="Cold Jet PR350H 드라이아이스 제조기" loading="lazy" /></div>
-            <div class="plt-product-body"><span class="plt-product-tag">HIGH VOLUME</span><h3>PR350H</h3><p class="plt-product-desc">자동 다이 교체와 폐쇄형 챔버를 갖춘 중용량 생산 모델.</p><dl class="plt-product-spec"><div><dt>생산능력</dt><dd>최대 350 kg/h</dd></div><div><dt>펠렛 크기</dt><dd>3 / 6 / 10 / 16 mm</dd></div><div><dt>기동 시간</dt><dd>3분 미만</dd></div></dl><span class="plt-product-more">제품 상세 보기 <i>→</i></span></div>
-          </a>
-          <a class="plt-product" data-capacity="750" href="pr750h.html">
-            <span class="plt-recommend">추천 모델</span>
-            <div class="plt-product-media"><img src="../../assets/img/pelletizer-pr750h-official.jpg" alt="Cold Jet PR750H 드라이아이스 제조기" loading="lazy" /></div>
-            <div class="plt-product-body"><span class="plt-product-tag">INDUSTRIAL</span><h3>PR750H</h3><p class="plt-product-desc">지속적인 대용량 생산과 생산라인 통합을 위한 산업용 모델.</p><dl class="plt-product-spec"><div><dt>생산능력</dt><dd>최대 750 kg/h</dd></div><div><dt>펠렛 크기</dt><dd>3 / 6 / 10 / 16 mm</dd></div><div><dt>제어</dt><dd>15인치 터치 디스플레이</dd></div></dl><span class="plt-product-more">제품 상세 보기 <i>→</i></span></div>
-          </a>
-          <a class="plt-product" data-capacity="1500" href="pr1500h.html">
-            <span class="plt-recommend">추천 모델</span>
-            <div class="plt-product-media"><img src="../../assets/img/pelletizer-pr1500h-official.jpg" alt="Cold Jet PR1500H 드라이아이스 제조기" loading="lazy" /></div>
-            <div class="plt-product-body"><span class="plt-product-tag">LARGE-SCALE PRODUCTION</span><h3>PR1500H</h3><p class="plt-product-desc">4개의 독립 배럴로 초대형 생산시설을 지원하는 최상위 모델.</p><dl class="plt-product-spec"><div><dt>생산능력</dt><dd>최대 1,500 kg/h</dd></div><div><dt>펠렛 크기</dt><dd>3 / 6 / 10 / 16 mm</dd></div><div><dt>구성</dt><dd>4개 독립 배럴</dd></div></dl><span class="plt-product-more">제품 상세 보기 <i>→</i></span></div>
-          </a>
-          <a class="plt-product plt-special" href="special-forms.html">
-            <div class="plt-product-media"><img src="../../assets/img/pelletizer-rseries-official.jpg" alt="Cold Jet R Series 슬라이스 리포머" loading="lazy" /></div>
-            <div class="plt-product-body"><span class="plt-product-tag">SLICE REFORMERS</span><h3>R Series</h3><p class="plt-product-desc">별도 펠렛타이저에서 만든 펠렛을 필요한 규격의 슬라이스·블록으로 재성형하는 리포머 제품군입니다.</p><dl class="plt-product-spec"><div><dt>R500H · R1000H · R2000H</dt><dd>600 / 1,000 / 2,500 kg/h</dd></div><div><dt>구성 조건</dt><dd>펠렛타이저 별도 필요</dd></div></dl><span class="plt-product-more">R Series 자세히 보기 <i>→</i></span></div>
-          </a>
+        <div class="bls-tech-list">
+          <article class="bls-tech reveal">
+            <div class="bls-tech-media"><img src="../../assets/img/pelletizer-tech-01.jpg" alt="드라이아이스 노즐 분사" loading="lazy" decoding="async" /></div>
+            <div class="bls-tech-body">
+              <span class="bls-num">01</span>
+              <span class="bls-en">SUB-COOLING TECHNOLOGY</span>
+              <h3>CO<sub>2</sub> 손실을 줄이는<br>높은 생산 효율</h3>
+              <p>Cold Jet의 Sub-Cooling Technology는 펠렛타이저로 공급되는 액이 CO<sub>2</sub>를 사전에 냉각해 고순 드라이아이스로 전환되는 효율을 높입니다. CO<sub>2</sub> 소비와 생산 과정의 손실을 줄여 보다 효율적이고 경제적인 드라이아이스 생산이 가능합니다.</p>
+            </div>
+          </article>
+          <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+            <div class="bls-tech-media"><img src="../../assets/img/pelletizer-tech-03.jpg" alt="열교환기 CO2 냉각" loading="lazy" decoding="async" /></div>
+            <div class="bls-tech-body">
+              <span class="bls-num">02</span>
+              <span class="bls-en">HIGH-DENSITY PELLET PRODUCTION</span>
+              <h3>쉽게 부서지지 않는<br>고밀도 드라이아이스</h3>
+              <p>Cold Jet의 정밀한 압축·압출 기술은 드라이아이스를 높은 밀도로 성형합니다. 충분히 압축된 드라이아이스는 다이플를 통을 통과한 직후에도 쉽게 부서지지 않고 김곰 안정적인 형태를 유지합니다. 단단하고 교일한 드라이아이스는 취급과 보관 과정의 손실을 줄이고 안정적인 품질을 유지합니다.</p>
+            </div>
+          </article>
+          <article class="bls-tech reveal">
+            <div class="bls-tech-media"><img src="../../assets/img/pelletizer-tech-04.jpg" alt="압출 헤드 구조" loading="lazy" decoding="async" /></div>
+            <div class="bls-tech-body">
+              <span class="bls-num">03</span>
+              <span class="bls-en">CLOSED-CHAMBER TECHNOLOGY</span>
+              <h3>생산 시작부타<br>안정적인 품질</h3>
+              <p>Cold Jet의 Closed-Chamber Technology는 생산 초기부타 안정적인 품질의 드라이아이스를 만들 수 있도록 설상되었습니다. 뱠른 생산 시작과 안정적인 압축 조조건을 통해 불필요한 CO<sub>2</sub> 손실과 대기 시간을 줄이고, 연속 생산에서도 일정한 품질을 유지합니다.</p>
+            </div>
+          </article>
+          <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+            <div class="bls-tech-media"><img src="../../assets/img/pelletizer-tech-02.jpg" alt="유압 압축 구동부" loading="lazy" decoding="async" /></div>
+            <div class="bls-tech-body">
+              <span class="bls-num">04</span>
+              <span class="bls-en">AUTOMATIC QUICK DIE CHANGE</span>
+              <h3>버튼 하나로 바꾸는<br>드라이아이스 사이즈</h3>
+              <p>Automatic Quick Die Change System은 서로 다른 Extruder Plate를 장비에 준버해 듀고 버튼 조작만으로 필요한 펠렛 사이즈로 신속하게 전환할 수 있도록 설상되었습니다. 3 mm 세첩용 펠렛에서 6 mm, 10 mm 등 다른 사이즈로 뱠르게 변경할 수 있어 생산 중단 시간을 줄이고 다양한 생산 요구에 유연하게 대응할 수 있습니다.</p>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
 
+    <section class="plt-section plt-lineup" id="pelletizer-lineup">
+      <div class="wrap">
         <section class="plt-finder" id="model-finder" aria-labelledby="finderTitle">
           <div class="plt-finder-head">
             <div><span class="plt-eyebrow">FIND YOUR PRODUCTION SYSTEM</span><h2 id="finderTitle">고객님께 필요한 장비 조합,<br>30초면 알 수 있습니다.</h2></div>

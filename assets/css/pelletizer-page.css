@@ -301,8 +301,47 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .plt-support-panel li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--ice); }
 
 /* ---- 반응형 ---- */
+/* 02b PELLETIZER LINEUP CARDS (큰 카드형) */
+.plt-lineup-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 3vw, 44px); }
+.plt-lineup-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 2.4vw, 36px); align-items: center; padding: clamp(28px, 2.6vw, 40px); border: 1px solid var(--gray-line); border-radius: var(--radius); background: #fff; transition: transform .25s, box-shadow .25s, border-color .25s; }
+.plt-lineup-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.plt-lineup-card.is-recommended { border-color: var(--ice); box-shadow: 0 0 0 2px rgba(79,173,184,.2); }
+.plt-lineup-media { aspect-ratio: 4 / 3; border-radius: 8px; overflow: hidden; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; }
+.plt-lineup-media img { display: block; width: 100%; height: 100%; object-fit: contain; padding: 6%; box-sizing: border-box; }
+.plt-lineup-num { font-size: 13px; font-weight: 800; letter-spacing: 3px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.plt-lineup-tag { display: block; margin-top: 8px; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--ice-dark); }
+.plt-lineup-body h3 { margin: 10px 0 12px; font-size: clamp(24px, 2.1vw, 30px); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); }
+.plt-lineup-body > p { margin: 0 0 18px; font-size: 15.5px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.plt-lineup-spec { margin: 0 0 18px; display: grid; gap: 8px; }
+.plt-lineup-spec div { display: flex; justify-content: space-between; gap: 12px; padding-top: 10px; border-top: 1px solid var(--gray-line); }
+.plt-lineup-spec dt { font-size: 12px; font-weight: 800; letter-spacing: 1px; color: var(--text-muted); }
+.plt-lineup-spec dd { margin: 0; font-size: 14px; font-weight: 600; color: var(--navy); text-align: right; }
+
+/* 02d PELLETIZER DIFFERENCE — 한 줄에 카드 한 개 (더 큰 사진) */
+#pelletizer-difference .bls-tech-list { grid-template-columns: 1fr; }
+#pelletizer-difference .bls-tech { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+#pelletizer-difference .bls-tech-media { aspect-ratio: 4 / 3; }
+.plt-lineup-media.is-noimg { background: var(--navy-deep); display: flex; align-items: center; justify-content: center; }
+.plt-lineup-media.is-noimg span { font-size: clamp(20px, 2vw, 28px); font-weight: 800; letter-spacing: -0.02em; color: rgba(255,255,255,.5); text-align: center; line-height: 1.3; }
+
+/* 02c CATEGORY SELECT (블라스터 스타일 큰 이미지 카드) */
+.plt-category-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 2.6vw, 40px); }
+.plt-category-card { display: block; border: 1px solid var(--gray-line); border-radius: var(--radius); overflow: hidden; background: #fff; text-decoration: none; transition: transform .25s, box-shadow .25s; }
+.plt-category-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.plt-category-card.is-static { cursor: default; }
+.plt-category-card.is-static:hover { transform: none; box-shadow: none; }
+.plt-category-media { height: clamp(360px, 34vw, 480px); overflow: hidden; background: var(--navy-deep); }
+.plt-category-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.plt-category-body { padding: clamp(26px, 2.6vw, 40px) clamp(26px, 2.8vw, 44px) clamp(28px, 2.8vw, 44px); }
+.plt-category-num { font-size: 13px; font-weight: 800; letter-spacing: 3px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.plt-category-body h3 { margin: 8px 0 14px; font-size: clamp(24px, 2vw, 30px); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); }
+.plt-category-body p { margin: 0 0 16px; font-size: 16px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+
 @media (max-width: 1100px) {
   .plt-hero-grid, .plt-definition-card, .plt-sustain-grid, .plt-support-grid, .plt-head, .plt-finder-head, .plt-finder-shell { grid-template-columns: 1fr; }
+  .plt-lineup-cards { grid-template-columns: 1fr; }
+  .plt-lineup-card { grid-template-columns: 1fr; }
+  .plt-category-grid { grid-template-columns: 1fr; }
   .plt-finder-progress { position: static; margin-top: 16px; }
   .plt-finder-head { padding-top: 0; }
   .plt-system-map { grid-template-columns: 1fr; }
