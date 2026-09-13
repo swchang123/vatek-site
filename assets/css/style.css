@@ -2556,6 +2556,14 @@ a.footer-line:hover { color: var(--white); }
   position: relative; height: calc(100vh - 76px); min-height: 420px;
   overflow: hidden; background: var(--navy-deep);
 }
+/* (2026-09-13) 영상 히어로 4종(블라스터/펠렛타이저/리커버리/자동화)은 top:0/height:100%
+   버퍼-off 영상이라, 컨테이너가 영상의 실제 비율(16:9)보다 넓어지면 object-fit:cover가
+   상하를 더 크게 잘라낸다("화면 폭이 넓어지면 확대되어 잘린다" 이슈). 폭이 16:9 대비
+   과도하게 넓어지는 화면에서는 높이를 폭 기준(56.25vw)으로 늘려 크롭 비율을 항상
+   미리보기와 동일하게 유지한다. */
+.bls-hero-stage, .pel-hero-stage, .rec-hero-stage, .aut-hero-stage {
+  height: max(calc(100vh - 76px), 56.25vw);
+}
 .subhero-parallax-img {
   /* (2026-09-04 v4) 680px 버퍼는 이미지를 커버하기 위해 확대(object-fit:
      cover) 비율이 너무 커져 "사진이 확대돼 답답하다"는 피드백을 받음 —
