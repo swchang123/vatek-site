@@ -11391,6 +11391,23 @@ ADOPT_BODY = """
     </div>
 """
 
+AUTOMATION_HERO_HTML = """  <section class="subhero-parallax aut-hero-stage">
+    <video class="subhero-parallax-img aut-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+      <source src="../assets/video/automation-hero.mp4" type="video/mp4" />
+    </video>
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품·자동화·공급</a> &gt; 자동화 시스템</div>
+    <div class="subhero-textbox">
+      <span class="ind-hero-eyebrow">COLD JET × VATEK / AUTOMATION SYSTEM</span>
+      <h1>생산 라인에 통합되는,<br><span class="bls-hero-accent">완전 자동화 세척.</span></h1>
+      <p class="bls-hero-main">생산 라인에 통합 가능한 자동화 드라이아이스 세척 시스템을 소개합니다.</p>
+    </div>
+    <div class="pel-hero-mask" aria-hidden="true">
+      <img src="../assets/img/coldjet-logo.png" alt="" />
+      <span>×</span>
+      <img src="../assets/img/vatek-logo-wordmark.png" alt="" />
+    </div>
+  </section>"""
+
 AUTOMATION_BODY = """
 <p>생산 라인에 드라이아이스 세척을 통합하고 싶다면, Cold Jet의 통합 자동화 솔루션을 적용할 수 있습니다.</p>
 
@@ -12116,7 +12133,8 @@ MENU = [
             {"slug": "automation", "title": "자동화 시스템",
              "desc": "생산 라인에 통합 가능한 자동화 드라이아이스 세척 시스템을 소개합니다.",
              "nav_desc": "생산 라인에 통합되는 자동화 세척 시스템을 안내합니다.",
-             "body": AUTOMATION_BODY},
+             "body": AUTOMATION_BODY,
+             "hero_html": AUTOMATION_HERO_HTML, "cover_class": "aut-cover"},
             {"slug": "nozzle", "title": "노즐·액세서리",
              "desc": "작업 목적에 맞는 노즐과 각종 액세서리 구성품을 안내합니다.",
              "nav_desc": "작업 효율을 높이는 다양한 노즐과 액세서리입니다.",
@@ -12730,16 +12748,20 @@ def build_sub_page(m, s):
     </div>
 """
     else:
-        body = f"""
-  {breadcrumb_html}
+        hero_block = s.get("hero_html")
+        if hero_block is None:
+            hero_block = f"""  {breadcrumb_html}
   <section class="page-hero" style="padding-top:24px;">
     <div class="wrap">
       <span class="cat">{m['short']}</span>
       <h1>{s['title']}</h1>
       <p>{s['desc']}</p>
     </div>
-  </section>
-  <section>
+  </section>"""
+        cover_attr = f' class="{s["cover_class"]}"' if s.get("cover_class") else ""
+        body = f"""
+{hero_block}
+  <section{cover_attr}>
     <div class="wrap">
       {main_block}
       {cover_tail}

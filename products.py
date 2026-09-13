@@ -416,6 +416,23 @@ RECOVERY_INTRO_HTML = """
 모듈식 설계로, 기존 생산 라인에도 비교적 쉽게 추가할 수 있습니다. (출처: Cold Jet 공식 웹사이트)</p>
 """
 
+RECOVERY_HERO_HTML = """    <section class="subhero-parallax rec-hero-stage">
+      <video class="subhero-parallax-img rec-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+        <source src="../../assets/video/recovery-hero.mp4" type="video/mp4" />
+      </video>
+      <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; CO₂ 리커버리</div>
+      <div class="subhero-textbox">
+        <span class="ind-hero-eyebrow">COLD JET × VATEK / CO₂ RECOVERY SYSTEM</span>
+        <h1>버려지던 CO₂를<br><span class="bls-hero-accent">다시 생산 자원으로.</span></h1>
+        <p class="bls-hero-main">드라이아이스 생산 과정에서 기체로 빠져나가는 CO<sub>2</sub>를 포집하고 다시 액화해 펠렛타이저로 돌려보냅니다. 같은 원료에서 더 많은 드라이아이스를 생산하는 폐쇄형 순환 시스템입니다.</p>
+      </div>
+      <div class="pel-hero-mask" aria-hidden="true">
+        <img src="../../assets/img/coldjet-logo.png" alt="" />
+        <span>×</span>
+        <img src="../../assets/img/vatek-logo-wordmark.png" alt="" />
+      </div>
+    </section>"""
+
 _RECOVERY_COMMON_FEATURES = [
     "거의 모든 브랜드 펠렛타이저와 호환되는 모듈형 설계",
     "액체 CO2 사용량 절감으로 운영비 감소",
@@ -593,7 +610,8 @@ def _quicknav(has_accessories):
 
 
 def build_group_index(root, code, group_slug, group_title, group_tagline, models,
-                       categories, nav_html, footer_html, page_shell, asset, intro_html=""):
+                       categories, nav_html, footer_html, page_shell, asset, intro_html="",
+                       hero_html=None, cover_class="", extra_head=""):
     depth = 2
     group_dir = os.path.join(root, code, group_slug)
     os.makedirs(group_dir, exist_ok=True)
@@ -624,8 +642,8 @@ def build_group_index(root, code, group_slug, group_title, group_tagline, models
         </div>""" for m in models)
         sections = f'<div class="sub-grid" style="margin-top:20px;">{cards}</div>'
 
-    body = f"""
-  <div class="wrap breadcrumb"><a href="{asset('index.html', depth)}">홈</a> &gt;
+    if hero_html is None:
+        hero_html = f"""  <div class="wrap breadcrumb"><a href="{asset('index.html', depth)}">홈</a> &gt;
     <a href="{asset('products/index.html', depth)}">제품 · 자동화 · 공급</a> &gt; {group_title}</div>
   <section class="page-hero" style="padding-top:24px;">
     <div class="wrap">
@@ -633,8 +651,12 @@ def build_group_index(root, code, group_slug, group_title, group_tagline, models
       <h1>{group_title}</h1>
       <p>{group_tagline}</p>
     </div>
-  </section>
-  <section>
+  </section>"""
+
+    cover_attr = f' class="{cover_class}"' if cover_class else ""
+    body = f"""
+{hero_html}
+  <section{cover_attr}>
     <div class="wrap">
       {intro_html}
       {sections}
@@ -648,7 +670,7 @@ def build_group_index(root, code, group_slug, group_title, group_tagline, models
     </div>
   </section>
 """
-    html = page_shell(group_title, group_tagline, depth, code, body)
+    html = page_shell(group_title, group_tagline, depth, code, body, extra_head=extra_head)
     with open(os.path.join(group_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
 
@@ -1544,6 +1566,16 @@ PELLETIZER_PAGE_TITLE = '드라이아이스 생산 시스템 | 펠렛타이저·
 PELLETIZER_PAGE_DESC = '펠렛타이저부터 슬라이스 제조기, 리포머, 정량 투입·포장·CO2 회수까지 Cold Jet 드라이아이스 생산 시스템과 적용 분야를 살펴보세요.'
 PELLETIZER_SCRIPT = """  <script>
   (function () {
+    var ytMedia = document.getElementById('ytTestMedia'), ytBtn = document.getElementById('ytTestPlayBtn');
+    if (ytMedia && ytBtn) {
+      ytBtn.addEventListener('click', function () {
+        ytMedia.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/pkO1got3w3g?start=2232&autoplay=1&rel=0" title="Cold Jet Pelletizer" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      });
+    }
+  })();
+  </script>
+  <script>
+  (function () {
     var v = document.getElementById('pltDefinitionVideo'), btn = document.getElementById('pltDefinitionPlayBtn');
     if (v && btn) {
       btn.addEventListener('click', function () { if (v.paused) { v.play(); } else { v.pause(); } });
@@ -2303,6 +2335,15 @@ PELLETIZER_HUB_BODY = """
         <div class="plt-support-copy"><span class="plt-eyebrow">VATEK / LOCAL ENGINEERING SUPPORT</span><h2 class="plt-title">생산량 계산부터<br>설치 이후까지.</h2><p>바테크는 사용 목적과 일일 필요량, 액체 CO<sub>2</sub> 공급 조건, 생산 공간과 전원을 확인해 펠렛타이저와 슬라이스, 이송·포장·회수 설비까지 필요한 범위로 구성합니다.</p></div>
         <aside class="plt-support-panel"><h3>도입 전 확인할 내용</h3><ul><li>시간당·일일 필요 생산량</li><li>필요한 펠렛 또는 슬라이스 크기</li><li>액체 CO<sub>2</sub> 저장·공급 조건</li><li>전원·압축공기·설치 공간</li><li>포장·이송·정량 투입·회수 범위</li></ul><a class="plt-btn" href="../quote.html">생산 시스템 상담 <span>→</span></a></aside>
       </div>
+      <div class="wrap">
+        <div class="bls-showcase-media" id="ytTestMedia" style="aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;position:relative;background:#000;cursor:pointer;">
+          <img src="https://i.ytimg.com/vi/pkO1got3w3g/maxresdefault.jpg" alt="Cold Jet Pelletizer 영상 미리보기" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;" />
+          <span class="bls-showcase-cap">COLD JET&nbsp;&nbsp;/&nbsp;&nbsp;PELLETIZER</span>
+          <button type="button" class="bls-play-btn" id="ytTestPlayBtn" aria-label="영상 재생">
+            <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
+          </button>
+        </div>
+      </div>
     </section>
   </main>
 """
@@ -2338,12 +2379,14 @@ def build_pelletizer(root, nav_html, footer_html, page_shell, asset):
 
 
 def build_recovery(root, nav_html, footer_html, page_shell, asset):
+    extra_head = '\n<link rel="stylesheet" href="%srecovery-page.css?v=20260913-1" />' % asset('assets/css/', 2)
     build_group_index(
         root, "products", "recovery", "CO2 리커버리",
         "드라이아이스 생산 중 배출되는 CO2 가스를 회수해 재사용하는 리커버리 시스템입니다. "
         "펠렛타이저 생산능력에 맞춰 4단계 모델을 제공합니다.",
         RECOVERY_MODELS, None, nav_html, footer_html, page_shell, asset,
         intro_html=RECOVERY_INTRO_HTML,
+        hero_html=RECOVERY_HERO_HTML, cover_class="rec-cover", extra_head=extra_head,
     )
     for m in RECOVERY_MODELS:
         build_model_page(root, "products", "recovery", "CO2 리커버리", m, RECOVERY_MODELS,

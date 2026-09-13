@@ -45,4 +45,13 @@
 
 /* Component color corrections after the shared site heading rules. */
 .rec-hero h1{color:#fff}
+.rec-hero-stage .subhero-textbox{top:calc(50% - 38px);left:6%;transform:translate(0,-50%);text-align:left;width:fit-content;max-width:min(560px,90vw);padding:36px 44px}
+.rec-hero-stage .subhero-textbox h1{white-space:normal;font-size:clamp(32px,4.4vw,52px);line-height:1.22}
+video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
+.rec-hero-stage .subhero-parallax-img{top:0 !important;height:100% !important}
+.rec-cover{position:relative;z-index:2;margin-top:-64px;clip-path:inset(0 round 72px 72px 0 0)}
+@media (max-width:640px){.rec-cover{margin-top:-28px;clip-path:inset(0 round 40px 40px 0 0)}}
+.pel-hero-mask{position:absolute;z-index:2;right:2%;bottom:11%;width:20%;aspect-ratio:325/92;background:rgba(255,255,255,.7);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:14px}
+.pel-hero-mask img{height:26%;width:auto;object-fit:contain}
+.pel-hero-mask span{font-size:20px;font-weight:800;color:#0f1c1d}
 .rec-model-dark h3{color:#fff}

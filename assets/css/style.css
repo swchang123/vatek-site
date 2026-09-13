@@ -4165,6 +4165,15 @@ video.auto-hero-video { object-fit: cover; background: var(--navy-deep); }
 .pel-cover { position: relative; left: 50%; right: 50%; width: 100vw; z-index: 2; margin-left: -50vw; margin-right: -50vw; margin-top: -64px; padding: clamp(64px, 8vw, 96px) 0 0; background: var(--white); clip-path: inset(0 round 72px 72px 0 0); }
 @media (max-width: 640px) { .pel-cover { margin-top: -28px; clip-path: inset(0 round 40px 40px 0 0); padding-top: 40px; } }
 .pel-cover.tint-hatch { background-color: #eaf0f0; background-image: radial-gradient(ellipse at 15% 0%, rgba(79,173,184,.14), transparent 55%), repeating-linear-gradient(135deg, rgba(40,55,57,.045) 0px, rgba(40,55,57,.045) 1px, transparent 1px, transparent 10px); }
+.aut-hero-stage .subhero-textbox { top: calc(50% - 38px); left: 6%; transform: translate(0, -50%); text-align: left; width: fit-content; max-width: min(560px, 90vw); padding: 36px 44px; }
+.aut-hero-stage .subhero-textbox h1 { white-space: normal; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.22; }
+video.aut-hero-video { object-fit: cover; background: var(--navy-deep); }
+.aut-hero-stage .subhero-parallax-img { top: 0 !important; height: 100% !important; }
+.aut-cover { position: relative; left: 50%; right: 50%; width: 100vw; z-index: 2; margin-left: -50vw; margin-right: -50vw; margin-top: -64px; padding: clamp(64px, 8vw, 96px) 0 0; background: var(--white); clip-path: inset(0 round 72px 72px 0 0); }
+@media (max-width: 640px) { .aut-cover { margin-top: -28px; clip-path: inset(0 round 40px 40px 0 0); padding-top: 40px; } }
+.pel-hero-mask { position: absolute; z-index: 2; right: 2%; bottom: 11%; width: 20%; aspect-ratio: 325 / 92; background: rgba(255,255,255,.7); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 14px; }
+.pel-hero-mask img { height: 26%; width: auto; object-fit: contain; }
+.pel-hero-mask span { font-size: 20px; font-weight: 800; color: #0f1c1d; }
 .bls-cover > .wrap { position: relative; z-index: 1; }
 @media (max-width: 640px) { .bls-cover { margin-top: -28px; clip-path: inset(0 round 40px 40px 0 0); } }
 .bls-sec > .wrap { max-width: 1560px; padding: 0 clamp(24px, 4vw, 64px); }
