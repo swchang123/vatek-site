@@ -417,19 +417,21 @@ RECOVERY_INTRO_HTML = """
 """
 
 RECOVERY_HERO_HTML = """    <section class="subhero-parallax rec-hero-stage">
-      <video class="subhero-parallax-img rec-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
-        <source src="../../assets/video/recovery-hero.mp4" type="video/mp4" />
-      </video>
       <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; CO₂ 리커버리</div>
-      <div class="subhero-textbox">
-        <span class="ind-hero-eyebrow">COLD JET × VATEK / CO₂ RECOVERY SYSTEM</span>
-        <h1>버려지던 CO₂를<br><span class="bls-hero-accent">다시 생산 자원으로.</span></h1>
-        <p class="bls-hero-main">드라이아이스 생산 과정에서 기체로 빠져나가는 CO<sub>2</sub>를 포집하고 다시 액화해 펠렛타이저로 돌려보냅니다. 같은 원료에서 더 많은 드라이아이스를 생산하는 폐쇄형 순환 시스템입니다.</p>
-      </div>
-      <div class="pel-hero-mask" aria-hidden="true">
-        <img src="../../assets/img/coldjet-logo.png" alt="" />
-        <span>×</span>
-        <img src="../../assets/img/vatek-logo-wordmark.png" alt="" />
+      <div class="hero-fit">
+        <video class="subhero-parallax-img rec-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+          <source src="../../assets/video/recovery-hero.mp4" type="video/mp4" />
+        </video>
+        <div class="subhero-textbox">
+          <span class="ind-hero-eyebrow">COLD JET × VATEK / CO₂ RECOVERY SYSTEM</span>
+          <h1>버려지던 CO₂를<br><span class="bls-hero-accent">다시 생산 자원으로.</span></h1>
+          <p class="bls-hero-main">드라이아이스 생산 과정에서 기체로 빠져나가는 CO<sub>2</sub>를 포집하고 다시 액화해 펠렛타이저로 돌려보냅니다. 같은 원료에서 더 많은 드라이아이스를 생산하는 폐쇄형 순환 시스템입니다.</p>
+        </div>
+        <div class="pel-hero-mask" aria-hidden="true">
+          <img src="../../assets/img/coldjet-logo.png" alt="" />
+          <span>×</span>
+          <img src="../../assets/img/vatek-logo-wordmark.png" alt="" />
+        </div>
       </div>
     </section>"""
 
@@ -953,16 +955,18 @@ BLASTER_SCRIPT = """  <script>
 BLASTER_HUB_BODY = """
   <!-- ============ 01 HERO ============ -->
   <section class="subhero-parallax bls-hero-stage">
-    <video class="subhero-parallax-img bls-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/blaster-catalog-hero-natural.png" aria-label="Cold Jet Aero2 PCS ULTRA · PLT ULTRA 블라스터" data-buffer="100" data-pan-scale="1.08" data-no-blur="true">
-      <source src="../../assets/video/blaster-hero-banner.mp4" type="video/mp4" />
-    </video>
     <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 세척기</div>
-    <div class="subhero-textbox bls-hero-box">
-      <span class="ind-hero-eyebrow">COLD JET × VATEK&nbsp;&nbsp;/&nbsp;&nbsp;DRY ICE BLASTERS</span>
-      <h1>세척의 차이를<br>만드는 <span class="bls-hero-accent">기술.</span></h1>
-      <p class="bls-hero-main">입자 제어부터 안정적인 분사까지.<br>Cold Jet 드라이아이스 블라스터의 기술을<br>바테크의 현장 지원과 함께 만나보세요.</p>
+    <div class="hero-fit">
+      <video class="subhero-parallax-img bls-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/blaster-catalog-hero-natural.png" aria-label="Cold Jet Aero2 PCS ULTRA · PLT ULTRA 블라스터" data-buffer="100" data-pan-scale="1.08" data-no-blur="true">
+        <source src="../../assets/video/blaster-hero-banner.mp4" type="video/mp4" />
+      </video>
+      <div class="subhero-textbox bls-hero-box">
+        <span class="ind-hero-eyebrow">COLD JET × VATEK&nbsp;&nbsp;/&nbsp;&nbsp;DRY ICE BLASTERS</span>
+        <h1>세척의 차이를<br>만드는 <span class="bls-hero-accent">기술.</span></h1>
+        <p class="bls-hero-main">입자 제어부터 안정적인 분사까지.<br>Cold Jet 드라이아이스 블라스터의 기술을<br>바테크의 현장 지원과 함께 만나보세요.</p>
+      </div>
+      <div class="bls-hero-mask" aria-hidden="true"></div>
     </div>
-    <div class="bls-hero-mask" aria-hidden="true"></div>
   </section>
 
   <!-- ============ 02 SEE IT IN ACTION ============ -->
@@ -2035,20 +2039,22 @@ PELLETIZER_SCRIPT = """  <script>
 PELLETIZER_HUB_BODY = """
   <main class="plt-page">
     <section class="subhero-parallax pel-hero-stage">
-      <video class="subhero-parallax-img pel-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
-        <source src="../../assets/video/pelletizer-hero.mp4" type="video/mp4" />
-      </video>
       <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 제조기</div>
-      <div class="subhero-textbox">
-        <span class="ind-hero-eyebrow">COLD JET × VATEK / DRY ICE PRODUCTION</span>
-        <h1>필요한 형태로,<br><span class="bls-hero-accent">생산부터 공급까지.</span></h1>
-        <p class="bls-hero-main">액체 CO<sub>2</sub>를 펠렛과 너겟으로 생산하고, 필요한 규격의 슬라이스와 블록으로 재성형합니다. 정량 투입과 포장, 회수 설비까지 사용 목적과 생산량에 맞춰 연결합니다.</p>
-        
-      </div>
-      <div class="pel-hero-mask" aria-hidden="true">
-        <img src="../../assets/img/coldjet-logo.png" alt="" />
-        <span>×</span>
-        <img src="../../assets/img/vatek-logo-wordmark.png" alt="" />
+      <div class="hero-fit">
+        <video class="subhero-parallax-img pel-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+          <source src="../../assets/video/pelletizer-hero.mp4" type="video/mp4" />
+        </video>
+        <div class="subhero-textbox">
+          <span class="ind-hero-eyebrow">COLD JET × VATEK / DRY ICE PRODUCTION</span>
+          <h1>필요한 형태로,<br><span class="bls-hero-accent">생산부터 공급까지.</span></h1>
+          <p class="bls-hero-main">액체 CO<sub>2</sub>를 펠렛과 너겟으로 생산하고, 필요한 규격의 슬라이스와 블록으로 재성형합니다. 정량 투입과 포장, 회수 설비까지 사용 목적과 생산량에 맞춰 연결합니다.</p>
+          
+        </div>
+        <div class="pel-hero-mask" aria-hidden="true">
+          <img src="../../assets/img/coldjet-logo.png" alt="" />
+          <span>×</span>
+          <img src="../../assets/img/vatek-logo-wordmark.png" alt="" />
+        </div>
       </div>
     </section>
 

@@ -1530,6 +1530,22 @@ document.addEventListener("DOMContentLoaded", function () {
   // blur를 키워 방문자 시선이 자연스럽게 본문으로 옮겨가도록 유도한다.
   // ---------------------------------------------------------------------
   var subheroStage = document.querySelector(".subhero-parallax");
+  // (2026-09-14) 고정 16:9 스테이지(.hero-fit) 히어로: 좌우 여백을 채우는 블러 앰비언트 영상 복제
+  if (subheroStage) {
+    var fitBox = subheroStage.querySelector(".hero-fit");
+    var fitVideo = fitBox && fitBox.querySelector("video");
+    if (fitVideo && !subheroStage.querySelector(".hero-fit-ambient")) {
+      var ambient = fitVideo.cloneNode(true);
+      ambient.className = "hero-fit-ambient";
+      ambient.removeAttribute("poster");
+      ambient.removeAttribute("aria-label");
+      ambient.setAttribute("aria-hidden", "true");
+      Object.keys(ambient.dataset).forEach(function (k) { delete ambient.dataset[k]; });
+      ambient.muted = true;
+      subheroStage.insertBefore(ambient, fitBox);
+      var p = ambient.play(); if (p && p.catch) p.catch(function () {});
+    }
+  }
   if (subheroStage) {
     var subheroImg = subheroStage.querySelector(".subhero-parallax-img");
     if (subheroImg && subheroImg.dataset.noParallax === "true") {

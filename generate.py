@@ -11392,19 +11392,21 @@ ADOPT_BODY = """
 """
 
 AUTOMATION_HERO_HTML = """  <section class="subhero-parallax aut-hero-stage">
-    <video class="subhero-parallax-img aut-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
-      <source src="../assets/video/automation-hero.mp4" type="video/mp4" />
-    </video>
     <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품·자동화·공급</a> &gt; 자동화 시스템</div>
-    <div class="subhero-textbox">
-      <span class="ind-hero-eyebrow">COLD JET × VATEK / AUTOMATION SYSTEM</span>
-      <h1>생산 라인에 통합되는,<br><span class="bls-hero-accent">완전 자동화 세척.</span></h1>
-      <p class="bls-hero-main">생산 라인에 통합 가능한 자동화 드라이아이스 세척 시스템을 소개합니다.</p>
-    </div>
-    <div class="pel-hero-mask" aria-hidden="true">
-      <img src="../assets/img/coldjet-logo.png" alt="" />
-      <span>×</span>
-      <img src="../assets/img/vatek-logo-wordmark.png" alt="" />
+    <div class="hero-fit">
+      <video class="subhero-parallax-img aut-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+        <source src="../assets/video/automation-hero.mp4" type="video/mp4" />
+      </video>
+      <div class="subhero-textbox">
+        <span class="ind-hero-eyebrow">COLD JET × VATEK / AUTOMATION SYSTEM</span>
+        <h1>생산 라인에 통합되는,<br><span class="bls-hero-accent">완전 자동화 세척.</span></h1>
+        <p class="bls-hero-main">생산 라인에 통합 가능한 자동화 드라이아이스 세척 시스템을 소개합니다.</p>
+      </div>
+      <div class="pel-hero-mask" aria-hidden="true">
+        <img src="../assets/img/coldjet-logo.png" alt="" />
+        <span>×</span>
+        <img src="../assets/img/vatek-logo-wordmark.png" alt="" />
+      </div>
     </div>
   </section>"""
 

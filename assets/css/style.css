@@ -2556,13 +2556,31 @@ a.footer-line:hover { color: var(--white); }
   position: relative; height: calc(100vh - 76px); min-height: 420px;
   overflow: hidden; background: var(--navy-deep);
 }
-/* (2026-09-13) 영상 히어로 4종(블라스터/펠렛타이저/리커버리/자동화)은 top:0/height:100%
-   버퍼-off 영상이라, 컨테이너가 영상의 실제 비율(16:9)보다 넓어지면 object-fit:cover가
-   상하를 더 크게 잘라낸다("화면 폭이 넓어지면 확대되어 잘린다" 이슈). 폭이 16:9 대비
-   과도하게 넓어지는 화면에서는 높이를 폭 기준(56.25vw)으로 늘려 크롭 비율을 항상
-   미리보기와 동일하게 유지한다. */
-.bls-hero-stage, .pel-hero-stage, .rec-hero-stage, .aut-hero-stage {
-  height: max(calc(100vh - 76px), 56.25vw);
+/* (2026-09-14) 영상 히어로 4종(블라스터/펠렛타이저/리커버리/자동화) — "고정 16:9 스테이지" 방식.
+   요구: 모든 모니터에서 미리보기와 동일한 비율·구도. 영상(16:9)을 잘라서 채우는 대신,
+   히어로 안에 16:9 스테이지(.hero-fit)를 두고 보이는 영역(100vh-76px × 100vw)에 "맞춤(contain)"
+   으로 축소/확대한다. 텍스트 박스·로고 마스크는 스테이지 안에서 %/cqw 단위로 배치되므로
+   화면 폭이 달라도 구도가 그대로 스케일된다. 가로로 긴 창에서 생기는 좌우 여백은 같은 영상을
+   블러 처리한 앰비언트 레이어(.hero-fit-ambient, main.js가 복제 삽입)가 채운다. */
+.bls-hero-stage, .pel-hero-stage, .rec-hero-stage, .aut-hero-stage { height: min(calc(100vh - 76px), 56.25vw); min-height: 0; }
+.hero-fit { position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); height: 100%; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; z-index: 1; container-type: inline-size; }
+.hero-fit .subhero-parallax-img { top: 0 !important; height: 100% !important; object-fit: cover; object-position: 50% 50%; }
+.hero-fit-ambient { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; filter: blur(28px) brightness(.55) saturate(.9); z-index: 0; pointer-events: none; }
+.subhero-parallax:has(.hero-fit)::after { z-index: 2; }
+.hero-fit .subhero-textbox, .hero-fit .bls-hero-mask, .hero-fit .pel-hero-mask { z-index: 3; }
+.hero-fit .subhero-textbox { max-width: min(560px, 44cqw); }
+.hero-fit .subhero-textbox h1 { font-size: clamp(22px, 3.8cqw, 52px); }
+.hero-fit .subhero-textbox .bls-hero-main { font-size: clamp(12px, 1.25cqw, 17px); }
+.hero-fit .pel-hero-mask span { font-size: clamp(11px, 1.5cqw, 20px); }
+@media (max-width: 640px) {
+  /* 모바일: 16:9 스테이지가 너무 낮아지므로 기존 전면 커버(하단 앵커)로 복귀 */
+  .bls-hero-stage, .pel-hero-stage, .rec-hero-stage, .aut-hero-stage { height: calc(100vh - 76px); min-height: 420px; }
+  .hero-fit { left: 0; transform: none; aspect-ratio: auto; width: 100%; container-type: normal; }
+  .hero-fit .subhero-parallax-img { object-position: 50% 100%; }
+  .hero-fit .subhero-textbox { max-width: 90vw; }
+  .hero-fit .subhero-textbox h1 { font-size: clamp(26px, 6.5vw, 32px); }
+  .hero-fit .subhero-textbox .bls-hero-main { font-size: 14.5px; }
+  .hero-fit-ambient { display: none; }
 }
 .subhero-parallax-img {
   /* (2026-09-04 v4) 680px 버퍼는 이미지를 커버하기 위해 확대(object-fit:
