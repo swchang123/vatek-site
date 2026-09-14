@@ -2371,7 +2371,7 @@ def build_blaster(root, nav_html, footer_html, page_shell, asset):
 
 def build_pelletizer(root, nav_html, footer_html, page_shell, asset):
     depth = 2
-    extra_head = '\n<link rel="stylesheet" href="%spelletizer-page.css?v=20260911-15" />' % asset('assets/css/', depth)
+    extra_head = '\n<link rel="stylesheet" href="%spelletizer-page.css?v=20260914-3" />' % asset('assets/css/', depth)
     html = page_shell(PELLETIZER_PAGE_TITLE, PELLETIZER_PAGE_DESC, depth, "products", PELLETIZER_HUB_BODY,
                        extra_script=PELLETIZER_SCRIPT, extra_head=extra_head)
     group_dir = os.path.join(root, "products", "pelletizer")

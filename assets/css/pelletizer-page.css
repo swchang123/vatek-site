@@ -26,6 +26,7 @@
 .pel-hero-stage .subhero-textbox h1 { white-space: normal; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.22; }
 video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .pel-hero-stage .subhero-parallax-img { top: 0 !important; height: 100% !important; }
+.pel-hero-stage .subhero-parallax-img { top: 0 !important; height: 100% !important; }
 .pel-hero-mask { position: absolute; z-index: 2; right: 2%; bottom: 11%; width: 20%; aspect-ratio: 325 / 92; background: rgba(255,255,255,.7); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; }
 .pel-hero-mask img { height: 26%; width: auto; object-fit: contain; }
 .pel-hero-mask span { font-size: 20px; font-weight: 800; color: #0f1c1d; }
@@ -105,6 +106,10 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .plt-product.plt-special .plt-product-media { background: var(--ice-pale); }
 
 /* ---- 07 FINDER (다크 카드로 구성) ---- */
+.plt-lineup { background-color: var(--navy); background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 1px, transparent 1px, transparent 14px); border-top-color: rgba(255,255,255,.12); }
+.plt-lineup .plt-eyebrow { color: var(--ice); }
+.plt-lineup .plt-finder-head h2 { color: #fff; }
+.plt-lineup .plt-finder-intro p { color: rgba(255,255,255,.75); }
 .plt-finder { margin-top: clamp(24px, 3vw, 40px); }
 .plt-finder-head { margin-bottom: 0; padding-bottom: clamp(32px, 3.5vw, 48px); position: relative; }
 .plt-finder-head h2 { font-size: clamp(28px, 2.8vw, 38px); font-weight: 800; color: #000; letter-spacing: -0.02em; line-height: 1.3; margin: 14px 0 0; word-break: keep-all; }
@@ -122,7 +127,7 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .plt-finder-progress button.is-active i { color: var(--ice-dark); opacity: 1; }
 .plt-finder-progress button.is-complete:not(.is-active) { color: #fff; }
 
-.plt-finder-shell { border-top: 1px solid var(--gray-line); padding: clamp(28px, 3.5vw, 48px) 0 0; display: grid; grid-template-columns: 1fr; gap: clamp(28px, 3.5vw, 40px); color: var(--navy); }
+.plt-finder-shell { border-top: 1px solid var(--gray-line); padding: clamp(28px, 3.5vw, 48px) clamp(20px, 3vw, 40px); margin: 0 calc(-1 * clamp(20px, 3vw, 40px)); display: grid; grid-template-columns: 1fr; gap: clamp(28px, 3.5vw, 40px); color: var(--navy); background: #fff; border-radius: 0 0 var(--radius) var(--radius); }
 .plt-finder-form { max-width: 720px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 28px; }
 
 .plt-finder-row { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: clamp(28px, 3.5vw, 48px); align-items: start; }
@@ -319,6 +324,10 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 
 /* 02d PELLETIZER DIFFERENCE — 한 줄에 카드 한 개 (더 큰 사진) */
 #pelletizer-difference .bls-tech-list { grid-template-columns: 1fr; }
+#pelletizer-difference { background-color: #eaf0f0; background-image: radial-gradient(ellipse at 15% 0%, rgba(79,173,184,.14), transparent 55%), repeating-linear-gradient(135deg, rgba(40,55,57,.045) 0px, rgba(40,55,57,.045) 1px, transparent 1px, transparent 10px); color: inherit; }
+#pelletizer-difference .plt-eyebrow { color: var(--ice-dark); }
+#pelletizer-difference .plt-title { color: #000; }
+#pelletizer-difference .plt-lead { color: var(--text-body); }
 #pelletizer-difference .bls-tech { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
 #pelletizer-difference .bls-tech-media { aspect-ratio: 4 / 3; }
 .plt-lineup-media.is-noimg { background: var(--navy-deep); display: flex; align-items: center; justify-content: center; }
