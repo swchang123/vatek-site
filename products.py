@@ -2474,16 +2474,341 @@ def build_pelletizer(root, nav_html, footer_html, page_shell, asset):
     return 1 + len(PELLETIZER_MODELS)
 
 
+RECOVERY_SCRIPT = """  <script>
+  (function () {
+    [['recShowcaseVideo', 'recShowcasePlayBtn'], ['recProcessVideo', 'recProcessPlayBtn']].forEach(function (pair) {
+    var v = document.getElementById(pair[0]), btn = document.getElementById(pair[1]);
+    if (v && btn) {
+      // 재생 전 첫 장면이 보이도록 메타데이터 로드 후 첫 프레임으로 이동
+      v.addEventListener('loadedmetadata', function () { try { v.currentTime = 0.01; } catch (e) {} }, { once: true });
+      btn.addEventListener('click', function () { if (v.paused) { v.play(); } else { v.pause(); } });
+      v.addEventListener('play', function () {
+        btn.classList.add('is-playing');
+        btn.querySelector('.bls-play-label').textContent = '일시정지';
+        btn.querySelector('.bls-play-icon').textContent = '❙❙';
+      });
+      v.addEventListener('pause', function () {
+        btn.classList.remove('is-playing');
+        btn.querySelector('.bls-play-label').textContent = '영상 재생';
+        btn.querySelector('.bls-play-icon').textContent = '▶';
+      });
+    }
+    });
+    // 수치 카운트업: .rec-stats가 화면에 들어오면 0 → 목표값으로 한 번만 애니메이션
+    var stats = document.querySelector('.rec-stats');
+    if (stats) {
+      var counters = stats.querySelectorAll('.rec-count');
+      var run = function () {
+        counters.forEach(function (el) {
+          var target = parseInt(el.getAttribute('data-count'), 10) || 0, dur = 1400, t0 = null;
+          var step = function (ts) {
+            if (t0 === null) t0 = ts;
+            var p = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(target * e);
+            if (p < 1) requestAnimationFrame(step); else el.textContent = target;
+          };
+          requestAnimationFrame(step);
+        });
+      };
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries.some(function (en) { return en.isIntersecting; })) { run(); io.disconnect(); }
+        }, { threshold: 0.4 });
+        io.observe(stats);
+      } else { run(); }
+    }
+  })();
+  </script>
+  <script>
+  (function () {
+    var el = document.getElementById('rec-final');
+    if (!el) return;
+    function sync() {
+      if (window.innerWidth <= 900) { el.style.top = ''; return; }
+      el.style.top = Math.min(0, window.innerHeight - el.offsetHeight) + 'px';
+    }
+    sync();
+    window.addEventListener('resize', sync);
+    if ('ResizeObserver' in window) { new ResizeObserver(sync).observe(el); }
+  })();
+  </script>
+"""
+
+
+RECOVERY_BODY = """    <section class="subhero-parallax rec-hero-stage">
+      <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; CO₂ 리커버리</div>
+      <div class="hero-fit">
+        <video class="subhero-parallax-img rec-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+          <source src="../../assets/video/recovery-hero.mp4" type="video/mp4" />
+        </video>
+        <div class="subhero-textbox">
+          <span class="ind-hero-eyebrow">COLD JET × VATEK / CO₂ RECOVERY SYSTEM</span>
+          <h1>버려지던 CO₂를<br><span class="bls-hero-accent">다시 생산 자원으로.</span></h1>
+          <p class="bls-hero-main">드라이아이스 생산 과정에서 기체로 빠져나가는 CO<sub>2</sub>를 포집하고 다시 액화해 펠렛타이저로 돌려보냅니다. 같은 원료에서 더 많은 드라이아이스를 생산하는 폐쇄형 순환 시스템입니다.</p>
+        </div>
+        <div class="pel-hero-mask" aria-hidden="true">
+          <img src="../../assets/img/coldjet-logo.png" alt="" />
+          <span>×</span>
+          <img src="../../assets/img/vatek-logo-wordmark.png" alt="" />
+        </div>
+      </div>
+    </section>
+  <section class="plt-definition rec-cover tint-hatch" id="what-is-reco2">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">WHAT IS RE-CO2?</span><h2 class="plt-title">버려지던 절반의 CO<sub>2</sub>를,<br>다시 드라이아이스로.</h2></div>
+        <p class="plt-lead">펠렛타이저에서 LCO<sub>2</sub>를 대기압으로 낮추면 약 절반은 드라이아이스 스노우가 되고, 나머지 절반은 가스가 되어 배출됩니다. RE-CO2 리커버리 시스템은 이 리버트 가스를 포집해 다시 액화하고, 펠렛타이저로 되돌려 보냅니다.</p>
+      </div>
+      <div class="bls-showcase-frame reveal">
+        <div class="bls-showcase">
+          <div class="bls-showcase-body">
+            <span class="bls-dot-eyebrow">LCO2-TO-DRY ICE CONVERSION</span>
+            <h3>LCO<sub>2</sub> 비용을<br>절반으로.</h3>
+            <p>리버트 가스를 회수해 다시 펠렛으로 만들면 드라이아이스 생산 비용을 최대 40%까지 낮출 수 있습니다. 모듈식 설계와 여러 단계의 액화 용량으로 현장 규모에 맞게 구성하며, Cold Jet 펠렛타이저는 물론 통합 블라스팅 시스템과 대부분의 타사 펠렛타이저에도 연결됩니다.</p>
+            <div class="rec-stats">
+              <div><strong><span class="rec-count" data-count="40">0</span><i>%</i></strong><span>드라이아이스 생산 비용 절감 (최대)</span></div>
+              <div><strong><span class="rec-count" data-count="70">0</span><i>%</i></strong><span>같은 LCO<sub>2</sub>로 더 많은 생산량 (최대)</span></div>
+              <div><strong><span class="rec-count" data-count="12">0</span><i>개월</i></strong><span>대부분의 현장에서 투자 회수 기간</span></div>
+            </div>
+          </div>
+          <div class="rec-showcase-visual">
+            <div class="bls-showcase-media">
+              <video id="recShowcaseVideo" class="bls-media-fade" muted loop playsinline preload="auto">
+                <source src="../../assets/video/recovery-cost-savings.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="rec-showcase-ctrl">
+              <span class="bls-showcase-cap">COLD JET&nbsp;&nbsp;/&nbsp;&nbsp;RE-CO2 RECOVERY</span>
+              <button type="button" class="bls-play-btn" id="recShowcasePlayBtn" aria-label="영상 재생">
+                <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section cmp-dark rec-how" id="how-it-works">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">ENGINEERED FOR RELIABILITY</span><h2 class="plt-title">오래, 안정적으로 운전하는 설계.<br>그것이 Cold Jet 리커버리의 품질입니다.</h2></div>
+        <p class="plt-lead">RE-CO2는 CO<sub>2</sub>를 회수하는 장비를 넘어, 생산 현장에서 흔들림 없이 운전하도록 설계된 시스템입니다.</p>
+      </div>
+      <div class="bls-showcase-frame reveal">
+        <div class="bls-showcase">
+          <div class="bls-showcase-media">
+            <video id="recProcessVideo" class="bls-media-fade" muted loop playsinline preload="auto">
+              <source src="../../assets/video/recovery-process.mp4" type="video/mp4" />
+            </video>
+            <span class="bls-showcase-cap">COLD JET&nbsp;&nbsp;/&nbsp;&nbsp;RE-CO2 RECOVERY</span>
+            <button type="button" class="bls-play-btn" id="recProcessPlayBtn" aria-label="영상 재생">
+              <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
+            </button>
+          </div>
+          <div class="bls-showcase-body">
+            <span class="bls-dot-eyebrow">RELIABILITY BY DESIGN</span>
+            <h3>회수 장비가 아니라,<br>믿고 맡길 수 있는 운전 시스템입니다.</h3>
+            <p>RE-CO2는 제어·냉각·배관·전기 계통까지 하나의 시스템으로 설계해, 생산 현장에서 흔들림 없는 성능을 유지합니다.</p>
+            <p>폐회로 구조로 회수된 CO<sub>2</sub>의 품질을 일정하게 유지하고, 강화된 내구성과 원격 진단 기능으로 장기간 안정적인 운전을 지원합니다.</p>
+          </div>
+        </div>
+      </div>
+      <div class="plt-reason-grid rec-how-grid">
+        <article class="plt-reason"><span class="num">01</span><h3>폐회로 방식의 안정적인 품질</h3><p>외부와 섞이지 않는 폐회로 안에서 재액화되어, 회수된 CO<sub>2</sub>의 품질이 항상 일정합니다.</p></article>
+        <article class="plt-reason"><span class="num">02</span><h3>생산과 함께 움직이는 자동 제어</h3><p>펠렛타이저의 PLC·HMI와 연동되어 리커버리 시스템이 유기적으로 운전됩니다.</p></article>
+        <article class="plt-reason"><span class="num">03</span><h3>장시간 운전을 견디는 내구 설계</h3><p>배관·구동·전기 계통까지 유지보수성과 내구성을 고려해 현장 운전에 맞게 설계했습니다.</p></article>
+        <article class="plt-reason"><span class="num">04</span><h3>환경 대응과 원격 지원</h3><p>고온·실외 설치 조건까지 검증되었고, 원격 진단으로 빠르고 정확하게 대응합니다.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section" id="why-reco2">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">WHY RE-CO2</span><h2 class="plt-title">같은 LCO2로,<br>더 많은 드라이아이스를 생산합니다.</h2></div>
+        <p class="plt-lead">버려지던 CO<sub>2</sub>를 다시 생산에 활용해 원료 손실을 줄이고 생산 효율을 높입니다. 모듈식 구성으로 필요한 규모에서 시작해 확장할 수 있으며, 기존 드라이아이스 생산 설비에도 유연하게 적용할 수 있습니다.</p>
+      </div>
+      <div class="bls-tech-list">
+        <article class="bls-tech reveal">
+          <div class="bls-tech-media"><img src="../../assets/img/recovery-hero-official.jpg" alt="Cold Jet RE-CO2 리커버리 유닛과 실내 설치 구성 렌더링" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-body">
+            <span class="bls-num">01</span>
+            <span class="bls-en">GREATER SUSTAINABILITY</span>
+            <h3>CO<sub>2</sub>는 덜 버리고,<br>생산량은 더 높입니다.</h3>
+            <p>드라이아이스 생산 중 대기로 배출되던 CO<sub>2</sub>를 회수해 다시 사용합니다. 실제 적용 현장에서는 동일한 양의 LCO<sub>2</sub>로 최대 70% 더 많은 드라이아이스를 생산한 사례도 보고되었습니다.</p>
+          </div>
+        </article>
+        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+          <div class="bls-tech-media"><img src="../../assets/img/recovery-modular-array.jpg" alt="다수의 RE-CO2 모듈형 리커버리 유닛이 나란히 설치된 현장" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-body">
+            <span class="bls-num">02</span>
+            <span class="bls-en">GREATER VERSATILITY</span>
+            <h3>필요한 규모에서 시작하고,<br>생산에 맞춰 확장합니다.</h3>
+            <p>모듈식 설계로 생산 규모와 현장 조건에 맞는 리커버리 시스템을 구성할 수 있습니다. 필요한 용량으로 시작한 뒤 생산량이 증가하면 시스템을 단계적으로 확장할 수 있습니다.</p>
+          </div>
+        </article>
+        <article class="bls-tech reveal">
+          <div class="bls-tech-media"><img src="../../assets/img/recovery-integration-render.jpg" alt="펠렛타이저 라인에 연결된 RE-CO2 리커버리 시스템 렌더링" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-body">
+            <span class="bls-num">03</span>
+            <span class="bls-en">GREATER INTEGRATION</span>
+            <h3>기존 생산라인에도<br>유연하게 연결됩니다.</h3>
+            <p>Cold Jet 펠렛타이저는 물론 다양한 브랜드의 드라이아이스 생산 설비와 연동할 수 있습니다. 설치 공간이 부족한 경우에는 벌크 LCO<sub>2</sub> 탱크 인근의 외부 공간에 설치하는 구성도 가능합니다.</p>
+          </div>
+        </article>
+      </div>
+      <blockquote class="bls-quote reveal">“CO<sub>2</sub> 비율이 2.4:1에서 1.35:1로 바로 개선됐습니다. 수익, 생산 능력, 회사 전체 성과가 크게 좋아졌습니다.”<cite>Richard Nimmons · Carbon Capture Scotland</cite></blockquote>
+    </div>
+  </section>
+
+  <section class="plt-section plt-category-select tint-hatch" id="models">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">RE-CO2 LINEUP</span><h2 class="plt-title">펠렛타이저 생산량에 맞춰<br>선택하는 네 가지 용량.</h2></div>
+        <p class="plt-lead">시간당 80 kg부터 3,500 kg까지, 함께 운용하는 펠렛타이저의 생산 능력에 맞는 회수 용량을 고릅니다. 모델을 선택하면 상세 사양을 볼 수 있습니다.</p>
+      </div>
+      <div class="rec-lineup">
+        <a class="rec-lineup-item reveal" href="re-co2-80.html">
+          <div class="rec-lineup-media"><img src="../../assets/img/recovery-reco2-80-product.jpg" alt="Cold Jet RE-CO2 80" loading="lazy" decoding="async" /></div>
+          <div class="rec-lineup-body">
+            <span class="plt-category-num">01</span>
+            <h3>RE-CO2 80</h3>
+            <div class="rec-lineup-spec"><strong>80<i>kg/h</i></strong><span>최대 회수량 · 176 lbs/h</span></div>
+            <p>PE 80 펠렛타이저와 짝을 이루는 소규모 자체 생산용 모델입니다.</p>
+            <span class="bls-more">모델 상세 보기 <i>→</i></span>
+          </div>
+        </a>
+        <a class="rec-lineup-item reveal" href="re-co2-160.html" style="--reveal-delay:0.06s">
+          <div class="rec-lineup-media"><img src="../../assets/img/recovery-reco2-160-product.jpg" alt="Cold Jet RE-CO2 160" loading="lazy" decoding="async" /></div>
+          <div class="rec-lineup-body">
+            <span class="plt-category-num">02</span>
+            <h3>RE-CO2 160</h3>
+            <div class="rec-lineup-spec"><strong>160<i>kg/h</i></strong><span>최대 회수량 · 352 lbs/h</span></div>
+            <p>PR120H 펠렛타이저와 함께 구성하는 중소 규모 생산 라인용입니다.</p>
+            <span class="bls-more">모델 상세 보기 <i>→</i></span>
+          </div>
+        </a>
+        <a class="rec-lineup-item reveal" href="re-co2-320-v2.html" style="--reveal-delay:0.12s">
+          <div class="rec-lineup-media"><img src="../../assets/img/recovery-reco2-320-product.jpg" alt="Cold Jet RE-CO2 320 V2" loading="lazy" decoding="async" /></div>
+          <div class="rec-lineup-body">
+            <span class="plt-category-num">03</span>
+            <h3>RE-CO2 320 V2</h3>
+            <div class="rec-lineup-spec"><strong>320<i>kg/h</i></strong><span>최대 회수량 · 705 lbs/h</span></div>
+            <p>PR350H·PR750H와 짝을 이루며, 동급에서 가장 지능적이고 확장성 높은 리커버리 시스템입니다.</p>
+            <span class="bls-more">모델 상세 보기 <i>→</i></span>
+          </div>
+        </a>
+        <a class="rec-lineup-item is-wide reveal" href="re-co2-3500.html" style="--reveal-delay:0.18s">
+          <div class="rec-lineup-media"><img src="../../assets/img/recovery-reco2-3500-render.jpg" alt="Cold Jet RE-CO2 3500 컨테이너형 설쉱" loading="lazy" decoding="async" /></div>
+          <div class="rec-lineup-body">
+            <span class="plt-category-num">04</span>
+            <h3>RE-CO2 3500</h3>
+            <div class="rec-lineup-spec"><strong>3,500<i>kg/h</i></strong><span>최대 회수량 · 7,716 lbs/h</span></div>
+            <p>PR750H 3대 이상을 운용하는 대형 생산 시설용 컨테이너형 자율 운전 시스템입니다. CO<sub>2</sub>(R744)를 냉매로 사용해 회수 톤당 에너지 소비가 가장 낮습니다.</p>
+            <span class="bls-more">모델 상세 보기 <i>→</i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section" id="pairing">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">WHICH ONE FITS?</span><h2 class="plt-title">내 펠렛타이저에는<br>어떤 RE-CO2가 맞을까.</h2></div>
+        <p class="plt-lead">회수 용량은 펠렛타이저의 시간당 생산량을 기준으로 정합니다. 여러 대를 운용하거나 향후 증설 계획이 있다면 한 단계 위 모델이나 3500을 검토합니다.</p>
+      </div>
+      <div class="bls-matrix-wrap">
+        <table class="bls-matrix">
+          <thead><tr><th>모델</th><th>회수 용량</th><th>적합 펠렛타이저</th><th>특징</th></tr></thead>
+          <tbody>
+            <tr><th>RE-CO2 80</th><td>80 kg/h</td><td>PE 80</td><td>소규모 자체 생산 · 모듈형</td></tr>
+            <tr><th>RE-CO2 160</th><td>160 kg/h</td><td>PR120H</td><td>중소 규모 생산 라인</td></tr>
+            <tr><th>RE-CO2 320 V2</th><td>320 kg/h</td><td>PR350H · PR750H</td><td>동급 최고 수준의 지능형 제어 · 확장성 · 지속가능성</td></tr>
+            <tr><th>RE-CO2 3500</th><td>3,500 kg/h</td><td>PR750H 3대 이상</td><td>컨테이너형 자율 운전 · CO<sub>2</sub>(R744) 냉매 · 최저 에너지 소비</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="plt-compare-note rec-note">※ 용량은 Cold Jet 공식 사양 기준입니다. 통합 블라스팅 시스템과 타사 펠렛타이저 연결 여부, 실외 설치와 전기 요건은 현장 조건에 따라 별도로 검토합니다.</p>
+    </div>
+  </section>
+
+  <section class="plt-section faq-section tint-hatch" id="faq">
+    <div class="wrap">
+    <div class="faq-head">
+      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>
+      <p class="faq-intro">Cold Jet이 전 세계 고객에게 가장 많이 받는 CO<sub>2</sub> 리커버리 질문을 정리했습니다.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">CO<sub>2</sub> 리커버리 시스템은 무엇이고 어떻게 작동하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>기존 드라이아이스 생산 설비에 추가하는 장치입니다. 일반 생산 과정에서 사용되지 않고 배출되던 CO<sub>2</sub> 가스를 포집·회수해, 더 많은 드라이아이스를 만드는 데 다시 사용합니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">LCO<sub>2</sub>를 얼마나 절약할 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>드라이아이스 생산 중 배출되던 LCO<sub>2</sub>의 최대 40%를 절약할 수 있습니다. 같은 양의 LCO<sub>2</sub>로 생산량을 늘리는 쪽으로 활용할 수도 있습니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">기존 생산 설비에 연결할 수 있나요? 추가 장비가 필요한가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>현재 사용 중인 드라이아이스 생산 장비와 매끄럽게 연결되도록 설계되어 있으며, 추가 장비나 개조는 최소한으로 필요합니다. 대부분의 펠렛타이저 브랜드와 호환됩니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">회수한 CO<sub>2</sub>는 벌크 탱크로 돌아가나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>아니요. 재액화된 CO<sub>2</sub>는 밸브를 거쳐 펠렛타이저로 액체를 공급하는 배관에 합류합니다. 가스 공급사는 외부 물질이나 회수 CO<sub>2</sub>를 벌크 탱크에 넣는 것을 엄격히 금지하고 있으며, RE-CO2는 이 규정을 지키면서 고품질 액체 CO<sub>2</sub>를 펠렛타이저에 지속적으로 공급합니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">드라이아이스 품질에 영향이 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>없습니다. 회수된 CO<sub>2</sub> 가스는 생산에 사용되는 LCO<sub>2</sub>와 같은 품질이며, 밀폐 순환 구조라 오염 가능성이 없습니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">투자 회수 기간은 어느 정도인가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>생산량과 CO<sub>2</sub> 사용량에 따라 다르지만, 많은 경우 12개월 이내에 투자를 회수합니다. 운영은 간단하고 유지보수도 최소한으로, 정기 점검만 권장됩니다.</p></div>
+      </details>
+    </div>
+    </div>
+  </section>
+
+  <section class="bls-sec bls-final last-freeze" id="rec-final">
+    <div class="wrap">
+      <div class="bls-final-grid">
+        <div>
+          <span class="cmp-eyebrow">START SAVING</span>
+          <h2 class="cmp-h2">지금 배출하는 CO<sub>2</sub>가,<br>내일의 생산량입니다.</h2>
+        </div>
+        <div>
+          <div class="cmp-lead">
+            <p>펠렛타이저 모델과 시간당 생산량, 설치 공간만 알려주시면 적합한 RE-CO2 용량과 예상 절감 효과를 계산해 드립니다.</p>
+            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 현장 검토부터 설치, 시운전, 교육과 A/S까지 전 과정을 지원합니다.</p>
+          </div>
+          <div class="cmp-cta-btns">
+            <a class="cta-btn" href="../../products/quote.html">절감 효과 상담 요청</a>
+            <a class="cmp-btn-ghost" href="../pelletizer/index.html">펠렛타이저 보기</a>
+          </div>
+          <a class="bls-textlink" href="https://www.coldjet.com/wp-content/uploads/Cold-Jet-Dry-Ice-CO2-Recovery-Systems-20250814-DL.pdf" target="_blank" rel="noopener">Cold Jet RE-CO2 브로슈어 (PDF) →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+"""
+
+
 def build_recovery(root, nav_html, footer_html, page_shell, asset):
-    extra_head = '\n<link rel="stylesheet" href="%srecovery-page.css?v=20260913-1" />' % asset('assets/css/', 2)
-    build_group_index(
-        root, "products", "recovery", "CO2 리커버리",
+    depth = 2
+    extra_head = (
+        '\n<link rel="stylesheet" href="%spelletizer-page.css?v=20260914-10" />'
+        '\n<link rel="stylesheet" href="%srecovery-page.css?v=20260915-27" />'
+    ) % (asset('assets/css/', depth), asset('assets/css/', depth))
+    html = page_shell(
+        "CO2 리커버리",
         "드라이아이스 생산 중 배출되는 CO2 가스를 회수해 재사용하는 리커버리 시스템입니다. "
         "펠렛타이저 생산능력에 맞춰 4단계 모델을 제공합니다.",
-        RECOVERY_MODELS, None, nav_html, footer_html, page_shell, asset,
-        intro_html=RECOVERY_INTRO_HTML,
-        hero_html=RECOVERY_HERO_HTML, cover_class="rec-cover", extra_head=extra_head,
+        depth, "products", RECOVERY_BODY, extra_script=RECOVERY_SCRIPT, extra_head=extra_head,
     )
+    group_dir = os.path.join(root, "products", "recovery")
+    os.makedirs(group_dir, exist_ok=True)
+    with open(os.path.join(group_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(html)
     for m in RECOVERY_MODELS:
         build_model_page(root, "products", "recovery", "CO2 리커버리", m, RECOVERY_MODELS,
                           nav_html, footer_html, page_shell, asset)

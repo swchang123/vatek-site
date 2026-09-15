@@ -2562,10 +2562,11 @@ a.footer-line:hover { color: var(--white); }
    으로 축소/확대한다. 텍스트 박스·로고 마스크는 스테이지 안에서 %/cqw 단위로 배치되므로
    화면 폭이 달라도 구도가 그대로 스케일된다. 가로로 긴 창에서 생기는 좌우 여백은 같은 영상을
    블러 처리한 앰비언트 레이어(.hero-fit-ambient, main.js가 복제 삽입)가 채운다. */
-.bls-hero-stage, .rec-hero-stage, .aut-hero-stage { height: min(calc(100vh - 76px), 56.25vw); min-height: 0; }
-.pel-hero-stage { height: min(calc(100vh - 76px), 42.86vw); min-height: 0; }
+.bls-hero-stage, .aut-hero-stage { height: min(calc(100vh - 76px), 56.25vw); min-height: 0; }
+.pel-hero-stage, .rec-hero-stage { height: min(calc(100vh - 76px), 42.86vw); min-height: 0; }
 .hero-fit { position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); height: 100%; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; z-index: 1; container-type: inline-size; }
 .pel-hero-stage .hero-fit { aspect-ratio: 21 / 9; }
+.rec-hero-stage .hero-fit { aspect-ratio: 21 / 9; }
 .hero-fit .subhero-parallax-img { top: 0 !important; height: 100% !important; object-fit: cover; object-position: 50% 50%; }
 .hero-fit-ambient { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; filter: blur(28px) brightness(.55) saturate(.9); z-index: 0; pointer-events: none; }
 .subhero-parallax:has(.hero-fit)::after { z-index: 2; }

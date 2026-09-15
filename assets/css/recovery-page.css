@@ -49,8 +49,110 @@
 .rec-hero-stage .subhero-textbox h1{white-space:normal;font-size:clamp(32px,4.4vw,52px);line-height:1.22}
 video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 .rec-hero-stage .subhero-parallax-img{top:0 !important;height:100% !important}
-.rec-cover{position:relative;z-index:2;margin-top:-64px;clip-path:inset(0 round 72px 72px 0 0)}
-@media (max-width:640px){.rec-cover{margin-top:-28px;clip-path:inset(0 round 40px 40px 0 0)}}
+.rec-cover{position:relative;left:50%;right:50%;width:100vw;z-index:2;margin-left:-50vw;margin-right:-50vw;margin-top:-64px;padding:clamp(64px,8vw,96px) 0 clamp(72px,8vw,128px);background:var(--white);clip-path:inset(0 round 72px 72px 0 0)}
+.rec-cover.tint-hatch{background-color:#eaf0f0;background-image:radial-gradient(ellipse at 15% 0%, rgba(79,173,184,.14), transparent 55%), repeating-linear-gradient(135deg, rgba(40,55,57,.045) 0px, rgba(40,55,57,.045) 1px, transparent 1px, transparent 14px)}
+.rec-cover > .wrap{max-width:1560px;padding:0 clamp(24px,4vw,64px)}
+@media (max-width:640px){.rec-cover{margin-top:-28px;clip-path:inset(0 round 40px 40px 0 0);padding-top:40px}}
+/* ---- body sections (pelletizer/blaster vocabulary) ---- */
+.plt-section.tint-hatch{background-color:#eaf0f0;background-image:radial-gradient(ellipse at 15% 0%, rgba(79,173,184,.14), transparent 55%), repeating-linear-gradient(135deg, rgba(40,55,57,.045) 0px, rgba(40,55,57,.045) 1px, transparent 1px, transparent 14px)}
+.rec-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px;padding-top:24px;border-top:1px solid var(--gray-line)}
+/* 텍스트(좌) + 영상(우, 작게) 2단 배치. 영상은 원본 852×480 중 위아래 62px 레터박스만 제거한 852×356 유효화면을 그대로 보이며,
+   경계 혼합 픽셀(상하 1px)만 숨기기 위해 박스 바율을 852/354로 잡고 영상 배경과 동일한 흰색으로 맞춰 테두리·모서리가 드러나지 않게 한다. */
+#what-is-reco2 .bls-showcase{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,4vw,72px);align-items:center}
+#what-is-reco2 .rec-showcase-visual{display:flex;flex-direction:column;gap:14px;min-width:0}
+#what-is-reco2 .bls-showcase-media{width:100%;aspect-ratio:852/354;min-height:0;border-radius:0;background:#fff;box-shadow:none}
+#what-is-reco2 .bls-showcase-media img,#what-is-reco2 .bls-showcase-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.003);transform-origin:center}
+#what-is-reco2 .bls-showcase-media::after,#what-is-reco2 .bls-showcase-media::before{display:none}
+#what-is-reco2 .rec-showcase-ctrl{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 2px}
+#what-is-reco2 .bls-showcase-cap{position:static;background:none;padding:0;border-radius:0;backdrop-filter:none;color:var(--text-muted);font-size:12px;font-weight:700;letter-spacing:1.5px;white-space:nowrap}
+/* 재생 버튼 강조: 진한 틸 배경 + 원형 아이콘 + 펄스 링 (재생 중에는 정지) */
+#what-is-reco2 .bls-play-btn{position:relative;right:auto;bottom:auto;flex:none;white-space:nowrap;padding:9px 16px 9px 18px;gap:9px;border:0;border-radius:8px;background:var(--ice-dark,#186973);color:#fff;font-size:13.5px;font-weight:700;letter-spacing:.2px;box-shadow:0 6px 18px rgba(24,105,115,.28);backdrop-filter:none}
+#what-is-reco2 .bls-play-btn:hover{background:var(--ice,#4fadb8);box-shadow:0 8px 22px rgba(24,105,115,.36)}
+#what-is-reco2 .bls-play-btn .bls-play-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;background:#fff;color:var(--ice-dark,#186973);font-size:10px;padding-left:1px}
+#what-is-reco2 .bls-play-btn.is-playing .bls-play-icon{font-size:9px;padding-left:0}
+#what-is-reco2 .bls-play-btn::before{content:"";position:absolute;inset:-5px;border-radius:12px;border:2px solid rgba(79,173,184,.7);animation:recPlayPulse 1.8s ease-out infinite;pointer-events:none}
+#what-is-reco2 .bls-play-btn.is-playing::before{animation:none;opacity:0}
+@keyframes recPlayPulse{0%{transform:scale(.92);opacity:.9}100%{transform:scale(1.28);opacity:0}}
+@media (prefers-reduced-motion:reduce){#what-is-reco2 .bls-play-btn::before{animation:none;opacity:0}}
+#what-is-reco2 .bls-showcase-body{display:block;padding:0;min-width:0}
+#what-is-reco2 .bls-showcase-body h3{margin:0 0 16px}
+#what-is-reco2 .bls-showcase-body p{margin:0}
+@media (max-width:1100px){#what-is-reco2 .bls-showcase{grid-template-columns:1fr}#what-is-reco2 .rec-showcase-visual{order:-1;max-width:760px;margin:0 auto;width:100%}}
+.rec-stats strong{display:block;font-size:clamp(40px,3.4vw,56px);font-weight:800;letter-spacing:-0.035em;color:var(--navy);line-height:1;font-variant-numeric:tabular-nums}
+.rec-stats strong i{font-style:normal;font-size:.5em;font-weight:800;color:var(--ice-dark);margin-left:2px}
+.rec-stats span{display:block;margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--text-body);word-break:keep-all}
+.rec-stats strong .rec-count{display:inline;margin:0;font:inherit;line-height:inherit;color:inherit;letter-spacing:inherit}
+.rec-how{background-color:var(--navy-deep);background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 1px, transparent 1px, transparent 14px);border-top:0;color:#fff}
+.rec-how .plt-eyebrow{color:var(--ice)}
+.rec-how .plt-title{color:#fff}
+.rec-how .plt-lead{color:rgba(255,255,255,.75)}
+.rec-how .plt-reason-stage{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+/* HOW IT WORKS: pelletizer 정의 섹션과 동일한 큰 영상(bls-showcase) 패턴을 다크 배경에 맞게 재색칠 */
+.rec-how .bls-showcase-frame{background:rgba(255,255,255,.11);background-image:none;border:1px solid rgba(255,255,255,.12);box-shadow:none;backdrop-filter:blur(3px)}
+.rec-how .bls-showcase{align-items:center}
+.rec-how .bls-showcase-body{color:rgba(255,255,255,.82)}
+.rec-how .bls-dot-eyebrow{color:var(--ice)}
+.rec-how .bls-dot-eyebrow::before{background:var(--ice)}
+.rec-how .bls-showcase-body h3{color:#fff}
+.rec-how .bls-showcase-body p{color:rgba(255,255,255,.72)}
+.rec-how .bls-showcase-body p+p{margin-top:14px}
+.rec-how-grid{margin-top:clamp(28px,3vw,44px);grid-template-rows:none;grid-template-columns:repeat(4,minmax(0,1fr))}
+.rec-how-grid .plt-reason{justify-content:flex-start}
+@media (max-width:1100px){.rec-how-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.rec-how-grid{grid-template-columns:1fr}}
+.rec-how .plt-reason{background:rgba(255,255,255,.09);background-image:none;border-color:rgba(255,255,255,.12);backdrop-filter:blur(2px)}
+.rec-how .plt-reason h3{color:#fff}
+.rec-how .plt-reason p{color:rgba(255,255,255,.68)}
+.rec-process-panel{position:relative;display:flex;align-items:center;justify-content:center;padding:clamp(24px,3vw,48px);background:#fff;border-radius:18px;box-shadow:0 1px 2px rgba(15,25,26,.06), 0 28px 60px rgba(0,0,0,.35)}
+.rec-process-panel img{display:block;width:100%;height:auto;max-height:640px;object-fit:contain}
+.rec-process-panel video{display:block;width:100%;height:auto;max-height:640px;object-fit:contain;background:#fff}
+.rec-process-cap{position:absolute;left:24px;bottom:18px;font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--text-muted)}
+.rec-how .plt-reason .num{display:block;margin:0 0 10px;font-size:14px;font-weight:800;letter-spacing:2px;color:var(--ice-dark);font-variant-numeric:tabular-nums}
+#why-reco2 .bls-tech-list{grid-template-columns:1fr}
+#why-reco2 .bls-tech{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+#why-reco2 .bls-tech-media{aspect-ratio:4/3}
+#why-reco2 .bls-tech-media img{width:100%;height:100%;object-fit:cover}
+#why-reco2 .bls-tech-body{position:relative;padding-left:clamp(20px,2.4vw,32px)}
+#why-reco2 .bls-tech-body::before{content:"";position:absolute;left:0;top:10%;bottom:10%;width:1.5px;background:rgba(40,55,57,.42)}
+.bls-quote cite{display:block;margin-top:18px;font-style:normal;font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--text-muted)}
+/* ---- RE-CO2 LINEUP: 3 세로형 제품 카드(80·160·320) + 하단 가로형 3500. 이미지 우선(카드 높이의 2/3), 흰 배경 위 contain. ---- */
+.rec-lineup{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.2vw,32px);background:transparent}
+.rec-lineup-item{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid var(--gray-line);border-radius:var(--radius);overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s}
+.rec-lineup-item:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.rec-lineup-media{position:relative;aspect-ratio:1/1.05;background:#fff;display:flex;align-items:center;justify-content:center;padding:clamp(18px,2vw,32px) clamp(18px,2vw,32px) 0;box-sizing:border-box}
+.rec-lineup-media::after{content:"";position:absolute;left:8%;right:8%;bottom:6%;height:14%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(27,36,38,.10),rgba(27,36,38,0) 70%);pointer-events:none}
+.rec-lineup-media img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;transition:transform .4s ease}
+.rec-lineup-item:hover .rec-lineup-media img{transform:scale(1.03)}
+.rec-lineup-body{display:flex;flex-direction:column;flex:1;padding:clamp(20px,2vw,28px) clamp(22px,2.2vw,32px) clamp(24px,2.2vw,32px);border-top:1px solid var(--gray-line)}
+.rec-lineup-body h3{margin:6px 0 14px;font-size:clamp(22px,1.7vw,26px);font-weight:800;letter-spacing:-0.02em;color:var(--navy)}
+.rec-lineup-spec{display:flex;align-items:baseline;gap:12px;padding:12px 0;border-top:1px solid var(--gray-line);border-bottom:1px solid var(--gray-line);margin-bottom:14px}
+.rec-lineup-spec strong{font-size:clamp(26px,2.1vw,32px);font-weight:800;letter-spacing:-0.03em;color:var(--navy);line-height:1;font-variant-numeric:tabular-nums}
+.rec-lineup-spec strong i{font-style:normal;font-size:.5em;font-weight:800;color:var(--ice-dark);margin-left:3px}
+.rec-lineup-spec span{font-size:13px;color:var(--text-muted);word-break:keep-all}
+.rec-lineup-body p{margin:0 0 16px;font-size:15px;line-height:1.75;color:var(--text-body);word-break:keep-all;text-wrap:pretty}
+.rec-lineup-body .bls-more{margin-top:auto}
+.rec-lineup-item.is-wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:stretch}
+.rec-lineup-item.is-wide .rec-lineup-media{aspect-ratio:auto;min-height:clamp(300px,26vw,400px);padding:clamp(24px,2.6vw,40px)}
+.rec-lineup-item.is-wide .rec-lineup-media img{object-position:center;width:100%;height:100%;max-width:100%;max-height:100%;margin:0}
+.rec-lineup-item.is-wide .rec-lineup-media::after{display:none}
+.rec-lineup-item.is-wide .rec-lineup-body{border-top:0;border-left:1px solid var(--gray-line);justify-content:center;padding:clamp(28px,3vw,48px)}
+.rec-lineup-item.is-wide .rec-lineup-body .bls-more{margin-top:0}
+.rec-lineup-item.is-wide .rec-lineup-body h3{font-size:clamp(26px,2.2vw,34px)}
+@media (max-width:1100px){.rec-lineup{grid-template-columns:repeat(2,minmax(0,1fr))}.rec-lineup-item:nth-child(3){grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}.rec-lineup-item:nth-child(3) .rec-lineup-media{aspect-ratio:auto;min-height:340px}.rec-lineup-item:nth-child(3) .rec-lineup-body{border-top:0;border-left:1px solid var(--gray-line);justify-content:center}.rec-lineup-item:nth-child(3) .rec-lineup-body .bls-more{margin-top:0}.rec-lineup-item.is-wide{grid-template-columns:1fr}.rec-lineup-item.is-wide .rec-lineup-body{border-left:0;border-top:1px solid var(--gray-line)}}
+@media (max-width:640px){.rec-lineup{grid-template-columns:1fr}.rec-lineup-item:nth-child(3){grid-template-columns:1fr}.rec-lineup-item:nth-child(3) .rec-lineup-media{aspect-ratio:1/1.05;min-height:0}.rec-lineup-item:nth-child(3) .rec-lineup-body{border-left:0;border-top:1px solid var(--gray-line)}}
+#models .plt-category-media{background:#fff}
+#models .plt-category-media img{object-fit:contain;padding:8%;box-sizing:border-box}
+.rec-note{margin:24px 0 0;font-size:13.5px;color:var(--text-muted);word-break:keep-all}
+.rec-faq{border-top:2px solid var(--navy);max-width:1100px}
+.rec-faq details{border-bottom:1px solid var(--gray-line)}
+.rec-faq summary{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:78px;padding:18px 6px;cursor:pointer;list-style:none;font-size:18px;font-weight:800;letter-spacing:-0.01em;color:var(--navy);word-break:keep-all}
+.rec-faq summary::-webkit-details-marker{display:none}
+.rec-faq summary b{flex:1;font-weight:inherit}
+.rec-faq summary span{flex:none;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:1.5px solid var(--gray-line);font-size:20px;font-weight:400;color:var(--ice-dark);transition:transform .25s, background .25s, color .25s}
+.rec-faq details[open] summary span{transform:rotate(45deg);background:var(--ice);border-color:var(--ice);color:#0b2c2f}
+.rec-faq details p{margin:0;padding:0 60px 26px 6px;font-size:16px;line-height:1.8;color:var(--text-body);word-break:keep-all}
+@media (max-width:1100px){.rec-how .plt-reason-stage{grid-template-columns:1fr}.rec-stats{grid-template-columns:1fr;gap:18px}}
+@media (max-width:760px){.rec-stats{grid-template-columns:1fr;gap:18px}.rec-faq summary{font-size:16px}.rec-faq details p{padding-right:16px}}
 .pel-hero-mask{position:absolute;z-index:2;right:2%;bottom:11%;width:20%;aspect-ratio:325/92;background:rgba(255,255,255,.7);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:14px}
 .pel-hero-mask img{height:26%;width:auto;object-fit:contain}
 .pel-hero-mask span{font-size:20px;font-weight:800;color:#0f1c1d}
