@@ -143,6 +143,41 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 #models .plt-category-media{background:#fff}
 #models .plt-category-media img{object-fit:contain;padding:8%;box-sizing:border-box}
 .rec-note{margin:24px 0 0;font-size:13.5px;color:var(--text-muted);word-break:keep-all}
+/* ---- RE-CO2 finder (pelletizer finder 어휘 재사용) ---- */
+#pairing{padding:clamp(48px,5vw,72px) 0 clamp(40px,4.5vw,64px)}
+#pairing .plt-finder-progress{grid-template-columns:repeat(2,minmax(0,1fr)) auto}
+.rec-model-options{grid-template-columns:repeat(4,minmax(0,1fr))}
+.rec-model-options i{height:150px;background-color:#fff;background-size:contain;background-position:center;background-repeat:no-repeat}
+.rec-model-options i::after{display:none}
+.rec-model-options i.shape-pe80{background-image:url('../img/pelletizer-pe80-official.jpg')}
+.rec-model-options i.shape-pr120h{background-image:url('../img/pelletizer-pr120h-official.jpg')}
+.rec-model-options i.shape-pr350h{background-image:url('../img/pelletizer-pr350h-official.jpg')}
+.rec-model-options i.shape-pr750h{background-image:url('../img/pelletizer-pr750h-official.jpg')}
+.rec-model-options b{margin:16px 18px 0;font-size:16px}
+.rec-model-options small{margin:4px 18px 18px;font-size:12.5px}
+.rec-count-options{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rec-growth-input{margin:16px 0 0;padding:16px 18px;background:#f4f6f6;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.rec-growth-input label{font-size:13px;font-weight:600;color:var(--rec-ink);margin-bottom:0;text-align:right}
+[data-rec-field="2"] > p:last-of-type{text-align:right}
+.rec-summary-list{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.rec-summary-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 18px;background:#f4f6f6;border-radius:10px}
+.rec-summary-row span{font-size:13px;color:var(--rec-muted)}
+.rec-summary-row b{font-size:14.5px;font-weight:700;color:var(--rec-ink)}
+#recProducts img{background:#fff}
+#faq{border-top:0;background:#fff}
+/* ---- THE COLD JET DIFFERENCE (펠렛타이저 비교 섹션 재사용, 페이지 중간 배치이므로 sticky 없이) ---- */
+#recCompare{padding:24px 0 clamp(72px,8vw,128px);background:#fff}
+#recCompare > .wrap{max-width:1560px;padding:0 clamp(24px,4vw,64px)}
+#recCompare .plt-compare-head b::before{content:"STANDARD PLANT-TYPE RECOVERY"}
+#recCompare .plt-compare-head strong::before{content:"COLD JET RE-CO2"}
+.rec-growth-input-row input{width:120px;padding:10px 12px;font-size:15px;border:1px solid var(--rec-line);border-radius:8px;background:#fff}
+.rec-growth-input-row span{font-size:13px;color:var(--rec-muted)}
+.rec-finder-visual img{display:block;width:100%;aspect-ratio:11/10;object-fit:contain;background:#fff}
+.rec-finder-visual .plt-finder-visual-caption{background:none;border:0;padding:0;box-shadow:none}
+.rec-growth-input-row{display:flex;align-items:center;justify-content:flex-end;flex-wrap:nowrap;flex-shrink:0;gap:10px}
+@media (max-width:1100px){.rec-model-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.rec-finder-visual img{max-width:160px}}
+@media (max-width:720px){.rec-model-options,.rec-count-options{grid-template-columns:1fr}}
 .rec-faq{border-top:2px solid var(--navy);max-width:1100px}
 .rec-faq details{border-bottom:1px solid var(--gray-line)}
 .rec-faq summary{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:78px;padding:18px 6px;cursor:pointer;list-style:none;font-size:18px;font-weight:800;letter-spacing:-0.01em;color:var(--navy);word-break:keep-all}

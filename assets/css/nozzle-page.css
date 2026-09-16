@@ -1,0 +1,166 @@
+/* ---- 노즐·액세서리 페이지 (pelletizer/recovery/automation 어휘 재사용) ---- */
+.noz-hero-stage .subhero-textbox{top:calc(50% - 38px);left:6%;transform:translate(0,-50%);text-align:left;width:fit-content;max-width:min(600px,90vw);padding:36px 44px}
+.noz-hero-stage .subhero-textbox h1{white-space:normal;font-size:clamp(32px,4.4vw,52px);line-height:1.22}
+.noz-hero-stage .subhero-parallax-img{top:0 !important;height:100% !important}
+video.noz-hero-video{object-fit:cover;background:var(--navy-deep)}
+
+/* 01 WHY — 쇼케이스(노즐 사진 + 3 수치) */
+#why-nozzle .bls-showcase{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center}
+#why-nozzle .bls-showcase-media{aspect-ratio:auto;background:#fff;display:flex;align-items:center;justify-content:center;padding:clamp(16px,2vw,32px);box-sizing:border-box}
+#why-nozzle .bls-showcase-media::after{display:none}
+#why-nozzle .bls-showcase-media img{display:block;width:auto;max-width:100%;max-height:520px;height:auto;object-fit:contain}
+#why-nozzle .bls-showcase-body p{margin:0}
+#why-nozzle .rec-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1100px){#why-nozzle .bls-showcase{grid-template-columns:1fr}#why-nozzle .bls-showcase-media{order:-1}}
+
+/* 02 TECHNOLOGY — 다크: 다이얼 0–3 + MERN */
+.noz-dial-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:clamp(28px,3vw,44px)}
+.noz-dial{position:relative;padding:26px 24px 24px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:16px;backdrop-filter:blur(2px)}
+.noz-dial .dial{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.noz-dial .dial b{font-size:clamp(40px,3.4vw,54px);font-weight:800;letter-spacing:-0.04em;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.noz-dial .dial span{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--ice)}
+.noz-dial h3{margin:0 0 8px;font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.01em}
+.noz-dial p{margin:0;font-size:14px;line-height:1.7;color:rgba(255,255,255,.68);word-break:keep-all}
+.noz-dial-bar{position:absolute;left:24px;right:24px;top:0;height:3px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,var(--ice),rgba(79,173,184,.15))}
+.noz-dial:nth-child(1) .noz-dial-bar{background:var(--ice)}
+.noz-dial:nth-child(2) .noz-dial-bar{background:linear-gradient(90deg,var(--ice) 70%,rgba(79,173,184,.15))}
+.noz-dial:nth-child(3) .noz-dial-bar{background:linear-gradient(90deg,var(--ice) 45%,rgba(79,173,184,.15))}
+.noz-dial:nth-child(4) .noz-dial-bar{background:linear-gradient(90deg,var(--ice) 20%,rgba(79,173,184,.15))}
+.noz-tech-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.noz-tech{padding:28px 30px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:16px;backdrop-filter:blur(2px)}
+.noz-tech .bls-en{color:var(--ice);margin-bottom:10px}
+.noz-tech h3{margin:0 0 10px;font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.01em;word-break:keep-all}
+.noz-tech p{margin:0;font-size:14.5px;line-height:1.75;color:rgba(255,255,255,.7);word-break:keep-all}
+.noz-tech ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.noz-tech li{position:relative;padding-left:16px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.72);word-break:keep-all}
+.noz-tech li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;background:var(--ice)}
+.noz-tech-note{margin:18px 0 0;font-size:13px;color:rgba(255,255,255,.5);word-break:keep-all}
+@media (max-width:1100px){.noz-dial-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.noz-dial-grid,.noz-tech-grid{grid-template-columns:1fr}}
+
+/* 03 NOZZLE FINDER — 필터 탭 + 스펙 카드 */
+#nozzle-finder .bls-head.is-row{margin-bottom:clamp(28px,3vw,40px)}
+.noz-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,20px)}
+.noz-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-line);border-radius:12px;padding:22px 22px 20px;position:relative;overflow:hidden;transition:opacity .4s ease,transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .35s,border-color .3s}
+.noz-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--ice),var(--ice-dark));transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.noz-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.noz-card:hover::after{transform:scaleX(1)}
+.noz-card.is-filter-out{opacity:0;transform:translateY(10px) scale(.96);pointer-events:none}
+.noz-card.is-filter-in{opacity:0;transform:translateY(14px) scale(.97)}
+.noz-card.is-hidden{display:none}
+.noz-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
+.noz-card-top .bls-prod-cat{margin:0;white-space:nowrap}
+.noz-card-top .bls-badge{flex-shrink:0}
+@media (max-width:1200px){.noz-card-top{flex-wrap:wrap}}
+.noz-card h3{margin:0 0 6px;font-size:clamp(22px,1.7vw,26px);font-weight:800;letter-spacing:-0.02em;color:var(--navy);font-variant-numeric:tabular-nums}
+.noz-card h3 small{display:block;margin-top:4px;font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--text-muted)}
+.noz-pos{margin:0 0 16px;font-size:14px;line-height:1.6;color:var(--text-body);word-break:keep-all;min-height:2.6em}
+.noz-spec{margin:auto 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;border-top:1px solid var(--gray-line);padding-top:14px}
+.noz-spec div{min-width:0}
+.noz-spec dt{margin:0 0 2px;font-size:10.5px;font-weight:800;letter-spacing:1.5px;color:var(--text-muted)}
+.noz-spec dd{margin:0;font-size:13.5px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;word-break:keep-all}
+.noz-fit{margin:14px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.noz-fit span{font-size:10.5px;font-weight:800;letter-spacing:1px;padding:4px 8px;border-radius:4px;background:#eef4f4;color:var(--ice-dark)}
+.noz-finder-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:center;margin-top:clamp(32px,3.5vw,48px)}
+.noz-finder-foot p{margin:0;max-width:760px;font-size:15.5px;line-height:1.8;color:var(--text-body);word-break:keep-all}
+@media (max-width:1200px){.noz-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.noz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.noz-finder-foot{grid-template-columns:1fr}}
+@media (max-width:560px){.noz-grid{grid-template-columns:1fr}}
+
+/* 04 ACCESSORIES — bls-tech 카드 6개 (이미지 상단 정렬, 본문 전체 폭) */
+#accessories .bls-tech{grid-template-rows:auto auto;align-items:start;row-gap:16px}
+#accessories .bls-tech-media{grid-column:1;grid-row:1;aspect-ratio:auto;align-self:stretch;height:auto;background:#f4f7f7}
+#accessories .bls-tech-media img{object-fit:contain;padding:6%;box-sizing:border-box}
+#accessories .bls-tech-media .img-ph{width:100%;height:100%;min-height:200px;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;box-sizing:border-box;font-size:12.5px;border-radius:3px}
+#accessories .bls-tech-head{grid-column:2;grid-row:1}
+#accessories .bls-tech-head .bls-en{margin-top:0}
+#accessories .bls-tech-copy{grid-column:1/-1;grid-row:2}
+#accessories .bls-tech-copy ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+#accessories .bls-tech-copy li{position:relative;padding-left:16px;font-size:14px;line-height:1.6;color:var(--text-body);word-break:keep-all}
+#accessories .bls-tech-copy li::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;background:var(--ice-dark)}
+#accessories .bls-tech-copy li b{color:var(--navy)}
+@media (max-width:700px){#accessories .bls-tech{grid-template-columns:1fr}#accessories .bls-tech-media,#accessories .bls-tech-head,#accessories .bls-tech-copy{grid-column:1}}
+
+/* 05 HOW TO ORDER — 3단계 */
+.noz-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.noz-step{padding:26px 28px;background:#fff;border:1px solid var(--gray-line);border-radius:16px}
+.noz-step .num{display:block;margin:0 0 12px;font-size:13px;font-weight:800;letter-spacing:2px;color:var(--ice-dark);font-variant-numeric:tabular-nums}
+.noz-step h3{margin:0 0 8px;font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-0.01em}
+.noz-step p{margin:0;font-size:14.5px;line-height:1.7;color:var(--text-body);word-break:keep-all}
+@media (max-width:900px){.noz-steps{grid-template-columns:1fr}}
+#faq{border-top:0;background:#fff}
+
+/* v3: 장비별 안내 패널 + 노즐 사진 */
+.noz-machine-notes{margin:0 0 clamp(20px,2.4vw,28px)}
+.noz-machine-note{display:none;grid-template-columns:minmax(200px,1fr) minmax(0,2.2fr) auto;gap:14px clamp(24px,3vw,48px);align-items:center;padding:clamp(20px,2.2vw,26px) clamp(22px,2.4vw,32px);background:var(--navy);color:#fff;border-radius:16px}
+.noz-machine-note.is-active{display:grid}
+.noz-machine-note .bls-en{color:var(--ice);margin:0 0 6px}
+.noz-machine-note h3{margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:800;letter-spacing:-0.01em;color:#fff}
+.noz-machine-note p{margin:0;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.74);word-break:keep-all}
+@media (max-width:1000px){.noz-machine-note{grid-template-columns:1fr}.noz-machine-note strong{white-space:normal;justify-self:start}}
+.noz-card{padding-top:0}
+.noz-media{margin:0 -22px 18px;aspect-ratio:4/3;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.noz-media img{width:100%;height:100%;object-fit:contain;padding:10%;box-sizing:border-box;display:block}
+.noz-media .img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12.5px;line-height:1.5;border-radius:0}
+
+.noz-empty{display:none;padding:clamp(36px,4vw,56px) 24px;text-align:center;background:#fff;border:1px dashed var(--gray-line);border-radius:14px}
+.noz-empty.is-active{display:flex;flex-direction:column;align-items:center;gap:18px}
+.noz-empty p{margin:0;font-size:15.5px;line-height:1.7;color:var(--text-body);max-width:520px;word-break:keep-all}
+
+.noz-nodefault{display:none;padding:clamp(36px,4vw,56px) 24px;text-align:center;background:#fff;border:1px dashed var(--gray-line);border-radius:14px;margin:0 0 clamp(20px,2.4vw,28px)}
+.noz-nodefault.is-active{display:flex;flex-direction:column;align-items:center}
+.noz-nodefault p{margin:0;font-size:15.5px;line-height:1.7;color:var(--text-body)}
+
+
+/* v5: 장비 선택 패널 · 추천 · 모델명 읽는 법 (재디자인) */
+.noz-head{max-width:none;margin-bottom:clamp(20px,2.2vw,28px)}
+.noz-head>div{max-width:1100px}
+.noz-unit-switch{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+.noz-unit-switch .bls-tabs{background:#e4eaea}
+.noz-unit-switch .bls-tabs button{padding:7px 14px 8px}
+.noz-pgroup-label{display:block;font-size:11px;font-weight:800;letter-spacing:2px;color:var(--ice-dark)}
+.noz-picker{background:#fff;border:1px solid var(--gray-line);border-radius:18px;padding:clamp(18px,2vw,24px) clamp(20px,2.2vw,30px) clamp(20px,2.2vw,28px);margin:0 0 14px;box-shadow:0 18px 44px -32px rgba(27,36,38,.4)}
+.noz-picker-head{display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap;margin-bottom:clamp(16px,1.8vw,22px);padding-bottom:16px;border-bottom:1px solid var(--gray-line)}
+.noz-picker-title{display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-width:0}
+.noz-picker-title .num{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--ice-dark);padding:6px 10px;border-radius:6px;background:var(--ice-pale);white-space:nowrap}
+.noz-picker-title h3{margin:0;font-size:clamp(17px,1.4vw,20px);font-weight:800;color:var(--navy);letter-spacing:-0.01em;word-break:keep-all}
+.noz-picker-title p{margin:0;flex-basis:100%;font-size:13.5px;color:var(--text-muted);word-break:keep-all}
+.noz-reset-link{appearance:none;border:none;background:none;cursor:pointer;padding:0;font-size:12.5px;font-weight:700;color:var(--ice-dark);text-decoration:underline;text-decoration-color:rgba(24,105,115,.35);text-underline-offset:2px}
+.noz-reset-link:hover{color:var(--navy)}
+.noz-picker-body{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px clamp(18px,2.4vw,36px)}
+.noz-pgroup{min-width:0;position:relative}
+.noz-pgroup .noz-pgroup-label{margin:0 0 10px;padding-left:2px}
+.noz-pgroup+.noz-pgroup::before{content:"";position:absolute;left:calc(-1 * clamp(9px,1.2vw,18px));top:4px;bottom:4px;width:1px;background:var(--gray-line)}
+.noz-pgroup-chips{display:grid;gap:6px}
+.noz-chip{appearance:none;cursor:pointer;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1px 12px;text-align:left;padding:10px 14px 10px 14px;border-radius:10px;border:1px solid var(--gray-line);background:#fff;color:var(--navy);transition:background .2s,border-color .2s,color .2s,box-shadow .2s}
+.noz-chip b{font-size:13.5px;font-weight:800;letter-spacing:-0.01em;word-break:keep-all}
+.noz-chip small{grid-column:1;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:.1px;word-break:keep-all}
+.noz-chip::after{content:"";grid-column:2;grid-row:1/3;width:8px;height:8px;border-radius:50%;border:1.5px solid #c9d3d3;transition:background .2s,border-color .2s,box-shadow .2s}
+.noz-chip:hover{border-color:var(--ice);background:var(--blue-pale)}
+.noz-chip.is-active{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 8px 18px -10px rgba(27,36,38,.6)}
+.noz-chip.is-active small{color:var(--ice)}
+.noz-chip.is-active::after{background:var(--ice);border-color:var(--ice);box-shadow:0 0 0 3px rgba(79,173,184,.28)}
+@media (max-width:1100px){.noz-picker-body{grid-template-columns:repeat(2,minmax(0,1fr))}.noz-pgroup:nth-child(3)::before{display:none}}
+@media (max-width:900px){.noz-unit-switch{align-items:flex-start}.noz-picker-head{align-items:flex-start}}
+@media (max-width:560px){.noz-picker-body{grid-template-columns:1fr}.noz-pgroup+.noz-pgroup::before{display:none}}
+.noz-machine-notes{margin:0 0 14px}
+.noz-rec{display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-self:end;max-width:320px}
+.noz-rec span{flex-basis:100%;font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--ice)}
+.noz-rec b{font-size:14px;font-weight:800;color:#fff;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.noz-rec small{font-size:12.5px;color:rgba(255,255,255,.62);word-break:keep-all}
+@media (max-width:1000px){.noz-rec{justify-self:start;max-width:none}}
+.noz-code{margin:0 0 clamp(28px,3vw,40px);padding:clamp(18px,2vw,24px) clamp(20px,2.2vw,30px) clamp(20px,2.2vw,26px);background:#fff;border:1px solid var(--gray-line);border-radius:18px}
+.noz-code-head{display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap;margin-bottom:clamp(16px,1.8vw,22px);padding-bottom:16px;border-bottom:1px solid var(--gray-line)}
+.noz-code-sample{display:inline-flex;align-items:baseline;gap:2px;padding:6px 14px;border-radius:8px;background:#f4f7f7;font-variant-numeric:tabular-nums}
+.noz-code-sample em{font-style:normal;font-size:22px;font-weight:800;letter-spacing:-0.02em;line-height:1;color:var(--navy)}
+.noz-code-sample em:nth-child(odd){color:var(--ice-dark)}
+.noz-code-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px clamp(18px,2.4vw,36px)}
+.noz-code-col{position:relative;min-width:0}
+.noz-code-col+.noz-code-col::before{content:"";position:absolute;left:calc(-1 * clamp(9px,1.2vw,18px));top:4px;bottom:4px;width:1px;background:var(--gray-line)}
+.noz-code-col .glyph{display:block;margin:0 0 10px;font-size:clamp(38px,3.4vw,52px);font-weight:800;letter-spacing:-0.03em;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums}
+.noz-code-col:nth-child(odd) .glyph{color:var(--ice-dark)}
+.noz-code-col strong{display:block;margin:0 0 6px;font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--ice-dark)}
+.noz-code-col p{margin:0;font-size:13.5px;line-height:1.6;color:var(--text-body);word-break:keep-all}
+.noz-code-foot{margin:18px 0 0;font-size:12.5px;color:var(--text-muted);word-break:keep-all}
+@media (max-width:1100px){.noz-code-cols{grid-template-columns:repeat(2,minmax(0,1fr))}.noz-code-col:nth-child(3)::before{display:none}}
+@media (max-width:560px){.noz-code-cols{grid-template-columns:1fr}.noz-code-col+.noz-code-col::before{display:none}}

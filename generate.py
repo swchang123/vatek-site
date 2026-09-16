@@ -11391,16 +11391,22 @@ ADOPT_BODY = """
     </div>
 """
 
-AUTOMATION_HERO_HTML = """  <section class="subhero-parallax aut-hero-stage">
-    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품·자동화·공급</a> &gt; 자동화 시스템</div>
+AUTOMATION_EXTRA_HEAD = (
+    '\n<link rel="stylesheet" href="../assets/css/pelletizer-page.css?v=20260914-10" />'
+    '\n<link rel="stylesheet" href="../assets/css/recovery-page.css?v=20260916-11" />'
+    '\n<link rel="stylesheet" href="../assets/css/automation-page.css?v=20260916-13" />'
+)
+
+AUTOMATION_BODY = """  <section class="subhero-parallax aut-hero-stage">
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 자동화 시스템</div>
     <div class="hero-fit">
       <video class="subhero-parallax-img aut-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
         <source src="../assets/video/automation-hero.mp4" type="video/mp4" />
       </video>
       <div class="subhero-textbox">
-        <span class="ind-hero-eyebrow">COLD JET × VATEK / AUTOMATION SYSTEM</span>
+        <span class="ind-hero-eyebrow">COLD JET × VATEK / INTEGRATED BLASTING SYSTEM</span>
         <h1>생산 라인에 통합되는,<br><span class="bls-hero-accent">완전 자동화 세척.</span></h1>
-        <p class="bls-hero-main">생산 라인에 통합 가능한 자동화 드라이아이스 세척 시스템을 소개합니다.</p>
+        <p class="bls-hero-main">드라이아이스 생산부터 블라스팅까지 한 대의 장비로. 반도체·전자, EV 배터리, 사출·자동차 생산라인과 배관 내부까지, 작업자 없이 연속 운전하는 Cold Jet 통합 블라스팅 시스템입니다.</p>
       </div>
       <div class="pel-hero-mask" aria-hidden="true">
         <img src="../assets/img/coldjet-logo.png" alt="" />
@@ -11408,39 +11414,1101 @@ AUTOMATION_HERO_HTML = """  <section class="subhero-parallax aut-hero-stage">
         <img src="../assets/img/vatek-logo-wordmark.png" alt="" />
       </div>
     </div>
-  </section>"""
+  </section>
 
-AUTOMATION_BODY = """
-<p>생산 라인에 드라이아이스 세척을 통합하고 싶다면, Cold Jet의 통합 자동화 솔루션을 적용할 수 있습니다.</p>
+  <section class="plt-definition rec-cover tint-hatch" id="what-is-automation">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">WHAT IS INTEGRATED BLASTING?</span><h2 class="plt-title">세척을 공정의 일부로 만드는,<br>통합 블라스팅 시스템.</h2></div>
+        <p class="plt-lead">프로그래밍된 로봇 암에 드라이아이스 블라스터를 통합하면, 같은 표면에 같은 결과를 매 사이클 반복하는 정밀한 세척·표면 전처리·부품 마무리 패턴을 수행합니다. 시스템은 생산라인에 직접 통합되고, 완전 자동화 단계에서는 필요한 드라이아이스를 스스로 만들어 작업자 개입 없이 운전합니다.</p>
+      </div>
+      <div class="bls-showcase-frame reveal">
+        <div class="bls-showcase">
+          <div class="bls-showcase-body">
+            <span class="bls-dot-eyebrow">ALL-IN-ONE AUTOMATED SOLUTION</span>
+            <h3>생산과 분사를 한 대에,<br>사람 없이 연속 운전.</h3>
+            <p>COMBI PCS는 Cold Jet 펠렛타이저와 PCS 블라스터를 결합해, 드라이아이스를 만들면서 동시에 분사합니다. 로봇 셀이나 컨베이어 라인에 연결하면 작업자 없이 세척 공정이 돌아가고, 입자 크기·압력·공급량은 HMI에서 레시피로 저장해 반복합니다.</p>
+            <div class="rec-stats">
+              <div><strong>0.3–3.0<i>mm</i></strong><span>PCS 입자 크기 · 28단계 조절</span></div>
+              <div><strong>4<i>개</i></strong><span>최대 동시 블라스팅 작업 (320 DUAL)</span></div>
+              <div><strong>&lt;3<i>분</i></strong><span>기동 시간 · 75 dB(A) 미만</span></div>
+            </div>
+          </div>
+          <div class="bls-showcase-media">
+            <img src="../assets/img/auto-combi-factory.png" alt="공장 생산라인에 통합된 Cold Jet COMBI PCS와 로봇 블라스팅 셀" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h2 style="font-size:20px; margin-top:32px;">COMBI&reg; PCS&reg; — 완전 자동화 솔루션</h2>
-<p>업계 최고 수준의 드라이아이스 펠렛타이저와 입자 제어 시스템(PCS)을 하나로 결합한 완전 자동화 장비입니다.
-드라이아이스 생산부터 블라스팅까지 중단 없이 연속 운영할 수 있습니다.</p>
+  <section class="plt-section cmp-dark rec-how" id="why-automate">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">AUTOMATED DRY ICE CLEANING</span><h2 class="plt-title">세척 자동화부터<br>펠렛 생산과 공급까지.</h2></div>
+        <p class="plt-lead">드라이아이스 세척은 로봇과 자동화 설비에 연동할 수 있습니다. 정해진 경로와 조건으로 세척을 반복하거나, 드라이아이스 펠렛의 생산·공급·블라스팅을 하나의 공정으로 연결할 수 있습니다.</p>
+      </div>
+      <div class="bls-showcase-frame reveal">
+        <div class="bls-showcase">
+          <div class="bls-showcase-media">
+            <video id="autWhyVideo" class="bls-media-fade" muted loop playsinline preload="auto">
+              <source src="../assets/video/automation-vatek-line.mp4" type="video/mp4" />
+            </video>
+            <span class="bls-showcase-cap">AUTOMATED DRY ICE CLEANING</span>
+            <button type="button" class="bls-play-btn" id="autWhyPlayBtn" aria-label="영상 재생">
+              <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
+            </button>
+          </div>
+          <div class="bls-showcase-body">
+            <span class="bls-dot-eyebrow">AUTOMATION IN ACTION</span>
+            <h3>반복 세척을<br>더 일정하고 효율적으로.</h3>
+            <p>로봇이 설정된 경로와 조건에 따라 드라이아이스를 분사하는 자동화 세척 시스템의 운전 모습입니다.</p>
+            <ul class="aut-why-points">
+              <li><div><h4>반복 품질 관리</h4><p>설정된 경로와 분사 조건을 반복 적용하여 작업자에 따른 세척 편차를 줄입니다.</p></div></li>
+              <li><div><h4>생산 공정 연계</h4><p>세척을 생산라인에 연결하여 제품 이동과 대기 과정을 줄이고 연속 공정으로 구성할 수 있습니다.</p></div></li>
+              <li><div><h4>작업자 개입 최소화</h4><p>반복 작업이나 접근이 어려운 구간의 세척을 자동화하여 작업자의 직접 작업을 줄일 수 있습니다.</p></div></li>
+              <li><div><h4>2차 폐기물 감소</h4><p>드라이아이스는 분사 후 승화하므로 모래나 물과 같은 세척 매체가 별도의 폐기물로 남지 않습니다.</p></div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="aut-scope-grid">
+        <div class="aut-scope"><span class="num">OPTION 01</span><h3>세척 공정 자동화</h3><p>블라스터를 로봇 또는 자동화 설비에 연결하여 정해진 경로와 조건으로 반복 세척합니다.</p></div>
+        <div class="aut-scope"><span class="num">OPTION 02</span><h3>통합 자동화</h3><p>드라이아이스 펠렛의 생산·공급·블라스팅을 연결하여 하나의 연속 공정으로 구성할 수 있습니다.</p></div>
+        <div class="aut-scope"><span class="num">OPTION 03</span><h3>맞춤형 시스템</h3><p>세척 대상, 생산속도, 설치환경 및 드라이아이스 사용량에 맞춰 필요한 자동화 범위를 구성합니다.</p></div>
+      </div>
+      <p class="aut-matrix-note">※ 자동화 범위와 시스템 구성은 세척 대상, 생산속도, 설치환경 및 필요한 드라이아이스 사용량에 따라 달라집니다.</p>
+    </div>
+  </section>
 
-<h2 style="font-size:20px; margin-top:32px;">PCS&reg; ULTRA — 반자동화 솔루션</h2>
-<p>기존 자동화 생산 설비에 드라이아이스 블라스터를 통합하는 방식으로, 산업용 로봇 시스템과 연동해
-라인의 일부 공정으로 편입할 수 있습니다.</p>
+  <section class="plt-section plt-category-select tint-hatch" id="models">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">AUTOMATION LINEUP</span><h2 class="plt-title">완전 자동화 올인원부터<br>전용 로봇, 배관 내부 로봇까지.</h2></div>
+        <p class="plt-lead">생산라인에 통합하는 COMBI PCS 시리즈, 타이어 금형 세척을 위해 로봇·블라스터·제어를 하나로 묶은 ASP-T, 배관·덕트 내부를 사람 대신 주행하며 세척하는 DUCT ROBOT, 그리고 표준 제품으로 해결되지 않는 현장을 위한 맞춤 제작 시스템. 제품을 선택하면 사양과 구성 조건을 자세히 볼 수 있습니다.</p>
+      </div>
+      <div class="aut-lineup">
+        <a class="rec-lineup-item reveal" href="automation/combi-pcs.html">
+          <div class="rec-lineup-media"><img src="../assets/img/auto-combi-pcs-cell.png" alt="Cold Jet COMBI PCS 시리즈와 로봇 블라스팅 셀" loading="lazy" decoding="async" /></div>
+          <div class="rec-lineup-body">
+            <span class="plt-category-num">01</span>
+            <h3>COMBI® PCS® 시리즈<small>FULLY AUTOMATED · PELLETIZER + PCS BLASTER</small></h3>
+            <dl class="aut-models">
+              <div><dt>COMBI PCS 110</dt><dd><b>생산 · 분사</b>110 kg/h · 110 kg/h</dd><dd><b>동시 블라스팅</b>최대 2개 (스플리터)</dd></div>
+              <div><dt>COMBI PCS 110 DUAL</dt><dd><b>생산 · 분사</b>110 kg/h · 110 kg/h</dd><dd><b>동시 블라스팅</b>최대 4개 (스플리터)</dd></div>
+              <div><dt>COMBI PCS 320 DUAL</dt><dd><b>생산 · 분사</b>320 kg/h · 220 kg/h</dd><dd><b>동시 블라스팅</b>최대 4개 (스플리터)</dd></div>
+            </dl>
+            <p>드라이아이스 펠렛타이저와 PCS 블라스터를 한 대에 결합한 완전 자동화 시스템입니다. LCO<sub>2</sub>를 공급받아 스스로 드라이아이스를 만들고, 0.3–3.0 mm 입자를 16" Beckhoff 산업용 HMI에서 제어합니다. 로봇 암, 블라스트 캐비닛, 컨베이어 라인에 연결해 연속 운전하며, 글로벌 통신사와 리퍼비시 업체의 고물량 허브에서 다년간 다교대 운전으로 검증되었습니다.</p>
+            <span class="bls-more">COMBI PCS 상세 보기 <i>→</i></span>
+          </div>
+        </a>
+        <a class="rec-lineup-item reveal" href="automation/asp-t.html" style="--reveal-delay:0.06s">
+          <div class="rec-lineup-media"><img src="../assets/img/auto-asp-t.webp" alt="Cold Jet ASP-T 타이어 금형 세척 로봇 시스템" loading="lazy" decoding="async" /></div>
+          <div class="rec-lineup-body">
+            <span class="plt-category-num">02</span>
+            <h3>ASP-T<small>ROBOTIC TIRE MOLD CLEANING · PCS 60 + KUKA ROBOT</small></h3>
+            <dl class="aut-models">
+              <div><dt>금형 규격</dt><dd><b>대응 범위</b>14"–22" 타이어 금형</dd><dd><b>세척 방식</b>상·하 사이드월 한 공정 처리</dd></div>
+              <div><dt>블라스터</dt><dd><b>탑재 장비</b>PCS® 60 · 28단계 입자</dd><dd><b>호퍼</b>27 kg · 3 mm 펠렛</dd></div>
+              <div><dt>운전</dt><dd><b>제어</b>15" 멀티터치 HMI · Windows 10</dd><dd><b>IoT</b>Cold Jet CONNECT™ 원격 진단</dd></div>
+            </dl>
+            <p>타이어 가황 프레스 앞으로 이동해 금형을 세척하는 전용 로봇 시스템입니다. KUKA 산업용 로봇과 PCS 60 블라스터, 타이어 산업 전용 노즐, 지능형 센서로 자동 센터링해 개방·폐쇄 세그먼트 상태 모두 세척합니다. 작업자 한 명이 운용하며 세척 리포트를 저장합니다.</p>
+            <span class="bls-more">ASP-T 상세 보기 <i>→</i></span>
+          </div>
+        </a>
+        <a class="rec-lineup-item reveal" href="automation/duct-robot.html" style="--reveal-delay:0.12s">
+          <div class="rec-lineup-media"><img src="../assets/img/auto-duct-robot-track.webp" alt="DUCT ROBOT 회전형 트랙 크롤러 모듈" loading="lazy" decoding="async" /></div>
+          <div class="rec-lineup-body">
+            <span class="plt-category-num">03</span>
+            <h3>DUCT ROBOT<small>IN-PIPE ROBOTIC CLEANING · Ø350–1,350 mm · COLD JET 협력</small></h3>
+            <dl class="aut-models">
+              <div><dt>배관 규격</dt><dd><b>기본 구성</b>Ø350–710 mm</dd><dd><b>확장 키트</b>최대 Ø1,350 mm</dd></div>
+              <div><dt>주행</dt><dd><b>속도 · 견인력</b>70 mm/s · 2,400 N</dd><dd><b>수직 접근</b>최대 50 m · 최소 곡률 1D</dd></div>
+              <div><dt>운전</dt><dd><b>카메라</b>전방 · 후방 카메라</dd><dd><b>본체 중량</b>35 kg · 100–240 V AC</dd></div>
+            </dl>
+            <p>사람이 들어갈 수 없는 배관·덕트·텀블러·산업용 배기 내부를 로봇이 주행하며 드라이아이스로 세척합니다. 배관을 해체하지 않고 도장 부스 배기의 페인트·수지·고무 잔류, 주방 배기의 유지, 분진을 제거하며, 카메라로 내부 상태를 확인하고 기록합니다. 압축공기 세척과 브러시·흡입 모듈로 확장할 수 있습니다.</p>
+            <span class="bls-more">DUCT ROBOT 상세 보기 <i>→</i></span>
+          </div>
+        </a>
+        <a class="rec-lineup-item reveal" href="../products/quote.html" style="--reveal-delay:0.18s">
+          <div class="rec-lineup-media"><img src="../assets/img/auto-vatek-custom.webp" alt="바테크가 설계한 맞춤형 드라이아이스 자동화 시스템" loading="lazy" decoding="async" /></div>
+          <div class="rec-lineup-body">
+            <span class="plt-category-num">04</span>
+            <h3>드라이아이스 공정을 아는 맞춤형 자동화<small>DRY ICE EXPERTISE · ENGINEERED FOR YOUR LINE</small></h3>
+            <dl class="aut-models">
+              <div><dt>공정 설계</dt><dd><b>드라이아이스 전문성</b>제품과 오염 상태, 생산 조건에 맞는 블라스팅 공정 설계</dd></div>
+              <div><dt>시스템 구축</dt><dd><b>전 과정 관리</b>개념설계부터 제작 관리, 설치·시운전까지 통합 관리</dd></div>
+              <div><dt>구축 경험</dt><dd><b>현장 검증</b>축적된 적용 경험과 테스트를 바탕으로 시스템 완성도 확보</dd></div>
+            </dl>
+            <p>자동화 설비는 로봇과 블라스터를 연결하는 것만으로 완성되지 않습니다. 드라이아이스의 입자 크기와 공급 방식, 분사 압력, 노즐, 작업 거리와 각도 등 세척 결과를 좌우하는 조건을 함께 설계해야 합니다.</p>
+            <p>바테크는 오랜 현장 경험과 축적된 노하우를 바탕으로 고객의 제품과 생산 환경에 맞는 공정을 설계합니다. 또한 제작 관리부터 설치·시운전까지 전체 프로젝트를 책임 있게 관리하여, 실제 생산라인에서 안정적으로 운영할 수 있는 맞춤형 자동화 시스템을 구축합니다.</p>
+            <span class="bls-more">맞춤형 자동화 상담하기 <i>→</i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-<h2 style="font-size:20px; margin-top:32px;">적용 산업</h2>
-<div class="chip-grid">
-  <span class="chip">항공우주</span><span class="chip">자동차 제조</span>
-  <span class="chip">식품 · 음료</span><span class="chip">반도체 · PCB</span>
-</div>
-<p style="margin-top:18px;">공정별 맞춤 설계와 함께, Cold Jet CONNECT&reg;를 통한 원격 모니터링 · 진단이
-제공됩니다. (출처: Cold Jet 공식 웹사이트)</p>
+  <section class="plt-section cmp-dark rec-how aut-semi" id="semiconductor">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">ELECTRONICS &amp; SEMICONDUCTOR</span><h2 class="plt-title">반도체 생산에서 세척은<br>멈추는 시간이 아니라 공정의 일부여야 합니다.</h2></div>
+        <p class="plt-lead">반도체 공장의 세척 조건은 그대로 수율과 비용으로 이어집니다. 수작업, 강한 화학약품, 긴 다운타임, 기판 손상 위험, 유해 폐기물. 드라이아이스 블라스팅은 비연마·무수분·무잔류 방식으로 장비를 분해하지 않고 제자리에서 세척하며, 로봇 셀로 통합하면 24시간 운전하는 생산라인의 일부가 됩니다.</p>
+      </div>
+      <div class="bls-showcase-frame reveal">
+        <div class="bls-showcase">
+          <div class="bls-showcase-media aut-semi-hero">
+            <img src="../assets/img/auto-semi-cleanroom.webp" alt="반도체 클린룸에서 운영자가 자동화 라인을 점검하는 모습" loading="lazy" decoding="async" />
+          </div>
+          <div class="bls-showcase-body">
+            <span class="bls-dot-eyebrow">INDUSTRY 4.0 CLEANING CELL</span>
+            <h3>단일 로봇부터 다중 로봇 라인까지,<br>스스로 드라이아이스를 만들며 운전합니다.</h3>
+            <p>단일 또는 다중 로봇 암이 툴이나 제품을 정밀하게 분사하고, 4대 이상의 로봇이 지점마다 다른 강도 설정으로 동시에 작업합니다. COMBI PCS는 자체 생산한 드라이아이스로 운전해 공급 공백 없이 라인을 유지하고, 기존 PLC·디지털 시스템과 통합해 데이터 기반 세척과 예지 보전을 지원합니다.</p>
+            <ul class="aut-semi-points">
+              <li><b>비연마 · 비파괴</b>웨이퍼, 툴링, 미세 형상의 치수와 표면 마감을 바꾸지 않습니다.</li>
+              <li><b>무잔류 · 무수분</b>승화하는 드라이아이스는 2차 폐기물과 교차 오염을 남기지 않습니다.</li>
+              <li><b>분해 없는 인플레이스 세척</b>냉각·분해 없이 뜨거운 상태로 세척하고 즉시 공정을 재개합니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="aut-semi-grid">
+        <article class="aut-semi-card reveal">
+          <div class="aut-semi-media"><img src="../assets/img/auto-semi-chamber.png" alt="폴리실리콘 CVD 반응기 내부 세척" loading="lazy" decoding="async" /></div>
+          <span class="num">01</span><h3>폴리실리콘 · CVD 반응기</h3>
+          <p>반응기 내부의 실리콘 축적과 분진을 고압수·화학 스크러빙 대신 드라이아이스로 제거합니다. 내부 표면 손상 없이 불순물과 스크랩률을 낮춥니다.</p>
+        </article>
+        <article class="aut-semi-card reveal" style="--reveal-delay:0.05s">
+          <div class="aut-semi-media"><img src="../assets/img/auto-semi-robot-cabinet.png" alt="로봇 캐비닛에서 웨이퍼 공정 툴링 세척" loading="lazy" decoding="async" /></div>
+          <span class="num">02</span><h3>웨이퍼 팹 챔버 · 툴링</h3>
+          <p>웨이퍼 챔버, 증착 툴링, 폴리싱 장비, 플라즈마 코팅 픽스처, 진공 펌프와 임플란터를 긁힘 없이 제자리에서 세척합니다.</p>
+        </article>
+        <article class="aut-semi-card reveal" style="--reveal-delay:0.1s">
+          <div class="aut-semi-media"><img src="../assets/img/auto-semi-mold-die.png" alt="반도체 몰딩 다이 인플레이스 세척" loading="lazy" decoding="async" /></div>
+          <span class="num">03</span><h3>몰딩 · 다이 세척, 칩 후처리</h3>
+          <p>왁스·가스 축적으로 오염된 몰드와 다이를 뜨거운 상태에서 세척하고, 몰딩·레이저 커팅 후 남은 플라스틱 플래시와 접착제를 칩 에지 손상 없이 제거합니다.</p>
+        </article>
+        <article class="aut-semi-card reveal" style="--reveal-delay:0.15s">
+          <div class="aut-semi-media"><img src="../assets/img/auto-semi-pcb-inline.png" alt="PCB 인라인 드라이아이스 세척" loading="lazy" decoding="async" /></div>
+          <span class="num">04</span><h3>PCB 제조 · 조립</h3>
+          <p>솔더 플럭스 잔류물과 솔더볼을 잔류 없이 제거하고, 컨포멀 코팅 전 표면 준비와 리워크 시 선택적 코팅 제거를 수행합니다. ICT 픽스처와 하네스도 수분 위험 없이 세척합니다.</p>
+        </article>
+        <article class="aut-semi-card reveal" style="--reveal-delay:0.2s">
+          <div class="aut-semi-media"><img src="../assets/img/auto-semi-pogo.png" alt="포고핀 테스트 소켓 세척" loading="lazy" decoding="async" /></div>
+          <span class="num">05</span><h3>ATE 포고핀 · 테스트 소켓</h3>
+          <p>접촉 저항을 높이고 ‘가짜 불량’을 만드는 미세 분진과 플럭스를 비전도성·비연마 매체로 제거해, 금도금 접점을 손상 없이 복원하고 초회 수율을 높입니다.</p>
+        </article>
+        <article class="aut-semi-card is-note reveal" style="--reveal-delay:0.25s">
+          <span class="num">70+</span><h3>국가에서 검증된 프로세스</h3>
+          <p>Cold Jet은 약 300명의 직원과 30개 이상의 대리점이 70개 이상 국가의 설치 장비를 지원합니다. 바테크는 대한민국 공식 대리점으로 반도체·전자 현장의 테스트와 도입을 함께합니다.</p>
+          <a class="bls-textlink" href="../products/quote.html">반도체 공정 세척 테스트 문의 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section" id="applications">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">AUTOMATION AT WORK</span><h2 class="plt-title">반복되는 세척 공정,<br>자동화로 연결합니다.</h2></div>
+        <p class="plt-lead">자동화 드라이아이스 블라스팅은 세척뿐 아니라 사출 부품의 버 제거, 접착·도장 전 표면 전처리, 리퍼비시 제품의 외관 세척 등 다양한 공정에 적용할 수 있습니다. 로봇 셀이나 생산라인과 연계해 정해진 조건으로 반복 작업을 수행합니다.</p>
+      </div>
+      <div class="bls-tech-list">
+        <article class="bls-tech reveal">
+          <div class="bls-tech-media"><img src="../assets/img/auto-phone-robot-cell.png" alt="스마트폰 리퍼비시 라인의 로봇 드라이아이스 세척 셀" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">PHONE REFURBISHING</span>
+            <h3>스마트폰 리퍼비시<br>자동 세척</h3>
+            <p>로봇 셀이 스마트폰 외관의 지문과 유분, 잔류물, 라벨 등을 수분 없이 제거합니다. 외관 상태를 일정하게 관리해 제품의 등급 분류와 재판매 준비를 돕습니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li>외관 오염과 라벨을 제거해 등급 분류 과정 지원</li><li>자동 운전으로 수작업 세척의 처리량 한계 보완</li><li>물을 사용하지 않아 전자기기 세척에 적합</li></ul>
+          </div>
+        </article>
+        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+          <div class="bls-tech-media"><img src="../assets/img/auto-ev-charging.png" alt="전기차 충전 포트" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">EV BATTERY MANUFACTURING</span>
+            <h3>EV 배터리 생산라인<br>세척·표면 전처리</h3>
+            <p>배터리 제조 과정에서 발생하는 원료 잔여물과 표면 오염을 제거하고, 접착과 조립 전에 필요한 표면 전처리를 수행합니다. 물이나 화학 세정제를 사용하지 않아 별도의 건조 공정이 필요 없습니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li>믹서 교반기 세척 후 잔류 원료 회수·재사용</li><li>접착 전 표면 전처리, 접착제 제거, 전해액 주입 후 셀 세척</li><li>분리막과 정밀 부품의 플래시 제거</li></ul>
+          </div>
+        </article>
+        <article class="bls-tech reveal">
+          <div class="bls-tech-media"><img src="../assets/img/auto-robot-deflashing.png" alt="로봇이 사출 성형 부품의 플래시를 드라이아이스로 제거하는 모습" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">DEFLASHING &amp; DEBURRING</span>
+            <h3>플라스틱 사출 부품<br>디플래싱·디버링</h3>
+            <p>PEEK, PBT, 아세탈, 나일론, LCP, ABS, UHMWPE 등 다양한 소재의 플래시와 미세한 버를 제품의 치수와 표면에 미치는 영향을 최소화하며 제거합니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li>의료·자동차·전자·반도체·항공 부품에 적용</li><li>좁은 틈과 복잡한 형상의 미세한 버까지 제거</li></ul>
+          </div>
+        </article>
+        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+          <div class="bls-tech-media"><img src="../assets/img/auto-robot-bumper-booth.png" alt="도장 부스에서 로봇이 자동차 범퍼를 드라이아이스로 세척하는 모습" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">AUTOMOTIVE SURFACE PREP</span>
+            <h3>자동차 부품<br>도장 전 표면 전처리</h3>
+            <p>범퍼 등 플라스틱 외장 부품에 남은 이물질과 이형제를 컨베이어 라인에서 로봇으로 제거합니다. 물이나 화학 세정제를 사용하지 않아 별도의 건조 공정이 필요 없습니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li>컨베이어 라인과 연계한 연속 운전</li><li>도장 전 표면의 오염물과 이형제 제거</li></ul>
+          </div>
+        </article>
+        <article class="bls-tech reveal">
+          <div class="bls-tech-media"><img src="../assets/img/auto-semi-pcb-robot.png" alt="로봇이 PCB를 드라이아이스로 세척하는 모습" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">ELECTRONICS &amp; SEMICONDUCTOR</span>
+            <h3>반도체·전자 부품<br>정밀 세척 자동화</h3>
+            <p>CVD 반응기, 웨이퍼 챔버, 몰딩 다이, PCB, 포고핀 등 정밀 부품에 남은 공정 오염물을 비연마성·무잔류 방식으로 제거합니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li>플럭스·플래시·폴리싱 컴파운드·공정 부산물 제거</li><li>기존 PLC와 연동해 정해진 조건으로 반복 세척</li></ul>
+            <a class="bls-textlink" href="#semiconductor">반도체 적용 자세히 보기 ↑</a>
+          </div>
+        </article>
+        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+          <div class="bls-tech-media"><img src="../assets/img/auto-cobot-cleaning.png" alt="협동 로봇이 Cold Jet 블라스터로 금속 부품을 세척하는 모습" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">MOLD &amp; TOOLING CLEANING</span>
+            <h3>금형·툴링<br>인라인 자동 세척</h3>
+            <p>타이어 금형과 고무·플라스틱 금형을 프레스에서 분리하지 않고 고온 상태에서 세척합니다. 냉각과 분해, 재조립 과정을 줄여 설비 가동 중단 시간을 단축할 수 있습니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li>ASP-T: 14~22인치 타이어 금형 자동 세척</li><li>세척 조건 반복 적용 및 작업 기록 저장</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section tint-hatch" id="aut-difference">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">THE COLD JET DIFFERENCE</span><h2 class="plt-title">장비를 넘어,<br>공정에 맞는 자동화를 설계합니다.</h2></div>
+        <p class="plt-lead">자동화 블라스팅은 장비 한 대만으로 완성되지 않습니다. 세척 대상과 오염 상태, 생산 주기부터 로봇 동선, 부스와 유틸리티까지 현장에 맞게 설계해야 합니다. 콜드젯과 바테크는 적용 검토부터 설치, 시운전과 교육까지 전 과정을 함께합니다.</p>
+      </div>
+      <div class="plt-reason-grid aut-diff-grid">
+        <article class="plt-reason"><span class="num">01</span><h3>현장 맞춤 설계</h3><p>세척 대상과 오염 상태, 생산 주기에 맞춰 장비와 노즐, 로봇 동선을 구성합니다.</p></article>
+        <article class="plt-reason"><span class="num">02</span><h3>적용 검토 및 테스트</h3><p>현장 조건에 적합한 세척 방식을 제안하고, 샘플 테스트를 통해 적용 가능성을 확인합니다.</p></article>
+        <article class="plt-reason"><span class="num">03</span><h3>안정적인 연속 운전</h3><p>생산라인의 운전 조건과 드라이아이스 사용량을 고려해 안정적으로 가동할 수 있도록 시스템을 설계합니다.</p></article>
+        <article class="plt-reason"><span class="num">04</span><h3>필요에 맞춘 자동화</h3><p>드라이아이스 생산부터 공급·블라스팅까지 연결하거나, 기존 생산라인에 필요한 세척 공정만 자동화할 수 있습니다.</p></article>
+        <article class="plt-reason"><span class="num">05</span><h3>Sub-Cooling 기술</h3><p>액체 CO<sub>2</sub>의 전환 효율을 높여 균일하고 밀도 높은 드라이아이스 펠렛을 안정적으로 생산합니다.</p></article>
+        <article class="plt-reason"><span class="num">06</span><h3>Cold Jet CONNECT®</h3><p>장비 상태와 운전 정보를 원격으로 확인하고, 이상 발생 시 빠른 진단과 대응을 지원합니다.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section faq-section" id="faq">
+    <div class="wrap">
+    <div class="faq-head">
+      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>
+      <p class="faq-intro">자동화 블라스팅 도입을 검토하는 고객이 가장 많이 묻는 질문을 정리했습니다.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">반도체·전자 공정의 민감한 부품에도 쓸 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>네. 드라이아이스는 바로 승화하는 비연마·비전도성 매체로, 수분과 화학 잔류물을 남기지 않고 치수와 표면 마감을 바꾸지 않습니다. CVD 반응기, 웨이퍼 챔버·툴링, 몰딩 다이, PCB 플럭스, 포고핀·테스트 소켓 세척에 적용되고 있으며, PCS 입자 크기와 압력을 낮게 설정해 민감한 표면도 세척합니다. 바테크는 실제 부품으로 샘플 테스트를 먼저 진행합니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">기존 로봇이나 생산라인에 통합할 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>COMBI PCS는 통합을 전제로 설계되어 로봇 암, 블라스트 캐비닛, 컨베이어 세척 라인에 연결할 수 있습니다. 로봇과 블라스팅 부스는 장비에 포함되지 않으며, 현장의 로봇·PLC 사양을 확인한 뒤 구성합니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">드라이아이스를 따로 공급받아야 하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>COMBI PCS는 액화탄산을 공급받아 스스로 드라이아이스를 만들기 때문에 별도 드라이아이스 공급이 필요 없습니다. ASP-T는 27 kg 호퍼에 3 mm 펠렛을 채워 사용합니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">입자 크기 조절이 왜 중요한가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>민감한 표면이나 미세한 버에는 작은 입자, 고착 오염에는 큰 입자가 맞습니다. PCS는 0.3–3.0 mm 사이 28단계로 입자를 잘라, 부품과 오염에 맞는 조건을 HMI 레시피로 저장하고 반복합니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">배관이나 덕트 내부도 자동으로 세척할 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>DUCT ROBOT은 직경 350–1,350 mm 배관·덕트 안을 주행하며 드라이아이스를 분사하는 배관 내부 세척 로봇입니다. 배관을 해체하지 않고 도장 부스·용접·주방 배기의 잔류물, 텀블러와 사일로 내벽의 고착 오염을 제거하고, 전후방 카메라로 내부 상태를 기록합니다. 사람이 들어가지 않으므로 밀폐 공간 작업 위험도 사라집니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">도입은 어떤 절차로 진행되나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>부품·오염 샘플 테스트로 세척 조건을 먼저 확인하고, 공정과 사이클 타임을 검토해 장비·로봇·부스 구성을 제안합니다. 이후 설치, 시운전, 운용 교육과 A/S까지 바테크가 지원합니다.</p></div>
+      </details>
+    </div>
+    </div>
+  </section>
+
+  <section class="bls-sec bls-final last-freeze" id="aut-final">
+    <div class="wrap">
+      <div class="bls-final-grid">
+        <div>
+          <span class="cmp-eyebrow">START AUTOMATING</span>
+          <h2 class="cmp-h2">반복되는 세척 공정,<br>로봇에게 맡길 준비가 되셨나요.</h2>
+        </div>
+        <div>
+          <div class="cmp-lead">
+            <p>부품 샘플과 오염 종류, 목표 사이클 타임을 알려주시면 세척 테스트 결과와 함께 적합한 자동화 구성을 제안합니다.</p>
+            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 현장 검토부터 설치, 시운전, 교육과 A/S까지 전 과정을 지원합니다.</p>
+          </div>
+          <div class="cmp-cta-btns">
+            <a class="cta-btn" href="../products/quote.html">자동화 도입 상담 요청</a>
+            <a class="cmp-btn-ghost" href="blaster/index.html">블라스터 라인업 보기</a>
+          </div>
+          <a class="bls-textlink" href="https://www.coldjet.com/wp-content/uploads/0748_SPEC-SHEET_COMBI-PCS_ENG_2022-04-07_pi-1.pdf" target="_blank" rel="noopener">COMBI PCS 스펙시트 (PDF) →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 """
 
-NOZZLE_BODY = """
-<p>세척 대상과 작업 조건에 맞춰 다양한 노즐과 액세서리를 조합해 사용할 수 있습니다.</p>
-<table class="compare-table">
-  <tr><th>구성품</th><th>설명</th></tr>
-  <tr><td>노즐(Nozzles)</td><td>세척 강도와 분사 패턴을 결정하는 핵심 부품으로, 용도별 다양한 라인업이 제공됩니다.</td></tr>
-  <tr><td>분사기(Applicators)</td><td>작업자의 편의성과 안전성, 조작 단순성을 고려해 설계된 핸들형 분사기구입니다.</td></tr>
-  <tr><td>블라스트 호스</td><td>유연하면서도 내구성 있는 에어 · 블라스트 전용 호스입니다.</td></tr>
-  <tr><td>예비 부품</td><td>장비 가동률 유지를 위한 각종 교체 부품을 보유하고 있습니다.</td></tr>
-</table>
-<p style="margin-top:18px;">세척 대상(정밀 전자부품 ~ 대형 산업설비)에 따라 적합한 노즐과 액세서리 구성이
-달라지므로, 바테크 상담을 통해 최적 구성을 추천받으실 수 있습니다. (출처: Cold Jet 공식 웹사이트)</p>
+AUTOMATION_SCRIPT = """  <script>
+  (function(){
+    var v=document.getElementById('autWhyVideo'),btn=document.getElementById('autWhyPlayBtn');
+    if (v && btn) {
+      btn.addEventListener('click',function(){ if (v.paused) { v.play(); } else { v.pause(); } });
+      v.addEventListener('play',function(){ btn.classList.add('is-playing'); btn.querySelector('.bls-play-label').textContent='일시정지'; btn.querySelector('.bls-play-icon').textContent='❙❙'; });
+      v.addEventListener('pause',function(){ btn.classList.remove('is-playing'); btn.querySelector('.bls-play-label').textContent='영상 재생'; btn.querySelector('.bls-play-icon').textContent='▶'; });
+    }
+  })();
+  </script>
+  <script>
+  (function () {
+    var el = document.getElementById('aut-final');
+    if (!el) return;
+    function sync() {
+      if (window.innerWidth <= 900) { el.style.top = ''; return; }
+      el.style.top = Math.min(0, window.innerHeight - el.offsetHeight) + 'px';
+    }
+    sync();
+    window.addEventListener('resize', sync);
+    if ('ResizeObserver' in window) { new ResizeObserver(sync).observe(el); }
+  })();
+  </script>
+"""
+
+NOZZLE_EXTRA_HEAD = (
+    '\n<link rel="stylesheet" href="../assets/css/pelletizer-page.css?v=20260914-10" />'
+    '\n<link rel="stylesheet" href="../assets/css/recovery-page.css?v=20260916-11" />'
+    '\n<link rel="stylesheet" href="../assets/css/automation-page.css?v=20260916-13" />'
+    '\n<link rel="stylesheet" href="../assets/css/nozzle-page.css?v=20260916-5" />'
+)
+
+NOZZLE_BODY = """  <section class="subhero-parallax noz-hero-stage aut-hero-stage">
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 노즐·액세서리</div>
+    <div class="hero-fit">
+      <video class="subhero-parallax-img noz-hero-video" autoplay muted loop playsinline preload="auto" poster="../assets/img/blaster-detail-poster.png" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+        <source src="../assets/video/blaster-hero.mp4" type="video/mp4" />
+      </video>
+      <div class="subhero-textbox">
+        <span class="ind-hero-eyebrow">COLD JET × VATEK / NOZZLES &amp; ACCESSORIES</span>
+        <h1>같은 장비라도,<br><span class="bls-hero-accent">노즐이 결과를 바꿉니다.</span></h1>
+        <p class="bls-hero-main">분사 폭과 강도, 길이와 각도. 세척 대상에 맞는 노즐과 어플리케이터, 호스 구성으로 같은 블라스터에서 더 빠르고 정확한 결과를 얻습니다.</p>
+      </div>
+      <div class="pel-hero-mask" aria-hidden="true">
+        <img src="../assets/img/coldjet-logo.png" alt="" />
+        <span>×</span>
+        <img src="../assets/img/vatek-logo-wordmark.png" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-definition rec-cover tint-hatch" id="why-nozzle">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">WHY NOZZLES MATTER</span><h2 class="plt-title">세척은 노즐 끝에서<br>완성됩니다.</h2></div>
+        <p class="plt-lead">드라이아이스 펠렛은 노즐 안에서 초음속으로 가속되어 표면에 닿습니다. 노즐의 유량 등급, 분사 폭, 길이, 그리고 펠렛을 얼마나 잘게 쪼개는지에 따라 같은 장비에서도 세척 속도와 표면 손상 여부가 달라집니다. Cold Jet 노즐은 항공우주 분야에서 쓰이는 MERN 기술로 펠렛을 깨지 않고 끝까지 전달합니다.</p>
+      </div>
+      <div class="bls-showcase-frame reveal">
+        <div class="bls-showcase">
+          <div class="bls-showcase-media">
+            <img src="../assets/img/coldjet-nozzles-family-v3.png" alt="Cold Jet 가변 프래그멘팅 노즐 라인업" loading="lazy" decoding="async" />
+          </div>
+          <div class="bls-showcase-body">
+            <span class="bls-dot-eyebrow">ONE NOZZLE, FULL RANGE</span>
+            <h3>노즐을 바꾸지 않고,<br>다이얼로 강도를 바꿉니다.</h3>
+            <p>가변 프래그멘팅 노즐은 다이얼 하나로 펠렛 그대로의 최대 강도부터 민감한 표면용 초미세 분사까지 조절합니다. 노즐·스크린·호스를 교체하는 시간이 사라지고, 한 개의 노즐로 여러 작업을 처리합니다.</p>
+            <div class="rec-stats">
+              <div><strong>0–3</strong><span>다이얼 4단계 · 펠렛부터 초미세 프래그멘팅까지</span></div>
+              <div><strong>4<i>×</i></strong><span>경쟁 프래그멘팅 노즐 대비 막힘 저항성 (10분 연속 분사 시험)</span></div>
+              <div><strong>12–165<i>cfm</i></strong><span>정밀 노즐부터 고유량까지 공기 소비량 범위</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section cmp-dark rec-how" id="nozzle-tech">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">VARIABLE FRAGMENTING · MERN</span><h2 class="plt-title">다이얼 한 칸이<br>세척 강도를 결정합니다.</h2></div>
+        <p class="plt-lead">가변 노즐의 다이얼은 펠렛이 노즐을 통과하며 얼마나 쪼개지는지를 정합니다. 쪼개지지 않은 3 mm 펠렛은 가장 강하게, 잘게 쪼개진 입자는 넓고 부드럽게 표면을 세척합니다. 프래그멘팅은 노즐 목 하류의 초음속 구간에서 일어나 막힘 없이 작동합니다.</p>
+      </div>
+      <div class="noz-dial-grid">
+        <article class="noz-dial reveal"><span class="noz-dial-bar"></span><div class="dial"><b>0</b><span>PELLET</span></div><h3>펠렛 · 최대 강도</h3><p>3 mm 펠렛을 그대로 분사합니다. 고착 오염, 탄화물, 두꺼운 잔류물을 가장 빠르게 제거합니다.</p></article>
+        <article class="noz-dial reveal" style="--reveal-delay:0.05s"><span class="noz-dial-bar"></span><div class="dial"><b>1</b><span>MEDIUM</span></div><h3>중간 프래그멘팅</h3><p>강도를 유지하면서 제어력을 더합니다. 일반 생산설비와 금형 세척의 기본 설정입니다.</p></article>
+        <article class="noz-dial reveal" style="--reveal-delay:0.1s"><span class="noz-dial-bar"></span><div class="dial"><b>2</b><span>FINE</span></div><h3>미세 프래그멘팅</h3><p>힘과 정밀함의 균형. 도장면, 알루미늄, 얇은 판재처럼 손상에 민감한 표면에 적합합니다.</p></article>
+        <article class="noz-dial reveal" style="--reveal-delay:0.15s"><span class="noz-dial-bar"></span><div class="dial"><b>3</b><span>EXTRA FINE</span></div><h3>초미세 프래그멘팅</h3><p>가장 부드러운 세척. 전자 부품, 정밀 금형, 섬세한 기판 표면을 흠집 없이 세척합니다.</p></article>
+      </div>
+      <div class="noz-tech-grid">
+        <article class="noz-tech reveal">
+          <span class="bls-en">MERN TECHNOLOGY</span>
+          <h3>Multiple Expansion Reflection Nozzle</h3>
+          <p>항공우주 분야에서 에너지 효율을 극대화하기 위해 쓰이는 노즐 설계 원리를 드라이아이스 블라스팅에 적용했습니다. 펠렛이 노즐 내부에서 부서지지 않고 온전히 가속되어, 분사 폭 전체에 균일한 세척력이 실립니다.</p>
+          <ul><li>펠렛 무결성 유지 · 균일한 분사 커버리지</li><li>NASA에서 사용하는 MERN 설계 원리</li><li>가변 V 시리즈 · 정밀 MC26M/MC29MH · 고유량 503M/505M에 적용</li></ul>
+        </article>
+        <article class="noz-tech reveal" style="--reveal-delay:0.06s">
+          <span class="bls-en">WHY VARIABLE</span>
+          <h3>노즐 하나로 여러 작업을</h3>
+          <p>작업이 바뀔 때마다 노즐과 스크린, 호스를 갈아 끼우는 대신 다이얼만 돌립니다. 장비를 멈추는 시간이 줄고, 현장에 가져가야 하는 노즐 수도 줄어듭니다.</p>
+          <ul><li>다용도: 강한 오염부터 민감한 표면까지 한 노즐로</li><li>비용·시간 절감: 노즐 교체와 다운타임 제거</li><li>신뢰성: 초음속 구간에서 프래그멘팅되어 막힘 없음</li></ul>
+        </article>
+      </div>
+      <p class="noz-tech-note">※ 다이얼 3단계(EXTRA FINE)는 HIGH FLOW 508V.8과 LOW FLOW 110V.6 · 123V.7에는 적용되지 않습니다. 공기 소비량과 공급량은 80 psi(5.5 bar) 기준 권장값입니다.</p>
+    </div>
+  </section>
+
+  <section class="plt-section bls-lineup-sec tint-hatch" id="nozzle-finder">
+    <div class="wrap">
+      <div class="bls-head reveal noz-head">
+        <div>
+          <span class="cmp-eyebrow">NOZZLE FINDER · BY MACHINE</span>
+          <h2 class="cmp-h2">장비를 먼저 고르면<br>맞는 노즐만 보입니다.</h2>
+          <p class="bls-sub">노즐은 장비의 유량 등급과 호스·어플리케이터 규격에 따라 호환 여부가 정해집니다. 보유 장비를 선택하면 그 장비에서 쓸 수 있는 노즐만 표시됩니다.</p>
+        </div>
+      </div>
+      <div class="noz-picker reveal" role="tablist" aria-label="장비별 노즐 필터">
+        <div class="noz-picker-head">
+          <div class="noz-picker-title"><span class="num">STEP 1</span><h3>보유 장비를 선택하세요</h3><button class="noz-reset-link" data-filter="all" type="button">전체 보기</button><p>장비 종류별로 정리되어 있습니다</p></div>
+          <div class="noz-unit-switch"><span class="noz-pgroup-label">UNIT</span><div class="bls-tabs" id="nozUnit">
+            <button class="is-active" data-unit="si" type="button"><b>METRIC</b><small>mm · m³/min · kg</small></button>
+            <button data-unit="us" type="button"><b>US</b><small>in · cfm · lb</small></button>
+          </div></div>
+        </div>
+        <div class="noz-picker-body">
+          <div class="noz-pgroup"><span class="noz-pgroup-label">SMART BLASTER</span><div class="noz-pgroup-chips">
+            <button class="noz-chip" data-filter="pcs60" type="button"><b>Aero2 PCS ULTRA</b><small>마이크로파티클 · 3/4"</small></button>
+            <button class="noz-chip" data-filter="plt60" type="button"><b>Aero2 PLT ULTRA</b><small>펠릿 · 1" · 고유량</small></button>
+            <button class="noz-chip" data-filter="mc2" type="button"><b>i³ MicroClean 2</b><small>정밀 · 1/2"</small></button>
+          </div></div>
+          <div class="noz-pgroup"><span class="noz-pgroup-label">PELLET BLASTER</span><div class="noz-pgroup-chips">
+            <button class="noz-chip" data-filter="aero40" type="button"><b>Aero 40FP</b><small>펠릿 · 100 cfm 이하</small></button>
+            <button class="noz-chip" data-filter="aero80" type="button"><b>Aero 80FP</b><small>펠릿 · Aero 전체</small></button>
+            <button class="noz-chip" data-filter="elite" type="button"><b>ELITE 20</b><small>IceTech 노즐</small></button>
+            <button class="noz-chip" data-filter="icerocket" type="button"><b>IceRocket PLT</b><small>저유량 · 1/2"</small></button>
+          </div></div>
+          <div class="noz-pgroup"><span class="noz-pgroup-label">MICRO PARTICLE</span><div class="noz-pgroup-chips">
+            <button class="noz-chip" data-filter="mc" type="button"><b>i³ MicroClean</b><small>정밀 · 1/2"</small></button>
+            <button class="noz-chip" data-filter="sdi" type="button"><b>SDI Select 60</b><small>Aero 전체 + 정밀 키트</small></button>
+          </div></div>
+          <div class="noz-pgroup"><span class="noz-pgroup-label">SPECIALTY</span><div class="noz-pgroup-chips">
+            <button class="noz-chip" data-filter="c100" type="button"><b>Aero C100</b><small>공압식 · Aero 전체</small></button>
+            <button class="noz-chip" data-filter="eco2" type="button"><b>E-CO2 150</b><small>연마재 혼합 · 전용</small></button>
+          </div></div>
+        </div>
+      </div>
+      <div class="noz-machine-notes">
+        <div class="noz-machine-note" data-machine="pcs60"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero2 PCS ULTRA (PCS 60)</h3></div><p><span class="u-val" data-us='12–100 cfm' data-si='0.3–2.8 m³/min'>0.3–2.8 m³/min</span>, 3/4" 블라스트 경로. 입자 크기(3–0.3 mm)를 장비에서 조절하므로 표준 유량 가변 노즐과 MicroClean 정밀 노즐을 모두 사용합니다. 정밀 키트(1/2" 어플리케이터)로 MC 노즐 장착.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>정밀 작업은</small><b>MC26M</b></div></div>
+        <div class="noz-machine-note" data-machine="plt60"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero2 PLT ULTRA (PLT 60)</h3></div><p><span class="u-val" data-us='50–165 cfm' data-si='1.4–4.7 m³/min'>1.4–4.7 m³/min</span>, 1" 블라스트 경로, 최대 250 psi. 고유량(5xx) 노즐을 쓸 수 있는 장비로, 고착 오염과 넓은 면적에 가장 강한 세척력을 냅니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>523V2</b><small>협소부는</small><b>508V.8</b></div></div>
+        <div class="noz-machine-note" data-machine="mc2"><div><span class="bls-en">RECOMMENDED FOR</span><h3>i³ MicroClean 2</h3></div><p><span class="u-val" data-us='12–50 cfm' data-si='0.3–1.4 m³/min'>0.3–1.4 m³/min</span> 쉐이브드 아이스 정밀 세척기의 2세대. 1/2" 어플리케이터에 MC 노즐(핀포인트 · 팬 · MERN)을 장착해 정밀 금형, 전자 부품, 복잡한 캐비티를 손상 없이 세척합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>MC26M</b><small>넓은 면은</small><b>MC88</b></div></div>
+        <div class="noz-machine-note" data-machine="mc"><div><span class="bls-en">RECOMMENDED FOR</span><h3>i³ MicroClean</h3></div><p><span class="u-val" data-us='12–50 cfm' data-si='0.3–1.4 m³/min'>0.3–1.4 m³/min</span>의 탁상형 정밀 세척기. MicroClean 2와 같은 1/2" MC 노즐 체계를 사용합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>MC26M</b><small>미세 홈은</small><b>MC13</b></div></div>
+        <div class="noz-machine-note" data-machine="aero40"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero 40FP</h3></div><p>노즐 공기 소비량 100 cfm(2.8 m³/min) 이하만 지원하는 입문형 펠릿 블라스터. 저유량·표준 유량 노즐만 사용하며, 150 cfm 이상 고유량 노즐은 장착할 수 없습니다. 정밀 키트(MC88·MC31)는 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>저유량은</small><b>110V.6</b></div></div>
+        <div class="noz-machine-note" data-machine="aero80"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero 80FP</h3></div><p>80 lb 대용량 호퍼의 풀프레셔 펠릿 블라스터. 저유량부터 고유량(최대 165 cfm), 스페셜 앵글 노즐까지 Aero 노즐 전 라인업을 지원하며, 정밀 키트(MC88·MC31)도 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>523V2</b><small>넓은 면은</small><b>523V4</b></div></div>
+        <div class="noz-machine-note" data-machine="elite"><div><span class="bls-en">RECOMMENDED FOR</span><h3>IceTech Elite 20</h3></div><p>3/4" 블라스트 호스, 2–16 bar. Aero 시리즈와 달리 IceTech 노즐 체계를 사용합니다. 라운드 · 플랫 · 콘 세 형태에 인서트 구경(Ø7–16 mm)을 바꿔 세척 강도를 조절하며, 연장 파이프와 벤드를 결합할 수 있습니다.</p><div class="noz-rec"><span>기본 구성</span><b>라운드 Ø8</b><small>넓은 면은</small><b>플랫 50 mm</b></div></div>
+        <div class="noz-machine-note" data-machine="icerocket"><div><span class="bls-en">RECOMMENDED FOR</span><h3>IceRocket PLT</h3></div><p><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span> 저유량, 1/2" 컴팩트 어플리케이터. 소형 컴프레서(15 HP 권장)로 운용하는 입문형 장비라 1xx 저유량 노즐만 사용합니다. 자동차 하체·엔진룸, 소형 설비 세척용.</p><div class="noz-rec"><span>기본 구성</span><b>110V.6</b><small>짧은 부위는</small><b>106S.6</b></div></div>
+        <div class="noz-machine-note" data-machine="sdi"><div><span class="bls-en">RECOMMENDED FOR</span><h3>SDI Select 60</h3></div><p>쉐이브드 아이스와 3 mm 펠릿을 한 대로 전환하는 범용 모델. Aero 표준·고유량·가변·스페셜 노즐 전 라인업을 그대로 사용하며, 정밀 키트(MC88·MC31 어플리케이터)로 정밀 세척도 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>정밀 모드는</small><b>MC88</b></div></div>
+        <div class="noz-machine-note" data-machine="c100"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero C100</h3></div><p>전원 없는 완전 공압식 펠릿 블라스터. 노즐 공기 소비량 50–165 cfm(1.4–4.7 m³/min) 전 구간을 지원해 Aero 80FP와 동일한 노즐 라인업(저유량부터 고유량·스페셜까지)을 그대로 사용하며, 정밀 키트(MC88·MC31)도 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>저소음은</small><b>123V.7</b></div></div>
+        <div class="noz-machine-note" data-machine="eco2"><div><span class="bls-en">RECOMMENDED FOR</span><h3>E-CO2 150</h3></div><p>드라이아이스 + 연마재 혼합 분사용 표면처리 시스템. 연마재가 통과하는 전용 내마모 노즐과 어플리케이터를 사용하므로 일반 드라이아이스 노즐과 호환되지 않습니다.</p><div class="noz-rec"><span>전용 노즐 · 어플리케이터</span><b>별도 문의</b></div></div>
+      </div>
+      <div class="noz-nodefault is-active" id="nozNoDefault"><p>위에서 보유 장비를 먼저 선택해주세요.</p></div>
+      <div class="noz-empty" id="nozEmpty"><p>이 장비는 전용 노즐 시스템을 사용합니다. 호환 노즐과 어플리케이터는 견적 문의 시 함께 안내드립니다.</p><a class="cta-btn" href="../products/quote.html">전용 노즐 문의</a></div>
+      <div class="noz-code reveal">
+        <div class="noz-code-head">
+          <div class="noz-picker-title"><span class="num">HOW TO READ</span><h3>모델명 읽는 법</h3><p>네 자리가 순서대로 유량 · 길이 · 형태 · 분사 폭을 뜻합니다</p></div>
+          <span class="noz-code-sample" aria-label="예시 모델명 523V2"><em>5</em><em>23</em><em>V</em><em>2</em></span>
+        </div>
+        <div class="noz-code-cols">
+          <div class="noz-code-col"><b class="glyph">5</b><strong>유량 등급</strong><p>1 = 저유량 <span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span> · 3 = 표준 <span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span> · 5 = 고유량 <span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span> 이상</p></div>
+          <div class="noz-code-col"><b class="glyph">23</b><strong>길이 (in)</strong><p>노즐 길이(인치). 23"은 거리를 두고, 5–8"은 협소 공간에서 사용</p></div>
+          <div class="noz-code-col"><b class="glyph">V</b><strong>노즐 형태</strong><p>S = 고정 직선 · V = 가변 프래그멘팅 · M = MERN · A = 앵글 · MC = 정밀</p></div>
+          <div class="noz-code-col"><b class="glyph">2</b><strong>분사 폭 (in)</strong><p>인치 단위. .6은 집중 분사, 2–4는 넓은 면적</p></div>
+        </div>
+        <p class="noz-code-foot">* Elite 20용 IceTech 노즐은 이 체계 대신 인서트 구경(mm)과 형태(라운드 · 플랫 · 콘)로 표기합니다.</p>
+      </div>
+      <div class="noz-grid" id="nozGrid">
+      <article class="noz-card reveal" data-cat="pcs60 plt60 aero sdi aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/323V2.webp" alt="323V2 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">VARIABLE · MERN</span><span class="bls-badge">BEST SELLER</span></div>
+        <h3>323V2<small>PART # 5E0252</small></h3>
+        <p class="noz-pos">모든 작업에 대응하는 범용 표준. 다이얼 0–3으로 강도를 바꿔 한 개로 여러 작업을 처리합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='2"' data-si='5.1 cm'>5.1 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='23"' data-si='58.4 cm'>58.4 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='2–4 lb/min' data-si='0.9–1.8 kg/min'>0.9–1.8 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PCS 60</span><span>PLT 60</span><span>AERO2 ULTRA</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="plt60 aero sdi aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/523V2.webp" alt="523V2 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">VARIABLE · MERN</span><span class="bls-badge">HIGH FLOW</span></div>
+        <h3>523V2<small>PART # 5E0238</small></h3>
+        <p class="noz-pos">고유량 <span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span>으로 가장 강한 세척력. 고착 오염과 넓은 면적의 산업 설비에 적합합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='2"' data-si='5.1 cm'>5.1 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='23"' data-si='58.4 cm'>58.4 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='3.1–5.1 lb/min' data-si='1.4–2.3 kg/min'>1.4–2.3 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PLT 60</span><span>AERO2 ULTRA</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="plt60 aero sdi aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/508V.8.webp" alt="508V.8 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">VARIABLE · MERN</span></div>
+        <h3>508V.8<small>PART # 5E0272</small></h3>
+        <p class="noz-pos">짧은 8" 길이에 좁은 분사 폭. 좁고 깊은 부위를 강하게 세척할 때 선택합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.6"' data-si='1.5 cm'>1.5 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='8"' data-si='20.3 cm'>20.3 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='3.1–5.1 lb/min' data-si='1.4–2.3 kg/min'>1.4–2.3 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PLT 60</span><span>AERO2 ULTRA</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 plt60 aero sdi aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/312V2.webp" alt="312V2 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">VARIABLE · MERN</span></div>
+        <h3>312V2<small>PART # 5E0274</small></h3>
+        <p class="noz-pos">12" 중간 길이의 표준 유량 노즐. 비교 시험에서 10분 연속 분사 동안 막힘 없이 작동했습니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='1.8"' data-si='4.6 cm'>4.6 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='12"' data-si='30.5 cm'>30.5 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='2–4 lb/min' data-si='0.9–1.8 kg/min'>0.9–1.8 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PCS 60</span><span>PLT 60</span><span>AERO2 ULTRA</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="plt60 aero sdi aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/523V4.webp" alt="523V4 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">VARIABLE · MERN</span></div>
+        <h3>523V4<small>PART # 5E0257</small></h3>
+        <p class="noz-pos">4" 넓은 분사 폭으로 큰 면적을 부드럽게. 대형 설비 외판, 컨베이어, 벽면 세척에 적합합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='4"' data-si='10.2 cm'>10.2 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='23"' data-si='58.4 cm'>58.4 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='3.1–5.1 lb/min' data-si='1.4–2.3 kg/min'>1.4–2.3 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PLT 60</span><span>AERO2 ULTRA</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 plt60 icerocket aero sdi aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/110V.6.webp" alt="110V.6 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">VARIABLE · LOW FLOW</span><span class="bls-badge">ICEROCKET 기본</span></div>
+        <h3>110V.6<small>PART # 5E0386</small></h3>
+        <p class="noz-pos"><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span> 저유량 가변 노즐. IceRocket PLT 기본 노즐로, 소형 컴프레서와 실내 작업에서 낮은 소음으로 세척합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.6"' data-si='1.5 cm'>1.5 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='10"' data-si='25.4 cm'>25.4 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='1.1–3.1 lb/min' data-si='0.5–1.4 kg/min'>0.5–1.4 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>ICEROCKET PLT</span><span>PCS 60</span><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 plt60 icerocket aero sdi aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/123V.7.webp" alt="123V.7 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">VARIABLE · LOW FLOW</span><span class="bls-badge">LOW NOISE</span></div>
+        <h3>123V.7<small>PART # 5E0387</small></h3>
+        <p class="noz-pos">저유량 가변 노즐의 23" 롱 버전. 손이 닿기 어려운 곳까지 낮은 소음으로 접근합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.7"' data-si='1.8 cm'>1.8 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='23"' data-si='58.4 cm'>58.4 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='1.1–3.1 lb/min' data-si='0.5–1.4 kg/min'>0.5–1.4 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>ICEROCKET PLT</span><span>PCS 60</span><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 plt60 sdi aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/312S2.webp" alt="312S2 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">STANDARD · STRAIGHT</span></div>
+        <h3>312S2<small>PART # 5E0159</small></h3>
+        <p class="noz-pos">다이얼 없는 고정 펠렛 노즐. 조건이 일정한 반복 작업에 단순하고 경제적입니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='1.8"' data-si='4.6 cm'>4.6 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='12"' data-si='30.5 cm'>30.5 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='2–4 lb/min' data-si='0.9–1.8 kg/min'>0.9–1.8 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PCS 60</span><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 plt60 sdi aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/323S1.webp" alt="323S1 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">STANDARD · STRAIGHT</span></div>
+        <h3>323S1<small>PART # 5E0175</small></h3>
+        <p class="noz-pos">23" 길이, 1" 폭의 집중 분사형 표준 노즐. 거리를 두고 강하게 세척할 때 사용합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='1"' data-si='2.5 cm'>2.5 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='23"' data-si='58.4 cm'>58.4 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='2–4 lb/min' data-si='0.9–1.8 kg/min'>0.9–1.8 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PCS 60</span><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 plt60 icerocket sdi aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/110S.6.webp" alt="110S.6 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">STANDARD · LOW FLOW</span></div>
+        <h3>110S.6<small>PART # 5E0180</small></h3>
+        <p class="noz-pos"><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span> 저유량 고정 노즐. 다이얼이 필요 없는 단순 반복 작업용.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.6"' data-si='1.5 cm'>1.5 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='10"' data-si='25.4 cm'>25.4 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='1.1–3.1 lb/min' data-si='0.5–1.4 kg/min'>0.5–1.4 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>ICEROCKET PLT</span><span>PCS 60</span><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 plt60 icerocket sdi aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/106S.6.webp" alt="106S.6 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">STANDARD · LOW FLOW</span><span class="bls-badge">COMPACT</span></div>
+        <h3>106S.6<small>PART # 5E0421</small></h3>
+        <p class="noz-pos">6" 초단 저유량 노즐. 엔진룸, 하체 부품처럼 손이 들어가기 어려운 협소 공간용.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.6"' data-si='1.5 cm'>1.5 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='6"' data-si='15.2 cm'>15.2 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='1.1–3.1 lb/min' data-si='0.5–1.4 kg/min'>0.5–1.4 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>ICEROCKET PLT</span><span>PCS 60</span><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="plt60 sdi aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/507S2.webp" alt="507S2 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">HIGH FLOW · STRAIGHT</span></div>
+        <h3>507S2<small>PART # 5E0141</small></h3>
+        <p class="noz-pos"><span class="u-val" data-us='165 cfm' data-si='4.7 m³/min'>4.7 m³/min</span> 최대 유량의 짧은 노즐. 가장 강한 세척력이 필요한 중공업 고착 오염 제거용.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='165 cfm' data-si='4.7 m³/min'>4.7 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='2"' data-si='5.1 cm'>5.1 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='7"' data-si='17.8 cm'>17.8 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='3.1–5.1 lb/min' data-si='1.4–2.3 kg/min'>1.4–2.3 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="plt60 sdi aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/510S.6.webp" alt="510S.6 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">HIGH FLOW · STRAIGHT</span></div>
+        <h3>510S.6<small>PART # 5E0232</small></h3>
+        <p class="noz-pos">고유량에 0.6" 좁은 폭. 좁은 틈의 고착 오염을 집중적으로 제거합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='140 cfm' data-si='3.9 m³/min'>3.9 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.6"' data-si='1.5 cm'>1.5 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='10"' data-si='25.4 cm'>25.4 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='2–4 lb/min' data-si='0.9–1.8 kg/min'>0.9–1.8 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="plt60 sdi aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/505M.8.webp" alt="505M.8 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">HIGH FLOW · MERN</span><span class="bls-badge">COMPACT</span></div>
+        <h3>505M.8<small>PART # 5E0534</small></h3>
+        <p class="noz-pos">5" 초단 MERN 노즐. 협소 공간에서 고유량 세척력을 그대로 발휘합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.6"' data-si='1.5 cm'>1.5 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='5"' data-si='12.7 cm'>12.7 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='3.1–5.1 lb/min' data-si='1.4–2.3 kg/min'>1.4–2.3 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 mc mc2">
+        <div class="noz-media"><img src="../assets/img/nozzles/MC26M.webp" alt="MC26M 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">PRECISION · MERN</span><span class="bls-badge">MICROCLEAN</span></div>
+        <h3>MC26M<small>PART # 5E0284</small></h3>
+        <p class="noz-pos">MERN 기술을 적용한 정밀 노즐. 정밀 금형 캐비티와 전자 부품을 손상 없이 세척합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='35 cfm' data-si='1.0 m³/min'>1.0 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.26"' data-si='6.6 mm'>6.6 mm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='5"' data-si='12.7 cm'>12.7 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='0.4–0.9 lb/min' data-si='0.2–0.4 kg/min'>0.2–0.4 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>i³ MICROCLEAN</span><span>PCS 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 mc mc2">
+        <div class="noz-media"><img src="../assets/img/nozzles/MC29MH.webp" alt="MC29MH 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">PRECISION · MERN</span><span class="bls-badge">MICROCLEAN</span></div>
+        <h3>MC29MH<small>PART # 5E0248</small></h3>
+        <p class="noz-pos">MC26M보다 유량이 높은 정밀 노즐. 정밀도와 세척 속도의 균형이 필요할 때.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.29"' data-si='7.4 mm'>7.4 mm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='6"' data-si='15 cm'>15 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='0.4–1.1 lb/min' data-si='0.2–0.5 kg/min'>0.2–0.5 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>i³ MICROCLEAN</span><span>PCS 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 mc sdi mc2 aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/MC88.webp" alt="MC88 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">PRECISION · FAN</span></div>
+        <h3>MC88<small>PART # 5E0532</small></h3>
+        <p class="noz-pos">0.88" 팬 노즐. 민감한 표면을 빠르고 부드럽게 넓게 세척합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='30 cfm' data-si='0.8 m³/min'>0.8 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.88"' data-si='22 mm'>22 mm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='5"' data-si='12.7 cm'>12.7 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='0.4–1.1 lb/min' data-si='0.2–0.5 kg/min'>0.2–0.5 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>i³ MICROCLEAN</span><span>PCS 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 mc mc2">
+        <div class="noz-media"><img src="../assets/img/nozzles/MC88F.webp" alt="MC88F 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">PRECISION · FRAGMENTING FAN</span></div>
+        <h3>MC88F<small>PART # 5E0254</small></h3>
+        <p class="noz-pos">프래그멘팅 팬 노즐. 가장 섬세한 표면을 위한 가장 부드러운 세척.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='25 cfm' data-si='0.7 m³/min'>0.7 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.88"' data-si='22 mm'>22 mm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='5"' data-si='12.7 cm'>12.7 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='0.4–0.9 lb/min' data-si='0.2–0.4 kg/min'>0.2–0.4 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>i³ MICROCLEAN</span><span>PCS 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 mc mc2">
+        <div class="noz-media"><img src="../assets/img/nozzles/MC13.webp" alt="MC13 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">PRECISION · PINPOINT</span></div>
+        <h3>MC13<small>PART # 13865-126</small></h3>
+        <p class="noz-pos">0.13" 핀포인트 노즐. <span class="u-val" data-us='12 cfm' data-si='0.3 m³/min'>0.3 m³/min</span> 최소 유량으로 아주 작은 구멍과 홈을 세척합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='12 cfm' data-si='0.3 m³/min'>0.3 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.13"' data-si='3 mm'>3 mm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='6"' data-si='15.2 cm'>15.2 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='0.1–0.4 lb/min' data-si='0.05–0.2 kg/min'>0.05–0.2 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>i³ MICROCLEAN</span><span>PCS 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 mc sdi mc2 aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/MC31.webp" alt="MC31 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">PRECISION · PINPOINT</span></div>
+        <h3>MC31<small>PART # 13865-506</small></h3>
+        <p class="noz-pos">정밀 노즐 중 가장 높은 <span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span> 유량. 정밀 작업에서 속도가 필요할 때.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='50 cfm' data-si='1.5 m³/min'>1.5 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.31"' data-si='8 mm'>8 mm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='6"' data-si='15.2 cm'>15.2 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='0.4–1.3 lb/min' data-si='0.2–0.6 kg/min'>0.2–0.6 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>i³ MICROCLEAN</span><span>PCS 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 plt60 sdi aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/307A90V1.webp" alt="307A90V1 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">SPECIALTY · 90° ANGLE</span></div>
+        <h3>307A90V1<small>PART # 2E0329</small></h3>
+        <p class="noz-pos">90° 꺾인 노즐. 정면에서 접근할 수 없는 설비 뒷면과 내부 벽면을 세척합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='1"' data-si='2.5 cm'>2.5 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='7.3 × 7"' data-si='18.6 × 17.8 cm'>18.6 × 17.8 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='2–4 lb/min' data-si='0.9–1.8 kg/min'>0.9–1.8 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PCS 60</span><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 plt60 sdi aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/309A45H.8.webp" alt="309A45H.8 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">SPECIALTY · 45° ANGLE</span></div>
+        <h3>309A45H.8<small>PART # 5E0094</small></h3>
+        <p class="noz-pos">45° 앵글, 수평 분사. 컨베이어 하부와 경사면 세척용 <span class="u-val" data-us='120 cfm' data-si='3.4 m³/min'>3.4 m³/min</span> 노즐.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='120 cfm' data-si='3.4 m³/min'>3.4 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.75"' data-si='1.9 cm'>1.9 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='8.9 × 4"' data-si='22.6 × 10.2 cm'>22.6 × 10.2 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='3.1–5.1 lb/min' data-si='1.4–2.3 kg/min'>1.4–2.3 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PCS 60</span><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="pcs60 plt60 sdi aero40 aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/112HK.webp" alt="112HK 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">SPECIALTY · 160° HOOK</span></div>
+        <h3>112HK<small>PART # 2E0361</small></h3>
+        <p class="noz-pos">160° 후크형. 파이프 내부와 프레임 뒷면처럼 완전히 가려진 부위를 향해 분사합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='70 cfm' data-si='2.0 m³/min'>2.0 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.25"' data-si='0.6 cm'>0.6 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='12 × 2"' data-si='30.5 × 5.1 cm'>30.5 × 5.1 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='1.1–3.1 lb/min' data-si='0.5–1.4 kg/min'>0.5–1.4 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PCS 60</span><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="plt60 sdi aero80 c100">
+        <div class="noz-media"><img src="../assets/img/nozzles/509C.webp" alt="509C 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">SPECIALTY · CONE</span></div>
+        <h3>509C<small>PART # 2E0411</small></h3>
+        <p class="noz-pos">22° 원뿔 분사 콘 노즐. 파이프 내벽과 원통형 부품 내부를 한 번에 세척합니다.</p>
+        <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span></dd></div><div><dt>분사 폭</dt><dd>22° 콘</dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='9"' data-si='22.9 cm'>22.9 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='3.1–5.1 lb/min' data-si='1.4–2.3 kg/min'>1.4–2.3 kg/min</span></dd></div></dl>
+        <div class="noz-fit"><span>PLT 60</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-round5.webp" alt="라운드 노즐 5mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · ROUND</span></div>
+        <h3>라운드 노즐 5mm<small>Type 1 · 91101</small></h3>
+        <p class="noz-pos">Type 1 라운드 노즐, 인서트 구경 5mm. 구경이 작을수록 세척력이 집중되고, 클수록 분사 폭이 넓어집니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>라운드 · Type 1</dd></div><div><dt>인서트 구경</dt><dd>Ø5 mm</dd></div><div><dt>재질</dt><dd>스테인리스</dd></div><div><dt>호스 규격</dt><dd>3/4"</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-round6.webp" alt="라운드 노즐 6mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · ROUND</span></div>
+        <h3>라운드 노즐 6mm<small>Type 1 · 91111</small></h3>
+        <p class="noz-pos">Type 1 라운드 노즐, 인서트 구경 6mm. 구경이 작을수록 세척력이 집중되고, 클수록 분사 폭이 넓어집니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>라운드 · Type 1</dd></div><div><dt>인서트 구경</dt><dd>Ø6 mm</dd></div><div><dt>재질</dt><dd>스테인리스</dd></div><div><dt>호스 규격</dt><dd>3/4"</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-round8.webp" alt="라운드 노즐 8mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · ROUND</span><span class="bls-badge">기본 구성</span></div>
+        <h3>라운드 노즐 8mm<small>Type 1 · 91131</small></h3>
+        <p class="noz-pos">Type 1 라운드 노즐, 인서트 구경 8mm. 구경이 작을수록 세척력이 집중되고, 클수록 분사 폭이 넓어집니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>라운드 · Type 1</dd></div><div><dt>인서트 구경</dt><dd>Ø8 mm</dd></div><div><dt>재질</dt><dd>스테인리스</dd></div><div><dt>호스 규격</dt><dd>3/4"</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-round9.webp" alt="라운드 노즐 9mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · ROUND</span></div>
+        <h3>라운드 노즐 9mm<small>Type 1 · 91141</small></h3>
+        <p class="noz-pos">Type 1 라운드 노즐, 인서트 구경 9mm. 구경이 작을수록 세척력이 집중되고, 클수록 분사 폭이 넓어집니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>라운드 · Type 1</dd></div><div><dt>인서트 구경</dt><dd>Ø9 mm</dd></div><div><dt>재질</dt><dd>스테인리스</dd></div><div><dt>호스 규격</dt><dd>3/4"</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-round10.webp" alt="라운드 노즐 10mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · ROUND</span><span class="bls-badge">WIDE</span></div>
+        <h3>라운드 노즐 10mm<small>Type 1 · 91151</small></h3>
+        <p class="noz-pos">Type 1 라운드 노즐, 인서트 구경 10mm. 구경이 작을수록 세척력이 집중되고, 클수록 분사 폭이 넓어집니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>라운드 · Type 1</dd></div><div><dt>인서트 구경</dt><dd>Ø10 mm</dd></div><div><dt>재질</dt><dd>스테인리스</dd></div><div><dt>호스 규격</dt><dd>3/4"</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-flat20-v2.png" alt="플랫 노즐 20mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · FLAT</span></div>
+        <h3>플랫 노즐 20mm<small>502714</small></h3>
+        <p class="noz-pos">토출구 20mm의 플랫형 노즐. 모든 Elite 20 모델에 적용 가능하나, 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>플랫 · 평면 분사</dd></div><div><dt>세척 폭(토출구)</dt><dd>약 20 mm</dd></div><div><dt>길이 × 두께</dt><dd>305 × 40 mm</dd></div><div><dt>무게</dt><dd>500 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-flat25-v2.png" alt="플랫 노즐 25mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · FLAT</span></div>
+        <h3>플랫 노즐 25mm<small>502720</small></h3>
+        <p class="noz-pos">토출구 25mm의 플랫형 노즐. 모든 Elite 20 모델에 적용 가능하나, 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>플랫 · 평면 분사</dd></div><div><dt>세척 폭(토출구)</dt><dd>약 25 mm</dd></div><div><dt>길이 × 두께</dt><dd>132 × 31 mm</dd></div><div><dt>무게</dt><dd>160 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-flat50-v2.png" alt="플랫 노즐 50mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · FLAT</span><span class="bls-badge">WIDE</span></div>
+        <h3>플랫 노즐 50mm<small>502666</small></h3>
+        <p class="noz-pos">토출구 50mm의 플랫형 노즐. 모든 Elite 20 모델에 적용 가능하나, 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>플랫 · 평면 분사</dd></div><div><dt>세척 폭(토출구)</dt><dd>약 50 mm</dd></div><div><dt>길이 × 두께</dt><dd>310 × 56 mm</dd></div><div><dt>무게</dt><dd>340 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-flat75-v2.png" alt="플랫 노즐 75mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · FLAT</span><span class="bls-badge">WIDEST</span></div>
+        <h3>플랫 노즐 75mm<small>502717</small></h3>
+        <p class="noz-pos">토출구 75mm의 플랫형 노즐. 모든 Elite 20 모델에 적용 가능하나, 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>플랫 · 평면 분사</dd></div><div><dt>세척 폭(토출구)</dt><dd>약 75 mm</dd></div><div><dt>길이 × 두께</dt><dd>490 × 81 mm</dd></div><div><dt>무게</dt><dd>560 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-cone360.webp" alt="스페셜 콘 노즐 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · CONE</span><span class="bls-badge">360°</span></div>
+        <h3>스페셜 콘 노즐<small>91190</small></h3>
+        <p class="noz-pos">360° 확산 분사하는 콘 타입 A 노즐. 파이프 내벽과 원통형 부품 내부처럼 둘러싸인 면을 한 번에 세척합니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>콘 · 360° 확산</dd></div><div><dt>타입</dt><dd>Cone Type A</dd></div><div><dt>호스 규격</dt><dd>3/4"</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-combo.webp" alt="콤보 노즐 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · COMBO</span></div>
+        <h3>콤보 노즐<small>91319</small></h3>
+        <p class="noz-pos">여러 세척 조건을 한 노즐로 다루는 콤보 노즐 완제품. 노즐 교체 없이 작업 범위를 넓힙니다.</p>
+        <dl class="noz-spec"><div><dt>노즐 형태</dt><dd>콤보 · 완제품</dd></div><div><dt>호스 규격</dt><dd>3/4"</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-it3box.webp" alt="하이플로우 노즐 박스 IT-3 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · KIT</span><span class="bls-badge">풀세트</span></div>
+        <h3>하이플로우 노즐 박스 IT-3<small>90399</small></h3>
+        <p class="noz-pos">가장 많이 쓰는 노즐 구성을 케이스에 담은 세트. 현장에서 노즐을 바로 교체할 수 있습니다.</p>
+        <dl class="noz-spec"><div><dt>구성</dt><dd>고유량 노즐 풀세트</dd></div><div><dt>형태</dt><dd>플라이트 케이스</dd></div><div><dt>용도</dt><dd>현장 교체용</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-extpipe250-v2.png" alt="익스텐션 파이프 250mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · EXTENSION</span></div>
+        <h3>익스텐션 파이프 250mm<small>91224S</small></h3>
+        <p class="noz-pos">일자형 노즐 연장 파이프. 모든 모델에 적용 가능하나, 반드시 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>형태</dt><dd>일자형 연장 파이프</dd></div><div><dt>길이 × 구경</dt><dd>250 × Ø14 mm</dd></div><div><dt>무게</dt><dd>120 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-extpipe500-v2.png" alt="익스텐션 파이프 500mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · EXTENSION</span></div>
+        <h3>익스텐션 파이프 500mm<small>91222S</small></h3>
+        <p class="noz-pos">일자형 노즐 연장 파이프. 모든 모델에 적용 가능하나, 반드시 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>형태</dt><dd>일자형 연장 파이프</dd></div><div><dt>길이 × 구경</dt><dd>500 × Ø14 mm</dd></div><div><dt>무게</dt><dd>220 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-extpipe750.png" alt="익스텐션 파이프 750mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · EXTENSION</span></div>
+        <h3>익스텐션 파이프 750mm<small>91226S</small></h3>
+        <p class="noz-pos">일자형 노즐 연장 파이프. 모든 모델에 적용 가능하나, 반드시 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>형태</dt><dd>일자형 연장 파이프</dd></div><div><dt>길이 × 구경</dt><dd>750 × Ø14 mm</dd></div><div><dt>무게</dt><dd>320 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-extpipe1000.png" alt="익스텐션 파이프 1000mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · EXTENSION</span><span class="bls-badge">LONG</span></div>
+        <h3>익스텐션 파이프 1000mm<small>91228S</small></h3>
+        <p class="noz-pos">가장 긴 일자형 연장 파이프. 모든 모델에 적용 가능하나, 반드시 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>형태</dt><dd>일자형 연장 파이프</dd></div><div><dt>길이 × 구경</dt><dd>1000 × Ø14 mm</dd></div><div><dt>무게</dt><dd>440 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-bend45-210.png" alt="익스텐션 벤드 45° (210) 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · EXTENSION</span></div>
+        <h3>익스텐션 벤드 45° (210)<small>91204S</small></h3>
+        <p class="noz-pos">45도 굽어져 있는 노즐 연장용 파이프. 모든 모델에 적용 가능하나, 반드시 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>형태</dt><dd>45° 벤드</dd></div><div><dt>길이 × 구경</dt><dd>210 × Ø14 mm</dd></div><div><dt>무게</dt><dd>100 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-bend45-310.png" alt="익스텐션 벤드 45° (310) 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · EXTENSION</span></div>
+        <h3>익스텐션 벤드 45° (310)<small>91205S</small></h3>
+        <p class="noz-pos">45도 굽어져 있는 노즐 연장용 파이프. 모든 모델에 적용 가능하나, 반드시 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>형태</dt><dd>45° 벤드</dd></div><div><dt>길이 × 구경</dt><dd>310 × Ø14 mm</dd></div><div><dt>무게</dt><dd>140 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-bend45-410.png" alt="익스텐션 벤드 45° (410) 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · EXTENSION</span><span class="bls-badge">LONG</span></div>
+        <h3>익스텐션 벤드 45° (410)<small>91206S</small></h3>
+        <p class="noz-pos">45도 굽어져 있는 노즐 연장용 파이프. 모든 모델에 적용 가능하나, 반드시 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>형태</dt><dd>45° 벤드</dd></div><div><dt>길이 × 구경</dt><dd>410 × Ø14 mm</dd></div><div><dt>무게</dt><dd>180 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-bend90-210.png" alt="익스텐션 벤드 90° (210) 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · EXTENSION</span></div>
+        <h3>익스텐션 벤드 90° (210)<small>91203S</small></h3>
+        <p class="noz-pos">90도 굽어져 있는 노즐 연장용 파이프. 모든 모델에 적용 가능하나, 반드시 압축공기 사양에 맞는 구경으로 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>형태</dt><dd>90° 벤드</dd></div><div><dt>길이 × 구경</dt><dd>210 × Ø14 mm</dd></div><div><dt>무게</dt><dd>120 g</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      <article class="noz-card reveal" data-cat="elite">
+        <div class="noz-media"><img src="../assets/img/nozzles/elite-icesplitter.png" alt="아이스 스플리터 1.5mm 노즐" loading="lazy" decoding="async" /></div>
+        <div class="noz-card-top"><span class="bls-prod-cat">ICETECH · SPLITTER</span><span class="bls-badge">HIGH FLOW</span></div>
+        <h3>아이스 스플리터 1.5mm<small>고압용</small></h3>
+        <p class="noz-pos">고압용 Dry ice 분쇄기 IceSplitter. 1.5mm 그리드가 장착되어 있으며 반드시 고압에 적용 가능한 모델에만 사용해야 합니다.</p>
+        <dl class="noz-spec"><div><dt>형태</dt><dd>그리드 · 분쇄기</dd></div><div><dt>길이 × 구경</dt><dd>247 × Ø35 mm</dd></div><div><dt>무게</dt><dd>380 g</dd></div><div><dt>적용</dt><dd>ELITE 20, XTREME 40</dd></div></dl>
+        <div class="noz-fit"><span>ELITE 20</span></div>
+      </article>
+      </div>
+      <div class="noz-finder-foot">
+        <p>여기 없는 노즐(310S.5 · 312S1 · 323S1 · MC19 · 팬 MC28/35/47 · 앵글 MC25A · 307/308/317 앵글 시리즈 등)은 장비별 액세서리 카탈로그에 정리되어 있습니다. 어떤 노즐이 맞는지 확실하지 않다면 세척 대상 사진과 장비 모델만 알려주세요.</p>
+        <a class="cta-btn" href="../products/quote.html">노즐 추천 받기</a>
+      </div>
+  </section>
+
+  <section class="plt-section" id="accessories">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">ACCESSORIES</span><h2 class="plt-title">노즐 뒤의 모든 것,<br>어플리케이터부터 안전 장비까지.</h2></div>
+        <p class="plt-lead">블라스터에서 노즐까지 드라이아이스가 지나는 경로와 작업자의 손에 닿는 모든 부분이 액세서리입니다. 작업 환경과 장비 모델에 맞게 구성하면 세척 효율과 작업자 피로도가 함께 달라집니다.</p>
+      </div>
+      <div class="bls-tech-list">
+        <article class="bls-tech reveal">
+          <div class="bls-tech-media is-product"><img src="../assets/img/accessory-applicators.png" alt="Cold Jet 어플리케이터 라인업" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">APPLICATORS</span>
+            <h3>어플리케이터<br>세척을 손에 쥐는 방법</h3>
+            <p>2단 안전 트리거, 밀봉된 전기 스위치, 낙하와 수분에 견디는 외피, 표면을 비추는 산업용 LED 조명. 인체공학 연구로 설계된 손잡이가 장시간 작업의 피로를 줄입니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li><b>Performance</b> — 1" · 3/4", 기본형. 3단 조광 LED</li><li><b>Advanced Performance</b> — 어플리케이터에서 4기능(PLT 60) · 5기능(PCS 60) 조절</li><li><b>Heavy Duty</b> — 압력과 입자 크기(PCS 60)까지 손 위에서 조절</li><li><b>Precision 1/2"</b> — 협소 부위용 경량 컴팩트, 좌·우손 겸용, 호퍼 잔량 표시</li></ul>
+          </div>
+        </article>
+        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+          <div class="bls-tech-media is-product"><img src="../assets/img/accessory-hoses-fittings.png" alt="블라스트 호스와 퀵 디스커넥트 피팅" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">BLAST HOSES &amp; FITTINGS</span>
+            <h3>블라스트 호스<br>가볍고 얼지 않게</h3>
+            <p>분사 중 수축과 결빙을 막도록 설계된 300 psi 정격 호스입니다. 수분을 튕겨내는 외피의 하이브리드 호스는 10 lb(4.5 kg) 미만으로 Cold Jet에서 가장 가볍고 유연합니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li><b>1/2" × 12'</b> — PCS 60 전용, 하이브리드 · 러버</li><li><b>3/4" · 1" · 1-1/4" × 20'</b> — 직결 호스와 연장 호스, 리듀서 피팅 조합</li><li><b>SureFlow 퀵 디스커넥트</b> — 입자 흐름을 유지하는 공기역학 설계, 교체 호스에 재사용</li><li>파이어 슬리브(82 °C 이상 환경) · 호스 커버 · 호스 랩 · 호스 캐리어</li></ul>
+          </div>
+        </article>
+        <article class="bls-tech reveal">
+          <div class="bls-tech-media is-product"><img src="../assets/img/accessory-extensions-handles.png" alt="연장관, 핸들, 어댑터 구성" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">EXTENSIONS &amp; HANDLES</span>
+            <h3>연장관 · 핸들 · 어댑터<br>닿지 않는 곳까지</h3>
+            <p>압력 손실을 최소화하며 노즐을 연장하는 스테인리스·알루미늄 연장관과, 분사 반동을 잡아주는 노즐 핸들. 유량 등급에 맞는 직경을 선택합니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li><b>3/4" 연장관</b> — 10" · 20" · 30", <span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span> 이하 노즐용 (스테인리스)</li><li><b>1" 연장관</b> — 10" · 20" · 30", <span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span> 초과 노즐용 (알루미늄)</li><li><b>노즐 핸들</b> — 3/4" · 1" · 1-3/16" OD, 클램프형(523S3 · 523V4)</li><li><b>컴포트 핸들</b> — 양손 파지로 장시간 작업 피로 감소 · 노즐 어댑터 · 노즐 베이스</li></ul>
+          </div>
+        </article>
+        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+          <div class="bls-tech-media is-product"><img src="../assets/img/accessory-air-treatment.png" alt="애프터쿨러와 수분 분리기, 공기 공급 호스" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">AIR TREATMENT</span>
+            <h3>공기 처리<br>깨끗하고 건조한 공기</h3>
+            <p>드라이아이스 블라스팅의 품질은 압축공기 품질에서 시작합니다. 습한 환경이나 건조한 공기를 보장할 수 없는 현장에서는 애프터쿨러와 수분 분리기가 노즐 결빙과 세척 불량을 막습니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li><b>애프터쿨러</b> — 깨끗하고 건조한 공기를 보장할 수 없을 때 권장</li><li><b>수분 분리기 + 필터</b> — Aero2에 바로 장착, 사이트 글라스로 수분 확인</li><li><b>에어 호스</b> 1" × 25' 300 psi · <b>휩 체크</b> 호스 연결부마다 1개</li><li>식품 등급 윤활유(FMO-150-AW) 1 qt</li></ul>
+          </div>
+        </article>
+        <article class="bls-tech reveal">
+          <div class="bls-tech-media is-product"><img src="../assets/img/accessory-storage-transport.png" alt="노즐 소프트 백, 하드케이스, 블라스터 부착 홀더" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">STORAGE &amp; TRANSPORT</span>
+            <h3>보관 · 이동<br>노즐을 잃어버리지 않게</h3>
+            <p>현장에서 노즐과 어플리케이터가 떨어지거나 사라지는 일은 흔합니다. 블라스터에 부착하는 홀더와 전용 케이스로 구성품을 한곳에 보관합니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li><b>노즐 백</b> — 노즐 5개 소프트 백</li><li><b>노즐/액세서리 하드케이스</b> — 어플리케이터 1 · 노즐 3 · 연장관 3 · 핸들 2 · 피팅 7</li><li><b>어플리케이터 홀스터</b> · <b>액세서리 &amp; 툴 홀더</b> — 블라스터 좌·우 장착</li><li>연장 코드 릴 50' · 국가별 전원 코드</li></ul>
+          </div>
+        </article>
+        <article class="bls-tech reveal" style="--reveal-delay:0.06s">
+          <div class="bls-tech-media is-product"><img src="../assets/img/accessory-safety-maintenance.png" alt="PPE 키트와 스페어 파츠 키트" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-head">
+            <span class="bls-en">SAFETY &amp; MAINTENANCE</span>
+            <h3>안전 · 유지보수<br>멈추지 않는 현장</h3>
+            <p>소음·눈·손 보호 기준을 충족하는 PPE 키트와, 현장에서 바로 교체할 수 있는 마모 부품을 모은 스페어 파츠 키트. 장비를 세우는 시간을 줄입니다.</p>
+          </div>
+          <div class="bls-tech-copy">
+            <ul><li><b>PPE 키트</b> — 안전장갑 · 김서림 방지 보안경 · 귀마개 · 드라이아이스 스쿠프</li><li><b>표준 스페어 파츠 키트</b> — 현장 교체용 핵심 마모 부품 (PCS 60 · PLT 60 별)</li><li><b>확장 스페어 파츠 키트</b> — 폭넓은 수리를 위한 추가 부품</li><li>7" LCD 반사 방지 스크린 프로텍터</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section tint-hatch" id="how-to-order">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">HOW TO ORDER</span><h2 class="plt-title">장비 모델과 작업만 알려주시면<br>맞는 구성을 제안합니다.</h2></div>
+        <p class="plt-lead">노즐과 액세서리는 장비 모델(PCS 60 · PLT 60 · i³ MicroClean 등)에 따라 호환 여부와 피팅 규격이 다릅니다. 부품 번호를 직접 찾지 않아도 됩니다. 바테크가 장비와 작업에 맞는 조합을 확인해 견적으로 안내합니다.</p>
+      </div>
+      <div class="noz-steps">
+        <article class="noz-step reveal"><span class="num">STEP 01</span><h3>장비 모델 확인</h3><p>보유 블라스터의 모델명과 호스 규격(1/2" · 3/4" · 1")을 알려주세요. 시리얼 번호가 있으면 더 정확합니다.</p></article>
+        <article class="noz-step reveal" style="--reveal-delay:0.06s"><span class="num">STEP 02</span><h3>작업과 대상 공유</h3><p>세척 대상 사진, 오염 종류, 접근이 어려운 부위가 있는지 알려주세요. 필요하면 샘플 테스트로 노즐과 다이얼 설정을 먼저 확인합니다.</p></article>
+        <article class="noz-step reveal" style="--reveal-delay:0.12s"><span class="num">STEP 03</span><h3>구성 · 견적 · 공급</h3><p>노즐, 연장관, 핸들, 피팅까지 호환되는 조합으로 견적을 드립니다. Cold Jet 정품 부품을 국내 재고와 함께 공급합니다.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section faq-section" id="faq">
+    <div class="wrap">
+    <div class="faq-head">
+      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>
+      <p class="faq-intro">노즐과 액세서리 선택에서 고객이 가장 많이 묻는 질문을 정리했습니다.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">처음 한 개만 산다면 어떤 노즐이 좋을까요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>표준 유량(<span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span>) 장비라면 323V2, 고유량 PLT 60이라면 523V2가 가장 범용적입니다. 가변 프래그멘팅 노즐이라 다이얼 0–3으로 강도를 바꿔 여러 작업을 한 노즐로 처리할 수 있습니다. 협소 부위가 많다면 짧은 508V.8이나 312V2를 함께 고려하세요.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">공기 소비량(cfm)은 왜 중요한가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>노즐의 공기 소비량이 컴프레서 용량을 넘으면 압력이 떨어져 세척력이 급격히 약해집니다. 80 psi 기준 저유량 노즐은 <span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span>, 표준은 <span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span>, 고유량은 <span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span> 이상을 소비합니다. 보유 컴프레서 용량에 맞는 유량 등급을 먼저 정하고, 그 안에서 분사 폭과 길이를 선택하세요.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">다른 장비에 쓰던 노즐을 그대로 쓸 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>노즐 자체는 대부분 Aero 시리즈 공통이지만, 어플리케이터 규격(1/2" · 3/4" · 1")과 피팅(JIC · QDC)이 장비마다 다릅니다. 노즐 어댑터나 베이스로 연결할 수 있는 경우가 많으니 장비 모델과 노즐 번호를 알려주시면 호환 여부를 확인해 드립니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">노즐이 자꾸 막히거나 얼어붙습니다. 왜 그런가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>대부분 압축공기의 수분이 원인입니다. 습한 환경이라면 애프터쿨러와 수분 분리기를 장착하고, 호스가 고온에 노출되면 파이어 슬리브를 씌우세요. Cold Jet 가변 노즐은 초음속 구간에서 프래그멘팅이 일어나 노즐 자체의 막힘은 적습니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">Cold Jet 정품 부품인가요? 납기는 얼마나 걸리나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>바테크는 Cold Jet 대한민국 공식 대리점으로 정품 노즐과 액세서리를 공급합니다. 자주 쓰이는 노즐과 소모품은 국내 재고를 유지하고, 그 외 품목은 주문 후 Cold Jet에서 직접 수입합니다. 품목별 납기는 견적 시 안내합니다.</p></div>
+      </details>
+    </div>
+    </div>
+  </section>
+
+  <section class="bls-sec bls-final last-freeze" id="noz-final">
+    <div class="wrap">
+      <div class="bls-final-grid">
+        <div>
+          <span class="cmp-eyebrow">FIND YOUR SETUP</span>
+          <h2 class="cmp-h2">세척 대상 사진 한 장이면<br>맞는 노즐을 찾아드립니다.</h2>
+        </div>
+        <div>
+          <div class="cmp-lead">
+            <p>장비 모델과 세척 대상, 오염 종류를 알려주시면 노즐 · 연장관 · 핸들 · 피팅까지 호환되는 구성으로 견적을 안내합니다.</p>
+            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 정품 부품 공급과 샘플 테스트, 교육과 A/S까지 지원합니다.</p>
+          </div>
+          <div class="cmp-cta-btns">
+            <a class="cta-btn" href="../products/quote.html">노즐 · 액세서리 견적 요청</a>
+            <a class="cmp-btn-ghost" href="blaster/index.html">블라스터 라인업 보기</a>
+          </div>
+          <a class="bls-textlink" href="../support/catalog.html">Aero2 액세서리 카탈로그 (PDF) →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+"""
+
+NOZZLE_SCRIPT = """  <script>
+  (function(){
+    var KEY='vatek-noz-unit', vals=document.querySelectorAll('.u-val'), btns=document.querySelectorAll('#nozUnit button');
+    function setUnit(u){ vals.forEach(function(s){ s.textContent=s.getAttribute('data-'+u); }); btns.forEach(function(b){ b.classList.toggle('is-active', b.getAttribute('data-unit')===u); }); try{localStorage.setItem(KEY,u);}catch(e){} }
+    btns.forEach(function(b){ b.addEventListener('click',function(){ setUnit(b.getAttribute('data-unit')); }); });
+    var saved=null; try{saved=localStorage.getItem(KEY);}catch(e){}
+    if (saved==='us') setUnit('us');
+  })();
+  </script>
+  <script>
+  (function(){
+    var tabs=document.querySelectorAll('#nozzle-finder .noz-picker button[data-filter]:not(.noz-reset-link)'),cards=document.querySelectorAll('#nozGrid .noz-card'),resetLink=document.querySelector('#nozzle-finder .noz-reset-link');
+    function apply(f, animate){
+      var nodef=document.getElementById('nozNoDefault'); if(nodef) nodef.classList.toggle('is-active', !f);
+      var grid=document.getElementById('nozGrid'); if(grid) grid.style.display=f?'':'none';
+      var notesWrap=document.querySelector('.noz-machine-notes'); if(notesWrap) notesWrap.style.display=f?'':'none';
+      var codeBox=document.querySelector('.noz-code'); if(codeBox) codeBox.style.display=f?'':'none';
+      var toShow=[],toHide=[];
+      cards.forEach(function(c){
+        var cats=(c.getAttribute('data-cat')||'').split(' ');
+        var show=!!f&&((f==='all')||cats.indexOf(f)>-1);
+        var wasHidden=c.classList.contains('is-hidden');
+        if (show && wasHidden) toShow.push(c);
+        else if (!show && !wasHidden) toHide.push(c);
+      });
+      document.querySelectorAll('.noz-machine-note').forEach(function(n){ n.classList.toggle('is-active', !!f && n.getAttribute('data-machine')===f); });
+      var total=0; cards.forEach(function(c){ if(!!f&&(f==='all'||(' '+c.getAttribute('data-cat')+' ').indexOf(' '+f+' ')>-1)) total++; });
+      var emp=document.getElementById('nozEmpty'); if(emp) emp.classList.toggle('is-active', !!f && total===0);
+      if (!animate){ toHide.forEach(function(c){c.classList.add('is-hidden');}); toShow.forEach(function(c){c.classList.remove('is-hidden');}); return; }
+      toHide.forEach(function(c){ c.classList.add('is-filter-out'); });
+      setTimeout(function(){
+        toHide.forEach(function(c){ c.classList.add('is-hidden'); c.classList.remove('is-filter-out'); });
+        toShow.forEach(function(c,i){ c.classList.remove('is-hidden'); c.classList.add('is-filter-in'); c.style.transitionDelay=(i*40)+'ms'; });
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ toShow.forEach(function(c){ c.classList.remove('is-filter-in'); }); setTimeout(function(){ toShow.forEach(function(c){ c.style.transitionDelay=''; }); }, 500); }); });
+      }, 380);
+    }
+    tabs.forEach(function(b){ b.addEventListener('click',function(){
+      if (b.classList.contains('is-active')) return;
+      tabs.forEach(function(t){ t.classList.toggle('is-active', t===b); });
+      apply(b.getAttribute('data-filter'), true);
+    }); });
+    if (resetLink) resetLink.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('is-active'); });
+      apply('all', true);
+    });
+    var init=document.querySelector('#nozzle-finder .noz-picker button[data-filter].is-active');
+    apply(init?init.getAttribute('data-filter'):null, false);
+  })();
+  </script>
+  <script>
+  (function () {
+    var el = document.getElementById('noz-final');
+    if (!el) return;
+    function sync() {
+      if (window.innerWidth <= 900) { el.style.top = ''; return; }
+      el.style.top = Math.min(0, window.innerHeight - el.offsetHeight) + 'px';
+    }
+    sync();
+    window.addEventListener('resize', sync);
+    if ('ResizeObserver' in window) { new ResizeObserver(sync).observe(el); }
+  })();
+  </script>
 """
 
 _SUPPLY_USES = [
@@ -11454,36 +12522,306 @@ _SUPPLY_USES = [
     ("바이오가스", "바이오가스 업그레이드 과정의 CO2 포집 · 처리에 활용됩니다."),
     ("원격지 생산", "드라이아이스 공급이 어려운 원격 지역에서 현지 생산합니다."),
 ]
-SUPPLY_BODY = """
-<p>바테크는 장비뿐 아니라 드라이아이스(소모품) 자체도 정기적으로 공급합니다. 드라이아이스는 세척용
-미디어 외에도 다양한 산업에서 활용됩니다.</p>
-<div class="sub-grid">
-""" + "".join(
-    f'<div class="sub-card"><h3>{name}</h3><p>{desc}</p></div>' for name, desc in _SUPPLY_USES
-) + """
-</div>
-<p style="margin-top:18px;">세척용 펠릿 정기 공급부터 냉장 · 냉동이 필요한 물류 · 의약품 운송용
-드라이아이스까지, 필요한 형태와 주기에 맞춰 공급해 드립니다. (출처: Cold Jet 공식 웹사이트 참고)</p>
+SUPPLY_EXTRA_HEAD = (
+    '\n<link rel="stylesheet" href="../assets/css/pelletizer-page.css?v=20260914-10" />'
+    '\n<link rel="stylesheet" href="../assets/css/recovery-page.css?v=20260916-11" />'
+    '\n<link rel="stylesheet" href="../assets/css/supply-page.css?v=20260916-1" />'
+)
+
+SUPPLY_BODY = """  <section class="subhero-parallax aut-hero-stage sup-hero-stage">
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 구매·공급</div>
+    <div class="hero-fit">
+      <img class="subhero-parallax-img" src="../assets/img/stackdo-supply.jpg" alt="드라이아이스 블록, 슬라이스, 너겟, 펠렛" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5" />
+      <div class="subhero-textbox">
+        <span class="ind-hero-eyebrow">VATEK DRY ICE SUPPLY / PELLET · NUGGET · BLOCK</span>
+        <h1>필요한 형태와 규격으로,<br><span class="bls-hero-accent">전국에 공급합니다.</span></h1>
+        <p class="bls-hero-main">블라스팅용 3 mm 펠렛부터 의료·제약 콜드체인용 너겟, 장시간 보냉을 위한 블록까지. 용도에 맞는 형태와 치수를 골라 정기 공급 또는 단건으로 주문하세요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-definition rec-cover tint-hatch" id="forms">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">WHAT WE SUPPLY</span><h2 class="plt-title">같은 드라이아이스,<br>형태가 다르면 쓰임이 다릅니다.</h2></div>
+        <p class="plt-lead">드라이아이스는 −78.5 °C에서 액체를 거치지 않고 바로 기체가 되는 고체 CO<sub>2</sub>입니다. 입자가 작을수록 표면적이 커져 빨리 승화하고, 덩어리가 클수록 오래 남습니다. 그래서 세척 장비에는 균일한 펠렛이, 보냉과 운송에는 오래 버티는 너겟과 블록이 맞습니다. 바테크는 세 가지 형태를 모두 공급합니다.</p>
+      </div>
+      <div class="sup-forms">
+        <article class="sup-form reveal">
+          <div class="sup-form-media"><img src="../assets/img/supply-form-pellet.png" alt="Ø3 mm 드라이아이스 펠렛" loading="lazy" decoding="async" /><span class="sup-form-tag">FOR BLASTING</span></div>
+          <div class="sup-form-body">
+            <div class="sup-form-head"><h3>펠렛<small>PELLET · 01</small></h3><span class="sup-form-size">Ø3<i>mm</i></span></div>
+            <p>드라이아이스 블라스터가 요구하는 표준 규격입니다. 장비 호퍼에서 노즐까지 막힘 없이 흘러야 하므로 굵기가 균일하고 밀도가 높아야 하며, 밀도가 곧 세척력입니다. Cold Jet 전 모델과 타사 블라스터 대부분에 그대로 사용합니다.</p>
+            <dl class="sup-spec">
+              <div><dt>규격</dt><dd>Ø3 mm 원기둥 펠렛</dd></div>
+              <div><dt>주 용도</dt><dd>드라이아이스 세척(블라스팅) · 정밀 세척 · 실험실 소량 냉각</dd></div>
+              <div><dt>특징</dt><dd>균일한 굵기와 고밀도 · 장비 호환 · 승화가 빠른 편</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="sup-form reveal" style="--reveal-delay:0.06s">
+          <div class="sup-form-media"><img src="../assets/img/supply-form-nugget.png" alt="Ø16 mm 드라이아이스 너겟" loading="lazy" decoding="async" /><span class="sup-form-tag">FOR COLD CHAIN</span></div>
+          <div class="sup-form-body">
+            <div class="sup-form-head"><h3>너겟<small>NUGGET · 02</small></h3><span class="sup-form-size">Ø16<i>mm</i></span></div>
+            <p>보냉용의 기본입니다. 펠렛보다 굵어 오래 남고, 블록보다 작아 상자 크기에 맞춰 무게를 조절하기 쉽습니다. 백신·검체·시약, 신선식품, 기내식처럼 정해진 시간 동안 온도를 지켜야 하는 운송에 가장 많이 쓰입니다.</p>
+            <dl class="sup-spec">
+              <div><dt>규격</dt><dd>Ø16 mm 원기둥 너겟</dd></div>
+              <div><dt>주 용도</dt><dd>의료·제약 콜드체인 · 식품 신선물류 · 항공 케이터링 · 행사 연출</dd></div>
+              <div><dt>특징</dt><dd>느린 승화 · 상자 크기에 맞춰 계량 · 집게·스쿠프로 취급 용이</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="sup-form reveal" style="--reveal-delay:0.12s">
+          <div class="sup-form-media"><img src="../assets/img/supply-form-block.png" alt="드라이아이스 블록과 슬라이스" loading="lazy" decoding="async" /><span class="sup-form-tag">FOR LONG HOLD</span></div>
+          <div class="sup-form-body">
+            <div class="sup-form-head"><h3>블록<small>BLOCK · 03</small></h3><span class="sup-form-size">3<i>규격</i></span></div>
+            <p>가장 오래 버티는 형태입니다. 같은 무게라도 표면적이 가장 작아 승화가 느리고, 대형 보냉 컨테이너나 며칠 걸리는 운송에 맞습니다. 치수로 고르는 세 가지 기본 규격 외에 필요한 크기로 잘라 드립니다.</p>
+            <dl class="sup-spec">
+              <div><dt>규격</dt><dd>300×300×250 · 250×150×75 · 150×70×40 mm <a class="bls-textlink" href="#block-sizes">치수 보기 ↓</a></dd></div>
+              <div><dt>주 용도</dt><dd>장시간 보냉 · 장거리 운송 · 행사·연출 · 산업용 저온 처리</dd></div>
+              <div><dt>특징</dt><dd>가장 느린 승화 · 맞춤 커팅 가능</dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section" id="block-sizes">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">BLOCK DIMENSIONS</span><h2 class="plt-title">블록은 치수로 고릅니다.</h2></div>
+        <p class="plt-lead">블록의 크기는 보냉 시간과 넣을 공간이 정합니다. 큰 덩어리 하나는 오래 남고, 작은 블록은 여러 상자에 나눠 담기 좋습니다. 아래 세 규격을 기본으로 공급하며, 모든 치수는 가로 × 세로 × 높이(mm) 기준입니다.</p>
+      </div>
+      <div class="sup-dims">
+        <article class="sup-dim reveal">
+          <div class="sup-dim-stage" data-scale="SAME SCALE" aria-hidden="true">
+            <div class="sup-box" style="--w:300;--h:250;--d:300"><b class="lw">300</b><b class="lh">250</b><b class="ld">300</b></div>
+          </div>
+          <h3 class="sup-dim-size">300 × 300 × 250<small>mm</small></h3>
+          <div class="sup-dim-meta"><span class="is-w">약 30 kg / 개</span><span>대형 · 1개 단위</span></div>
+          <p>가장 오래 버티는 대형 블록입니다. 대용량 보냉 컨테이너, 며칠이 걸리는 운송, 냉동 창고 정전 대비처럼 한 번에 오랫동안 온도를 지켜야 할 때 선택합니다.</p>
+        </article>
+        <article class="sup-dim reveal" style="--reveal-delay:0.06s">
+          <div class="sup-dim-stage" data-scale="SAME SCALE" aria-hidden="true">
+            <div class="sup-box" style="--w:250;--h:75;--d:150"><b class="lw">250</b><b class="lh">75</b><b class="ld">150</b></div>
+          </div>
+          <h3 class="sup-dim-size">250 × 150 × 75<small>mm</small></h3>
+          <div class="sup-dim-meta"><span class="is-w">약 3.7 kg / 개</span><span>표준 · 낱개 계량</span></div>
+          <p>가장 많이 쓰이는 표준 블록입니다. 보냉 박스 바닥이나 뚜껑 안쪽에 평평하게 깔기 좋고, 상자 수만큼 낱개로 나눠 담을 수 있어 식품·의약품 배송에 두루 맞습니다.</p>
+        </article>
+        <article class="sup-dim reveal" style="--reveal-delay:0.12s">
+          <div class="sup-dim-stage" data-scale="SAME SCALE" aria-hidden="true">
+            <div class="sup-box" style="--w:150;--h:40;--d:70"><b class="lw">150</b><b class="lh">40</b><b class="ld">70</b></div>
+          </div>
+          <h3 class="sup-dim-size">150 × 70 × 40<small>mm</small></h3>
+          <div class="sup-dim-meta"><span class="is-w">약 0.6 kg / 개</span><span>소형 · 다수 포장</span></div>
+          <p>손바닥 크기의 소형 블록입니다. 소포장 택배, 도시락·케이터링 상자, 행사장의 연출용처럼 무게를 잘게 나눠 넣어야 할 때 편리합니다.</p>
+        </article>
+      </div>
+      <div class="sup-dim-foot">
+        <p>표시 중량은 생산 직후 기준의 대략적인 값이며, 승화로 인해 수령 시점에는 다소 줄어듭니다. 세 규격 외의 치수나 슬라이스가 필요하면 수량과 납기를 함께 문의해 주세요.</p>
+        <a class="cmp-btn-ghost" href="../products/quote.html">맞춤 치수 문의</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section cmp-dark rec-how" id="by-use">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">CHOOSE BY PURPOSE</span><h2 class="plt-title">용도를 말씀해 주시면,<br>형태와 규격을 맞춰 드립니다.</h2></div>
+        <p class="plt-lead">같은 30 kg이라도 세척 장비에 넣을지, 백신 상자에 넣을지, 무대에 뿌릴지에 따라 맞는 형태가 다릅니다. 자주 찾는 용도별로 권장 형태를 정리했습니다. 어떤 형태가 맞을지 모르겠다면 용도와 시간만 알려주셔도 됩니다.</p>
+      </div>
+      <div class="sup-matrix-wrap reveal">
+        <table class="sup-matrix">
+          <thead><tr><th>용도</th><th class="c">PELLET<b>Ø3 mm</b></th><th class="c">NUGGET<b>Ø16 mm</b></th><th class="c">BLOCK<b>치수 규격</b></th><th>참고</th></tr></thead>
+          <tbody>
+            <tr><td>드라이아이스 세척<small>블라스팅 장비 투입</small></td><td class="c"><i class="sup-dot is-best"></i></td><td class="c"><i class="sup-dot is-no"></i></td><td class="c"><i class="sup-dot is-no"></i></td><td>장비가 요구하는 유일한 규격입니다. 마이크로파티클 장비(PCS)도 3 mm 펠렛을 넣어 장비 안에서 잘라 씁니다.</td></tr>
+            <tr><td>의료·제약 콜드체인<small>백신 · 검체 · 시약 · 세포</small></td><td class="c"><i class="sup-dot"></i></td><td class="c"><i class="sup-dot is-best"></i></td><td class="c"><i class="sup-dot"></i></td><td>정해진 시간 동안 −70 °C 부근을 유지해야 하므로 승화가 느린 너겟이 기본, 장거리는 블록을 함께 넣습니다.</td></tr>
+            <tr><td>식품 신선물류<small>택배 · 배송 · 도시락</small></td><td class="c"><i class="sup-dot is-no"></i></td><td class="c"><i class="sup-dot is-best"></i></td><td class="c"><i class="sup-dot is-best"></i></td><td>상자 크기에 맞춰 너겟으로 계량하거나 소형·표준 블록을 깔아 넣습니다. 식품에 직접 닿지 않게 포장합니다.</td></tr>
+            <tr><td>항공·선박 케이터링<small>기내식 카트 보냉</small></td><td class="c"><i class="sup-dot is-no"></i></td><td class="c"><i class="sup-dot is-best"></i></td><td class="c"><i class="sup-dot"></i></td><td>카트 상단 트레이에 너겟을 계량해 넣는 방식이 일반적입니다. 정기 공급으로 운항 일정에 맞춥니다.</td></tr>
+            <tr><td>연구·실험실<small>시료 동결 · 저온 반응 · 운반</small></td><td class="c"><i class="sup-dot is-best"></i></td><td class="c"><i class="sup-dot is-best"></i></td><td class="c"><i class="sup-dot is-no"></i></td><td>소량을 자주 쓰면 펠렛, 시료 운반 상자에는 너겟. 소량 정기 공급이 가능합니다.</td></tr>
+            <tr><td>행사·연출<small>무대 연기 · 촬영 · 전시</small></td><td class="c"><i class="sup-dot"></i></td><td class="c"><i class="sup-dot is-best"></i></td><td class="c"><i class="sup-dot is-best"></i></td><td>온수와 반응해 연기를 만듭니다. 연기량은 표면적에 비례하므로 짧고 강하게는 너겟, 길게는 블록을 씁니다.</td></tr>
+            <tr><td>산업용 저온 처리<small>수축 끼워맞춤 · 금속 냉각 · 배관 동결</small></td><td class="c"><i class="sup-dot"></i></td><td class="c"><i class="sup-dot is-best"></i></td><td class="c"><i class="sup-dot is-best"></i></td><td>부품을 감싸거나 접촉시키는 방식에 따라 너겟 또는 블록을 선택합니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sup-legend"><span><i class="sup-dot is-best"></i>권장</span><span><i class="sup-dot"></i>가능</span><span><i class="sup-dot is-no"></i>비권장</span></div>
+      <div class="sup-uses">
+        <article class="sup-use reveal">
+          <img src="../assets/img/pelletizer-use-cleaning.jpg" alt="드라이아이스 블라스터로 설비를 세척하는 작업자" loading="lazy" decoding="async" />
+          <div class="sup-use-body">
+            <span class="bls-en">DRY ICE BLASTING</span>
+            <h3>세척 장비를 운용하는 현장</h3>
+            <p>블라스터 사용량에 맞춰 3 mm 펠렛을 정기 공급합니다. 작업 일정이 정해져 있으면 요일과 수량을 고정하고, 대량 작업이 잡히면 추가 물량을 앞당겨 준비합니다.</p>
+            <div class="sup-use-pick"><span>펠렛 Ø3 mm</span><span>정기 공급</span></div>
+          </div>
+        </article>
+        <article class="sup-use reveal" style="--reveal-delay:0.06s">
+          <img src="../assets/img/pelletizer-use-bio.png" alt="의료·바이오 시료 보냉 운송" loading="lazy" decoding="async" />
+          <div class="sup-use-body">
+            <span class="bls-en">MEDICAL &amp; PHARMA</span>
+            <h3>병원 · 제약 · 연구소</h3>
+            <p>백신, 검체, 세포와 시약은 정해진 시간 안에 정해진 온도로 도착해야 합니다. 운송 시간에 맞춰 너겟과 블록의 양을 계산해 드리고, 납품 시간을 지킵니다.</p>
+            <div class="sup-use-pick"><span>너겟 Ø16 mm</span><span>블록 병행</span><span>시간 지정 납품</span></div>
+          </div>
+        </article>
+        <article class="sup-use reveal" style="--reveal-delay:0.12s">
+          <img src="../assets/img/pelletizer-use-coldchain.jpg" alt="콜드체인 물류 보냉 상자" loading="lazy" decoding="async" />
+          <div class="sup-use-body">
+            <span class="bls-en">COLD CHAIN &amp; EVENTS</span>
+            <h3>식품 물류 · 케이터링 · 행사</h3>
+            <p>매일 나가는 배송 물량은 정기 공급으로, 주말 행사나 촬영처럼 날짜가 정해진 수요는 단건으로. 상자 크기와 시간에 맞춰 너겟과 블록 구성을 제안합니다.</p>
+            <div class="sup-use-pick"><span>너겟 Ø16 mm</span><span>블록 3규격</span><span>단건 주문</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section tint-hatch" id="order">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">ORDER &amp; DELIVERY</span><h2 class="plt-title">정기 공급도,<br>오늘 필요한 한 상자도.</h2></div>
+        <p class="plt-lead">매주 정해진 요일에 받는 정기 공급과 행사 전날의 단건 주문은 같은 방식으로 진행됩니다. 드라이아이스는 만들어 두면 계속 줄어드는 제품이라, 주문이 확정된 뒤 출고에 맞춰 준비하고 보냉 포장으로 보냅니다.</p>
+      </div>
+      <div class="sup-steps">
+        <article class="sup-step reveal"><span class="num">STEP 01</span><h3>형태 · 수량 · 날짜를 알려주세요</h3><p>펠렛·너겟·블록 중 형태, 필요한 kg, 받을 날짜와 주소. 용도만 말씀하셔도 형태와 수량을 제안해 드립니다.</p></article>
+        <article class="sup-step reveal" style="--reveal-delay:0.06s"><span class="num">STEP 02</span><h3>출고에 맞춰 준비하고 보냉 포장</h3><p>승화 손실을 줄이기 위해 출고 직전에 준비합니다. 수량과 운송 시간에 맞춰 보냉 박스 또는 보냉 컨테이너에 담습니다.</p></article>
+        <article class="sup-step reveal" style="--reveal-delay:0.12s"><span class="num">STEP 03</span><h3>전국 배송 · 수도권 직배송</h3><p>수도권은 직접 배송하고, 그 외 지역은 화물·택배로 전국에 보냅니다. 급한 소량은 별도로 문의해 주세요.</p></article>
+      </div>
+      <div class="sup-plans">
+        <div class="sup-plan reveal">
+          <div><span class="bls-en">REGULAR SUPPLY</span><h3>정기 공급</h3><p>세척 장비를 운용하는 공장, 매일 배송이 나가는 물류센터, 병원과 연구소처럼 사용량이 일정한 곳에 맞습니다. 한 번 정하면 매번 주문하지 않아도 정해진 요일에 도착합니다.</p></div>
+          <ul><li><b>요일 · 수량 고정</b> — 변동이 있으면 하루 전 조정</li><li><b>물량 기준 단가 협의</b></li><li><b>보냉 컨테이너 운용 안내</b></li><li><b>담당자 지정</b> — 긴급 추가 물량 대응</li></ul>
+        </div>
+        <div class="sup-plan is-light reveal" style="--reveal-delay:0.06s">
+          <div><span class="bls-en">ONE-TIME ORDER</span><h3>단건 구매</h3><p>행사와 촬영, 장비 시험, 갑작스러운 냉동 운송처럼 날짜가 정해진 수요에 맞습니다. 형태·수량·날짜 세 가지만 알려주시면 됩니다.</p></div>
+          <ul><li><b>형태 · 규격 자유 선택</b> — 펠렛 · 너겟 · 블록 혼합 가능</li><li><b>필요 수량 계산 지원</b> — 용도와 시간 기준</li><li><b>일회용 보냉 박스 포장</b></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section" id="handling">
+    <div class="wrap">
+      <div class="plt-head">
+        <div><span class="plt-eyebrow">STORAGE &amp; SAFETY</span><h2 class="plt-title">받은 뒤에는,<br>이렇게 보관하세요.</h2></div>
+        <p class="plt-lead">드라이아이스는 상온에서 멈추지 않고 승화합니다. 보냉 컨테이너 안에서도 하루에 대략 5–10 %가 줄어들기 때문에, 사용일에 맞춰 받는 것이 가장 경제적입니다. 아래 네 가지만 지키면 안전하게 쓸 수 있습니다.</p>
+      </div>
+      <div class="sup-sub-figure reveal">
+        <img src="../assets/img/dry-ice-scoop-wide.png" alt="보냉 컨테이너 안의 드라이아이스와 스쿠프" loading="lazy" decoding="async" />
+        <div class="sup-sub-copy">
+          <span class="bls-en">SUBLIMATION</span>
+          <h3>만들어 둔 만큼이 아니라,<br>쓰는 날에 남은 만큼이 실제 양입니다.</h3>
+          <p>승화 속도는 형태와 보관 조건이 정합니다. 펠렛은 표면적이 커서 가장 빨리 줄고, 블록은 가장 오래 남습니다. 뚜껑이 있는 보냉 컨테이너에 두고, 가능하면 사용 당일이나 전날에 받으세요. 여유분은 필요 수량의 10–20 % 정도를 권합니다.</p>
+          <div class="rec-stats">
+            <div><strong>−78.5<i>°C</i></strong><span>승화 온도 · 대기압 기준</span></div>
+            <div><strong>5–10<i>%</i></strong><span>보냉 컨테이너 보관 시 하루 승화량(대략)</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sup-tips">
+        <article class="sup-tip reveal"><span class="num">01</span><h3>밀폐하지 마세요</h3><p>승화한 CO<sub>2</sub> 가스는 부피가 크게 늘어 밀폐 용기 안에서 압력을 만듭니다. 뚜껑이 완전히 잠기지 않는 보냉 컨테이너에 보관하세요.</p></article>
+        <article class="sup-tip reveal" style="--reveal-delay:0.05s"><span class="num">02</span><h3>환기하세요</h3><p>차량으로 옮길 때는 창문을 열고, 실내에서는 환기가 되는 곳에 두세요. 밀폐된 공간에 CO<sub>2</sub>가 쌓이면 두통과 호흡 곤란이 올 수 있습니다.</p></article>
+        <article class="sup-tip reveal" style="--reveal-delay:0.1s"><span class="num">03</span><h3>장갑과 집게를 쓰세요</h3><p>맨손으로 잡으면 순간 동상을 입습니다. 두꺼운 장갑과 긴소매를 착용하고, 계량은 집게나 스쿠프로 하세요.</p></article>
+        <article class="sup-tip reveal" style="--reveal-delay:0.15s"><span class="num">04</span><h3>배수구에 버리지 마세요</h3><p>싱크대와 변기, 배수관에 넣으면 배관이 얼어 파손됩니다. 남은 양은 환기되는 곳에 두어 자연히 승화시키세요.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="plt-section faq-section" id="faq">
+    <div class="wrap">
+    <div class="faq-head">
+      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>
+      <p class="faq-intro">드라이아이스 구매와 공급을 문의하는 고객이 가장 많이 묻는 질문을 정리했습니다.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">최소 주문 수량이 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>형태와 지역에 따라 다릅니다. 소량은 보냉 박스에 담아 택배로 보내고, 일정 수량 이상은 직접 배송합니다. 필요한 kg과 주소를 알려주시면 가능한 방법과 조건을 안내합니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">블라스터에는 꼭 3 mm 펠렛을 써야 하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>네. Cold Jet을 포함한 대부분의 드라이아이스 블라스터는 Ø3 mm 펠렛을 기준으로 호퍼와 공급 장치가 설계되어 있습니다. 마이크로파티클 장비(PCS)도 3 mm 펠렛을 넣고 장비 안에서 더 작게 잘라 사용합니다. 너겟과 블록은 장비에 넣을 수 없습니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">배송 중에는 얼마나 줄어드나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>보냉 포장 기준으로 하루에 대략 5–10 %가 승화합니다. 형태가 작을수록, 외기 온도가 높을수록 빨리 줄어듭니다. 필요한 양에 10–20 % 여유를 두어 주문하시고, 도착하면 바로 보냉 컨테이너로 옮겨 주세요.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">세 규격 외의 블록 치수도 가능한가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>가능합니다. 기본 세 규격(300×300×250 · 250×150×75 · 150×70×40 mm) 외에 필요한 치수나 두께로 잘라 드립니다. 수량과 납기에 따라 준비 시간이 달라지므로 미리 문의해 주세요.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">보냉 컨테이너가 없어도 받을 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>네. 단건 주문은 일회용 보냉 박스에 담아 보냅니다. 정기 공급을 시작하시면 사용량에 맞는 보냉 컨테이너 운용 방법을 함께 안내합니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" style="font-size: 25px">의료·제약용은 무엇이 다른가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>형태는 승화가 느린 너겟이 기본이고, 장거리는 블록을 함께 넣습니다. 무엇보다 납품 시간이 중요하므로 수령 시간을 지정해 배송합니다. 원료와 위생 관련 서류가 필요한 경우 문의 시 함께 말씀해 주세요.</p></div>
+      </details>
+    </div>
+    </div>
+  </section>
+
+  <section class="bls-sec bls-final last-freeze" id="sup-final">
+    <div class="wrap">
+      <div class="bls-final-grid">
+        <div>
+          <span class="cmp-eyebrow">ORDER DRY ICE</span>
+          <h2 class="cmp-h2">형태 · 수량 · 날짜,<br>세 가지만 알려주세요.</h2>
+        </div>
+        <div>
+          <div class="cmp-lead">
+            <p>어떤 형태가 맞을지 모르겠다면 용도와 유지해야 할 시간만 알려주셔도 됩니다. 필요한 수량과 포장 방법을 계산해 드립니다.</p>
+            <p>세척 장비를 운용 중이라면 사용량에 맞춘 펠렛 정기 공급 조건을 함께 안내합니다.</p>
+          </div>
+          <div class="cmp-cta-btns">
+            <a class="cta-btn" href="../products/quote.html">드라이아이스 주문 · 견적 문의</a>
+            <a class="cmp-btn-ghost" href="tel:0317964300">전화 031-796-4300</a>
+          </div>
+          <a class="bls-textlink" href="pelletizer/index.html">사용량이 많다면, 직접 생산하는 펠렛타이저 보기 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 """
 
-COMPARE_EQUIP_BODY = """
-<p>어떤 장비가 적합한지 아래 기준으로 먼저 가늠해보시고, 정확한 추천은 견적문의를 통해 받아보세요.</p>
-<table class="compare-table">
-  <tr><th>모델</th><th>구분</th><th>이런 현장에 적합</th></tr>
-  <tr><td><a href="blaster/aero2-ultra.html">Aero2&reg; ULTRA</a> / <a href="blaster/i3-microclean-2.html">i3 MicroClean&reg; 2</a></td><td>스마트(IoT)</td><td>원격 모니터링 · 데이터 관리가 필요한 스마트팩토리</td></tr>
-  <tr><td><a href="blaster/i3-microclean.html">i&sup3; MicroClean&reg;</a></td><td>정밀 · 소형</td><td>전자부품, 정밀금형 등 섬세한 표면</td></tr>
-  <tr><td><a href="blaster/sdi-select-60.html">SDI Select&trade; 60</a></td><td>범용</td><td>다양한 산업의 일반적인 온 · 오프 세척</td></tr>
-  <tr><td><a href="blaster/aero-series.html">Aero&reg; Series</a></td><td>풀프레셔</td><td>강한 오염물 제거가 필요한 현장</td></tr>
-  <tr><td><a href="blaster/elite20-icerocket.html">Elite 20 / IceRocket PLT</a></td><td>입문형</td><td>압축공기 여건이 제한적인 현장, 첫 도입</td></tr>
-  <tr><td><a href="blaster/c100.html">C100</a></td><td>완전 공압식</td><td>전원 연결이 어려운 현장</td></tr>
-  <tr><td><a href="blaster/e-co2-150.html">E-CO2&trade; 150</a></td><td>연마재 복합</td><td>도장 · 코팅 · 부식 제거 작업</td></tr>
-  <tr><td><a href="pelletizer/pe-80.html">PE-80</a></td><td>소용량 생산</td><td>자체 세척용 소량 드라이아이스가 필요한 현장</td></tr>
-  <tr><td><a href="pelletizer/pr350h.html">PR350H 이상</a></td><td>대용량 생산</td><td>판매용 또는 대규모 세척 라인 공급</td></tr>
-  <tr><td><a href="recovery/index.html">RE-CO2 시리즈</a></td><td>CO2 회수</td><td>드라이아이스 자체 생산량이 많은 현장</td></tr>
-</table>
-<p style="margin-top:18px;">현장 사진이나 도면, 세척 대상 정보를 <a href="quote.html">견적 요청</a> 시 함께 보내주시면
-더 정확하게 추천해 드립니다.</p>
+SUPPLY_SCRIPT = """  <script>
+  (function(){
+    var v=document.getElementById('autWhyVideo'),btn=document.getElementById('autWhyPlayBtn');
+    if (v && btn) {
+      btn.addEventListener('click',function(){ if (v.paused) { v.play(); } else { v.pause(); } });
+      v.addEventListener('play',function(){ btn.classList.add('is-playing'); btn.querySelector('.bls-play-label').textContent='일시정지'; btn.querySelector('.bls-play-icon').textContent='❙❙'; });
+      v.addEventListener('pause',function(){ btn.classList.remove('is-playing'); btn.querySelector('.bls-play-label').textContent='영상 재생'; btn.querySelector('.bls-play-icon').textContent='▶'; });
+    }
+  })();
+  </script>
+  <script>
+  (function () {
+    var el = document.getElementById('aut-final');
+    if (!el) return;
+    function sync() {
+      if (window.innerWidth <= 900) { el.style.top = ''; return; }
+      el.style.top = Math.min(0, window.innerHeight - el.offsetHeight) + 'px';
+    }
+    sync();
+    window.addEventListener('resize', sync);
+    if ('ResizeObserver' in window) { new ResizeObserver(sync).observe(el); }
+  })();
+  </script>
 """
+
+COMPARE_EQUIP_EXTRA_HEAD = (
+    '\n<link rel="stylesheet" href="../assets/css/pelletizer-page.css?v=20260914-10" />'
+    '\n<link rel="stylesheet" href="../assets/css/recovery-page.css?v=20260916-11" />'
+    '\n<link rel="stylesheet" href="../assets/css/compare-equip-page.css?v=20260916-1" />'
+)
+
+COMPARE_EQUIP_BODY = '  <section class="subhero-parallax aut-hero-stage eqf-hero-stage">\n    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 장비 비교 · 추천받기</div>\n    <div class="hero-fit">\n      <img class="subhero-parallax-img" src="../assets/img/pelletizer-category-pellet-lineup.jpg" alt="Cold Jet 장비 라인업" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5" />\n      <div class="subhero-textbox">\n        <span class="ind-hero-eyebrow">EQUIPMENT FINDER / BLASTER · PELLETIZER · RECOVERY · AUTOMATION</span>\n        <h1>하려는 일을 고르면,<br><span class="bls-hero-accent">맞는 장비를 찾아 드립니다.</span></h1>\n        <p class="bls-hero-main">세척기 8종, 제조기 5종, 리커버리 4종, 자동화 시스템까지. 사양표를 다 읽지 않아도 됩니다. 질문 두세 개에 답하면 현장에 맞는 장비와 그 이유를 바로 보여 드립니다.</p>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-definition rec-cover tint-hatch" id="finder">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">EQUIPMENT FINDER</span><h2 class="plt-title">질문 세 개,<br>답은 하나의 장비로.</h2></div>\n        <p class="plt-lead">장비 선택은 결국 세 가지로 갈립니다. 무엇을 하려는지, 대상이 얼마나 민감한지 또는 규모가 얼마나 되는지, 그리고 현장 조건. 순서대로 고르면 1차 추천 모델과 대안, 다음 단계까지 정리해 드립니다. 결과는 출발점이며, 최종 사양은 테스트와 상담으로 확정합니다.</p>\n      </div>\n      <div class="eqf-finder reveal" id="eqf">\n        <div class="eqf-progress">\n          <span class="is-active" data-step="1">STEP 01<b>하려는 일</b></span>\n          <span data-step="2">STEP 02<b>대상 · 규모</b></span>\n          <span data-step="3">STEP 03<b>현장 조건</b></span>\n        </div>\n        <div class="eqf-stage">\n          <div class="eqf-q is-active" data-q="goal">\n            <span class="eqf-q-label">QUESTION 01</span>\n            <h3>무엇을 하려고 하시나요?</h3>\n            <p>가장 가까운 것을 하나 고르세요.</p>\n            <div class="eqf-opts">\n              <button type="button" class="eqf-opt" data-v="clean"><span class="en">CLEAN</span><b>드라이아이스로 세척한다</b><span>금형·설비·부품의 오염, 이형제, 잔류물을 분해·수분 없이 제거</span></button>\n              <button type="button" class="eqf-opt" data-v="produce"><span class="en">PRODUCE</span><b>드라이아이스를 직접 생산한다</b><span>액체 CO<sub>2</sub>로 펠렛·너겟·블록을 현장에서 만들어 쓰거나 판매</span></button>\n              <button type="button" class="eqf-opt" data-v="recover"><span class="en">RECOVER</span><b>생산 중 배출되는 CO<sub>2</sub>를 회수한다</b><span>펠렛타이저 배출 가스를 다시 액화해 LCO<sub>2</sub> 비용 절감</span></button>\n              <button type="button" class="eqf-opt" data-v="automate"><span class="en">AUTOMATE</span><b>세척을 자동화한다</b><span>로봇·생산라인에 통합해 작업자 없이 반복 세척</span></button>\n              <button type="button" class="eqf-opt" data-v="buy"><span class="en">BUY</span><b>드라이아이스를 구매한다</b><span>장비 없이 펠렛·너겟·블록을 정기 또는 단건으로 공급받기</span></button>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="clean2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>세척 대상은 어느 쪽에 가깝나요?</h3>\n            <p>대상의 민감도가 매체(마이크로파티클 / 3 mm 펠렛)를 결정합니다.</p>\n            <div class="eqf-opts">\n              <button type="button" class="eqf-opt" data-v="precision"><span class="en">PRECISION</span><b>정밀 · 민감한 표면</b><span>전자·반도체 부품, 정밀 금형의 미세 형상, 의료·식품 설비의 얇은 오염</span></button>\n              <button type="button" class="eqf-opt" data-v="general"><span class="en">GENERAL</span><b>일반 산업 세척</b><span>사출·고무·타이어 금형, 생산 설비, 이형제·그리스·잔류물</span></button>\n              <button type="button" class="eqf-opt" data-v="coating"><span class="en">COATING &amp; RUST</span><b>도막 · 코팅 · 부식 제거</b><span>페인트·코팅층을 벗기거나 녹을 제거하는 표면처리</span></button>\n            </div>\n          </div>\n          <div class="eqf-q" data-q="clean3">\n            <span class="eqf-q-label">QUESTION 03</span>\n            <h3>현장 조건은 어떤가요?</h3>\n            <p>장비 크기와 호퍼 용량, 전원 조건을 정합니다.</p>\n            <div class="eqf-opts">\n              <button type="button" class="eqf-opt" data-v="compact"><span class="en">COMPACT</span><b>소형 · 이동이 잦음</b><span>좁은 공간, 계단·차량 이동, 소규모 작업이나 첫 도입</span></button>\n              <button type="button" class="eqf-opt" data-v="standard"><span class="en">STANDARD</span><b>표준 산업 현장</b><span>공장 내 이동, 하루 수 시간 작업, 조건을 저장해 반복</span></button>\n              <button type="button" class="eqf-opt" data-v="heavy"><span class="en">HIGH VOLUME</span><b>장시간 · 대용량 작업</b><span>넓은 면적, 교대 작업, 호퍼 재충전을 줄여야 함</span></button>\n              <button type="button" class="eqf-opt" data-v="nopower"><span class="en">NO POWER</span><b>전원 사용 불가 · 공압만</b><span>전기 인입이 어렵거나 전기 사용을 피해야 하는 구역</span></button>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="produce2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>시간당 얼마나 생산해야 하나요?</h3>\n            <p>하루 사용량 또는 판매량을 가동 시간으로 나눈 값이 기준입니다.</p>\n            <div class="eqf-opts">\n              <button type="button" class="eqf-opt" data-v="p80"><span class="en">UP TO 80 kg/h</span><b>소량 · 자체 사용</b><span>블라스터 1–2대 운용, 실험실·소규모 현장</span></button>\n              <button type="button" class="eqf-opt" data-v="p120"><span class="en">~120 kg/h</span><b>소형 상시 생산</b><span>여러 대의 블라스터 또는 소규모 공급</span></button>\n              <button type="button" class="eqf-opt" data-v="p350"><span class="en">~350 kg/h</span><b>중형 생산</b><span>지역 공급, 콜드체인 물량 대응</span></button>\n              <button type="button" class="eqf-opt" data-v="p750"><span class="en">~750 kg/h</span><b>대형 생산</b><span>드라이아이스 판매 사업, 다품종 생산</span></button>\n              <button type="button" class="eqf-opt" data-v="p1500"><span class="en">1,000 kg/h+</span><b>산업 규모</b><span>대규모 공급 허브, 복수 압출 라인</span></button>\n            </div>\n          </div>\n          <div class="eqf-q" data-q="produce3">\n            <span class="eqf-q-label">QUESTION 03</span>\n            <h3>어떤 형태를 만들어야 하나요?</h3>\n            <p>펠렛 외의 형태는 후속 장비(리포머·슬라이서)가 필요합니다.</p>\n            <div class="eqf-opts">\n              <button type="button" class="eqf-opt" data-v="pellet"><span class="en">PELLET ONLY</span><b>세척용 3 mm 펠렛만</b><span>블라스터 공급용, 소량 냉각용</span></button>\n              <button type="button" class="eqf-opt" data-v="forms"><span class="en">MULTI-FORM</span><b>펠렛 + 너겟 · 블록 · 슬라이스</b><span>콜드체인·식품·행사 등 보냉용 판매까지</span></button>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="recover2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>회수할 라인의 펠렛타이저 규모는?</h3>\n            <p>회수기 용량은 생산 중 배출되는 CO<sub>2</sub> 가스량으로 정합니다. 라인 규모로 먼저 고르세요.</p>\n            <div class="eqf-opts">\n              <button type="button" class="eqf-opt" data-v="r80"><span class="en">SMALL LINE</span><b>PE 80 · PR120H 급</b><span>소형 라인 1대</span></button>\n              <button type="button" class="eqf-opt" data-v="r160"><span class="en">MID LINE</span><b>PR350H 급</b><span>중형 라인 1대</span></button>\n              <button type="button" class="eqf-opt" data-v="r320"><span class="en">LARGE LINE</span><b>PR750H 급</b><span>대형 라인 1대 또는 중형 2대</span></button>\n              <button type="button" class="eqf-opt" data-v="r3500"><span class="en">PLANT</span><b>PR1500H · 복수 라인</b><span>공장 단위 회수</span></button>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="automate2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>무엇을 자동으로 세척하나요?</h3>\n            <p>대상에 따라 전용 시스템이 있습니다.</p>\n            <div class="eqf-opts">\n              <button type="button" class="eqf-opt" data-v="line"><span class="en">PRODUCTION LINE</span><b>생산라인 · 로봇 셀 통합</b><span>부품·제품을 컨베이어나 로봇으로 연속 세척, 대량 반복</span></button>\n              <button type="button" class="eqf-opt" data-v="tire"><span class="en">TIRE MOLD</span><b>타이어 금형</b><span>가황 프레스 안의 금형을 분해 없이 로봇으로 세척</span></button>\n              <button type="button" class="eqf-opt" data-v="duct"><span class="en">IN-PIPE</span><b>배관 · 덕트 내부</b><span>사람이 들어갈 수 없는 배기·덕트·텀블러 내벽</span></button>\n              <button type="button" class="eqf-opt" data-v="custom"><span class="en">CUSTOM</span><b>그 외 · 맞춤 설계</b><span>표준 시스템으로 해결되지 않는 대상과 공정</span></button>\n            </div>\n          </div>\n\n          <div class="eqf-result" id="eqfResult">\n            <div class="eqf-summary" id="eqfSummary"></div>\n            <div class="eqf-result-grid">\n              <div class="eqf-pick">\n                <div>\n                  <span class="en">RECOMMENDED</span>\n                  <h3 id="eqfName"></h3>\n                  <span class="cat" id="eqfCat"></span>\n                  <p id="eqfWhy"></p>\n                  <a class="cta-btn" id="eqfLink" href="#">상세 보기</a>\n                </div>\n                <div class="eqf-pick-media" id="eqfMedia"><img id="eqfImg" alt="" /></div>\n              </div>\n              <div class="eqf-side">\n                <div class="eqf-alt" id="eqfAlt">\n                  <span class="en">ALTERNATIVE</span>\n                  <h4 id="eqfAltName"></h4>\n                  <p id="eqfAltWhy"></p>\n                  <a id="eqfAltLink" href="#">이 모델 보기 →</a>\n                </div>\n                <div class="eqf-next">\n                  <span class="en">NEXT STEP</span>\n                  <p id="eqfNext"></p>\n                  <ul>\n                    <li><a href="../rental/demo.html">현장 데모 · 세척 테스트 신청<span>→</span></a></li>\n                    <li><a href="../products/quote.html">이 구성으로 견적 요청<span>→</span></a></li>\n                    <li><a href="../rental/vrental.html">먼저 렌탈로 써보기<span>→</span></a></li>\n                  </ul>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class="eqf-nav">\n            <button type="button" class="eqf-back" id="eqfBack" hidden>← 이전 질문</button>\n            <p class="eqf-hint" id="eqfHint">선택하면 다음 질문으로 넘어갑니다.</p>\n            <button type="button" class="eqf-back" id="eqfReset" hidden>처음부터 다시</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section cmp-dark rec-how" id="how">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">HOW TO CHOOSE</span><h2 class="plt-title">장비 선택을 가르는<br>세 가지 기준.</h2></div>\n        <p class="plt-lead">모델 이름은 많지만 실제로 갈리는 지점은 셋뿐입니다. 어떤 매체로 세척하는지, 드라이아이스를 사서 쓸지 만들어 쓸지, 그리고 사람이 할지 로봇이 할지. 이 세 가지가 정해지면 후보는 두세 개로 줄어듭니다.</p>\n      </div>\n      <div class="eqf-axes">\n        <article class="eqf-axis reveal">\n          <span class="num">AXIS 01 · MEDIA</span>\n          <h3>마이크로파티클인가,<br>3 mm 펠렛인가.</h3>\n          <p>펠렛은 운동 에너지가 커서 두꺼운 고착 오염과 넓은 면적에 강합니다. 마이크로파티클은 펠렛을 장비 안에서 잘게 잘라 분사해 미세 형상과 민감한 표면을 다룹니다. 둘 다 필요하면 입자 크기를 바꾸는 PCS나 방식을 전환하는 SDI Select를 고릅니다.</p>\n          <dl><div><dt>정밀 · 민감</dt><dd>MICRO PARTICLE</dd></div><div><dt>일반 · 고착 오염</dt><dd>3 mm PELLET</dd></div><div><dt>둘 다</dt><dd>PCS · SDI SELECT</dd></div></dl>\n        </article>\n        <article class="eqf-axis reveal" style="--reveal-delay:0.06s">\n          <span class="num">AXIS 02 · SUPPLY</span>\n          <h3>드라이아이스를<br>사서 쓸까, 만들어 쓸까.</h3>\n          <p>사용량이 적고 간헐적이면 공급받는 것이 단순합니다. 매일 일정량을 쓰거나 신선한 펠렛이 중요하면 펠렛타이저로 현장 생산이 유리해지고, 생산량이 커지면 배출 CO<sub>2</sub>를 회수해 원료비를 줄이는 리커버리가 다음 단계입니다.</p>\n          <dl><div><dt>간헐적 · 소량</dt><dd>구매 · 공급</dd></div><div><dt>매일 일정량</dt><dd>PELLETIZER</dd></div><div><dt>대량 생산</dt><dd>+ CO<sub>2</sub> RECOVERY</dd></div></dl>\n        </article>\n        <article class="eqf-axis reveal" style="--reveal-delay:0.12s">\n          <span class="num">AXIS 03 · OPERATION</span>\n          <h3>사람이 할까,<br>로봇이 할까.</h3>\n          <p>대상이 매번 다르고 판단이 필요하면 수동 블라스터가 맞습니다. 같은 부품을 같은 조건으로 반복하고 사이클 타임이 정해져 있다면 로봇 통합이 품질과 처리량 모두에서 앞섭니다. 타이어 금형과 배관 내부는 전용 시스템이 있습니다.</p>\n          <dl><div><dt>다양한 대상 · 판단 필요</dt><dd>MANUAL BLASTER</dd></div><div><dt>동일 부품 반복</dt><dd>COMBI PCS + ROBOT</dd></div><div><dt>타이어 금형 · 배관</dt><dd>ASP-T · DUCT ROBOT</dd></div></dl>\n        </article>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section" id="tables">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">SIDE BY SIDE</span><h2 class="plt-title">카테고리별<br>한눈에 비교.</h2></div>\n        <p class="plt-lead">추천 결과를 옆 모델과 비교해 보세요. 표는 선택의 기준이 되는 항목만 담았고, 세부 사양은 각 모델 페이지에서 확인할 수 있습니다.</p>\n      </div>\n      <div class="eqf-tabs" role="tablist">\n        <button type="button" class="eqf-tab is-active" data-t="blaster">세척기 (블라스터)</button>\n        <button type="button" class="eqf-tab" data-t="pelletizer">제조기 (펠렛타이저)</button>\n        <button type="button" class="eqf-tab" data-t="recovery">CO<sub>2</sub> 리커버리</button>\n        <button type="button" class="eqf-tab" data-t="automation">자동화 시스템</button>\n      </div>\n      <div class="eqf-table is-active" data-t="blaster">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>모델</th><th>매체</th><th>이런 현장에</th><th>포지셔닝</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="blaster/aero2-ultra.html">Aero2® PCS ULTRA</a><small>SMART · PCS</small></td><td><b>MICRO PARTICLE</b><b>PELLET</b></td><td>정밀부터 일반까지 대상이 다양한 현장, 조건을 레시피로 저장해 반복</td><td>0.3–3 mm 입자 크기까지 설정하는 가장 넓은 조건 범위의 스마트 블라스터</td><td><a class="lnk" href="blaster/aero2-ultra.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/aero2-ultra.html">Aero2® PLT ULTRA</a><small>SMART · PELLET</small></td><td><b>PELLET</b></td><td>표준 산업 현장의 일반 세척, 디지털 조건 관리가 필요할 때</td><td>3 mm 펠렛으로 세척 조건을 디지털 설정·저장하는 스마트 펠렛 블라스터</td><td><a class="lnk" href="blaster/aero2-ultra.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/i3-microclean-2.html">i³ MicroClean® 2</a><small>SMART · MICRO</small></td><td><b>MICRO PARTICLE</b></td><td>전자·의료·식품 설비의 정밀 세척, 소형·이동식</td><td>디지털 제어와 IoT를 갖춘 단일호스 마이크로파티클 블라스터</td><td><a class="lnk" href="blaster/i3-microclean-2.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/i3-microclean.html">i³ MicroClean®</a><small>MICRO</small></td><td><b>MICRO PARTICLE</b></td><td>탁상·벤치 작업, 소형 부품 정밀 세척</td><td>드라이아이스 블록을 깎아 분사하는 탁상형 정밀 블라스터</td><td><a class="lnk" href="blaster/i3-microclean.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/aero-series.html">Aero® 40FP · 80FP</a><small>PELLET</small></td><td><b>PELLET</b></td><td>일반·중오염 산업 세척, 80FP는 장시간·대면적</td><td>풀프레셔 산업용 펠렛 블라스터 — 40 lb 소형 / 80 lb 대용량 호퍼</td><td><a class="lnk" href="blaster/aero-series.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/elite20-icerocket.html">ELITE 20 · IceRocket</a><small>PELLET · ENTRY</small></td><td><b>PELLET</b><b class="is-plain">MICRO (ELITE 20)</b></td><td>첫 도입, 소규모·이동이 잦은 현장, 세척 서비스</td><td>전문가급 성능을 갖춘 입문형 펠렛 블라스터</td><td><a class="lnk" href="blaster/elite20-icerocket.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/sdi-select-60.html">SDI Select™ 60</a><small>MICRO · PELLET</small></td><td><b>MICRO PARTICLE</b><b>PELLET</b></td><td>한 대로 정밀과 일반, 고압 작업까지 오가는 현장</td><td>더스팅 · 일반 · 고압 세 가지 방식을 한 대로 전환하는 범용 모델</td><td><a class="lnk" href="blaster/sdi-select-60.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/c100.html">Aero® C100</a><small>SPECIALTY</small></td><td><b>PELLET</b></td><td>전원 인입이 어렵거나 전기 사용을 피해야 하는 구역</td><td>전원 없이 압축공기만으로 작동하는 완전 공압식 블라스터</td><td><a class="lnk" href="blaster/c100.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/e-co2-150.html">E-CO2™ 150</a><small>SPECIALTY</small></td><td><b>PELLET + ABRASIVE</b></td><td>도막·코팅·부식 제거가 목적인 표면처리</td><td>드라이아이스 + 연마재 혼합 분사 표면처리 시스템</td><td><a class="lnk" href="blaster/e-co2-150.html">보기 →</a></td></tr>\n          </tbody>\n        </table></div>\n        <p class="eqf-table-note">모든 블라스터는 Ø3 mm 펠렛을 사용합니다(i³ MicroClean은 블록). 마이크로파티클 모델은 펠렛을 장비 안에서 잘라 분사합니다.</p>\n      </div>\n      <div class="eqf-table" data-t="pelletizer">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>모델</th><th>생산량</th><th>이런 현장에</th><th>비고</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="pelletizer/pe-80.html">PE 80</a><small>ENTRY</small></td><td><b>~80 kg/h</b></td><td>블라스터 1–2대 자체 공급, 실험실·소규모</td><td>소형 입문 모델, 이동 가능</td><td><a class="lnk" href="pelletizer/pe-80.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr120h.html">PR120H</a><small>R SERIES</small></td><td><b>~120 kg/h</b></td><td>소형 상시 생산, 다수 블라스터 운용</td><td>고밀도 펠렛, HMI 제어</td><td><a class="lnk" href="pelletizer/pr120h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr350h.html">PR350H</a><small>R SERIES</small></td><td><b>~350 kg/h</b></td><td>중형 생산, 지역 공급·콜드체인</td><td>가장 널리 쓰이는 중형 모델</td><td><a class="lnk" href="pelletizer/pr350h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr750h.html">PR750H</a><small>R SERIES</small></td><td><b>~750 kg/h</b></td><td>드라이아이스 판매 사업, 다품종</td><td>리포머·슬라이서 연계로 너겟·블록 생산</td><td><a class="lnk" href="pelletizer/pr750h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr1500h.html">PR1500H</a><small>R SERIES</small></td><td><b>~1,500 kg/h</b></td><td>산업 규모 공급 허브</td><td>복수 압출 헤드, 리커버리 결합 권장</td><td><a class="lnk" href="pelletizer/pr1500h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/special-forms.html">특수 형태 장비</a><small>REFORMER · SLICER</small></td><td><b class="is-plain">후속 장비</b></td><td>너겟·블록·슬라이스가 필요한 보냉용 판매</td><td>펠렛타이저 뒤에 연결</td><td><a class="lnk" href="pelletizer/special-forms.html">보기 →</a></td></tr>\n          </tbody>\n        </table></div>\n        <p class="eqf-table-note">생산량은 액체 CO<sub>2</sub> 공급 조건에 따라 달라지는 대표값입니다.</p>\n      </div>\n      <div class="eqf-table" data-t="recovery">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>모델</th><th>적합 라인</th><th>이런 현장에</th><th>비고</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="recovery/re-co2-80.html">RE-CO<sub>2</sub> 80</a></td><td><b>PE 80 · PR120H</b></td><td>소형 라인의 원료비 절감 시작</td><td>컴팩트 구성</td><td><a class="lnk" href="recovery/re-co2-80.html">보기 →</a></td></tr>\n            <tr><td><a href="recovery/re-co2-160.html">RE-CO<sub>2</sub> 160</a></td><td><b>PR350H</b></td><td>중형 라인 1대</td><td>모듈형, 증설 가능</td><td><a class="lnk" href="recovery/re-co2-160.html">보기 →</a></td></tr>\n            <tr><td><a href="recovery/re-co2-320-v2.html">RE-CO<sub>2</sub> 320 V2</a></td><td><b>PR750H</b></td><td>대형 라인 또는 중형 2대</td><td>2세대, 효율 개선</td><td><a class="lnk" href="recovery/re-co2-320-v2.html">보기 →</a></td></tr>\n            <tr><td><a href="recovery/re-co2-3500.html">RE-CO<sub>2</sub> 3500</a></td><td><b>PR1500H · 복수 라인</b></td><td>공장 단위 회수</td><td>대용량 플랜트형</td><td><a class="lnk" href="recovery/re-co2-3500.html">보기 →</a></td></tr>\n          </tbody>\n        </table></div>\n        <p class="eqf-table-note">회수기 용량은 실제 배출 가스량과 가동 시간으로 산정합니다. 위 매칭은 출발점입니다.</p>\n      </div>\n      <div class="eqf-table" data-t="automation">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>시스템</th><th>대상</th><th>구성</th><th>비고</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="automation.html#models">COMBI® PCS® 시리즈</a></td><td><b>생산라인 · 로봇 셀</b></td><td>펠렛타이저 + PCS 블라스터 일체형, 최대 4개 동시 분사</td><td>LCO<sub>2</sub>만 공급, 완전 자동화</td><td><a class="lnk" href="automation.html#models">보기 →</a></td></tr>\n            <tr><td><a href="automation.html#models">ASP-T</a></td><td><b>타이어 금형</b></td><td>KUKA 로봇 + PCS 60, 14"–22" 금형</td><td>프레스 내 인플레이스 세척</td><td><a class="lnk" href="automation.html#models">보기 →</a></td></tr>\n            <tr><td><a href="automation.html#models">DUCT ROBOT</a></td><td><b>배관 · 덕트 내부</b></td><td>Ø350–1,350 mm, 전후방 카메라</td><td>해체 없는 내부 세척</td><td><a class="lnk" href="automation.html#models">보기 →</a></td></tr>\n            <tr><td><a href="quote.html">맞춤형 자동화</a></td><td><b class="is-plain">그 외</b></td><td>공정 설계부터 설치·시운전까지</td><td>바테크 설계</td><td><a class="lnk" href="quote.html">상담 →</a></td></tr>\n          </tbody>\n        </table></div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section faq-section" id="faq">\n    <div class="wrap">\n    <div class="faq-head">\n      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>\n      <p class="faq-intro">장비를 고르는 단계에서 가장 많이 묻는 질문을 정리했습니다.</p>\n    </div>\n    <div class="faq-list">\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">추천 결과가 그대로 최종 사양인가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>아닙니다. 추천은 대상과 현장 조건으로 후보를 좁힌 출발점입니다. 실제 오염 샘플로 세척 테스트를 하고 압축공기·전원·드라이아이스 공급 조건을 확인한 뒤 모델과 노즐 구성을 확정합니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">마이크로파티클과 펠렛, 하나만 골라야 하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>대상이 한쪽으로 분명하면 전용 모델이 효율적입니다. 정밀 부품과 일반 설비를 한 현장에서 모두 다루면 입자 크기를 바꾸는 Aero2 PCS ULTRA나 방식을 전환하는 SDI Select 60처럼 겸용 모델을 고릅니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">펠렛타이저는 어느 정도 사용량부터 검토하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>매일 일정량을 쓰고 배송 시간과 승화 손실이 비용으로 느껴지기 시작하면 검토 시점입니다. 하루 사용량, 가동 일수, 현재 구매 단가를 알려주시면 구매와 생산의 비용을 비교해 드립니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">구매 전에 써볼 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>네. 현장 데모로 실제 대상에 세척 테스트를 하고, 렌탈로 일정 기간 운용해 본 뒤 구매를 결정할 수 있습니다. 추천 결과의 "다음 단계"에서 바로 신청할 수 있습니다.</p></div>\n      </details>\n    </div>\n    </div>\n  </section>\n\n  <section class="bls-sec bls-final last-freeze" id="eqf-final">\n    <div class="wrap">\n      <div class="bls-final-grid">\n        <div>\n          <span class="cmp-eyebrow">STILL UNSURE?</span>\n          <h2 class="cmp-h2">대상과 현장만 알려주세요.<br>장비는 저희가 고릅니다.</h2>\n        </div>\n        <div>\n          <div class="cmp-lead">\n            <p>세척 대상 사진이나 오염 종류, 하루 작업량, 압축공기·전원 조건을 알려주시면 적합한 모델과 노즐, 필요하면 생산·회수·자동화까지 묶어 제안합니다.</p>\n            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 테스트부터 설치, 교육, A/S까지 지원합니다.</p>\n          </div>\n          <div class="cmp-cta-btns">\n            <a class="cta-btn" href="../products/quote.html">장비 추천 · 견적 요청</a>\n            <a class="cmp-btn-ghost" href="../rental/demo.html">데모 테스트 신청</a>\n          </div>\n          <a class="bls-textlink" href="process.html">구매 프로세스 안내 보기 →</a>\n        </div>\n      </div>\n    </div>\n  </section>\n'
+
+COMPARE_EQUIP_SCRIPT = '  <script>\n  (function(){\n    var v=document.getElementById(\'autWhyVideo\'),btn=document.getElementById(\'autWhyPlayBtn\');\n    if (v && btn) {\n      btn.addEventListener(\'click\',function(){ if (v.paused) { v.play(); } else { v.pause(); } });\n      v.addEventListener(\'play\',function(){ btn.classList.add(\'is-playing\'); btn.querySelector(\'.bls-play-label\').textContent=\'일시정지\'; btn.querySelector(\'.bls-play-icon\').textContent=\'❙❙\'; });\n      v.addEventListener(\'pause\',function(){ btn.classList.remove(\'is-playing\'); btn.querySelector(\'.bls-play-label\').textContent=\'영상 재생\'; btn.querySelector(\'.bls-play-icon\').textContent=\'▶\'; });\n    }\n  })();\n  </script>\n  <script src="../assets/js/compare-equip.js?v=20260916-1"></script>\n  <script>\n  (function () {\n    var el = document.getElementById(\'aut-final\');\n    if (!el) return;\n    function sync() {\n      if (window.innerWidth <= 900) { el.style.top = \'\'; return; }\n      el.style.top = Math.min(0, window.innerHeight - el.offsetHeight) + \'px\';\n    }\n    sync();\n    window.addEventListener(\'resize\', sync);\n    if (\'ResizeObserver\' in window) { new ResizeObserver(sync).observe(el); }\n  })();\n  </script>\n'
 
 PROCESS_BODY = """
 <p>바테크의 장비 구매는 아래 순서로 진행됩니다. 고가 장비인 만큼 대부분의 고객사가 테스트 단계를 거쳐
@@ -12135,20 +13473,34 @@ MENU = [
             {"slug": "automation", "title": "자동화 시스템",
              "desc": "생산 라인에 통합 가능한 자동화 드라이아이스 세척 시스템을 소개합니다.",
              "nav_desc": "생산 라인에 통합되는 자동화 세척 시스템을 안내합니다.",
-             "body": AUTOMATION_BODY,
-             "hero_html": AUTOMATION_HERO_HTML, "cover_class": "aut-cover"},
+             "page_desc": "드라이아이스 생산과 블라스팅을 한 대에 결합한 COMBI PCS, 타이어 금형 전용 로봇 세척 시스템 ASP-T. "
+                           "로봇과 생산라인에 통합되어 연속 운전하는 Cold Jet 자동화 블라스팅 시스템을 소개합니다.",
+             "full_custom_body": True, "body": AUTOMATION_BODY,
+             "extra_script": AUTOMATION_SCRIPT, "extra_head": AUTOMATION_EXTRA_HEAD},
             {"slug": "nozzle", "title": "노즐·액세서리",
              "desc": "작업 목적에 맞는 노즐과 각종 액세서리 구성품을 안내합니다.",
              "nav_desc": "작업 효율을 높이는 다양한 노즐과 액세서리입니다.",
-             "body": NOZZLE_BODY},
+             "page_desc": "세척 결과를 결정하는 Cold Jet 노즐과 어플리케이터, 블라스트 호스, 연장관, 공기 처리·안전 "
+                           "액세서리를 안내합니다. 가변 프래그멘팅 MERN 노즐부터 정밀 MicroClean 노즐까지 장비와 작업에 "
+                           "맞게 선택하세요.",
+             "full_custom_body": True, "body": NOZZLE_BODY,
+             "extra_script": NOZZLE_SCRIPT, "extra_head": NOZZLE_EXTRA_HEAD},
             {"slug": "supply", "title": "드라이아이스 구매 (소모품 공급 안내)",
              "desc": "장비가 아닌 소모품으로서의 드라이아이스 정기 공급 및 구매 방법을 안내합니다.",
              "nav_desc": "정기 공급부터 단건 구매까지 안내합니다.",
-             "body": SUPPLY_BODY},
+             "page_title": "드라이아이스 구매·공급",
+             "page_desc": "블라스팅용 Ø3 mm 펠렛, 의료·제약·식품 콜드체인용 Ø16 mm 너겟, 장시간 보냉용 블록까지. "
+                           "용도에 맞는 형태와 치수 규격의 드라이아이스를 정기 공급·단건 주문으로 전국에 배송합니다.",
+             "full_custom_body": True, "body": SUPPLY_BODY,
+             "extra_script": SUPPLY_SCRIPT, "extra_head": SUPPLY_EXTRA_HEAD},
             {"slug": "compare-equip", "title": "장비 비교·추천받기",
              "desc": "보유 현장 조건을 입력하면 적합한 장비 모델을 비교·추천해 드립니다.",
              "nav_desc": "현장에 맞는 장비를 비교하고 추천받으세요.",
-             "body": COMPARE_EQUIP_BODY},
+             "page_desc": "세척·생산·회수·자동화 중 하려는 일과 현장 조건 두세 가지만 고르면 적합한 Cold Jet 장비를 "
+                           "추천합니다. 블라스터 8종, 펠렛타이저 5종, CO2 리커버리 4종, 자동화 시스템의 비교표를 "
+                           "함께 확인하세요.",
+             "full_custom_body": True, "body": COMPARE_EQUIP_BODY,
+             "extra_script": COMPARE_EQUIP_SCRIPT, "extra_head": COMPARE_EQUIP_EXTRA_HEAD},
             {"slug": "process", "title": "구매 프로세스 안내",
              "desc": "테스트 → 사내 품의 → 계약으로 이어지는 실제 구매 절차를 단계별로 설명합니다.",
              "nav_desc": "상담부터 설치까지 구매 절차를 안내합니다.",
@@ -12772,7 +14124,8 @@ def build_sub_page(m, s):
 """
     page_title = s.get("page_title", s["title"])
     page_desc = s.get("page_desc", s["desc"])
-    html = page_shell(page_title, page_desc, depth, m["code"], body, extra_script=s.get("extra_script", ""))
+    html = page_shell(page_title, page_desc, depth, m["code"], body, extra_script=s.get("extra_script", ""),
+                       extra_head=s.get("extra_head", ""))
     with open(os.path.join(ROOT, m["code"], f"{s['slug']}.html"), "w", encoding="utf-8") as f:
         f.write(html)
 

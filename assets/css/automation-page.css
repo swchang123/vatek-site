@@ -1,0 +1,111 @@
+/* ---- 자동화 시스템 페이지: pelletizer/recovery 어휘 재사용 + 페이지 전용 보정 ---- */
+.aut-hero-stage .subhero-textbox p.bls-hero-main{max-width:520px}
+#what-is-automation .bls-showcase{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center}
+#what-is-automation .bls-showcase-media{aspect-ratio:auto;background:#fff}
+#what-is-automation .bls-showcase-media img{display:block;width:100%;height:auto;object-fit:contain;padding:clamp(12px,1.6vw,28px);box-sizing:border-box;background:#fff}
+#what-is-automation .bls-showcase-body p{margin:0}
+#what-is-automation .rec-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1100px){#what-is-automation .bls-showcase{grid-template-columns:1fr}#what-is-automation .bls-showcase-media{order:-1}}
+
+/* WHY AUTOMATE — 다크 배경 위 비교표 */
+.aut-matrix-wrap{margin-top:clamp(28px,3vw,44px);border-top:2px solid var(--ice);overflow-x:auto}
+.aut-matrix-wrap .bls-matrix th,.aut-matrix-wrap .bls-matrix td{border-bottom-color:rgba(255,255,255,.12)}
+.aut-matrix-wrap .bls-matrix thead th{color:var(--ice)}
+.aut-matrix-wrap .bls-matrix tbody th{color:rgba(255,255,255,.55)}
+.aut-matrix-wrap .bls-matrix td{color:rgba(255,255,255,.72);font-weight:500}
+.aut-matrix-wrap .bls-matrix td.is-good{color:#fff;font-weight:700}
+.aut-matrix-wrap .bls-matrix td.is-good::before{content:"✓";display:inline-block;margin-right:8px;width:18px;height:18px;line-height:18px;text-align:center;border-radius:50%;background:var(--ice);color:#0b2c2f;font-size:11px;font-weight:800}
+.aut-matrix-wrap .bls-matrix td small{color:rgba(255,255,255,.5)}
+.aut-matrix-note{margin:18px 0 0;font-size:13px;color:rgba(255,255,255,.5);word-break:keep-all}
+
+/* WHY AUTOMATE 4카드 — 높이·본문 시작 위치 통일 */
+#why-automate .rec-how-grid{align-items:stretch}
+#why-automate .rec-how-grid .plt-reason{height:100%}
+#why-automate .bls-showcase-body{justify-content:flex-start}
+#why-automate .bls-showcase-media{aspect-ratio:auto;align-self:stretch;height:100%;min-height:100%}
+.aut-why-points{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid rgba(255,255,255,.14)}
+.aut-why-points li{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.aut-why-points .num{font-size:12px;font-weight:800;letter-spacing:1.5px;color:var(--ice);font-variant-numeric:tabular-nums;padding-top:2px}
+.aut-why-points h4{margin:0 0 4px;font-size:14.5px;font-weight:800;color:#fff}
+.aut-why-points p{margin:0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);word-break:keep-all}
+
+/* LINEUP — 2개의 가로형 카드(COMBI PCS 시리즈 · ASP-T) */
+.aut-lineup{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.2vw,32px)}
+.aut-lineup .rec-lineup-item{display:flex;flex-direction:column}
+.aut-lineup .rec-lineup-media{position:relative;aspect-ratio:4/3;height:auto;min-height:0;padding:0;display:block;background:#fff;overflow:hidden}
+.aut-lineup .rec-lineup-media::after{display:none}
+.aut-lineup .rec-lineup-media img{position:absolute;left:clamp(16px,1.8vw,28px);right:clamp(16px,1.8vw,28px);top:clamp(16px,1.8vw,28px);bottom:0;width:auto;height:auto;max-width:calc(100% - 2*clamp(16px,1.8vw,28px));max-height:calc(100% - clamp(16px,1.8vw,28px));margin:auto auto 0;object-fit:contain;object-position:center bottom}
+.aut-lineup .rec-lineup-body{border-top:1px solid var(--gray-line)}
+.aut-models div{grid-template-columns:minmax(0,.9fr) minmax(0,1fr) minmax(0,1fr)}
+.aut-lineup .rec-lineup-media .img-ph{width:100%;height:100%;min-height:0;display:flex;align-items:center;justify-content:center;border-radius:12px;font-size:13px}
+.aut-lineup .rec-lineup-body h3 small{display:block;margin-top:4px;font-size:13px;font-weight:700;letter-spacing:1.5px;color:var(--ice-dark)}
+.aut-models{margin:0 0 16px;display:grid;gap:0;border-top:1px solid var(--gray-line)}
+.aut-models div{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--gray-line);align-items:baseline}
+.aut-models dt{margin:0;font-size:14.5px;font-weight:800;color:var(--navy)}
+.aut-models dd{margin:0;font-size:13px;color:var(--text-body);word-break:keep-all}
+.aut-models div dd:only-of-type{grid-column:2/-1}
+.aut-models dd b{display:block;font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:2px}
+.aut-lineup .rec-lineup-body > p{margin:0 0 18px;font-size:15px;line-height:1.75;color:var(--text-body);word-break:keep-all}
+.aut-lineup .bls-more{margin-top:auto}
+/* recovery-page.css의 .rec-lineup-item:nth-child(3) 브레이크포인트 규칙 무효화 — 자동화 라인업은 항상 동일 크기 카드 */
+@media (max-width:1100px){.aut-lineup .rec-lineup-item:nth-child(3){grid-column:auto;display:flex;grid-template-columns:none}.aut-lineup .rec-lineup-item:nth-child(3) .rec-lineup-media{aspect-ratio:4/3;min-height:0}.aut-lineup .rec-lineup-item:nth-child(3) .rec-lineup-body{border-left:0;border-top:1px solid var(--gray-line)}}
+@media (max-width:900px){.aut-lineup{grid-template-columns:1fr}.aut-models div{grid-template-columns:1fr 1fr}.aut-models dt{grid-column:1/-1}}
+
+/* APPLICATIONS — 2×2 사진 카드 */
+#applications .bls-tech-media{aspect-ratio:4/3}
+#applications .bls-tech-media img{width:100%;height:100%;object-fit:cover}
+#applications .bls-tech-body ul{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:6px}
+#applications .bls-tech-body li{position:relative;padding-left:16px;font-size:14px;line-height:1.6;color:var(--text-body);word-break:keep-all}
+#applications .bls-tech-body li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--ice-dark)}
+
+/* THE COLD JET DIFFERENCE — 6 카드 */
+.aut-diff-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;grid-template-rows:none}
+.aut-diff-grid .plt-reason{justify-content:flex-start;padding:26px 28px}
+.aut-diff-grid .plt-reason .num{display:block;margin:0 0 12px;font-size:13px;font-weight:800;letter-spacing:2px;color:var(--ice-dark);font-variant-numeric:tabular-nums}
+.aut-diff-grid .plt-reason h3{margin:0 0 8px;font-size:19px;font-weight:800;letter-spacing:-0.01em;color:var(--navy)}
+.aut-diff-grid .plt-reason p{margin:0;font-size:14.5px;line-height:1.7;color:var(--text-body);word-break:keep-all}
+@media (max-width:1100px){.aut-diff-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.aut-diff-grid{grid-template-columns:1fr}}
+
+#applications .bls-tech{grid-template-rows:auto auto;align-items:start;row-gap:16px}
+#applications .bls-tech-media{grid-column:1;grid-row:1}
+#applications .bls-tech-head{grid-column:2;grid-row:1}
+#applications .bls-tech-head .bls-en{margin-top:8px}
+#applications .bls-tech-copy{grid-column:1/-1;grid-row:2}
+#applications .bls-tech-copy ul,#applications .bls-tech-head ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+#applications .bls-tech-copy li,#applications .bls-tech-head li{position:relative;padding-left:16px;font-size:14px;line-height:1.6;color:var(--text-body);word-break:keep-all}
+#applications .bls-tech-copy li::before,#applications .bls-tech-head li::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;background:var(--ice-dark)}
+#applications .bls-tech-media{aspect-ratio:auto;align-self:stretch;height:auto}
+@media (max-width:1100px){#applications .bls-tech{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}}
+@media (max-width:700px){#applications .bls-tech{grid-template-columns:1fr}#applications .bls-tech-media,#applications .bls-tech-head,#applications .bls-tech-copy{grid-column:1}}
+
+/* WHY AUTOMATE — 3단계 자동화 범위 (테이블 대체) */
+.aut-scope-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,28px);align-items:stretch;margin-top:clamp(28px,3vw,44px)}
+.aut-scope{display:flex;flex-direction:column;padding:clamp(24px,2.4vw,32px) clamp(22px,2.2vw,28px);background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:16px;backdrop-filter:blur(2px)}
+.aut-scope .num{display:block;margin:0 0 14px;font-size:13px;font-weight:800;letter-spacing:2px;color:var(--ice);font-variant-numeric:tabular-nums}
+.aut-scope h3{margin:0 0 10px;font-size:19px;font-weight:800;letter-spacing:-0.01em;color:#fff}
+.aut-scope p{margin:0;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.7);word-break:keep-all}
+.aut-scope-arrow{display:none}
+.aut-scope:nth-child(2){background:rgba(255,255,255,.13)}
+.aut-scope:nth-child(3){background:rgba(255,255,255,.13)}
+@media (max-width:900px){.aut-scope-grid{grid-template-columns:1fr}}
+.aut-semi .bls-showcase{grid-template-columns:minmax(0,6fr) minmax(0,6fr);align-items:center}
+.aut-semi .aut-semi-hero{aspect-ratio:4/3;background:#0f1618;border-radius:16px;overflow:hidden}
+.aut-semi .aut-semi-hero img{display:block;width:100%;height:100%;object-fit:cover}
+.aut-semi-points{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.aut-semi-points li{position:relative;padding:12px 16px 12px 18px;border-left:2px solid var(--ice);font-size:14px;line-height:1.65;color:rgba(255,255,255,.72);word-break:keep-all}
+.aut-semi-points li b{display:block;margin-bottom:2px;font-size:14.5px;font-weight:800;color:#fff}
+.aut-semi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(28px,3vw,44px)}
+.aut-semi-card{display:flex;flex-direction:column;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;backdrop-filter:blur(2px);transition:transform .35s,border-color .3s}
+.aut-semi-card:hover{transform:translateY(-4px);border-color:rgba(79,173,184,.5)}
+.aut-semi-media{aspect-ratio:16/10;overflow:hidden;background:#0f1618}
+.aut-semi-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.aut-semi-card:hover .aut-semi-media img{transform:scale(1.04)}
+.aut-semi-card .num{display:block;margin:20px 22px 8px;font-size:13px;font-weight:800;letter-spacing:2px;color:var(--ice);font-variant-numeric:tabular-nums}
+.aut-semi-card h3{margin:0 22px 8px;font-size:18px;font-weight:800;letter-spacing:-0.01em;color:#fff;word-break:keep-all}
+.aut-semi-card p{margin:0 22px 22px;font-size:14px;line-height:1.7;color:rgba(255,255,255,.68);word-break:keep-all}
+.aut-semi-card.is-note{justify-content:center;background:rgba(79,173,184,.14);border-color:rgba(79,173,184,.35)}
+.aut-semi-card.is-note .num{font-size:44px;letter-spacing:-0.03em;margin-top:26px;color:#fff}
+.aut-semi-card.is-note .bls-textlink{margin:0 22px 22px;color:var(--ice)}
+@media (max-width:1100px){.aut-semi .bls-showcase{grid-template-columns:1fr}.aut-semi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.aut-semi-grid{grid-template-columns:1fr}}
