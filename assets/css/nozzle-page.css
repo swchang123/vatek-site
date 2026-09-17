@@ -111,6 +111,12 @@ video.noz-hero-video{object-fit:cover;background:var(--navy-deep)}
 .noz-nodefault.is-active{display:flex;flex-direction:column;align-items:center}
 .noz-nodefault p{margin:0;font-size:15.5px;line-height:1.7;color:var(--text-body)}
 
+.noz-scroll-cue{display:none;align-items:center;justify-content:center;gap:8px;margin:0 0 clamp(20px,2.4vw,28px);cursor:pointer;font-size:13px;font-weight:800;letter-spacing:.2px;color:var(--ice-dark)}
+.noz-scroll-cue.is-active{display:flex;animation:noz-cue-in .4s ease}
+.noz-scroll-cue svg{animation:noz-cue-bounce 1.4s ease-in-out infinite}
+@keyframes noz-cue-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes noz-cue-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
 
 /* v5: 장비 선택 패널 · 추천 · 모델명 읽는 법 (재디자인) */
 .noz-head{max-width:none;margin-bottom:clamp(20px,2.2vw,28px)}

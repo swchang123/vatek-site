@@ -1,0 +1,99 @@
+/* PURCHASE PROCESS (products/process.html) — 2026-09-17. plt-*/rec-*/cmp-* 어휘 위에 prc-* 추가. */
+.prc-hero-stage .subhero-parallax-img { object-position: 50% 42%; }
+.prc-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.84) 0%, rgba(15,22,23,.42) 26%, rgba(15,22,23,.18) 48%, rgba(15,22,23,.34) 100%); }
+.prc-hero-stage .subhero-breadcrumb { text-shadow: 0 1px 8px rgba(15,22,23,.9), 0 0 2px rgba(15,22,23,.9); }
+.prc-hero-stage .subhero-textbox h1, .prc-hero-stage .bls-hero-main { word-break: keep-all; text-wrap: pretty; }
+
+/* ---- 01 FLOW — 6 steps ---- */
+.prc-flow { counter-reset: prc; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 24px); }
+.prc-step { position: relative; background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); padding: clamp(24px, 2.4vw, 32px); display: grid; grid-template-rows: auto auto 1fr; box-shadow: 0 1px 2px rgba(15,25,26,.04); transition: border-color .25s, box-shadow .25s, transform .25s; }
+.prc-step:hover { border-color: var(--ice); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(15,25,26,.08); }
+.prc-step .num { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); }
+.prc-step .num i { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: #fff; font-style: normal; font-size: 14px; letter-spacing: 0; }
+.prc-step h3 { margin: 18px 0 10px; font-size: clamp(20px, 1.6vw, 24px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
+.prc-step p { margin: 0; font-size: 14.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.prc-step .who { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--gray-line); font-size: 12.5px; color: var(--text-muted); display: flex; gap: 8px; flex-wrap: wrap; align-self: end; }
+.prc-step .who b { color: var(--navy); font-weight: 800; }
+.prc-step + .prc-step::before { content: "→"; position: absolute; left: -22px; top: 36px; width: 20px; text-align: center; font-size: 18px; color: var(--text-muted); }
+.prc-step:nth-child(4)::before { display: none; }
+.prc-after { margin-top: clamp(20px, 2.2vw, 28px); background: var(--navy); color: #fff; border-radius: var(--radius); padding: clamp(20px, 2.2vw, 28px) clamp(22px, 2.6vw, 36px); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px clamp(20px, 3vw, 40px); align-items: center; }
+.prc-after .bls-en { color: var(--ice); white-space: nowrap; }
+.prc-after ol { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 0; font-size: 15px; font-weight: 700; }
+.prc-after li { display: flex; align-items: center; }
+.prc-after li + li::before { content: "→"; margin: 0 14px; color: rgba(255,255,255,.4); font-weight: 400; }
+.prc-after a { color: #fff; font-size: 14px; font-weight: 800; white-space: nowrap; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.4); padding-bottom: 2px; }
+.prc-after a:hover { border-bottom-color: var(--ice); color: var(--ice); }
+
+/* ---- 02 PAYMENT ---- */
+.prc-figure { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 0; align-items: stretch; margin-bottom: clamp(24px, 2.6vw, 36px); background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); overflow: hidden; }
+.prc-figure img { display: block; width: 100%; height: 100%; min-height: 300px; object-fit: cover; }
+.prc-figure-copy { padding: clamp(26px, 2.8vw, 44px); display: grid; align-content: center; }
+.prc-figure-copy .bls-en { color: var(--ice-dark); }
+.prc-figure-copy h3 { margin: 8px 0 14px; font-size: clamp(22px, 1.9vw, 28px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.25; word-break: keep-all; }
+.prc-figure-copy p { margin: 0; font-size: 15px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.prc-figure-copy dl { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--gray-line); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; }
+.prc-figure-copy dt { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: 1.6px; color: var(--text-muted); }
+.prc-figure-copy dd { margin: 4px 0 0; font-size: 15px; font-weight: 800; color: var(--navy); }
+.prc-pay { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 20px); }
+.prc-pay-card { background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); padding: clamp(22px, 2.2vw, 28px); display: grid; grid-template-rows: auto auto auto 1fr; transition: border-color .25s, box-shadow .25s, transform .25s; }
+.prc-pay-card:hover { border-color: var(--ice); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(15,25,26,.08); }
+.prc-pay-card .bls-en { color: var(--ice-dark); }
+.prc-pay-card h3 { margin: 10px 0 12px; font-size: clamp(20px, 1.5vw, 22px); font-weight: 800; color: #000; letter-spacing: -0.01em; }
+.prc-pay-card .terms { display: inline-block; align-self: start; justify-self: start; margin-bottom: 14px; padding: 8px 12px; border-radius: 8px; background: var(--ice-pale); color: var(--navy); font-size: 13.5px; font-weight: 800; line-height: 1.4; word-break: keep-all; }
+.prc-pay-card p { margin: 0; font-size: 14.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.prc-pay-note { margin: 16px 0 0; font-size: 13.5px; color: var(--text-muted); }
+.prc-extra { margin-top: clamp(20px, 2.2vw, 28px); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 2fr) auto; gap: 18px clamp(24px, 3vw, 44px); align-items: center; padding: clamp(24px, 2.4vw, 32px) clamp(24px, 2.6vw, 36px); background: var(--navy); color: #fff; border-radius: var(--radius); background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0px, rgba(255,255,255,.05) 1px, transparent 1px, transparent 14px); }
+.prc-extra .bls-en { color: var(--ice); }
+.prc-extra h3 { margin: 6px 0 0; font-size: clamp(20px, 1.6vw, 24px); font-weight: 800; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
+.prc-extra ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 20px; }
+.prc-extra li { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,.8); }
+.prc-extra li b { display: block; font-size: 15px; color: #fff; font-weight: 800; margin-bottom: 2px; }
+.prc-extra .cta-btn { white-space: nowrap; }
+
+/* ---- 03 DRY ICE TERMS (dark) ---- */
+.prc-plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 24px); }
+.prc-plan { background: rgba(255,255,255,.11); backdrop-filter: blur(3px); border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); padding: clamp(26px, 2.6vw, 36px); }
+.prc-plan .bls-en { color: var(--ice); }
+.prc-plan h3 { margin: 8px 0 12px; font-size: clamp(22px, 1.8vw, 27px); font-weight: 800; color: #fff; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
+.prc-plan p { margin: 0; font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,.78); word-break: keep-all; text-wrap: pretty; }
+.prc-plan dl { margin: 20px 0 0; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.16); display: grid; gap: 12px; }
+.prc-plan dl div { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 14px; font-size: 14px; line-height: 1.55; }
+.prc-plan dt { margin: 0; color: rgba(255,255,255,.62); font-weight: 700; }
+.prc-plan dd { margin: 0; color: #fff; font-weight: 700; word-break: keep-all; }
+.prc-plan dd em { font-style: normal; color: var(--ice); }
+.prc-plans-note { margin: clamp(18px, 2vw, 24px) 0 0; font-size: 14px; color: rgba(255,255,255,.66); }
+.prc-plans-note a { color: #fff; font-weight: 800; }
+
+/* ---- 04 AFTER CONTRACT ---- */
+.prc-support { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(20px, 2.4vw, 32px); align-items: stretch; }
+.prc-support-media { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--gray-line); min-height: 320px; }
+.prc-support-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.prc-support-list { display: grid; gap: clamp(12px, 1.4vw, 16px); }
+.prc-support-item { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px clamp(18px, 2vw, 28px); align-items: center; padding: clamp(20px, 2vw, 26px) clamp(22px, 2.4vw, 30px); background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); transition: border-color .25s, box-shadow .25s; }
+.prc-support-item:hover { border-color: var(--ice); box-shadow: 0 10px 24px rgba(15,25,26,.07); }
+.prc-support-item .num { font-size: clamp(26px, 2.2vw, 34px); font-weight: 800; letter-spacing: -0.03em; color: var(--ice); line-height: 1; min-width: 44px; }
+.prc-support-item h3 { margin: 0 0 6px; font-size: 18.5px; font-weight: 800; color: #000; letter-spacing: -0.01em; }
+.prc-support-item p { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.prc-support-item a { font-size: 13.5px; font-weight: 800; color: var(--navy); white-space: nowrap; text-decoration: none; }
+.prc-support-item a:hover { color: var(--ice-dark); }
+
+@media (max-width: 1100px) {
+  .prc-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .prc-step + .prc-step::before { display: none; }
+  .prc-pay { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .prc-extra { grid-template-columns: 1fr; }
+  .prc-extra ul { grid-template-columns: 1fr; }
+  .prc-plans { grid-template-columns: 1fr; }
+  .prc-support { grid-template-columns: 1fr; }
+  .prc-support-media { min-height: 260px; }
+  .prc-after { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .prc-flow, .prc-pay { grid-template-columns: 1fr; }
+  .prc-figure { grid-template-columns: 1fr; }
+  .prc-figure img { min-height: 220px; }
+  .prc-figure-copy dl { grid-template-columns: 1fr; }
+  .prc-support-item { grid-template-columns: auto minmax(0, 1fr); }
+  .prc-support-item a { grid-column: 2; }
+  .prc-plan dl div { grid-template-columns: 1fr; gap: 2px; }
+}

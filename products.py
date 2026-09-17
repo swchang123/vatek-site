@@ -291,12 +291,12 @@ PELLETIZER_MODELS = [
         "slug": "pe-80", "name": "PE-80", "tagline": "저용량 · 입문형 펠렛타이저",
         "features": [
             "사용자 친화적 인터페이스와 간단한 조작으로 초보자도 쉽게 운영",
-            "1.7 / 2.2 / 3.0 / 8.0 / 16.0mm 5가지 펠릿 크기 선택 가능",
+            "3 mm 블라스팅 펠렛 전용 생산",
             "다양한 전원 사양 지원(400V/50Hz, 480V/60Hz, 220V/50Hz, 200V/60Hz)",
         ],
         "specs": [
             ("생산능력", "최대 80 kg/h (176 lbs/hr)"),
-            ("펠릿 크기", "1.7 / 2.2 / 3.0 / 8.0 / 16.0 mm"),
+            ("펠릿 크기", "3 mm 전용"),
             ("소비전력", "3 kWh (최대 6.5A)"),
             ("크기", "600 × 1000 × 1560 mm"),
             ("무게", "203 kg (447.5 lbs)"),
@@ -385,14 +385,24 @@ PELLETIZER_MODELS = [
     {
         "slug": "special-forms", "name": "DS 시리즈 · R 시리즈 (특수 형태)",
         "tagline": "슬라이스형 드라이아이스, 펠릿 → 슬라이스 변환 장비",
+        # (2026-09-17, 17차 핸드오프) 이 모델 카드/제목 태그/CTA는 허브·형제
+        # 페이지가 공유하는 name/tagline을 그대로 쓰고, 페이지 자신의
+        # 브레드크럼·H1·히어로 설명만 page_breadcrumb/page_title/page_tagline로
+        # 덮어쓴다(R Series 리포머 중심으로 재편집). features/specs는 페이지
+        # 전용이라 직접 교체.
+        "page_breadcrumb": "R 시리즈 리포머",
+        "page_title": "R 시리즈 슬라이스 리포머",
+        "page_tagline": "펠렛을 필요한 규격의 슬라이스와 블록으로 재성형하는 장비",
         "features": [
-            "DS500E / DS1000E — 슬라이스형 드라이아이스를 직접 생산",
-            "R Series — 생산된 펠릿을 슬라이스 형태로 변환",
-            "특수한 드라이아이스 형태가 필요한 현장을 위한 전용 라인",
+            "R500H · R1000H · R2000H — 생산된 펠렛을 슬라이스와 블록으로 재성형",
+            "요구 규격과 처리량에 맞춰 리포머 모델을 선택",
+            "리포머에 펠렛을 공급할 드라이아이스 제조기가 별도로 필요",
         ],
+        "specs_headers": ("모델", "최대 처리능력"),
         "specs": [
-            ("DS500E / DS1000E 생산능력", "500 ~ 1,000 kg/h"),
-            ("R Series 처리능력", "2,500 kg/h"),
+            ("R500H", "600 kg/h"),
+            ("R1000H", "1,000 kg/h"),
+            ("R2000H", "2,500 kg/h"),
         ],
     },
 ]
@@ -567,9 +577,9 @@ def _features_html(features):
     ) + "</ul>"
 
 
-def _specs_html(specs):
+def _specs_html(specs, headers=("항목", "사양")):
     rows = "".join(f"<tr><td>{k}</td><td>{v}</td></tr>" for k, v in specs)
-    return f'<table class="compare-table"><tr><th>항목</th><th>사양</th></tr>{rows}</table>'
+    return f'<table class="compare-table"><tr><th>{headers[0]}</th><th>{headers[1]}</th></tr>{rows}</table>'
 
 
 def _overview_html(paragraphs):
@@ -717,12 +727,12 @@ def build_model_page(root, code, group_slug, group_title, model, siblings,
     body = f"""
   <div class="wrap breadcrumb"><a href="{asset('index.html', depth)}">홈</a> &gt;
     <a href="{asset('products/index.html', depth)}">제품 · 자동화 · 공급</a> &gt;
-    <a href="index.html">{group_title}</a> &gt; {model['name']}</div>
+    <a href="index.html">{group_title}</a> &gt; {model.get('page_breadcrumb', model['name'])}</div>
   <section class="page-hero" style="padding-top:24px;">
     <div class="wrap">
       <span class="cat">제품</span>
-      <h1>{model['name']}</h1>
-      <p>{model['tagline']}</p>
+      <h1>{model.get('page_title', model['name'])}</h1>
+      <p>{model.get('page_tagline', model['tagline'])}</p>
       {_quicknav(model.get('accessories', False))}
     </div>
   </section>
@@ -741,7 +751,7 @@ def build_model_page(root, code, group_slug, group_title, model, siblings,
       {_features_html(model['features'])}
 
       <h2 id="specs" style="font-size:20px; margin-top:36px; scroll-margin-top:90px;">Specifications</h2>
-      {_specs_html(model['specs'])}
+      {_specs_html(model['specs'], model.get('specs_headers', ("항목", "사양")))}
       {cross_links_block}
       {accessories_block}
       {maintenance_block}
@@ -962,8 +972,8 @@ BLASTER_HUB_BODY = """
       </video>
       <div class="subhero-textbox bls-hero-box">
         <span class="ind-hero-eyebrow">COLD JET × VATEK&nbsp;&nbsp;/&nbsp;&nbsp;DRY ICE BLASTERS</span>
-        <h1>세척의 차이를<br>만드는 <span class="bls-hero-accent">기술.</span></h1>
-        <p class="bls-hero-main">입자 제어부터 안정적인 분사까지.<br>Cold Jet 드라이아이스 블라스터의 기술을<br>바테크의 현장 지원과 함께 만나보세요.</p>
+        <h1>정밀한 세척은<br>블라스터의 <span class="bls-hero-accent">기술에서 시작됩니다.</span></h1>
+        <p class="bls-hero-main">입자 제어부터 안정적인 공급과 분사까지.<br>Cold Jet의 핵심 기술에<br>바테크의 국내 현장 지원을 더합니다.</p>
       </div>
       <div class="bls-hero-mask" aria-hidden="true"></div>
     </div>
@@ -975,9 +985,9 @@ BLASTER_HUB_BODY = """
       <div class="bls-head is-row reveal">
         <div>
           <span class="bls-dot-eyebrow">BUILT WITH PRECISION</span>
-          <h2 class="cmp-h2">디테일에서 드러나는<br>Cold Jet의 완성도.</h2>
+          <h2 class="cmp-h2">가까이서 확인하는<br>Cold Jet의 설계와 완성도.</h2>
         </div>
-        <p class="bls-sub is-side">Cold Jet 블라스터의 구조와 마감을<br>가까이에서 살펴보세요.</p>
+        <p class="bls-sub is-side">Cold Jet 블라스터의 구조와 마감을<br>제품 영상으로 자세히 확인해보세요.</p>
       </div>
       <div class="bls-showcase-frame reveal">
       <div class="bls-showcase">
@@ -993,8 +1003,8 @@ BLASTER_HUB_BODY = """
         <div class="bls-showcase-body">
           <span class="bls-dot-eyebrow">A CLOSER LOOK</span>
           <h3>가까이 볼수록,<br>드러나는 디테일.</h3>
-          <p>장비의 형태와 구성, 각 부분의 마감까지. 짧은 제품 영상으로 Cold Jet 블라스터를 가까이에서 만나보세요.</p>
-          <p>그 안에서 세척을 제어하는 입자 · 공급 · 분사 기술도 이어서 살펴볼 수 있습니다.</p>
+          <p>장비의 전체 구성부터 각 부분의 마감까지, 짧은 제품 영상으로 Cold Jet 블라스터를 자세히 확인해보세요.</p>
+          <p>이어지는 섹션에서는 실제 세척 성능을 좌우하는 입자 제어 · 공급 · 분사 기술을 살펴볼 수 있습니다.</p>
           <a class="bls-textlink" href="#bls-systems">내부 기술 살펴보기 ↓</a>
         </div>
       </div>
@@ -1007,9 +1017,9 @@ BLASTER_HUB_BODY = """
     <div class="wrap">
       <div class="bls-pcs-head reveal">
         <span class="cmp-eyebrow">PARTICLE CONTROL</span>
-        <h2 class="cmp-h2" style="line-height:61.2px; font-size:48px">더 섬세하게, 더 강력하게,<br /></h2>
+        <h2 class="cmp-h2" style="line-height:61.2px; font-size:48px">섬세한 세척부터 강한 세척까지,<br /></h2>
         <div class="cmp-dark-body">
-          <div><h2 class="cmp-h2" style="line-height:61.2px; font-size:31px; margin-top:0px">입자 크기가 달라지면 더 많은 걸 할 수 있습니다.</h2></div>
+          <div><h2 class="cmp-h2" style="line-height:61.2px; font-size:31px; margin-top:0px">입자 크기로 작업 조건을 맞춥니다.</h2></div>
         </div>
       </div>
       <div class="bls-scale-row">
@@ -1070,13 +1080,13 @@ BLASTER_HUB_BODY = """
             <circle id="pcsSliderThumb" r="9" fill="#fff" stroke="#1b6d78" stroke-width="2" cx="20" cy="10"></circle>
           </svg>
         </div>
-        <span class="bls-pcs-panel-cap" style="color:#ffffff; opacity:1; font-size:15px">바를 움직여 사이즈를 조절하세요</span>
+        <span class="bls-pcs-panel-cap" style="color:#ffffff; opacity:1; font-size:15px">슬라이더를 움직여 입자 크기를 확인해보세요</span>
       </div>
       </div>
       <div class="bls-pcs-grid">
         <div class="cmp-dark-body bls-pcs-desc">
-          <p>Cold Jet의 PCS®는 3 mm 드라이아이스 펠렛을 투입해 0.3 mm에서 3.0 mm까지 0.1 mm 단위로 총 28개의 입자 크기를 선택할 수 있습니다.</p>
-          <p>작은 입자와 낮은 압력으로 민감한 표면을 세척하거나, 더 큰 입자와 적절한 압력을 사용해 보다 강한 오염 제거 조건을 설정할 수 있습니다.</p>
+          <p>Cold Jet의 특허 PCS®는 3 mm 드라이아이스 펠렛을 투입해 0.3~3.0 mm 범위에서 0.1 mm 단위, 총 28개의 입자 크기를 선택할 수 있습니다.</p>
+          <p>민감한 표면에는 작은 입자와 낮은 압력을, 고착된 오염에는 큰 입자와 높은 압력을 적용해 작업에 맞는 세척 조건을 설정할 수 있습니다.</p>
         </div>
         <ul class="bls-factors reveal">
           <li><span>01</span><b>PARTICLE SIZE</b><small>입자 크기</small></li>
@@ -1095,7 +1105,7 @@ BLASTER_HUB_BODY = """
       <div class="bls-head reveal">
         <span class="cmp-eyebrow">DRY ICE BLASTER SYSTEMS</span>
         <h2 class="cmp-h2">작업 목적에 따라 선택하는<br>Cold Jet 블라스터</h2>
-        <p class="bls-sub">Cold Jet의 블라스터는 사용하는 드라이아이스 입자와 제어 방식, 필요한 세척 강도와 작업조건에 따라 서로 다른 제품군으로 구성되어 있습니다.</p>
+        <p class="bls-sub">Cold Jet 블라스터는 사용하는 드라이아이스 입자, 제어 방식, 필요한 세척 강도와 작업 조건에 따라 여러 제품군으로 나뉩되어 있습니다.</p>
       </div>
       <div class="bls-sys-grid">
         <article class="bls-sys reveal is-large-media" id="bls-sys-smart">
@@ -1107,9 +1117,10 @@ BLASTER_HUB_BODY = """
             <span class="bls-num">01</span>
             <span class="bls-en">SMART BLASTER</span>
             <h3 style="color: #000000">스마트형 블라스터</h3>
-            <p class="bls-sys-head">세척 조건을 세밀하게 제어하고,<br>반복해서 사용할 수 있도록.</p>
-            <p>Smart 계열은 세척 조건을 디지털 방식으로 설정하고 작업에 맞게 세밀하게 조정할 수 있는 제품군입니다.</p>
-            <p>특허 받은 PCS 기술이 적용된 모델은 3 mm 드라이아이스 펠렛을 입력해 0.3 mm부터 3.0 mm까지 0.1mm 단위로 입자 크기를 조절할 수 있어, 민감한 표면의 정밀 세척부터 강력한 세척이 필요한 작업까지 하나의 장비에서 폭넓게 조건을 설정할 수 있습니다.</p>
+            <p class="bls-sys-head">세척 조건을 정밀하게 설정하고,<br>같은 조건을 반복해서 사용해야 하는 작업에.</p>
+            <p>Smart 계열은 주요 세척 조건을 디지털 방식으로 설정하고 작업에 맞게 세밀하게 조정할 수 있는 제품군입니다.</p>
+            <p>특허받은 PCS® 기술이 적용된 모델은 3 mm 펠렛을 투입해 0.3~3.0 mm 범위에서 0.1 mm 단위, 총 28개의 입자 크기를 선택할 수 있습니다.</p>
+            <p>이를 통해 민감한 표면의 정밀 세척부터 고착 오염 제거까지 작업에 맞게 조건을 세밀하게 설정할 수 있습니다.</p>
             <dl class="bls-sys-models">
               <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="aero2-ultra.html">Aero2 PCS ULTRA</a><span class="bls-badge">PARTICLE CONTROL SYSTEM</span><a class="bls-model-chip" href="aero2-ultra.html">Aero2 PLT ULTRA</a></dd></div>
               <div><dt>PCS ULTRA</dt><dd>0.3 – 3.0 mm · 28 Particle Sizes</dd></div>
@@ -1127,9 +1138,9 @@ BLASTER_HUB_BODY = """
             <span class="bls-num">02</span>
             <span class="bls-en">PELLET BLASTER</span>
             <h3 style="color: #000000">펠렛형 블라스터</h3>
-            <p class="bls-sys-head">일반 산업 세척과<br>강한 오염 제거가 필요한 작업에.</p>
-            <p>3 mm 드라이아이스 펠렛을 사용하는 대표적인 산업용 블라스터입니다.</p>
-            <p>생산설비와 금형, 오일·그리스, 카본과 고착된 공정 잔류물처럼 상대적으로 높은 세척력이 필요한 작업에 폭넓게 활용됩니다.</p>
+            <p class="bls-sys-head">일반 산업 세척과<br>고착 오염 제거처럼 높은 세척력이 필요한 작업에.</p>
+            <p>3 mm 드라이아이스 펠렛을 사용하는 산업용 블라스터 제품군입니다.</p>
+            <p>생산설비와 금형의 세척, 오일 · 그리스 · 카본 및 고착된 공정 잔류물 제거 등 상대적으로 높은 세척력이 필요한 작업에 폭넓게 사용됩니다.</p>
             <dl class="bls-sys-models">
               <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="aero-series.html">Aero Series</a><a class="bls-model-chip" href="elite20-icerocket.html">ELITE 20</a><a class="bls-model-chip" href="elite20-icerocket.html">IceRocket PLT</a></dd></div>
               <div><dt>사용 입자</dt><dd>3 mm PELLET</dd></div>
@@ -1147,12 +1158,12 @@ BLASTER_HUB_BODY = """
             <span class="bls-num">03</span>
             <span class="bls-en">MICRO PARTICLE BLASTER</span>
             <h3 style="color: #000000">마이크로파티클 블라스터</h3>
-            <p class="bls-sys-head">충격에 민감한 표면에는<br>더 작은 입자로.</p>
-            <p>MicroParticle 블라스터는 일반 3 mm 펠렛보다 작은 입자를 사용하여 상대적으로 부드럽고 세밀한 세척이 필요한 작업에 활용됩니다.</p>
-            <p>정밀 금형, 부품 마무리, 민감한 표면, 역사적 복원 등 표면 상태를 세심하게 고려해야 하는 작업에 적합합니다.</p>
+            <p class="bls-sys-head">민감한 표면과 정밀 작업에<br>작은 입자로 세밀하게 대응합니다.</p>
+            <p>MicroParticle 블라스터는 3 mm 펠렛보다 작은 입자를 사용해 표면에 가해지는 충격을 줄이면서 세밀하게 세척하는 제품군입니다.</p>
+            <p>정밀 금형, 전자 · 정밀 부품, 부품 후처리, 민감한 표면과 복원 작업처럼 표면 상태를 세심하게 관리해야 하는 작업에 적합합니다.</p>
             <dl class="bls-sys-models">
               <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="i3-microclean-2.html">i³ MicroClean 2</a><span class="bls-badge">SMART MICRO PARTICLE</span><a class="bls-model-chip" href="i3-microclean.html">i³ MicroClean</a><a class="bls-model-chip" href="sdi-select-60.html">SDI Select 60</a></dd></div>
-              <div><dt>사용 입자</dt><dd>MICRO PARTICLE — 블록을 깎아 만든 미세 입자</dd></div>
+              <div><dt>사용 입자</dt><dd>MICRO PARTICLE — 드라이아이스를 미세 입자로 가공해 분사</dd></div>
             </dl>
             <a class="bls-more" href="i3-microclean-2.html">MicroParticle Blaster 자세히 보기 <i>→</i></a>
             <img class="bls-sys-icon-inline" src="../../assets/img/icon-micro.png" alt="Micro Particle" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
@@ -1167,9 +1178,9 @@ BLASTER_HUB_BODY = """
             <span class="bls-num">04</span>
             <span class="bls-en">SPECIALTY BLASTER</span>
             <h3 style="color: #000000">특수형 블라스터</h3>
-            <p class="bls-sys-head">일반 블라스터로 해결하기 어려운<br>특수한 작업 조건에.</p>
-            <p>전기를 사용할 수 없는 환경이나 연마재를 함께 사용해야 하는 표면처리처럼 일반적인 드라이아이스 세척과 다른 조건에는 특수 시스템을 검토할 수 있습니다.</p>
-            <p>E-CO2 150은 Cold Jet 블라스터(PLT 60 · Aero 80 · C100)에 가압식 연마재 포트를 결합해 드라이아이스와 연마재를 함께 분사하는 별도의 혼합 블라스팅 시스템으로, 도막·코팅·부식 제거처럼 보다 공격적인 표면처리에 사용합니다.</p>
+            <p class="bls-sys-head">일반 블라스터와 다른 조건이 필요한<br>특수 작업에.</p>
+            <p>전원 사용이 제한되는 현장이나 연마재를 함께 사용하는 표면처리처럼 일반적인 드라이아이스 세척과 다른 조건에는 특수형 시스템을 검토할 수 있습니다.</p>
+            <p>E-CO2 150은 호환 Cold Jet 블라스터(PLT 60 · Aero 80 · C100)에 가압식 연마재 포트를 결합해 드라이아이스와 연마재를 함께 분사하는 시스템입니다. 도막 · 코팅 · 부식 제거와 같은 표면처리 작업에 사용됩니다.</p>
             <dl class="bls-sys-models">
               <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="c100.html">C100 — 완전 공압식</a><a class="bls-model-chip" href="e-co2-150.html">E-CO2 150 — 드라이아이스 + 연마재</a></dd></div>
             </dl>
@@ -1193,10 +1204,10 @@ BLASTER_HUB_BODY = """
         <div class="bls-tabs" role="tablist" aria-label="제품군 필터">
           <button data-filter="core" type="button"><b>CORE</b><small>핵심 모델</small></button>
           <button class="is-active" data-filter="all" type="button"><b>ALL</b><small>전체 모델</small></button>
-          <button data-filter="smart" type="button"><b>SMART</b><small>자동화, 모든 표면</small></button>
-          <button data-filter="pellet" type="button"><b>PELLET</b><small>설비 고착 오염</small></button>
-          <button data-filter="micro" type="button"><b>MICRO PARTICLE</b><small>정밀·민감한 표면</small></button>
-          <button data-filter="specialty" type="button"><b>SPECIALTY</b><small>특수작업</small></button>
+          <button data-filter="smart" type="button"><b>SMART</b><small>정밀 제어 · 자동화</small></button>
+          <button data-filter="pellet" type="button"><b>PELLET</b><small>산업 설비 · 고착 오염</small></button>
+          <button data-filter="micro" type="button"><b>MICRO PARTICLE</b><small>정밀 · 민감 표면</small></button>
+          <button data-filter="specialty" type="button"><b>SPECIALTY</b><small>특수 작업</small></button>
         </div>
       </div>
       <div class="bls-prod-grid" id="blsProdGrid">
@@ -1205,7 +1216,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">PARTICLE CONTROL SYSTEM</span></div>
           <h3>Aero2® PCS ULTRA</h3>
-          <p class="bls-prod-pos">입자 크기까지 설정하는 가장 넓은 조건 범위의 스마트 블라스터</p>
+          <p class="bls-prod-pos">입자 크기까지 정밀하게 제어하는 스마트 블라스터</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>정밀 금형 · 민감한 표면 · 고착 오염 · 생산설비 · 로봇 · 자동화 라인</dd></div>
             <div><dt>핵심 기술</dt><dd>PCS® 0.3–3.0 mm · 28단계 · 프로그램 레시피 · 7" HMI · Cold Jet CONNECT®</dd></div>
@@ -1218,7 +1229,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero2® PLT ULTRA</h3>
-          <p class="bls-prod-pos">3 mm 펠렛으로 세척 조건을 디지털 설정·저장하는 스마트 펠렛 블라스터</p>
+          <p class="bls-prod-pos">3 mm 펠렛 세척 조건을 디지털로 설정 · 저장하는 스마트 블라스터</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>생산설비 · 금형 · 반복 세척 공정 · 자동화 연계</dd></div>
             <div><dt>핵심 기술</dt><dd>SureFlow 피더 시스템 · 프로그램 레시피 · HMI · Cold Jet CONNECT®</dd></div>
@@ -1231,7 +1242,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">SMART MICRO PARTICLE</span></div>
           <h3>i³ MicroClean® 2</h3>
-          <p class="bls-prod-pos">정밀 세척 라인의 2세대 — 디지털 제어와 IoT를 갖춘 단일호스 마이크로파티클 블라스터</p>
+          <p class="bls-prod-pos">디지털 제어와 IoT를 지원하는 차세대 마이크로파티클 블라스터</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>정밀 금형 · 전자부품 · 부품 마무리 · 민감한 표면</dd></div>
             <div><dt>핵심 기술</dt><dd>블록 · 펠렛 모두 사용 · 최소 0.3 m³/min · 1.4–10 bar · 7" LCD · 레시피 · CONNECT®</dd></div>
@@ -1244,7 +1255,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero® 40FP</h3>
-          <p class="bls-prod-pos">풀프레셔 산업용 펠렛 블라스터 — 40 lb 호퍼 소형 모델</p>
+          <p class="bls-prod-pos">40 lb 호퍼를 갖춘 산업용 풀프레셔 펠렛 블라스터</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>생산설비 유지보수 · 오일 · 그리스 · 고착 잔류물 · 이동이 잦은 현장</dd></div>
             <div><dt>핵심 기술</dt><dd>SureFlow 시스템 · 래디얼 피더 · 정밀 공급량 제어 · 내장 압력 조절기</dd></div>
@@ -1257,7 +1268,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero® 80FP</h3>
-          <p class="bls-prod-pos">풀프레셔 산업용 펠렛 블라스터 — 80 lb 호퍼 대용량 모델</p>
+          <p class="bls-prod-pos">80 lb 호퍼를 갖춘 대용량 산업용 풀프레셔 펠렛 블라스터</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>생산설비 유지보수 · 오일 · 그리스 · 고착 잔류물 · 주조 · 코어박스</dd></div>
             <div><dt>핵심 기술</dt><dd>SureFlow 시스템 · 래디얼 피더 · 정밀 공급량 제어 · 내장 압력 조절기</dd></div>
@@ -1270,7 +1281,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span></div>
           <h3>ELITE 20</h3>
-          <p class="bls-prod-pos">전문가급 성능을 갖춘 입문형 펠렛 블라스터</p>
+          <p class="bls-prod-pos">일반 산업 세척에 적합한 실용형 펠렛 블라스터</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>일반 산업 세척 · 설비 · 부품 · 첫 도입</dd></div>
             <div><dt>핵심 기술</dt><dd>3 mm 펠렛 · 단일호스 방식 · 컴팩트 구성</dd></div>
@@ -1283,7 +1294,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>IceRocket PLT</h3>
-          <p class="bls-prod-pos">이동성이 좋은 소형 펠렛 블라스터</p>
+          <p class="bls-prod-pos">현장 이동이 편리한 소형 펠렛 블라스터</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>일반 산업 세척 · 현장 이동 작업 · 첫 도입</dd></div>
             <div><dt>핵심 기술</dt><dd>3 mm 펠렛 · 컴팩트 · 경량 · 단일호스 방식</dd></div>
@@ -1296,7 +1307,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span></div>
           <h3>i³ MicroClean®</h3>
-          <p class="bls-prod-pos">드라이아이스 블록을 깎아 분사하는 탁상형 정밀 블라스터</p>
+          <p class="bls-prod-pos">드라이아이스를 미세 입자로 가공해 분사하는 컴팩트 정밀 블라스터</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>정밀 금형 · 전자부품 · 섬세한 표면 · 소규모 작업 공간</dd></div>
             <div><dt>핵심 기술</dt><dd>특허 쉐이빙 마이크로파티클 · 최소 12 cfm · 1.4–9.7 bar · 저소음 · 단일호스</dd></div>
@@ -1309,7 +1320,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-prod-cat">PELLET</span></div>
           <h3>SDI Select™ 60</h3>
-          <p class="bls-prod-pos">더스팅 · 일반 · 고압 세 가지 방식을 한 대로 전환하는 범용 모델</p>
+          <p class="bls-prod-pos">드라이아이스를 미세 입자로 가공하거나 3 mm 펠렛으로 전환해 사용할 수 있는 범용 모델</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>현장 조건이 다양한 작업 · 정밀 ~ 일반 세척 · 세척 대행</dd></div>
             <div><dt>핵심 기술</dt><dd>3가지 블라스팅 모드 · 단일호스 방식 · 국내 공급 실적 다수</dd></div>
@@ -1324,7 +1335,7 @@ BLASTER_HUB_BODY = """
           <h3>Aero® C100</h3>
           <p class="bls-prod-pos">전원 없이 압축공기만으로 작동하는 완전 공압식 블라스터</p>
           <dl class="bls-prod-spec">
-            <div><dt>대표 적용</dt><dd>전기 사용이 제한되는 현장 · 방폭 · 옥외 작업 · 장거리 호스 작업</dd></div>
+            <div><dt>대표 적용</dt><dd>전원 사용이 제한되는 현장 · 옥외 작업 · 장거리 호스 작업</dd></div>
             <div><dt>핵심 기술</dt><dd>완전 공압식 · SureFlow 시스템 · 100 lb 호퍼 · 최대 100 ft 호스</dd></div>
           </dl>
           <span class="bls-more">자세히 보기 <i>→</i></span>
@@ -1335,7 +1346,7 @@ BLASTER_HUB_BODY = """
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SPECIALTY</span></div>
           <h3>E-CO2™ 150</h3>
-          <p class="bls-prod-pos">드라이아이스 + 연마재 혼합 분사 — 도막 · 코팅 · 부식 제거용 표면처리 시스템</p>
+          <p class="bls-prod-pos">드라이아이스와 연마재를 함께 사용하는 도막 · 코팅 · 부식 제거용 시스템</p>
           <dl class="bls-prod-spec">
             <div><dt>대표 적용</dt><dd>도막 · 코팅 제거 · 부식 제거 · 표면 전처리</dd></div>
             <div><dt>핵심 기술</dt><dd>1.5 ft³ 가압식 연마재 포트 · PLT 60 · Aero 80 · C100과 결합 · 드라이아이스 단독 분사 전환</dd></div>
@@ -1353,7 +1364,7 @@ BLASTER_HUB_BODY = """
       <div class="bls-head reveal">
         <span class="cmp-eyebrow">THE COLD JET DIFFERENCE</span>
         <h2 class="cmp-h2">성능과 내구성은,<br>보이지 않는 곳에서 결정됩니다.</h2>
-        <p class="bls-sub">드라이아이스 블라스터의 성능은 최대 압력이나 최고 용량만으로 결정되지 않습니다. 드라이아이스를 얼마나 균일하게 공급하는지, 압축공기의 흐름을 얼마나 효율적으로 활용하는지, 노즐에서 원하는 형태로 분사하는지에 따라 실제 세척 결과와 작업 효율이 달라집니다. Cold Jet은 공급부터 분사까지 이어지는 전체 흐름을 하나의 시스템으로 설계합니다.</p>
+        <p class="bls-sub">드라이아이스 블라스터의 성능은 최대 압력이나 호퍼 용량 같은 숫자만으로 판단하기 어렵습니다. 드라이아이스를 얼마나 안정적으로 공급하는지, 압축공기의 흐름을 얼마나 효율적으로 전달하는지, 노즐에서 원하는 분사 형태를 만드는지에 따라 실제 세척 결과와 작업 효율이 달라집니다. Cold Jet은 드라이아이스 공급부터 분사까지 전체 흐름을 하나의 시스템으로 설계합니다.</p>
       </div>
       <div class="bls-tech-list">
         <article class="bls-tech reveal">
@@ -1361,8 +1372,9 @@ BLASTER_HUB_BODY = """
           <div class="bls-tech-body">
             <span class="bls-num">01</span>
             <span class="bls-en">SUREFLOW FEEDER SYSTEM</span>
-            <h3>드라이아이스의 균일하고 안정적인 공급</h3>
-            <p>특허받은 슈어플로우 피더 시스템은 험퍼(Thumper), 램로드(Ramrod), 진동기, 단열 호퍼를 하나로 통합한 시스템입니다. 호퍼를 최적의 상태로 진동·교반해 드라이아이스가 시스템 내부에 균일하게 공급되도록 하며, 안정적이고 일정한 분사 흐름을 유지합니다.</p>
+            <h3>안정적인 드라이아이스 공급</h3>
+            <p>특허받은 SureFlow 피더 시스템은 Thumper, Ramrod, 진동 장치와 단열 호퍼를 통합해 호퍼 내부의 드라이아이스를 지속적으로 교반합니다.</p>
+            <p>이를 통해 드라이아이스가 피더로 안정적으로 공급되도록 하고, 일정한 분사 흐름을 유지하도록 설계되었습니다.</p>
           </div>
         </article>
         <article class="bls-tech reveal" style="--reveal-delay:0.06s">
@@ -1370,8 +1382,9 @@ BLASTER_HUB_BODY = """
           <div class="bls-tech-body">
             <span class="bls-num">02</span>
             <span class="bls-en">FEEDING SYSTEM</span>
-            <h3>정밀한 공급으로 일정한 드라이아이스 분사 유지</h3>
-            <p>드라이아이스를 안정적으로 공급하는 Feeder 설계는 분사 흐름과 실제 작업성에 영향을 줍니다. Cold Jet의 래디얼 피더는 공기역학적 로딩으로 패드와 로터의 마모를 줄이고, 공급량을 정밀하게 제어할 수 있도록 설계되었습니다.</p>
+            <h3>정밀한 공급 제어로 일정한 분사 흐름</h3>
+            <p>피더는 드라이아이스 공급량과 분사 안정성에 직접 영향을 줍니다.</p>
+            <p>Cold Jet의 래디얼 피더는 공기역학적 방식으로 드라이아이스를 공급해 패드와 로터의 마모를 줄이고, 공급량을 정밀하게 제어하도록 설계되었습니다.</p>
           </div>
         </article>
         <article class="bls-tech reveal">
@@ -1379,8 +1392,9 @@ BLASTER_HUB_BODY = """
           <div class="bls-tech-body">
             <span class="bls-num">03</span>
             <span class="bls-en">NOZZLE TECHNOLOGY</span>
-            <h3>작업에 적합한 기술 집약적 노즐</h3>
-            <p>같은 장비라도 노즐의 형상과 크기에 따라 분사폭과 집중도, 공기 소비량과 작업성이 달라질 수 있습니다. Cold Jet의 특허 노즐은 초음속 균일 분사와 낮은 승화 손실을 목표로 설계되어, 작업 대상에 맞게 다양한 형태로 제공됩니다.</p>
+            <h3>작업에 맞는 분사폭과 세척력을 만드는 노즐</h3>
+            <p>같은 블라스터라도 노즐의 형상과 크기에 따라 분사폭과 집중도, 공기 소비량과 작업성이 달라집니다.</p>
+            <p>Cold Jet은 다양한 작업 조건에 맞춰 선택할 수 있도록 여러 형태의 특허 노즐을 제공합니다.</p>
           </div>
         </article>
         <article class="bls-tech reveal" style="--reveal-delay:0.06s">
@@ -1388,8 +1402,9 @@ BLASTER_HUB_BODY = """
           <div class="bls-tech-body">
             <span class="bls-num">04</span>
             <span class="bls-en">COLD JET CONNECT®</span>
-            <h3>온라인 장비 점검 및 자동 보고서</h3>
-            <p>Cold Jet CONNECT®를 이용하면 PC나 모바일에서 장비 상태를 실시간으로 확인하고 원격 진단할 수 있습니다. 교육 자료 확인, 문제 해결, 서비스 지원 등 필요한 기능도 편리하게 이용할 수 있습니다.<br /><br />이 기능은 Aero2 ULTRA 시리즈와 i³ MicroClean 2 등 IoT를 지원하는 모델에 적용됩니다.</p>
+            <h3>원격 모니터링과 진단 지원</h3>
+            <p>Cold Jet CONNECT®를 이용하면 지원 모델의 장비 상태를 PC나 모바일에서 원격으로 확인하고 진단할 수 있습니다.</p>
+            <p>교육 영상, 장비 문서, 문제 해결 안내와 서비스 지원 기능도 함께 이용할 수 있습니다.<br /><br />Aero2 ULTRA 시리즈와 i³ MicroClean 2 등 IoT 지원 모델에 적용됩니다.</p>
           </div>
         </article>
       </div>
@@ -1401,7 +1416,7 @@ BLASTER_HUB_BODY = """
     <div class="wrap">
       <div class="bls-head reveal">
         <span class="cmp-eyebrow">TRUSTED WORLDWIDE</span>
-        <h2 class="cmp-h2">국내외 다양한 산업 현장에서 Cold Jet과 함께하고 있습니다.</h2>
+        <h2 class="cmp-h2">Cold Jet 장비는<br>국내외 다양한 산업 현장에서 사용되고 있습니다.</h2>
       </div>
     </div>
     <div class="bls-ref-row">
@@ -1469,7 +1484,7 @@ BLASTER_HUB_BODY = """
     <div class="wrap">
       <div class="bls-head reveal">
         <span class="cmp-eyebrow">GLOBAL TECHNOLOGY · LOCAL SUPPORT</span>
-        <h2 class="cmp-h2">장비만큼 중요한 것은,<br>한국에서 누가 지원하느냐입니다.</h2>
+        <h2 class="cmp-h2">장비만큼 중요한 것은,<br>한국에서의 기술 지원입니다.</h2>
       </div>
       <div class="bls-partner-grid">
         <img class="bls-partner-logo reveal" src="../../assets/img/coldjet-logo.png" alt="Cold Jet" />
@@ -1481,10 +1496,10 @@ BLASTER_HUB_BODY = """
         <div class="bls-partner-media reveal"><img src="../../assets/img/coldjet-hq-photo-1.jpg" alt="Cold Jet 본사" loading="lazy" decoding="async" /></div>
         <div class="bls-partner-media reveal"><img src="../../assets/img/vatek-building.jpg" alt="바테크 사옥" loading="lazy" decoding="async" /></div>
 
-        <div class="bls-partner-desc reveal"><p>Cold Jet는 현대식 드라이아이스 블라스팅 장비의 원천 특허를 기반으로 기술을 발전시켜 왔으며, 블라스터와 드라이아이스 생산설비, 노즐과 자동화 기술을 개발·공급하고 있습니다.</p></div>
+        <div class="bls-partner-desc reveal"><p>Cold Jet은 현대식 드라이아이스 블라스팅 장비의 원천 특허를 보유한 기술 기업으로, 블라스터 · 드라이아이스 생산설비 · 노즐 · 자동화 솔루션을 개발하고 공급하고 있습니다.</p></div>
         <div class="bls-partner-desc reveal">
-          <p>1988년 설립한 바테크는 Cold Jet의 대한민국 공식 총판으로, 제품 판매뿐 아니라 세척 테스트, 렌탈·데모, 장비 선정, 기술 지원과 A/S 등 국내 고객의 도입과 운용을 지원합니다.</p>
-          <p>Cold Jet의 Training, Seminar, Conference 등에 참여하며 관련 기술과 적용사례를 지속적으로 공유하고 있습니다.</p>
+          <p>1988년 설립한 바테크는 Cold Jet의 대한민국 공식 총판으로, 제품 공급뿐 아니라 세척 테스트, 렌탈 · 데모, 장비 선정, 설치, 기술지원과 A/S까지 국내 고객의 도입과 운용을 지원합니다.</p>
+          <p>바테크는 Cold Jet의 교육, 세미나 및 글로벌 컨퍼런스에 지속적으로 참여해 최신 기술과 적용 사례를 국내 고객 지원에 반영하고 있습니다.</p>
         </div>
 
         <div class="bls-partner-photos reveal">
@@ -1506,8 +1521,8 @@ BLASTER_HUB_BODY = """
         <div class="bls-partner-divider"></div>
 
         <ul class="bls-facts">
-          <li><b>1986</b><small>최초의 드라이아이스 블라스터 제조</small></li>
-          <li><b>100+</b><small>글로벌 특허</small></li>
+          <li><b>1986</b><small>현대식 드라이아이스 블라스팅 원천 특허</small></li>
+          <li><b>250+</b><small>글로벌 특허</small></li>
           <li><b>3 · 3</b><small>R&amp;D 연구소 · 생산공장</small></li>
           <li><b>14</b><small>기술센터</small></li>
         </ul>
@@ -1524,25 +1539,6 @@ BLASTER_HUB_BODY = """
 
 
 
-  <!-- ============ 12 FROM MANUAL TO AUTOMATED ============ -->
-  <section class="bls-sec bls-auto" id="bls-auto">
-    <div class="wrap">
-      <div class="bls-auto-grid">
-        <figure class="bls-auto-media reveal"><img src="../../assets/img/coldjet-robot-cell.png" alt="로봇에 통합된 드라이아이스 블라스팅" loading="lazy" decoding="async" /><figcaption>ROBOT-INTEGRATED DRY ICE BLASTING</figcaption></figure>
-        <div class="bls-auto-copy">
-          <span class="cmp-eyebrow">FROM MANUAL TO AUTOMATED</span>
-          <h2 class="cmp-h2">수동 세척에서<br>자동화 공정까지.</h2>
-          <div class="cmp-lead">
-            <p>동일한 부품을 반복적으로 세척하거나 생산라인에서 일정한 세척 품질과 Cycle을 관리해야 하는 경우, 드라이아이스 블라스터를 로봇 및 자동화설비와 연계할 수 있습니다.</p>
-            <p>Cold Jet의 일부 Smart 시스템은 PLC 통신과 자동화 통합을 고려해 설계되어 있으며, 바테크는 실제 생산공정과 세척 조건을 확인한 뒤 자동화 적용 가능성을 함께 검토합니다.</p>
-          </div>
-          <a class="bls-more" href="../automation.html">드라이아이스 세척 자동화 보기 <i>→</i></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
   <!-- ============ 14 FINAL CTA ============ -->
   <section class="bls-sec bls-final last-freeze" id="bls-final">
     <div class="wrap">
@@ -1553,8 +1549,8 @@ BLASTER_HUB_BODY = """
         </div>
         <div>
           <div class="cmp-lead">
-            <p>같은 장비라도 오염물과 작업조건에 따라 세척 결과는 달라질 수 있습니다.</p>
-            <p>바테크는 실제 부품과 금형, 설비 또는 샘플을 이용한 테스트를 통해 필요한 세척 조건을 확인하고, 그 조건에 적합한 Cold Jet 블라스터와 노즐을 제안합니다.</p>
+            <p>세척 결과는 같은 장비를 사용해도 오염물의 종류와 부착 상태, 소재와 작업 조건에 따라 달라질 수 있습니다.</p>
+            <p>바테크는 실제 부품 · 금형 · 오염 샘플을 이용한 테스트를 통해 필요한 세척 조건을 확인하고, 그 결과에 맞는 Cold Jet 블라스터와 노즐을 제안합니다.</p>
           </div>
           <div class="cmp-cta-btns">
             <a class="cta-btn" href="../../rental/demo.html">세척 테스트 신청</a>
@@ -1569,6 +1565,21 @@ BLASTER_HUB_BODY = """
 PELLETIZER_PAGE_TITLE = '드라이아이스 생산 시스템 | 펠렛타이저·슬라이스·자동화'
 PELLETIZER_PAGE_DESC = '펠렛타이저부터 슬라이스 제조기, 리포머, 정량 투입·포장·CO2 회수까지 Cold Jet 드라이아이스 생산 시스템과 적용 분야를 살펴보세요.'
 PELLETIZER_SCRIPT = """  <script>
+  /* 마지막 섹션(.last-freeze)이 뷰포트보다 높을 때 — top을 음수로 밀어 마지막 한 화면만 틀고정되게 한다.
+     (섹션 상단이 화면에 닿는 순간 고정되면 아래 내용을 볼 수 없으므로, 섹션 하단이 화면 하단에 닿을 때 고정.) */
+  (function () {
+    var el = document.getElementById('bls-partner');
+    if (!el) return;
+    function sync() {
+      if (window.innerWidth <= 900) { el.style.top = ''; return; }
+      el.style.top = Math.min(0, window.innerHeight - el.offsetHeight) + 'px';
+    }
+    sync();
+    window.addEventListener('resize', sync);
+    if ('ResizeObserver' in window) { new ResizeObserver(sync).observe(el); }
+  })();
+  </script>
+  <script>
   (function () {
     var stage = document.getElementById('useStage');
     if (!stage) return;
@@ -2427,8 +2438,12 @@ PELLETIZER_HUB_BODY = """
 
   </main>
 
-      <div class="plt-compare-freeze last-freeze" id="compareFreeze">
+      <div class="plt-compare-freeze" id="compareFreeze" style="padding: clamp(72px, 8vw, 128px) 0;">
         <div class="wrap">
+          <div class="plt-head reveal">
+            <div><span class="plt-eyebrow">COLD JET VS. GENERIC</span><h2 class="plt-title">일반 단독 제조기와,<br>무엇이 다른가.</h2></div>
+            <p class="plt-lead">같은 펠렛타이저처럼 보여도 전환 효율, 운전 방식, 원격 지원과 후공정 연결에서 차이가 납니다. 구매 전 확인할 항목을 정리했습니다.</p>
+          </div>
           <div class="plt-compare">
             <span class="plt-compare-line" aria-hidden="true"></span>
             <div class="plt-compare-head"><span>구매 시 비교할 항목</span><b>일반적인 단독 제조기</b><strong>Cold Jet 생산 시스템</strong></div>
@@ -2442,13 +2457,72 @@ PELLETIZER_HUB_BODY = """
           <p class="plt-compare-note">※ ‘일반적인 단독 제조기’는 비교 이해를 돕기 위한 대표적 구성입니다. 최종 비교는 후보 장비의 실제 사양, LCO<sub>2</sub> 조건, 요구 생산량과 자동화 범위를 기준으로 진행해야 합니다.</p>
         </div>
       </div>
+
+  <!-- ============ GLOBAL TECHNOLOGY · LOCAL SUPPORT ============ -->
+  <section class="bls-sec bls-partner last-freeze" id="bls-partner" style="padding-bottom: clamp(200px, 26vh, 320px);">
+    <div class="wrap">
+      <div class="bls-head reveal">
+        <span class="cmp-eyebrow">GLOBAL TECHNOLOGY · LOCAL SUPPORT</span>
+        <h2 class="cmp-h2">장비만큼 중요한 것은,<br>한국에서의 기술 지원입니다.</h2>
+      </div>
+      <div class="bls-partner-grid">
+        <img class="bls-partner-logo reveal" src="../../assets/img/coldjet-logo.png" alt="Cold Jet" />
+        <img class="bls-partner-logo reveal" src="../../assets/img/vatek-logo-wordmark.png" alt="VATEK" />
+
+        <div class="bls-partner-name reveal">Cold Jet LLC<span class="bls-partner-tagline">드라이아이스 블라스팅 기술의 개척자이자 글로벌 리더</span></div>
+        <div class="bls-partner-name reveal">VATEK Corporation<span class="bls-partner-tagline">Cold Jet 대한민국 공식 총판</span></div>
+
+        <div class="bls-partner-media reveal"><img src="../../assets/img/coldjet-hq-photo-1.jpg" alt="Cold Jet 본사" loading="lazy" decoding="async" /></div>
+        <div class="bls-partner-media reveal"><img src="../../assets/img/vatek-building.jpg" alt="바테크 사옥" loading="lazy" decoding="async" /></div>
+
+        <div class="bls-partner-desc reveal"><p>Cold Jet은 현대식 드라이아이스 블라스팅 장비의 원천 특허를 보유한 기술 기업으로, 블라스터 · 드라이아이스 생산설비 · 노즐 · 자동화 솔루션을 개발하고 공급하고 있습니다.</p></div>
+        <div class="bls-partner-desc reveal">
+          <p>1988년 설립한 바테크는 Cold Jet의 대한민국 공식 총판으로, 제품 공급뿐 아니라 세척 테스트, 렌탈 · 데모, 장비 선정, 설치, 기술지원과 A/S까지 국내 고객의 도입과 운용을 지원합니다.</p>
+          <p>바테크는 Cold Jet의 교육, 세미나 및 글로벌 컨퍼런스에 지속적으로 참여해 최신 기술과 적용 사례를 국내 고객 지원에 반영하고 있습니다.</p>
+        </div>
+
+        <div class="bls-partner-photos reveal">
+          <img src="../../assets/img/coldjet-hq-building.jpg" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-2.jpg" alt="Cold Jet 생산 공장" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-3.jpg" alt="Cold Jet 라운지" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-4.jpg" alt="Cold Jet 사내 카페" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-5.jpg" alt="Cold Jet 컨퍼런스" loading="lazy" decoding="async" />
+        </div>
+        <div class="bls-partner-photos reveal">
+          <img src="../../assets/img/vatek-coldjet-photo-1.jpg" alt="Cold Jet 본사 방문" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-2.jpg" alt="Cold Jet Asia Dealer Conference" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-3.jpg" alt="Cold Jet 글로벌 딜러 컨퍼런스" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-4.jpg" alt="Cold Jet 세미나 참석" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-5.jpg" alt="Cold Jet R&D 신제품 개발" loading="lazy" decoding="async" />
+        </div>
+
+        <div class="bls-partner-divider"></div>
+        <div class="bls-partner-divider"></div>
+
+        <ul class="bls-facts">
+          <li><b>1986</b><small>현대식 드라이아이스 블라스팅 원천 특허</small></li>
+          <li><b>250+</b><small>글로벌 특허</small></li>
+          <li><b>3 · 3</b><small>R&amp;D 연구소 · 생산공장</small></li>
+          <li><b>14</b><small>기술센터</small></li>
+        </ul>
+        <ul class="bls-facts is-vatek">
+          <li><b>1988</b><small>설립 · 제조업 기반</small></li>
+          <li><b>2014</b><small>기업부설연구소 설립 (하남)</small></li>
+          <li><b>TEST</b><small>시편 · 내방 · 방문 테스트</small></li>
+          <li><b>A/S</b><small>설치 · 교육 · 기술지원</small></li>
+        </ul>
+      </div>
+      <p class="bls-quote reveal">“Cold Jet의 기술과<br>바테크의 국내 현장 경험을 함께 제공합니다.”</p>
+    </div>
+  </section>
 """
 
 
 def build_blaster(root, nav_html, footer_html, page_shell, asset):
     depth = 2
     html = page_shell(BLASTER_PAGE_TITLE, BLASTER_PAGE_DESC, depth, "products", BLASTER_HUB_BODY,
-                       extra_script=BLASTER_SCRIPT)
+                       extra_script=BLASTER_SCRIPT,
+                       footer_hero_p="설비 특성, 오염 상태와 작업 환경을 고려해 현장에 맞는 솔루션을 제안합니다.")
     group_dir = os.path.join(root, "products", "blaster")
     os.makedirs(group_dir, exist_ok=True)
     with open(os.path.join(group_dir, "index.html"), "w", encoding="utf-8") as f:
@@ -2475,6 +2549,20 @@ def build_pelletizer(root, nav_html, footer_html, page_shell, asset):
 
 
 RECOVERY_SCRIPT = """  <script>
+  /* 마지막 섹션(.last-freeze)이 뷰포트보다 높을 때 — top을 음수로 밀어 마지막 한 화면만 틀고정되게 한다. */
+  (function () {
+    var el = document.getElementById('bls-partner');
+    if (!el) return;
+    function sync() {
+      if (window.innerWidth <= 900) { el.style.top = ''; return; }
+      el.style.top = Math.min(0, window.innerHeight - el.offsetHeight) + 'px';
+    }
+    sync();
+    window.addEventListener('resize', sync);
+    if ('ResizeObserver' in window) { new ResizeObserver(sync).observe(el); }
+  })();
+  </script>
+  <script>
   (function () {
     var el = document.getElementById('recCompareHlTitle');
     if (!el) return;
@@ -3000,7 +3088,7 @@ RECOVERY_BODY = """    <section class="subhero-parallax rec-hero-stage">
     </div>
   </section>
 
-  <section class="bls-sec bls-final last-freeze" id="rec-final">
+  <section class="bls-sec bls-final" id="rec-final">
     <div class="wrap">
       <div class="bls-final-grid">
         <div>
@@ -3021,7 +3109,65 @@ RECOVERY_BODY = """    <section class="subhero-parallax rec-hero-stage">
       </div>
     </div>
   </section>
-"""
+
+
+  <!-- ============ GLOBAL TECHNOLOGY · LOCAL SUPPORT ============ -->
+  <section class="bls-sec bls-partner last-freeze" id="bls-partner" style="padding-bottom: clamp(200px, 26vh, 320px);">
+    <div class="wrap">
+      <div class="bls-head reveal">
+        <span class="cmp-eyebrow">GLOBAL TECHNOLOGY · LOCAL SUPPORT</span>
+        <h2 class="cmp-h2">장비만큼 중요한 것은,<br>한국에서의 기술 지원입니다.</h2>
+      </div>
+      <div class="bls-partner-grid">
+        <img class="bls-partner-logo reveal" src="../../assets/img/coldjet-logo.png" alt="Cold Jet" />
+        <img class="bls-partner-logo reveal" src="../../assets/img/vatek-logo-wordmark.png" alt="VATEK" />
+
+        <div class="bls-partner-name reveal">Cold Jet LLC<span class="bls-partner-tagline">드라이아이스 블라스팅 기술의 개척자이자 글로벌 리더</span></div>
+        <div class="bls-partner-name reveal">VATEK Corporation<span class="bls-partner-tagline">Cold Jet 대한민국 공식 총판</span></div>
+
+        <div class="bls-partner-media reveal"><img src="../../assets/img/coldjet-hq-photo-1.jpg" alt="Cold Jet 본사" loading="lazy" decoding="async" /></div>
+        <div class="bls-partner-media reveal"><img src="../../assets/img/vatek-building.jpg" alt="바테크 사옥" loading="lazy" decoding="async" /></div>
+
+        <div class="bls-partner-desc reveal"><p>Cold Jet은 현대식 드라이아이스 블라스팅 장비의 원천 특허를 보유한 기술 기업으로, 블라스터 · 드라이아이스 생산설비 · 노즐 · 자동화 솔루션을 개발하고 공급하고 있습니다.</p></div>
+        <div class="bls-partner-desc reveal">
+          <p>1988년 설립한 바테크는 Cold Jet의 대한민국 공식 총판으로, 제품 공급뿐 아니라 세척 테스트, 렌탈 · 데모, 장비 선정, 설치, 기술지원과 A/S까지 국내 고객의 도입과 운용을 지원합니다.</p>
+          <p>바테크는 Cold Jet의 교육, 세미나 및 글로벌 컨퍼런스에 지속적으로 참여해 최신 기술과 적용 사례를 국내 고객 지원에 반영하고 있습니다.</p>
+        </div>
+
+        <div class="bls-partner-photos reveal">
+          <img src="../../assets/img/coldjet-hq-building.jpg" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-2.jpg" alt="Cold Jet 생산 공장" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-3.jpg" alt="Cold Jet 라운지" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-4.jpg" alt="Cold Jet 사내 카페" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-5.jpg" alt="Cold Jet 컨퍼런스" loading="lazy" decoding="async" />
+        </div>
+        <div class="bls-partner-photos reveal">
+          <img src="../../assets/img/vatek-coldjet-photo-1.jpg" alt="Cold Jet 본사 방문" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-2.jpg" alt="Cold Jet Asia Dealer Conference" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-3.jpg" alt="Cold Jet 글로벌 딜러 컨퍼런스" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-4.jpg" alt="Cold Jet 세미나 참석" loading="lazy" decoding="async" />
+          <img src="../../assets/img/vatek-coldjet-photo-5.jpg" alt="Cold Jet R&D 신제품 개발" loading="lazy" decoding="async" />
+        </div>
+
+        <div class="bls-partner-divider"></div>
+        <div class="bls-partner-divider"></div>
+
+        <ul class="bls-facts">
+          <li><b>1986</b><small>현대식 드라이아이스 블라스팅 원천 특허</small></li>
+          <li><b>250+</b><small>글로벌 특허</small></li>
+          <li><b>3 · 3</b><small>R&amp;D 연구소 · 생산공장</small></li>
+          <li><b>14</b><small>기술센터</small></li>
+        </ul>
+        <ul class="bls-facts is-vatek">
+          <li><b>1988</b><small>설립 · 제조업 기반</small></li>
+          <li><b>2014</b><small>기업부설연구소 설립 (하남)</small></li>
+          <li><b>TEST</b><small>시편 · 내방 · 방문 테스트</small></li>
+          <li><b>A/S</b><small>설치 · 교육 · 기술지원</small></li>
+        </ul>
+      </div>
+      <p class="bls-quote reveal">“Cold Jet의 기술과<br>바테크의 국내 현장 경험을 함께 제공합니다.”</p>
+    </div>
+  </section>"""
 
 
 def build_recovery(root, nav_html, footer_html, page_shell, asset):

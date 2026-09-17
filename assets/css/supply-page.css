@@ -6,7 +6,8 @@
 
 /* ---- HERO (정지 이미지) ---- */
 .sup-hero-stage .subhero-parallax-img { object-position: 50% 62%; }
-.sup-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.74) 0%, rgba(15,22,23,.3) 26%, rgba(15,22,23,.08) 45%, rgba(15,22,23,.22) 100%); }
+.sup-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.78) 0%, rgba(15,22,23,.4) 26%, rgba(15,22,23,.18) 45%, rgba(15,22,23,.32) 100%); }
+.sup-hero-stage .hero-fit::before { content: ""; position: absolute; inset: 0; z-index: 2; backdrop-filter: blur(1.5px) saturate(1.05); -webkit-backdrop-filter: blur(1.5px) saturate(1.05); pointer-events: none; }
 .sup-hero-stage .subhero-breadcrumb { text-shadow: 0 1px 8px rgba(15,22,23,.7); }
 
 /* ---- 01 WHAT WE SUPPLY — 3 form cards ---- */
@@ -30,7 +31,7 @@
 .sup-spec dd { margin: 0; font-weight: 600; color: var(--navy); word-break: keep-all; }
 
 /* ---- 02 BLOCK DIMENSIONS — 치수 비례 박스 ---- */
-.sup-dims { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2vw, 28px); }
+.sup-dims { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 2vw, 28px); }
 .sup-dim { background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; }
 .sup-dim-stage { position: relative; height: 290px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 26px; margin: 0 0 22px; border-bottom: 1px solid var(--gray-line);
   background-image: linear-gradient(rgba(223,227,227,.55) 1px, transparent 1px), linear-gradient(90deg, rgba(223,227,227,.55) 1px, transparent 1px); background-size: 24px 24px; background-position: center bottom; }
@@ -49,6 +50,7 @@
 .sup-dim-meta span { padding: 6px 11px; border: 1px solid var(--gray-line); border-radius: 999px; font-size: 12.5px; font-weight: 700; color: var(--text-body); white-space: nowrap; }
 .sup-dim-meta span.is-w { border-color: var(--ice); background: var(--ice-pale); color: var(--ice-dark); }
 .sup-dim p { margin: 14px 0 0; font-size: 14.5px; line-height: 1.7; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.sup-dim-pack { margin: auto 0 0; padding-top: 12px; border-top: 1px solid var(--gray-line); font-size: 12.5px; font-weight: 700; line-height: 1.5; color: var(--text-muted); display: grid; gap: 4px; min-height: 42px; align-content: start; }
 .sup-dim-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 32px; align-items: center; margin-top: clamp(22px, 2.4vw, 32px); padding-top: 22px; border-top: 1px solid var(--gray-line); }
 .sup-dim-foot p { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--text-muted); word-break: keep-all; max-width: 760px; }
 
@@ -112,9 +114,19 @@
 .sup-sub-copy p { margin: 0; font-size: 15px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
 .sup-sub-copy .rec-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 22px; padding-top: 20px; }
 
-/* ---- responsive ---- */
+/* ---- 02b PELLET · NUGGET SIZE — 원형 비례 ---- */
+.sup-particles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sup-particle-stage { height: 210px; }
+.sup-cyl { --s3: 5; position: relative; width: calc(var(--d) * var(--s3) * 1px); height: calc(var(--l) * var(--s3) * 1px); min-width: 16px; }
+.sup-cyl .cyl-top { position: absolute; left: 0; top: 0; width: 100%; height: calc(var(--d) * var(--s3) * .5px); border-radius: 50%; box-sizing: border-box; border: 1.5px solid var(--ice); background: radial-gradient(ellipse at 32% 30%, #fff 0%, var(--ice-pale) 55%, #bcd8da 100%); z-index: 2; }
+.sup-cyl .cyl-body { position: absolute; left: 0; top: calc(var(--d) * var(--s3) * .25px); width: 100%; height: calc(100% - var(--d) * var(--s3) * .5px); box-sizing: border-box; border-left: 1.5px solid var(--ice); border-right: 1.5px solid var(--ice); background: linear-gradient(90deg, #a9cdd0, #eef8f9 30%, #fff 46%, #eef8f9 62%, #a9cdd0); z-index: 1; }
+.sup-cyl .cyl-bot { position: absolute; left: 0; bottom: 0; width: 100%; height: calc(var(--d) * var(--s3) * .5px); border-radius: 50%; box-sizing: border-box; border: 1.5px solid var(--ice); background: linear-gradient(180deg, #cfe6e8, #9fc6ca); z-index: 0; }
+
+.sup-group-label { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; letter-spacing: 2.2px; color: var(--ice-dark); text-transform: uppercase; margin: 0 0 18px; }
+.sup-group-label::before { content: ""; width: 20px; height: 2px; background: var(--ice); flex: none; }
+.sup-group-label:not(:first-child) { margin-top: clamp(36px, 3.6vw, 52px); }
 @media (max-width: 1100px) {
-  .sup-forms, .sup-dims, .sup-steps, .sup-uses { grid-template-columns: 1fr 1fr; }
+  .sup-forms, .sup-dims, .sup-particles, .sup-steps, .sup-uses { grid-template-columns: 1fr 1fr; }
   .sup-step + .sup-step::before { display: none; }
   .sup-plans { grid-template-columns: 1fr; }
   .sup-tips { grid-template-columns: 1fr 1fr; }
@@ -122,7 +134,7 @@
   .sup-sub-copy { padding: 24px; }
 }
 @media (max-width: 640px) {
-  .sup-forms, .sup-dims, .sup-steps, .sup-uses, .sup-tips { grid-template-columns: 1fr; }
+  .sup-forms, .sup-dims, .sup-particles, .sup-steps, .sup-uses, .sup-tips { grid-template-columns: 1fr; }
   .sup-plan { grid-template-columns: 1fr; }
   .sup-dim-foot { grid-template-columns: 1fr; }
   .sup-dim-stage { height: 250px; }

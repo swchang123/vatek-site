@@ -52,16 +52,19 @@
     if(c==='heavy') return {m:M.a80,alt:M.plt};
     return {m:M.plt,alt:M.a40};
   }
-  var ans={},hist=[],cur='goal';
+  var ans={},path=['goal'],cur='goal';
   var qs=root.querySelectorAll('.eqf-q'),res=document.getElementById('eqfResult'),prog=root.querySelectorAll('.eqf-progress span');
-  var back=document.getElementById('eqfBack'),reset=document.getElementById('eqfReset'),hint=document.getElementById('eqfHint');
+  var back=document.getElementById('eqfBack'),reset=document.getElementById('eqfReset'),hint=document.getElementById('eqfHint'),nextBtn=document.getElementById('eqfNext');
+  function computeNext(q){var f=flow[ans.goal]||[]; if(q==='goal') return f[0]||'result'; var i=f.indexOf(q); return f[i+1]||'result';}
   function show(id){
     cur=id; qs.forEach(function(q){q.classList.toggle('is-active',q.dataset.q===id);}); res.classList.toggle('is-active',id==='result');
     var step=id==='goal'?1:(id==='result'?4:(id.slice(-1)==='2'?2:3));
     prog.forEach(function(p,i){var n=i+1;p.classList.toggle('is-active',n===step);p.classList.toggle('is-done',n<step);
       var b=p.querySelector('b');var key=['goal',(ans.goal||'')+'2',(ans.goal||'')+'3'][i];
       b.textContent=(n<step&&ans[key]&&L[key])?L[key][ans[key]]:['하려는 일','대상 · 규모','현장 조건'][i];});
-    back.hidden=hist.length===0; reset.hidden=hist.length===0; hint.textContent=id==='result'?'결과는 출발점입니다. 테스트와 상담으로 사양을 확정합니다.':'선택하면 다음 질문으로 넘어갑니다.';
+    var idx=path.indexOf(id); back.disabled=idx<=0; reset.hidden=idx<=0;
+    if(id==='result'){ nextBtn.hidden=true; hint.textContent='결과는 출발점입니다. 테스트와 상담으로 사양을 확정합니다.'; }
+    else { nextBtn.hidden=false; nextBtn.disabled=!ans[id]; nextBtn.innerHTML=(ans[id]&&computeNext(id)==='result')?'추천 결과 보기 <i>→</i>':'다음 <i>→</i>'; hint.textContent='항목을 선택한 뒤 다음으로 진행하세요.'; }
   }
   function render(){
     var r=pick(ans),m=r.m; document.getElementById('eqfName').textContent=m.name; document.getElementById('eqfCat').textContent=m.cat; document.getElementById('eqfWhy').textContent=m.why;
@@ -71,15 +74,18 @@
     document.getElementById('eqfNext').textContent=NEXT[ans.goal];
     var sm=document.getElementById('eqfSummary'); sm.innerHTML=''; Object.keys(ans).forEach(function(k){if(L[k]&&L[k][ans[k]]){var s=document.createElement('span');s.textContent=L[k][ans[k]];sm.appendChild(s);}});
   }
-  root.addEventListener('click',function(e){
-    var o=e.target.closest('.eqf-opt'); if(!o) return; var q=o.closest('.eqf-q').dataset.q,v=o.dataset.v;
-    o.parentNode.querySelectorAll('.eqf-opt').forEach(function(x){x.classList.toggle('is-picked',x===o);});
-    ans[q]=v; if(q==='goal'){Object.keys(ans).forEach(function(k){if(k!=='goal')delete ans[k];});}
-    hist.push(q); var f=flow[ans.goal],i=f.indexOf(q),nx=q==='goal'?(f[0]||'result'):(f[i+1]||'result');
-    if(nx==='result') render(); setTimeout(function(){show(nx);},160);
+  root.addEventListener('change',function(e){
+    var inp=e.target; if(inp.type!=='radio') return; var wrap=inp.closest('.eqf-q'); if(!wrap) return; var q=wrap.dataset.q;
+    inp.closest('.eqf-opts').querySelectorAll('.eqf-opt').forEach(function(x){x.classList.toggle('is-picked',x.querySelector('input').checked);});
+    ans[q]=inp.value; if(q==='goal'){Object.keys(ans).forEach(function(k){if(k!=='goal')delete ans[k];});}
+    nextBtn.disabled=false; nextBtn.innerHTML=computeNext(q)==='result'?'추천 결과 보기 <i>→</i>':'다음 <i>→</i>';
   });
-  back.addEventListener('click',function(){var p=hist.pop(); if(!p) return; delete ans[p]; if(p==='goal'){ans={};} show(p);});
-  reset.addEventListener('click',function(){ans={};hist=[];root.querySelectorAll('.eqf-opt').forEach(function(x){x.classList.remove('is-picked');});show('goal');});
+  nextBtn.addEventListener('click',function(){
+    if(!ans[cur]) return; var nx=computeNext(cur); var idx=path.indexOf(cur); path=path.slice(0,idx+1); path.push(nx);
+    if(nx==='result') render(); show(nx);
+  });
+  back.addEventListener('click',function(){var idx=path.indexOf(cur); if(idx<=0) return; show(path[idx-1]);});
+  reset.addEventListener('click',function(){ans={};path=['goal'];root.querySelectorAll('input[type=radio]').forEach(function(r){r.checked=false;});root.querySelectorAll('.eqf-opt').forEach(function(x){x.classList.remove('is-picked');});show('goal');});
   var tabs=document.querySelectorAll('.eqf-tab'),tables=document.querySelectorAll('.eqf-table');
   tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.classList.toggle('is-active',x===t);});tables.forEach(function(x){x.classList.toggle('is-active',x.dataset.t===t.dataset.t);});});});
 })();
