@@ -21,12 +21,12 @@ GUIDE_BODY = """
   <h2 style="font-size: 45px; color: #000000; position: static; margin-bottom: 40px; margin-top: 0px; padding-top: 10px">드라이아이스란 무엇인가?</h2>
 
   <div>
-    <div>드라이아이스는 이산화탄소(CO₂)를 고체 상태로 만든 것입니다.<br>산업시설이나 바이오가스 시설 등에서 포집된 CO₂를 정제·액화한 뒤, 다시 고체로 전환하여 생산합니다.</div>
-    <div style="padding-top: 20px">이 과정은 탄소 포집 및 활용(CCU, Carbon Capture and Utilization)의 한 형태로, 포집된 CO₂를 그대로 배출하지 않고 다시 자원으로 활용함으로써, 냉각과 산업용 세정 등 다양한 용도로 사용할 수 있습니다.</div>
-    <div style="padding-top: 20px">포집된 CO₂는 정제와 압축 과정을 거쳐 액체 상태로 저장·운송되며, 이후 펠레타이저(Pelletizer)를 통해 드라이아이스로 생산됩니다. 이렇게 만들어진 드라이아이스는 산업 현장에서 냉각뿐 아니라 물이나 화학 세정제를 사용하지 않는 건식 세정 매체로도 활용됩니다.</div>
+    <div>드라이아이스는 정제·액화된 CO₂를 원료로 생산합니다.<br>사용되는 CO₂의 출처는 생산 및 공급망에 따라 다를 수 있으며, 산업 공정에서 발생한 CO₂를 회수·정제해 다시 사용하는 경우도 있습니다.</div>
+    <div style="padding-top: 20px">이처럼 산업 공정에서 발생한 CO₂를 회수해 생산하는 경우, 탄소 포집 및 활용(CCU, Carbon Capture and Utilization)의 한 형태로 볼 수 있습니다. 이렇게 확보한 CO₂는 냉각과 산업용 세정 등 다양한 용도로 사용할 수 있습니다.</div>
+    <div style="padding-top: 20px">이렇게 확보한 CO₂는 정제와 압축 과정을 거쳐 액체 상태로 저장·운송되며, 이후 펠렛타이저(Pelletizer)를 통해 드라이아이스로 생산됩니다. 이렇게 만들어진 드라이아이스는 산업 현장에서 냉각뿐 아니라 물이나 화학 세정제를 사용하지 않는 건식 세정 매체로도 활용됩니다.</div>
     <div><br></div>
   </div>
-  <div><b style="color: #000000">'포집된 CO₂를 다시 활용 가능한 자원으로 전환하는 것'</b>, 이것이 드라이아이스가 만들어지는 과정입니다.</div>
+  <div><b style="color: #000000">'CO₂를 정제·액화해 다시 활용 가능한 자원으로 전환하는 것'</b>, 이것이 드라이아이스가 만들어지는 과정입니다.</div>
 
   <div class="co2-second-life-card">
     <h3 class="co2-story-sub" style="font-size: 25px; margin-top: 0;">CO<sub>2</sub>에 두 번째 생명을</h3>
@@ -81,15 +81,15 @@ GUIDE_BODY = """
     </div>
     <b style="display: block; font-size: 26px; margin-top: 40px">드라이아이스 세척이 다른 이유</b>
     <div style="padding-top: 20px; padding-bottom: 20px; line-height: 2; color: #46595B">
-      <div>드라이아이스는 비마모성 세정 매체로, 세척 대상의 표면이나 장비를 손상시키지 않습니다.또한 표면에 충돌하는 순간 기체로 승화하기 때문에 2차 폐기물이 남지 않습니다. 비독성이며 화학 세정제 사용을 줄일 수 있어 작업자 안전과 환경 측면에서도 유리합니다. 물을 사용하지 않는 건식 세정 방식이므로, 세척 후 별도의 건조 공정이 필요하지 않는 것도 큰 장점입니다.</div>
+      <div>드라이아이스는 비마모성 세정 매체이며, 적절한 분사 조건에서는 모재에 미치는 영향을 줄이면서 오염물을 제거할 수 있습니다. 분사된 드라이아이스 자체는 충돌 후 승화하므로 세정 매체가 표면에 남지 않습니다. 다만 제거된 오염물은 현장에 남을 수 있어 필요에 따라 집진·회수·처리가 필요합니다. 물을 사용하지 않는 건식 공정이므로 세척수와 건조 공정의 부담을 줄일 수 있습니다.</div>
     </div>
     <div class="eco-icons">
       <div class="eco-icon"><img src="../assets/img/eco-reduce-emissions.png" alt="배출 저감" loading="lazy" /><span>배출 저감</span></div>
       <div class="eco-icon"><img src="../assets/img/eco-water-free.png" alt="물 사용 없음" loading="lazy" /><span>물 사용 없음</span></div>
       <div class="eco-icon"><img src="../assets/img/eco-recycled.png" alt="재활용 자원" loading="lazy" /><span>재활용 자원</span></div>
       <div class="eco-icon"><img src="../assets/img/eco-chemical-free.png" alt="화학약품 없음" loading="lazy" /><span>화학약품 없음</span></div>
-      <div class="eco-icon"><img src="../assets/img/eco-waste-free.png" alt="폐기물 없음" loading="lazy" /><span>폐기물 없음</span></div>
-      <div class="eco-icon"><img src="../assets/img/eco-non-abrasive.png" alt="비마모성·비손상" loading="lazy" /><span>비마모성·비손상</span></div>
+      <div class="eco-icon"><img src="../assets/img/eco-waste-free.png" alt="세정 매체 잔류 없음" loading="lazy" /><span>세정 매체 잔류 없음</span></div>
+      <div class="eco-icon"><img src="../assets/img/eco-non-abrasive.png" alt="비마모성" loading="lazy" /><span>비마모성</span></div>
       <div class="eco-icon"><img src="../assets/img/eco-non-toxic.png" alt="무독성" loading="lazy" /><span>무독성</span></div>
       <div class="eco-icon"><img src="../assets/img/eco-non-flammable.png" alt="비전도성·비인화성" loading="lazy" /><span>비전도성·비인화성</span></div>
     </div>
@@ -112,9 +112,9 @@ GUIDE_BODY = """
           <ul class="clean-compare-legend">
             <li class="lg-dirt" style="font-style: normal">오염물</li>
           </ul>
-          <img src="../assets/img/compare-dryice.png" alt="드라이아이스 세척 — 오염물만 제거, 생산 중 온라인 세척" loading="lazy" />
+          <img src="../assets/img/compare-dryice.png" alt="드라이아이스 세척 — 오염물만 제거, 조건에 따라 인플레이스 세척 가능" loading="lazy" />
         </div>
-        <p class="clean-compare-note" style="font-style: normal">생산 중 온라인 세척</p>
+        <p class="clean-compare-note" style="font-style: normal">조건에 따라 인플레이스 세척 가능</p>
       </div>
     </div>
   </div>
@@ -161,7 +161,7 @@ GUIDE_BODY = """
         <h5>승화</h5>
         <img class="principle-img" src="../assets/img/principle-sublimation-t.png" alt="승화 — 잔류물 없는 깨끗한 표면" loading="lazy" />
         <span class="principle-letter">&nbsp;</span>
-        <p>드라이아이스는 비마모성이며 기체로 변해 사라지기 때문에, 깨끗한 표면만 남아 금형의 수명을 연장시킵니다.</p>
+        <p>드라이아이스 자체는 분사 후 승화하므로 세정 매체가 표면에 남지 않습니다. 이를 통해 세척 후 매체 제거와 건조 등 후처리 부담을 줄일 수 있습니다.</p>
       </div>
     </div>
   </div>
@@ -189,13 +189,13 @@ GUIDE_BODY = """
   <img src="../assets/img/coldjet-history-collage-teal.png" alt="1986년 미국 특허 도면, 초기 항공기 세척 작업 사진, 초기 Cold Jet 장비 라인업" loading="lazy" />
   <figcaption>1986년 미국 특허(No. 4,617,064) 도면 · 초기 항공기 세척 작업 · 초기 장비 라인업</figcaption>
 </figure>
-<p style="line-height: 2">콜드젯(Cold Jet)은, 1986년 최초의 드라이아이스 블라스터를 개발했으며, 1989년에는 산업용 드라이아이스 블라스터 관련 최초 특허를 확보하며 본격적인 기술 상용화의 기반을 마련했습니다.<br>이후 Cold Jet는 단순한 분사 장비를 넘어 드라이아이스 입자 제어, 노즐 설계, 정밀 세정, 자동화 및 공정 통합 기술을 지속적으로 개발하며 드라이아이스 블라스팅의 적용 범위를 확대해 왔습니다.</p>
+<p style="line-height: 2">Cold Jet의 현대식 드라이아이스 블라스팅 기술은 1986년 미국 특허 US 4,617,064로 이어졌습니다.<br>1988년에는 특허 기술을 적용한 상용 드라이아이스 블라스팅 장비를 선보였으며, 이후 입자 제어, 노즐, 자동화와 공정 통합 등 산업용 드라이아이스 기술을 지속적으로 발전시켜 왔습니다.</p>
 
 <h2 style="font-size: 26px; margin-top: 36px; padding-top: 40px; color: #000000">산업 현장에서 검증된 드라이아이스 블라스터</h2>
 <div class="proven-block">
   <div class="proven-text" style="line-height: 2">
     <p>드라이아이스 블라스터는 금형, 생산설비, 주조·자동차·전자·반도체 등 다양한 산업 현장에서 사용되며, 먼지와 오염, 장시간 운전 등 비교적 가혹한 조건에 노출되는 경우가 많습니다. 따라서 단순한 세정력뿐 아니라 장비의 내구성, 장시간 운전 시 성능 안정성, 유지보수성과 부품 공급 체계까지 중요한 선택 기준이 됩니다.</p>
-    <p>Cold Jet는 이러한 산업 환경을 고려해 견고한 프레임 구조, 고품질 스테인리스 부품, 정밀하게 설계된 공압 시스템을 적용하고 있으며, 장시간 연속 운전에서도 안정적인 세정 성능을 유지하도록 설계되어 있습니다. 이러한 성능과 내구성은 전 세계 다양한 산업 현장에서 축적된 적용 경험을 통해 검증되어 왔습니다.</p>
+    <p>Cold Jet은 산업 환경에서의 사용을 고려해 장비 구조와 공압 시스템, 피더와 주요 부품을 설계하고 있습니다. 장비를 선택할 때는 세정 성능뿐 아니라 내구성, 유지보수성, 부품 공급과 기술 지원도 함께 검토하는 것이 중요합니다.</p>
   </div>
   <figure class="proven-lineup">
     <img src="../assets/img/lineup-trimmed-t.png" alt="Cold Jet 드라이아이스 블라스터 전 제품 라인업" loading="lazy" style="padding-top: 15px" />
@@ -210,15 +210,15 @@ GUIDE_BODY = """
   <div class="faq-list">
     <details class="faq-item">
       <summary><span class="faq-q" style="font-size: 25px">드라이아이스를 보관해 두고 사용할 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-      <div class="faq-a"><p>보관은 가능하지만, 드라이아이스는 시간이 지나면서 고체에서 기체로 승화하여 양이 줄어들고 품질도 떨어집니다. 따라서 장기간 보관하기보다는 필요한 시점에 공급받아 가급적 빠르게 사용하는 것이 좋습니다.</p><p>바테크에서는 드라이아이스 보관을 위한 스티로폼 박스와 드라이아이스 전용 보냉용기도 판매하고 있습니다. 일반적으로 스티로폼 박스에 보관할 경우 하루 약 5~10%, 단열 성능이 높은 드라이아이스 전용 보냉용기의 경우 약 2~5% 정도의 승화 손실이 발생할 수 있습니다. 다만 실제 손실률은 외부 온도, 드라이아이스의 양과 크기, 용기의 단열 성능, 개폐 횟수 등에 따라 달라집니다.</p><p>드라이아이스는 승화하면서 CO₂ 가스가 발생하므로 완전히 밀폐된 용기에 보관해서는 안 됩니다.</p></div>
+      <div class="faq-a"><p>드라이아이스는 보관 중에도 계속 승화합니다. 실제 승화량은 드라이아이스의 형태와 수량, 외기 온도, 용기의 단열 성능과 개폐 횟수에 따라 달라집니다.</p><p>장기간 보관하기보다는 사용 일정에 맞춰 공급받고 가능한 한 빠르게 사용하는 것이 좋습니다. 바테크에서는 드라이아이스 보관을 위한 스티로폼 박스와 드라이아이스 전용 보냉용기도 판매하고 있습니다.</p><p>드라이아이스는 승화하면서 CO₂ 가스가 발생하므로 완전히 밀폐된 용기에 보관해서는 안 됩니다.</p></div>
     </details>
     <details class="faq-item">
       <summary><span class="faq-q" style="font-size: 25px">드라이아이스는 어떤 크기를 사용하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-      <div class="faq-a"><p>드라이아이스 세척에는 일반적으로 직경 3mm의 드라이아이스 펠렛을 사용합니다.</p><p>Cold Jet의 마이크로파티클(MicroParticle) 시스템은 3mm 펠렛을 미세하게 절단하여 0.3mm부터 3.0mm까지 0.1mm 간격으로 입자 크기를 조절할 수 있습니다. 세척 대상의 재질과 오염 정도에 따라 입자 크기를 세밀하게 설정할 수 있어 정밀 부품부터 강한 세척력이 필요한 산업용 설비까지 폭넓게 적용할 수 있습니다.</p></div>
+      <div class="faq-a"><p>산업용 드라이아이스 블라스팅에는 3 mm 펠렛이 널리 사용됩니다.</p><p>Cold Jet PCS® 시스템은 3 mm 펠렛을 투입해 0.3~3.0 mm 범위에서 0.1 mm 단위, 총 28개의 입자 크기를 선택할 수 있습니다. 한편 MicroParticle 계열 등 일부 장비는 서로 다른 형태의 드라이아이스를 사용하므로 사용 가능한 매체는 모델별 사양을 확인해야 합니다.</p></div>
     </details>
     <details class="faq-item">
       <summary><span class="faq-q" style="font-size: 25px">세척기를 사용하려면 무엇이 필요한가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-      <div class="faq-a"><p>기본적으로 드라이아이스 세척기, 드라이아이스, 압축공기, 전원이 필요합니다.</p><p>필요한 압력과 공기량은 사용하는 장비와 노즐, 세척 대상에 따라 달라집니다. 또한 작업 중 드라이아이스가 CO₂ 가스로 승화하므로 충분한 환기가 필요하며, 작업 환경에 맞는 보호장비와 안전수칙을 준수해야 합니다.</p></div>
+      <div class="faq-a"><p>기본적으로 블라스터, 적합한 드라이아이스와 압축공기 공급이 필요합니다. 대부분의 전기식 모델에는 전원이 필요하지만, Aero C100처럼 압축공기만으로 운전하는 완전 공압식 모델도 있습니다.</p><p>필요한 압력과 공기량은 사용하는 장비와 노즐, 세척 대상에 따라 달라집니다. 또한 작업 중 드라이아이스가 CO₂ 가스로 승화하므로 충분한 환기가 필요하며, 작업 환경에 맞는 보호장비와 안전수칙을 준수해야 합니다.</p></div>
     </details>
     <details class="faq-item">
       <summary><span class="faq-q" style="font-size: 25px">드라이아이스 세척으로 모든 오염물을 제거할 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
@@ -231,10 +231,10 @@ GUIDE_BODY = """
 COMPARE_BODY = """
   <section class="subhero-parallax">
     <img class="subhero-parallax-img" src="../assets/img/compare-hero.jpg" alt="산업 현장 드라이아이스 세척 작업" />
-    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">드라이아이스 세척가이드</a> &gt; 타 세척방식과의 비교</div>
+    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">드라이아이스 세척가이드</a> &gt; 타 세척 방식과 비교</div>
     <div class="subhero-textbox">
-      <h1>타 세척방식과의 비교</h1>
-      <p class="cmp-hero-p">세척 성능만으로 적합한 세척 방식을 판단할 수는 없습니다.<br>표면 영향, 2차 폐기물, 수분, 작업시간과 설비 정지 등<br>산업현장에서 함께 고려해야 할 요소를 기준으로 주요 세척 방식을 비교해보세요.</p>
+      <h1>타 세척 방식과 비교</h1>
+      <p class="cmp-hero-p">세척 성능만으로 적합한 세척 방식을 판단할 수는 없습니다.<br>표면 영향, 2차 폐기물, 수분, 작업 시간과 설비 정지 등<br>산업 현장에서 함께 고려해야 할 요소를 기준으로 주요 세척 방식을 비교해보세요.</p>
     </div>
   </section>
   <section class="subhero-cover cmp-page">
@@ -246,9 +246,9 @@ COMPARE_BODY = """
   <span class="cmp-eyebrow">CHOOSING A CLEANING METHOD</span>
   <h2 class="cmp-h2">좋은 세척 방식은<br>‘잘 닦이는가’만으로 결정되지 않습니다.</h2>
   <div class="cmp-lead">
-    <p>산업현장에서 세척은 단순히 오염물을 제거하는 작업으로 끝나지 않습니다.</p>
+    <p>산업 현장에서 세척은 단순히 오염물을 제거하는 작업으로 끝나지 않습니다.</p>
     <p>목표한 청정도를 확보하는 것은 기본이고, 그 과정에서 금형·생산설비·부품 및 제품 표면에 영향을 주지 않는지, 새로운 폐기물이나 폐수가 발생하는지, 세척을 위해 어느 정도의 생산 중단이 필요한지, 그리고 작업자의 안전과 주변 공정에 어떤 영향을 미치는지까지 함께 검토해야 합니다.</p>
-    <p>예를 들어 연마재를 사용하는 세척은 강한 제거력이 필요한 작업에 효과적이지만 사용한 매체의 회수와 처리가 필요할 수 있고, 물을 사용하는 세척은 폐수와 건조 공정까지 고려해야 합니다. 수작업이나 화학세척 역시 적용이 간편한 반면 작업시간과 인력, 설비 분해·재조립이 전체 유지보수 시간에 영향을 줄 수 있습니다.</p>
+    <p>예를 들어 연마재를 사용하는 세척은 강한 제거력이 필요한 작업에 효과적이지만 사용한 매체의 회수와 처리가 필요할 수 있고, 물을 사용하는 세척은 폐수와 건조 공정까지 고려해야 합니다. 수작업이나 화학세척 역시 적용이 간편한 반면 작업 시간과 인력, 설비 분해·재조립이 전체 유지보수 시간에 영향을 줄 수 있습니다.</p>
     <p>드라이아이스 세척의 가장 큰 차이는 고체 CO₂를 세정 매체로 사용하고, 분사된 드라이아이스가 표면 충돌 후 기체로 승화한다는 점입니다. 따라서 물이나 연마재와 같은 세정 매체가 작업 후 표면에 남지 않는 건식 세척이 가능합니다.</p>
   </div>
   <ul class="cmp-criteria reveal" aria-label="세척 방식 검토 기준">
@@ -257,7 +257,7 @@ COMPARE_BODY = """
     <li><span>03</span><b>2차 폐기물</b></li>
     <li><span>04</span><b>수분 및 건조</b></li>
     <li><span>05</span><b>설비 정지시간</b></li>
-    <li><span>06</span><b>작업환경</b></li>
+    <li><span>06</span><b>작업 환경</b></li>
   </ul>
   <p class="cmp-pull reveal">세척 대상은 오염물이지만,<br>보호해야 할 대상은 설비와 제품입니다.</p>
 </div>
@@ -275,7 +275,7 @@ COMPARE_BODY = """
       <tbody>
         <tr class="is-dryice"><td>드라이아이스 세척<small>DRY ICE</small></td><td>고체 CO₂ 입자의 충격·냉각·승화</td><td>비마모성 / 세척 조건 조정 가능</td><td>없음</td><td>제거된 오염물 처리</td><td>없음</td><td>건식 / 비마모 / 세정 매체 잔류 없음</td></tr>
         <tr><td>연마·샌드 블라스팅<small>ABRASIVE</small></td><td>연마 입자의 물리적 충격</td><td>표면 프로파일 또는 표면 변화 가능</td><td>있음</td><td>오염물과 사용 연마재 처리</td><td>없음</td><td>높은 제거력 / 표면처리 가능</td></tr>
-        <tr><td>레이저 세정<small>LASER</small></td><td>레이저 에너지</td><td>재질과 공정조건에 따라 달라짐</td><td>없음</td><td>제거물 및 발생 흄 관리</td><td>없음</td><td>정밀한 비접촉 세정</td></tr>
+        <tr><td>레이저 세정<small>LASER</small></td><td>레이저 에너지</td><td>재질과 공정 조건에 따라 달라짐</td><td>없음</td><td>제거물 및 발생 흄 관리</td><td>없음</td><td>정밀한 비접촉 세정</td></tr>
         <tr><td>수작업·화학세척<small>MANUAL / CHEMICAL</small></td><td>물리적 제거 또는 화학적 용해</td><td>도구와 약품에 따라 달라짐</td><td>약품·와이퍼 등 발생 가능</td><td>폐용제 및 소모품 처리</td><td>방식에 따라 다름</td><td>간편하고 범용적 / 인력 의존</td></tr>
         <tr><td>고압수 세척<small>PRESSURE WASHING</small></td><td>고압수의 충격</td><td>압력과 재질에 따라 달라짐</td><td>물이 남음</td><td>폐수 처리</td><td>있음</td><td>넓은 면적의 일반 세척에 효과적</td></tr>
         <tr><td>소다 블라스팅<small>SODA</small></td><td>압축공기로 고형 세정 매체 분사</td><td>–</td><td>작업 후 남음</td><td>소다와 제거 오염물 회수 및 처리</td><td>–</td><td>드라이아이스는 분사 후 승화하지만, 소다는 고형 매체가 작업 후 남음</td></tr>
@@ -298,7 +298,7 @@ COMPARE_BODY = """
         <p>코팅 프라이팬을 깨끗하게 닦겠다고 철수세미를 사용하지는 않습니다.</p>
         <p>오염은 쉽게 제거될 수 있지만, 반복적인 마찰은 표면과 코팅을 손상시키고 결국 제품의 수명을 단축시킬 수 있기 때문입니다.</p>
         <p>우리는 일상에서도 이미 알고 있습니다. 세척은 단순히 ‘얼마나 잘 닦이는가’만의 문제가 아니라는 것을.</p>
-        <p class="cmp-rule-bridge">산업현장도 다르지 않습니다.</p>
+        <p class="cmp-rule-bridge">산업 현장도 다르지 않습니다.</p>
         <p>생산설비와 금형은 반복적으로 세척되고, 부품과 제품의 표면 역시 세척 과정에서 본래의 상태를 유지해야 합니다.</p>
         <p>따라서 한 번의 세척 성능뿐 아니라, 세척 과정에서 표면 상태와 치수, 기능과 외관 품질이 얼마나 유지되는지, 그리고 반복적인 세척이 장기적으로 설비와 생산품에 어떤 영향을 주는지까지 함께 고려해야 합니다.</p>
         <p>연마재를 사용하는 세척 방식은 강한 제거력과 표면처리가 필요한 작업에 적합할 수 있습니다. 반면 금형, 설비, 정밀 부품과 제품 표면처럼 원래 상태를 유지하면서 오염물만 제거해야 하는 경우에는 다른 접근이 필요합니다.</p>
@@ -367,7 +367,7 @@ COMPARE_BODY = """
       <p>반면 정밀 금형이나 치수 변화에 민감한 부품에서는 강한 연마 작용으로 인해 표면 패임이나 치수 변화, 표면 거칠기 변화가 발생할 가능성을 고려해야 합니다.</p>
     </div>
     <div class="cmp-text">
-      <p>또한 작업 중에는 분진과 사용된 연마재가 발생하므로 작업장 격리, 집진, 개인보호구 및 작업 후 폐사 회수와 처리 등이 필요할 수 있습니다.</p>
+      <p>또한 작업 중에는 분진과 사용된 연마재가 발생하므로 작업장 격리, 집진, 개인보호구 및 사용한 연마재의 회수와 처리 등이 필요할 수 있습니다.</p>
       <p>드라이아이스 세척은 표면 자체를 연마하는 방식이 아닙니다. 오염물에 운동에너지와 급격한 온도 변화가 작용하고, 입자가 승화하면서 오염물의 박리를 돕습니다. 가공면, 설비 표면, 치수 관리가 필요한 부품에서도 같은 원리로 적용됩니다.</p>
     </div>
   </div>
@@ -385,7 +385,7 @@ COMPARE_BODY = """
   <div class="cmp-cols">
     <div class="cmp-text">
       <p>레이저 세정은 레이저 에너지를 이용해 표면의 오염층이나 코팅층을 제거하는 비접촉식 건식 세정 기술입니다.</p>
-      <p>세정 매체나 물을 사용하지 않고 특정 영역을 정밀하게 제어할 수 있다는 장점이 있지만, 적용 대상의 재질과 표면 상태, 반사율, 오염물 특성에 따라 레이저 출력·파장·펄스 등 적절한 공정조건을 설정해야 합니다.</p>
+      <p>세정 매체나 물을 사용하지 않고 특정 영역을 정밀하게 제어할 수 있다는 장점이 있지만, 적용 대상의 재질과 표면 상태, 반사율, 오염물 특성에 따라 레이저 출력·파장·펄스 등 적절한 공정 조건을 설정해야 합니다.</p>
       <p>작업 영역과 필요한 처리속도에 따라 장비 투자비와 생산성도 함께 검토할 필요가 있습니다.</p>
     </div>
     <div class="cmp-text">
@@ -399,7 +399,7 @@ COMPARE_BODY = """
       <div class="cmp-duo-text">
         <span>LASER CLEANING</span>
         <h4>정밀한 비접촉 세정</h4>
-        <p>재질과 공정조건에 맞는 정밀 설정</p>
+        <p>재질과 공정 조건에 맞는 정밀 설정</p>
       </div>
     </div>
     <div class="cmp-duo-col">
@@ -418,12 +418,12 @@ COMPARE_BODY = """
     <span class="cmp-num">04<span class="cmp-num-of">/ 06</span></span>
     <div>
       <span class="cmp-vs-title">드라이아이스 세척 vs 수작업·화학세척</span>
-      <h2 class="cmp-vs-sub">실제 세척시간보다 더 긴 것은<br>‘세척을 위한 준비시간’일 수 있습니다.</h2>
+      <h2 class="cmp-vs-sub">실제 세척 시간보다 더 긴 것은<br>‘세척을 위한 준비시간’일 수 있습니다.</h2>
     </div>
   </div>
   <div class="cmp-vs-body">
     <div class="cmp-text">
-      <p>브러시, 스크레이퍼, 천과 화학용제를 이용한 수작업은 산업현장에서 가장 익숙하고 접근하기 쉬운 세척 방식입니다.</p>
+      <p>브러시, 스크레이퍼, 천과 화학용제를 이용한 수작업은 산업 현장에서 가장 익숙하고 접근하기 쉬운 세척 방식입니다.</p>
       <p>작은 부품이나 국부 오염에는 효율적일 수 있지만, 생산설비나 복잡한 기계 구조에서는 접근하기 어려운 부분을 위해 설비를 분해하고, 반복적으로 긁고 닦은 뒤 다시 조립해야 하는 시간까지 전체 유지보수 시간에 포함됩니다. 작업자의 숙련도에 따라 결과 편차도 발생할 수 있습니다.</p>
       <p>화학용제를 사용할 경우에는 작업자 노출, 환기, 보관 및 폐용제 처리도 함께 고려해야 합니다.</p>
       <p>특히 일부 설비에서는 세척을 위해 다음과 같은 과정이 필요합니다.</p>
@@ -464,7 +464,7 @@ COMPARE_BODY = """
       <figcaption>제어반·단자대·센서·모터 등 설비 내부의 전기·전자 부품 — 물을 쓰는 세척에서는 수분 유입 보호가 먼저 필요하다</figcaption>
     </figure>
     <div class="cmp-text">
-      <p>고압수 세척은 넓은 면적의 오염물을 빠르게 제거할 수 있어 산업현장에서 널리 사용되는 방법입니다.</p>
+      <p>고압수 세척은 넓은 면적의 오염물을 빠르게 제거할 수 있어 산업 현장에서 널리 사용되는 방법입니다.</p>
       <p>그러나 물을 사용하는 특성상 전기·전자 장치나 정밀기계에서는 수분 유입을 방지하기 위한 별도의 보호가 필요할 수 있으며, 작업 후에는 폐수 회수와 처리, 건조, 부식 가능성 등을 고려해야 합니다.</p>
       <p>드라이아이스 세척은 물을 사용하지 않는 건식 공정입니다.</p>
       <p>분사된 드라이아이스는 표면에 충돌한 후 기체로 승화하기 때문에 세척수가 남지 않으며 일반적으로 별도의 건조공정이 필요하지 않습니다.</p>
@@ -527,7 +527,7 @@ COMPARE_BODY = """
   <h2 class="cmp-h2">세척 비용은<br>장비 가격만으로 결정되지 않습니다.</h2>
   <p class="cmp-sub">세척 공정 전체의 비용을 함께 보세요.</p>
   <div class="cmp-lead">
-    <p>장비 가격과 소모품 비용은 세척 방식 선택의 중요한 요소입니다. 하지만 산업현장에서는 그것만으로 실제 세척비용을 판단하기 어렵습니다.</p>
+    <p>장비 가격과 소모품 비용은 세척 방식 선택의 중요한 요소입니다. 하지만 산업 현장에서는 그것만으로 실제 세척비용을 판단하기 어렵습니다.</p>
     <p>세척을 위해 설비가 멈추는 시간, 투입되는 작업자 수, 설비의 분해와 재조립, 세척 후 건조, 사용한 매체와 폐수의 처리, 그리고 반복적인 세척이 표면과 설비 수명, 생산품 품질에 미치는 영향까지 포함해야 실제 비용에 가까워집니다.</p>
   </div>
   <div class="cmp-cost-panel">
@@ -535,15 +535,15 @@ COMPARE_BODY = """
   <div class="cmp-cost reveal">
     <span class="cmp-cost-total">TOTAL CLEANING COST</span>
     <span class="cmp-cost-eq">=</span>
-    <span class="cmp-cost-item">Cleaning Time</span><span class="cmp-cost-plus">+</span>
-    <span class="cmp-cost-item">Labor</span><span class="cmp-cost-plus">+</span>
-    <span class="cmp-cost-item">Downtime</span><span class="cmp-cost-plus">+</span>
-    <span class="cmp-cost-item">Disassembly</span><span class="cmp-cost-plus">+</span>
-    <span class="cmp-cost-item">Drying</span><span class="cmp-cost-plus">+</span>
-    <span class="cmp-cost-item">Waste Treatment</span><span class="cmp-cost-plus">+</span>
-    <span class="cmp-cost-item">Surface Damage</span><span class="cmp-cost-plus">+</span>
-    <span class="cmp-cost-item">Equipment Life</span><span class="cmp-cost-plus">+</span>
-    <span class="cmp-cost-item">Product Quality</span>
+    <span class="cmp-cost-item">세척 시간</span><span class="cmp-cost-plus">+</span>
+    <span class="cmp-cost-item">인력</span><span class="cmp-cost-plus">+</span>
+    <span class="cmp-cost-item">다운타임</span><span class="cmp-cost-plus">+</span>
+    <span class="cmp-cost-item">분해·재조립</span><span class="cmp-cost-plus">+</span>
+    <span class="cmp-cost-item">건조</span><span class="cmp-cost-plus">+</span>
+    <span class="cmp-cost-item">폐기물 처리</span><span class="cmp-cost-plus">+</span>
+    <span class="cmp-cost-item">표면 영향</span><span class="cmp-cost-plus">+</span>
+    <span class="cmp-cost-item">설비 수명</span><span class="cmp-cost-plus">+</span>
+    <span class="cmp-cost-item">제품 품질</span>
   </div>
   </div>
   <p class="cmp-pull reveal">세척하는 시간뿐 아니라,<br>세척이 설비와 제품에 남기는 영향까지 비교해보세요.</p>
@@ -858,7 +858,7 @@ AUTOMOTIVE_BODY = """
 <div class="wrap">
 <div class="cmp-section is-first">
   <span class="cmp-eyebrow">COMMON CONTAMINANTS</span>
-  <h2 class="cmp-h2 reveal">자동차 생산공정에서<br>반복적으로 발생하는 주요 오염물</h2>
+  <h2 class="cmp-h2 reveal">자동차 생산 공정에서<br>반복적으로 발생하는 주요 오염물</h2>
   <ul class="auto-cont" aria-label="주요 오염물">
     <li class="reveal-scale" style="--reveal-delay:0.00s"><img src="../assets/img/task-mold-tool-cleaning.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>이형제</b><small>RELEASE AGENT</small></span></li>
     <li class="reveal-scale" style="--reveal-delay:0.06s"><img src="../assets/img/auto-rubber-mold.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>수지 · 성형 잔류물</b><small>RESIN & PROCESS RESIDUE</small></span></li>
@@ -954,7 +954,7 @@ AUTOMOTIVE_BODY = """
       <span class="cmp-eyebrow">PROVEN IN AUTOMOTIVE PLANTS</span>
       <h2 class="cmp-h2">글로벌 자동차 제조 현장에서<br>검증된 기술</h2>
     </div>
-    <p class="cmp-lead-p">세계 주요 자동차 제조사와 부품업체가 다양한 생산공정에서 Cold Jet 드라이아이스 세척 기술을 활용하고 있습니다.</p>
+    <p class="cmp-lead-p">세계 주요 자동차 제조사와 부품업체가 다양한 생산 공정에서 Cold Jet 드라이아이스 세척 기술을 활용하고 있습니다.</p>
   </div>
   <ul class="auto-logos" aria-label="Cold Jet 드라이아이스 세척을 사용하는 자동차 제조사">
     <li class="reveal-pop" style="--reveal-delay:0.00s; --w:60%"><img src="../assets/img/logo-hyundai.webp" alt="Hyundai" loading="lazy" /></li>
@@ -1010,7 +1010,7 @@ AUTOMOTIVE_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -1275,7 +1275,7 @@ PLASTICS_BODY = """
       <span class="cmp-eyebrow">RELATED INDUSTRIES</span>
       <h2 class="cmp-h2">플라스틱 · 복합소재과 연결되는<br>관련 산업</h2>
     </div>
-    <p class="cmp-lead-p">플라스틱 성형은 자동차, 포장, 의료기기 등 여러 산업의 부품 생산공정으로 이어지고, 고무 성형과는 금형 관리의 과제를 공유합니다.</p>
+    <p class="cmp-lead-p">플라스틱 성형은 자동차, 포장, 의료기기 등 여러 산업의 부품 생산 공정으로 이어지고, 고무 성형과는 금형 관리의 과제를 공유합니다.</p>
   </div>
   <ul class="auto-relind is-4">
     <li class="reveal" style="--reveal-delay:0.00s"><a href="../industries/automotive.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-automotive.png" alt="" loading="lazy" /></span><small>AUTOMOTIVE MANUFACTURING</small><b>자동차 제조</b><span>산업 페이지 보기 →</span></a></li>
@@ -1343,7 +1343,7 @@ PLASTICS_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -1624,7 +1624,7 @@ RUBBER_TIRES_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -1910,7 +1910,7 @@ FOUNDRY_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -2090,7 +2090,7 @@ SEMICONDUCTOR_BODY = """
     <li class="reveal" style="--reveal-delay:0.09s"><b>비전도성 · 수분 없는 건식 세척</b><p>PCB, 하네스, 커넥터, 검사 지그 등 전기부품을 단락이나 수분 손상 위험 없이 세척할 수 있습니다. 실제 적용은 전원 상태와 안전조건을 함께 검토해야 합니다.</p></li>
     <li class="reveal" style="--reveal-delay:0.18s"><b>세정 매체 잔류 없음</b><p>드라이아이스가 승화하므로 화학 잔류물이나 수분, 연마재가 남지 않아 교차오염과 후속 공정 결함을 줄이는 데 도움이 됩니다.</p></li>
     <li class="reveal" style="--reveal-delay:0.27s"><b>분해하지 않고 현장에서 세척</b><p>진공펌프, 반응기, 몰드처럼 분해에 시간이 드는 설비를 장착 상태에서 세척할 수 있는 경우 정비시간을 줄일 수 있습니다.</p></li>
-    <li class="reveal" style="--reveal-delay:0.36s"><b>자동화 · 인라인 통합</b><p>반복적이고 정밀한 세척 작업은 로봇과 결합한 자동화 셀로 기존 생산공정에 통합한 사례가 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.36s"><b>자동화 · 인라인 통합</b><p>반복적이고 정밀한 세척 작업은 로봇과 결합한 자동화 셀로 기존 생산 공정에 통합한 사례가 있습니다.</p></li>
   </ol>
 </div>
 
@@ -2215,7 +2215,7 @@ SEMICONDUCTOR_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -2493,7 +2493,7 @@ MEDICAL_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -2837,7 +2837,7 @@ AEROSPACE_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -2895,7 +2895,7 @@ FOOD_BEVERAGE_BODY = """
       <h2 class="cmp-h2">물과 세제 없이,<br>설비를 분해하지 않고 세척할 수 있는가.</h2>
     </div>
     <div class="cmp-lead auto-intro-lead reveal" style="--reveal-delay:0.14s">
-      <p>음료·제과·제빵·커피 로스팅·유제품·냉동식품·육가공·스낵·견과 가공 등 식품 생산현장에는 믹서와 블렌더, 슬라이서, 로스터·오븐·발효기, 건조기·압출기·몰드, 컨베이어와 체인, 계량기, 포장기와 라벨러, 접착제 도포기, 팔레타이저, 전기부품과 모터가 운영됩니다.</p>
+      <p>음료·제과·제빵·커피 로스팅·유제품·냉동식품·육가공·스낵·견과 가공 등 식품 생산 현장에는 믹서와 블렌더, 슬라이서, 로스터·오븐·발효기, 건조기·압출기·몰드, 컨베이어와 체인, 계량기, 포장기와 라벨러, 접착제 도포기, 팔레타이저, 전기부품과 모터가 운영됩니다.</p>
       <p>이 설비에는 탄화된 식품 잔류물, 단백질 축적물, 유지와 지방산, 설탕·시럽과 캐러멜화 당분, 전분, 조미료 잔류물, 굳은 반죽, 효모·곰팡이, 유제품 잔류물, 접착제와 라벨이 쌓입니다. 축적물은 설비 효율을 떨어뜨리고 제품 품질과 교차오염, 위생 기준 준수에 영향을 줍니다.</p>
       <p>기존 방식은 물과 세제로 세척하고 건조하기까지 시간이 오래 걸리며, 전기부품과 모터 주변은 물을 쓰기 어렵습니다. 설비를 냉각하고 분해해야 하는 경우가 많아 세척은 곧 생산 중단을 의미했습니다.</p>
       <p class="auto-intro-close">따라서 식품·음료 제조에서의 세척은 <b>물과 화학약품 없이, 설비를 분해하지 않고, 위생 기준을 만족하며 세척할 수 있는가</b>의 문제입니다.</p>
@@ -3153,7 +3153,7 @@ FOOD_BEVERAGE_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -3477,7 +3477,7 @@ PACKAGING_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -3791,7 +3791,7 @@ PRINTING_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -4112,7 +4112,7 @@ POWER_GENERATION_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -4409,7 +4409,7 @@ OIL_GAS_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -4685,7 +4685,7 @@ MINING_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -4963,7 +4963,7 @@ TEXTILES_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -5261,7 +5261,7 @@ ENGINEERED_WOOD_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -5564,7 +5564,7 @@ RAIL_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -5653,7 +5653,7 @@ MOLD_TOOL_CLEANING_BODY = """
 <div class="cmp-section auto-apps-sec" id="auto-apps">
   <div class="auto-sec-head reveal">
     <span class="cmp-eyebrow">MOLD &amp; TOOLING APPLICATIONS</span>
-    <h2 class="cmp-h2">재질과 생산공정이 달라도,<br>금형 세척에서 고려해야 할 기본은 같습니다.</h2>
+    <h2 class="cmp-h2">재질과 생산 공정이 달라도,<br>금형 세척에서 고려해야 할 기본은 같습니다.</h2>
   </div>
 
 <article class="auto-app is-wide" id="auto-01">
@@ -5739,7 +5739,7 @@ MOLD_TOOL_CLEANING_BODY = """
 <div class="wrap">
 <div class="cmp-section is-first">
   <span class="cmp-eyebrow">COMMON CONTAMINANTS</span>
-  <h2 class="cmp-h2 reveal">같은 금형이라도,<br>생산공정에 따라 쌓이는 오염물은 다릅니다.</h2>
+  <h2 class="cmp-h2 reveal">같은 금형이라도,<br>생산 공정에 따라 쌓이는 오염물은 다릅니다.</h2>
   <ul class="auto-cont" aria-label="주요 오염물">
     <li class="reveal-scale" style="--reveal-delay:0.00s"><img src="../assets/img/plastics-composites-removing-mold-release-agent-with-dry-ice-blasting.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>이형제</b><small>MOLD RELEASE AGENT</small></span></li>
     <li class="reveal-scale" style="--reveal-delay:0.06s"><img src="../assets/img/plastics-composites-removing-residual-plastic-and-pigment-from-plastic-mold-with-dry-ice-blasting.webp" alt="" loading="lazy" /><span class="auto-cont-l"><b>수지 · 폴리머 잔류물</b><small>RESIN &amp; POLYMER RESIDUE</small></span></li>
@@ -5833,9 +5833,9 @@ MOLD_TOOL_CLEANING_BODY = """
   <div class="auto-sec-head auto-sec-head-lead reveal">
     <div>
       <span class="cmp-eyebrow">INDUSTRIES</span>
-      <h2 class="cmp-h2">금형과 툴링이 사용되는<br>다양한 생산현장에서 활용할 수 있습니다.</h2>
+      <h2 class="cmp-h2">금형과 툴링이 사용되는<br>다양한 생산 현장에서 활용할 수 있습니다.</h2>
     </div>
-    <p class="cmp-lead-p">금형 세척은 특정 산업의 작업이 아닙니다. 각 산업의 생산공정과 함께 보려면 산업 페이지를 확인하세요.</p>
+    <p class="cmp-lead-p">금형 세척은 특정 산업의 작업이 아닙니다. 각 산업의 생산 공정과 함께 보려면 산업 페이지를 확인하세요.</p>
   </div>
   <ul class="auto-relind is-4">
     <li class="reveal" style="--reveal-delay:0.00s"><a href="../industries/automotive.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-automotive.png" alt="" loading="lazy" /></span><small>AUTOMOTIVE MANUFACTURING</small><b>자동차 제조</b><span>산업 페이지 보기 →</span></a></li>
@@ -5882,7 +5882,7 @@ MOLD_TOOL_CLEANING_BODY = """
         <div><dt>기존 방식</dt><dd>프레스에서 금형을 내려 냉각 후 세척. 회당 6~8시간 손실, 재가열 별도</dd></div>
         <div><dt>적용</dt><dd>프레스 안에서 드라이아이스 세척 (분해·냉각 없이)</dd></div>
       </dl>
-      <p class="mtc-case-result"><span>확인된 결과</span>세척시간 6시간 이상 → 30분~1시간 (금형 복잡도에 따라). 금형을 내리는 횟수가 줄어 파손 위험도 감소</p>
+      <p class="mtc-case-result"><span>확인된 결과</span>세척 시간 6시간 이상 → 30분~1시간 (금형 복잡도에 따라). 금형을 내리는 횟수가 줄어 파손 위험도 감소</p>
     </li>
     <li class="reveal" style="--reveal-delay:0.10s">
       <div class="mtc-case-head"><small>INJECTION MOLD</small><b>정밀 사출금형</b><span>Performance Plastics</span></div>
@@ -5944,7 +5944,7 @@ MOLD_TOOL_CLEANING_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -5996,7 +5996,7 @@ CONTRACT_CLEANING_BODY = """
       <span class="ind-hero-eyebrow">CONTRACT CLEANING</span>
       <h1>전문 세척 서비스</h1>
       <p class="cmp-hero-p auto-hero-lead">현장이 달라지면, 세척해야 할 대상과 오염물도 달라집니다.</p>
-      <p class="cmp-hero-p auto-hero-body">생산설비와 금형, 식품·포장설비, 인쇄기와 발전설비에서 복원 현장까지 — 세척 대상과 오염물, 작업환경과 요구되는 결과는 현장마다 달라집니다. 드라이아이스 세척은 물을 사용하지 않는 건식 세척이자 연마재를 사용하지 않는 비마모성 방식으로, 다양한 산업설비와 표면에 축적된 오염물을 현장에서 제거하는 데 활용할 수 있습니다.</p>
+      <p class="cmp-hero-p auto-hero-body">생산설비와 금형, 식품·포장설비, 인쇄기와 발전설비에서 복원 현장까지 — 세척 대상과 오염물, 작업 환경과 요구되는 결과는 현장마다 달라집니다. 드라이아이스 세척은 물을 사용하지 않는 건식 세척이자 연마재를 사용하지 않는 비마모성 방식으로, 다양한 산업설비와 표면에 축적된 오염물을 현장에서 제거하는 데 활용할 수 있습니다.</p>
     </div>
   </section>
   <section class="subhero-cover cmp-page ind-page auto-page">
@@ -6102,7 +6102,7 @@ CONTRACT_CLEANING_BODY = """
     <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/power-generation-cleaning-metallic-fins-on-steam-turbine-rotor-with-dry-ice-blasting.webp" alt="" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/oil-gas-hilcorp-removing-atmospheric-contamination-from-fin-fans.webp" alt="" loading="lazy" /></figure></div>
     <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
       <p class="auto-app-h">대형 설비의 유지보수 과정에서<br>축적된 고착 오염물을 관리합니다.</p>
-      <div class="cmp-text auto-text"><p>발전소와 석유·가스 플랜트에서는 터빈과 발전기, 열교환기와 펌프 같은 대형 설비의 정기 세척·정비를 외부 전문업체에 맡기는 경우가 많습니다. 오일과 그리스, 카본과 공정 잔류물이 두껍게 고착되어 있고, 분해와 냉각에 긴 시간이 걸리는 설비입니다.</p><p>드라이아이스 세척은 건식·비마모성 방식으로 설비를 제자리에서 세척하는 데 활용되어 정비 시간을 줄이는 데 도움이 될 수 있습니다. 전기설비의 경우 드라이아이스가 비전도성이라는 이유로 통전 상태 작업을 일반화하지 않습니다 — 전원 상태, 설비 구조, 작업환경과 안전 조건을 별도로 확인한 뒤 판단합니다.</p></div>
+      <div class="cmp-text auto-text"><p>발전소와 석유·가스 플랜트에서는 터빈과 발전기, 열교환기와 펌프 같은 대형 설비의 정기 세척·정비를 외부 전문업체에 맡기는 경우가 많습니다. 오일과 그리스, 카본과 공정 잔류물이 두껍게 고착되어 있고, 분해와 냉각에 긴 시간이 걸리는 설비입니다.</p><p>드라이아이스 세척은 건식·비마모성 방식으로 설비를 제자리에서 세척하는 데 활용되어 정비 시간을 줄이는 데 도움이 될 수 있습니다. 전기설비의 경우 드라이아이스가 비전도성이라는 이유로 통전 상태 작업을 일반화하지 않습니다 — 전원 상태, 설비 구조, 작업 환경과 안전 조건을 별도로 확인한 뒤 판단합니다.</p></div>
       <div class="auto-targets"><span>대표 대상</span><ul><li>터빈 · 발전기</li><li>열교환기 · 핀팬 · 라디에이터</li><li>펌프 · 회전기기</li><li>대형 기계설비</li></ul></div>
       <div class="auto-targets auto-contam"><span>주요 오염물</span><p>오일 · 그리스 · 카본 · 공정 잔류물 · 분진</p></div>
       <a class="auto-rel-link" href="../industries/power-generation.html"><span>관련 산업</span>발전 · 전력 <i>→</i></a>
@@ -6159,7 +6159,7 @@ CONTRACT_CLEANING_BODY = """
     <li class="reveal" style="--reveal-delay:0.00s"><b>물을 사용하지 않는 건식 세척</b><p>물과 세정제, 용제를 쓰지 않는 방식이므로 세척 후 별도의 건조 과정이 필요한 작업을 줄이는 데 도움이 될 수 있습니다.</p></li>
     <li class="reveal" style="--reveal-delay:0.09s"><b>비마모성 세척 방식</b><p>모래나 금속 입자로 표면을 연마하는 방식이 아닙니다. 세척 대상의 표면 상태를 고려해야 하는 작업에 활용할 수 있습니다.</p></li>
     <li class="reveal" style="--reveal-delay:0.18s"><b>세정 매체가 남지 않는 방식</b><p>드라이아이스 입자는 충돌 후 승화하므로 모래·비드처럼 분사한 매체 자체는 현장에 남지 않습니다. 단, 제거된 오염물은 남을 수 있어 필요에 따라 회수와 처리가 필요합니다.</p></li>
-    <li class="reveal" style="--reveal-delay:0.27s"><b>현장 세척 가능성</b><p>대상과 조건에 따라 설비를 완전히 분리하지 않고 세척할 수 있는 경우가 있어, 분해·재조립에 필요한 작업시간을 줄이는 데 도움이 될 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.27s"><b>현장 세척 가능성</b><p>대상과 조건에 따라 설비를 완전히 분리하지 않고 세척할 수 있는 경우가 있어, 분해·재조립에 필요한 작업 시간을 줄이는 데 도움이 될 수 있습니다.</p></li>
     <li class="reveal" style="--reveal-delay:0.36s"><b>다양한 세척 조건 설정</b><p>입자 크기, 분사 압력, 드라이아이스 공급량, 노즐, 분사 거리와 각도를 조정하여 서로 다른 오염물과 설비에 대응할 수 있습니다.</p></li>
   </ol>
 </div>
@@ -6171,7 +6171,7 @@ CONTRACT_CLEANING_BODY = """
     <div class="wrap auto-feature-body reveal">
       <span class="cmp-eyebrow">MORE THAN CLEANING POWER</span>
       <h2 class="cmp-h2">전문 세척에서는<br>세척력만으로 작업 방법을 결정할 수 없습니다.</h2>
-      <p class="cmp-lead-p">실제 현장에서는 오염물을 얼마나 빨리 제거하는지만으로 작업 방법을 선택하기 어렵습니다. 세척 대상의 표면 상태와 재질, 작업공간, 설비의 분해 여부, 주변 설비에 미치는 영향, 세척 후 처리, 작업시간을 함께 고려해야 합니다.</p>
+      <p class="cmp-lead-p">실제 현장에서는 오염물을 얼마나 빨리 제거하는지만으로 작업 방법을 선택하기 어렵습니다. 세척 대상의 표면 상태와 재질, 작업공간, 설비의 분해 여부, 주변 설비에 미치는 영향, 세척 후 처리, 작업 시간을 함께 고려해야 합니다.</p>
       <p class="auto-feature-key">좋은 세척 방법은<br>오염물뿐 아니라 <em>작업 전체</em>를 함께 봅니다.</p>
     </div>
   </section>
@@ -6223,7 +6223,7 @@ CONTRACT_CLEANING_BODY = """
   <div class="auto-sec-head auto-sec-head-lead reveal">
     <div>
       <span class="cmp-eyebrow">ACROSS INDUSTRIES</span>
-      <h2 class="cmp-h2">전문 세척 서비스는<br>다양한 산업현장과 연결됩니다.</h2>
+      <h2 class="cmp-h2">전문 세척 서비스는<br>다양한 산업 현장과 연결됩니다.</h2>
     </div>
     <p class="cmp-lead-p">전문 세척업체의 고객 현장은 특정 산업에 머물지 않습니다. 각 산업 페이지에서 설비별 세척 과제를 확인할 수 있습니다.</p>
   </div>
@@ -6306,7 +6306,7 @@ CONTRACT_CLEANING_BODY = """
   </div>
   <div class="cmp-cta-right">
     <div class="cmp-text">
-      <p>전문 세척 현장은 작업 대상과 오염물, 재질과 작업환경이 매번 다릅니다.</p>
+      <p>전문 세척 현장은 작업 대상과 오염물, 재질과 작업 환경이 매번 다릅니다.</p>
       <p>바테크는 실제 세척 대상 또는 샘플을 이용한 테스트를 통해 드라이아이스 세척의 적용 가능성과 필요한 작업 조건을 확인합니다. 장비 도입뿐 아니라 렌탈과 현장 지원도 함께 검토할 수 있습니다.</p>
     </div>
     <div class="cmp-cta-btns">
@@ -6337,7 +6337,7 @@ CONTRACT_CLEANING_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -6633,7 +6633,7 @@ FACILITY_MAINTENANCE_BODY = """
   <div class="auto-sec-head auto-sec-head-lead reveal">
     <div>
       <span class="cmp-eyebrow">FACILITY MAINTENANCE IN PRACTICE</span>
-      <h2 class="cmp-h2">생산현장에서 확인된<br>설비 유지보수 세척 사례</h2>
+      <h2 class="cmp-h2">생산 현장에서 확인된<br>설비 유지보수 세척 사례</h2>
     </div>
     <p class="cmp-lead-p">Cold Jet 공식 Facility Maintenance 페이지에 소개된 고객사와 공식 사례 자료입니다. 수치는 해당 현장의 조건에서 확인된 결과이며, 일반적인 효과로 확대 해석하지 않습니다.</p>
   </div>
@@ -6721,7 +6721,7 @@ FACILITY_MAINTENANCE_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -7084,7 +7084,7 @@ RESTORATION_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -7450,7 +7450,7 @@ MOLD_REMEDIATION_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -7822,7 +7822,7 @@ HISTORICAL_RESTORATION_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -8186,7 +8186,7 @@ AUTOMOTIVE_DETAILING_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -8447,7 +8447,7 @@ WELD_FIXTURE_ROBOT_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -8620,7 +8620,7 @@ PAINT_BOOTH_COATING_LINE_BODY = """
       <span class="cmp-eyebrow">INDUSTRIES</span>
       <h2 class="cmp-h2">도장·코팅 공정은<br>여러 산업에 걸쳐 있습니다.</h2>
     </div>
-    <p class="cmp-lead-p">도장부스와 코팅라인은 자동차뿐 아니라 다양한 생산현장에 존재합니다.</p>
+    <p class="cmp-lead-p">도장부스와 코팅라인은 자동차뿐 아니라 다양한 생산 현장에 존재합니다.</p>
   </div>
   <ul class="auto-relind is-2">
     <li class="reveal" style="--reveal-delay:0.00s"><a href="../industries/automotive.html"><span class="auto-relind-img"><img src="../assets/img/ind-card-automotive.png" alt="" loading="lazy" /></span><small>AUTOMOTIVE MANUFACTURING</small><b>자동차 제조</b><span>산업 페이지 보기 →</span></a></li>
@@ -8682,7 +8682,7 @@ PAINT_BOOTH_COATING_LINE_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -8918,7 +8918,7 @@ ELECTRICAL_ELECTRONIC_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -9097,14 +9097,14 @@ ADHESIVE_RESIN_REMOVAL_BODY = """
 
 <div class="cmp-section auto-proven-sec">
   <div class="auto-sec-head auto-sec-head-lead reveal">
-    <div><span class="cmp-eyebrow">ADHESIVE REMOVAL IN PRACTICE</span><h2 class="cmp-h2">포장 · 생산현장에서<br>확인된 적용 경험</h2></div>
+    <div><span class="cmp-eyebrow">ADHESIVE REMOVAL IN PRACTICE</span><h2 class="cmp-h2">포장 · 생산 현장에서<br>확인된 적용 경험</h2></div>
     <p class="cmp-lead-p">Cold Jet 공식 Adhesive Removal 자료에서 확인되는 적용 사례입니다. 아래 사례는 각 현장의 조건에서 확인된 결과이며, 모든 접착제·설비에 같은 결과를 보장하는 것은 아닙니다.</p>
   </div>
   <ul class="mtc-cases">
     <li class="reveal" style="--reveal-delay:0.00s">
       <div class="mtc-case-head"><small>PACKAGING LINE</small><b>라벨링 롤러 접착제 제거</b><span>Cold Jet 공식 사례</span></div>
       <dl><div><dt>기존 방식</dt><dd>화학용제를 이용한 수작업 세척 — 라인 정지 시간 소요</dd></div><div><dt>적용</dt><dd>드라이아이스 세척으로 라인 내 세척</dd></div></dl>
-      <p class="mtc-case-result"><span>확인된 결과</span>화학용제 사용을 줄이고 세척시간을 단축했다고 보고</p>
+      <p class="mtc-case-result"><span>확인된 결과</span>화학용제 사용을 줄이고 세척 시간을 단축했다고 보고</p>
     </li>
     <li class="reveal" style="--reveal-delay:0.10s">
       <div class="mtc-case-head"><small>PRINTING &amp; PACKAGING</small><b>포장설비 접착 잔류물 관리</b><span>Cold Jet 공식 사례</span></div>
@@ -9151,7 +9151,7 @@ ADHESIVE_RESIN_REMOVAL_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -9235,7 +9235,7 @@ INK_PAINT_COATING_REMOVAL_BODY = """
     <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/printing-cleaning-ink-try-with-dry-ice-blasting.webp" alt="인쇄기 잉크 트레이 세척" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/printing-large-printing-press-cleaned-with-dry-ice-blasting.webp" alt="대형 인쇄기 세척" loading="lazy" /></figure></div>
     <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
       <p class="auto-app-h">실린더와 잉크 트레이의<br>고착 잉크를 정밀하게 제거합니다.</p>
-      <div class="cmp-text auto-text"><p>플렉소·그라비어·옵셋 인쇄기의 실린더, 롤러, 닥터블레이드, 잉크 트레이에는 잉크와 바니시가 굳어 붙습니다. Cold Jet 자료에 따르면 이 잔류물은 인쇄 품질과 색상 일관성에 영향을 줄 수 있습니다.</p><p>드라이아이스 세척은 실린더의 정밀한 표면을 연마하지 않는 방식으로, 색상 교체 시 세척시간을 줄이는 데 활용됩니다.</p></div>
+      <div class="cmp-text auto-text"><p>플렉소·그라비어·옵셋 인쇄기의 실린더, 롤러, 닥터블레이드, 잉크 트레이에는 잉크와 바니시가 굳어 붙습니다. Cold Jet 자료에 따르면 이 잔류물은 인쇄 품질과 색상 일관성에 영향을 줄 수 있습니다.</p><p>드라이아이스 세척은 실린더의 정밀한 표면을 연마하지 않는 방식으로, 색상 교체 시 세척 시간을 줄이는 데 활용됩니다.</p></div>
       <div class="auto-targets"><span>대표 대상</span><ul><li>인쇄 실린더 · 롤러</li><li>닥터블레이드 · 잉크 트레이</li><li>플렉시블 포장설비</li></ul></div>
     </div>
   </div>
@@ -9277,7 +9277,7 @@ INK_PAINT_COATING_REMOVAL_BODY = """
   <h2 class="cmp-h2 reveal">실린더와 롤러의 정밀도를<br>유지하면서 잔류물을 제거합니다.</h2>
   <ol class="auto-why is-4">
     <li class="reveal" style="--reveal-delay:0.00s"><b>비마모성 세척</b><p>인쇄 실린더의 정밀한 표면과 패턴을 연마하지 않는 방식으로 잔류물을 제거합니다.</p></li>
-    <li class="reveal" style="--reveal-delay:0.09s"><b>색상 교체 세척시간 단축 가능성</b><p>조건에 따라 분해 없이 세척할 수 있어 인쇄물 색상 전환 시 세척시간을 줄이는 데 도움이 될 수 있습니다.</p></li>
+    <li class="reveal" style="--reveal-delay:0.09s"><b>색상 교체 세척 시간 단축 가능성</b><p>조건에 따라 분해 없이 세척할 수 있어 인쇄물 색상 전환 시 세척 시간을 줄이는 데 도움이 될 수 있습니다.</p></li>
     <li class="reveal" style="--reveal-delay:0.18s"><b>세정 매체가 남지 않는 방식</b><p>드라이아이스는 승화하므로 매체 자체는 남지 않습니다. 제거된 잉크·도료는 별도로 회수·처리합니다.</p></li>
     <li class="reveal" style="--reveal-delay:0.27s"><b>물 없는 건식 세척</b><p>수분이 인쇄 품질에 영향을 줄 수 있는 설비에서 건식 세척 방식을 검토할 수 있습니다.</p></li>
   </ol>
@@ -9334,7 +9334,7 @@ INK_PAINT_COATING_REMOVAL_BODY = """
     <li class="reveal" style="--reveal-delay:0.00s">
       <div class="mtc-case-head"><small>PRINTING PRESS</small><b>실린더 잉크 잔류물 세척</b><span>Cold Jet 공식 사례</span></div>
       <dl><div><dt>기존 방식</dt><dd>화학용제 · 수작업 스크래핑 — 실린더 표면 손상 우려</dd></div><div><dt>적용</dt><dd>드라이아이스 세척으로 색상 교체 시 세척</dd></div></dl>
-      <p class="mtc-case-result"><span>확인된 결과</span>실린더 표면 상태를 유지하며 세척시간을 줄였다고 보고</p>
+      <p class="mtc-case-result"><span>확인된 결과</span>실린더 표면 상태를 유지하며 세척 시간을 줄였다고 보고</p>
     </li>
   </ul>
 </div>
@@ -9376,7 +9376,7 @@ INK_PAINT_COATING_REMOVAL_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -9602,7 +9602,7 @@ OIL_GREASE_RESIDUE_REMOVAL_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -9820,7 +9820,7 @@ RUST_CORROSION_REMOVAL_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -10031,7 +10031,7 @@ SURFACE_PREPARATION_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -10232,7 +10232,7 @@ DEBURRING_DEFLASHING_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -10287,7 +10287,7 @@ INDUSTRY_BODY = """
     <div class="subhero-textbox">
       <span class="ind-hero-eyebrow">INDUSTRY SOLUTIONS</span>
       <h1>산업별 솔루션</h1>
-      <p class="cmp-hero-p">산업마다 오염물과 기재, 설비 조건이 다릅니다.<br>각 산업의 주요 세척 대상과 적용 방법을 확인해보세요.</p>
+      <p class="cmp-hero-p">산업마다 오염물과 소재, 설비 조건이 다릅니다.<br>각 산업의 주요 세척 대상과 적용 방법을 확인해보세요.</p>
     </div>
   </section>
   <section class="subhero-cover cmp-page ind-page">
@@ -10334,7 +10334,7 @@ INDUSTRY_BODY = """
         <span class="ind-card-en">AUTOMOTIVE MANUFACTURING</span>
         <h3>자동차 제조</h3>
         <p class="ind-card-kw">금형 · 용접 셀 · 도장라인 · 다이캐스팅</p>
-        <p class="ind-card-desc">사출·고무 금형부터 용접 로봇과 치구, 도장설비, 다이캐스팅 툴링까지 자동차 생산공정 전반의 세척과 유지보수에 적용됩니다.</p>
+        <p class="ind-card-desc">사출·고무 금형부터 용접 로봇과 치구, 도장설비, 다이캐스팅 툴링까지 자동차 생산 공정 전반의 세척과 유지보수에 적용됩니다.</p>
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
@@ -10367,7 +10367,7 @@ INDUSTRY_BODY = """
         <span class="ind-card-en">RUBBER & TIRES</span>
         <h3>고무 · 타이어</h3>
         <p class="ind-card-kw">타이어 금형 · 가류기 · 고무 사출금형 · 압축금형 · 벤트</p>
-        <p class="ind-card-desc">금형을 프레스에서 분리하지 않고 이형제와 카본, 가황고무 잔류물을 제거해 금형 상태와 제품 표면 품질을 유지합니다.</p>
+        <p class="ind-card-desc">설비와 작업 조건에 따라 금형을 프레스에 장착한 상태에서 세척할 수 있으며, 이형제·카본·가황고무 잔류물 제거에 활용됩니다.</p>
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
@@ -10378,7 +10378,7 @@ INDUSTRY_BODY = """
         <span class="ind-card-en">FOOD & BEVERAGE</span>
         <h3>식품 · 음료</h3>
         <p class="ind-card-kw">오븐 · 믹서 · 프라이어 · 컨베이어 · 포장설비</p>
-        <p class="ind-card-desc">탄화 식품, 유지·지방, 설탕·시럽, 반죽과 생산 잔류물을 물과 화학세제 없이 제거하여 생산설비를 건식으로 세정합니다.</p>
+        <p class="ind-card-desc">탄화 식품, 유지·지방, 설탕·시럽, 반죽과 생산 잔류물의 건식 세척에 활용됩니다.</p>
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
@@ -10422,7 +10422,7 @@ INDUSTRY_BODY = """
         <span class="ind-card-en">POWER GENERATION</span>
         <h3>발전 · 전력</h3>
         <p class="ind-card-kw">터빈 · 발전기 · HRSG · 변압기 · 전기설비 · 원자력 · 제염</p>
-        <p class="ind-card-desc">터빈과 발전기, 보일러·열교환 설비부터 권선·변압기·스위치기어까지 발전설비의 정비와 예방보전에 활용되며, 원자력 시설의 방사성 오염 제염에도 2차 폐기물 없이 적용됩니다.</p>
+        <p class="ind-card-desc">터빈과 발전기, 보일러·열교환 설비부터 권선·변압기·스위치기어까지 발전설비의 정비와 예방보전에 활용되며, 원자력 시설의 제염 공정에서도 드라이아이스 자체가 승화해 세정 매체 잔류를 줄이는 방식으로 활용될 수 있습니다. 제거된 오염물의 회수와 처리는 별도의 관리가 필요합니다.</p>
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
@@ -10488,7 +10488,7 @@ INDUSTRY_BODY = """
         <span class="ind-card-en">RAIL & PUBLIC TRANSPORTATION</span>
         <h3>철도 · 대중교통</h3>
         <p class="ind-card-kw">대차 · 차축 · 견인모터 · 제어반 · 전기설비</p>
-        <p class="ind-card-desc">철도차량의 대차·휠셋과 기계부품부터 견인모터·제어반·절연설비까지 정비 세정에 적용해 차량 가동중단을 줄입니다.</p>
+        <p class="ind-card-desc">철도차량의 대차·휠셋과 기계부품부터 견인모터·제어반·절연설비까지 정비 세정에 적용해 가동 중단 시간 단축을 검토할 수 있습니다.</p>
         <span class="ind-card-more">솔루션 보기 <i>→</i></span>
       </div>
     </a>
@@ -10549,10 +10549,10 @@ INDUSTRY_BODY = """
     <span class="cmp-num">03<span class="cmp-num-of">/ 03</span></span>
     <div>
       <span class="cmp-vs-title">SPECIALIZED SERVICES &amp; RESTORATION · 전문 세척 · 복원 분야 5</span>
-      <h2 class="cmp-h2">생산공정 밖, 전문 세척과<br>복원 현장에서도 쓰입니다.</h2>
+      <h2 class="cmp-h2">생산 공정 밖, 전문 세척과<br>복원 현장에서도 쓰입니다.</h2>
       <div class="cmp-lead ind-lead">
         <p>제조산업뿐 아니라 전문 산업세척, 재해복구, 오염 제거 및 복원 작업에도 드라이아이스 세척이 활용됩니다.</p>
-        <p>생산공정이 아닌 현장 서비스와 복원 작업의 관점에서 적용 범위를 확인해보세요.</p>
+        <p>생산 공정이 아닌 현장 서비스와 복원 작업의 관점에서 적용 범위를 확인해보세요.</p>
       </div>
     </div>
   </div>
@@ -10623,11 +10623,11 @@ INDUSTRY_BODY = """
               </li>
               <li>
                 <span class="ind-ae-case-img"><img src="../assets/img/ind-card-automotive.png" alt="" loading="lazy" /></span>
-                <b>용접 지그</b><small>Weld Spatter</small>
+                <b>용접 지그</b><small>용접 스패터</small>
               </li>
               <li>
                 <span class="ind-ae-case-img"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /></span>
-                <b>도장라인</b><small>Paint Overspray</small>
+                <b>도장라인</b><small>도료 오버스프레이</small>
               </li>
             </ul>
             <p class="ind-ae-case-note">오염물이 다르면 <em>세척 조건도 달라집니다.</em></p>
@@ -10640,7 +10640,7 @@ INDUSTRY_BODY = """
                 <span class="ind-ae-step-en">SITE ASSESSMENT</span>
                 <h3>현장 조건 확인</h3>
                 <p class="ind-ae-step-lead">무엇을, 어디서, 어떤 상태로 닦아야 하는지부터 봅니다.</p>
-                <ul class="ind-ae-tags"><li>오염물</li><li>재질</li><li>형상</li><li>작업환경</li><li>목표 결과</li></ul>
+                <ul class="ind-ae-tags"><li>오염물</li><li>재질</li><li>형상</li><li>작업 환경</li><li>목표 결과</li></ul>
               </div>
             </li>
             <li class="ind-ae-step reveal" style="--reveal-delay:0.06s">
@@ -10702,7 +10702,7 @@ INDUSTRY_BODY = """
     <div class="wrap">
       <div class="plt-head">
         <div><span class="plt-eyebrow">EXPLORE MORE</span><h2 class="plt-title">산업 다음엔,<br>사례와 영상으로.</h2></div>
-        <p class="plt-lead">우리 산업의 실제 도입 사례와 현장 영상을 보고, 작업 목적에 맞는 세척 방식으로 이어가세요.</p>
+        <p class="plt-lead">우리 산업의 적용 사례와 현장 영상을 보고, 작업 목적에 맞는 세척 방식으로 이어가세요.</p>
       </div>
       <div class="res-cross-grid">
           <a class="res-link-card reveal" href="../cases/case-studies.html"><div class="res-link-media"><img src="../assets/img/rubber-tires-cleaning-tire-mold-while-hot-and-online-with-dry-ice-blasting.webp" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>CASE STUDIES</small><b>케이스 스터디</b><span>산업별 현장의 과제 · 적용 장비 · 결과를 세 단락으로 정리한 실제 사례.</span><i>사례 보러 가기 →</i></div></a>
@@ -10728,7 +10728,7 @@ INDUSTRY_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -10782,8 +10782,8 @@ TASK_BODY = """
   <span class="cmp-eyebrow">FIND YOUR APPLICATION</span>
   <h2 class="cmp-h2">산업이 달라도,<br>현장에서 반복되는 세척 과제는 비슷합니다.</h2>
   <div class="cmp-lead">
-    <p>자동차, 반도체, 플라스틱, 식품, 발전과 같은 산업은 서로 다르지만 생산현장에서 발생하는 세척 과제에는 공통점이 있습니다.</p>
-    <p>금형에는 이형제와 수지가 쌓이고, 생산설비에는 오일과 공정 잔류물이 축적되며, 용접라인에는 스패터가, 도장라인에는 오버스프레이가 남습니다. 또한 접착제 제거, 표면 전처리, 디버링·디플래싱처럼 세척을 넘어 생산공정 자체를 지원하는 작업도 있습니다.</p>
+    <p>자동차, 반도체, 플라스틱, 식품, 발전과 같은 산업은 서로 다르지만 생산 현장에서 발생하는 세척 과제에는 공통점이 있습니다.</p>
+    <p>금형에는 이형제와 수지가 쌓이고, 생산설비에는 오일과 공정 잔류물이 축적되며, 용접라인에는 스패터가, 도장라인에는 오버스프레이가 남습니다. 또한 접착제 제거, 표면 전처리, 디버링·디플래싱처럼 세척을 넘어 생산 공정 자체를 지원하는 작업도 있습니다.</p>
     <p>작업별 솔루션에서는 "어느 산업인가"보다 무엇을 제거해야 하는지, 어떤 표면을 보호해야 하는지, 어떤 결과가 필요한지를 기준으로 적합한 적용 방법을 살펴봅니다.</p>
   </div>
   <ul class="cmp-criteria ind-criteria tsk-keys reveal" aria-label="작업을 보는 세 가지 기준">
@@ -10889,7 +10889,7 @@ TASK_BODY = """
           <span class="tsk-en">ADHESIVE & RESIN REMOVAL</span>
           <h3>접착제 · 수지 제거</h3>
           <dl class="tsk-rows">
-            <div class="tsk-row"><dt>대표 오염</dt><dd>Glue · Hot Melt · Urethane · Epoxy · Sealant · Label Adhesive · Resin</dd></div>
+            <div class="tsk-row"><dt>대표 오염</dt><dd>접착제 · 핫멜트 · 우레탄 · 에폭시 · 실런트 · 라벨 접착제 · 수지</dd></div>
             <div class="tsk-row"><dt>대표 대상</dt><dd>롤러 · 노즐 · 지그 · 금형 · 생산설비</dd></div>
           </dl>
           <p class="tsk-desc">접착제와 수지가 축적되는 생산설비와 부품을 화학용제나 과도한 기계적 제거 없이 세척합니다.</p>
@@ -10903,7 +10903,7 @@ TASK_BODY = """
           <span class="tsk-en">INK, PAINT & COATING REMOVAL</span>
           <h3>잉크 · 도료 · 코팅 제거</h3>
           <dl class="tsk-rows">
-            <div class="tsk-row"><dt>대표 오염</dt><dd>Ink · Paint · Varnish · Overspray · Coating Residue</dd></div>
+            <div class="tsk-row"><dt>대표 오염</dt><dd>잉크 · 도료 · 바니시 · 오버스프레이 · 코팅 잔류물</dd></div>
             <div class="tsk-row"><dt>대표 대상</dt><dd>인쇄설비 · 롤러 · 도장설비 · 지그 · 생산라인</dd></div>
           </dl>
           <p class="tsk-desc">인쇄와 도장, 코팅공정에서 발생하는 잉크와 도료 잔류물을 설비와 표면 상태를 고려해 제거합니다.</p>
@@ -10945,7 +10945,7 @@ TASK_BODY = """
     <div>
       <span class="cmp-vs-title">PROCESS & PART FINISHING · 공정 · 부품 마무리</span>
       <h2 class="cmp-h2">세척을 넘어,<br>다음 공정을 준비하고 부품을 마무리합니다.</h2>
-      <div class="cmp-lead ind-lead"><p>드라이아이스 기술은 단순한 설비 세척을 넘어 다음 생산공정을 준비하거나 부품을 마무리하는 공정에도 활용됩니다.</p></div>
+      <div class="cmp-lead ind-lead"><p>드라이아이스 기술은 단순한 설비 세척을 넘어 다음 생산 공정을 준비하거나 부품을 마무리하는 공정에도 활용됩니다.</p></div>
     </div>
   </div>
   <div class="tsk-grid">
@@ -10984,8 +10984,8 @@ TASK_BODY = """
   <div class="cmp-vs-head ind-head">
     <div>
       <span class="cmp-vs-title">RESTORATION & REMEDIATION · 복원 · 오염 제거</span>
-      <h2 class="cmp-h2">생산공정 밖,<br>복원과 재해복구 현장에서도 쓰입니다.</h2>
-      <div class="cmp-lead ind-lead"><p>생산공정 외에도 화재, 수해, 곰팡이 및 각종 복원 작업에서 드라이아이스 세척의 건식·비마모 특성을 활용할 수 있습니다.</p></div>
+      <h2 class="cmp-h2">생산 공정 밖,<br>복원과 재해복구 현장에서도 쓰입니다.</h2>
+      <div class="cmp-lead ind-lead"><p>생산 공정 외에도 화재, 수해, 곰팡이 및 각종 복원 작업에서 드라이아이스 세척의 건식·비마모 특성을 활용할 수 있습니다.</p></div>
     </div>
   </div>
   <div class="tsk-grid">
@@ -11051,7 +11051,7 @@ TASK_BODY = """
       <div class="res-cross-grid">
           <a class="res-link-card reveal" href="../cases/case-studies.html"><div class="res-link-media"><img src="../assets/img/rubber-tires-cleaning-tire-mold-while-hot-and-online-with-dry-ice-blasting.webp" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>CASE STUDIES</small><b>케이스 스터디</b><span>산업별 현장의 과제 · 적용 장비 · 결과를 세 단락으로 정리한 실제 사례.</span><i>사례 보러 가기 →</i></div></a>
           <a class="res-link-card reveal" href="../cases/videos.html" style="--reveal-delay:0.06s"><div class="res-link-media"><img src="../assets/img/blaster-operator-t.png" alt="" loading="lazy" decoding="async" /><span class="res-play" aria-hidden="true"></span></div><div class="res-link-body"><small>VIDEOS</small><b>동영상 보기</b><span>장비 소개와 현장 시연 영상. 카드를 누르면 바로 볼 수 있습니다.</span><i>영상 보러 가기 →</i></div></a>
-          <a class="res-link-card reveal" href="../cleaning/industry.html" style="--reveal-delay:0.12s"><div class="res-link-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>INDUSTRY SOLUTIONS</small><b>산업별 솔루션</b><span>자동차 · 식품 · 반도체 · 타이어 등 22개 산업별 맞춤 세척 방식.</span><i>산업별로 보기 →</i></div></a>
+          <a class="res-link-card reveal" href="../cleaning/industry.html" style="--reveal-delay:0.12s"><div class="res-link-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>INDUSTRY SOLUTIONS</small><b>산업별 솔루션</b><span>자동차 · 식품 · 반도체 · 타이어 등 22개 산업·적용 분야의 세척 솔루션.</span><i>산업별로 보기 →</i></div></a>
       </div>
     </div>
   </section>
@@ -11072,7 +11072,7 @@ TASK_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -11143,7 +11143,7 @@ ADOPT_BODY = """
     <li class="reveal" style="--reveal-delay:0.06s"><b>무엇을 제거해야 합니까?</b><p>이형제, 수지, 접착제, 오일, 그리스, 카본, 잉크, 도료, 스패터, 표면 녹 등</p></li>
     <li class="reveal" style="--reveal-delay:0.12s"><b>지켜야 할 것은 무엇입니까?</b><p>정밀한 금형면, 도장면, 코팅, 치수, 마킹, 센서, 배선, 제품 외관</p></li>
     <li class="reveal" style="--reveal-delay:0.18s"><b>어느 정도까지 세척해야 합니까?</b><p>육안 청정, 후공정 전처리, 설비 유지보수, 품질 안정, 검사 전 세척</p></li>
-    <li class="reveal" style="--reveal-delay:0.24s"><b>지금 가장 문제되는 것은?</b><p>세척시간, 많은 인력, 설비 분해, 화학약품, 생산 중단시간</p></li>
+    <li class="reveal" style="--reveal-delay:0.24s"><b>지금 가장 문제되는 것은?</b><p>세척 시간, 많은 인력, 설비 분해, 화학약품, 생산 중단시간</p></li>
   </ol>
 </div>
 </div>
@@ -11162,11 +11162,11 @@ ADOPT_BODY = """
   </div>
   <div class="auto-targets reveal" style="--reveal-delay:0.16s">
     <span>테스트 확인 항목</span>
-    <ul><li>오염물 제거 정도</li><li>세척 속도</li><li>표면 변화</li><li>세밀한 형상 접근성</li><li>드라이아이스 소비량</li><li>필요한 압축공기</li><li>적절한 노즐</li><li>작업 편의성</li><li>예상 작업시간</li><li>자동화 가능성</li></ul>
+    <ul><li>오염물 제거 정도</li><li>세척 속도</li><li>표면 변화</li><li>세밀한 형상 접근성</li><li>드라이아이스 소비량</li><li>필요한 압축공기</li><li>적절한 노즐</li><li>작업 편의성</li><li>예상 작업 시간</li><li>자동화 가능성</li></ul>
   </div>
   <div class="auto-targets reveal" style="--reveal-delay:0.22s">
     <span>테스트 전 준비사항</span>
-    <ul><li>실제 세척 대상 또는 샘플</li><li>제거해야 할 오염물</li><li>현재 세척방법 · 세척시간 · 작업 인원</li><li>설비 분해 여부</li><li>반드시 보호해야 할 표면</li><li>원하는 세척 결과</li><li>세척 빈도(일/주/월)</li><li>예상 작업 면적</li><li>사용 가능한 압축공기 정보</li><li>현장 사진 또는 동영상</li></ul>
+    <ul><li>실제 세척 대상 또는 샘플</li><li>제거해야 할 오염물</li><li>현재 세척방법 · 세척 시간 · 작업 인원</li><li>설비 분해 여부</li><li>반드시 보호해야 할 표면</li><li>원하는 세척 결과</li><li>세척 빈도(일/주/월)</li><li>예상 작업 면적</li><li>사용 가능한 압축공기 정보</li><li>현장 사진 또는 동영상</li></ul>
   </div>
   <a class="auto-rel-link reveal" href="../rental/demo.html" style="--reveal-delay:0.28s"><span>다음 단계</span>세척 테스트 신청 <i>→</i></a>
 </article>
@@ -11179,7 +11179,7 @@ ADOPT_BODY = """
   <div class="cmp-lead reveal" style="--reveal-delay:0.1s; max-width:820px">
     <p>드라이아이스 블라스터는 압축공기로 드라이아이스 입자를 가속합니다. 실제 세척 성능에는 압력뿐 아니라 공기량, 수분, 온도, 배관 크기와 호스 길이도 영향을 줍니다.</p>
   </div>
-  <p class="mtc-quote reveal" style="--reveal-delay:0.14s">bar만큼 중요한 것이 <em>공기량(CFM · m³/min)</em>입니다.</p>
+  <p class="mtc-quote reveal" style="--reveal-delay:0.14s">압력(bar)과 함께 반드시 확인해야 할 항목이 <em>공기 유량(CFM · m³/min)</em>입니다.</p>
   <div class="adopt-2col reveal" style="--reveal-delay:0.18s">
     <div>
       <h4>공장 압축공기 · PLANT AIR</h4>
@@ -11194,8 +11194,8 @@ ADOPT_BODY = """
   </div>
   <p class="adopt-note reveal" style="--reveal-delay:0.24s"><b>AIR QUALITY MATTERS —</b> 드라이아이스는 약 −78.5°C로 매우 낮은 온도입니다. 공급공기에 수분이 많으면 얼어 피드라인과 노즐, 장비 내부에 문제를 일으킬 수 있고, 지나치게 뜨거운 공기는 드라이아이스의 승화를 촉진할 수 있습니다. 건조하고(Dry) 적정 온도(Cool)이며 충분한 유량(Flow)인지 함께 확인해야 합니다.</p>
   <table class="spec-table reveal" style="--reveal-delay:0.30s">
-    <tr><th>펠렛 타입 참고값</th><td>약 2.8 m³/min(100 CFM), 5.5 bar(80 PSI) 수준</td></tr>
-    <tr><th>마이크로파티클 참고값</th><td>약 0.9 m³/min(30 CFM) 수준</td></tr>
+    <tr><th>펠렛 타입 참고값</th><td>약 2.8 m³/min (100 CFM), 5.5 bar (80 psi) 수준</td></tr>
+    <tr><th>마이크로파티클 참고값</th><td>약 0.9 m³/min (30 CFM) 수준</td></tr>
   </table>
   <p style="font-size:13px; color:var(--text-muted); margin-top:-6px;">* Cold Jet 매뉴얼의 대표값이며, 실제 요구 조건은 장비 모델과 노즐, 작업 조건에 따라 달라질 수 있습니다.</p>
 </article>
@@ -11212,14 +11212,14 @@ ADOPT_BODY = """
     <span>확인 요소</span>
     <ul><li>사용하는 드라이아이스 형태(펠렛 · 마이크로파티클)</li><li>예상 소비량 · 작업 빈도</li><li>공급 거리 · 배송 주기</li><li>보관 컨테이너 · 보관시간</li><li>작업당 필요 수량</li></ul>
   </div>
-  <p class="adopt-note reveal" style="--reveal-delay:0.22s">실제 소비량은 장비, 분사조건, 노즐, 오염물, 작업속도에 따라 달라지므로 일반화된 수치보다 테스트를 통한 확인을 권장합니다.</p>
+  <p class="adopt-note reveal" style="--reveal-delay:0.22s">실제 소비량은 장비, 분사 조건, 노즐, 오염물, 작업 속도에 따라 달라지므로 일반화된 수치보다 테스트를 통한 확인을 권장합니다.</p>
   <a class="auto-rel-link reveal" href="../products/supply.html" style="--reveal-delay:0.28s"><span>관련 페이지</span>드라이아이스 공급 안내 <i>→</i></a>
 </article>
 
 <article class="auto-app is-wide">
   <div class="auto-app-head reveal">
     <span class="auto-num">04</span>
-    <div><span class="auto-en">SITE &amp; SAFETY</span><h3>작업환경과 안전</h3></div>
+    <div><span class="auto-en">SITE &amp; SAFETY</span><h3>작업 환경과 안전</h3></div>
   </div>
   <div class="cmp-lead reveal" style="--reveal-delay:0.1s; max-width:820px"><p>작업 장소도 장비 선택의 중요한 조건입니다.</p></div>
   <ol class="auto-why">
@@ -11239,18 +11239,18 @@ ADOPT_BODY = """
   <div class="cmp-lead reveal" style="--reveal-delay:0.1s; max-width:820px"><p>세척 테스트가 끝나면, 그 조건을 안정적으로 구현할 장비를 선택합니다. 모델을 먼저 보기보다, 아래 요소를 먼저 확인합니다.</p></div>
   <div class="auto-targets reveal" style="--reveal-delay:0.16s">
     <span>선정 시 고려 요소</span>
-    <ul><li>필요한 세척 강도(정밀 ↔ 중오염 제거)</li><li>입자 크기(마이크로파티클 · 3mm 펠렛 · PCS 조절)</li><li>필요 압력과 공기량</li><li>드라이아이스 공급량</li><li>작업 면적 · 작업시간</li><li>장비 이동성</li><li>현장 에어 공급 방식</li><li>정밀 제어 필요성</li><li>자동화 가능성 · 작업 빈도</li></ul>
+    <ul><li>필요한 세척 강도(정밀 ↔ 중오염 제거)</li><li>입자 크기(마이크로파티클 · 3 mm 펠렛 · PCS 조절)</li><li>필요 압력과 공기량</li><li>드라이아이스 공급량</li><li>작업 면적 · 작업 시간</li><li>장비 이동성</li><li>현장 에어 공급 방식</li><li>정밀 제어 필요성</li><li>자동화 가능성 · 작업 빈도</li></ul>
   </div>
   <table class="spec-table reveal" style="--reveal-delay:0.22s">
     <tr><th>정밀 금형 · 전자부품</th><td>낮은 공급량, 미세 입자, 세밀한 제어</td></tr>
-    <tr><th>생산설비 · 오일·그리스</th><td>적절한 분사력, 작업속도, 넓은 노즐 선택지</td></tr>
+    <tr><th>생산설비 · 오일·그리스</th><td>적절한 분사력, 작업 속도, 넓은 노즐 선택지</td></tr>
     <tr><th>주조 · 고착 오염</th><td>높은 제거력, 충분한 공기량, 높은 작업량</td></tr>
     <tr><th>표면 전처리 · 자동화</th><td>반복성, 정밀한 제어, 로봇 통합</td></tr>
   </table>
   <p style="font-size:13px; color:var(--text-muted); margin-top:-6px;">* 예시이며, 실제 장비 모델은 VATEK 제품 라인업과 Cold Jet 최신 사양을 확인해 상담을 통해 안내합니다.</p>
   <div class="cmp-text auto-text reveal" style="--reveal-delay:0.28s">
-    <p><b>노즐이 왜 중요한가.</b> 같은 장비도 어떤 노즐을 쓰느냐에 따라 분사폭, 집중도, 접근성, 공기소비량이 달라집니다. 넓은 면에는 넓은 분사폭, 좁은 홈에는 집중 노즐, 깊은 구조에는 긴 노즐, 민감한 표면에는 낮은 임팩트 조건이 검토됩니다.</p>
-    <p><b>자동화가 필요한가.</b> 동일 부품을 반복 세척하고 사이클타임과 오염물이 일정하며 작업자 접근이 어려운 위치라면 자동화를 검토할 수 있습니다. 다품종·낮은 작업빈도·불규칙한 설비에는 수동 장비가 더 적합할 수 있습니다.</p>
+    <p><b>노즐 선택이 중요한 이유.</b> 같은 장비도 어떤 노즐을 쓰느냐에 따라 분사폭, 집중도, 접근성, 공기 소비량이 달라집니다. 넓은 면에는 넓은 분사폭, 좁은 홈에는 집중 노즐, 깊은 구조에는 긴 노즐, 민감한 표면에는 낮은 임팩트 조건이 검토됩니다.</p>
+    <p><b>자동화 검토 기준.</b> 동일 부품을 반복 세척하고 작업 주기와 오염물이 일정하며 작업자 접근이 어려운 위치라면 자동화를 검토할 수 있습니다. 다품종·낮은 작업빈도·불규칙한 설비에는 수동 장비가 더 적합할 수 있습니다.</p>
   </div>
   <a class="auto-rel-link reveal" href="../products/compare-equip.html" style="--reveal-delay:0.34s"><span>관련 페이지</span>장비 비교·추천받기 <i>→</i></a>
 </article>
@@ -11266,7 +11266,7 @@ ADOPT_BODY = """
   <h2 class="cmp-h2 reveal">장비 가격만 비교하면,<br>실제 세척비용을 알기 어렵습니다.</h2>
   <div class="auto-targets reveal" style="--reveal-delay:0.1s">
     <span>비교해야 할 요소</span>
-    <ul><li>세척시간 · 인력</li><li>생산 중단시간</li><li>분해 · 재조립</li><li>냉각 · 건조 시간</li><li>화학약품 · 폐수 처리</li><li>연마재 처리 비용</li><li>드라이아이스 · 압축공기</li><li>장비 유지보수</li><li>표면 손상 위험</li></ul>
+    <ul><li>세척 시간 · 인력</li><li>생산 중단시간</li><li>분해 · 재조립</li><li>냉각 · 건조 시간</li><li>화학약품 · 폐수 처리</li><li>연마재 처리 비용</li><li>드라이아이스 · 압축공기</li><li>장비 유지보수</li><li>표면 손상 위험</li></ul>
   </div>
   <p class="mtc-quote reveal" style="--reveal-delay:0.16s">세척하는 시간뿐 아니라, <em>세척 때문에 멈추는 시간</em>까지 함께 비교해보세요.</p>
 </div>
@@ -11277,7 +11277,7 @@ ADOPT_BODY = """
   <div class="process-flow reveal" style="--reveal-delay:0.1s">
     <div class="step"><div class="num">1</div><h4>TEST</h4><p>실제 오염물 세척 가능성 확인</p></div>
     <div class="step"><div class="num">2</div><h4>DEMO</h4><p>작업자가 장비와 작업성 확인</p></div>
-    <div class="step"><div class="num">3</div><h4>RENTAL</h4><p>일정기간 생산현장에서 사용</p></div>
+    <div class="step"><div class="num">3</div><h4>RENTAL</h4><p>일정기간 생산 현장에서 사용</p></div>
     <div class="step"><div class="num">4</div><h4>PURCHASE</h4><p>적합한 조건 확인 후 도입</p></div>
     <div class="step"><div class="num">5</div><h4>AUTOMATION</h4><p>반복공정은 자동화 검토</p></div>
   </div>
@@ -11302,7 +11302,7 @@ ADOPT_BODY = """
     <div class="step"><div class="num">3</div><h4>SITE</h4><p>현장조건 확인</p></div>
     <div class="step"><div class="num">4</div><h4>UTILITY</h4><p>압축공기 · 드라이아이스</p></div>
     <div class="step"><div class="num">5</div><h4>EQUIPMENT</h4><p>장비 · 노즐 선정</p></div>
-    <div class="step"><div class="num">6</div><h4>VALIDATION</h4><p>Demo · Rental · 도입</p></div>
+    <div class="step"><div class="num">6</div><h4>VALIDATION</h4><p>데모 · 렌탈 · 도입</p></div>
     <div class="step"><div class="num">7</div><h4>SUPPORT</h4><p>교육 · 운영 · A/S</p></div>
   </div>
 </div>
@@ -11332,7 +11332,7 @@ ADOPT_BODY = """
       </details>
       <details class="faq-item">
         <summary><span class="faq-q" style="font-size: 25px">어떤 장비가 가장 좋나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>하나의 장비가 모든 작업에 가장 좋은 것은 아닙니다. 세척 대상과 오염물, 필요한 작업속도와 현장조건에 따라 달라집니다.</p></div>
+        <div class="faq-a"><p>하나의 장비가 모든 작업에 가장 좋은 것은 아닙니다. 세척 대상과 오염물, 필요한 작업 속도와 현장조건에 따라 달라집니다.</p></div>
       </details>
       <details class="faq-item">
         <summary><span class="faq-q" style="font-size: 25px">작업자가 별도 교육을 받아야 하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
@@ -11354,7 +11354,7 @@ ADOPT_BODY = """
   </div>
   <div class="cmp-cta-right">
     <div class="cmp-text">
-      <p>드라이아이스 세척은 세척 대상과 오염물, 작업환경에 따라 결과가 달라집니다.</p>
+      <p>드라이아이스 세척은 세척 대상과 오염물, 작업 환경에 따라 결과가 달라집니다.</p>
       <p>바테크는 실제 부품과 금형, 설비 또는 샘플을 이용한 테스트를 통해 세척 가능성, 필요한 작업 조건, 적합한 장비와 노즐을 함께 검토합니다.</p>
     </div>
     <div class="cmp-cta-btns">
@@ -11384,7 +11384,7 @@ ADOPT_BODY = """
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
@@ -11433,8 +11433,8 @@ AUTOMATION_BODY = """  <section class="subhero-parallax aut-hero-stage">
       </video>
       <div class="subhero-textbox">
         <span class="ind-hero-eyebrow">COLD JET × VATEK / INTEGRATED BLASTING SYSTEM</span>
-        <h1>생산 라인에 통합되는,<br><span class="bls-hero-accent">완전 자동화 세척.</span></h1>
-        <p class="bls-hero-main">드라이아이스 생산부터 블라스팅까지 한 대의 장비로. 반도체·전자, EV 배터리, 사출·자동차 생산라인과 배관 내부까지, 작업자 없이 연속 운전하는 Cold Jet 통합 블라스팅 시스템입니다.</p>
+        <h1>생산 라인에 통합하는,<br><span class="bls-hero-accent">드라이아이스 자동 세척.</span></h1>
+        <p class="bls-hero-main">로봇과 드라이아이스 블라스터를 생산 라인에 연계해 반복 세척과 표면 전처리를 자동화합니다. COMBI PCS 구성에서는 드라이아이스 생산·공급·분사까지 하나의 시스템으로 연결할 수 있으며, 자동화 범위는 대상 공정과 현장 조건에 따라 달라집니다.</p>
       </div>
       <div class="pel-hero-mask" aria-hidden="true">
         <img src="../assets/img/coldjet-logo.png" alt="" />
@@ -11512,7 +11512,7 @@ AUTOMATION_BODY = """  <section class="subhero-parallax aut-hero-stage">
   <section class="plt-section plt-category-select tint-hatch" id="models">
     <div class="wrap">
       <div class="plt-head">
-        <div><span class="plt-eyebrow">AUTOMATION LINEUP</span><h2 class="plt-title">완전 자동화 올인원부터<br>전용 로봇, 배관 내부 로봇까지.</h2></div>
+        <div><span class="plt-eyebrow">AUTOMATION LINEUP</span><h2 class="plt-title">생산·분사 통합 시스템부터<br>전용 로봇과 배관 내부 로봇까지.</h2></div>
         <p class="plt-lead">생산라인에 통합하는 COMBI PCS 시리즈, 타이어 금형 세척을 위해 로봇·블라스터·제어를 하나로 묶은 ASP-T, 배관·덕트 내부를 사람 대신 주행하며 세척하는 DUCT ROBOT, 그리고 표준 제품으로 해결되지 않는 현장을 위한 맞춤 제작 시스템. 제품을 선택하면 사양과 구성 조건을 자세히 볼 수 있습니다.</p>
       </div>
       <div class="aut-lineup">
@@ -11591,11 +11591,11 @@ AUTOMATION_BODY = """  <section class="subhero-parallax aut-hero-stage">
           <div class="bls-showcase-body">
             <span class="bls-dot-eyebrow">INDUSTRY 4.0 CLEANING CELL</span>
             <h3>단일 로봇부터 다중 로봇 라인까지,<br>스스로 드라이아이스를 만들며 운전합니다.</h3>
-            <p>단일 또는 다중 로봇 암이 툴이나 제품을 정밀하게 분사하고, 4대 이상의 로봇이 지점마다 다른 강도 설정으로 동시에 작업합니다. COMBI PCS는 자체 생산한 드라이아이스로 운전해 공급 공백 없이 라인을 유지하고, 기존 PLC·디지털 시스템과 통합해 데이터 기반 세척과 예지 보전을 지원합니다.</p>
+            <p>반도체·전자 제조에서는 설비 구조와 공정 조건에 따라 정밀하고 반복 가능한 세척 조건이 요구됩니다. 드라이아이스 블라스팅은 물을 사용하지 않는 비마모성 세척 방식으로, 조건에 따라 인플레이스 세척과 로봇 셀 연계를 검토할 수 있습니다. 단일 또는 복수 로봇 구성으로 공정에 맞는 자동화 시스템을 구성할 수 있으며, COMBI PCS는 자체 생산한 드라이아이스로 운전해 공급 공백 없이 라인을 유지합니다.</p>
             <ul class="aut-semi-points">
-              <li><b>비연마 · 비파괴</b>웨이퍼, 툴링, 미세 형상의 치수와 표면 마감을 바꾸지 않습니다.</li>
-              <li><b>무잔류 · 무수분</b>승화하는 드라이아이스는 2차 폐기물과 교차 오염을 남기지 않습니다.</li>
-              <li><b>분해 없는 인플레이스 세척</b>냉각·분해 없이 뜨거운 상태로 세척하고 즉시 공정을 재개합니다.</li>
+              <li><b>비마모성 매체</b>적절한 조건에서 표면 영향을 줄이며 세척합니다.</li>
+              <li><b>건식 공정</b>드라이아이스 자체는 승화해 세정 매체가 남지 않습니다.</li>
+              <li><b>인플레이스 적용</b>설비 구조와 안전 조건에 따라 분해·냉각 공정을 줄일 수 있습니다.</li>
             </ul>
           </div>
         </div>
@@ -11604,7 +11604,7 @@ AUTOMATION_BODY = """  <section class="subhero-parallax aut-hero-stage">
         <article class="aut-semi-card reveal">
           <div class="aut-semi-media"><img src="../assets/img/auto-semi-chamber.png" alt="폴리실리콘 CVD 반응기 내부 세척" loading="lazy" decoding="async" /></div>
           <span class="num">01</span><h3>폴리실리콘 · CVD 반응기</h3>
-          <p>반응기 내부의 실리콘 축적과 분진을 고압수·화학 스크러빙 대신 드라이아이스로 제거합니다. 내부 표면 손상 없이 불순물과 스크랩률을 낮춥니다.</p>
+          <p>반응기 내부의 실리콘 축적과 분진을 고압수·화학 스크러빙 대신 드라이아이스로 제거합니다. 표면 영향을 줄이면서 불순물 제거에 활용됩니다.</p>
         </article>
         <article class="aut-semi-card reveal" style="--reveal-delay:0.05s">
           <div class="aut-semi-media"><img src="../assets/img/auto-semi-robot-cabinet.png" alt="로봇 캐비닛에서 웨이퍼 공정 툴링 세척" loading="lazy" decoding="async" /></div>
@@ -11614,7 +11614,7 @@ AUTOMATION_BODY = """  <section class="subhero-parallax aut-hero-stage">
         <article class="aut-semi-card reveal" style="--reveal-delay:0.1s">
           <div class="aut-semi-media"><img src="../assets/img/auto-semi-mold-die.png" alt="반도체 몰딩 다이 인플레이스 세척" loading="lazy" decoding="async" /></div>
           <span class="num">03</span><h3>몰딩 · 다이 세척, 칩 후처리</h3>
-          <p>왁스·가스 축적으로 오염된 몰드와 다이를 뜨거운 상태에서 세척하고, 몰딩·레이저 커팅 후 남은 플라스틱 플래시와 접착제를 칩 에지 손상 없이 제거합니다.</p>
+          <p>왁스·가스 축적으로 오염된 몰드와 다이를 뜨거운 상태에서 세척하고, 몰딩·레이저 커팅 후 남은 플라스틱 플래시와 접착제 제거에 활용되며, 칩 에지에 대한 영향을 줄이는 조건으로 적용할 수 있습니다.</p>
         </article>
         <article class="aut-semi-card reveal" style="--reveal-delay:0.15s">
           <div class="aut-semi-media"><img src="../assets/img/auto-semi-pcb-inline.png" alt="PCB 인라인 드라이아이스 세척" loading="lazy" decoding="async" /></div>
@@ -11624,11 +11624,11 @@ AUTOMATION_BODY = """  <section class="subhero-parallax aut-hero-stage">
         <article class="aut-semi-card reveal" style="--reveal-delay:0.2s">
           <div class="aut-semi-media"><img src="../assets/img/auto-semi-pogo.png" alt="포고핀 테스트 소켓 세척" loading="lazy" decoding="async" /></div>
           <span class="num">05</span><h3>ATE 포고핀 · 테스트 소켓</h3>
-          <p>접촉 저항을 높이고 ‘가짜 불량’을 만드는 미세 분진과 플럭스를 비전도성·비연마 매체로 제거해, 금도금 접점을 손상 없이 복원하고 초회 수율을 높입니다.</p>
+          <p>포고핀과 테스트 소켓에 축적된 미세 분진과 플럭스 등의 오염물 제거에 활용되며, 접점 상태를 관리하는 세척 공정으로 적용할 수 있습니다.</p>
         </article>
         <article class="aut-semi-card is-note reveal" style="--reveal-delay:0.25s">
-          <span class="num">70+</span><h3>국가에서 검증된 프로세스</h3>
-          <p>Cold Jet은 약 300명의 직원과 30개 이상의 대리점이 70개 이상 국가의 설치 장비를 지원합니다. 바테크는 대한민국 공식 대리점으로 반도체·전자 현장의 테스트와 도입을 함께합니다.</p>
+          <span class="num">GLOBAL</span><h3>글로벌 서비스 네트워크</h3>
+          <p>Cold Jet의 글로벌 서비스 네트워크와 바테크의 국내 기술 지원을 연계합니다. 바테크는 대한민국 공식 대리점으로 반도체·전자 현장의 테스트와 도입을 함께합니다.</p>
           <a class="bls-textlink" href="../products/quote.html">반도체 공정 세척 테스트 문의 →</a>
         </article>
       </div>
@@ -11650,7 +11650,7 @@ AUTOMATION_BODY = """  <section class="subhero-parallax aut-hero-stage">
             <p>로봇 셀이 스마트폰 외관의 지문과 유분, 잔류물, 라벨 등을 수분 없이 제거합니다. 외관 상태를 일정하게 관리해 제품의 등급 분류와 재판매 준비를 돕습니다.</p>
           </div>
           <div class="bls-tech-copy">
-            <ul><li>외관 오염과 라벨을 제거해 등급 분류 과정 지원</li><li>자동 운전으로 수작업 세척의 처리량 한계 보완</li><li>물을 사용하지 않아 전자기기 세척에 적합</li></ul>
+            <ul><li>외관 오염과 라벨을 제거해 등급 분류 과정 지원</li><li>자동 운전으로 수작업 세척의 처리량 한계 보완</li><li>수분 사용을 줄여야 하는 전자기기 세척 공정에서 검토할 수 있습니다</li></ul>
           </div>
         </article>
         <article class="bls-tech reveal" style="--reveal-delay:0.06s">
@@ -11915,7 +11915,7 @@ NOZZLE_BODY = """  <section class="subhero-parallax noz-hero-stage aut-hero-stag
             <div class="rec-stats">
               <div><strong>0–3</strong><span>다이얼 4단계 · 펠렛부터 초미세 프래그멘팅까지</span></div>
               <div><strong>4<i>×</i></strong><span>경쟁 프래그멘팅 노즐 대비 막힘 저항성 (10분 연속 분사 시험)</span></div>
-              <div><strong>12–165<i>cfm</i></strong><span>정밀 노즐부터 고유량까지 공기 소비량 범위</span></div>
+              <div><strong>12–165 <i>cfm</i></strong><span>정밀 노즐부터 고유량까지 공기 소비량 범위</span></div>
             </div>
           </div>
         </div>
@@ -11926,26 +11926,26 @@ NOZZLE_BODY = """  <section class="subhero-parallax noz-hero-stage aut-hero-stag
   <section class="plt-section cmp-dark rec-how" id="nozzle-tech">
     <div class="wrap">
       <div class="plt-head">
-        <div><span class="plt-eyebrow">VARIABLE FRAGMENTING · MERN</span><h2 class="plt-title">다이얼 한 칸이<br>세척 강도를 결정합니다.</h2></div>
+        <div><span class="plt-eyebrow">VARIABLE FRAGMENTING · MERN</span><h2 class="plt-title">다이얼로<br>입자 분쇄 정도를 조절합니다.</h2></div>
         <p class="plt-lead">가변 노즐의 다이얼은 펠렛이 노즐을 통과하며 얼마나 쪼개지는지를 정합니다. 쪼개지지 않은 3 mm 펠렛은 가장 강하게, 잘게 쪼개진 입자는 넓고 부드럽게 표면을 세척합니다. 프래그멘팅은 노즐 목 하류의 초음속 구간에서 일어나 막힘 없이 작동합니다.</p>
       </div>
       <div class="noz-dial-grid">
-        <article class="noz-dial reveal"><span class="noz-dial-bar"></span><div class="dial"><b>0</b><span>PELLET</span></div><h3>펠렛 · 최대 강도</h3><p>3 mm 펠렛을 그대로 분사합니다. 고착 오염, 탄화물, 두꺼운 잔류물을 가장 빠르게 제거합니다.</p></article>
-        <article class="noz-dial reveal" style="--reveal-delay:0.05s"><span class="noz-dial-bar"></span><div class="dial"><b>1</b><span>MEDIUM</span></div><h3>중간 프래그멘팅</h3><p>강도를 유지하면서 제어력을 더합니다. 일반 생산설비와 금형 세척의 기본 설정입니다.</p></article>
-        <article class="noz-dial reveal" style="--reveal-delay:0.1s"><span class="noz-dial-bar"></span><div class="dial"><b>2</b><span>FINE</span></div><h3>미세 프래그멘팅</h3><p>힘과 정밀함의 균형. 도장면, 알루미늄, 얇은 판재처럼 손상에 민감한 표면에 적합합니다.</p></article>
+        <article class="noz-dial reveal"><span class="noz-dial-bar"></span><div class="dial"><b>0</b><span>PELLET</span></div><h3>펠렛 · 최대 강도</h3><p>3 mm 펠렛을 그대로 사용해 높은 세척력이 필요한 고착 오염에 적용합니다.</p></article>
+        <article class="noz-dial reveal" style="--reveal-delay:0.05s"><span class="noz-dial-bar"></span><div class="dial"><b>1</b><span>MEDIUM</span></div><h3>중간 프래그멘팅</h3><p>일반적인 설비와 금형 세척에 활용합니다.</p></article>
+        <article class="noz-dial reveal" style="--reveal-delay:0.1s"><span class="noz-dial-bar"></span><div class="dial"><b>2</b><span>FINE</span></div><h3>미세 프래그멘팅</h3><p>세척력과 표면 영향의 균형이 필요한 작업에 사용합니다.</p></article>
         <article class="noz-dial reveal" style="--reveal-delay:0.15s"><span class="noz-dial-bar"></span><div class="dial"><b>3</b><span>EXTRA FINE</span></div><h3>초미세 프래그멘팅</h3><p>가장 부드러운 세척. 전자 부품, 정밀 금형, 섬세한 기판 표면을 흠집 없이 세척합니다.</p></article>
       </div>
       <div class="noz-tech-grid">
         <article class="noz-tech reveal">
           <span class="bls-en">MERN TECHNOLOGY</span>
           <h3>Multiple Expansion Reflection Nozzle</h3>
-          <p>항공우주 분야에서 에너지 효율을 극대화하기 위해 쓰이는 노즐 설계 원리를 드라이아이스 블라스팅에 적용했습니다. 펠렛이 노즐 내부에서 부서지지 않고 온전히 가속되어, 분사 폭 전체에 균일한 세척력이 실립니다.</p>
-          <ul><li>펠렛 무결성 유지 · 균일한 분사 커버리지</li><li>NASA에서 사용하는 MERN 설계 원리</li><li>가변 V 시리즈 · 정밀 MC26M/MC29MH · 고유량 503M/505M에 적용</li></ul>
+          <p>Cold Jet의 일부 가변 프래그멘팅 노즐에는 특허 MERN(Multiple Expansion Reflection Nozzle) 기술이 적용됩니다. 해당 기술은 노즐 내부에서 펠렛 상태와 분사 커버리지를 관리하도록 설계되었습니다. 항공 분야에서도 사용되는 유사한 팽창·반사 설계 원리를 드라이아이스 블라스팅 노즐에 적용한 기술입니다.</p>
+          <ul><li>펠렛 상태와 분사 커버리지 관리</li><li>항공 분야의 팽창·반사 설계 원리 응용</li><li>가변 V 시리즈 · 정밀 MC26M/MC29MH · 고유량 503M/505M에 적용</li></ul>
         </article>
         <article class="noz-tech reveal" style="--reveal-delay:0.06s">
           <span class="bls-en">WHY VARIABLE</span>
           <h3>노즐 하나로 여러 작업을</h3>
-          <p>작업이 바뀔 때마다 노즐과 스크린, 호스를 갈아 끼우는 대신 다이얼만 돌립니다. 장비를 멈추는 시간이 줄고, 현장에 가져가야 하는 노즐 수도 줄어듭니다.</p>
+          <p>작업 중 노즐 교체 횟수를 줄이고, 다이얼만 돌려 조건을 바꿉니다. 장비를 멈추는 시간이 줄고, 현장에 가져가야 하는 노즐 수도 줄어듭니다.</p>
           <ul><li>다용도: 강한 오염부터 민감한 표면까지 한 노즐로</li><li>비용·시간 절감: 노즐 교체와 다운타임 제거</li><li>신뢰성: 초음속 구간에서 프래그멘팅되어 막힘 없음</li></ul>
         </article>
       </div>
@@ -11973,12 +11973,12 @@ NOZZLE_BODY = """  <section class="subhero-parallax noz-hero-stage aut-hero-stag
         <div class="noz-picker-body">
           <div class="noz-pgroup"><span class="noz-pgroup-label">SMART BLASTER</span><div class="noz-pgroup-chips">
             <button class="noz-chip" data-filter="pcs60" type="button"><b>Aero2 PCS ULTRA</b><small>마이크로파티클 · 3/4"</small></button>
-            <button class="noz-chip" data-filter="plt60" type="button"><b>Aero2 PLT ULTRA</b><small>펠릿 · 1" · 고유량</small></button>
+            <button class="noz-chip" data-filter="plt60" type="button"><b>Aero2 PLT ULTRA</b><small>펠렛 · 1" · 고유량</small></button>
             <button class="noz-chip" data-filter="mc2" type="button"><b>i³ MicroClean 2</b><small>정밀 · 1/2"</small></button>
           </div></div>
           <div class="noz-pgroup"><span class="noz-pgroup-label">PELLET BLASTER</span><div class="noz-pgroup-chips">
-            <button class="noz-chip" data-filter="aero40" type="button"><b>Aero 40FP</b><small>펠릿 · 100 cfm 이하</small></button>
-            <button class="noz-chip" data-filter="aero80" type="button"><b>Aero 80FP</b><small>펠릿 · Aero 전체</small></button>
+            <button class="noz-chip" data-filter="aero40" type="button"><b>Aero 40FP</b><small>펠렛 · 100 cfm 이하</small></button>
+            <button class="noz-chip" data-filter="aero80" type="button"><b>Aero 80FP</b><small>펠렛 · Aero 전체</small></button>
             <button class="noz-chip" data-filter="elite" type="button"><b>ELITE 20</b><small>IceTech 노즐</small></button>
             <button class="noz-chip" data-filter="icerocket" type="button"><b>IceRocket PLT</b><small>저유량 · 1/2"</small></button>
           </div></div>
@@ -11998,12 +11998,12 @@ NOZZLE_BODY = """  <section class="subhero-parallax noz-hero-stage aut-hero-stag
         <div class="noz-machine-note" data-machine="plt60"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero2 PLT ULTRA (PLT 60)</h3></div><p><span class="u-val" data-us='50–165 cfm' data-si='1.4–4.7 m³/min'>1.4–4.7 m³/min</span>, 1" 블라스트 경로, 최대 250 psi. 고유량(5xx) 노즐을 쓸 수 있는 장비로, 고착 오염과 넓은 면적에 가장 강한 세척력을 냅니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>523V2</b><small>협소부는</small><b>508V.8</b></div></div>
         <div class="noz-machine-note" data-machine="mc2"><div><span class="bls-en">RECOMMENDED FOR</span><h3>i³ MicroClean 2</h3></div><p><span class="u-val" data-us='12–50 cfm' data-si='0.3–1.4 m³/min'>0.3–1.4 m³/min</span> 쉐이브드 아이스 정밀 세척기의 2세대. 1/2" 어플리케이터에 MC 노즐(핀포인트 · 팬 · MERN)을 장착해 정밀 금형, 전자 부품, 복잡한 캐비티를 손상 없이 세척합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>MC26M</b><small>넓은 면은</small><b>MC88</b></div></div>
         <div class="noz-machine-note" data-machine="mc"><div><span class="bls-en">RECOMMENDED FOR</span><h3>i³ MicroClean</h3></div><p><span class="u-val" data-us='12–50 cfm' data-si='0.3–1.4 m³/min'>0.3–1.4 m³/min</span>의 탁상형 정밀 세척기. MicroClean 2와 같은 1/2" MC 노즐 체계를 사용합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>MC26M</b><small>미세 홈은</small><b>MC13</b></div></div>
-        <div class="noz-machine-note" data-machine="aero40"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero 40FP</h3></div><p>노즐 공기 소비량 100 cfm(2.8 m³/min) 이하만 지원하는 입문형 펠릿 블라스터. 저유량·표준 유량 노즐만 사용하며, 150 cfm 이상 고유량 노즐은 장착할 수 없습니다. 정밀 키트(MC88·MC31)는 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>저유량은</small><b>110V.6</b></div></div>
-        <div class="noz-machine-note" data-machine="aero80"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero 80FP</h3></div><p>80 lb 대용량 호퍼의 풀프레셔 펠릿 블라스터. 저유량부터 고유량(최대 165 cfm), 스페셜 앵글 노즐까지 Aero 노즐 전 라인업을 지원하며, 정밀 키트(MC88·MC31)도 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>523V2</b><small>넓은 면은</small><b>523V4</b></div></div>
+        <div class="noz-machine-note" data-machine="aero40"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero 40FP</h3></div><p>노즐 공기 소비량 100 cfm(2.8 m³/min) 이하만 지원하는 입문형 펠렛 블라스터. 저유량·표준 유량 노즐만 사용하며, 150 cfm 이상 고유량 노즐은 장착할 수 없습니다. 정밀 키트(MC88·MC31)는 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>저유량은</small><b>110V.6</b></div></div>
+        <div class="noz-machine-note" data-machine="aero80"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero 80FP</h3></div><p>80 lb 대용량 호퍼의 풀프레셔 펠렛 블라스터. 저유량부터 고유량(최대 165 cfm), 스페셜 앵글 노즐까지 Aero 노즐 전 라인업을 지원하며, 정밀 키트(MC88·MC31)도 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>523V2</b><small>넓은 면은</small><b>523V4</b></div></div>
         <div class="noz-machine-note" data-machine="elite"><div><span class="bls-en">RECOMMENDED FOR</span><h3>IceTech Elite 20</h3></div><p>3/4" 블라스트 호스, 2–16 bar. Aero 시리즈와 달리 IceTech 노즐 체계를 사용합니다. 라운드 · 플랫 · 콘 세 형태에 인서트 구경(Ø7–16 mm)을 바꿔 세척 강도를 조절하며, 연장 파이프와 벤드를 결합할 수 있습니다.</p><div class="noz-rec"><span>기본 구성</span><b>라운드 Ø8</b><small>넓은 면은</small><b>플랫 50 mm</b></div></div>
         <div class="noz-machine-note" data-machine="icerocket"><div><span class="bls-en">RECOMMENDED FOR</span><h3>IceRocket PLT</h3></div><p><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span> 저유량, 1/2" 컴팩트 어플리케이터. 소형 컴프레서(15 HP 권장)로 운용하는 입문형 장비라 1xx 저유량 노즐만 사용합니다. 자동차 하체·엔진룸, 소형 설비 세척용.</p><div class="noz-rec"><span>기본 구성</span><b>110V.6</b><small>짧은 부위는</small><b>106S.6</b></div></div>
-        <div class="noz-machine-note" data-machine="sdi"><div><span class="bls-en">RECOMMENDED FOR</span><h3>SDI Select 60</h3></div><p>쉐이브드 아이스와 3 mm 펠릿을 한 대로 전환하는 범용 모델. Aero 표준·고유량·가변·스페셜 노즐 전 라인업을 그대로 사용하며, 정밀 키트(MC88·MC31 어플리케이터)로 정밀 세척도 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>정밀 모드는</small><b>MC88</b></div></div>
-        <div class="noz-machine-note" data-machine="c100"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero C100</h3></div><p>전원 없는 완전 공압식 펠릿 블라스터. 노즐 공기 소비량 50–165 cfm(1.4–4.7 m³/min) 전 구간을 지원해 Aero 80FP와 동일한 노즐 라인업(저유량부터 고유량·스페셜까지)을 그대로 사용하며, 정밀 키트(MC88·MC31)도 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>저소음은</small><b>123V.7</b></div></div>
+        <div class="noz-machine-note" data-machine="sdi"><div><span class="bls-en">RECOMMENDED FOR</span><h3>SDI Select 60</h3></div><p>쉐이브드 아이스와 3 mm 펠렛을 한 대로 전환하는 범용 모델. Aero 표준·고유량·가변·스페셜 노즐 전 라인업을 그대로 사용하며, 정밀 키트(MC88·MC31 어플리케이터)로 정밀 세척도 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>정밀 모드는</small><b>MC88</b></div></div>
+        <div class="noz-machine-note" data-machine="c100"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero C100</h3></div><p>전원 없는 완전 공압식 펠렛 블라스터. 노즐 공기 소비량 50–165 cfm(1.4–4.7 m³/min) 전 구간을 지원해 Aero 80FP와 동일한 노즐 라인업(저유량부터 고유량·스페셜까지)을 그대로 사용하며, 정밀 키트(MC88·MC31)도 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>저소음은</small><b>123V.7</b></div></div>
         <div class="noz-machine-note" data-machine="eco2"><div><span class="bls-en">RECOMMENDED FOR</span><h3>E-CO2 150</h3></div><p>드라이아이스 + 연마재 혼합 분사용 표면처리 시스템. 연마재가 통과하는 전용 내마모 노즐과 어플리케이터를 사용하므로 일반 드라이아이스 노즐과 호환되지 않습니다.</p><div class="noz-rec"><span>전용 노즐 · 어플리케이터</span><b>별도 문의</b></div></div>
       </div>
       <div class="noz-nodefault is-active" id="nozNoDefault"><p>위에서 보유 장비를 먼저 선택해주세요.</p></div>
@@ -12026,7 +12026,7 @@ NOZZLE_BODY = """  <section class="subhero-parallax noz-hero-stage aut-hero-stag
         <div class="noz-media"><img src="../assets/img/nozzles/323V2.webp" alt="323V2 노즐" loading="lazy" decoding="async" /></div>
         <div class="noz-card-top"><span class="bls-prod-cat">VARIABLE · MERN</span><span class="bls-badge">BEST SELLER</span></div>
         <h3>323V2<small>PART # 5E0252</small></h3>
-        <p class="noz-pos">모든 작업에 대응하는 범용 표준. 다이얼 0–3으로 강도를 바꿔 한 개로 여러 작업을 처리합니다.</p>
+        <p class="noz-pos">다양한 일반 산업 세척에 사용하는 범용형. 다이얼 0–3으로 강도를 바꿔 한 개로 여러 작업을 처리합니다.</p>
         <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='2"' data-si='5.1 cm'>5.1 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='23"' data-si='58.4 cm'>58.4 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='2–4 lb/min' data-si='0.9–1.8 kg/min'>0.9–1.8 kg/min</span></dd></div></dl>
         <div class="noz-fit"><span>PCS 60</span><span>PLT 60</span><span>AERO2 ULTRA</span></div>
       </article>
@@ -12034,7 +12034,7 @@ NOZZLE_BODY = """  <section class="subhero-parallax noz-hero-stage aut-hero-stag
         <div class="noz-media"><img src="../assets/img/nozzles/523V2.webp" alt="523V2 노즐" loading="lazy" decoding="async" /></div>
         <div class="noz-card-top"><span class="bls-prod-cat">VARIABLE · MERN</span><span class="bls-badge">HIGH FLOW</span></div>
         <h3>523V2<small>PART # 5E0238</small></h3>
-        <p class="noz-pos">고유량 <span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span>으로 가장 강한 세척력. 고착 오염과 넓은 면적의 산업 설비에 적합합니다.</p>
+        <p class="noz-pos">고유량이 필요한 고착 오염과 넓은 면적의 산업 설비에 적합합니다.</p>
         <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='2"' data-si='5.1 cm'>5.1 cm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='23"' data-si='58.4 cm'>58.4 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='3.1–5.1 lb/min' data-si='1.4–2.3 kg/min'>1.4–2.3 kg/min</span></dd></div></dl>
         <div class="noz-fit"><span>PLT 60</span><span>AERO2 ULTRA</span></div>
       </article>
@@ -12138,7 +12138,7 @@ NOZZLE_BODY = """  <section class="subhero-parallax noz-hero-stage aut-hero-stag
         <div class="noz-media"><img src="../assets/img/nozzles/MC26M.webp" alt="MC26M 노즐" loading="lazy" decoding="async" /></div>
         <div class="noz-card-top"><span class="bls-prod-cat">PRECISION · MERN</span><span class="bls-badge">MICROCLEAN</span></div>
         <h3>MC26M<small>PART # 5E0284</small></h3>
-        <p class="noz-pos">MERN 기술을 적용한 정밀 노즐. 정밀 금형 캐비티와 전자 부품을 손상 없이 세척합니다.</p>
+        <p class="noz-pos">MERN 기술을 적용한 정밀 노즐. 정밀 금형 캐비티와 전자 부품처럼 표면 영향을 줄여야 하는 정밀 작업에 활용합니다.</p>
         <dl class="noz-spec"><div><dt>공기 소비량</dt><dd><span class="u-val" data-us='35 cfm' data-si='1.0 m³/min'>1.0 m³/min</span></dd></div><div><dt>분사 폭</dt><dd><span class="u-val" data-us='0.26"' data-si='6.6 mm'>6.6 mm</span></dd></div><div><dt>길이</dt><dd><span class="u-val" data-us='5"' data-si='12.7 cm'>12.7 cm</span></dd></div><div><dt>드라이아이스 공급</dt><dd><span class="u-val" data-us='0.4–0.9 lb/min' data-si='0.2–0.4 kg/min'>0.2–0.4 kg/min</span></dd></div></dl>
         <div class="noz-fit"><span>i³ MICROCLEAN</span><span>PCS 60</span></div>
       </article>
@@ -12711,7 +12711,7 @@ SUPPLY_BODY = """  <section class="subhero-parallax aut-hero-stage sup-hero-stag
           <div class="sup-form-media"><img src="../assets/img/supply-form-pellet.webp" alt="장갑 낀 손으로 쥔 펠렛 드라이아이스" loading="lazy" decoding="async" /><span class="sup-form-tag">FOR BLASTING</span></div>
           <div class="sup-form-body">
             <div class="sup-form-head"><h3>펠렛<small>PELLET · 01</small></h3><span class="sup-form-size">Ø1.7 / 3<i>mm</i></span></div>
-            <p>드라이아이스 블라스터가 요구하는 규격입니다. 장비 호퍼에서 노즐까지 막힘 없이 흘러야 하므로 굵기가 균일하고 밀도가 높아야 하며, 밀도가 곧 세척력입니다. 3 mm는 대부분의 블라스터에, 1.7 mm는 정밀·소형 장비에 사용합니다.</p>
+            <p>펠렛의 밀도와 균일한 상태는 장비의 공급 안정성과 세척 성능에 영향을 줍니다. 3 mm 펠렛은 많은 산업용 펠렛·PCS 블라스터에서 사용하는 대표적인 규격입니다. 1.7 mm 펠렛은 정밀·소형 장비용으로 VATEK에서 공급하며, 사용 가능한 장비는 모델별 사양을 확인해야 합니다.</p>
             <dl class="sup-spec">
               <div><dt>규격</dt><dd>Ø1.7 mm · Ø3 mm 원기둥 펠렛 <a class="bls-textlink" href="#particle-sizes">치수 보기 ↓</a></dd></div>
               <div><dt>주 용도</dt><dd>드라이아이스 세척(블라스팅) · 정밀 세척 · 실험실 소량 냉각</dd></div>
@@ -12926,7 +12926,7 @@ SUPPLY_BODY = """  <section class="subhero-parallax aut-hero-stage sup-hero-stag
       </div>
       <div class="sup-tips">
         <article class="sup-tip reveal"><span class="num">01</span><h3>밀폐하지 마세요</h3><p>승화한 CO<sub>2</sub> 가스는 부피가 크게 늘어 밀폐 용기 안에서 압력을 만듭니다. 뚜껑이 완전히 잠기지 않는 보냉 컨테이너에 보관하세요.</p></article>
-        <article class="sup-tip reveal" style="--reveal-delay:0.05s"><span class="num">02</span><h3>환기하세요</h3><p>차량으로 옮길 때는 창문을 열고, 실내에서는 환기가 되는 곳에 두세요. 밀폐된 공간에 CO<sub>2</sub>가 쌓이면 두통과 호흡 곤란이 올 수 있습니다.</p></article>
+        <article class="sup-tip reveal" style="--reveal-delay:0.05s"><span class="num">02</span><h3>환기하세요</h3><p>밀폐된 차량 실내나 환기가 제한된 공간에 보관하지 마세요. 드라이아이스는 승화하면서 CO<sub>2</sub> 가스를 발생시키므로 운송과 보관 중 충분한 환기를 확보하고, 사업장 안전 기준과 SDS를 따르세요.</p></article>
         <article class="sup-tip reveal" style="--reveal-delay:0.1s"><span class="num">03</span><h3>장갑과 집게를 쓰세요</h3><p>맨손으로 잡으면 순간 동상을 입습니다. 두꺼운 장갑과 긴소매를 착용하고, 계량은 집게나 스쿠프로 하세요.</p></article>
         <article class="sup-tip reveal" style="--reveal-delay:0.15s"><span class="num">04</span><h3>배수구에 버리지 마세요</h3><p>싱크대와 변기, 배수관에 넣으면 배관이 얼어 파손됩니다. 남은 양은 환기되는 곳에 두어 자연히 승화시키세요.</p></article>
       </div>
@@ -12946,11 +12946,11 @@ SUPPLY_BODY = """  <section class="subhero-parallax aut-hero-stage sup-hero-stag
       </details>
       <details class="faq-item">
         <summary><span class="faq-q" style="font-size: 25px">블라스터에는 꼭 정해진 규격의 펠렛을 써야 하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>네. Cold Jet을 포함한 대부분의 드라이아이스 블라스터는 Ø3 mm 펠렛을 기준으로 호퍼와 공급 장치가 설계되어 있습니다. 마이크로파티클 장비(PCS)도 3 mm 펠렛을 넣고 장비 안에서 더 작게 잘라 사용합니다. 일부 정밀·소형 장비는 Ø1.7 mm 펠렛을 사용합니다. 너겟과 블록은 장비에 넣을 수 없습니다.</p></div>
+        <div class="faq-a"><p>사용 중인 블라스터가 지정한 형태와 규격의 드라이아이스를 사용해야 합니다. 펠렛·PCS 계열에는 3 mm 펠렛을 사용하는 모델이 많습니다. MicroParticle 계열과 SDI Select 등 다른 형태의 드라이아이스를 사용하는 모델도 있으므로, 임의로 다른 규격을 투입하지 말고 해당 모델의 제조사 사양을 확인하세요.</p></div>
       </details>
       <details class="faq-item">
         <summary><span class="faq-q" style="font-size: 25px">배송 중에는 얼마나 줄어드나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>보냉 포장 기준으로 하루에 대략 5–10 %가 승화합니다. 형태가 작을수록, 외기 온도가 높을수록 빨리 줄어듭니다. 필요한 양에 10–20 % 여유를 두어 주문하시고, 도착하면 바로 보냉 컨테이너로 옮겨 주세요.</p></div>
+        <div class="faq-a"><p>드라이아이스의 승화량은 형태와 수량, 외기 온도, 용기의 단열 성능, 개폐 횟수와 운송 시간에 따라 크게 달라집니다. 필요 수량은 실제 보관·운송 조건을 기준으로 여유 있게 산정하는 것이 좋습니다. 도착하면 바로 보냉 컨테이너로 옮겨 주세요.</p></div>
       </details>
       <details class="faq-item">
         <summary><span class="faq-q" style="font-size: 25px">네 규격 외의 블록 치수도 가능한가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
@@ -12962,7 +12962,7 @@ SUPPLY_BODY = """  <section class="subhero-parallax aut-hero-stage sup-hero-stag
       </details>
       <details class="faq-item">
         <summary><span class="faq-q" style="font-size: 25px">의료·제약용은 무엇이 다른가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>형태는 승화가 느린 너겟이 기본이고, 장거리는 블록을 함께 넣습니다. 무엇보다 납품 시간이 중요하므로 수령 시간을 지정해 배송합니다. 원료와 위생 관련 서류가 필요한 경우 문의 시 함께 말씀해 주세요.</p></div>
+        <div class="faq-a"><p>의약품·검체 운송은 요구 온도 범위, 운송 시간과 검증된 포장 조건에 따라 드라이아이스의 형태와 수량을 결정해야 합니다. 특정 형태를 모든 의료·제약 운송의 기본값으로 일반화하지 않으며, 무엇보다 납품 시간이 중요하므로 수령 시간을 지정해 배송합니다. 원료와 위생 관련 서류가 필요한 경우 문의 시 함께 말씀해 주세요.</p></div>
       </details>
     </div>
     </div>
@@ -13022,11 +13022,11 @@ COMPARE_EQUIP_EXTRA_HEAD = (
     '\n<link rel="stylesheet" href="../assets/css/compare-equip-page.css?v=20260916-1" />'
 )
 
-COMPARE_EQUIP_BODY = '  <section class="subhero-parallax aut-hero-stage eqf-hero-stage">\n    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 장비 비교 · 추천받기</div>\n    <div class="hero-fit">\n      <img class="subhero-parallax-img" src="../assets/img/pelletizer-category-pellet-lineup.jpg" alt="Cold Jet 장비 라인업" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5" />\n      <div class="subhero-textbox">\n        <span class="ind-hero-eyebrow">EQUIPMENT FINDER / BLASTER · PELLETIZER · RECOVERY · AUTOMATION</span>\n        <h1>하려는 일을 고르면,<br><span class="bls-hero-accent">맞는 장비를 찾아 드립니다.</span></h1>\n        <p class="bls-hero-main">세척기 8종, 제조기 5종, 리커버리 4종, 자동화 시스템까지. 사양표를 다 읽지 않아도 됩니다. 질문 두세 개에 답하면 현장에 맞는 장비와 그 이유를 바로 보여 드립니다.</p>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-definition rec-cover tint-hatch" id="finder">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">EQUIPMENT FINDER</span><h2 class="plt-title">질문 세 개,<br>답은 하나의 장비로.</h2></div>\n        <p class="plt-lead">장비 선택은 결국 세 가지로 갈립니다. 무엇을 하려는지, 대상이 얼마나 민감한지 또는 규모가 얼마나 되는지, 그리고 현장 조건. 순서대로 고르면 1차 추천 모델과 대안, 다음 단계까지 정리해 드립니다. 결과는 출발점이며, 최종 사양은 테스트와 상담으로 확정합니다.</p>\n      </div>\n      <div class="eqf-finder reveal" id="eqf">\n        <div class="eqf-progress">\n          <span class="is-active" data-step="1">STEP 01<b>하려는 일</b></span>\n          <span data-step="2">STEP 02<b>대상 · 규모</b></span>\n          <span data-step="3">STEP 03<b>현장 조건</b></span>\n        </div>\n        <div class="eqf-stage">\n          <div class="eqf-q is-active" data-q="goal">\n            <span class="eqf-q-label">QUESTION 01</span>\n            <h3>무엇을 하려고 하시나요?</h3>\n            <p>가장 가까운 것을 하나 고르세요.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="goal" value="clean"><span class="eqf-opt-body"><span class="en">CLEAN</span><b>드라이아이스로 세척한다</b><span>금형·설비·부품의 오염, 이형제, 잔류물을 분해·수분 없이 제거</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="goal" value="produce"><span class="eqf-opt-body"><span class="en">PRODUCE</span><b>드라이아이스를 직접 생산한다</b><span>액체 CO<sub>2</sub>로 펠렛·너겟·블록을 현장에서 만들어 쓰거나 판매</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="goal" value="recover"><span class="eqf-opt-body"><span class="en">RECOVER</span><b>생산 중 배출되는 CO<sub>2</sub>를 회수한다</b><span>펠렛타이저 배출 가스를 다시 액화해 LCO<sub>2</sub> 비용 절감</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="goal" value="automate"><span class="eqf-opt-body"><span class="en">AUTOMATE</span><b>세척을 자동화한다</b><span>로봇·생산라인에 통합해 작업자 없이 반복 세척</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="goal" value="buy"><span class="eqf-opt-body"><span class="en">BUY</span><b>드라이아이스를 구매한다</b><span>장비 없이 펠렛·너겟·블록을 정기 또는 단건으로 공급받기</span></span></label>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="clean2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>세척 대상은 어느 쪽에 가깝나요?</h3>\n            <p>대상의 민감도가 매체(마이크로파티클 / 3 mm 펠렛)를 결정합니다.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="clean2" value="precision"><span class="eqf-opt-body"><span class="en">PRECISION</span><b>정밀 · 민감한 표면</b><span>전자·반도체 부품, 정밀 금형의 미세 형상, 의료·식품 설비의 얇은 오염</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="clean2" value="general"><span class="eqf-opt-body"><span class="en">GENERAL</span><b>일반 산업 세척</b><span>사출·고무·타이어 금형, 생산 설비, 이형제·그리스·잔류물</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="clean2" value="coating"><span class="eqf-opt-body"><span class="en">COATING &amp; RUST</span><b>도막 · 코팅 · 부식 제거</b><span>페인트·코팅층을 벗기거나 녹을 제거하는 표면처리</span></span></label>\n            </div>\n          </div>\n          <div class="eqf-q" data-q="clean3">\n            <span class="eqf-q-label">QUESTION 03</span>\n            <h3>현장 조건은 어떤가요?</h3>\n            <p>장비 크기와 호퍼 용량, 전원 조건을 정합니다.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="clean3" value="compact"><span class="eqf-opt-body"><span class="en">COMPACT</span><b>소형 · 이동이 잦음</b><span>좁은 공간, 계단·차량 이동, 소규모 작업이나 첫 도입</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="clean3" value="standard"><span class="eqf-opt-body"><span class="en">STANDARD</span><b>표준 산업 현장</b><span>공장 내 이동, 하루 수 시간 작업, 조건을 저장해 반복</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="clean3" value="heavy"><span class="eqf-opt-body"><span class="en">HIGH VOLUME</span><b>장시간 · 대용량 작업</b><span>넓은 면적, 교대 작업, 호퍼 재충전을 줄여야 함</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="clean3" value="nopower"><span class="eqf-opt-body"><span class="en">NO POWER</span><b>전원 사용 불가 · 공압만</b><span>전기 인입이 어렵거나 전기 사용을 피해야 하는 구역</span></span></label>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="produce2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>시간당 얼마나 생산해야 하나요?</h3>\n            <p>하루 사용량 또는 판매량을 가동 시간으로 나눈 값이 기준입니다.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="produce2" value="p80"><span class="eqf-opt-body"><span class="en">UP TO 80 kg/h</span><b>소량 · 자체 사용</b><span>블라스터 1–2대 운용, 실험실·소규모 현장</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="produce2" value="p120"><span class="eqf-opt-body"><span class="en">~120 kg/h</span><b>소형 상시 생산</b><span>여러 대의 블라스터 또는 소규모 공급</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="produce2" value="p350"><span class="eqf-opt-body"><span class="en">~350 kg/h</span><b>중형 생산</b><span>지역 공급, 콜드체인 물량 대응</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="produce2" value="p750"><span class="eqf-opt-body"><span class="en">~750 kg/h</span><b>대형 생산</b><span>드라이아이스 판매 사업, 다품종 생산</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="produce2" value="p1500"><span class="eqf-opt-body"><span class="en">1,000 kg/h+</span><b>산업 규모</b><span>대규모 공급 허브, 복수 압출 라인</span></span></label>\n            </div>\n          </div>\n          <div class="eqf-q" data-q="produce3">\n            <span class="eqf-q-label">QUESTION 03</span>\n            <h3>어떤 형태를 만들어야 하나요?</h3>\n            <p>펠렛 외의 형태는 후속 장비(리포머·슬라이서)가 필요합니다.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="produce3" value="pellet"><span class="eqf-opt-body"><span class="en">PELLET ONLY</span><b>세척용 3 mm 펠렛만</b><span>블라스터 공급용, 소량 냉각용</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="produce3" value="forms"><span class="eqf-opt-body"><span class="en">MULTI-FORM</span><b>펠렛 + 너겟 · 블록 · 슬라이스</b><span>콜드체인·식품·행사 등 보냉용 판매까지</span></span></label>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="recover2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>회수할 라인의 펠렛타이저 규모는?</h3>\n            <p>회수기 용량은 생산 중 배출되는 CO<sub>2</sub> 가스량으로 정합니다. 라인 규모로 먼저 고르세요.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="recover2" value="r80"><span class="eqf-opt-body"><span class="en">SMALL LINE</span><b>PE 80 · PR120H 급</b><span>소형 라인 1대</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="recover2" value="r160"><span class="eqf-opt-body"><span class="en">MID LINE</span><b>PR350H 급</b><span>중형 라인 1대</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="recover2" value="r320"><span class="eqf-opt-body"><span class="en">LARGE LINE</span><b>PR750H 급</b><span>대형 라인 1대 또는 중형 2대</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="recover2" value="r3500"><span class="eqf-opt-body"><span class="en">PLANT</span><b>PR1500H · 복수 라인</b><span>공장 단위 회수</span></span></label>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="automate2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>무엇을 자동으로 세척하나요?</h3>\n            <p>대상에 따라 전용 시스템이 있습니다.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="automate2" value="line"><span class="eqf-opt-body"><span class="en">PRODUCTION LINE</span><b>생산라인 · 로봇 셀 통합</b><span>부품·제품을 컨베이어나 로봇으로 연속 세척, 대량 반복</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="automate2" value="tire"><span class="eqf-opt-body"><span class="en">TIRE MOLD</span><b>타이어 금형</b><span>가황 프레스 안의 금형을 분해 없이 로봇으로 세척</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="automate2" value="duct"><span class="eqf-opt-body"><span class="en">IN-PIPE</span><b>배관 · 덕트 내부</b><span>사람이 들어갈 수 없는 배기·덕트·텀블러 내벽</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="automate2" value="custom"><span class="eqf-opt-body"><span class="en">CUSTOM</span><b>그 외 · 맞춤 설계</b><span>표준 시스템으로 해결되지 않는 대상과 공정</span></span></label>\n            </div>\n          </div>\n\n          <div class="eqf-result" id="eqfResult">\n            <div class="eqf-summary" id="eqfSummary"></div>\n            <div class="eqf-result-grid">\n              <div class="eqf-pick">\n                <div>\n                  <span class="en">RECOMMENDED</span>\n                  <h3 id="eqfName"></h3>\n                  <span class="cat" id="eqfCat"></span>\n                  <p id="eqfWhy"></p>\n                  <a class="cta-btn" id="eqfLink" href="#">상세 보기</a>\n                </div>\n                <div class="eqf-pick-media" id="eqfMedia"><img id="eqfImg" alt="" /></div>\n              </div>\n              <div class="eqf-side">\n                <div class="eqf-alt" id="eqfAlt">\n                  <span class="en">ALTERNATIVE</span>\n                  <h4 id="eqfAltName"></h4>\n                  <p id="eqfAltWhy"></p>\n                  <a id="eqfAltLink" href="#">이 모델 보기 →</a>\n                </div>\n                <div class="eqf-next">\n                  <span class="en">NEXT STEP</span>\n                  <p id="eqfNext"></p>\n                  <ul>\n                    <li><a href="../rental/demo.html">현장 데모 · 세척 테스트 신청<span>→</span></a></li>\n                    <li><a href="../products/quote.html">이 구성으로 견적 요청<span>→</span></a></li>\n                    <li><a href="../rental/vrental.html">먼저 렌탈로 써보기<span>→</span></a></li>\n                  </ul>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class="eqf-nav">\n            <button type="button" class="plt-step-back" id="eqfBack" disabled>이전</button>\n            <p class="eqf-hint" id="eqfHint">항목을 선택한 뒤 다음으로 진행하세요.</p>\n            <button type="button" class="plt-step-next" id="eqfNext" disabled>다음 <i>→</i></button>\n          </div>\n          <div class="eqf-reset-row"><button type="button" class="eqf-back" id="eqfReset" hidden>처음부터 다시</button></div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section cmp-dark rec-how" id="how">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">HOW TO CHOOSE</span><h2 class="plt-title">장비 선택을 가르는<br>세 가지 기준.</h2></div>\n        <p class="plt-lead">모델 이름은 많지만 실제로 갈리는 지점은 셋뿐입니다. 어떤 매체로 세척하는지, 드라이아이스를 사서 쓸지 만들어 쓸지, 그리고 사람이 할지 로봇이 할지. 이 세 가지가 정해지면 후보는 두세 개로 줄어듭니다.</p>\n      </div>\n      <div class="eqf-axes">\n        <article class="eqf-axis reveal">\n          <span class="num">AXIS 01 · MEDIA</span>\n          <h3>마이크로파티클인가,<br>3 mm 펠렛인가.</h3>\n          <p>펠렛은 운동 에너지가 커서 두꺼운 고착 오염과 넓은 면적에 강합니다. 마이크로파티클은 펠렛을 장비 안에서 잘게 잘라 분사해 미세 형상과 민감한 표면을 다룹니다. 둘 다 필요하면 입자 크기를 바꾸는 PCS나 방식을 전환하는 SDI Select를 고릅니다.</p>\n          <dl><div><dt>정밀 · 민감</dt><dd>MICRO PARTICLE</dd></div><div><dt>일반 · 고착 오염</dt><dd>3 mm PELLET</dd></div><div><dt>둘 다</dt><dd>PCS · SDI SELECT</dd></div></dl>\n        </article>\n        <article class="eqf-axis reveal" style="--reveal-delay:0.06s">\n          <span class="num">AXIS 02 · SUPPLY</span>\n          <h3>드라이아이스를<br>사서 쓸까, 만들어 쓸까.</h3>\n          <p>사용량이 적고 간헐적이면 공급받는 것이 단순합니다. 매일 일정량을 쓰거나 신선한 펠렛이 중요하면 펠렛타이저로 현장 생산이 유리해지고, 생산량이 커지면 배출 CO<sub>2</sub>를 회수해 원료비를 줄이는 리커버리가 다음 단계입니다.</p>\n          <dl><div><dt>간헐적 · 소량</dt><dd>구매 · 공급</dd></div><div><dt>매일 일정량</dt><dd>PELLETIZER</dd></div><div><dt>대량 생산</dt><dd>+ CO<sub>2</sub> RECOVERY</dd></div></dl>\n        </article>\n        <article class="eqf-axis reveal" style="--reveal-delay:0.12s">\n          <span class="num">AXIS 03 · OPERATION</span>\n          <h3>사람이 할까,<br>로봇이 할까.</h3>\n          <p>대상이 매번 다르고 판단이 필요하면 수동 블라스터가 맞습니다. 같은 부품을 같은 조건으로 반복하고 사이클 타임이 정해져 있다면 로봇 통합이 품질과 처리량 모두에서 앞섭니다. 타이어 금형과 배관 내부는 전용 시스템이 있습니다.</p>\n          <dl><div><dt>다양한 대상 · 판단 필요</dt><dd>MANUAL BLASTER</dd></div><div><dt>동일 부품 반복</dt><dd>COMBI PCS + ROBOT</dd></div><div><dt>타이어 금형 · 배관</dt><dd>ASP-T · DUCT ROBOT</dd></div></dl>\n        </article>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section" id="tables">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">SIDE BY SIDE</span><h2 class="plt-title">카테고리별<br>한눈에 비교.</h2></div>\n        <p class="plt-lead">추천 결과를 옆 모델과 비교해 보세요. 표는 선택의 기준이 되는 항목만 담았고, 세부 사양은 각 모델 페이지에서 확인할 수 있습니다.</p>\n      </div>\n      <div class="eqf-tabs" role="tablist">\n        <button type="button" class="eqf-tab is-active" data-t="blaster">세척기 (블라스터)</button>\n        <button type="button" class="eqf-tab" data-t="pelletizer">제조기 (펠렛타이저)</button>\n        <button type="button" class="eqf-tab" data-t="recovery">CO<sub>2</sub> 리커버리</button>\n        <button type="button" class="eqf-tab" data-t="automation">자동화 시스템</button>\n      </div>\n      <div class="eqf-table is-active" data-t="blaster">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>모델</th><th>매체</th><th>이런 현장에</th><th>포지셔닝</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="blaster/aero2-ultra.html">Aero2® PCS ULTRA</a><small>SMART · PCS</small></td><td><b>MICRO PARTICLE</b><b>PELLET</b></td><td>정밀부터 일반까지 대상이 다양한 현장, 조건을 레시피로 저장해 반복</td><td>0.3–3 mm 입자 크기까지 설정하는 가장 넓은 조건 범위의 스마트 블라스터</td><td><a class="lnk" href="blaster/aero2-ultra.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/aero2-ultra.html">Aero2® PLT ULTRA</a><small>SMART · PELLET</small></td><td><b>PELLET</b></td><td>표준 산업 현장의 일반 세척, 디지털 조건 관리가 필요할 때</td><td>3 mm 펠렛으로 세척 조건을 디지털 설정·저장하는 스마트 펠렛 블라스터</td><td><a class="lnk" href="blaster/aero2-ultra.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/i3-microclean-2.html">i³ MicroClean® 2</a><small>SMART · MICRO</small></td><td><b>MICRO PARTICLE</b></td><td>전자·의료·식품 설비의 정밀 세척, 소형·이동식</td><td>디지털 제어와 IoT를 갖춘 단일호스 마이크로파티클 블라스터</td><td><a class="lnk" href="blaster/i3-microclean-2.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/i3-microclean.html">i³ MicroClean®</a><small>MICRO</small></td><td><b>MICRO PARTICLE</b></td><td>탁상·벤치 작업, 소형 부품 정밀 세척</td><td>드라이아이스 블록을 깎아 분사하는 탁상형 정밀 블라스터</td><td><a class="lnk" href="blaster/i3-microclean.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/aero-series.html">Aero® 40FP · 80FP</a><small>PELLET</small></td><td><b>PELLET</b></td><td>일반·중오염 산업 세척, 80FP는 장시간·대면적</td><td>풀프레셔 산업용 펠렛 블라스터 — 40 lb 소형 / 80 lb 대용량 호퍼</td><td><a class="lnk" href="blaster/aero-series.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/elite20-icerocket.html">ELITE 20 · IceRocket</a><small>PELLET · ENTRY</small></td><td><b>PELLET</b><b class="is-plain">MICRO (ELITE 20)</b></td><td>첫 도입, 소규모·이동이 잦은 현장, 세척 서비스</td><td>전문가급 성능을 갖춘 입문형 펠렛 블라스터</td><td><a class="lnk" href="blaster/elite20-icerocket.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/sdi-select-60.html">SDI Select™ 60</a><small>MICRO · PELLET</small></td><td><b>MICRO PARTICLE</b><b>PELLET</b></td><td>한 대로 정밀과 일반, 고압 작업까지 오가는 현장</td><td>더스팅 · 일반 · 고압 세 가지 방식을 한 대로 전환하는 범용 모델</td><td><a class="lnk" href="blaster/sdi-select-60.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/c100.html">Aero® C100</a><small>SPECIALTY</small></td><td><b>PELLET</b></td><td>전원 인입이 어렵거나 전기 사용을 피해야 하는 구역</td><td>전원 없이 압축공기만으로 작동하는 완전 공압식 블라스터</td><td><a class="lnk" href="blaster/c100.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/e-co2-150.html">E-CO2™ 150</a><small>SPECIALTY</small></td><td><b>PELLET + ABRASIVE</b></td><td>도막·코팅·부식 제거가 목적인 표면처리</td><td>드라이아이스 + 연마재 혼합 분사 표면처리 시스템</td><td><a class="lnk" href="blaster/e-co2-150.html">보기 →</a></td></tr>\n          </tbody>\n        </table></div>\n        <p class="eqf-table-note">모든 블라스터는 Ø3 mm 펠렛을 사용합니다(i³ MicroClean은 블록). 마이크로파티클 모델은 펠렛을 장비 안에서 잘라 분사합니다.</p>\n      </div>\n      <div class="eqf-table" data-t="pelletizer">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>모델</th><th>생산량</th><th>이런 현장에</th><th>비고</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="pelletizer/pe-80.html">PE 80</a><small>ENTRY</small></td><td><b>~80 kg/h</b></td><td>블라스터 1–2대 자체 공급, 실험실·소규모</td><td>소형 입문 모델, 이동 가능</td><td><a class="lnk" href="pelletizer/pe-80.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr120h.html">PR120H</a><small>R SERIES</small></td><td><b>~120 kg/h</b></td><td>소형 상시 생산, 다수 블라스터 운용</td><td>고밀도 펠렛, HMI 제어</td><td><a class="lnk" href="pelletizer/pr120h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr350h.html">PR350H</a><small>R SERIES</small></td><td><b>~350 kg/h</b></td><td>중형 생산, 지역 공급·콜드체인</td><td>가장 널리 쓰이는 중형 모델</td><td><a class="lnk" href="pelletizer/pr350h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr750h.html">PR750H</a><small>R SERIES</small></td><td><b>~750 kg/h</b></td><td>드라이아이스 판매 사업, 다품종</td><td>리포머·슬라이서 연계로 너겟·블록 생산</td><td><a class="lnk" href="pelletizer/pr750h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr1500h.html">PR1500H</a><small>R SERIES</small></td><td><b>~1,500 kg/h</b></td><td>산업 규모 공급 허브</td><td>복수 압출 헤드, 리커버리 결합 권장</td><td><a class="lnk" href="pelletizer/pr1500h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/special-forms.html">특수 형태 장비</a><small>REFORMER · SLICER</small></td><td><b class="is-plain">후속 장비</b></td><td>너겟·블록·슬라이스가 필요한 보냉용 판매</td><td>펠렛타이저 뒤에 연결</td><td><a class="lnk" href="pelletizer/special-forms.html">보기 →</a></td></tr>\n          </tbody>\n        </table></div>\n        <p class="eqf-table-note">생산량은 액체 CO<sub>2</sub> 공급 조건에 따라 달라지는 대표값입니다.</p>\n      </div>\n      <div class="eqf-table" data-t="recovery">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>모델</th><th>적합 라인</th><th>이런 현장에</th><th>비고</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="recovery/re-co2-80.html">RE-CO<sub>2</sub> 80</a></td><td><b>PE 80 · PR120H</b></td><td>소형 라인의 원료비 절감 시작</td><td>컴팩트 구성</td><td><a class="lnk" href="recovery/re-co2-80.html">보기 →</a></td></tr>\n            <tr><td><a href="recovery/re-co2-160.html">RE-CO<sub>2</sub> 160</a></td><td><b>PR350H</b></td><td>중형 라인 1대</td><td>모듈형, 증설 가능</td><td><a class="lnk" href="recovery/re-co2-160.html">보기 →</a></td></tr>\n            <tr><td><a href="recovery/re-co2-320-v2.html">RE-CO<sub>2</sub> 320 V2</a></td><td><b>PR750H</b></td><td>대형 라인 또는 중형 2대</td><td>2세대, 효율 개선</td><td><a class="lnk" href="recovery/re-co2-320-v2.html">보기 →</a></td></tr>\n            <tr><td><a href="recovery/re-co2-3500.html">RE-CO<sub>2</sub> 3500</a></td><td><b>PR1500H · 복수 라인</b></td><td>공장 단위 회수</td><td>대용량 플랜트형</td><td><a class="lnk" href="recovery/re-co2-3500.html">보기 →</a></td></tr>\n          </tbody>\n        </table></div>\n        <p class="eqf-table-note">회수기 용량은 실제 배출 가스량과 가동 시간으로 산정합니다. 위 매칭은 출발점입니다.</p>\n      </div>\n      <div class="eqf-table" data-t="automation">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>시스템</th><th>대상</th><th>구성</th><th>비고</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="automation.html#models">COMBI® PCS® 시리즈</a></td><td><b>생산라인 · 로봇 셀</b></td><td>펠렛타이저 + PCS 블라스터 일체형, 최대 4개 동시 분사</td><td>LCO<sub>2</sub>만 공급, 완전 자동화</td><td><a class="lnk" href="automation.html#models">보기 →</a></td></tr>\n            <tr><td><a href="automation.html#models">ASP-T</a></td><td><b>타이어 금형</b></td><td>KUKA 로봇 + PCS 60, 14"–22" 금형</td><td>프레스 내 인플레이스 세척</td><td><a class="lnk" href="automation.html#models">보기 →</a></td></tr>\n            <tr><td><a href="automation.html#models">DUCT ROBOT</a></td><td><b>배관 · 덕트 내부</b></td><td>Ø350–1,350 mm, 전후방 카메라</td><td>해체 없는 내부 세척</td><td><a class="lnk" href="automation.html#models">보기 →</a></td></tr>\n            <tr><td><a href="quote.html">맞춤형 자동화</a></td><td><b class="is-plain">그 외</b></td><td>공정 설계부터 설치·시운전까지</td><td>바테크 설계</td><td><a class="lnk" href="quote.html">상담 →</a></td></tr>\n          </tbody>\n        </table></div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section faq-section" id="faq">\n    <div class="wrap">\n    <div class="faq-head">\n      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>\n      <p class="faq-intro">장비를 고르는 단계에서 가장 많이 묻는 질문을 정리했습니다.</p>\n    </div>\n    <div class="faq-list">\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">추천 결과가 그대로 최종 사양인가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>아닙니다. 추천은 대상과 현장 조건으로 후보를 좁힌 출발점입니다. 실제 오염 샘플로 세척 테스트를 하고 압축공기·전원·드라이아이스 공급 조건을 확인한 뒤 모델과 노즐 구성을 확정합니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">마이크로파티클과 펠렛, 하나만 골라야 하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>대상이 한쪽으로 분명하면 전용 모델이 효율적입니다. 정밀 부품과 일반 설비를 한 현장에서 모두 다루면 입자 크기를 바꾸는 Aero2 PCS ULTRA나 방식을 전환하는 SDI Select 60처럼 겸용 모델을 고릅니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">펠렛타이저는 어느 정도 사용량부터 검토하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>매일 일정량을 쓰고 배송 시간과 승화 손실이 비용으로 느껴지기 시작하면 검토 시점입니다. 하루 사용량, 가동 일수, 현재 구매 단가를 알려주시면 구매와 생산의 비용을 비교해 드립니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">구매 전에 써볼 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>네. 현장 데모로 실제 대상에 세척 테스트를 하고, 렌탈로 일정 기간 운용해 본 뒤 구매를 결정할 수 있습니다. 추천 결과의 "다음 단계"에서 바로 신청할 수 있습니다.</p></div>\n      </details>\n    </div>\n    </div>\n  </section>\n\n  <section class="bls-sec bls-final last-freeze" id="eqf-final">\n    <div class="wrap">\n      <div class="bls-final-grid">\n        <div>\n          <span class="cmp-eyebrow">STILL UNSURE?</span>\n          <h2 class="cmp-h2">대상과 현장만 알려주세요.<br>장비는 저희가 고릅니다.</h2>\n        </div>\n        <div>\n          <div class="cmp-lead">\n            <p>세척 대상 사진이나 오염 종류, 하루 작업량, 압축공기·전원 조건을 알려주시면 적합한 모델과 노즐, 필요하면 생산·회수·자동화까지 묶어 제안합니다.</p>\n            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 테스트부터 설치, 교육, A/S까지 지원합니다.</p>\n          </div>\n          <div class="cmp-cta-btns">\n            <a class="cta-btn" href="../products/quote.html">장비 추천 · 견적 요청</a>\n            <a class="cmp-btn-ghost" href="../rental/demo.html">데모 테스트 신청</a>\n          </div>\n          <a class="bls-textlink" href="process.html">구매 프로세스 안내 보기 →</a>\n        </div>\n      </div>\n    </div>\n  </section>\n'
+COMPARE_EQUIP_BODY = '  <section class="subhero-parallax aut-hero-stage eqf-hero-stage">\n    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 장비 비교 · 추천받기</div>\n    <div class="hero-fit">\n      <img class="subhero-parallax-img" src="../assets/img/pelletizer-category-pellet-lineup.jpg" alt="Cold Jet 장비 라인업" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5" />\n      <div class="subhero-textbox">\n        <span class="ind-hero-eyebrow">EQUIPMENT FINDER / BLASTER · PELLETIZER · RECOVERY · AUTOMATION</span>\n        <h1>하려는 일을 고르면,<br><span class="bls-hero-accent">맞는 장비를 찾아 드립니다.</span></h1>\n        <p class="bls-hero-main">세척, 드라이아이스 생산, CO<sub>2</sub> 회수, 자동화와 드라이아이스 공급까지. 몇 가지 조건을 선택하면 우선 검토할 장비와 다음 단계를 확인할 수 있습니다.</p>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-definition rec-cover tint-hatch" id="finder">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">EQUIPMENT FINDER</span><h2 class="plt-title">몇 가지 질문으로,<br>검토할 장비를 좁혀보세요.</h2></div>\n        <p class="plt-lead">장비 선택은 결국 세 가지로 갈립니다. 무엇을 하려는지, 대상이 얼마나 민감한지 또는 규모가 얼마나 되는지, 그리고 현장 조건. 순서대로 고르면 1차 추천 모델과 대안, 다음 단계까지 정리해 드립니다. 결과는 출발점이며, 최종 사양은 테스트와 상담으로 확정합니다.</p>\n      </div>\n      <div class="eqf-finder reveal" id="eqf">\n        <div class="eqf-progress">\n          <span class="is-active" data-step="1">STEP 01<b>하려는 일</b></span>\n          <span data-step="2">STEP 02<b>대상 · 규모</b></span>\n          <span data-step="3">STEP 03<b>현장 조건</b></span>\n        </div>\n        <div class="eqf-stage">\n          <div class="eqf-q is-active" data-q="goal">\n            <span class="eqf-q-label">QUESTION 01</span>\n            <h3>무엇을 하려고 하시나요?</h3>\n            <p>가장 가까운 것을 하나 고르세요.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="goal" value="clean"><span class="eqf-opt-body"><span class="en">CLEAN</span><b>드라이아이스로 세척한다</b><span>금형·설비·부품의 오염, 이형제, 잔류물 제거 — 분해와 수분 사용을 줄이는 세척 방식을 검토</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="goal" value="produce"><span class="eqf-opt-body"><span class="en">PRODUCE</span><b>드라이아이스를 직접 생산한다</b><span>액체 CO<sub>2</sub>로 펠렛·너겟을 직접 생산하고, 필요하면 슬라이스·블록 생산 시스템을 연계</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="goal" value="recover"><span class="eqf-opt-body"><span class="en">RECOVER</span><b>생산 중 배출되는 CO<sub>2</sub>를 회수한다</b><span>펠렛타이저 배출 가스를 다시 액화해 LCO<sub>2</sub> 비용 절감</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="goal" value="automate"><span class="eqf-opt-body"><span class="en">AUTOMATE</span><b>세척을 자동화한다</b><span>로봇·생산라인에 통합해 작업자 개입을 줄이고 반복 세척 조건을 자동화</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="goal" value="buy"><span class="eqf-opt-body"><span class="en">BUY</span><b>드라이아이스를 구매한다</b><span>장비 없이 펠렛·너겟·블록을 정기 또는 단건으로 공급받기</span></span></label>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="clean2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>세척 대상은 어느 쪽에 가깝나요?</h3>\n            <p>표면 민감도는 입자 크기·압력·노즐과 장비 선택의 주요 기준 중 하나입니다.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="clean2" value="precision"><span class="eqf-opt-body"><span class="en">PRECISION</span><b>정밀 · 민감한 표면</b><span>전자·반도체 부품, 정밀 금형의 미세 형상, 의료·식품 설비의 얇은 오염</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="clean2" value="general"><span class="eqf-opt-body"><span class="en">GENERAL</span><b>일반 산업 세척</b><span>사출·고무·타이어 금형, 생산 설비, 이형제·그리스·잔류물</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="clean2" value="coating"><span class="eqf-opt-body"><span class="en">COATING &amp; RUST</span><b>도막 · 코팅 · 부식 제거</b><span>도막·코팅·부식 제거가 주목적이라면 E-CO2처럼 연마재를 함께 사용하는 특수 시스템도 검토할 수 있습니다</span></span></label>\n            </div>\n          </div>\n          <div class="eqf-q" data-q="clean3">\n            <span class="eqf-q-label">QUESTION 03</span>\n            <h3>현장 조건은 어떤가요?</h3>\n            <p>장비 크기와 호퍼 용량, 전원 조건을 정합니다.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="clean3" value="compact"><span class="eqf-opt-body"><span class="en">COMPACT</span><b>소형 · 이동이 잦음</b><span>좁은 공간, 계단·차량 이동, 소규모 작업이나 첫 도입</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="clean3" value="standard"><span class="eqf-opt-body"><span class="en">STANDARD</span><b>표준 산업 현장</b><span>공장 내 이동, 하루 수 시간 작업, 조건을 저장해 반복</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="clean3" value="heavy"><span class="eqf-opt-body"><span class="en">HIGH VOLUME</span><b>장시간 · 대용량 작업</b><span>넓은 면적, 교대 작업, 호퍼 재충전을 줄여야 함</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="clean3" value="nopower"><span class="eqf-opt-body"><span class="en">NO POWER</span><b>전원 사용 불가 · 공압만</b><span>전기 인입이 어렵거나 전기 사용을 피해야 하는 구역</span></span></label>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="produce2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>시간당 얼마나 생산해야 하나요?</h3>\n            <p>하루 사용량 또는 판매량을 가동 시간으로 나눈 값이 기준입니다.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="produce2" value="p80"><span class="eqf-opt-body"><span class="en">UP TO 80 kg/h</span><b>소량 · 자체 사용</b><span>블라스터 1–2대 운용, 실험실·소규모 현장</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="produce2" value="p120"><span class="eqf-opt-body"><span class="en">~120 kg/h</span><b>소형 상시 생산</b><span>여러 대의 블라스터 또는 소규모 공급</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="produce2" value="p350"><span class="eqf-opt-body"><span class="en">~350 kg/h</span><b>중형 생산</b><span>지역 공급, 콜드체인 물량 대응</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="produce2" value="p750"><span class="eqf-opt-body"><span class="en">~750 kg/h</span><b>대형 생산</b><span>드라이아이스 판매 사업, 다품종 생산</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="produce2" value="p1500"><span class="eqf-opt-body"><span class="en">1,000 kg/h+</span><b>산업 규모</b><span>대규모 공급 허브, 복수 압출 라인</span></span></label>\n            </div>\n          </div>\n          <div class="eqf-q" data-q="produce3">\n            <span class="eqf-q-label">QUESTION 03</span>\n            <h3>어떤 형태를 만들어야 하나요?</h3>\n            <p>펠렛 외의 형태는 후속 장비(리포머·슬라이서)가 필요합니다.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="produce3" value="pellet"><span class="eqf-opt-body"><span class="en">PELLET ONLY</span><b>세척용 3 mm 펠렛만</b><span>블라스터 공급용, 소량 냉각용</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="produce3" value="forms"><span class="eqf-opt-body"><span class="en">MULTI-FORM</span><b>펠렛 + 너겟 · 블록 · 슬라이스</b><span>콜드체인·식품·행사 등 보냉용 판매까지</span></span></label>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="recover2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>회수할 라인의 펠렛타이저 규모는?</h3>\n            <p>회수기 용량은 생산 중 배출되는 CO<sub>2</sub> 가스량으로 정합니다. 라인 규모로 먼저 고르세요.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="recover2" value="r80"><span class="eqf-opt-body"><span class="en">SMALL LINE</span><b>PE 80 · PR120H 급</b><span>소형 라인 1대</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="recover2" value="r160"><span class="eqf-opt-body"><span class="en">MID LINE</span><b>PR350H 급</b><span>중형 라인 1대</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="recover2" value="r320"><span class="eqf-opt-body"><span class="en">LARGE LINE</span><b>PR750H 급</b><span>대형 라인 1대 또는 중형 2대</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="recover2" value="r3500"><span class="eqf-opt-body"><span class="en">PLANT</span><b>PR1500H · 복수 라인</b><span>공장 단위 회수</span></span></label>\n            </div>\n          </div>\n\n          <div class="eqf-q" data-q="automate2">\n            <span class="eqf-q-label">QUESTION 02</span>\n            <h3>무엇을 자동으로 세척하나요?</h3>\n            <p>대상에 따라 전용 시스템이 있습니다.</p>\n            <div class="eqf-opts">\n              <label class="eqf-opt"><input type="radio" name="automate2" value="line"><span class="eqf-opt-body"><span class="en">PRODUCTION LINE</span><b>생산라인 · 로봇 셀 통합</b><span>부품·제품을 컨베이어나 로봇으로 연속 세척, 대량 반복</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="automate2" value="tire"><span class="eqf-opt-body"><span class="en">TIRE MOLD</span><b>타이어 금형</b><span>가황 프레스 안의 금형을 분해 없이 로봇으로 세척</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="automate2" value="duct"><span class="eqf-opt-body"><span class="en">IN-PIPE</span><b>배관 · 덕트 내부</b><span>사람이 들어갈 수 없는 배기·덕트·텀블러 내벽</span></span></label>\n              <label class="eqf-opt"><input type="radio" name="automate2" value="custom"><span class="eqf-opt-body"><span class="en">CUSTOM</span><b>그 외 · 맞춤 설계</b><span>표준 시스템으로 해결되지 않는 대상과 공정</span></span></label>\n            </div>\n          </div>\n\n          <div class="eqf-result" id="eqfResult">\n            <div class="eqf-summary" id="eqfSummary"></div>\n            <div class="eqf-result-grid">\n              <div class="eqf-pick">\n                <div>\n                  <span class="en">RECOMMENDED</span>\n                  <h3 id="eqfName"></h3>\n                  <span class="cat" id="eqfCat"></span>\n                  <p id="eqfWhy"></p>\n                  <a class="cta-btn" id="eqfLink" href="#">상세 보기</a>\n                </div>\n                <div class="eqf-pick-media" id="eqfMedia"><img id="eqfImg" alt="" /></div>\n              </div>\n              <div class="eqf-side">\n                <div class="eqf-alt" id="eqfAlt">\n                  <span class="en">ALTERNATIVE</span>\n                  <h4 id="eqfAltName"></h4>\n                  <p id="eqfAltWhy"></p>\n                  <a id="eqfAltLink" href="#">이 모델 보기 →</a>\n                </div>\n                <div class="eqf-next">\n                  <span class="en">NEXT STEP</span>\n                  <p id="eqfNext"></p>\n                  <ul>\n                    <li><a href="../rental/demo.html">현장 데모 · 세척 테스트 신청<span>→</span></a></li>\n                    <li><a href="../products/quote.html">이 구성으로 견적 요청<span>→</span></a></li>\n                    <li><a href="../rental/vrental.html">먼저 렌탈로 써보기<span>→</span></a></li>\n                  </ul>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class="eqf-nav">\n            <button type="button" class="plt-step-back" id="eqfBack" disabled>이전</button>\n            <p class="eqf-hint" id="eqfHint">항목을 선택한 뒤 다음으로 진행하세요.</p>\n            <button type="button" class="plt-step-next" id="eqfNext" disabled>다음 <i>→</i></button>\n          </div>\n          <div class="eqf-reset-row"><button type="button" class="eqf-back" id="eqfReset" hidden>처음부터 다시</button></div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section cmp-dark rec-how" id="how">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">HOW TO CHOOSE</span><h2 class="plt-title">장비 선택을 가르는<br>세 가지 기준.</h2></div>\n        <p class="plt-lead">모델 이름은 많지만 실제로 갈리는 지점은 셋뿐입니다. 어떤 매체로 세척하는지, 드라이아이스를 사서 쓸지 만들어 쓸지, 그리고 사람이 할지 로봇이 할지. 이 세 가지가 정해지면 후보는 두세 개로 줄어듭니다.</p>\n      </div>\n      <div class="eqf-axes">\n        <article class="eqf-axis reveal">\n          <span class="num">AXIS 01 · MEDIA</span>\n          <h3>마이크로파티클인가,<br>3 mm 펠렛인가.</h3>\n          <p>펠렛은 운동 에너지가 커서 두꺼운 고착 오염과 넓은 면적에 강합니다. 마이크로파티클은 펠렛을 장비 안에서 잘게 잘라 분사해 미세 형상과 민감한 표면을 다룹니다. 둘 다 필요하면 입자 크기를 바꾸는 PCS나 방식을 전환하는 SDI Select를 고릅니다.</p>\n          <dl><div><dt>정밀 · 민감</dt><dd>MICRO PARTICLE</dd></div><div><dt>일반 · 고착 오염</dt><dd>3 mm PELLET</dd></div><div><dt>둘 다</dt><dd>PCS · SDI SELECT</dd></div></dl>\n        </article>\n        <article class="eqf-axis reveal" style="--reveal-delay:0.06s">\n          <span class="num">AXIS 02 · SUPPLY</span>\n          <h3>드라이아이스를<br>사서 쓸까, 만들어 쓸까.</h3>\n          <p>사용량이 적고 간헐적이면 공급받는 것이 단순합니다. 매일 일정량을 쓰거나 신선한 펠렛이 중요하면 펠렛타이저로 현장 생산이 유리해지고, 생산량이 커지면 배출 CO<sub>2</sub>를 회수해 원료비를 줄이는 리커버리가 다음 단계입니다.</p>\n          <dl><div><dt>간헐적 · 소량</dt><dd>구매 · 공급</dd></div><div><dt>매일 일정량</dt><dd>PELLETIZER</dd></div><div><dt>대량 생산</dt><dd>+ CO<sub>2</sub> RECOVERY</dd></div></dl>\n        </article>\n        <article class="eqf-axis reveal" style="--reveal-delay:0.12s">\n          <span class="num">AXIS 03 · OPERATION</span>\n          <h3>사람이 할까,<br>로봇이 할까.</h3>\n          <p>대상이 매번 다르고 판단이 필요하면 수동 블라스터가 맞습니다. 같은 부품을 같은 조건으로 반복하고 사이클 타임이 정해져 있다면 로봇 통합이 품질과 처리량 모두에서 앞섭니다. 타이어 금형과 배관 내부는 전용 시스템이 있습니다.</p>\n          <dl><div><dt>다양한 대상 · 판단 필요</dt><dd>MANUAL BLASTER</dd></div><div><dt>동일 부품 반복</dt><dd>COMBI PCS + ROBOT</dd></div><div><dt>타이어 금형 · 배관</dt><dd>ASP-T · DUCT ROBOT</dd></div></dl>\n        </article>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section" id="tables">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">SIDE BY SIDE</span><h2 class="plt-title">카테고리별<br>한눈에 비교.</h2></div>\n        <p class="plt-lead">추천 결과를 옆 모델과 비교해 보세요. 표는 선택의 기준이 되는 항목만 담았고, 세부 사양은 각 모델 페이지에서 확인할 수 있습니다.</p>\n      </div>\n      <div class="eqf-tabs" role="tablist">\n        <button type="button" class="eqf-tab is-active" data-t="blaster">세척기 (블라스터)</button>\n        <button type="button" class="eqf-tab" data-t="pelletizer">제조기 (펠렛타이저)</button>\n        <button type="button" class="eqf-tab" data-t="recovery">CO<sub>2</sub> 리커버리</button>\n        <button type="button" class="eqf-tab" data-t="automation">자동화 시스템</button>\n      </div>\n      <div class="eqf-table is-active" data-t="blaster">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>모델</th><th>매체</th><th>이런 현장에</th><th>포지셔닝</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="blaster/aero2-ultra.html">Aero2® PCS ULTRA</a><small>SMART · PCS</small></td><td><b>MICRO PARTICLE</b><b>PELLET</b></td><td>정밀부터 일반까지 대상이 다양한 현장, 조건을 레시피로 저장해 반복</td><td>0.3–3 mm 입자 크기까지 설정하는 가장 넓은 조건 범위의 스마트 블라스터</td><td><a class="lnk" href="blaster/aero2-ultra.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/aero2-ultra.html">Aero2® PLT ULTRA</a><small>SMART · PELLET</small></td><td><b>PELLET</b></td><td>표준 산업 현장의 일반 세척, 디지털 조건 관리가 필요할 때</td><td>3 mm 펠렛으로 세척 조건을 디지털 설정·저장하는 스마트 펠렛 블라스터</td><td><a class="lnk" href="blaster/aero2-ultra.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/i3-microclean-2.html">i³ MicroClean® 2</a><small>SMART · MICRO</small></td><td><b>MICRO PARTICLE</b></td><td>전자·의료·식품 설비의 정밀 세척, 소형·이동식</td><td>디지털 제어와 IoT를 갖춘 단일호스 마이크로파티클 블라스터</td><td><a class="lnk" href="blaster/i3-microclean-2.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/i3-microclean.html">i³ MicroClean®</a><small>MICRO</small></td><td><b>MICRO PARTICLE</b></td><td>탁상·벤치 작업, 소형 부품 정밀 세척</td><td>드라이아이스 블록을 깎아 분사하는 탁상형 정밀 블라스터</td><td><a class="lnk" href="blaster/i3-microclean.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/aero-series.html">Aero® 40FP · 80FP</a><small>PELLET</small></td><td><b>PELLET</b></td><td>일반·중오염 산업 세척, 80FP는 장시간·대면적</td><td>풀프레셔 산업용 펠렛 블라스터 — 40 lb 소형 / 80 lb 대용량 호퍼</td><td><a class="lnk" href="blaster/aero-series.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/elite20-icerocket.html">ELITE 20 · IceRocket</a><small>PELLET · ENTRY</small></td><td><b>PELLET</b><b class="is-plain">MICRO (ELITE 20)</b></td><td>첫 도입, 소규모·이동이 잦은 현장, 세척 서비스</td><td>전문가급 성능을 갖춘 입문형 펠렛 블라스터</td><td><a class="lnk" href="blaster/elite20-icerocket.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/sdi-select-60.html">SDI Select™ 60</a><small>MICRO · PELLET</small></td><td><b>MICRO PARTICLE</b><b>PELLET</b></td><td>한 대로 정밀과 일반, 고압 작업까지 오가는 현장</td><td>더스팅 · 일반 · 고압 세 가지 방식을 한 대로 전환하는 범용 모델</td><td><a class="lnk" href="blaster/sdi-select-60.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/c100.html">Aero® C100</a><small>SPECIALTY</small></td><td><b>PELLET</b></td><td>전원 인입이 어렵거나 전기 사용을 피해야 하는 구역</td><td>전원 없이 압축공기만으로 작동하는 완전 공압식 블라스터</td><td><a class="lnk" href="blaster/c100.html">보기 →</a></td></tr>\n            <tr><td><a href="blaster/e-co2-150.html">E-CO2™ 150</a><small>SPECIALTY</small></td><td><b>PELLET + ABRASIVE</b></td><td>도막·코팅·부식 제거가 목적인 표면처리</td><td>드라이아이스 + 연마재 혼합 분사 표면처리 시스템</td><td><a class="lnk" href="blaster/e-co2-150.html">보기 →</a></td></tr>\n          </tbody>\n        </table></div>\n        <p class="eqf-table-note">모든 블라스터는 Ø3 mm 펠렛을 사용합니다(i³ MicroClean은 블록). 마이크로파티클 모델은 펠렛을 장비 안에서 잘라 분사합니다.</p>\n      </div>\n      <div class="eqf-table" data-t="pelletizer">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>모델</th><th>생산량</th><th>이런 현장에</th><th>비고</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="pelletizer/pe-80.html">PE 80</a><small>ENTRY</small></td><td><b>~80 kg/h</b></td><td>블라스터 1–2대 자체 공급, 실험실·소규모</td><td>소형 입문 모델, 이동 가능</td><td><a class="lnk" href="pelletizer/pe-80.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr120h.html">PR120H</a><small>R SERIES</small></td><td><b>~120 kg/h</b></td><td>소형 상시 생산, 다수 블라스터 운용</td><td>고밀도 펠렛, HMI 제어</td><td><a class="lnk" href="pelletizer/pr120h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr350h.html">PR350H</a><small>R SERIES</small></td><td><b>~350 kg/h</b></td><td>중형 생산, 지역 공급·콜드체인</td><td>가장 널리 쓰이는 중형 모델</td><td><a class="lnk" href="pelletizer/pr350h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr750h.html">PR750H</a><small>R SERIES</small></td><td><b>~750 kg/h</b></td><td>드라이아이스 판매 사업, 다품종</td><td>리포머·슬라이서 연계로 너겟·블록 생산</td><td><a class="lnk" href="pelletizer/pr750h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/pr1500h.html">PR1500H</a><small>R SERIES</small></td><td><b>~1,500 kg/h</b></td><td>산업 규모 공급 허브</td><td>복수 압출 헤드, 리커버리 결합 권장</td><td><a class="lnk" href="pelletizer/pr1500h.html">보기 →</a></td></tr>\n            <tr><td><a href="pelletizer/special-forms.html">특수 형태 장비</a><small>REFORMER · SLICER</small></td><td><b class="is-plain">후속 장비</b></td><td>너겟·블록·슬라이스가 필요한 보냉용 판매</td><td>펠렛타이저 뒤에 연결</td><td><a class="lnk" href="pelletizer/special-forms.html">보기 →</a></td></tr>\n          </tbody>\n        </table></div>\n        <p class="eqf-table-note">생산량은 액체 CO<sub>2</sub> 공급 조건에 따라 달라지는 대표값입니다.</p>\n      </div>\n      <div class="eqf-table" data-t="recovery">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>모델</th><th>적합 라인</th><th>이런 현장에</th><th>비고</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="recovery/re-co2-80.html">RE-CO<sub>2</sub> 80</a></td><td><b>PE 80 · PR120H</b></td><td>소형 라인의 원료비 절감 시작</td><td>컴팩트 구성</td><td><a class="lnk" href="recovery/re-co2-80.html">보기 →</a></td></tr>\n            <tr><td><a href="recovery/re-co2-160.html">RE-CO<sub>2</sub> 160</a></td><td><b>PR350H</b></td><td>중형 라인 1대</td><td>모듈형, 증설 가능</td><td><a class="lnk" href="recovery/re-co2-160.html">보기 →</a></td></tr>\n            <tr><td><a href="recovery/re-co2-320-v2.html">RE-CO<sub>2</sub> 320 V2</a></td><td><b>PR750H</b></td><td>대형 라인 또는 중형 2대</td><td>2세대, 효율 개선</td><td><a class="lnk" href="recovery/re-co2-320-v2.html">보기 →</a></td></tr>\n            <tr><td><a href="recovery/re-co2-3500.html">RE-CO<sub>2</sub> 3500</a></td><td><b>PR1500H · 복수 라인</b></td><td>공장 단위 회수</td><td>대용량 플랜트형</td><td><a class="lnk" href="recovery/re-co2-3500.html">보기 →</a></td></tr>\n          </tbody>\n        </table></div>\n        <p class="eqf-table-note">회수기 용량은 실제 배출 가스량과 가동 시간으로 산정합니다. 위 매칭은 출발점입니다.</p>\n      </div>\n      <div class="eqf-table" data-t="automation">\n        <div class="cmp-table-wrap"><table class="cmp-table">\n          <thead><tr><th>시스템</th><th>대상</th><th>구성</th><th>비고</th><th></th></tr></thead>\n          <tbody>\n            <tr><td><a href="automation.html#models">COMBI® PCS® 시리즈</a></td><td><b>생산라인 · 로봇 셀</b></td><td>펠렛타이저 + PCS 블라스터 일체형, 최대 4개 동시 분사</td><td>LCO<sub>2</sub>만 공급, 완전 자동화</td><td><a class="lnk" href="automation.html#models">보기 →</a></td></tr>\n            <tr><td><a href="automation.html#models">ASP-T</a></td><td><b>타이어 금형</b></td><td>KUKA 로봇 + PCS 60, 14"–22" 금형</td><td>프레스 내 인플레이스 세척</td><td><a class="lnk" href="automation.html#models">보기 →</a></td></tr>\n            <tr><td><a href="automation.html#models">DUCT ROBOT</a></td><td><b>배관 · 덕트 내부</b></td><td>Ø350–1,350 mm, 전후방 카메라</td><td>해체 없는 내부 세척</td><td><a class="lnk" href="automation.html#models">보기 →</a></td></tr>\n            <tr><td><a href="quote.html">맞춤형 자동화</a></td><td><b class="is-plain">그 외</b></td><td>공정 설계부터 설치·시운전까지</td><td>바테크 설계</td><td><a class="lnk" href="quote.html">상담 →</a></td></tr>\n          </tbody>\n        </table></div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section faq-section" id="faq">\n    <div class="wrap">\n    <div class="faq-head">\n      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>\n      <p class="faq-intro">장비를 고르는 단계에서 가장 많이 묻는 질문을 정리했습니다.</p>\n    </div>\n    <div class="faq-list">\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">추천 결과가 그대로 최종 사양인가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>아닙니다. 추천은 대상과 현장 조건으로 후보를 좁힌 출발점입니다. 실제 오염 샘플로 세척 테스트를 하고 압축공기·전원·드라이아이스 공급 조건을 확인한 뒤 모델과 노즐 구성을 확정합니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">마이크로파티클과 펠렛, 하나만 골라야 하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>대상이 한쪽으로 분명하면 전용 모델이 효율적입니다. 정밀 부품과 일반 설비를 한 현장에서 모두 다루면 입자 크기를 바꾸는 Aero2 PCS ULTRA나 방식을 전환하는 SDI Select 60처럼 겸용 모델을 고릅니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">펠렛타이저는 어느 정도 사용량부터 검토하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>매일 일정량을 쓰고 배송 시간과 승화 손실이 비용으로 느껴지기 시작하면 검토 시점입니다. 하루 사용량, 가동 일수, 현재 구매 단가를 알려주시면 구매와 생산의 비용을 비교해 드립니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">구매 전에 써볼 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>네. 현장 데모로 실제 대상에 세척 테스트를 하고, 렌탈로 일정 기간 운용해 본 뒤 구매를 결정할 수 있습니다. 추천 결과의 "다음 단계"에서 바로 신청할 수 있습니다.</p></div>\n      </details>\n    </div>\n    </div>\n  </section>\n\n  <section class="bls-sec bls-final last-freeze" id="eqf-final">\n    <div class="wrap">\n      <div class="bls-final-grid">\n        <div>\n          <span class="cmp-eyebrow">STILL UNSURE?</span>\n          <h2 class="cmp-h2">대상과 현장만 알려주세요.<br>장비는 저희가 고릅니다.</h2>\n        </div>\n        <div>\n          <div class="cmp-lead">\n            <p>세척 대상 사진이나 오염 종류, 하루 작업량, 압축공기·전원 조건을 알려주시면 적합한 모델과 노즐, 필요하면 생산·회수·자동화까지 묶어 제안합니다.</p>\n            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 테스트부터 설치, 교육, A/S까지 지원합니다.</p>\n          </div>\n          <div class="cmp-cta-btns">\n            <a class="cta-btn" href="../products/quote.html">장비 추천 · 견적 요청</a>\n            <a class="cmp-btn-ghost" href="../rental/demo.html">데모 테스트 신청</a>\n          </div>\n          <a class="bls-textlink" href="process.html">구매 프로세스 안내 보기 →</a>\n        </div>\n      </div>\n    </div>\n  </section>\n'
 
 COMPARE_EQUIP_SCRIPT = '  <script>\n  (function(){\n    var v=document.getElementById(\'autWhyVideo\'),btn=document.getElementById(\'autWhyPlayBtn\');\n    if (v && btn) {\n      btn.addEventListener(\'click\',function(){ if (v.paused) { v.play(); } else { v.pause(); } });\n      v.addEventListener(\'play\',function(){ btn.classList.add(\'is-playing\'); btn.querySelector(\'.bls-play-label\').textContent=\'일시정지\'; btn.querySelector(\'.bls-play-icon\').textContent=\'❙❙\'; });\n      v.addEventListener(\'pause\',function(){ btn.classList.remove(\'is-playing\'); btn.querySelector(\'.bls-play-label\').textContent=\'영상 재생\'; btn.querySelector(\'.bls-play-icon\').textContent=\'▶\'; });\n    }\n  })();\n  </script>\n  <script src="../assets/js/compare-equip.js?v=20260916-1"></script>\n  <script>\n  (function () {\n    var el = document.getElementById(\'aut-final\');\n    if (!el) return;\n    function sync() {\n      if (window.innerWidth <= 900) { el.style.top = \'\'; return; }\n      el.style.top = Math.min(0, window.innerHeight - el.offsetHeight) + \'px\';\n    }\n    sync();\n    window.addEventListener(\'resize\', sync);\n    if (\'ResizeObserver\' in window) { new ResizeObserver(sync).observe(el); }\n  })();\n  </script>\n'
 
-PROCESS_BODY = '  <section class="subhero-parallax aut-hero-stage prc-hero-stage">\n    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 구매 프로세스 안내</div>\n    <div class="hero-fit">\n      <video class="subhero-parallax-img" autoplay muted loop playsinline preload="auto" poster="https://images.pexels.com/videos/8170599/pexels-photo-8170599.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">\n        <source src="https://videos.pexels.com/video-files/8170599/8170599-hd_1920_1080_25fps.mp4" type="video/mp4" />\n        <source src="https://videos.pexels.com/video-files/8170599/uhd_25fps.mp4" type="video/mp4" />\n      </video>\n      <div class="subhero-textbox">\n        <span class="ind-hero-eyebrow">PURCHASE PROCESS / EQUIPMENT · DRY ICE SUPPLY</span>\n        <h1>테스트로 확인하고,<br><span class="bls-hero-accent">조건은 함께 정합니다.</span></h1>\n        <p class="bls-hero-main">장비 도입은 상담과 세척 테스트에서 시작해 모델과 구성, 결제 방식을 차례로 정하고 발주로 이어집니다. 드라이아이스 공급은 사용 패턴에 맞춰 연간 계약 또는 선결제로 진행합니다. 각 단계에서 필요한 것을 미리 알려 드립니다.</p>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-definition rec-cover tint-hatch" id="flow">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">EQUIPMENT PURCHASE FLOW</span><h2 class="plt-title">장비 도입,<br>여섯 단계로 진행됩니다.</h2></div>\n        <p class="plt-lead">고가 장비인 만큼 대부분의 고객사가 테스트 결과를 바탕으로 내부 검토를 거칩니다. 바테크는 단계마다 필요한 자료 — 테스트 결과, 사양서, Proposal — 를 준비해 사내 품의가 수월하도록 돕습니다. 일반적인 흐름은 아래와 같고, 순서와 기간은 현장 상황에 맞춰 조정합니다.</p>\n      </div>\n      <div class="prc-flow">\n        <article class="prc-step reveal"><span class="num"><i>01</i>TEST &amp; CONSULT</span><h3>테스트 및 상담</h3><p>세척 대상과 오염, 작업량, 압축공기·전원 조건을 확인합니다. 실제 시료로 세척 테스트를 하거나 데모·렌탈로 효과를 직접 확인할 수 있습니다.</p><span class="who"><b>바테크</b> 테스트 진행 · 결과 공유</span></article>\n        <article class="prc-step reveal" style="--reveal-delay:0.06s"><span class="num"><i>02</i>MODEL</span><h3>기계 모델 선정</h3><p>테스트 결과와 현장 조건을 기준으로 블라스터·펠렛타이저·리커버리 모델을 확정합니다. 후보가 둘이면 차이를 표로 정리해 드립니다.</p><span class="who"><b>함께</b> 후보 비교 · 모델 확정</span></article>\n        <article class="prc-step reveal" style="--reveal-delay:0.12s"><span class="num"><i>03</i>ACCESSORIES</span><h3>액세서리 선정</h3><p>노즐, 호스 길이, Applicator, 보냉 용기 등 작업성에 직접 닿는 구성을 정합니다. 테스트에서 효과가 확인된 노즐이 기준이 됩니다.</p><span class="who"><b>바테크</b> 구성 제안</span></article>\n        <article class="prc-step reveal"><span class="num"><i>04</i>PROPOSAL</span><h3>Proposal 검토</h3><p>장비·구성·가격·납기·보증 조건을 담은 제안서를 검토합니다. 사내 품의에 필요한 사양서와 비교 자료를 함께 제공합니다.</p><span class="who"><b>고객사</b> 내부 검토 · 품의</span></article>\n        <article class="prc-step reveal" style="--reveal-delay:0.06s"><span class="num"><i>05</i>PAYMENT</span><h3>결제 방식 결정</h3><p>현금, 장기 리스, 렌탈 후 인수, 할부 중 고객사 상황에 맞는 방식을 고릅니다. 예산 성격에 따라 적합한 방식이 다릅니다.</p><span class="who"><b>함께</b> 조건 협의</span></article>\n        <article class="prc-step reveal" style="--reveal-delay:0.12s"><span class="num"><i>06</i>PO &amp; CONTRACT</span><h3>발주(PO) · 계약</h3><p>발주서 또는 계약서로 확정하고 납기 일정을 잡습니다. 이후 납품, 설치·시운전, 운용 교육이 순서대로 이어집니다.</p><span class="who"><b>고객사</b> 발주 · <b>바테크</b> 납기 확정</span></article>\n      </div>\n      <div class="prc-after reveal">\n        <span class="bls-en">AFTER THE CONTRACT</span>\n        <ol><li>납품</li><li>설치 · 시운전</li><li>운용 교육</li><li>A/S · 소모품 공급</li></ol>\n        <a href="../support/install.html">설치 · 시운전 안내 →</a>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section" id="payment">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">PAYMENT OPTIONS</span><h2 class="plt-title">결제 방식,<br>네 가지 중에 고릅니다.</h2></div>\n        <p class="plt-lead">일시 구매가 부담이면 리스나 렌탈 후 인수처럼 비용을 나누는 방식도 있습니다. 세부 조건은 장비와 고객사 신용도에 따라 달라지므로, 상담 단계에서 가능한 방식을 함께 안내합니다.</p>\n      </div>\n      <div class="prc-figure reveal">\n        <img src="https://images.pexels.com/photos/8470836/pexels-photo-8470836.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" alt="계약서에 서명하는 손" loading="lazy" decoding="async" />\n        <div class="prc-figure-copy">\n          <span class="bls-en">HOW TO CHOOSE</span>\n          <h3>예산의 성격이<br>결제 방식을 정합니다.</h3>\n          <p>자본 지출로 잡을지, 월 비용으로 처리할지에 따라 맞는 방식이 다릅니다. 경비 처리가 필요하면 리스나 렌탈 후 인수가, 소유권을 바로 확보하려면 현금이나 할부가 맞습니다. 어느 쪽이든 Proposal 단계에서 조건을 비교해 드립니다.</p>\n          <dl><div><dt>소유권 우선</dt><dd>현금 · 할부</dd></div><div><dt>경비 처리</dt><dd>장기 리스 · 렌탈 후 인수</dd></div></dl>\n        </div>\n      </div>\n      <div class="prc-pay">\n        <article class="prc-pay-card reveal"><span class="bls-en">CASH</span><h3>현금 결제</h3><span class="terms">계약 시 30% · 납품 직후 70%</span><p>가장 단순한 방식입니다. 계약금을 입금하고 납품과 함께 잔금을 정산합니다.</p></article>\n        <article class="prc-pay-card reveal" style="--reveal-delay:0.06s"><span class="bls-en">LEASE</span><h3>장기 리스</h3><span class="terms">캐피탈 연계 · 경비 처리 가능</span><p>고객사 신용도에 따라 캐피탈사를 통해 진행합니다. 월 리스료로 비용을 분산하고 경비로 처리할 수 있습니다.</p></article>\n        <article class="prc-pay-card reveal" style="--reveal-delay:0.12s"><span class="bls-en">RENT-TO-OWN</span><h3>렌탈 후 인수</h3><span class="terms">1개월 단위 × 10개월 · 경비 처리 가능</span><p>10개월 동안 월 단위로 렌탈하며 사용하고, 기간이 끝나면 장비를 인수합니다. 도입 초기 부담을 줄이는 방식입니다.</p></article>\n        <article class="prc-pay-card reveal" style="--reveal-delay:0.18s"><span class="bls-en">INSTALLMENT</span><h3>할부</h3><span class="terms">바테크 직접 진행 · 최대 10개월</span><p>캐피탈을 거치지 않고 바테크와 직접 분할 결제합니다. 고객사 신용도에 따라 기간과 조건을 정합니다.</p></article>\n      </div>\n      <p class="prc-pay-note">위 조건은 대표적인 예시이며, 장비 종류와 계약 내용에 따라 달라질 수 있습니다.</p>\n      <div class="prc-extra reveal">\n        <div><span class="bls-en">OTHER REQUESTS</span><h3>이런 요청도<br>함께 검토합니다.</h3></div>\n        <ul>\n          <li><b>저가 장비를 원하실 때</b>인증 중고 장비를 안내합니다.</li>\n          <li><b>자동화를 원하실 때</b>로봇 · 생산라인 통합 구성을 설계합니다.</li>\n          <li><b>개발품이 필요할 때</b>맞춤 설계 · 제작 가능 여부를 검토합니다.</li>\n        </ul>\n        <a class="cta-btn" href="quote.html">바테크에 요청</a>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section cmp-dark rec-how" id="dryice">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">DRY ICE SUPPLY TERMS</span><h2 class="plt-title">드라이아이스는<br>사용 패턴에 맞춰 정합니다.</h2></div>\n        <p class="plt-lead">장비와 달리 드라이아이스는 반복 구매입니다. 매주 일정량을 쓰는 곳과 행사 한 번을 위해 사는 곳의 조건이 같을 수 없습니다. 그래서 두 가지 방식을 운영합니다.</p>\n      </div>\n      <div class="prc-plans">\n        <article class="prc-plan reveal">\n          <span class="bls-en">REGULAR USE · ANNUAL CONTRACT</span>\n          <h3>사용량이 규칙적이면<br>연간 계약 · 월 결제</h3>\n          <p>세척 장비를 운용하는 공장, 매일 출고가 있는 물류센터, 병원과 연구소처럼 사용량이 일정한 경우입니다. 연간 계약으로 단가와 배송 요일을 고정하고, 한 달 사용량을 월말에 한 번 정산합니다.</p>\n          <dl>\n            <div><dt>대상</dt><dd>주 1회 이상 정기 사용</dd></div>\n            <div><dt>단가</dt><dd>연간 물량 기준 협의 · 계약 기간 고정</dd></div>\n            <div><dt>결제</dt><dd><em>월 단위 후정산</em> · 세금계산서 발행</dd></div>\n            <div><dt>배송</dt><dd>요일 · 수량 고정, 변동 시 하루 전 조정</dd></div>\n          </dl>\n        </article>\n        <article class="prc-plan reveal" style="--reveal-delay:0.06s">\n          <span class="bls-en">ONE-TIME · SMALL QUANTITY</span>\n          <h3>소량 · 단발성이면<br>선결제 후 출고</h3>\n          <p>행사, 촬영, 장비 시험, 갑작스러운 냉동 운송처럼 날짜가 정해진 일회성 수요입니다. 형태·수량·날짜를 확정하고 선결제하면 출고일에 맞춰 생산·포장해 보냅니다.</p>\n          <dl>\n            <div><dt>대상</dt><dd>1회 또는 비정기 주문</dd></div>\n            <div><dt>단가</dt><dd>형태 · 수량 기준 견적</dd></div>\n            <div><dt>결제</dt><dd><em>출고 전 선결제</em> · 계좌이체</dd></div>\n            <div><dt>배송</dt><dd>수도권 직배송 · 그 외 지역 택배 · 화물</dd></div>\n          </dl>\n        </article>\n      </div>\n      <p class="prc-plans-note">선결제로 시작했더라도 사용이 규칙적으로 바뀌면 연간 계약으로 전환할 수 있습니다. 형태와 규격은 <a href="supply.html">드라이아이스 구매 · 공급</a>에서 확인하세요.</p>\n    </div>\n  </section>\n\n  <section class="plt-section tint-hatch" id="after">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">AFTER THE CONTRACT</span><h2 class="plt-title">계약 이후에도<br>절차는 이어집니다.</h2></div>\n        <p class="plt-lead">장비가 도착하는 날이 끝이 아닙니다. 설치와 시운전으로 성능을 확인하고, 작업자가 익숙해질 때까지 교육하며, 이후에는 점검과 소모품, 드라이아이스 공급까지 한 창구에서 지원합니다.</p>\n      </div>\n      <div class="prc-support">\n        <div class="prc-support-media reveal"><img src="https://images.pexels.com/photos/32845694/pexels-photo-32845694.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" alt="공장에서 태블릿으로 설비를 점검하는 엔지니어" loading="lazy" decoding="async" /></div>\n        <div class="prc-support-list">\n          <article class="prc-support-item reveal"><span class="num">01</span><div><h3>납품 · 설치 · 시운전</h3><p>전문 인력이 현장에 설치하고 압축공기·전원 조건을 확인한 뒤 시운전으로 성능을 검증합니다.</p></div><a href="../support/install.html">자세히 →</a></article>\n          <article class="prc-support-item reveal" style="--reveal-delay:0.06s"><span class="num">02</span><div><h3>운용 교육</h3><p>작업자 대상 장비 운용, 노즐 선택, 안전 수칙과 일상 점검을 교육합니다. 담당자가 바뀌면 다시 진행합니다.</p></div><a href="../support/education.html">자세히 →</a></article>\n          <article class="prc-support-item reveal" style="--reveal-delay:0.12s"><span class="num">03</span><div><h3>A/S · 소모품 · 드라이아이스</h3><p>정기 점검과 수리, 노즐·호스 등 소모품, 그리고 드라이아이스 공급까지 도입 이후의 운영을 지원합니다.</p></div><a href="../support/techsupport.html">자세히 →</a></article>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section faq-section" id="faq">\n    <div class="wrap">\n    <div class="faq-head">\n      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>\n      <p class="faq-intro">구매 절차와 결제 조건에 대해 가장 많이 묻는 질문을 정리했습니다.</p>\n    </div>\n    <div class="faq-list">\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">테스트는 어떻게 진행되나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>세척 대상 시료를 보내 주시거나 현장 데모로 진행합니다. 결과는 전후 사진과 조건(입자·압력·노즐)을 정리해 공유하므로 사내 검토 자료로 바로 쓸 수 있습니다. 장기간 시험이 필요하면 렌탈로 운용해 본 뒤 결정할 수 있습니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">발주 후 납기는 얼마나 걸리나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>모델과 재고, 구성 옵션에 따라 다릅니다. Proposal 단계에서 예상 납기를 함께 안내하고, 발주 시 일정을 확정합니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">렌탈 후 인수는 어떤 방식인가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>10개월 동안 월 단위로 렌탈하며 사용하고, 기간이 끝나면 장비를 인수하는 방식입니다. 렌탈 기간의 비용은 경비로 처리할 수 있으며, 인수 조건은 계약 시 확정합니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">드라이아이스 월 결제는 어떤 경우에 가능한가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>사용량이 규칙적이고 연간 계약을 맺은 고객사에 적용합니다. 처음에는 선결제로 시작하고, 사용 패턴이 안정되면 연간 계약과 월 결제로 전환하는 경우가 많습니다.</p></div>\n      </details>\n    </div>\n    </div>\n  </section>\n\n  <section class="bls-sec bls-final last-freeze" id="prc-final">\n    <div class="wrap">\n      <div class="bls-final-grid">\n        <div>\n          <span class="cmp-eyebrow">READY TO START?</span>\n          <h2 class="cmp-h2">어느 단계에 계시든,<br>다음 단계를 안내합니다.</h2>\n        </div>\n        <div>\n          <div class="cmp-lead">\n            <p>아직 장비를 정하지 못했다면 테스트부터, 모델이 정해졌다면 Proposal과 결제 조건부터 시작합니다. 세척 대상과 현장 조건을 알려주시면 지금 단계에 맞는 자료를 준비해 드립니다.</p>\n            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 테스트부터 설치, 교육, A/S까지 지원합니다.</p>\n          </div>\n          <div class="cmp-cta-btns">\n            <a class="cta-btn" href="quote.html">견적 · 상담 요청</a>\n            <a class="cmp-btn-ghost" href="../rental/demo.html">데모 테스트 신청</a>\n          </div>\n          <a class="bls-textlink" href="compare-equip.html">어떤 장비가 맞는지 먼저 보기 →</a>\n        </div>\n      </div>\n    </div>\n  </section>\n'
+PROCESS_BODY = '  <section class="subhero-parallax aut-hero-stage prc-hero-stage">\n    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 구매 프로세스 안내</div>\n    <div class="hero-fit">\n      <video class="subhero-parallax-img" autoplay muted loop playsinline preload="auto" poster="https://images.pexels.com/videos/8170599/pexels-photo-8170599.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">\n        <source src="https://videos.pexels.com/video-files/8170599/8170599-hd_1920_1080_25fps.mp4" type="video/mp4" />\n        <source src="https://videos.pexels.com/video-files/8170599/uhd_25fps.mp4" type="video/mp4" />\n      </video>\n      <div class="subhero-textbox">\n        <span class="ind-hero-eyebrow">PURCHASE PROCESS / EQUIPMENT · DRY ICE SUPPLY</span>\n        <h1>테스트로 확인하고,<br><span class="bls-hero-accent">조건은 함께 정합니다.</span></h1>\n        <p class="bls-hero-main">장비 도입은 상담과 세척 테스트에서 시작해 모델과 구성, 결제 방식을 차례로 정하고 발주로 이어집니다. 드라이아이스 공급은 사용 패턴에 맞춰 연간 계약 또는 선결제로 진행합니다. 각 단계에서 필요한 것을 미리 알려 드립니다.</p>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-definition rec-cover tint-hatch" id="flow">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">EQUIPMENT PURCHASE FLOW</span><h2 class="plt-title">장비 도입,<br>여섯 단계로 진행됩니다.</h2></div>\n        <p class="plt-lead">고가 장비인 만큼 대부분의 고객사가 테스트 결과를 바탕으로 내부 검토를 거칩니다. 바테크는 단계마다 필요한 자료 — 테스트 결과, 사양서, Proposal — 를 준비해 사내 품의가 수월하도록 돕습니다. 일반적인 흐름은 아래와 같고, 순서와 기간은 현장 상황에 맞춰 조정합니다.</p>\n      </div>\n      <div class="prc-flow">\n        <article class="prc-step reveal"><span class="num"><i>01</i>TEST &amp; CONSULT</span><h3>테스트 및 상담</h3><p>세척 대상과 오염, 작업량, 압축공기·전원 조건을 확인합니다. 실제 시료로 세척 테스트를 하거나 데모·렌탈로 효과를 직접 확인할 수 있습니다.</p><span class="who"><b>바테크</b> 테스트 진행 · 결과 공유</span></article>\n        <article class="prc-step reveal" style="--reveal-delay:0.06s"><span class="num"><i>02</i>MODEL</span><h3>기계 모델 선정</h3><p>테스트 결과와 현장 조건을 기준으로 블라스터·펠렛타이저·리커버리 모델을 확정합니다. 후보가 둘이면 차이를 표로 정리해 드립니다.</p><span class="who"><b>함께</b> 후보 비교 · 모델 확정</span></article>\n        <article class="prc-step reveal" style="--reveal-delay:0.12s"><span class="num"><i>03</i>ACCESSORIES</span><h3>액세서리 선정</h3><p>노즐, 호스 길이, Applicator, 보냉 용기 등 작업성에 직접 닿는 구성을 정합니다. 테스트에서 효과가 확인된 노즐이 기준이 됩니다.</p><span class="who"><b>바테크</b> 구성 제안</span></article>\n        <article class="prc-step reveal"><span class="num"><i>04</i>PROPOSAL</span><h3>Proposal 검토</h3><p>장비·구성·가격·납기·보증 조건을 담은 제안서를 검토합니다. 사내 품의에 필요한 사양서와 비교 자료를 함께 제공합니다.</p><span class="who"><b>고객사</b> 내부 검토 · 품의</span></article>\n        <article class="prc-step reveal" style="--reveal-delay:0.06s"><span class="num"><i>05</i>PAYMENT</span><h3>결제 방식 결정</h3><p>현금, 장기 리스, 렌탈 후 인수, 할부 중 고객사 상황에 맞는 방식을 고릅니다. 예산 성격에 따라 적합한 방식이 다릅니다.</p><span class="who"><b>함께</b> 조건 협의</span></article>\n        <article class="prc-step reveal" style="--reveal-delay:0.12s"><span class="num"><i>06</i>PO &amp; CONTRACT</span><h3>발주(PO) · 계약</h3><p>발주서 또는 계약서로 확정하고 납기 일정을 잡습니다. 이후 납품, 설치·시운전, 운용 교육이 순서대로 이어집니다.</p><span class="who"><b>고객사</b> 발주 · <b>바테크</b> 납기 확정</span></article>\n      </div>\n      <div class="prc-after reveal">\n        <span class="bls-en">AFTER THE CONTRACT</span>\n        <ol><li>납품</li><li>설치 · 시운전</li><li>운용 교육</li><li>A/S · 소모품 공급</li></ol>\n        <a href="../support/install.html">설치 · 시운전 안내 →</a>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section" id="payment">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">PAYMENT OPTIONS</span><h2 class="plt-title">가능한 결제 방식을<br>함께 검토합니다.</h2></div>\n        <p class="plt-lead">일시 구매가 부담이면 리스나 렌탈 후 인수처럼 비용을 나누는 방식도 있습니다. 세부 조건은 장비와 고객사 신용도에 따라 달라지므로, 상담 단계에서 가능한 방식을 함께 안내합니다.</p>\n      </div>\n      <div class="prc-figure reveal">\n        <img src="https://images.pexels.com/photos/8470836/pexels-photo-8470836.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" alt="계약서에 서명하는 손" loading="lazy" decoding="async" />\n        <div class="prc-figure-copy">\n          <span class="bls-en">HOW TO CHOOSE</span>\n          <h3>예산 집행 방식에 따라<br>검토할 결제 방식이 달라집니다.</h3>\n          <p>자본 지출로 잡을지, 월 비용으로 처리할지에 따라 검토할 방식이 다릅니다. 회계·세무 처리는 계약 형태와 고객사의 회계 기준에 따라 달라질 수 있으므로 내부 회계·세무 담당자와 확인이 필요합니다. 소유권을 바로 확보하려면 현금이나 할부가 맞습니다. 어느 쪽이든 Proposal 단계에서 조건을 비교해 드립니다.</p>\n          <dl><div><dt>소유권 우선</dt><dd>현금 · 할부</dd></div><div><dt>경비 처리</dt><dd>장기 리스 · 렌탈 후 인수</dd></div></dl>\n        </div>\n      </div>\n      <div class="prc-pay">\n        <article class="prc-pay-card reveal"><span class="bls-en">CASH</span><h3>현금 결제</h3><span class="terms">계약 시 30% · 납품 직후 70%</span><p>가장 단순한 방식입니다. 계약금을 입금하고 납품과 함께 잔금을 정산합니다.</p></article>\n        <article class="prc-pay-card reveal" style="--reveal-delay:0.06s"><span class="bls-en">LEASE</span><h3>장기 리스</h3><span class="terms">캐피탈 연계 · 경비 처리 가능</span><p>캐피탈 연계 가능 여부와 구체적인 조건은 심사와 계약에 따라 달라집니다. 월 리스료로 비용을 분산하는 방식입니다.</p></article>\n        <article class="prc-pay-card reveal" style="--reveal-delay:0.12s"><span class="bls-en">RENT-TO-OWN</span><h3>렌탈 후 인수</h3><span class="terms">1개월 단위 × 10개월 · 경비 처리 가능</span><p>월 단위로 렌탈하며 사용하고, 기간이 끝나면 장비를 인수합니다. 운영 여부와 인수 조건은 장비와 계약 내용에 따라 협의합니다.</p></article>\n        <article class="prc-pay-card reveal" style="--reveal-delay:0.18s"><span class="bls-en">INSTALLMENT</span><h3>할부</h3><span class="terms">바테크 직접 진행 · 최대 10개월</span><p>캐피탈을 거치지 않고 바테크와 직접 분할 결제합니다. 분할 결제 가능 여부와 기간은 장비 및 계약 조건에 따라 협의합니다.</p></article>\n      </div>\n      <p class="prc-pay-note">위 조건은 대표적인 예시이며, 장비 종류와 계약 내용에 따라 달라질 수 있습니다.</p>\n      <div class="prc-extra reveal">\n        <div><span class="bls-en">OTHER REQUESTS</span><h3>이런 요청도<br>함께 검토합니다.</h3></div>\n        <ul>\n          <li><b>예산 범위가 제한적인 경우</b>중고 장비 보유·공급 가능 여부를 확인합니다.</li>\n          <li><b>자동화를 원하실 때</b>로봇 · 생산라인 통합 구성을 설계합니다.</li>\n          <li><b>개발품이 필요할 때</b>맞춤 설계 · 제작 가능 여부를 검토합니다.</li>\n        </ul>\n        <a class="cta-btn" href="quote.html">바테크에 요청</a>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section cmp-dark rec-how" id="dryice">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">DRY ICE SUPPLY TERMS</span><h2 class="plt-title">드라이아이스는<br>사용 패턴에 맞춰 정합니다.</h2></div>\n        <p class="plt-lead">장비와 달리 드라이아이스는 반복 구매입니다. 매주 일정량을 쓰는 곳과 행사 한 번을 위해 사는 곳의 조건이 같을 수 없습니다. 그래서 두 가지 방식을 운영합니다.</p>\n      </div>\n      <div class="prc-plans">\n        <article class="prc-plan reveal">\n          <span class="bls-en">REGULAR USE · ANNUAL CONTRACT</span>\n          <h3>사용량이 규칙적이면<br>연간 계약 · 월 결제</h3>\n          <p>세척 장비를 운용하는 공장, 매일 출고가 있는 물류센터, 병원과 연구소처럼 사용량이 일정한 경우입니다. 연간 계약으로 단가와 배송 요일을 고정하고, 한 달 사용량을 월말에 한 번 정산합니다.</p>\n          <dl>\n            <div><dt>대상</dt><dd>주 1회 이상 정기 사용</dd></div>\n            <div><dt>단가</dt><dd>연간 물량 기준 협의 · 계약 기간 고정</dd></div>\n            <div><dt>결제</dt><dd><em>월 단위 후정산</em> · 세금계산서 발행</dd></div>\n            <div><dt>배송</dt><dd>요일 · 수량 고정, 변동 시 하루 전 조정</dd></div>\n          </dl>\n        </article>\n        <article class="prc-plan reveal" style="--reveal-delay:0.06s">\n          <span class="bls-en">ONE-TIME · SMALL QUANTITY</span>\n          <h3>소량 · 단발성이면<br>선결제 후 출고</h3>\n          <p>행사, 촬영, 장비 시험, 갑작스러운 냉동 운송처럼 날짜가 정해진 일회성 수요입니다. 형태·수량·날짜를 확정하고 선결제하면 출고일에 맞춰 생산·포장해 보냅니다.</p>\n          <dl>\n            <div><dt>대상</dt><dd>1회 또는 비정기 주문</dd></div>\n            <div><dt>단가</dt><dd>형태 · 수량 기준 견적</dd></div>\n            <div><dt>결제</dt><dd><em>출고 전 선결제</em> · 계좌이체</dd></div>\n            <div><dt>배송</dt><dd>수도권 직배송 · 그 외 지역 택배 · 화물</dd></div>\n          </dl>\n        </article>\n      </div>\n      <p class="prc-plans-note">선결제로 시작했더라도 사용이 규칙적으로 바뀌면 연간 계약으로 전환할 수 있습니다. 형태와 규격은 <a href="supply.html">드라이아이스 구매 · 공급</a>에서 확인하세요.</p>\n    </div>\n  </section>\n\n  <section class="plt-section tint-hatch" id="after">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">AFTER THE CONTRACT</span><h2 class="plt-title">계약 이후에도<br>절차는 이어집니다.</h2></div>\n        <p class="plt-lead">장비가 도착하는 날이 끝이 아닙니다. 설치·시운전 시 장비 운용에 필요한 교육을 진행하며, 이후에는 점검과 소모품, 드라이아이스 공급까지 한 창구에서 지원합니다.</p>\n      </div>\n      <div class="prc-support">\n        <div class="prc-support-media reveal"><img src="https://images.pexels.com/photos/32845694/pexels-photo-32845694.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" alt="공장에서 태블릿으로 설비를 점검하는 엔지니어" loading="lazy" decoding="async" /></div>\n        <div class="prc-support-list">\n          <article class="prc-support-item reveal"><span class="num">01</span><div><h3>납품 · 설치 · 시운전</h3><p>전문 인력이 현장에 설치하고 압축공기·전원 조건을 확인한 뒤 시운전으로 성능을 검증합니다.</p></div><a href="../support/install.html">자세히 →</a></article>\n          <article class="prc-support-item reveal" style="--reveal-delay:0.06s"><span class="num">02</span><div><h3>운용 교육</h3><p>작업자 대상 장비 운용, 노즐 선택, 안전 수칙과 일상 점검을 교육합니다. 담당자가 바뀌면 다시 진행합니다.</p></div><a href="../support/education.html">자세히 →</a></article>\n          <article class="prc-support-item reveal" style="--reveal-delay:0.12s"><span class="num">03</span><div><h3>A/S · 소모품 · 드라이아이스</h3><p>정기 점검과 수리, 노즐·호스 등 소모품, 그리고 드라이아이스 공급까지 도입 이후의 운영을 지원합니다.</p></div><a href="../support/techsupport.html">자세히 →</a></article>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section faq-section" id="faq">\n    <div class="wrap">\n    <div class="faq-head">\n      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>\n      <p class="faq-intro">구매 절차와 결제 조건에 대해 가장 많이 묻는 질문을 정리했습니다.</p>\n    </div>\n    <div class="faq-list">\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">테스트는 어떻게 진행되나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>세척 대상 시료를 보내 주시거나 현장 데모로 진행합니다. 결과는 전후 사진과 조건(입자·압력·노즐)을 정리해 공유하므로 사내 검토 자료로 바로 쓸 수 있습니다. 장기간 시험이 필요하면 렌탈로 운용해 본 뒤 결정할 수 있습니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">발주 후 납기는 얼마나 걸리나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>모델과 재고, 구성 옵션에 따라 다릅니다. Proposal 단계에서 예상 납기를 함께 안내하고, 발주 시 일정을 확정합니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">렌탈 후 인수는 어떤 방식인가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>10개월 동안 월 단위로 렌탈하며 사용하고, 기간이 끝나면 장비를 인수하는 방식입니다. 렌탈 기간의 비용은 경비로 처리할 수 있으며, 인수 조건은 계약 시 확정합니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">드라이아이스 월 결제는 어떤 경우에 가능한가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>사용량이 규칙적이고 연간 계약을 맺은 고객사에 적용합니다. 처음에는 선결제로 시작하고, 사용 패턴이 안정되면 연간 계약과 월 결제로 전환하는 경우가 많습니다.</p></div>\n      </details>\n    </div>\n    </div>\n  </section>\n\n  <section class="bls-sec bls-final last-freeze" id="prc-final">\n    <div class="wrap">\n      <div class="bls-final-grid">\n        <div>\n          <span class="cmp-eyebrow">READY TO START?</span>\n          <h2 class="cmp-h2">어느 단계에 계시든,<br>다음 단계를 안내합니다.</h2>\n        </div>\n        <div>\n          <div class="cmp-lead">\n            <p>아직 장비를 정하지 못했다면 테스트부터, 모델이 정해졌다면 Proposal과 결제 조건부터 시작합니다. 세척 대상과 현장 조건을 알려주시면 지금 단계에 맞는 자료를 준비해 드립니다.</p>\n            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 테스트부터 설치, 교육, A/S까지 지원합니다.</p>\n          </div>\n          <div class="cmp-cta-btns">\n            <a class="cta-btn" href="quote.html">견적 · 상담 요청</a>\n            <a class="cmp-btn-ghost" href="../rental/demo.html">데모 테스트 신청</a>\n          </div>\n          <a class="bls-textlink" href="compare-equip.html">어떤 장비가 맞는지 먼저 보기 →</a>\n        </div>\n      </div>\n    </div>\n  </section>\n'
 
 PROCESS_EXTRA_HEAD = '\n<link rel="stylesheet" href="../assets/css/pelletizer-page.css?v=20260914-10" />\n<link rel="stylesheet" href="../assets/css/recovery-page.css?v=20260916-11" />\n<link rel="stylesheet" href="../assets/css/compare-equip-page.css?v=20260917-1" />\n<link rel="stylesheet" href="../assets/css/process-page.css?v=20260917-1" />'
 
@@ -13042,13 +13042,13 @@ _CASES = [
 ]
 CASE_STUDIES_EXTRA_HEAD = '\n<link rel="stylesheet" href="../assets/css/pelletizer-page.css?v=20260914-10" />\n<link rel="stylesheet" href="../assets/css/resources-page.css?v=20260917-9" />'
 
-CASE_STUDIES_BODY = '  <section class="res-top">\n    <span class="res-top-word" aria-hidden="true">CASES</span>\n    <div class="wrap">\n      <div class="res-crumb"><a href="../index.html">홈</a> &gt; <a href="index.html">적용사례 · 자료</a> &gt; 케이스 스터디</div>\n      <div class="res-top-grid">\n        <div><span class="res-eyebrow">RESOURCES · CASE STUDIES</span><h1>현장이 바뀐 기록,<br><em>케이스 스터디.</em></h1></div>\n        <p class="res-top-lead">어떤 현장에서 무엇이 문제였고, 어떤 장비로 어떻게 풀었는지. 과제 · 적용 · 결과 세 단락으로 정리했습니다. <b>장비명이나 산업, 키워드로 검색</b>해 보세요.</p>\n      </div>\n      <div class="res-filterbar">\n        <label class="res-search"><input type="search" id="resSearch" placeholder="장비명 · 작업 · 고객사 검색" aria-label="검색" /><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></label>\n        <button type="button" class="res-reset" id="resReset">필터 초기화</button>\n      </div>\n    </div>\n  </section>\n\n  <section class="res-main tint-hatch" id="resRoot" data-type="cases" data-facet="industry">\n    <div class="wrap">\n      <div>\n        <div class="res-toolbar"><h2>케이스 스터디</h2><span class="res-count" id="resCount"></span></div>\n        <div class="res-toolbar-note"><div class="res-toolbar-note-inner"><b>우리 현장도 가능할까요?</b>세척 대상 사진과 오염 종류를 보내 주시면 비슷한 사례와 적합한 장비를 찾아 드립니다. <a href="../products/quote.html">문의하기 →</a></div></div>\n        <div class="res-grid" id="resGrid"></div>\n        <div class="res-empty" id="resEmpty" hidden>조건에 맞는 자료가 없습니다. 필터를 초기화해 보세요.</div>\n      </div>\n    </div>\n  </section>\n\n  <section class="res-cross">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">EXPLORE MORE</span><h2 class="plt-title">사례 다음엔,<br>영상과 솔루션으로.</h2></div>\n        <p class="plt-lead">현장 영상으로 장비가 움직이는 모습을 보고, 우리 산업과 작업에 맞는 세척 방식을 이어서 확인하세요.</p>\n      </div>\n      <div class="res-cross-grid">\n          <a class="res-link-card reveal" href="videos.html"><div class="res-link-media"><img src="../assets/img/blaster-operator-t.png" alt="" loading="lazy" decoding="async" /><span class="res-play" aria-hidden="true"></span></div><div class="res-link-body"><small>VIDEOS</small><b>동영상 보기</b><span>장비 소개와 현장 시연 영상. 카드를 누르면 바로 볼 수 있습니다.</span><i>영상 보러 가기 →</i></div></a>\n          <a class="res-link-card reveal" href="../cleaning/industry.html" style="--reveal-delay:0.06s"><div class="res-link-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>INDUSTRY SOLUTIONS</small><b>산업별 솔루션</b><span>자동차 · 식품 · 반도체 · 타이어 등 22개 산업별 맞춤 세척 방식.</span><i>산업별로 보기 →</i></div></a>\n          <a class="res-link-card reveal" href="../cleaning/task.html" style="--reveal-delay:0.12s"><div class="res-link-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>APPLICATIONS</small><b>작업별 솔루션</b><span>금형 세척부터 표면 전처리, 디버링까지 작업 목적에 맞는 방법.</span><i>작업별로 보기 →</i></div></a>\n      </div>\n    </div>\n  </section>\n'
+CASE_STUDIES_BODY = '  <section class="res-top">\n    <span class="res-top-word" aria-hidden="true">CASES</span>\n    <div class="wrap">\n      <div class="res-crumb"><a href="../index.html">홈</a> &gt; <a href="index.html">적용사례 · 자료</a> &gt; 케이스 스터디</div>\n      <div class="res-top-grid">\n        <div><span class="res-eyebrow">RESOURCES · CASE STUDIES</span><h1>현장이 바뀐 기록,<br><em>케이스 스터디.</em></h1></div>\n        <p class="res-top-lead">어떤 현장에서 무엇이 문제였고, 어떤 장비로 어떻게 풀었는지. 과제 · 적용 · 결과 세 단락으로 정리했습니다. <b>장비명이나 산업, 키워드로 검색</b>해 보세요.</p>\n      </div>\n      <div class="res-filterbar">\n        <label class="res-search"><input type="search" id="resSearch" placeholder="장비명 · 작업 · 고객사 검색" aria-label="검색" /><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></label>\n        <button type="button" class="res-reset" id="resReset">필터 초기화</button>\n      </div>\n    </div>\n  </section>\n\n  <section class="res-main tint-hatch" id="resRoot" data-type="cases" data-facet="industry">\n    <div class="wrap">\n      <div>\n        <div class="res-toolbar"><h2>케이스 스터디</h2><span class="res-count" id="resCount"></span></div>\n        <div class="res-toolbar-note"><div class="res-toolbar-note-inner"><b>우리 현장도 가능할까요?</b>세척 대상 사진과 오염 종류를 보내 주시면 비슷한 사례와 적합한 장비를 찾아 드립니다. <a href="../products/quote.html">문의하기 →</a></div></div>\n        <div class="res-grid" id="resGrid"></div>\n        <div class="res-empty" id="resEmpty" hidden>조건에 맞는 자료가 없습니다. 필터를 초기화해 보세요.</div>\n      </div>\n    </div>\n  </section>\n\n  <section class="res-cross">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">EXPLORE MORE</span><h2 class="plt-title">사례 다음엔,<br>영상과 솔루션으로.</h2></div>\n        <p class="plt-lead">현장 영상으로 장비가 움직이는 모습을 보고, 우리 산업과 작업에 맞는 세척 방식을 이어서 확인하세요.</p>\n      </div>\n      <div class="res-cross-grid">\n          <a class="res-link-card reveal" href="videos.html"><div class="res-link-media"><img src="../assets/img/blaster-operator-t.png" alt="" loading="lazy" decoding="async" /><span class="res-play" aria-hidden="true"></span></div><div class="res-link-body"><small>VIDEOS</small><b>동영상 보기</b><span>장비 소개와 현장 시연 영상. 카드를 누르면 바로 볼 수 있습니다.</span><i>영상 보러 가기 →</i></div></a>\n          <a class="res-link-card reveal" href="../cleaning/industry.html" style="--reveal-delay:0.06s"><div class="res-link-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>INDUSTRY SOLUTIONS</small><b>산업별 솔루션</b><span>자동차 · 식품 · 반도체 · 타이어 등 22개 산업·적용 분야의 세척 솔루션.</span><i>산업별로 보기 →</i></div></a>\n          <a class="res-link-card reveal" href="../cleaning/task.html" style="--reveal-delay:0.12s"><div class="res-link-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>APPLICATIONS</small><b>작업별 솔루션</b><span>금형 세척부터 표면 전처리, 디버링까지 작업 목적에 맞는 방법.</span><i>작업별로 보기 →</i></div></a>\n      </div>\n    </div>\n  </section>\n'
 
 CASE_STUDIES_SCRIPT = '  <script src="../assets/data/resources.js?v=20260917-4"></script>\n  <script src="../assets/js/resources.js?v=20260917-3"></script>\n'
 
 VIDEOS_EXTRA_HEAD = '\n<link rel="stylesheet" href="../assets/css/pelletizer-page.css?v=20260914-10" />\n<link rel="stylesheet" href="../assets/css/resources-page.css?v=20260917-9" />'
 
-VIDEOS_BODY = '  <section class="res-top">\n    <span class="res-top-word" aria-hidden="true">VIDEO</span>\n    <div class="wrap">\n      <div class="res-crumb"><a href="../index.html">홈</a> &gt; <a href="index.html">적용사례 · 자료</a> &gt; 동영상 보기</div>\n      <div class="res-top-grid">\n        <div><span class="res-eyebrow">RESOURCES · VIDEOS</span><h1>글보다 빠른 설명,<br><em>영상으로 보기.</em></h1></div>\n        <p class="res-top-lead">장비가 어떻게 작동하고 현장에서 무엇이 달라지는지 영상으로 확인하세요. 카드를 누르면 페이지 안에서 바로 재생됩니다. 영상은 <b>Cold Jet 공식 YouTube</b>와 연동됩니다.</p>\n      </div>\n      <div class="res-filterbar">\n        <label class="res-search"><input type="search" id="resSearch" placeholder="제품명 · 산업 검색" aria-label="검색" /><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></label>\n        <button type="button" class="res-reset" id="resReset">필터 초기화</button>\n      </div>\n    </div>\n  </section>\n\n  <section class="res-main tint-hatch" id="resRoot" data-type="videos" data-facet="category">\n    <div class="wrap">\n      <div>\n        <div class="res-toolbar"><h2>동영상</h2><span class="res-count" id="resCount"></span></div>\n        <div class="res-toolbar-note"><div class="res-toolbar-note-inner"><b>더 많은 영상</b>Cold Jet 공식 채널에서 최신 영상을 볼 수 있습니다. <a href="https://www.youtube.com/@dryiceblaster" target="_blank" rel="noopener">YouTube 채널 →</a></div></div>\n        <div class="res-grid" id="resGrid"></div>\n        <div class="res-empty" id="resEmpty" hidden>조건에 맞는 자료가 없습니다. 필터를 초기화해 보세요.</div>\n      </div>\n    </div>\n  </section>\n\n  <section class="res-cross">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">EXPLORE MORE</span><h2 class="plt-title">영상 다음엔,<br>사례와 솔루션으로.</h2></div>\n        <p class="plt-lead">영상으로 본 세척을 실제 현장 사례로 확인하고, 우리 산업과 작업에 맞는 방식을 이어서 찾아보세요.</p>\n      </div>\n      <div class="res-cross-grid">\n          <a class="res-link-card reveal" href="../cases/case-studies.html"><div class="res-link-media"><img src="../assets/img/rubber-tires-cleaning-tire-mold-while-hot-and-online-with-dry-ice-blasting.webp" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>CASE STUDIES</small><b>케이스 스터디</b><span>산업별 현장의 과제 · 적용 장비 · 결과를 세 단락으로 정리한 실제 사례.</span><i>사례 보러 가기 →</i></div></a>\n          <a class="res-link-card reveal" href="../cleaning/industry.html" style="--reveal-delay:0.06s"><div class="res-link-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>INDUSTRY SOLUTIONS</small><b>산업별 솔루션</b><span>자동차 · 식품 · 반도체 · 타이어 등 22개 산업별 맞춤 세척 방식.</span><i>산업별로 보기 →</i></div></a>\n          <a class="res-link-card reveal" href="../cleaning/task.html" style="--reveal-delay:0.12s"><div class="res-link-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>APPLICATIONS</small><b>작업별 솔루션</b><span>금형 세척부터 표면 전처리, 디버링까지 작업 목적에 맞는 방법.</span><i>작업별로 보기 →</i></div></a>\n      </div>\n    </div>\n  </section>\n'
+VIDEOS_BODY = '  <section class="res-top">\n    <span class="res-top-word" aria-hidden="true">VIDEO</span>\n    <div class="wrap">\n      <div class="res-crumb"><a href="../index.html">홈</a> &gt; <a href="index.html">적용사례 · 자료</a> &gt; 동영상 보기</div>\n      <div class="res-top-grid">\n        <div><span class="res-eyebrow">RESOURCES · VIDEOS</span><h1>글보다 빠른 설명,<br><em>영상으로 보기.</em></h1></div>\n        <p class="res-top-lead">장비가 어떻게 작동하고 현장에서 무엇이 달라지는지 영상으로 확인하세요. 카드를 누르면 페이지 안에서 바로 재생됩니다. 영상은 <b>Cold Jet 공식 YouTube</b>와 연동됩니다.</p>\n      </div>\n      <div class="res-filterbar">\n        <label class="res-search"><input type="search" id="resSearch" placeholder="제품명 · 산업 검색" aria-label="검색" /><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></label>\n        <button type="button" class="res-reset" id="resReset">필터 초기화</button>\n      </div>\n    </div>\n  </section>\n\n  <section class="res-main tint-hatch" id="resRoot" data-type="videos" data-facet="category">\n    <div class="wrap">\n      <div>\n        <div class="res-toolbar"><h2>동영상</h2><span class="res-count" id="resCount"></span></div>\n        <div class="res-toolbar-note"><div class="res-toolbar-note-inner"><b>더 많은 영상</b>Cold Jet 공식 채널에서 최신 영상을 볼 수 있습니다. <a href="https://www.youtube.com/@dryiceblaster" target="_blank" rel="noopener">YouTube 채널 →</a></div></div>\n        <div class="res-grid" id="resGrid"></div>\n        <div class="res-empty" id="resEmpty" hidden>조건에 맞는 자료가 없습니다. 필터를 초기화해 보세요.</div>\n      </div>\n    </div>\n  </section>\n\n  <section class="res-cross">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">EXPLORE MORE</span><h2 class="plt-title">영상 다음엔,<br>사례와 솔루션으로.</h2></div>\n        <p class="plt-lead">영상으로 본 세척을 실제 현장 사례로 확인하고, 우리 산업과 작업에 맞는 방식을 이어서 찾아보세요.</p>\n      </div>\n      <div class="res-cross-grid">\n          <a class="res-link-card reveal" href="../cases/case-studies.html"><div class="res-link-media"><img src="../assets/img/rubber-tires-cleaning-tire-mold-while-hot-and-online-with-dry-ice-blasting.webp" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>CASE STUDIES</small><b>케이스 스터디</b><span>산업별 현장의 과제 · 적용 장비 · 결과를 세 단락으로 정리한 실제 사례.</span><i>사례 보러 가기 →</i></div></a>\n          <a class="res-link-card reveal" href="../cleaning/industry.html" style="--reveal-delay:0.06s"><div class="res-link-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>INDUSTRY SOLUTIONS</small><b>산업별 솔루션</b><span>자동차 · 식품 · 반도체 · 타이어 등 22개 산업·적용 분야의 세척 솔루션.</span><i>산업별로 보기 →</i></div></a>\n          <a class="res-link-card reveal" href="../cleaning/task.html" style="--reveal-delay:0.12s"><div class="res-link-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>APPLICATIONS</small><b>작업별 솔루션</b><span>금형 세척부터 표면 전처리, 디버링까지 작업 목적에 맞는 방법.</span><i>작업별로 보기 →</i></div></a>\n      </div>\n    </div>\n  </section>\n'
 
 VIDEOS_SCRIPT = '  <script src="../assets/data/resources.js?v=20260917-3"></script>\n  <script src="../assets/js/resources.js?v=20260917-3"></script>\n'
 
@@ -13090,68 +13090,21 @@ CASES_LIBRARY_STUB = """<!doctype html>
 </html>
 """
 
-VRENTAL_BODY = """
-<p>V RENTAL은 바테크가 운영하는 드라이아이스 장비 렌탈 프로그램입니다. 장비를 구매하기 전 실제 현장에서
-성능을 검증하고 싶거나, 특정 프로젝트 · 성수기에만 한시적으로 장비가 필요한 경우에 활용할 수 있습니다.</p>
-<h2 style="font-size:20px; margin-top:32px;">이런 경우에 적합합니다</h2>
-<ul style="padding-left:20px; display:grid; gap:8px;">
-  <li>연간 사용 빈도가 낮아 구매보다 렌탈이 경제적인 경우</li>
-  <li>특정 프로젝트나 성수기에만 일시적으로 장비가 필요한 경우</li>
-  <li>구매 전 현장 적합성을 충분히 검증하고 싶은 경우</li>
-  <li>보유 장비의 고장 · 정비 기간 동안 대체 장비가 필요한 경우</li>
-</ul>
-<p>렌탈 기간, 요금, 재고 현황은 장비 모델과 시점에 따라 달라지므로 <a href="../products/quote.html">견적문의</a>를
-통해 안내받으실 수 있습니다.</p>
-"""
+VRENTAL_BODY = '\n  <section class="subhero-parallax aut-hero-stage vr-hero-stage">\n    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">렌탈 · 데모</a> &gt; V RENTAL 안내</div>\n    <div class="hero-fit">\n      <img class="subhero-parallax-img" src="../assets/img/stackdo-rental.jpg" alt="렌탈용 Cold Jet Elite 20 블라스터와 호스, 건 구성" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5" />\n      <div class="subhero-textbox">\n        <span class="ind-hero-eyebrow">V RENTAL / BLASTER · COMPRESSOR</span>\n        <h1>사기 전에,<br><span class="bls-hero-accent">먼저 써 보고 결정하세요.</span></h1>\n        <p class="bls-hero-main">며칠짜리 작업, 성수기 한 철, 구매 전 검증 — 필요한 기간만 Cold Jet 정품 블라스터를 빌려 쓰세요. 압축공기가 없는 현장이라면 50 Hp 디젤 콤프레샤까지 함께 준비합니다.</p>\n        <div class="vr-hero-tags"><span>Cold Jet 정품 블라스터 4종</span><span>50 Hp 디젤 콤프레샤</span><span>단기 · 월 단위</span><span>종료 시 구매 할인권</span></div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-definition rec-cover tint-hatch" id="check">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">RENT OR BUY?</span><h2 class="plt-title">렌탈이 맞는지,<br>네 가지만 골라 보세요.</h2></div>\n        <p class="plt-lead">같은 블라스터를 매일 쓰는 공장도 있고, 1년에 두 번 쓰는 현장도 있습니다. 장비가 같아도 답이 다른 이유입니다. 사용 빈도와 기간, 목적, 압축공기 조건을 고르면 지금 상황에 맞는 방향을 바로 보여 드립니다.</p>\n      </div>\n      <div class="vr-check">\n        <div class="vr-q-list" id="vrQuestions">\n          <div class="vr-q reveal" data-q="freq">\n            <div class="vr-q-label"><span class="num">Q1 · FREQUENCY</span><h3>블라스터를 얼마나 자주 쓰시나요?</h3></div>\n            <div class="vr-opts"><button class="vr-opt" type="button" data-v="rare">연 1–3회</button><button class="vr-opt" type="button" data-v="monthly">월 1–2회</button><button class="vr-opt" type="button" data-v="weekly">주 1회 이상</button></div>\n          </div>\n          <div class="vr-q reveal" data-q="dur" style="--reveal-delay:0.05s">\n            <div class="vr-q-label"><span class="num">Q2 · DURATION</span><h3>한 번 쓰면 얼마나 이어지나요?</h3></div>\n            <div class="vr-opts"><button class="vr-opt" type="button" data-v="days">며칠 – 2주</button><button class="vr-opt" type="button" data-v="months">1 – 3개월</button><button class="vr-opt" type="button" data-v="always">상시 운용</button></div>\n          </div>\n          <div class="vr-q reveal" data-q="goal" style="--reveal-delay:0.1s">\n            <div class="vr-q-label"><span class="num">Q3 · PURPOSE</span><h3>이번에 장비가 필요한 이유는?</h3></div>\n            <div class="vr-opts"><button class="vr-opt" type="button" data-v="job">정해진 작업 처리</button><button class="vr-opt" type="button" data-v="verify">구매 전 효과 검증</button><button class="vr-opt" type="button" data-v="backup">보유 장비 정비 · 고장 대체</button></div>\n          </div>\n          <div class="vr-q reveal" data-q="air" style="--reveal-delay:0.15s">\n            <div class="vr-q-label"><span class="num">Q4 · COMPRESSED AIR</span><h3>현장에 압축공기가 있나요?</h3></div>\n            <div class="vr-opts"><button class="vr-opt" type="button" data-v="have">30 Hp 이상 콤프레샤 보유</button><button class="vr-opt" type="button" data-v="none">없음 · 용량 부족</button><button class="vr-opt" type="button" data-v="unknown">잘 모름</button></div>\n          </div>\n        </div>\n        <aside class="vr-verdict is-empty reveal" id="vrVerdict" aria-live="polite">\n          <span class="bls-en">YOUR RESULT</span>\n          <div class="vr-verdict-meter" aria-hidden="true"><i></i><i></i><i></i><i></i></div>\n          <h3 id="vrTitle">항목을 고르면<br>지금 상황에 맞는 방향을 보여 드립니다.</h3>\n          <p id="vrBody">네 가지 모두 고르지 않아도 됩니다. 고른 항목만으로 우선 판단하고, 나머지는 상담에서 함께 확인합니다.</p>\n          <div class="vr-verdict-air" id="vrAir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h9a3 3 0 1 0-3-3"/><path d="M3 17h13a3 3 0 1 1-3 3"/><path d="M3 7h6"/></svg><span id="vrAirText"></span></div>\n          <div class="vr-verdict-cta"><a class="cta-btn" id="vrCta" href="../products/quote.html">렌탈 상담 요청</a><a class="ghost" id="vrCta2" href="#fleet">렌탈 장비 보기</a></div>\n          <button class="vr-verdict-reset" type="button" id="vrReset">선택 초기화</button>\n        </aside>\n      </div>\n      <p class="vr-check-note">요금과 재고는 모델과 시점에 따라 달라지므로 <a href="../products/quote.html">상담</a>으로 확인하실 수 있습니다. 직접 운용이 어렵다면 <a href="partners.html">인증 세척용역 업체</a>에 작업을 맡길 수도 있습니다.</p>\n    </div>\n  </section>\n\n  <section class="plt-section" id="fleet">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">RENTAL FLEET</span><h2 class="plt-title">렌탈 장비는 두 가지,<br>블라스터와 콤프레샤입니다.</h2></div>\n        <p class="plt-lead">렌탈 블라스터는 세척 강도와 대상에 따라 네 모델을 운용합니다. 모든 블라스터는 압축공기가 있어야 작동하므로 현장 콤프레샤 용량, 배관 직경, 전원을 먼저 확인합니다. 압축공기가 부족하면 협력사의 50 Hp 디젤 콤프레샤를 같은 일정으로 함께 렌탈할 수 있습니다.</p>\n      </div>\n      <div class="vr-fleet">\n        <article class="vr-model reveal">\n          <div class="vr-model-media"><span class="tag">BEST SELLER</span><img src="../assets/img/blaster-elite-20-white.png" alt="Cold Jet Elite 20" loading="lazy" decoding="async" /></div>\n          <div class="vr-model-body"><span class="bls-en">PELLET · GENERAL</span><h3>Elite 20</h3><p>가장 많이 나가는 범용 모델입니다. 금형, 생산 설비, 자동차 하부처럼 일반 산업 세척 대부분을 이 한 대로 처리합니다.</p></div>\n          <dl class="vr-model-req"><div><dt>압축공기</dt><dd>30 Hp 이상<small>5 bar 지속 조건</small></dd></div><div><dt>배관</dt><dd>¾″ 권장</dd></div><div><dt>전원</dt><dd>220 V · 60 Hz</dd></div><a href="../cases/videos.html">실물 조작 영상 →</a></dl>\n        </article>\n        <article class="vr-model reveal" style="--reveal-delay:0.06s">\n          <div class="vr-model-media"><span class="tag is-indoor">INDOOR ONLY</span><div class="ph"><b>PCS 60</b>사진 준비 중</div></div>\n          <div class="vr-model-body"><span class="bls-en">PELLET · PARTICLE CONTROL</span><h3>PCS 60</h3><p>펠렛 크기를 다이얼로 바꿔 강한 세척과 정밀 세척을 한 대로 오갑니다. 대상이 여러 가지인 현장, 실내 작업에 맞습니다.</p></div>\n          <dl class="vr-model-req"><div><dt>압축공기</dt><dd>30 Hp 이상<small>5 bar 지속 조건</small></dd></div><div><dt>배관</dt><dd>¾″ 권장</dd></div><div><dt>전원</dt><dd>220 V · 60 Hz</dd></div><a href="../cases/videos.html">실물 조작 영상 →</a></dl>\n        </article>\n        <article class="vr-model reveal" style="--reveal-delay:0.12s">\n          <div class="vr-model-media"><span class="tag">COMPACT</span><img src="../assets/img/blaster-icerocket-plt-white.png" alt="Cold Jet IceRocket PLT" loading="lazy" decoding="async" /></div>\n          <div class="vr-model-body"><span class="bls-en">PELLET · COMPACT</span><h3>IceRocket PLT</h3><p>작고 가벼워 이동이 잦은 작업과 좁은 공간에 맞습니다. 20 Hp 콤프레샤로 운용할 수 있어 압축공기 여유가 적은 현장에도 들어갑니다.</p></div>\n          <dl class="vr-model-req"><div><dt>압축공기</dt><dd>20 Hp 이상<small>5 bar 지속 조건</small></dd></div><div><dt>배관</dt><dd>½″ 권장</dd></div><div><dt>전원</dt><dd>220 V · 60 Hz</dd></div><a href="../cases/videos.html">실물 조작 영상 →</a></dl>\n        </article>\n        <article class="vr-model reveal" style="--reveal-delay:0.18s">\n          <div class="vr-model-media"><span class="tag is-indoor">INDOOR ONLY</span><img src="../assets/img/blaster-i3-microclean-2-white.png" alt="Cold Jet i3 MicroClean 2" loading="lazy" decoding="async" /></div>\n          <div class="vr-model-body"><span class="bls-en">MICROPARTICLE · PRECISION</span><h3>i³ MicroClean 2</h3><p>블록 드라이아이스를 얇게 깎아 미세 입자로 분사하는 정밀 세척용입니다. 전자 부품, 정밀 금형, 식품 설비처럼 표면 영향을 줄여야 할 때 씁니다.</p></div>\n          <dl class="vr-model-req"><div><dt>압축공기</dt><dd>20 Hp 이상<small>5 bar 지속 조건</small></dd></div><div><dt>배관</dt><dd>½″ 권장</dd></div><div><dt>전원</dt><dd>220 V · 60 Hz</dd></div><a href="../cases/videos.html">실물 조작 영상 →</a></dl>\n        </article>\n      </div>\n      <div class="vr-cond">\n        <div class="vr-cond-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h9a3 3 0 1 0-3-3"/><path d="M3 17h13a3 3 0 1 1-3 3"/><path d="M3 7h6"/></svg><div><b>압축공기</b>모든 블라스터는 압축공기가 있어야 작동합니다. 모델별 요구 용량을 5 bar 지속 조건으로 확인합니다.</div></div>\n        <div class="vr-cond-item reveal" style="--reveal-delay:0.06s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h10a4 4 0 0 1 4 4v8"/><path d="M4 4v8"/><path d="M14 20h6"/></svg><div><b>배관</b>배관 직경이 좁으면 압축공기가 충분히 전달되지 않습니다. ½″ 또는 ¾″ 권장 규격을 확인합니다.</div></div>\n        <div class="vr-cond-item reveal" style="--reveal-delay:0.12s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><div><b>전원</b>네 모델 모두 220 V 60 Hz 단상 전원을 사용합니다. 작업 위치까지 전원 인입 가능 여부를 확인합니다.</div></div>\n      </div>\n      <div class="vr-compressor reveal" id="compressor">\n        <div class="vr-compressor-media"><img src="../assets/img/adopt-compressor.jpg" alt="이동식 디젤 콤프레샤" loading="lazy" decoding="async" /></div>\n        <div class="vr-compressor-copy">\n          <span class="bls-en">COMPRESSOR RENTAL · WITH PARTNER</span>\n          <h3>압축공기가 없어도 됩니다.<br>50 Hp 디젤 콤프레샤를 함께 보냅니다.</h3>\n          <p>블라스터가 필요한 곳에 콤프레샤가 없거나 용량이 모자라는 경우가 많습니다. 그래서 바테크는 협력사가 보유한 50 Hp 이동식 디젤 콤프레샤를 블라스터와 같은 일정으로 조율해 함께 렌탈합니다. 네 모델의 요구 용량을 모두 넘는 사양이어서 어느 블라스터를 골라도 압축공기 걱정 없이 쓸 수 있습니다.</p>\n          <dl class="vr-compressor-spec">\n            <div><dt>출력</dt><dd>50 Hp<small>렌탈 블라스터 4종 모두 대응</small></dd></div>\n            <div><dt>구동</dt><dd>디젤 엔진<small>전원 없는 옥외 현장 가능</small></dd></div>\n            <div><dt>공급</dt><dd>협력사 보유 장비<small>바테크가 일정 · 배송 조율</small></dd></div>\n          </dl>\n          <p style="font-size:13.5px;color:rgba(255,255,255,.6);">디젤 콤프레샤만 운용합니다. 연료, 설치 위치, 운반 조건은 상담 시 안내합니다.</p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section cmp-dark rec-how" id="process">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">HOW IT WORKS</span><h2 class="plt-title">신청부터 반납까지,<br>여덟 단계로 끝납니다.</h2></div>\n        <p class="plt-lead">복잡한 심사는 없습니다. 신청서와 계약서, 송금이 확인되면 렌탈일이 확정되고 지정한 장소로 장비가 갑니다. 사용이 끝나면 반송하고, 검수가 끝나면 다음 구매나 렌탈에 쓸 수 있는 할인권을 드립니다.</p>\n      </div>\n      <div class="vr-steps">\n        <article class="vr-step is-you reveal"><span class="num"><i>1</i>APPLY</span><h3>렌탈 신청서 제출</h3><p>모델, 기간, 배송지, 압축공기 조건을 적어 보냅니다. 모델이 정해지지 않았다면 상담으로 함께 고릅니다.</p><span class="who">고객사</span></article>\n        <article class="vr-step reveal" style="--reveal-delay:0.05s"><span class="num"><i>2</i>RECEIVE</span><h3>신청 접수 · 재고 확인</h3><p>희망 일정에 장비가 가능한지 확인하고 견적과 계약서를 보냅니다.</p><span class="who">바테크</span></article>\n        <article class="vr-step is-you reveal" style="--reveal-delay:0.1s"><span class="num"><i>3</i>CONTRACT</span><h3>계약서 동의 · 제출</h3><p>기본 구성과 세부 이용 조건을 확인하고 서명해 보냅니다.</p><span class="who">고객사</span></article>\n        <article class="vr-step is-you reveal" style="--reveal-delay:0.15s"><span class="num"><i>4</i>PAYMENT</span><h3>송금 · 렌탈일 확정</h3><p>렌탈비 입금이 확인되면 렌탈일이 확정됩니다. 그 전까지 일정은 가예약 상태입니다.</p><span class="who">고객사</span></article>\n        <article class="vr-step reveal"><span class="num"><i>5</i>DELIVERY</span><h3>지정 장소로 배송</h3><p>출고 전 외관 검사와 시험 작동을 기록한 뒤 블라스터(필요 시 콤프레샤와 함께)를 배송합니다.</p><span class="who">바테크</span></article>\n        <article class="vr-step is-you reveal" style="--reveal-delay:0.05s"><span class="num"><i>6</i>RETURN</span><h3>사용 종료 후 반송</h3><p>렌탈 기간이 끝나면 기본 구성을 갖춰 반송합니다.</p><span class="who">고객사</span></article>\n        <article class="vr-step reveal" style="--reveal-delay:0.1s"><span class="num"><i>7</i>INSPECT</span><h3>고장 · 파손 검수</h3><p>출고 시 기록과 대조해 상태를 확인합니다. 정상 반납이면 그대로 완료됩니다.</p><span class="who">바테크</span></article>\n        <article class="vr-step reveal" style="--reveal-delay:0.15s"><span class="num"><i>8</i>DONE</span><h3>완료 · 할인권 지급</h3><p>검수가 끝나면 렌탈이 종료되고, 이후 구매나 재렌탈에 쓸 수 있는 할인권을 드립니다.</p><span class="who">바테크</span></article>\n      </div>\n      <div class="vr-steps-legend"><span><i class="is-you"></i>고객사가 하는 단계</span><span><i></i>바테크가 하는 단계</span></div>\n      <div class="vr-steps-bonus reveal">\n        <span class="bls-en">RENT → OWN</span>\n        <p>렌탈로 효과를 확인한 뒤 구매로 이어지는 경우가 많습니다. 렌탈 종료 시 지급되는 <b>할인권</b>과, 월 단위로 쓰다가 인수하는 <b>렌탈 후 인수</b> 방식을 구매 단계에서 함께 검토할 수 있습니다.</p>\n        <a href="../products/process.html#payment">결제 방식 보기 →</a>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section tint-hatch" id="terms">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">WHAT\'S INCLUDED · TERMS</span><h2 class="plt-title">받는 것과 지켜야 할 것,<br>미리 확인하세요.</h2></div>\n        <p class="plt-lead">렌탈 장비는 바로 세척을 시작할 수 있는 기본 구성으로 나갑니다. 아래 조건은 계약서에도 같은 내용으로 들어가며, 장비를 오래 좋은 상태로 유지해 다음 사용자에게도 같은 품질로 전달하기 위한 것입니다.</p>\n      </div>\n      <div class="vr-terms">\n        <div class="vr-kit reveal">\n          <span class="bls-en">BASIC KIT</span>\n          <h3>기본 구성</h3>\n          <p>렌탈 블라스터 한 대에 아래 다섯 가지가 함께 갑니다.</p>\n          <ul>\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>블라스터 본체</li>\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>블라스팅 호스</li>\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>에어 호스</li>\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>건(Applicator)</li>\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>기본 노즐<small>모델별 표준 1개</small></li>\n          </ul>\n          <p class="plus">추가 노즐, 연장 호스 등 액세서리는 함께 렌탈할 수 있습니다. 종류는 <a href="../products/nozzle.html">노즐 · 액세서리</a>에서 확인하세요.</p>\n        </div>\n        <div class="vr-rules reveal" style="--reveal-delay:0.06s">\n          <span class="bls-en">RENTAL TERMS</span>\n          <h3>이용 조건</h3>\n          <ol>\n            <li><b>일일 운영 시간 기준</b>이 있습니다. 하루 종일 쓰는 작업이면 신청 시 미리 알려 주세요.</li>\n            <li><b>드라이아이스는 바테크 공급품을 사용합니다.</b> 품질이 낮은 드라이아이스는 호스와 피더 손상의 원인이 됩니다.</li>\n            <li><b>임대 기간은 출고일부터 반납일까지</b>로 계산합니다.</li>\n            <li><b>출고 전 · 반납 후 장비 상태를 검수</b>하고 기록합니다. 사용 중 이상이 생기면 바로 연락해 주세요.</li>\n          </ol>\n          <p class="vr-rules-note">요금, 운영 시간 기준, 손상 처리 기준 등 세부 조건은 상담 · 계약 단계에서 안내합니다.</p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section" id="paths">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">NEXT STEP</span><h2 class="plt-title">지금 단계에 맞는<br>다음 걸음을 고르세요.</h2></div>\n        <p class="plt-lead">모델까지 정해졌다면 렌탈 상담으로, 효과부터 확인하고 싶다면 하루짜리 데모 테스트로, 아직 어떤 장비가 맞는지 모르겠다면 장비 비교부터 시작하는 것이 빠릅니다.</p>\n      </div>\n      <div class="vr-paths">\n        <a class="vr-path is-primary reveal" href="../products/quote.html"><span class="bls-en">RENTAL</span><h3>렌탈 상담 요청</h3><p>모델, 기간, 배송지, 압축공기 조건을 알려 주시면 재고와 일정, 견적을 확인해 안내합니다. 콤프레샤 동반 여부도 함께 정합니다.</p><span class="bls-more">렌탈 상담 요청 <i>→</i></span></a>\n        <a class="vr-path reveal" href="demo.html" style="--reveal-delay:0.06s"><span class="bls-en">DEMO TEST</span><h3>데모 테스트 신청</h3><p>렌탈보다 짧게, 실제 시료로 세척 효과만 먼저 확인합니다. 결과는 전후 사진과 조건으로 정리해 드려 내부 검토 자료로 쓸 수 있습니다.</p><span class="bls-more">데모 신청 <i>→</i></span></a>\n        <a class="vr-path reveal" href="../products/compare-equip.html" style="--reveal-delay:0.12s"><span class="bls-en">COMPARE</span><h3>어떤 장비가 맞는지 보기</h3><p>세척 대상과 현장 조건을 고르면 적합한 블라스터를 추천합니다. 렌탈 모델 네 종 중 어느 것이 맞는지 여기서 먼저 좁힐 수 있습니다.</p><span class="bls-more">장비 비교 <i>→</i></span></a>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section faq-section" id="faq">\n    <div class="wrap">\n    <div class="faq-head">\n      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>\n      <p class="faq-intro">렌탈을 검토할 때 가장 많이 묻는 질문입니다. 그 밖의 조건은 상담 시 안내합니다.</p>\n    </div>\n    <div class="faq-list">\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">최소 렌탈 기간이 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>단기부터 월 단위까지 가능하며, 임대 기간은 출고일부터 반납일까지로 계산합니다. 기간에 따른 요금 조건은 상담 시 안내합니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">드라이아이스는 어떻게 준비하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>바테크가 장비와 함께 공급합니다. 렌탈 장비에는 바테크 드라이아이스만 사용하는 조건이 있으며, 사용량은 작업 시간과 노즐에 따라 달라지므로 상담 시 예상량을 함께 안내합니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">처음 쓰는데 조작을 배울 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>배송 시 기본 조작과 안전 수칙을 안내하고, 모델별 실물 조작 영상을 함께 제공합니다. 사용 중 이상이나 궁금한 점은 영업팀(031-796-4300)으로 바로 연락하실 수 있습니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">렌탈하다가 구매로 바꿀 수 있나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>가능합니다. 렌탈 종료 시 지급되는 할인권을 구매에 쓸 수 있고, 월 단위로 쓰다가 인수하는 렌탈 후 인수 방식도 있습니다. 조건은 <a href="../products/process.html#payment">구매 프로세스 안내</a>에서 확인하세요.</p></div>\n      </details>\n    </div>\n    </div>\n  </section>\n\n  <section class="bls-sec bls-final last-freeze" id="vr-final">\n    <div class="wrap">\n      <div class="bls-final-grid">\n        <div>\n          <span class="cmp-eyebrow">READY TO RENT?</span>\n          <h2 class="cmp-h2">써 보고 결정하는 것이<br>가장 확실한 검토입니다.</h2>\n        </div>\n        <div>\n          <div class="cmp-lead">\n            <p>세척 대상과 기간, 배송지, 압축공기 조건을 알려 주시면 가능한 모델과 일정, 견적을 확인해 안내합니다. 콤프레샤가 필요한지도 함께 정합니다.</p>\n            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 렌탈부터 데모, 구매, 교육, A/S까지 한 창구에서 지원합니다.</p>\n          </div>\n          <div class="cmp-cta-btns">\n            <a class="cta-btn" href="../products/quote.html">렌탈 상담 요청</a>\n            <a class="cmp-btn-ghost" href="demo.html">데모 테스트 신청</a>\n          </div>\n          <a class="bls-textlink" href="partners.html">직접 운용이 어렵다면, 인증 세척용역 서비스 →</a>\n        </div>\n      </div>\n    </div>\n  </section>\n'
 
-RECOMMEND_BODY = """
-<p>아래 기준으로 구매와 렌탈 중 무엇이 더 적합한지 가늠해보세요.</p>
-<table class="compare-table">
-  <tr><th>상황</th><th>추천</th></tr>
-  <tr><td>연간 가동일이 많고 장기적으로 반복 사용</td><td class="good">구매</td></tr>
-  <tr><td>특정 프로젝트 · 성수기에만 일시적으로 필요</td><td class="good">렌탈</td></tr>
-  <tr><td>구매 전 현장 적합성 검증이 필요</td><td class="good">렌탈 후 구매 전환 (PEP 방식)</td></tr>
-  <tr><td>보유 장비 고장 시 임시 대체가 필요</td><td class="good">단기 렌탈</td></tr>
-</table>
-<p style="margin-top:18px;">정확히 판단하기 어렵다면 <a href="demo.html">데모 테스트</a>부터 시작해보시는 것을 추천합니다.</p>
-"""
+VRENTAL_EXTRA_HEAD = '\n<link rel="stylesheet" href="../assets/css/pelletizer-page.css?v=20260914-10" />\n<link rel="stylesheet" href="../assets/css/recovery-page.css?v=20260916-11" />\n<link rel="stylesheet" href="../assets/css/compare-equip-page.css?v=20260917-1" />\n<link rel="stylesheet" href="../assets/css/vrental-page.css?v=20260918-1" />'
 
-DEMO_BODY = """
-<p>실제 현장 시료로 세척 테스트를 진행해 도입 전에 효과를 직접 확인할 수 있습니다.</p>
-<h2 style="font-size:20px; margin-top:32px;">진행 순서</h2>
-<ol style="padding-left:20px; display:grid; gap:10px;">
-  <li><b>1. 신청</b> — 세척 대상, 오염물질 종류, 현장 사진을 보내주세요.</li>
-  <li><b>2. 사전 검토</b> — 담당자가 적합한 장비와 노즐 구성을 사전에 준비합니다.</li>
-  <li><b>3. 테스트 진행</b> — 바테크 시연장 방문 또는 현장 방문을 통해 실제 세척 테스트를 진행합니다.</li>
-  <li><b>4. 결과 공유</b> — 테스트 전후 비교와 함께 상세 결과를 안내해 드립니다.</li>
-</ol>
-<p>테스트에는 현장 조건에 따라 별도 비용이 발생할 수 있으며, 세부 조건은 상담 시 안내해 드립니다.</p>
-"""
+VRENTAL_SCRIPT = "  <script>\n  (function () {\n    var qs = document.querySelectorAll('#vrQuestions .vr-q');\n    var verdict = document.getElementById('vrVerdict');\n    if (!qs.length || !verdict) return;\n    var title = document.getElementById('vrTitle'), body = document.getElementById('vrBody');\n    var airBox = document.getElementById('vrAir'), airText = document.getElementById('vrAirText');\n    var cta = document.getElementById('vrCta'), cta2 = document.getElementById('vrCta2');\n    var meter = verdict.querySelectorAll('.vr-verdict-meter i');\n    var ans = {};\n    var W = { freq: { rare: 2, monthly: 1, weekly: 0 }, dur: { days: 2, months: 1, always: 0 }, goal: { job: 2, verify: 1, backup: 2 } };\n    var AIR = {\n      have: '<b>보유 콤프레샤로 바로 사용할 수 있습니다.</b> 배관이 ¾″ 이상인지, 5 bar를 지속할 수 있는지만 확인하세요.',\n      none: '<b>50 Hp 디젤 콤프레샤를 함께 렌탈하세요.</b> 협력사 장비를 블라스터와 같은 일정으로 보내 드립니다.',\n      unknown: '<b>압축공기 조건은 상담에서 확인해 드립니다.</b> 콤프레샤 명판 사진 한 장이면 충분합니다.'\n    };\n    function render() {\n      var keys = Object.keys(ans), n = keys.length;\n      verdict.classList.toggle('is-empty', n === 0);\n      meter.forEach(function (m, i) { m.classList.toggle('is-on', i < n); });\n      if (!n) {\n        title.innerHTML = '항목을 고르면<br>지금 상황에 맞는 방향을 보여 드립니다.';\n        body.textContent = '네 가지 모두 고르지 않아도 됩니다. 고른 항목만으로 우선 판단하고, 나머지는 상담에서 함께 확인합니다.';\n        return;\n      }\n      var score = 0, max = 0;\n      ['freq', 'dur', 'goal'].forEach(function (k) { if (ans[k] != null) { score += W[k][ans[k]]; max += 2; } });\n      var ratio = max ? score / max : 0.5;\n      var verify = ans.goal === 'verify';\n      var t, b, c, c2;\n      if (verify && ratio < 0.75) {\n        t = '<em>렌탈로 먼저 확인</em>하고<br>구매를 결정하세요.';\n        b = '효과가 확인되면 구매로 이어지는 경우입니다. 렌탈 종료 시 할인권이 지급되고, 렌탈 후 인수 방식도 있어 렌탈 비용이 낭비되지 않습니다. 하루짜리 데모 테스트로 시작해도 좋습니다.';\n        c = ['렌탈 상담 요청', '../products/quote.html']; c2 = ['데모 테스트 신청', 'demo.html'];\n      } else if (ratio >= 0.6) {\n        t = '이 경우는<br><em>렌탈이 맞습니다.</em>';\n        b = '사용 빈도나 기간에 비해 구매 비용과 보관 · 유지 부담이 큽니다. 필요한 기간만 렌탈하고, 반복되면 그때 구매를 검토하는 편이 경제적입니다.';\n        c = ['렌탈 상담 요청', '../products/quote.html']; c2 = ['렌탈 장비 보기', '#fleet'];\n      } else if (ratio >= 0.3) {\n        t = '<em>렌탈로 시작</em>해<br>사용 패턴을 확인하세요.';\n        b = '렌탈과 구매의 경계에 있는 경우입니다. 한두 달 렌탈로 실제 사용량을 확인한 뒤, 계속 쓰게 되면 할인권이나 렌탈 후 인수로 구매로 전환하는 순서를 권합니다.';\n        c = ['렌탈 상담 요청', '../products/quote.html']; c2 = ['결제 방식 보기', '../products/process.html#payment'];\n      } else {\n        t = '<em>구매</em>를 검토할 때입니다.<br>렌탈은 검증용으로 짧게.';\n        b = '상시 운용하는 현장이면 장기적으로 구매가 유리합니다. 모델 확정 전 렌탈이나 데모로 짧게 검증하고, 결제는 리스 · 렌탈 후 인수 · 할부 중 예산 성격에 맞게 고르세요.';\n        c = ['견적 · 상담 요청', '../products/quote.html']; c2 = ['결제 방식 보기', '../products/process.html#payment'];\n      }\n      title.innerHTML = t; body.textContent = b;\n      cta.textContent = c[0]; cta.href = c[1]; cta2.textContent = c2[0]; cta2.href = c2[1];\n      if (ans.air) { airBox.style.display = ''; airText.innerHTML = AIR[ans.air]; } else { airBox.style.display = 'none'; }\n    }\n    qs.forEach(function (q) {\n      var k = q.dataset.q;\n      q.querySelectorAll('.vr-opt').forEach(function (btn) {\n        btn.addEventListener('click', function () {\n          var on = btn.classList.contains('is-on');\n          q.querySelectorAll('.vr-opt').forEach(function (o) { o.classList.remove('is-on'); });\n          if (on) { delete ans[k]; q.classList.remove('is-done'); }\n          else { btn.classList.add('is-on'); ans[k] = btn.dataset.v; q.classList.add('is-done'); }\n          render();\n        });\n      });\n    });\n    document.getElementById('vrReset').addEventListener('click', function () {\n      ans = {};\n      qs.forEach(function (q) { q.classList.remove('is-done'); q.querySelectorAll('.vr-opt').forEach(function (o) { o.classList.remove('is-on'); }); });\n      render();\n    });\n    render();\n  })();\n  </script>\n"
 
-D_FAQ_BODY = """
-<p><b>Q. 데모 테스트는 무료인가요?</b><br />
-A. 기본적인 상담과 현장 조건 검토는 무료입니다. 실제 테스트 진행 여부와 비용은 장비 · 현장 조건에 따라
-다르므로 상담 시 안내해 드립니다.</p>
-<p><b>Q. 렌탈 기간은 얼마나 되나요?</b><br />
-A. 단기(일 단위)부터 장기(월 단위)까지 현장 상황에 맞춰 조정할 수 있습니다.</p>
-<p><b>Q. 렌탈료를 구매 비용에 반영할 수 있나요?</b><br />
-A. 평가 프로그램(PEP) 방식으로 진행하는 경우, 납입한 렌탈료 일부를 이후 구매 대금에 반영할 수 있습니다.
-세부 조건은 상담을 통해 확인해 주세요.</p>
-"""
+DEMO_BODY = '\n  <section class="subhero-parallax aut-hero-stage dm-hero-stage">\n    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">렌탈 · 데모</a> &gt; 데모 테스트 신청</div>\n    <div class="hero-fit">\n      <video class="subhero-parallax-img aut-hero-video" autoplay muted loop playsinline preload="auto" poster="../assets/img/guide-hero-work.jpg" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">\n        <source src="../assets/video/pcs-demo-namecard.mp4" type="video/mp4" />\n      </video>\n      <div class="subhero-textbox">\n        <span class="ind-hero-eyebrow">DEMO TEST / SHIP · VISIT · ON-SITE</span>\n        <h1>효과는 설명이 아니라,<br><span class="bls-hero-accent">당신의 시료로 확인합니다.</span></h1>\n        <p class="bls-hero-main">세척 대상은 현장마다 다릅니다. 바테크는 실제 시편으로 세척 테스트를 진행하고, 전후 사진과 영상, 테스트 조건을 정리해 드립니다. 시편을 보내거나, 연구소에 오시거나, 저희가 찾아갑니다.</p>\n        <div class="dm-hero-jump"><a href="#ship"><i>1</i>시편 발송 · 무료</a><a href="#lab"><i>2</i>연구소 방문 · 무료</a><a class="is-paid" href="#onsite"><i>3</i>현장 방문 · 유료</a></div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-definition rec-cover tint-hatch" id="choose">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">THREE WAYS TO TEST</span><h2 class="plt-title">테스트 방법은 세 가지,<br>시편의 크기와 상황에 따라 고릅니다.</h2></div>\n        <p class="plt-lead">택배로 보낼 수 있는 시편이면 발송이 가장 빠릅니다. 크기가 크거나 직접 보고 싶다면 연구소로 오시고, 설비를 옮길 수 없는 현장이면 장비를 가지고 찾아갑니다. 두 가지는 무료, 현장 방문은 거리와 시간에 따라 비용이 있습니다.</p>\n      </div>\n      <div class="dm-choose">\n        <a class="dm-way reveal" href="#ship">\n          <div class="dm-way-media is-illust"><span class="fee">FREE</span><img src="../assets/img/demo-way-1-ship.png" alt="바테크에게 시편 상자 발송" loading="lazy" decoding="async" /></div>\n          <div class="dm-way-body"><span class="bls-en">SHIP YOUR SAMPLE</span><h3>시편을 보내 주세요</h3><p>시편을 택배나 화물로 보내 주시면 연구소에서 세척 테스트를 하고, 결과물과 전후 사진 · 영상을 함께 반송합니다.</p></div>\n          <div class="dm-way-fit"><b>이런 경우</b><span>시편을 택배 · 화물로 보낼 수 있을 때. 현장 테스트 전 세척 가능성을 먼저 보고 싶을 때.</span></div>\n          <dl class="dm-way-meta"><div><dt>비용</dt><dd>무료<small>왕복 운송비만 고객사 부담</small></dd></div><div><dt>소요</dt><dd>수령 후 2–3일<small>결과 확인까지</small></dd></div></dl>\n          <span class="bls-more">절차 보기 <i>→</i></span>\n        </a>\n        <a class="dm-way reveal" href="#lab" style="--reveal-delay:0.06s">\n          <div class="dm-way-media is-illust"><span class="fee">FREE</span><img src="../assets/img/demo-way-2-lab.png" alt="시편을 들고 바테크 연구소 방문" loading="lazy" decoding="async" /></div>\n          <div class="dm-way-body"><span class="bls-en">VISIT OUR LAB</span><h3>연구소로 오세요</h3><p>시편을 가지고 하남 연구소를 방문해 함께 테스트하고 결과를 그 자리에서 확인합니다. 장비 조작도 직접 해 볼 수 있습니다.</p></div>\n          <div class="dm-way-fit"><b>이런 경우</b><span>시편이 커서 택배가 어렵거나, 세척 과정을 직접 보고 장비를 만져 보고 싶을 때.</span></div>\n          <dl class="dm-way-meta"><div><dt>비용</dt><dd>무료</dd></div><div><dt>소요</dt><dd>반나절<small>일정 협의 후 방문</small></dd></div></dl>\n          <span class="bls-more">절차 보기 <i>→</i></span>\n        </a>\n        <a class="dm-way reveal" href="#onsite" style="--reveal-delay:0.12s">\n          <div class="dm-way-media is-illust"><span class="fee is-paid">PAID</span><img src="../assets/img/demo-way-3-onsite.png" alt="바테크 드라이아이스 팀 차량 현장 방문" loading="lazy" decoding="async" /></div>\n          <div class="dm-way-body"><span class="bls-en">WE COME TO YOU</span><h3>저희가 찾아갑니다</h3><p>바테크 영업팀이 장비와 드라이아이스를 준비해 현장에서 직접 세척합니다. 실제 설비, 실제 오염으로 가장 정확하게 확인하는 방법입니다.</p></div>\n          <div class="dm-way-fit"><b>이런 경우</b><span>설비를 옮길 수 없거나 라인에 붙은 상태로 세척해야 할 때. 도입 전 마지막 검증 단계.</span></div>\n          <dl class="dm-way-meta"><div><dt>비용</dt><dd>유료<small>거리 · 시간에 따라 견적</small></dd></div><div><dt>소요</dt><dd>1일<small>일정 협의 후 방문</small></dd></div></dl>\n          <span class="bls-more">절차 보기 <i>→</i></span>\n        </a>\n      </div>\n      <div class="dm-flow reveal">\n        <span class="bls-en">WHICH ONE?</span>\n        <div class="dm-flow-line">\n          <span class="q">시편을 택배 · 화물로 보낼 수 있나요?</span><span class="arrow">→</span><a href="#ship"><i>1</i>예 · 시편 발송</a>\n          <span class="sep"></span>\n          <span class="q">보낼 수 없다면, 시편을 가지고 오실 수 있나요?</span><span class="arrow">→</span><a href="#lab"><i>2</i>예 · 연구소 방문</a>\n          <span class="sep"></span>\n          <span class="q">설비가 고정돼 있어 옮길 수 없나요?</span><span class="arrow">→</span><a href="#onsite"><i>3</i>예 · 현장 방문</a>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section" id="detail">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">HOW EACH WORKS</span><h2 class="plt-title">방법별 절차와<br>준비할 것.</h2></div>\n        <p class="plt-lead">세 방법 모두 시작은 같습니다. 영업팀에 연락해 세척 대상과 오염 상태를 알려 주시면 적합한 장비와 노즐을 미리 준비합니다. 그 다음이 방법별로 달라집니다.</p>\n      </div>\n\n      <div class="dm-detail reveal" id="ship">\n        <div class="dm-detail-media"><span class="num"><i>1</i>SHIP</span><span class="fee">FREE</span><video muted loop playsinline preload="none" autoplay><source src="../assets/video/pcs-demo-namecard.mp4" type="video/mp4" /></video><span class="cap">시편 테스트 · 미세 입자 분사 예시</span></div>\n        <div class="dm-detail-copy">\n          <span class="bls-en">METHOD 01 · SHIP YOUR SAMPLE</span>\n          <h3>시편을 보내 주세요 <small>무료</small></h3>\n          <p>가장 빠르게 결과를 확인하는 방법입니다. 시편이 도착하면 연구소에서 세척 테스트를 진행하고, 결과물을 전후 사진 · 세척 영상과 함께 반송합니다. 현장 테스트 전에 세척 가능성을 먼저 확인하는 용도로도 좋습니다.</p>\n          <ol class="dm-steps">\n            <li><div><b>영업팀 연락</b> · 031-796-4300 또는 아래 신청서<small>세척 대상, 오염물 종류, 시편 크기를 알려 주세요.</small></div></li>\n            <li><div><b>시편 발송</b> · 상담 후 연구소 주소로<small>주요 세척 포인트, 주의사항, 담당자 이름과 연락처를 함께 넣어 주세요.</small></div></li>\n            <li><div><b>테스트 진행</b> · 수령 후 1–2일<small>장비 · 노즐 · 압력을 바꿔 가며 가장 잘 맞는 조건을 찾습니다.</small></div></li>\n            <li><div><b>결과 반송</b> · 세척 결과물 + 전후 사진 · 영상 + 테스트 조건</div></li>\n          </ol>\n          <div class="dm-tips">\n            <div class="dm-tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div><b>시편은 실제 오염 상태 그대로</b> 보내 주세요. 미리 닦거나 일부만 보내면 실제 현장과 결과가 달라집니다.</div></div>\n            <div class="dm-tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><div><b>파손 위험이 있는 시편</b>은 완충 포장해 주시고, 세척 후 반송이 필요한지 알려 주세요.</div></div>\n          </div>\n          <div class="dm-addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>바테크 기업부설연구소</b>경기도 하남시 산곡동로14번길 20 바테크빌딩 2층 · <a href="../company/location.html">오시는 길</a></div></div>\n          <div class="dm-detail-cta"><a class="cta-btn" href="#apply" data-way="ship">시편 발송 신청</a><a class="ghost" href="tel:0317964300">031-796-4300</a></div>\n        </div>\n      </div>\n\n      <div class="dm-detail is-flip reveal" id="lab">\n        <div class="dm-detail-media"><span class="num"><i>2</i>VISIT</span><span class="fee">FREE</span><img src="../assets/img/vatek-building.jpg" alt="바테크 본사 건물" loading="lazy" decoding="async" /><span class="cap">경기도 하남시 · 바테크빌딩 2층 기업부설연구소</span></div>\n        <div class="dm-detail-copy">\n          <span class="bls-en">METHOD 02 · VISIT OUR LAB</span>\n          <h3>연구소로 오세요 <small>무료</small></h3>\n          <p>시편이 커서 택배가 어렵거나 세척 과정을 직접 보고 싶을 때 맞는 방법입니다. 연구소에서 함께 테스트하며 조건을 바꿔 보고, 결과를 그 자리에서 확인합니다. 장비를 직접 조작해 볼 수 있어 도입 후 운용 감각도 잡을 수 있습니다.</p>\n          <ol class="dm-steps">\n            <li><div><b>영업팀 연락</b> · 세척 대상과 시편 크기 · 무게를 알려 주세요<small>지게차나 크레인이 필요한 시편은 미리 알려 주시면 준비합니다.</small></div></li>\n            <li><div><b>방문 일정 협의</b> · 평일 09:00 – 18:00<small>다른 테스트 일정과 겹치지 않도록 반드시 협의 후 방문해 주세요.</small></div></li>\n            <li><div><b>방문 · 테스트</b> · 약 1–2시간<small>장비 소개 → 시편 테스트 → 조건 조정 → 결과 확인 순으로 진행합니다.</small></div></li>\n            <li><div><b>결과 정리</b> · 전후 사진 · 영상 · 테스트 조건을 이메일로 전달</div></li>\n          </ol>\n          <div class="dm-tips">\n            <div class="dm-tip is-warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg><div><b>사전 협의 없는 방문은 테스트가 어렵습니다.</b> 장비와 드라이아이스를 준비해 두어야 하니 일정을 먼저 잡아 주세요.</div></div>\n          </div>\n          <div class="dm-addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>바테크 기업부설연구소</b>경기도 하남시 산곡동로14번길 20 바테크빌딩 2층 · <a href="../company/location.html">오시는 길</a></div></div>\n          <div class="dm-detail-cta"><a class="cta-btn" href="#apply" data-way="lab">연구소 방문 신청</a><a class="ghost" href="../company/location.html">오시는 길</a></div>\n        </div>\n      </div>\n\n      <div class="dm-detail reveal" id="onsite">\n        <div class="dm-detail-media"><span class="num"><i>3</i>ON-SITE</span><span class="fee is-paid">PAID</span><img src="../assets/img/vatek-field-artifact-machinery-cleaning-graded.png" alt="바테크 팀의 현장 세척 시연" loading="lazy" decoding="async" /><span class="cap">바테크 영업팀 · 현장 시연</span></div>\n        <div class="dm-detail-copy">\n          <span class="bls-en">METHOD 03 · WE COME TO YOU</span>\n          <h3>저희가 찾아갑니다 <small class="is-paid">유료</small></h3>\n          <p>바테크 영업팀이 장비와 드라이아이스를 준비해 고객사 현장에서 직접 세척합니다. 실제 설비, 실제 오염, 실제 작업 환경에서 확인하는 가장 정확한 방법입니다. 방문 요청이 많아 일정 협의에 시간이 걸릴 수 있고, 거리와 시간에 따라 비용이 발생합니다.</p>\n          <ol class="dm-steps">\n            <li><div><b>영업팀 연락</b> · 세척 대상, 오염물, 현장 사진을 보내 주세요<small>사진을 보고 적합한 장비와 노즐을 고릅니다.</small></div></li>\n            <li><div><b>현장 조건 확인</b> · 압축공기 · 전원 · 작업 공간<small>콤프레샤가 없거나 용량이 부족하면 함께 준비할 수 있습니다.</small></div></li>\n            <li><div><b>일정 · 비용 협의</b> · 거리와 예상 시간 기준으로 견적</div></li>\n            <li><div><b>방문 · 시연</b> · 반나절 – 1일<small>설비 일부를 세척해 결과를 확인하고, 운용 조건을 함께 정리합니다.</small></div></li>\n          </ol>\n          <div class="dm-tips">\n            <div class="dm-tip is-warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg><div><b>원활한 테스트를 위해 몇 가지 현장 조건이 필요합니다.</b> 에어 배관과 압력, 전원, 테스트 공간 등은 영업팀이 사전에 확인해 안내합니다.</div></div>\n            <div class="dm-tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div><b>도입이 결정되면</b> 현장 방문 비용은 구매 · 렌탈 조건에서 함께 검토할 수 있습니다.</div></div>\n          </div>\n          <div class="dm-detail-cta"><a class="cta-btn" href="#apply" data-way="visit">현장 방문 신청</a><a class="ghost" href="partners.html">세척용역 서비스 안내</a></div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section cmp-dark rec-how" id="report">\n    <div class="wrap">\n      <div class="dm-report">\n        <div class="dm-ba reveal" id="dmBA">\n          <img class="before" src="../assets/img/auto-phone-before.png" alt="세척 전" loading="lazy" decoding="async" />\n          <img class="after" src="../assets/img/auto-phone-after.png" alt="세척 후" loading="lazy" decoding="async" />\n          <span class="lbl b">BEFORE</span><span class="lbl a">AFTER</span>\n          <div class="handle"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7 4 12l5 5M15 7l5 5-5 5"/></svg></i></div>\n          <span class="note">드래그해서 비교 · 정밀 세척 예시 이미지</span>\n        </div>\n        <div class="dm-report-copy reveal" style="--reveal-delay:0.06s">\n          <span class="bls-en">WHAT YOU GET</span>\n          <h3>테스트가 끝나면<br>판단할 수 있는 자료가 남습니다.</h3>\n          <p>"잘 됩니다"라는 말 대신, 같은 시편의 전후 사진과 세척 영상, 그리고 그 결과를 만든 조건을 드립니다. 내부 검토 자료로 바로 쓸 수 있고, 도입 후에는 운용 기준이 됩니다.</p>\n          <ul class="dm-report-items">\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><div><b>전후 사진</b>같은 각도 · 같은 조명으로 촬영한 비교 사진</div></li>\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg><div><b>세척 영상</b>실제 분사 장면과 오염이 벗겨지는 과정</div></li>\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg><div><b>테스트 조건</b>사용 장비 · 노즐 · 압력 · 소요 시간 · 드라이아이스 소모량</div></li>\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg><div><b>적용 의견</b>현장 적용 시 권장 장비와 예상 작업 조건</div></li>\n          </ul>\n          <span class="dm-report-note">결과 자료는 고객사 내부 검토용으로 제공하며, 동의 없이 외부에 공개하지 않습니다.</span>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section tint-hatch" id="apply">\n    <div class="wrap">\n      <div class="dm-apply">\n        <aside class="dm-apply-side reveal">\n          <span class="bls-en">APPLY</span>\n          <h3>데모 테스트<br>신청서</h3>\n          <p>아래 내용을 보내 주시면 영업팀이 1 영업일 안에 연락드립니다. 세척 대상과 오염물을 자세히 적어 주실수록 준비가 정확해집니다. 사진이 있으면 함께 보내 주세요.</p>\n          <p>전화가 편하시면 <a href="tel:0317964300" style="color:var(--navy);font-weight:800;">031-796-4300</a> (평일 09:00 – 18:00)</p>\n          <div class="dm-addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>바테크 기업부설연구소</b>경기도 하남시 산곡동로14번길 20 바테크빌딩 2층 · <a href="../company/location.html">오시는 길</a></div></div>\n        </aside>\n        <form class="dm-form reveal" id="dmForm" data-way="ship" novalidate style="--reveal-delay:0.06s">\n          <div class="dm-form-group">\n            <span class="lbl">테스트 방법<em>*</em></span>\n            <div class="dm-radio">\n              <label><input type="radio" name="way" value="ship" checked /><span><b>1 · 시편 발송</b><small>무료 · 택배 · 화물</small></span></label>\n              <label><input type="radio" name="way" value="lab" /><span><b>2 · 연구소 방문</b><small>무료 · 하남</small></span></label>\n              <label><input type="radio" name="way" value="visit" /><span><b>3 · 현장 방문</b><small>유료 · 견적</small></span></label>\n            </div>\n          </div>\n          <div class="dm-form-group">\n            <span class="lbl">담당자</span>\n            <div class="dm-grid2">\n              <div class="dm-field"><label for="dmCompany">회사명<em>*</em></label><input id="dmCompany" name="company" type="text" required autocomplete="organization" /></div>\n              <div class="dm-field"><label for="dmName">담당자 이름<em>*</em></label><input id="dmName" name="name" type="text" required autocomplete="name" /></div>\n              <div class="dm-field"><label for="dmPhone">연락처<em>*</em></label><input id="dmPhone" name="phone" type="tel" required autocomplete="tel" placeholder="010-0000-0000" /></div>\n              <div class="dm-field"><label for="dmEmail">이메일<em>*</em></label><input id="dmEmail" name="email" type="email" required autocomplete="email" /><small>결과 자료를 받을 주소</small></div>\n            </div>\n          </div>\n          <div class="dm-form-group">\n            <span class="lbl">세척 대상</span>\n            <div class="dm-grid2">\n              <div class="dm-field"><label for="dmTarget">세척 대상<em>*</em></label><input id="dmTarget" name="target" type="text" required placeholder="예: 타이어 금형, 식품 컨베이어, 전장 패널" /></div>\n              <div class="dm-field"><label for="dmSoil">오염물 종류<em>*</em></label><input id="dmSoil" name="soil" type="text" required placeholder="예: 이형제 · 고무 잔사, 탄화 유지, 접착제" /></div>\n              <div class="dm-field"><label for="dmMaterial">소재</label><select id="dmMaterial" name="material"><option value="">선택</option><option>강 · 스테인리스</option><option>알루미늄</option><option>구리 · 황동</option><option>플라스틱 · 복합재</option><option>고무</option><option>도장면</option><option>전자 부품 · PCB</option><option>기타</option></select></div>\n              <div class="dm-field"><label for="dmSize">시편 크기 · 무게</label><input id="dmSize" name="size" type="text" placeholder="예: 300 × 200 × 50 mm, 약 8 kg" /></div>\n              <div class="dm-field is-full dm-only-ship"><label for="dmReturn">테스트 후 시편 반송</label><select id="dmReturn" name="return"><option>반송 필요</option><option>폐기해도 됨</option></select></div>\n              <div class="dm-field dm-only-visit"><label for="dmAir">현장 압축공기</label><select id="dmAir" name="air"><option value="">선택</option><option>30 Hp 이상 콤프레샤 보유</option><option>있으나 용량 모름</option><option>없음 · 함께 준비 필요</option></select></div>\n              <div class="dm-field dm-only-visit"><label for="dmRegion">현장 지역</label><input id="dmRegion" name="region" type="text" placeholder="예: 충남 아산" /></div>\n            </div>\n          </div>\n          <div class="dm-form-group">\n            <span class="lbl">사진 · 메모</span>\n            <label class="dm-file"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V5M7 10l5-5 5 5"/><path d="M4 19h16"/></svg><div><b>세척 대상 사진 첨부</b><span id="dmFileText">오염 부위가 보이는 사진 1–5장 · JPG · PNG · 최대 20 MB</span></div><input id="dmFile" type="file" accept="image/*" multiple /></label>\n            <div class="dm-field"><label for="dmMemo">주요 세척 포인트 · 주의사항</label><textarea id="dmMemo" name="memo" placeholder="예: 각인 부분의 잔사 제거가 핵심. 표면 광택 유지 필요. 현재는 화학 세정 + 브러시로 1시간 소요."></textarea></div>\n          </div>\n          <div class="dm-form-foot">\n            <p>제출하시면 입력 내용이 정리된 메일 창이 열립니다. 첨부 사진은 메일에 직접 추가해 주세요. 입력 정보는 테스트 준비와 상담 목적으로만 사용합니다.</p>\n            <button class="cta-btn" type="submit">신청서 보내기</button>\n          </div>\n          <div class="dm-form-done" id="dmDone"><b>메일 창이 열렸습니다.</b>내용을 확인하고 보내 주시면 영업팀이 1 영업일 안에 연락드립니다. 메일 창이 열리지 않으면 031-796-4300으로 연락해 주세요.</div>\n        </form>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section faq-section" id="faq">\n    <div class="wrap">\n    <div class="faq-head">\n      <h2 style="font-size: 46px; margin: 36px 0 0; padding-top: 20px; color: #000000">자주 묻는 질문 <span class="faq-en" style="font-size: 30px">FAQ</span></h2>\n      <p class="faq-intro">데모 테스트를 준비할 때 자주 묻는 질문입니다. 그 밖의 궁금한 점은 영업팀에 문의해 주세요.</p>\n    </div>\n    <div class="faq-list">\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">시편은 어떤 상태로 보내야 하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>실제 현장 오염 상태 그대로 보내 주세요. 미리 닦거나 일부만 보내면 현장 결과와 달라집니다. 가능하면 같은 오염이 있는 부분을 두 곳 이상 남겨 두시면 조건을 바꿔 비교할 수 있습니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">테스트하면 꼭 구매해야 하나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>아닙니다. 시편 발송과 연구소 방문은 무료이고 구매 조건이 없습니다. 테스트 결과가 기대에 미치지 않으면 그 이유와 대안을 정리해 드리는 것까지가 바테크의 역할입니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">현장 방문 비용은 어떻게 정해지나요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>거리와 예상 소요 시간, 드라이아이스 준비량을 기준으로 사전에 견적을 드립니다. 도입이 결정되면 구매 · 렌탈 조건에서 함께 검토할 수 있습니다.</p></div>\n      </details>\n      <details class="faq-item">\n        <summary><span class="faq-q" style="font-size: 25px">데모와 렌탈은 어떻게 다른가요?</span><span class="faq-toggle" aria-hidden="true"></span></summary>\n        <div class="faq-a"><p>데모는 세척 효과를 확인하는 짧은 테스트이고, 렌탈은 장비를 며칠에서 몇 달 빌려 실제 작업에 쓰는 것입니다. 효과가 확인된 뒤 사용량을 보고 구매를 결정하려면 <a href="vrental.html">V RENTAL</a>로 이어가는 순서가 자연스럽습니다.</p></div>\n      </details>\n    </div>\n    </div>\n  </section>\n\n  <section class="bls-sec bls-final last-freeze" id="dm-final">\n    <div class="wrap">\n      <div class="bls-final-grid">\n        <div>\n          <span class="cmp-eyebrow">START WITH A TEST</span>\n          <h2 class="cmp-h2">먼저 확인하고,<br>그 다음에 결정하세요.</h2>\n        </div>\n        <div>\n          <div class="cmp-lead">\n            <p>세척 대상과 오염물, 시편 크기를 알려 주시면 맞는 테스트 방법과 장비를 준비해 안내합니다. 시편 발송과 연구소 방문은 무료입니다.</p>\n            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 테스트부터 렌탈, 구매, 교육, A/S까지 한 창구에서 지원합니다.</p>\n          </div>\n          <div class="cmp-cta-btns">\n            <a class="cta-btn" href="#apply">데모 테스트 신청</a>\n            <a class="cmp-btn-ghost" href="vrental.html">V RENTAL 안내</a>\n          </div>\n          <a class="bls-textlink" href="../cases/case-studies.html">적용 사례 보기 →</a>\n        </div>\n      </div>\n    </div>\n  </section>\n'
 
-VISIT_BODY = """
-<p>담당자가 직접 현장을 방문해 세척 대상과 작업 환경을 확인하고, 필요 시 휴대용 장비로 즉석 시연을
-진행합니다.</p>
-<h2 style="font-size:20px; margin-top:32px;">방문 상담에서 확인하는 것들</h2>
-<ul style="padding-left:20px; display:grid; gap:8px;">
-  <li>세척 대상의 재질과 민감도</li>
-  <li>현장의 압축공기 · 전원 조건</li>
-  <li>환기 및 작업 공간 조건</li>
-  <li>필요한 세척 주기와 물량</li>
-</ul>
-<p>방문 상담 신청은 <a href="../products/quote.html">견적문의</a> 페이지에서 함께 접수하실 수 있습니다.</p>
-"""
+DEMO_EXTRA_HEAD = '\n<link rel="stylesheet" href="../assets/css/pelletizer-page.css?v=20260914-10" />\n<link rel="stylesheet" href="../assets/css/recovery-page.css?v=20260916-11" />\n<link rel="stylesheet" href="../assets/css/compare-equip-page.css?v=20260917-1" />\n<link rel="stylesheet" href="../assets/css/demo-page.css?v=20260918-1" />'
 
+DEMO_SCRIPT = '  <script>\n  (function () {\n    // before/after slider\n    var ba = document.getElementById(\'dmBA\');\n    if (ba) {\n      var drag = false;\n      function setX(clientX) { var r = ba.getBoundingClientRect(); var x = Math.min(Math.max((clientX - r.left) / r.width, 0.02), 0.98); ba.style.setProperty(\'--dm-x\', (x * 100).toFixed(2) + \'%\'); }\n      ba.addEventListener(\'pointerdown\', function (e) { drag = true; ba.setPointerCapture(e.pointerId); setX(e.clientX); });\n      ba.addEventListener(\'pointermove\', function (e) { if (drag) setX(e.clientX); });\n      ba.addEventListener(\'pointerup\', function () { drag = false; });\n      ba.addEventListener(\'pointercancel\', function () { drag = false; });\n    }\n    // form\n    var form = document.getElementById(\'dmForm\');\n    if (!form) return;\n    var WAY = { ship: \'1 · 시편 발송 (무료)\', lab: \'2 · 연구소 방문 (무료)\', visit: \'3 · 현장 방문 (유료)\' };\n    form.querySelectorAll(\'input[name="way"]\').forEach(function (r) { r.addEventListener(\'change\', function () { form.dataset.way = r.value; }); });\n    document.querySelectorAll(\'a[data-way]\').forEach(function (a) {\n      a.addEventListener(\'click\', function () { var r = form.querySelector(\'input[name="way"][value="\' + a.dataset.way + \'"]\'); if (r) { r.checked = true; form.dataset.way = r.value; } });\n    });\n    var file = document.getElementById(\'dmFile\'), fileText = document.getElementById(\'dmFileText\');\n    if (file) file.addEventListener(\'change\', function () { var n = file.files.length; fileText.textContent = n ? n + \'개 파일 선택됨 — 메일 창에서 첨부해 주세요\' : \'오염 부위가 보이는 사진 1–5장 · JPG · PNG · 최대 20 MB\'; fileText.classList.toggle(\'picked\', n > 0); });\n    form.addEventListener(\'submit\', function (e) {\n      e.preventDefault();\n      var bad = null;\n      form.querySelectorAll(\'[required]\').forEach(function (el) { el.style.borderColor = \'\'; if (!el.value.trim() && !bad) { bad = el; } else if (!el.value.trim()) { el.style.borderColor = \'var(--accent-red)\'; } });\n      if (bad) { bad.style.borderColor = \'var(--accent-red)\'; bad.focus(); return; }\n      var v = function (id) { var el = document.getElementById(id); return el && el.value ? el.value.trim() : \'\'; };\n      var way = form.querySelector(\'input[name="way"]:checked\').value;\n      var lines = [\'[데모 테스트 신청] \' + WAY[way], \'\', \'회사명: \' + v(\'dmCompany\'), \'담당자: \' + v(\'dmName\'), \'연락처: \' + v(\'dmPhone\'), \'이메일: \' + v(\'dmEmail\'), \'\', \'세척 대상: \' + v(\'dmTarget\'), \'오염물: \' + v(\'dmSoil\'), \'소재: \' + (v(\'dmMaterial\') || \'-\'), \'시편 크기 · 무게: \' + (v(\'dmSize\') || \'-\')];\n      if (way === \'ship\') lines.push(\'시편 반송: \' + v(\'dmReturn\'));\n      if (way === \'visit\') { lines.push(\'현장 압축공기: \' + (v(\'dmAir\') || \'-\')); lines.push(\'현장 지역: \' + (v(\'dmRegion\') || \'-\')); }\n      lines.push(\'\', \'주요 세척 포인트 · 주의사항:\', v(\'dmMemo\') || \'-\', \'\', \'(세척 대상 사진은 이 메일에 첨부해 주세요)\');\n      var subject = \'[데모 테스트 신청] \' + v(\'dmCompany\') + \' · \' + WAY[way];\n      window.location.href = \'mailto:sales@vatek.co.kr?subject=\' + encodeURIComponent(subject) + \'&body=\' + encodeURIComponent(lines.join(\'\\n\'));\n      form.classList.add(\'is-done\');\n    });\n  })();\n  </script>\n'
+
+PARTNERS_BODY = '\n  <section class="subhero-parallax aut-hero-stage pt-hero-stage">\n    <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">렌탈 · 데모</a> &gt; 세척용역 서비스</div>\n    <div class="hero-fit">\n      <img class="subhero-parallax-img" src="../assets/img/partner-jpmotors-lift.png" alt="리프트에 올린 차량 하부를 드라이아이스 블라스터로 세척하는 작업" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5" />\n      <div class="subhero-textbox">\n        <span class="ind-hero-eyebrow">CERTIFIED SERVICE PARTNERS</span>\n        <h1>바테크 장비를,<br><span class="bls-hero-accent">바테크가 교육한 손으로.</span></h1>\n        <p class="bls-hero-main">장비를 직접 사지 않아도 드라이아이스 세척을 맡길 수 있습니다. 여기 소개하는 업체는 Cold Jet 정품 장비를 운용하고, 바테크의 정식 운용 · 안전 교육을 이수해 인증서를 받은 세척용역 파트너입니다.</p>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-definition rec-cover tint-hatch" id="cert">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">WHAT THE CERTIFICATE MEANS</span><h2 class="plt-title">인증 파트너란<br>어떤 업체인가.</h2></div>\n        <p class="plt-lead">드라이아이스 세척은 장비만 좋다고 결과가 나오지 않습니다. 대상에 맞는 노즐과 압력, 펠렛 공급량을 고르고 안전 수칙을 지키는 운용자가 있어야 합니다. 바테크는 자사 장비로 용역 서비스를 하는 업체 중 정식 교육을 이수한 곳에 인증서를 발행하고, 이 페이지에 등록해 소개합니다.</p>\n      </div>\n      <div class="pt-cert">\n        <div class="pt-cert-card reveal">\n          <div class="pt-cert-top"><img src="../assets/img/vatek-logo-wordmark.png" alt="VATEK" /><span class="bls-en">CERTIFICATE OF TRAINING</span></div>\n          <div class="pt-cert-title"><span class="bls-en">드라이아이스 블라스팅 운용 인증서</span><h3>Certified Service Partner</h3><p>위 업체는 주식회사 바테크가 실시한 Cold Jet 드라이아이스 블라스터 운용 교육을 이수하고, 아래 기준을 충족함을 확인합니다.</p></div>\n          <ul class="pt-cert-list">\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg><div><b>장비 운용 교육 이수</b> · 장비 구조, 노즐 · 압력 · 펠렛 공급량 설정, 대상별 세척 조건</div></li>\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg><div><b>안전 교육 이수</b> · CO₂ 환기, 보호구, 소음 · 저온 관리, 압축공기 취급</div></li>\n            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg><div><b>Cold Jet 정품 장비 운용</b> · 바테크가 공급 · 점검하는 장비와 드라이아이스 사용</div></li>\n          </ul>\n          <div class="pt-cert-foot"><small>발행 · 주식회사 바테크 (Cold Jet 대한민국 공식 대리점)<br>인증은 업체 단위로 발행하며 등록 현황은 이 페이지에서 확인할 수 있습니다.</small><div class="pt-seal"><b>VATEK</b>CERTIFIED<br>PARTNER</div></div>\n        </div>\n        <div class="pt-cert-copy reveal" style="--reveal-delay:0.06s">\n          <span class="bls-en">WHY IT MATTERS</span>\n          <h3>맡기는 쪽도, 맡는 쪽도<br>기준이 같아야 결과가 같습니다.</h3>\n          <p>세척을 의뢰하는 분에게는 "어떤 장비를 어떻게 다루는 업체인가"를 확인하는 기준이 되고, 용역 업체에게는 바테크가 교육과 장비를 뒷받침한다는 표시가 됩니다. 인증 파트너가 작업한 결과에 대해 장비 · 소모품 관련 기술 지원은 바테크가 함께 합니다.</p>\n          <div class="pt-cert-points">\n            <div class="pt-point"><span class="num">01</span><b>검증된 운용자</b><span>교육 이수 후 인증. 장비를 아는 사람이 작업합니다.</span></div>\n            <div class="pt-point"><span class="num">02</span><b>정품 장비 · 소모품</b><span>Cold Jet 블라스터와 바테크 드라이아이스로 작업합니다.</span></div>\n            <div class="pt-point"><span class="num">03</span><b>바테크 기술 지원</b><span>장비와 세척 조건에 대한 기술 문의는 바테크가 답합니다.</span></div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="plt-section" id="partners">\n    <div class="wrap">\n      <div class="plt-head">\n        <div><span class="plt-eyebrow">REGISTERED PARTNERS</span><h2 class="plt-title">등록 업체</h2></div>\n        <p class="plt-lead">바테크 인증서를 받은 세척용역 업체입니다. 전문 분야와 연락처를 확인하고 직접 문의하실 수 있습니다. 어느 업체가 맞는지 모르겠다면 바테크 영업팀이 세척 대상에 맞는 업체를 안내합니다.</p>\n      </div>\n      <div class="pt-list">\n        <article class="pt-partner reveal" id="jpmotors">\n          <div class="pt-partner-side">\n            <div class="pt-logo"><span class="badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i>VATEK CERTIFIED</span><img src="../assets/img/partner-jpmotors-logo.png" alt="JP motors 로고" /></div>\n            <div class="pt-partner-name"><span class="bls-en">PARTNER 01 · AUTOMOTIVE</span><h3>제이피모터스<small>JP MOTORS · 경기 용인</small></h3></div>\n            <div class="pt-tags"><span>차량 하부 세척</span><span>엔진룸 · 미션</span><span>올드카 복원</span><span>튜닝 · 커스텀</span></div>\n            <dl class="pt-contact">\n              <div><dt>대표</dt><dd>홍정표 <span class="sub">HONG JUNG PYO · 단장</span></dd></div>\n              <div><dt>전화</dt><dd><a href="tel:0313380431">031-338-0431</a></dd></div>\n              <div><dt>휴대폰</dt><dd><a href="tel:01067820431">010-6782-0431</a><span class="sub"><a href="tel:01020410431">010-2041-0431</a></span></dd></div>\n              <div><dt>이메일</dt><dd><a href="mailto:tiburon412222@naver.com">tiburon412222@naver.com</a></dd></div>\n              <div><dt>카페</dt><dd><a href="https://cafe.naver.com/greenj637g" target="_blank" rel="noopener">cafe.naver.com/greenj637g</a></dd></div>\n              <div><dt>주소</dt><dd>경기도 용인시 처인구 양지면 남평로42번길 9-6, 2층</dd></div>\n            </dl>\n          </div>\n          <div class="pt-partner-main">\n            <div><span class="bls-en">ABOUT</span><h4>자동차 튜닝 · 복원 · 정비를 전문으로 하는 워크숍.<br>드라이아이스로 차체를 상하지 않게 세척합니다.</h4></div>\n            <p>제이피모터스는 엔진 · 미션 스왑, 올드카 복원, 커스텀 부품 제작을 전문으로 하는 자동차 튜닝 · 정비 업체입니다. 일반 정비뿐 아니라 용접 · 가공 · 도색을 포함한 차량 맞춤 제작과 특수 차량 작업까지 직접 수행합니다. 복원 과정에서 쌓인 수십 년의 오일 · 언더코팅 · 먼지를 부품을 분해하지 않고 걷어내기 위해 Cold Jet 드라이아이스 블라스터를 도입해 운용하고 있습니다.</p>\n            <div>\n              <span class="bls-en">DRY ICE SERVICES</span>\n              <ul class="pt-uses" style="margin-top:10px;">\n                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg><div><b>차량 하부 · 서스펜션 세척</b>언더코팅 잔여물, 오일 · 흙먼지 제거. 도장면과 고무 부품을 상하지 않게 작업</div></li>\n                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg><div><b>엔진룸 · 미션 세척</b>스왑 · 정비 전 오일 슬러지 제거. 분해 없이 배선 · 센서 주변까지</div></li>\n                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg><div><b>올드카 복원 전처리</b>수십 년 묵은 오염을 걷어내 원래 상태를 확인하고 복원 범위를 정합니다</div></li>\n                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg><div><b>디테일링 · 출고 전 세척</b>물 · 화학 세정제를 쓰지 않아 건조 없이 바로 다음 공정으로</div></li>\n              </ul>\n            </div>\n            <div>\n              <span class="bls-en">AT WORK</span>\n              <div class="pt-gallery" style="margin-top:10px;">\n                <figure><img src="../assets/img/partner-jpmotors-under.png" alt="차량 하부 서스펜션을 드라이아이스로 세척하는 장면" loading="lazy" decoding="async" /><figcaption>차량 하부 · 서스펜션 세척</figcaption></figure>\n                <figure><img src="../assets/img/partner-jpmotors-lift.png" alt="리프트에 올린 차량 하부를 세척하는 작업자" loading="lazy" decoding="async" /><figcaption>리프트 하부 작업 · 용인 워크숍</figcaption></figure>\n              </div>\n            </div>\n            <div class="pt-partner-foot">\n              <span class="cert"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></i><span><b>바테크 운용 · 안전 교육 이수</b> · Cold Jet 블라스터 운용</span></span>\n              <div class="links"><a class="is-primary" href="tel:0313380431"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6.2 6.2l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>업체에 문의</a><a href="https://cafe.naver.com/greenj637g" target="_blank" rel="noopener">네이버 카페 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg></a></div>\n            </div>\n          </div>\n        </article>\n      </div>\n      <p class="pt-list-note">등록 업체의 작업 견적과 일정은 각 업체와 직접 협의하시며, 장비 · 세척 조건에 대한 기술 문의는 바테크 영업팀(031-796-4300)에서 안내합니다. 등록 업체는 인증 발행 순으로 추가됩니다.</p>\n    </div>\n  </section>\n\n  <section class="plt-section cmp-dark rec-how" id="join">\n    <div class="wrap">\n      <div class="pt-join">\n        <div class="pt-join-copy reveal">\n          <span class="bls-en">FOR SERVICE PROVIDERS</span>\n          <h3>바테크 장비로 세척용역을 하고 있다면,<br>인증 파트너로 등록하세요.</h3>\n          <p>바테크가 공급한 Cold Jet 블라스터로 세척 서비스를 제공하는 업체는 운용 · 안전 교육을 이수한 뒤 인증서를 받고 이 페이지에 등록할 수 있습니다. 등록 업체는 바테크 홈페이지를 찾는 의뢰인에게 소개되고, 장비 · 소모품 기술 지원을 우선 받습니다.</p>\n          <div class="pt-join-cta"><a class="cta-btn" href="../products/quote.html">파트너 등록 문의</a><a class="ghost" href="../support/education.html">운용 교육 안내</a></div>\n        </div>\n        <div class="pt-join-steps reveal" style="--reveal-delay:0.06s">\n          <div class="pt-join-step"><div><b>등록 문의</b><span>업체 정보와 보유 장비, 주요 세척 분야를 알려 주세요.</span></div></div>\n          <div class="pt-join-step"><div><b>운용 · 안전 교육</b><span>바테크 연구소 또는 현장에서 장비 운용과 안전 교육을 진행합니다. 이미 이수한 업체는 확인만 거칩니다.</span></div></div>\n          <div class="pt-join-step"><div><b>인증서 발행 · 페이지 등록</b><span>인증서를 발행하고 업체 소개, 전문 분야, 작업 사진을 이 페이지에 게시합니다.</span></div></div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class="bls-sec bls-final last-freeze" id="pt-final">\n    <div class="wrap">\n      <div class="bls-final-grid">\n        <div>\n          <span class="cmp-eyebrow">NEED A CLEANING SERVICE?</span>\n          <h2 class="cmp-h2">어느 업체가 맞는지 모르겠다면,<br>바테크가 안내합니다.</h2>\n        </div>\n        <div>\n          <div class="cmp-lead">\n            <p>세척 대상과 지역을 알려 주시면 맞는 인증 파트너를 연결해 드립니다. 직접 운용을 검토하신다면 렌탈이나 데모 테스트도 함께 안내합니다.</p>\n            <p>바테크는 Cold Jet 대한민국 공식 대리점으로 장비 공급부터 교육, 파트너 인증, A/S까지 한 창구에서 지원합니다.</p>\n          </div>\n          <div class="cmp-cta-btns">\n            <a class="cta-btn" href="../products/quote.html">업체 추천 요청</a>\n            <a class="cmp-btn-ghost" href="vrental.html">직접 운용 · V RENTAL</a>\n          </div>\n          <a class="bls-textlink" href="demo.html">효과부터 확인 · 데모 테스트 →</a>\n        </div>\n      </div>\n    </div>\n  </section>\n'
+
+PARTNERS_EXTRA_HEAD = '\n<link rel="stylesheet" href="../assets/css/pelletizer-page.css?v=20260914-10" />\n<link rel="stylesheet" href="../assets/css/recovery-page.css?v=20260916-11" />\n<link rel="stylesheet" href="../assets/css/compare-equip-page.css?v=20260917-1" />\n<link rel="stylesheet" href="../assets/css/partners-page.css?v=20260918-1" />'
 INSTALL_BODY = """
 <p>장비 도입이 결정되면 아래 순서로 설치와 시운전을 진행합니다.</p>
 <ol style="padding-left:20px; display:grid; gap:10px;">
@@ -13194,7 +13147,7 @@ CATALOG_BODY = """
 """
 
 KNOWLEDGE_BODY = """
-<p>드라이아이스 세척의 원리, 산업별 활용, 타 세척방식과의 비교는 아래 페이지에 정리되어 있습니다.</p>
+<p>드라이아이스 세척의 원리, 산업별 활용, 타 세척 방식과 비교는 아래 페이지에 정리되어 있습니다.</p>
 <div class="chip-grid">
   <span class="chip">세척 원리</span><span class="chip">안전 수칙</span>
   <span class="chip">산업별 활용</span><span class="chip">작업별 활용</span>
@@ -13203,7 +13156,7 @@ KNOWLEDGE_BODY = """
 <div class="sub-grid" style="margin-top:20px;">
   <div class="sub-card"><h3>드라이아이스 세척 가이드</h3><p>원리 · 장점 · 안전 · FAQ</p>
     <a class="more" href="../cleaning/guide.html">보러가기 →</a></div>
-  <div class="sub-card"><h3>타 세척방식과 비교</h3><p>연마재 · 화학용제 · 고압세척과 비교</p>
+  <div class="sub-card"><h3>타 세척 방식과 비교</h3><p>연마재 · 화학용제 · 고압세척과 비교</p>
     <a class="more" href="../cleaning/compare.html">보러가기 →</a></div>
   <div class="sub-card"><h3>산업별 솔루션</h3><p>18개 산업별 적용 방식</p>
     <a class="more" href="../cleaning/industry.html">보러가기 →</a></div>
@@ -13275,16 +13228,16 @@ FACILITY_BODY = """
 """
 
 QUOTE_BODY = """
-<p>필요한 장비, 세척 대상, 현장 조건(압축공기 · 전원 · 공간)을 알려주시면 담당자가 적합한 모델과
-견적을 안내해 드립니다. 판단이 어려우시면 <a href="compare-equip.html">장비 비교·추천받기</a> 또는
-<a href="../rental/demo.html">데모 테스트</a>부터 시작하셔도 됩니다.</p>
+      <p>필요한 장비와 사용 목적, 현장 조건을 알려주시면 담당자가 검토 후 적합한 구성과 견적을 안내합니다. 세척 장비는 세척 대상·오염물·압축공기 조건을, 드라이아이스 생산 설비는 필요한 형태·생산량·LCO<sub>2</sub> 공급 조건을, 자동화 시스템은 대상 공정·설치 공간·작업 주기 등을 함께 알려주세요. 판단이 어려우시면 <a href="compare-equip.html">장비 비교·추천받기</a> 또는 <a href="../rental/demo.html">데모 테스트</a>부터 시작하셔도 됩니다.</p>
 <h2 style="font-size:20px; margin-top:32px;">문의 시 아래 정보를 함께 보내주시면 더 정확합니다</h2>
 <ul style="padding-left:20px; display:grid; gap:8px;">
-  <li>세척 대상과 오염물질 종류 (사진이 있으면 더 좋습니다)</li>
-  <li>현장의 압축공기 · 전원 조건</li>
-  <li>희망하는 도입 시기와 예산 범위</li>
+  <li>문의 유형 (세척 · 드라이아이스 생산 · CO<sub>2</sub> 회수 · 자동화 · 드라이아이스 공급)</li>
+  <li>사용 목적 또는 세척 대상 / 필요한 생산량·사용량</li>
+  <li>현장 조건 (압축공기 · 전원 · LCO<sub>2</sub> · 설치 공간 등)</li>
+  <li>희망하는 도입 시기와 예산 범위 (선택 사항)</li>
 </ul>
-<p>담당자 확인 후 1~2영업일 내 연락드립니다.</p>
+<p>담당자 확인 후 순차적으로 연락드립니다.</p>
+
 """
 
 LOCATION_BODY = """
@@ -13602,18 +13555,18 @@ MENU = [
              "hero_parallax": True,
              "hero_img": "../assets/img/guide-hero-work.jpg",
              "body": GUIDE_BODY},
-            {"slug": "compare", "title": "타 세척방식과 비교",
+            {"slug": "compare", "title": "타 세척 방식과 비교",
              "desc": "연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.",
              "nav_desc": "기존 세척 방식과 비교해 드라이아이스 세척만의 차이를 확인하세요.",
              "nav_img": "assets/img/compare-thumb.jpg",
              "rich_content": True,
              # (2026-09-07) 페이지 자체의 <title>/메타 설명/H1은 새 편집형 디자인에
-             # 맞춰 "타 세척방식과의 비교"로 바뀌지만, 이 title/desc/nav_desc
+             # 맞춰 "타 세척 방식과 비교"로 바뀌지만, 이 title/desc/nav_desc
              # 필드는 메가메뉴·허브 카드·타 페이지의 "함께 보면 좋은 페이지"
              # 카드 등 사이트 전역에서 공유되며 핸드오프 검증 결과 그 쪽은
              # 변경되지 않았으므로 그대로 둔다. page_title/page_desc로 이 페이지
              # 자신의 head 태그만 별도로 덮어쓴다.
-             "page_title": "타 세척방식과의 비교",
+             "page_title": "타 세척 방식과 비교",
              "page_desc": "오염물은 제거하되 금형·생산설비·부품 및 제품 표면은 지키는 세척 — 표면 영향, 2차 폐기물, 수분, 설비 정지시간을 기준으로 드라이아이스 세척과 연마·샌드·레이저·화학·고압수·소다 블라스팅을 비교합니다.",
              "full_custom_body": True,
              "extra_script": COMPARE_RAIL_SCRIPT,
@@ -13655,7 +13608,7 @@ MENU = [
              # desc/nav_desc는 메가메뉴·허브 카드 공유값이라 유지, 페이지 자신의
              # <title>/메타 설명만 page_title/page_desc로 덮어쓴다.
              "page_title": "도입 가이드 | 드라이아이스 세척가이드",
-             "page_desc": "장비를 고르기 전에 세척 대상과 오염물, 압축공기와 드라이아이스 공급, 작업환경과 안전조건을 확인하는 드라이아이스 세척 도입 절차 가이드.",
+             "page_desc": "장비를 고르기 전에 세척 대상과 오염물, 압축공기와 드라이아이스 공급, 작업 환경과 안전조건을 확인하는 드라이아이스 세척 도입 절차 가이드.",
              "full_custom_body": True,
              "extra_script": AUTOMOTIVE_SCRIPT,
              "body": ADOPT_BODY},
@@ -13672,15 +13625,16 @@ MENU = [
         "body": PRODUCTS_HUB_BODY,
         "subs": [
             {"slug": "blaster", "title": "드라이아이스 세척기 (블라스터)",
-             "desc": "스마트 · 펠릿 · 마이크로파티클 · 특수 목적, 4개 카테고리 8개 모델 라인업을 소개합니다.",
+             "desc": "스마트 · 펠렛 · 마이크로파티클 · 특수 목적 카테고리의 라인업을 소개합니다.",
              "nav_desc": "현장 규모와 작업에 맞는 블라스터 라인업을 소개합니다.",
              "is_group": True},
             {"slug": "pelletizer", "title": "드라이아이스 제조기 (펠렛타이저)",
-             "desc": "액체 CO2로 드라이아이스 펠릿을 직접 생산하는 제조 장비를 소개합니다.",
+             "desc": "액화 CO<sub>2</sub>(LCO<sub>2</sub>)로 펠렛과 너겟을 생산하고, 필요에 따라 슬라이스·블록 생산 시스템과 연계할 수 있는 설비입니다.",
              "nav_desc": "드라이아이스를 직접 생산하는 펠렛타이저를 소개합니다.",
              "is_group": True},
             {"slug": "recovery", "title": "CO2 리커버리",
-             "desc": "드라이아이스 생산 중 배출되는 CO2 가스를 회수해 재사용하는 리커버리 시스템을 소개합니다.",
+             "card_title": "CO<sub>2</sub> 리커버리",
+             "desc": "드라이아이스 생산 중 발생하는 CO<sub>2</sub> 가스를 회수·재액화해 생산에 다시 사용하는 시스템입니다.",
              "nav_desc": "배출 CO2를 회수해 재사용하는 리커버리 장비입니다.",
              "is_group": True},
             {"slug": "automation", "title": "자동화 시스템",
@@ -13725,14 +13679,14 @@ MENU = [
             {"slug": "quote", "title": "견적 요청",
              "desc": "필요한 장비와 현장 조건을 알려주시면 담당자가 맞춤 견적을 안내해 드립니다.",
              "nav_desc": "필요한 장비의 맞춤 견적을 요청하세요.",
-             "body": QUOTE_BODY},
+             "rich_content": True, "body": QUOTE_BODY},
         ],
     },
     {
         "code": "cases", "label": "적용사례", "short": "적용사례",
-        "tagline": "다양한 산업 현장에서 검증된 실제 도입 사례를 확인하세요.",
+        "tagline": "다양한 산업 현장의 적용 사례를 확인하세요.",
         "nav_eyebrow": "CASE STUDIES",
-        "nav_intro": "다양한 산업 현장의 실제 도입 사례를 확인하세요.",
+        "nav_intro": "다양한 산업 현장의 적용 사례를 확인하세요.",
         # (2026-09-17, 17차 핸드오프) 적용사례 영역을 게시판형 리소스 허브로
         # 전면 개편 — 기존 library/testimonials 2개를 없애고 case-studies
         # (구 library를 대체) / videos / technical / webinars 4개로 교체.
@@ -13789,27 +13743,35 @@ MENU = [
         "tagline": "구매 전, 먼저 테스트해보세요. 렌탈과 데모로 적합성을 확인할 수 있습니다.",
         "nav_eyebrow": "RENTAL & DEMO",
         "nav_intro": "구매 전, 실제 현장에서 먼저 성능을 확인해보세요.",
+        # (2026-09-18, 18차 핸드오프) rental 섹션 개편 — 기존 5개 서브페이지
+        # (vrental·recommend·demo·faq·visit)를 3개(vrental·demo·partners)로
+        # 재구성. recommend/faq는 vrental 본문에 통합되고 visit은 데모의
+        # 현장 방문 방식으로 흡수, 신규 partners(세척용역 서비스, 인증
+        # 파트너 소개)가 추가된다. 메가메뉴 노출 항목과 실제 서브페이지가
+        # 정확히 1:1이라 nav_items 오버라이드 없이 subs만 교체하면
+        # megamenu_html()이 자동으로 3항목 메가메뉴를 만든다(§
+        # megamenu_html 참고 — nav_items 없으면 subs에서 유도).
         "subs": [
             {"slug": "vrental", "title": "V RENTAL 안내",
-             "desc": "단기·장기로 장비를 빌려 쓸 수 있는 V RENTAL 프로그램을 소개합니다.",
-             "nav_desc": "필요한 기간만큼 합리적으로 이용하는 렌탈 서비스입니다.",
-             "body": VRENTAL_BODY},
-            {"slug": "recommend", "title": "렌탈 추천 상황",
-             "desc": "구매보다 렌탈이 더 적합한 현장 상황과 사례를 안내합니다.",
-             "nav_desc": "이런 경우라면 렌탈을 추천합니다.",
-             "body": RECOMMEND_BODY},
+             "desc": "블라스터 4종과 50 Hp 디젤 콤프레샤를 필요한 기간만 빌려 쓰는 렌탈 프로그램입니다.",
+             "nav_desc": "블라스터와 디젤 콤프레샤를 필요한 기간만 빌려 쓰는 렌탈 프로그램입니다.",
+             "nav_img": "assets/img/stackdo-rental.jpg", "nav_img_preview_only": True,
+             "page_desc": "구매 전 먼저 써 보는 드라이아이스 블라스터 렌탈 V RENTAL. Elite 20 · PCS 60 · IceRocket PLT · i3 MicroClean 2 네 모델과 50 Hp 디젤 콤프레샤를 필요한 기간만 빌려 쓰고, 렌탈이 맞는 경우와 절차·조건을 안내합니다.",
+             "full_custom_body": True, "body": VRENTAL_BODY,
+             "extra_head": VRENTAL_EXTRA_HEAD, "extra_script": VRENTAL_SCRIPT},
             {"slug": "demo", "title": "데모 테스트 신청",
-             "desc": "실제 현장 시료로 세척 테스트를 진행하는 데모 신청 절차를 안내합니다.",
-             "nav_desc": "도입 전, 현장에서 직접 성능을 확인해보세요.",
-             "body": DEMO_BODY},
-            {"slug": "faq", "title": "절차/조건/FAQ",
-             "desc": "렌탈·데모 이용 절차와 조건, 자주 묻는 질문을 정리했습니다.",
-             "nav_desc": "렌탈 신청 절차와 자주 묻는 질문을 안내합니다.",
-             "body": D_FAQ_BODY},
-            {"slug": "visit", "title": "방문 시연·상담 신청",
-             "desc": "담당자가 직접 현장을 방문해 시연과 상담을 진행하는 일정을 신청할 수 있습니다.",
-             "nav_desc": "전문 상담원이 직접 방문해 시연해드립니다.",
-             "body": VISIT_BODY},
+             "desc": "시편 발송 · 연구소 방문 · 현장 방문, 세 가지 방법으로 세척 효과를 먼저 확인합니다.",
+             "nav_desc": "시편 발송 · 연구소 방문 · 현장 방문, 세 가지 방법으로 세척 효과를 먼저 확인합니다.",
+             "page_desc": "구매나 렌탈 전에 실제 시료로 드라이아이스 세척 효과를 확인하는 바테크 데모 테스트. 시편 발송(무료) · 연구소 방문(무료) · 현장 방문(유료) 세 가지 방법과 신청 절차를 안내합니다.",
+             "full_custom_body": True, "body": DEMO_BODY,
+             "extra_head": DEMO_EXTRA_HEAD, "extra_script": DEMO_SCRIPT},
+            {"slug": "partners", "title": "세척용역 서비스",
+             "desc": "바테크 장비 운용 교육을 이수한 인증 세척용역 업체를 소개합니다.",
+             "nav_desc": "바테크 장비 운용 교육을 이수한 인증 세척용역 업체를 소개합니다.",
+             "page_title": "세척용역 서비스 · 인증 파트너",
+             "page_desc": "바테크 장비 운용 교육을 이수하고 Cold Jet 드라이아이스 블라스터로 세척용역 서비스를 제공하는 인증 파트너 업체를 소개합니다. 장비를 직접 운용하지 않아도 검증된 업체에 작업을 맡길 수 있습니다.",
+             "full_custom_body": True, "body": PARTNERS_BODY,
+             "extra_head": PARTNERS_EXTRA_HEAD},
         ],
     },
     {
@@ -13832,7 +13794,7 @@ MENU = [
             {"title": "웹세미나", "href": "cases/webinars.html",
              "nav_desc": "주제 하나를 깊게 다루는 온라인 세션. 지난 세션은 다시 볼 수 있습니다.",
              "nav_img": "assets/img/guide-hero-work.jpg"},
-            {"title": "제품 카달로그", "href": "support/catalog.html",
+            {"title": "제품 카탈로그", "href": "support/catalog.html",
              "nav_desc": "제품별 상세 카탈로그를 내려받으세요."},
         ],
         "subs": [
@@ -13926,6 +13888,12 @@ def megamenu_html(m, depth):
     # 목록(각 항목 title/nav_desc/nav_img/href)을 그대로 사용하고,
     # 없으면 기존처럼 m["subs"]에서 유도한다(기존 메뉴는 전부 이 경로라
     # 동작 변화 없음).
+    # (2026-09-18, 18차 핸드오프) 렌탈·데모 메뉴 재구성 시 첫 항목(V RENTAL
+    # 안내)의 미리보기 패널만 실제 배경 이미지(stackdo-rental.jpg)로
+    # 바뀌고, 메뉴 인덱스 목록 자체의 <a> 태그에는 data-img가 붙지 않는
+    # 형태로 핸드오프됨(다른 메뉴는 전부 둘 다 같이 붙는 기존 방식 유지).
+    # nav_img는 있지만 항목 자체엔 data-img를 안 붙이고 초기 미리보기
+    # 패널에만 반영하고 싶을 때 nav_img_preview_only=True를 추가로 준다.
     nav_source = m.get("nav_items")
     if nav_source is None:
         nav_source = [
@@ -13933,6 +13901,7 @@ def megamenu_html(m, depth):
                 "title": s["title"],
                 "nav_desc": s["nav_desc"],
                 "nav_img": s.get("nav_img"),
+                "nav_img_preview_only": s.get("nav_img_preview_only", False),
                 "href": m["code"] + "/" + s["slug"] + ("/index.html" if s.get("is_group") else ".html"),
             }
             for s in m["subs"]
@@ -13941,7 +13910,7 @@ def megamenu_html(m, depth):
     for i, s in enumerate(nav_source):
         active = " is-active" if i == 0 else ""
         href = asset(s["href"], depth)
-        img_attr = f' data-img="{asset(s["nav_img"], depth)}"' if s.get("nav_img") else ""
+        img_attr = f' data-img="{asset(s["nav_img"], depth)}"' if s.get("nav_img") and not s.get("nav_img_preview_only") else ""
         index_items.append(
             f'<li class="megamenu-index-item{active}" data-i="{i}">'
             f'<a href="{href}" data-desc="{s["nav_desc"]}"{img_attr}>{s["title"]}</a>'
@@ -14121,7 +14090,7 @@ def footer_html(depth, hero_p=None):
         <div class="footer-hero-main">
           <span class="footer-eyebrow">VATEK · COLD JET KOREA</span>
           <h2>도입 검토부터 현장 적용, <br>교육과 A/S까지<br><em>바테크</em>가 전 과정을 지원합니다.</h2>
-          <p>{hero_p or '설비 특성, 오염 상태, 작업 환경을 고려해 현장에 맞는 최적의 솔루션을 제안합니다.'}</p>
+          <p>{hero_p or '설비 특성, 오염 상태와 작업 환경을 고려해 현장에 맞는 솔루션을 제안합니다.'}</p>
           <div class="footer-cta">
             <a class="footer-btn is-primary" href="{asset('products/index.html', depth)}">제품 살펴보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <a class="footer-btn" href="{asset('rental/index.html', depth)}">렌탈 · 데모 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -14135,7 +14104,7 @@ def footer_html(depth, hero_p=None):
           <span class="partner-badge"><img src="{asset('assets/img/coldjet-logo.png', depth)}" alt="Cold Jet" /><b>대한민국 <br>공식 대리점</b></span>
           <span class="footer-microcap">OFFICIAL DISTRIBUTOR IN KOREA</span>
         </div>
-        <div class="footer-col"><h4>세척 가이드</h4><ul><li><a href="{asset('cleaning/guide.html', depth)}">드라이아이스 세척의 이해</a></li><li><a href="{asset('cleaning/compare.html', depth)}">타 세척방식과 비교</a></li><li><a href="{asset('cleaning/industry.html', depth)}">산업별 솔루션</a></li><li><a href="{asset('cleaning/task.html', depth)}">작업별 솔루션</a></li><li><a href="{asset('cleaning/adopt.html', depth)}">도입 가이드</a></li></ul></div>
+        <div class="footer-col"><h4>세척 가이드</h4><ul><li><a href="{asset('cleaning/guide.html', depth)}">드라이아이스 세척의 이해</a></li><li><a href="{asset('cleaning/compare.html', depth)}">타 세척 방식과 비교</a></li><li><a href="{asset('cleaning/industry.html', depth)}">산업별 솔루션</a></li><li><a href="{asset('cleaning/task.html', depth)}">작업별 솔루션</a></li><li><a href="{asset('cleaning/adopt.html', depth)}">도입 가이드</a></li></ul></div>
         <div class="footer-col"><h4>제품·자동화·공급</h4><ul><li><a href="{asset('products/blaster/index.html', depth)}">드라이아이스 세척기</a></li><li><a href="{asset('products/pelletizer/index.html', depth)}">드라이아이스 제조기</a></li><li><a href="{asset('products/recovery/index.html', depth)}">CO<sub>2</sub> 리커버리</a></li><li><a href="{asset('products/automation.html', depth)}">자동화 시스템</a></li><li><a href="{asset('products/supply.html', depth)}">드라이아이스 구매</a></li></ul></div>
         <div class="footer-col"><h4>사례·지원</h4><ul><li><a href="{asset('cases/case-studies.html', depth)}">적용사례 케이스 스터디</a></li><li><a href="{asset('cases/videos.html', depth)}">동영상 보기</a></li><li><a href="{asset('cases/technical.html', depth)}">기술자료</a></li><li><a href="{asset('rental/index.html', depth)}">렌탈·데모</a></li><li><a href="{asset('support/catalog.html', depth)}">카탈로그 다운로드</a></li><li><a href="{asset('support/techsupport.html', depth)}">기술지원 서비스</a></li></ul></div>
         <div class="footer-contact">
@@ -14271,11 +14240,15 @@ def build_hub_page(m):
 def build_sub_page(m, s):
     depth = 1
     siblings = [x for x in m["subs"] if x["slug"] != s["slug"]][:4]
+    # (2026-09-18, 18차 핸드오프) products/quote.html 본문 개편 시 "CO2
+    # 리커버리" 형제 카드에만 아래 첨자(CO<sub>2</sub>)가 들어가는데, title
+    # 필드 자체는 메가메뉴·<title> 태그 등에서 계속 일반 텍스트(CO2)로 써야
+    # 하므로 이 카드 전용으로 card_title(없으면 title로 폴백)을 추가한다.
     sib_cards = "".join(
-        f'<div class="sub-card"><h3>{x["title"]}</h3><p>{x["desc"]}</p>'
+        f'<div class="sub-card"><h3>{x.get("card_title", x["title"])}</h3><p>{x["desc"]}</p>'
         f'<a class="more" href="{x["slug"]}/index.html">자세히 보기 →</a></div>'
         if x.get("is_group") else
-        f'<div class="sub-card"><h3>{x["title"]}</h3><p>{x["desc"]}</p>'
+        f'<div class="sub-card"><h3>{x.get("card_title", x["title"])}</h3><p>{x["desc"]}</p>'
         f'<a class="more" href="{x["slug"]}.html">자세히 보기 →</a></div>'
         for x in siblings
     )
@@ -14309,7 +14282,7 @@ def build_sub_page(m, s):
       </div>
 """
     if s.get("full_custom_body"):
-        # (2026-09-07, 5차 디자인 개선 핸드오프) "타 세척방식과의 비교" 페이지 —
+        # (2026-09-07, 5차 디자인 개선 핸드오프) "타 세척 방식과 비교" 페이지 —
         # 히어로 패럴랙스 + 신뢰 섹션(.cmp-dark) + 우측 고정 레일(01~06) +
         # 별도 CTA/비용 패널까지 구조가 기존 hero_parallax 템플릿(단일
         # subhero-cover + 공용 last-freeze 꼬리말)과 크게 달라 공용 로직을
@@ -14352,7 +14325,7 @@ def build_sub_page(m, s):
     <div class="sub-card-media"><img src="../assets/img/compare-thumb.jpg" alt="" loading="lazy" /></div>
     <div class="sub-card-body">
       <span class="sub-card-tag">비교 · 차이점</span>
-      <h3 style="font-size: 25px">타 세척방식과 비교</h3>
+      <h3 style="font-size: 25px">타 세척 방식과 비교</h3>
       <p style="font-size: 20px">연마재·화학용제·고압세척 등 기존 방식과 드라이아이스 세척의 차이를 비교합니다.</p>
       <span class="sub-card-more">자세히 보기 →</span>
     </div>
