@@ -23,7 +23,7 @@ window.VATEK_RESOURCES = {
       equipment: 'Aero2® PCS ULTRA · ASP-T',
       application: '금형 세척',
       title: '가황 프레스 안의 타이어 금형, 분해와 냉각 없이 세척하다',
-      client: '국내 타이어 제조사 A사 · 광주',
+      client: '국내 타이어 제조사 A사 · 광주 (적용 예시)',
       excerpt: '금형을 내려 세척장으로 옮기던 방식에서 프레스 안 인라인 세척으로 바꿔 가동 정지 시간을 크게 줄였습니다.',
       img: '../assets/img/rubber-tires-cleaning-tire-mold-while-hot-and-online-with-dry-ice-blasting.webp',
       stats: [{ k: '금형당 정지 시간', v: '−80%' }, { k: '분해 · 재조립', v: '0회' }, { k: '벤트홀 막힘', v: '해소' }],
@@ -36,7 +36,7 @@ window.VATEK_RESOURCES = {
       body: [
         ['과제', '타이어 금형은 가황 반복으로 이형제와 고무 잔류물이 쌓여 벤트홀이 막히고 표면 품질이 떨어집니다. 기존에는 금형을 프레스에서 내려 냉각한 뒤 세척장에서 처리했고, 한 세트에 반나일이 걸렸습니다.'],
         ['적용', '금형이 뜨거운 상태에서 프레스 안으로 마이크로파티클 노즐을 넣어 세척했습니다. 정밀 형상에는 마이크로파티클, 고착 잔류물에는 3 mm 펠렛으로 전환하는 Aero2 PCS ULTRA를 사용했고, 반복 라인에는 ASP-T 로봇 셀을 검토했습니다.'],
-        ['결과', '금형을 분해하지 않아 재조립 오차가 없어졌고, 정지 시간은 세트당 약 80% 줄었습니다. 세척 후 잔류물이 없어 별도 건조 공정도 사라졌습니다.']
+        ['결과', '금형을 분해하지 않아 재조립 공정이 줄었고, 정지 시간은 세트당 약 80% 줄어든 것으로 나타났습니다. 세척 후 잔류물이 남지 않아 건조 공정 부담도 줄었습니다. (수치는 적용 예시 기준입니다)']
       ]
     },
     {
@@ -46,7 +46,7 @@ window.VATEK_RESOURCES = {
       equipment: 'Aero® 80FP',
       application: '설비 위생 세척',
       title: '물 없이 매일 세척 — 제과 라인 컨베이어와 믹서의 위생 관리',
-      client: '제과 제조사 B사 · 충북',
+      client: '제과 제조사 B사 · 충북 (적용 예시)',
       excerpt: '물과 세제를 쓰지 못하는 구간의 탄화 반죽과 유지를 드라이아이스로 제거해 세척 주기를 주 1회에서 매일로 바꿨습니다.',
       img: '../assets/img/food-beverage-cleaning-conveyors-with-dry-ice-blasting.webp',
       stats: [{ k: '세척 중 물 사용', v: '0 L' }, { k: '세척 주기', v: '주 1회 → 매일' }, { k: '화학 세제', v: '미사용' }],
@@ -58,7 +58,7 @@ window.VATEK_RESOURCES = {
       body: [
         ['과제', '오븐 앞뒤 컨베이어와 믹서 내부에 탄화된 반죽과 유지가 쌓였지만, 전장부와 베어링 때문에 물 세척이 어려워 주말에만 부분 분해 세척을 했습니다.'],
         ['적용', '80 lb 대용량 호퍼의 Aero 80FP로 라인 정지 사이에 세척했습니다. 식품 접촉면에는 식품 등급 드라이아이스 펠렛을, 탄화 구간에는 넓은 팬 노즐을 사용했습니다.'],
-        ['결과', '물과 세제를 쓰지 않아 건조 대기 없이 바로 재가동했고, 매일 짧게 세척하는 방식으로 바뀌면서 이물 리스크가 낮아졌습니다. HACCP 점검 기록도 단순해졌습니다.']
+        ['결과', '물과 세제를 쓰지 않아 건조 공정 부담을 줄이고 재가동 시간을 앞당겼으며, 매일 짧게 세척하는 방식으로 바뀌면서 이물 관리에 도움이 된 것으로 나타났습니다. (수치는 적용 예시 기준입니다)']
       ]
     },
     {
@@ -68,10 +68,10 @@ window.VATEK_RESOURCES = {
       equipment: 'i³ MicroClean® 2 · 자동화 셀',
       application: '몰드 다이 세척',
       title: '반도체 몰드 다이 세척을 무인 반복 공정으로',
-      client: '반도체 패키징 C사 · 경기',
-      excerpt: '수작업 솔벤트 세척을 마이크로파티클 자동 세척으로 바꿔 다이 표면 손상 없이 일정한 품질을 확보했습니다.',
+      client: '반도체 패키징 C사 · 경기 (적용 예시)',
+      excerpt: '수작업 솔벤트 세척을 마이크로파티클 자동 세척으로 바꿔 표면 영향을 관리하며 반복 조건을 일정하게 유지했습니다.',
       img: '../assets/img/semiconductor-cleaning-the-mold-or-die-after-the-molding-process-of-the-microchips.webp',
-      stats: [{ k: '세척 편차', v: '작업자 무관' }, { k: '표면 손상', v: '0' }, { k: '솔벤트', v: '미사용' }],
+      stats: [{ k: '세척 편차', v: '작업자 무관' }, { k: '표면 영향', v: '관리' }, { k: '솔벤트', v: '미사용' }],
       related: {
         videos: ['capabilities-applications'],
         industry: { label: '반도체 · 전자 제조', href: '../industries/semiconductor.html', img: '../assets/img/semiconductor-dry-ice-cleaning-removing-wax-and-gas-buildup-from-semiconductor-molds.webp', desc: '반도체 몰드 · 웨이퍼 장비 · PCB까지 정밀 세척 적용' },
@@ -114,8 +114,8 @@ window.VATEK_RESOURCES = {
       category: '현장 시연',
       industry: '식품 · 음료',
       duration: '1:48',
-      title: '식품 믹서 세척 — 분해 없이, 물 없이',
-      excerpt: '고착된 사료 반죽을 믹서 내부에서 바로 제거하는 장면. 건조 대기 없이 재가동하는 식품 설비 세척의 전형적인 예입니다.'
+      title: '식품 믹서의 드라이아이스 세척 시연',
+      excerpt: '고착된 사료 반죽을 믹서 내부에서 제거하는 장면을 보여주는 영상입니다.'
     }
   ],
 
