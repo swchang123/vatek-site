@@ -3,7 +3,7 @@
 (function () {
   var root = document.getElementById('resRoot'); if (!root || !window.VATEK_RESOURCES) return;
   var type = root.getAttribute('data-type');
-  var items = (window.VATEK_RESOURCES[type] || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+  var items = (window.VATEK_RESOURCES[type] || []).slice().sort(function (a, b) { if (a.date === b.date) return 0; return a.date < b.date ? 1 : -1; });
   var grid = document.getElementById('resGrid'), count = document.getElementById('resCount'), empty = document.getElementById('resEmpty');
   var search = document.getElementById('resSearch'), resetBtn = document.getElementById('resReset');
   var q = '';
@@ -37,7 +37,7 @@
     if (type === 'videos' || type === 'webinars') {
       var vhref = 'watch.html?id=' + encodeURIComponent(it.id);
       var sub = type === 'videos' ? esc(it.category) : (it.status === 'upcoming' ? '예정' : '다시 보기');
-      var meta = type === 'videos' ? d + '<i></i><span>' + esc(it.industry) + '</span>' : d + '<i></i><span>' + esc(it.speaker) + '</span>';
+      var meta = type === 'videos' ? d + '<i></i><span>' + esc(it.industry) + '</span>' : '<span>' + esc(it.speaker) + '</span>';
       var extra = type === 'webinars' ? '<div class="res-webmeta"><span>' + esc(it.duration) + '</span><span>' + esc(it.lang) + '</span><span>' + esc(it.industry) + '</span></div>' : '';
       return '<article class="res-card is-video reveal" style="--reveal-delay:' + (i % 3) * 0.06 + 's" data-id="' + it.id + '">' +
         '<a class="res-thumb" href="' + vhref + '" aria-label="보기: ' + esc(it.title) + '"><img src="' + yt(it.youtube) + '" alt="" loading="lazy" decoding="async" /><span class="res-play" aria-hidden="true"></span><span class="res-tag">' + sub + '</span>' + (type === 'videos' ? '<span class="res-dur">' + esc(it.duration) + '</span>' : '') + '</a>' +
@@ -45,10 +45,23 @@
         '<h3><a href="' + vhref + '">' + esc(it.title) + '</a></h3><p>' + esc(it.excerpt) + '</p>' + extra +
         '<a class="res-more" href="' + vhref + '">' + (type === 'videos' ? '영상 보기' : '웹세미나 다시 보기') + ' <span>→</span></a></div></article>';
     }
+    /* catalogs */
+    if (type === 'catalogs') {
+      var has = !!it.pdf;
+      var cover = has ? '<a class="res-thumb is-cover" href="' + it.pdf + '" target="_blank" rel="noopener">' : '<div class="res-thumb is-cover">';
+      var coverEnd = has ? '</a>' : '</div>';
+      return '<article class="res-card is-catalog reveal" style="--reveal-delay:' + (i % 4) * 0.06 + 's" data-id="' + it.id + '">' +
+        cover + '<img src="' + it.img + '" alt="' + esc(it.title) + ' 표지" loading="lazy" decoding="async" /><span class="res-tag">' + esc(it.type) + '</span>' + (it.pages ? '<span class="res-dur">' + esc(it.pages) + '</span>' : '') + coverEnd +
+        '<div class="res-body">' + num + '<div class="res-meta"><span>' + esc(it.lang || 'PDF') + '</span>' + (it.year ? '<i></i><span>' + esc(it.year) + '</span>' : '') + '</div>' +
+        '<h3>' + (has ? '<a href="' + it.pdf + '" target="_blank" rel="noopener">' + esc(it.title) + '</a>' : esc(it.title)) + '</h3><p>' + esc(it.excerpt) + '</p>' +
+        '<div class="res-actions">' + (has
+          ? '<a class="res-act is-primary" href="' + it.pdf + '" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>보기</a><a class="res-act" href="' + it.pdf + '" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5"/><path d="M4 20h16"/></svg>다운로드</a>'
+          : '<span class="res-act is-off">PDF 준비 중</span><a class="res-act" href="../products/quote.html">카탈로그 요청</a>') + '</div></div></article>';
+    }
     /* technical */
     return '<article class="res-card is-doc reveal" style="--reveal-delay:' + (i % 3) * 0.06 + 's" data-id="' + it.id + '">' +
       '<a class="res-thumb" href="' + it.link + '"><img src="' + it.img + '" alt="" loading="lazy" decoding="async" /><span class="res-tag">' + esc(it.type) + '</span><span class="res-dur">' + esc(it.format) + '</span></a>' +
-      '<div class="res-body">' + num + '<div class="res-meta">' + d + '<i></i><span>' + esc(it.industry) + '</span></div>' +
+      '<div class="res-body">' + num + '<div class="res-meta"><span>' + esc(it.industry) + '</span></div>' +
       '<h3><a href="' + it.link + '">' + esc(it.title) + '</a></h3><p>' + esc(it.excerpt) + '</p>' +
       '<a class="res-more" href="' + it.link + '">' + esc(it.cta || '자료 보기') + ' <span>→</span></a></div></article>';
   }

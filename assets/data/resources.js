@@ -159,6 +159,46 @@ window.VATEK_RESOURCES = {
     }
   ],
 
+  /* ── 제품 카탈로그 (support/catalog.html) — pdf 경로를 채우면 보기 · 다운로드 버튼이 활성화됩니다. 표지 이미지는 PDF 첫 페이지를 JPG로 저장해 img에 지정. ── */
+  catalogs: [
+    {
+      id: 'catalog-blaster',
+      date: '2026-01-15',
+      type: '블라스터',
+      year: '2026',
+      lang: 'PDF · 한국어',
+      pages: '',
+      title: 'Cold Jet 드라이아이스 블라스터 종합 카탈로그',
+      excerpt: 'Aero2 · Elite · PCS · i³ MicroClean 전 모델의 사양, 압축공기 요구 조건, 노즐 구성을 한 권에 담았습니다.',
+      img: '../assets/img/blaster-catalog-original.jpg',
+      pdf: ''
+    },
+    {
+      id: 'catalog-pelletizer',
+      date: '2026-01-15',
+      type: '펠렛타이저',
+      year: '2026',
+      lang: 'PDF · 한국어',
+      pages: '',
+      title: 'Cold Jet 펠렛타이저 카탈로그 — PR 시리즈 · PE 80',
+      excerpt: '시간당 생산량, LCO₂ 소비량, 설치 조건과 특수 성형 옵션까지 드라이아이스 생산 장비 전 라인업.',
+      img: '../assets/img/pelletizer-pr750h-official.jpg',
+      pdf: ''
+    },
+    {
+      id: 'catalog-recovery',
+      date: '2026-01-15',
+      type: 'CO₂ 리커버리',
+      year: '2026',
+      lang: 'PDF · 한국어',
+      pages: '',
+      title: 'Cold Jet CO₂ 리커버리 시스템 카탈로그 — RE-CO₂ 시리즈',
+      excerpt: '펠렛타이저 배출 CO₂를 회수 · 액화해 재사용하는 리커버리 시스템의 모델별 회수 용량과 구성.',
+      img: '../assets/img/recovery-hero-official.jpg',
+      pdf: ''
+    }
+  ],
+
   /* ── 웹세미나 ────────────────────────────────────────────── */
   webinars: [
     {

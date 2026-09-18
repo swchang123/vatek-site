@@ -47,7 +47,7 @@
   if (crumbTitle) crumbTitle.textContent = vt.title;
   var crumbParent = document.getElementById('crumbParent');
   if (crumbParent) crumbParent.innerHTML = '<a href="' + kind + '.html">' + (kind === 'videos' ? '동영상 보기' : '웹세미나') + '</a>';
-  var metaBits = [fmtDate(vt.date)];
+  var metaBits = kind === 'videos' ? [fmtDate(vt.date)] : [];
   if (vt.duration) metaBits.push(esc(vt.duration));
   if (vt.speaker) metaBits.push(esc(vt.speaker));
   if (vt.lang) metaBits.push(esc(vt.lang));
