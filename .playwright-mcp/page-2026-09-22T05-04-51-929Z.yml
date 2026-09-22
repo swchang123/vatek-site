@@ -1,0 +1,448 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "VATEK":
+        - /url: index.html
+        - img "VATEK"
+      - navigation [ref=e4]:
+        - list [ref=e5]:
+          - listitem [ref=e6]:
+            - link "드라이아이스 세척가이드" [ref=e7] [cursor=pointer]:
+              - /url: cleaning/index.html
+          - listitem [ref=e8]:
+            - link "장비 · 드라이아이스" [ref=e9] [cursor=pointer]:
+              - /url: products/index.html
+          - listitem [ref=e10]:
+            - link "적용 분야" [ref=e11] [cursor=pointer]:
+              - /url: cases/index.html
+          - listitem [ref=e12]:
+            - link "세척 테스트·렌탈" [ref=e13] [cursor=pointer]:
+              - /url: rental/index.html
+          - listitem [ref=e14]:
+            - link "기술지원·자료" [ref=e15] [cursor=pointer]:
+              - /url: support/index.html
+          - listitem [ref=e16]:
+            - link "회사소개" [ref=e17] [cursor=pointer]:
+              - /url: company/index.html
+      - generic [ref=e18]:
+        - link "문의" [ref=e19] [cursor=pointer]:
+          - /url: products/quote.html
+        - img "Cold Jet" [ref=e20]
+  - generic [ref=e21]:
+    - generic [ref=e25]:
+      - heading "세계가 선택한 세척 기술, 생산의 차이를 만듭니다." [level=1] [ref=e26]: 세계가 선택한 세척 기술,생산의 차이를 만듭니다.
+      - paragraph [ref=e27]: 바테크는 세계 최초이자 글로벌 리더 Cold Jet의 대한민국 공식 총판입니다. 압도적인 기술력과 현장 경험으로 더 정확하고 효율적인 산업 세척 솔루션을 제공합니다.
+      - generic [ref=e28]:
+        - link "견적문의" [ref=e29] [cursor=pointer]:
+          - /url: products/quote.html
+        - link "데모 테스트 신청" [ref=e30] [cursor=pointer]:
+          - /url: rental/demo.html
+    - button "다음 화면으로 스크롤" [ref=e31] [cursor=pointer]:
+      - generic [ref=e32]: Scroll down
+  - generic [ref=e38]:
+    - heading "우리가 하는 일" [level=2] [ref=e40]
+    - generic [ref=e41]:
+      - link "드라이아이스 블라스터" [ref=e42] [cursor=pointer]:
+        - /url: products/index.html
+      - link "제조기 · 리커버리" [ref=e44] [cursor=pointer]:
+        - /url: products/pelletizer/index.html
+      - link "자동화 시스템" [ref=e46] [cursor=pointer]:
+        - /url: rental/index.html
+      - link "드라이아이스 생산 · 공급" [ref=e48] [cursor=pointer]:
+        - /url: products/supply.html
+      - link "렌탈 · 데모 서비스" [ref=e50] [cursor=pointer]:
+        - /url: support/techsupport.html
+    - generic [ref=e52]:
+      - generic:
+        - link "드라이아이스 블라스터 드라이아이스 블라스터 블라스터부터 자동화 세척 시스템까지, 현장에 맞는 장비를 공급합니다. 자세히 보기 →":
+          - /url: products/index.html
+          - generic:
+            - img "드라이아이스 블라스터"
+          - generic:
+            - generic: 드라이아이스 블라스터
+            - generic: 블라스터부터 자동화 세척 시스템까지, 현장에 맞는 장비를 공급합니다.
+            - generic: 자세히 보기 →
+        - link "제조기 · 리커버리 제조기 · 리커버리 액체 CO2로 드라이아이스를 직접 만드는 펠렛타이저와, 배출 CO2를 회수해 재사용하는 리커버리 장비를 공급합니다. 자세히 보기 →":
+          - /url: products/pelletizer/index.html
+          - generic:
+            - img "제조기 · 리커버리"
+          - generic:
+            - generic: 제조기 · 리커버리
+            - generic: 액체 CO2로 드라이아이스를 직접 만드는 펠렛타이저와, 배출 CO2를 회수해 재사용하는 리커버리 장비를 공급합니다.
+            - generic: 자세히 보기 →
+        - link "자동화 시스템 자동화 시스템 구매 전, 실제 현장에서 먼저 성능을 확인해보세요. 자세히 보기 →":
+          - /url: rental/index.html
+          - generic:
+            - img "자동화 시스템"
+          - generic:
+            - generic: 자동화 시스템
+            - generic: 구매 전, 실제 현장에서 먼저 성능을 확인해보세요.
+            - generic: 자세히 보기 →
+        - link "드라이아이스 생산 · 공급 드라이아이스 생산 · 공급 펠렛타이저로 직접 생산하거나, 소모품으로 정기 공급받을 수 있습니다. 자세히 보기 →":
+          - /url: products/supply.html
+          - generic:
+            - img "드라이아이스 생산 · 공급"
+          - generic:
+            - generic: 드라이아이스 생산 · 공급
+            - generic: 펠렛타이저로 직접 생산하거나, 소모품으로 정기 공급받을 수 있습니다.
+            - generic: 자세히 보기 →
+        - link "렌탈 · 데모 서비스 렌탈 · 데모 서비스 설치부터 A/S까지, 도입 이후에도 끝까지 책임집니다. 자세히 보기 →":
+          - /url: support/techsupport.html
+          - generic:
+            - img "렌탈 · 데모 서비스"
+          - generic:
+            - generic: 렌탈 · 데모 서비스
+            - generic: 설치부터 A/S까지, 도입 이후에도 끝까지 책임집니다.
+            - generic: 자세히 보기 →
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e57]: "01"
+            - heading "드라이아이스 블라스터" [level=3] [ref=e58]
+          - generic [ref=e59]:
+            - paragraph [ref=e60]: 블라스터부터 자동화 세척 시스템까지, 현장에 맞는 장비를 공급합니다.
+            - link "자세히 보기 →" [ref=e61] [cursor=pointer]:
+              - /url: products/index.html
+        - img "드라이아이스 블라스터" [ref=e62]
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic: "02"
+              - heading "제조기 · 리커버리" [level=3]
+            - generic:
+              - paragraph: 액체 CO2로 드라이아이스를 직접 만드는 펠렛타이저와, 배출 CO2를 회수해 재사용하는 리커버리 장비를 공급합니다.
+              - link "자세히 보기 →":
+                - /url: products/pelletizer/index.html
+          - img "제조기 · 리커버리"
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic: "03"
+              - heading "자동화 시스템" [level=3]
+            - generic:
+              - paragraph: 구매 전, 실제 현장에서 먼저 성능을 확인해보세요.
+              - link "자세히 보기 →":
+                - /url: rental/index.html
+          - img "자동화 시스템"
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic: "04"
+              - heading "드라이아이스 생산 · 공급" [level=3]
+            - generic:
+              - paragraph: 펠렛타이저로 직접 생산하거나, 소모품으로 정기 공급받을 수 있습니다.
+              - link "자세히 보기 →":
+                - /url: products/supply.html
+          - img "드라이아이스 생산 · 공급"
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic: "05"
+              - heading "렌탈 · 데모 서비스" [level=3]
+            - generic:
+              - paragraph: 설치부터 A/S까지, 도입 이후에도 끝까지 책임집니다.
+              - link "자세히 보기 →":
+                - /url: support/techsupport.html
+          - img "렌탈 · 데모 서비스"
+    - button "다음 화면으로 스크롤" [ref=e63] [cursor=pointer]:
+      - generic [ref=e64]: Scroll down
+  - generic [ref=e68]:
+    - generic [ref=e69]:
+      - heading "우리의 가치" [level=2] [ref=e71]
+      - button "다음 화면으로 스크롤":
+        - generic: Scroll down
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - generic [ref=e74]: 업계 최초
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - generic [ref=e77]: "0"
+              - generic [ref=e79]: 최초의 산업용 블라스터 개발
+            - generic [ref=e80]:
+              - generic [ref=e81]: "0"
+              - generic [ref=e83]: 최초로 NASA 기술 적용
+            - generic [ref=e84]:
+              - generic [ref=e85]: "0"
+              - generic [ref=e87]: 최초의 블록형 블라스터 개발
+            - generic [ref=e88]:
+              - generic [ref=e89]: "0"
+              - generic [ref=e91]: 최초의 스마트형 원격 시스템
+        - generic [ref=e92]:
+          - generic [ref=e93]: 업계 최대
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e96]: "0"
+              - generic [ref=e98]: 글로벌 생산공장
+            - generic [ref=e99]:
+              - generic [ref=e100]: "0"
+              - generic [ref=e102]: 최다 글로벌 특허 보유
+            - generic [ref=e103]:
+              - generic [ref=e104]: "0"
+              - generic [ref=e106]: 글로벌 자회사
+            - generic [ref=e107]:
+              - generic [ref=e108]: "0"
+              - generic [ref=e110]: R&D 연구소
+        - generic [ref=e111]:
+          - generic [ref=e112]: 검증된 기술력
+          - generic [ref=e113]:
+            - generic [ref=e114]:
+              - generic [ref=e115]: 블라스터만 전 세계
+              - generic [ref=e116]:
+                - generic [ref=e117]: "0"
+                - generic [ref=e118]: 대 이상
+              - heading "압도적인 세계 판매량 1위" [level=3] [ref=e119]
+              - paragraph [ref=e120]: 24,000대가 넘는 글로벌 설치 실적과 다양한 산업 현장에서 축적된 경험을 통해, Cold Jet의 기술력과 신뢰성은 이미 검증되었습니다.
+            - generic:
+              - img "Cold Jet 기술 라인업"
+    - generic [ref=e123]:
+      - generic [ref=e124]: 미디어 보도 및 수상
+      - generic [ref=e125]:
+        - img "National Geographic"
+        - img "History Channel"
+        - img "DIY Network"
+        - img "Goering Center"
+        - img "Inc. 5000"
+        - img "Ernst & Young"
+        - img "Mazzy Awards"
+        - img "Tristate Success Awards"
+        - img "Fast 55"
+        - img "International Business Awards"
+        - img "eAwards"
+        - img "Plastics Technology"
+    - generic [ref=e126]:
+      - heading "우리의 신념" [level=2] [ref=e128]
+      - generic [ref=e130]:
+        - generic [ref=e132]:
+          - heading "우리의 신념" [level=3] [ref=e133]
+          - paragraph [ref=e134]:
+            - generic [ref=e135]:
+              - text: CO
+              - subscript [ref=e136]: "2"
+            - text: 에 새로운가치를 더합니다.
+          - img "CO2" [ref=e137]
+        - button "다음 화면으로 스크롤" [ref=e138] [cursor=pointer]:
+          - generic [ref=e139]: Scroll down
+        - paragraph [ref=e143]:
+          - text: 우리는 CO
+          - subscript [ref=e144]: "2"
+          - text: 기술의 혁신으로,지속가능한 산업 생태계를 만들고,더 나은 환경과 사회적 가치를 함께 실현합니다.
+  - generic [ref=e146]:
+    - heading "우리는 '콜드젯 팀'입니다." [level=2] [ref=e148]
+    - generic [ref=e150]:
+      - generic [ref=e152]:
+        - heading "WE ARE ONE TEAM" [level=3] [ref=e153]
+        - paragraph [ref=e154]: 콜드젯은 장비의 연구·개발·생산과 기술 교육을 담당하고 있으며,바테크는 대한민국 공식 총판으로서 제품 판매부터 기술 지원 및 관련 서비스를 제공합니다.
+      - button "다음 화면으로 스크롤" [ref=e155] [cursor=pointer]:
+        - generic [ref=e156]: Scroll down
+      - generic [ref=e160]:
+        - img "VATEK" [ref=e162]
+        - generic [ref=e163]: ×
+        - img "Cold Jet" [ref=e165]
+  - generic [ref=e167]:
+    - heading "무엇을 도와드릴까요?" [level=2] [ref=e169]
+    - generic [ref=e170]:
+      - generic [ref=e171]:
+        - heading [level=3] [ref=e172]:
+          - link "드라이아이스 세척가이드" [ref=e173] [cursor=pointer]:
+            - /url: cleaning/index.html
+        - paragraph [ref=e174]: 드라이아이스 블라스팅의 원리와 장점, 우리 현장에 맞는 솔루션을 알아보세요.
+        - generic [ref=e175]:
+          - link "드라이아이스 세척의 이해" [ref=e176] [cursor=pointer]:
+            - /url: cleaning/guide.html
+          - link "타 세척 방식과 비교" [ref=e177] [cursor=pointer]:
+            - /url: cleaning/compare.html
+          - link "산업별 솔루션" [ref=e178] [cursor=pointer]:
+            - /url: cleaning/industry.html
+          - link "+2개" [ref=e179] [cursor=pointer]:
+            - /url: cleaning/index.html
+        - generic [aria-hidden] [ref=e180]: →
+      - generic [ref=e181]:
+        - heading [level=3] [ref=e182]:
+          - link "장비 · 드라이아이스" [ref=e183] [cursor=pointer]:
+            - /url: products/index.html
+        - paragraph [ref=e184]: 세척기부터 제조기, 자동화 시스템, 소모품 공급까지 한 번에 확인하세요.
+        - generic [ref=e185]:
+          - link "드라이아이스 세척기 (블라스터)" [ref=e186] [cursor=pointer]:
+            - /url: products/blaster/index.html
+          - link "드라이아이스 제조기 (펠렛타이저)" [ref=e187] [cursor=pointer]:
+            - /url: products/pelletizer/index.html
+          - link "CO2 리커버리" [ref=e188] [cursor=pointer]:
+            - /url: products/recovery/index.html
+          - link "+6개" [ref=e189] [cursor=pointer]:
+            - /url: products/index.html
+        - generic [aria-hidden] [ref=e190]: →
+      - generic [ref=e191]:
+        - heading [level=3] [ref=e192]:
+          - link "적용 분야" [ref=e193] [cursor=pointer]:
+            - /url: cases/index.html
+        - paragraph [ref=e194]: 산업과 작업별 적용 방법, 그리고 실제 현장 사례를 확인하세요.
+        - generic [ref=e195]:
+          - link "산업별 솔루션" [ref=e196] [cursor=pointer]:
+            - /url: cleaning/industry.html
+          - link "작업별 솔루션" [ref=e197] [cursor=pointer]:
+            - /url: cleaning/task.html
+          - link "케이스 스터디" [ref=e198] [cursor=pointer]:
+            - /url: cases/case-studies.html
+          - link "적용 영상" [ref=e199] [cursor=pointer]:
+            - /url: cases/videos.html
+        - generic [aria-hidden] [ref=e200]: →
+      - generic [ref=e201]:
+        - heading [level=3] [ref=e202]:
+          - link "세척 테스트·렌탈" [ref=e203] [cursor=pointer]:
+            - /url: rental/index.html
+        - paragraph [ref=e204]: 구매 전, 먼저 테스트해보세요. 렌탈과 데모로 적합성을 확인할 수 있습니다.
+        - generic [ref=e205]:
+          - link "장비 렌탈" [ref=e206] [cursor=pointer]:
+            - /url: rental/vrental.html
+          - link "데모 테스트" [ref=e207] [cursor=pointer]:
+            - /url: rental/demo.html
+          - link "세척 용역" [ref=e208] [cursor=pointer]:
+            - /url: rental/partners.html
+          - link "+2개" [ref=e209] [cursor=pointer]:
+            - /url: rental/index.html
+        - generic [aria-hidden] [ref=e210]: →
+      - generic [ref=e211]:
+        - heading [level=3] [ref=e212]:
+          - link "기술지원·자료" [ref=e213] [cursor=pointer]:
+            - /url: support/index.html
+        - paragraph [ref=e214]: 설치부터 A/S, 기술자료까지 도입 이후 필요한 모든 것을 지원합니다.
+        - generic [ref=e215]:
+          - link "교육·A/S" [ref=e216] [cursor=pointer]:
+            - /url: support/education.html
+          - link "기술지원 안내" [ref=e217] [cursor=pointer]:
+            - /url: support/techsupport.html
+          - link "기술자료" [ref=e218] [cursor=pointer]:
+            - /url: cases/technical.html
+          - link "+2개" [ref=e219] [cursor=pointer]:
+            - /url: support/index.html
+        - generic [aria-hidden] [ref=e220]: →
+      - generic [ref=e221]:
+        - heading [level=3] [ref=e222]:
+          - link "회사소개" [ref=e223] [cursor=pointer]:
+            - /url: company/index.html
+        - paragraph [ref=e224]: Cold Jet 대한민국 공식 대리점, 바테크를 소개합니다.
+        - generic [ref=e225]:
+          - link "회사소개" [ref=e226] [cursor=pointer]:
+            - /url: company/about.html
+          - link "기술·서비스 역량" [ref=e227] [cursor=pointer]:
+            - /url: company/capability.html
+          - link "위치/연락처" [ref=e228] [cursor=pointer]:
+            - /url: company/location.html
+        - generic [aria-hidden] [ref=e229]: →
+  - contentinfo [ref=e232]:
+    - generic [ref=e233]:
+      - generic [ref=e234]:
+        - generic [aria-hidden]:
+          - generic: VATEK
+          - generic: 바테크
+        - generic [ref=e235]:
+          - generic [ref=e236]: VATEK · COLD JET KOREA
+          - heading [level=2] [ref=e237]:
+            - text: 도입 검토부터 현장 적용, 교육과 A/S까지
+            - emphasis [ref=e238]: 바테크
+            - text: 가 전 과정을 지원합니다.
+          - paragraph [ref=e239]: 설비 특성, 오염 상태와 작업 환경을 고려해 현장에 맞는 솔루션을 제안합니다.
+          - generic [ref=e240]:
+            - link "제품 살펴보기" [ref=e241] [cursor=pointer]:
+              - /url: products/index.html
+            - link "세척 테스트 · 렌탈" [ref=e244] [cursor=pointer]:
+              - /url: rental/index.html
+      - generic [ref=e247]:
+        - generic [ref=e248]:
+          - link [ref=e249] [cursor=pointer]:
+            - /url: index.html
+            - img "VATEK" [ref=e250]
+          - paragraph [ref=e251]: 드라이아이스 블라스터·펠렛타이저·리커버리 및 관련 소모품을 공급하는 Cold Jet 대한민국 공식 대리점
+          - generic [ref=e252]:
+            - img "Cold Jet" [ref=e253]
+            - generic [ref=e254]: 대한민국 공식 대리점
+          - generic [ref=e255]: OFFICIAL DISTRIBUTOR IN KOREA
+        - generic [ref=e256]:
+          - heading "세척 가이드" [level=4] [ref=e257]
+          - list [ref=e258]:
+            - listitem [ref=e259]:
+              - link "드라이아이스 세척의 이해" [ref=e260] [cursor=pointer]:
+                - /url: cleaning/guide.html
+            - listitem [ref=e261]:
+              - link "타 세척 방식과 비교" [ref=e262] [cursor=pointer]:
+                - /url: cleaning/compare.html
+            - listitem [ref=e263]:
+              - link "산업별 솔루션" [ref=e264] [cursor=pointer]:
+                - /url: cleaning/industry.html
+            - listitem [ref=e265]:
+              - link "작업별 솔루션" [ref=e266] [cursor=pointer]:
+                - /url: cleaning/task.html
+            - listitem [ref=e267]:
+              - link "도입 가이드" [ref=e268] [cursor=pointer]:
+                - /url: cleaning/adopt.html
+        - generic [ref=e269]:
+          - heading "장비 · 드라이아이스" [level=4] [ref=e270]
+          - list [ref=e271]:
+            - listitem [ref=e272]:
+              - link "드라이아이스 세척기" [ref=e273] [cursor=pointer]:
+                - /url: products/blaster/index.html
+            - listitem [ref=e274]:
+              - link "드라이아이스 제조기" [ref=e275] [cursor=pointer]:
+                - /url: products/pelletizer/index.html
+            - listitem [ref=e276]:
+              - link [ref=e277] [cursor=pointer]:
+                - /url: products/recovery/index.html
+                - text: CO
+                - subscript [ref=e278]: "2"
+                - text: 리커버리
+            - listitem [ref=e279]:
+              - link "자동화 시스템" [ref=e280] [cursor=pointer]:
+                - /url: products/automation.html
+            - listitem [ref=e281]:
+              - link "드라이아이스 구매" [ref=e282] [cursor=pointer]:
+                - /url: products/supply.html
+        - generic [ref=e283]:
+          - heading "사례·지원" [level=4] [ref=e284]
+          - list [ref=e285]:
+            - listitem [ref=e286]:
+              - link "케이스 스터디" [ref=e287] [cursor=pointer]:
+                - /url: cases/case-studies.html
+            - listitem [ref=e288]:
+              - link "적용 영상" [ref=e289] [cursor=pointer]:
+                - /url: cases/videos.html
+            - listitem [ref=e290]:
+              - link "기술자료" [ref=e291] [cursor=pointer]:
+                - /url: cases/technical.html
+            - listitem [ref=e292]:
+              - link "세척 테스트·렌탈" [ref=e293] [cursor=pointer]:
+                - /url: rental/index.html
+            - listitem [ref=e294]:
+              - link "카탈로그 다운로드" [ref=e295] [cursor=pointer]:
+                - /url: support/catalog.html
+            - listitem [ref=e296]:
+              - link "기술지원 서비스" [ref=e297] [cursor=pointer]:
+                - /url: support/techsupport.html
+        - generic [ref=e298]:
+          - heading "문의하기" [level=4] [ref=e299]
+          - link "031-796-4300" [ref=e300] [cursor=pointer]:
+            - /url: tel:0317964300
+          - link "sales@vatek.co.kr" [ref=e304] [cursor=pointer]:
+            - /url: mailto:sales@vatek.co.kr
+          - paragraph [ref=e309]:
+            - generic [ref=e313]: 평일 09:00 – 18:00 | 주말·공휴일 휴무
+          - paragraph [ref=e314]:
+            - generic [ref=e318]: 경기도 하남시 산곡동로14번길 20
+          - generic [ref=e319]: CLEANER INDUSTRYGREENER TOMORROW
+      - generic [ref=e320]:
+        - generic [ref=e321]: © 주식회사 바테크. All rights reserved.
+        - navigation [ref=e322]:
+          - link "회사소개" [ref=e323] [cursor=pointer]:
+            - /url: company/about.html
+          - link "위치·연락처" [ref=e324] [cursor=pointer]:
+            - /url: company/location.html
+          - link "이용약관" [ref=e325] [cursor=pointer]:
+            - /url: "#"
+          - link "개인정보처리방침" [ref=e326] [cursor=pointer]:
+            - /url: "#"
+        - link "맨 위로" [ref=e327] [cursor=pointer]:
+          - /url: "#"
+          - text: TOP

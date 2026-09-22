@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-22T00:00:00.000Z",
+  "title": "Design System: VATEK",
+  "extensions": {
+    "colorMeta": {
+      "charcoal-navy": { "role": "neutral", "displayName": "Deep Charcoal Navy", "canonical": "#283739", "tonalRamp": ["#0e1516", "#161f21", "#1b2426", "#283739", "#37494b", "#4d6265", "#7a9294", "#b8c9ca"] },
+      "void-navy": { "role": "neutral", "displayName": "Void Navy", "canonical": "#1b2426", "tonalRamp": ["#080b0c", "#0e1416", "#151d1f", "#1b2426", "#273436", "#3d5153", "#6e8385", "#a8bcbd"] },
+      "dryice-teal": { "role": "primary", "displayName": "Dry-Ice Teal", "canonical": "#228896", "tonalRamp": ["#0d363c", "#124b52", "#186973", "#228896", "#3aa4b1", "#6fbfc9", "#a9dae0", "#dcf1f3"] },
+      "teal-deep": { "role": "primary", "displayName": "Deep Industrial Teal", "canonical": "#1b6d78", "tonalRamp": ["#0a2b2f", "#0f3d43", "#144f56", "#1b6d78", "#268a97", "#4ba7b3", "#87c7cf", "#c8e6ea"] },
+      "teal-pale": { "role": "primary", "displayName": "Pale Coolant Blue", "canonical": "#e3f1f2", "tonalRamp": ["#1b2426", "#3a4f51", "#6e8385", "#a9c1c2", "#cfe1e2", "#e3f1f2", "#eff8f8", "#f8fcfc"] },
+      "frost-white": { "role": "primary", "displayName": "Frost White-Blue", "canonical": "#f3f9fa", "tonalRamp": ["#1b2426", "#3a4f51", "#7a9294", "#b8cdce", "#dcecec", "#f3f9fa", "#f8fbfc", "#ffffff"] },
+      "sublimation-ice": { "role": "secondary", "displayName": "Sublimation Ice-Blue", "canonical": "#4fadb8", "tonalRamp": ["#1c3f43", "#26565c", "#2f6d74", "#3c8991", "#4fadb8", "#77c1c9", "#a5d7dc", "#d5edf0"] },
+      "ice-deep": { "role": "secondary", "displayName": "Ice Shadow Teal", "canonical": "#186973", "tonalRamp": ["#081c1e", "#0d2c30", "#123f44", "#186973", "#227e89", "#41a0ac", "#7cc2cb", "#c1e4e8"] },
+      "vapor-pale": { "role": "secondary", "displayName": "Vapor Pale", "canonical": "#eaf6f7", "tonalRamp": ["#1b2426", "#3a4f51", "#7a9294", "#b8cdce", "#dbedee", "#eaf6f7", "#f4fafb", "#ffffff"] },
+      "chartreuse-mist": { "role": "tertiary", "displayName": "Chartreuse Mist", "canonical": "#f3f7de", "tonalRamp": ["#2c331a", "#4a5528", "#727f3c", "#a3ad61", "#c9d093", "#f3f7de", "#f8fae9", "#fdfef6"] },
+      "lime-accent": { "role": "tertiary", "displayName": "Lime Accent Line", "canonical": "#d8e58c", "tonalRamp": ["#3c4413", "#565f1c", "#727d28", "#98a441", "#b9c465", "#d8e58c", "#e6efb2", "#f4f8db"] },
+      "facility-gray": { "role": "neutral", "displayName": "Light Facility Gray", "canonical": "#f5f5f5", "tonalRamp": ["#1a1a1a", "#3a3a3a", "#6b6b6b", "#9c9c9c", "#c7c7c7", "#f5f5f5", "#fafafa", "#ffffff"] },
+      "steel-line": { "role": "neutral", "displayName": "Steel Line Gray", "canonical": "#dfe3e3", "tonalRamp": ["#202626", "#3c4747", "#5c6969", "#8b9797", "#b7c0c0", "#dfe3e3", "#eef0f0", "#ffffff"] },
+      "graphite-body": { "role": "neutral", "displayName": "Graphite Body", "canonical": "#46595b", "tonalRamp": ["#151b1c", "#212b2c", "#2f3d3e", "#46595b", "#5f7375", "#84999b", "#b3c2c3", "#dde5e5"] },
+      "slate-muted": { "role": "neutral", "displayName": "Muted Slate", "canonical": "#6e8385", "tonalRamp": ["#1e2626", "#2f3a3b", "#455455", "#6e8385", "#8ba0a1", "#b0c0c1", "#d3dee0", "#eef3f3"] },
+      "pure-white": { "role": "neutral", "displayName": "Pure White", "canonical": "#ffffff", "tonalRamp": ["#1a1a1a", "#4d4d4d", "#808080", "#b3b3b3", "#d9d9d9", "#f0f0f0", "#f8f8f8", "#ffffff"] },
+      "signal-red": { "role": "semantic", "displayName": "Signal Red", "canonical": "#c81e2c", "tonalRamp": ["#4a0b10", "#6e1017", "#921620", "#c81e2c", "#d84b56", "#e57a82", "#f0aaae", "#f9d9db"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 only, set in white on a dark hero background." },
+      "headline": { "displayName": "Headline", "purpose": "Section-level H2 titles that set the rhythm between page sections." },
+      "body": { "displayName": "Body", "purpose": "Running copy and section descriptions." },
+      "label": { "displayName": "Eyebrow Label", "purpose": "Small uppercase teal/ice label that precedes every section headline." }
+    },
+    "shadows": [
+      { "name": "resting", "value": "0 2px 12px rgba(40, 55, 57, 0.07)", "purpose": "Default state for nearly every card, table, and panel — never zero." },
+      { "name": "responding", "value": "0 10px 32px rgba(40, 55, 57, 0.10)", "purpose": "Hover state for most cards; permanent ambient depth for hero photography and galleries." },
+      { "name": "floating", "value": "0 16px 40px rgba(40, 55, 57, 0.14)", "purpose": "Strongest tier — hover state for the most emphasized cards; permanent depth for dark floating CTA panels." }
+    ],
+    "motion": [
+      { "name": "button-lift", "value": "transform: translateY(-1px); transition: transform .2s, box-shadow .2s, filter .2s;", "purpose": "Primary button hover — confident, immediate lift rather than a slow fade." },
+      { "name": "card-lift", "value": "transform: translateY(-6px); transition: transform .25s ease, box-shadow .25s ease;", "purpose": "Feature/quote card hover escalation to the floating shadow tier." },
+      { "name": "underline-scale", "value": "transform: scaleX(0) -> scaleX(1); transform-origin: left; transition: transform .25s ease;", "purpose": "Top-level nav link hover underline." }
+    ],
+    "breakpoints": [
+      { "name": "mobile-nav", "value": "960px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main call-to-action button — gradient teal fill, confident hover lift.",
+      "html": "<button class=\"ds-btn-primary\">견적 요청</button>",
+      "css": ".ds-btn-primary { background: linear-gradient(135deg, #228896 0%, #1b6d78 100%); color: #ffffff; padding: 12px 24px; border-radius: 14px; font-weight: 700; font-size: 15px; letter-spacing: 0.1px; border: none; cursor: pointer; box-shadow: 0 6px 16px rgba(27,109,120,0.22); transition: filter .2s, transform .2s, box-shadow .2s; } .ds-btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 10px 22px rgba(27,109,120,0.28); } .ds-btn-primary:focus-visible { outline: 2px solid #4fadb8; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button (Outline)",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outline CTA for secondary actions alongside a primary button.",
+      "html": "<button class=\"ds-btn-secondary\">자세히 보기</button>",
+      "css": ".ds-btn-secondary { background: transparent; border: 1.5px solid #228896; color: #228896; padding: 12px 24px; border-radius: 14px; font-weight: 700; font-size: 15px; letter-spacing: 0.1px; cursor: pointer; transition: background .2s; } .ds-btn-secondary:hover { background: #f3f9fa; } .ds-btn-secondary:focus-visible { outline: 2px solid #4fadb8; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Navy-outline ghost button that inverts to a solid fill on hover.",
+      "html": "<button class=\"ds-btn-ghost\">문의하기</button>",
+      "css": ".ds-btn-ghost { background: transparent; border: 1.5px solid #283739; color: #283739; padding: 12px 24px; border-radius: 14px; font-weight: 700; font-size: 16px; cursor: pointer; transition: background .2s, color .2s; } .ds-btn-ghost:hover { background: #283739; color: #ffffff; }"
+    },
+    {
+      "name": "Eyebrow Label",
+      "kind": "chip",
+      "refersTo": "badge-eyebrow",
+      "description": "Small uppercase teal label that precedes every section headline.",
+      "html": "<span class=\"ds-eyebrow\">PRODUCTS &middot; AUTOMATION &middot; SUPPLY</span>",
+      "css": ".ds-eyebrow { display: block; color: #228896; font-weight: 800; font-size: 13.5px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "Default white content card with a resting shadow that lifts on hover.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">드라이아이스 세척기</h3><p class=\"ds-card-body\">정밀 세정부터 강한 산업 오염 제거까지, 세척 대상에 맞는 Cold Jet 블라스터를 선택합니다.</p></div>",
+      "css": ".ds-card { background: #ffffff; border: 1px solid #dfe3e3; border-radius: 14px; padding: 24px 22px 20px; box-shadow: 0 2px 12px rgba(40,55,57,0.07); transition: box-shadow .25s ease, transform .25s ease; } .ds-card:hover { box-shadow: 0 16px 40px rgba(40,55,57,0.14); transform: translateY(-6px); } .ds-card-title { color: #283739; font-weight: 700; font-size: 20px; margin: 0 0 10px; } .ds-card-body { color: #46595b; font-size: 14.5px; line-height: 1.7; margin: 0; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Top-level header nav link with a scale-in underline on hover.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">장비 &middot; 드라이아이스</a>",
+      "css": ".ds-nav-link { position: relative; display: block; padding: 27px 13px; font-size: 15.5px; font-weight: 600; color: #283739; } .ds-nav-link::after { content: ''; position: absolute; left: 13px; right: 13px; bottom: 20px; height: 2px; background: #228896; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; } .ds-nav-link:hover::after { transform: scaleX(1); }"
+    },
+    {
+      "name": "Select Input",
+      "kind": "input",
+      "refersTo": null,
+      "description": "Dropdown select used in application/rental forms.",
+      "html": "<select class=\"ds-select\"><option>선택하세요</option></select>",
+      "css": ".ds-select { border: 1.5px solid #dfe3e3; border-radius: 8px; background: #ffffff; font-size: 13.5px; font-weight: 700; color: #283739; padding: 10px 14px; } .ds-select:disabled { opacity: .45; } .ds-select:focus-visible { outline: 2px solid #4fadb8; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cold Precision Line",
+    "overview": "VATEK's visual world reads as controlled, engineered cold rather than consumer warmth: a deep charcoal-navy anchor, a single confident teal accent, and fluid, tightly-tracked headline type that scales with the viewport instead of jumping between breakpoints. The system deliberately runs on the visitor's own OS font (Malgun Gothic on Windows, falling through to Apple SD Gothic Neo on Mac) rather than a hosted webfont — a decision made explicitly after testing showed the hosted alternative rendered narrower and more cramped than the native system look the brand had already committed to. Nothing about the system chases trend or ornament; whitespace, a narrow color story, and a two-shade elevation habit (mostly flat, escalating only in response to interaction) do the work of feeling like an equipment vendor an engineer would trust with a six-figure purchase decision.\n\nThe aesthetic philosophy is confident industrial calm: cool teal and navy, generous whitespace, restrained motion. It projects reliability and competence, never excitement for its own sake — appropriate for a technical buyer comparing specs and support commitments, not being sold a mood.",
+    "keyCharacteristics": [
+      "Fluid clamp() typography instead of fixed per-breakpoint font sizes.",
+      "One real accent color (dry-ice teal) carried in a tight family of tints/shades; navy is the dark anchor, not a second accent.",
+      "OS-native sans-serif, deliberately not a hosted webfont.",
+      "Flat-by-default cards with a whisper of shadow at rest, escalating on hover as tactile feedback.",
+      "A single 14px corner radius used almost everywhere buttons, cards, and photos need softening."
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Dry-Ice Teal is the only color that means \"interactive\" or \"act now.\" Ice-Blue, Chartreuse Mist, and Signal Red each have one specific, narrow job and must not be reached for as general-purpose accents.", "section": "colors" },
+      { "name": "The Weight-Over-Size Rule", "body": "Hierarchy is carried as much by font-weight (800 → 700 → 600 → 400) as by size. Nav links and lead-adjacent emphasis sit at 600; never drop a heading-level element to 400 just because its size is small — use the eyebrow/label pattern instead.", "section": "typography" },
+      { "name": "The Always-Lifted Rule", "body": "No card or table is ever perfectly flat — --shadow-sm is the floor, not an optional extra. Depth only ever increases from there; it never drops to zero on hover.", "section": "elevation" },
+      { "name": "The One True Radius Rule", "body": "14px is the default answer for \"what radius should this have.\" Reach for 8/12/16/20px or pill only when the component has a specific, established role that calls for it.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do use Dry-Ice Teal as the only color that signals \"interactive/primary action\" — reserve Ice-Blue, Chartreuse Mist, and Signal Red for their one specific narrow role each.",
+      "Do default every card, button, and photo to the 14px radius unless the component has an established reason for a different value.",
+      "Do give every card a resting --shadow-sm — never a perfectly flat, shadowless surface.",
+      "Do carry hierarchy through font-weight (800/700/600/400) as much as through size.",
+      "Do let the OS-native sans-serif render as-is; it was deliberately chosen over a hosted webfont after direct comparison."
+    ],
+    "donts": [
+      "Don't introduce a second saturated accent color alongside Dry-Ice Teal.",
+      "Don't use the abandoned lime-green (#A9C52F) literal color; the only implemented trace of that palette direction is the softer Chartreuse Mist / Lime Accent Line pair.",
+      "Don't fade shadows to zero on hover — depth only increases from the --shadow-sm floor.",
+      "Don't fabricate certifications, facility details, or addresses on Company pages where the source content is explicitly marked as pending."
+    ]
+  }
+}
