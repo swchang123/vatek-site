@@ -11428,7 +11428,7 @@ AUTOMATION_EXTRA_HEAD = (
 AUTOMATION_BODY = """  <section class="subhero-parallax aut-hero-stage">
     <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 자동화 시스템</div>
     <div class="hero-fit">
-      <video class="subhero-parallax-img aut-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+      <video class="subhero-parallax-img aut-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="0" data-pan-scale="1">
         <source src="../assets/video/automation-hero.mp4" type="video/mp4" />
       </video>
       <div class="subhero-textbox">
@@ -11881,8 +11881,8 @@ NOZZLE_EXTRA_HEAD = (
 NOZZLE_BODY = """  <section class="subhero-parallax noz-hero-stage aut-hero-stage">
     <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 노즐·액세서리</div>
     <div class="hero-fit">
-      <video class="subhero-parallax-img noz-hero-video" autoplay muted loop playsinline preload="auto" poster="../assets/img/blaster-detail-poster.png" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
-        <source src="../assets/video/blaster-hero.mp4" type="video/mp4" />
+      <video class="subhero-parallax-img noz-hero-video" autoplay muted loop playsinline preload="auto" poster="../assets/img/blaster-detail-poster.png" data-buffer="0" data-pan-scale="1">
+        <source src="../assets/video/nozzle-hero.mp4" type="video/mp4" />
       </video>
       <div class="subhero-textbox">
         <span class="ind-hero-eyebrow">COLD JET × VATEK / NOZZLES &amp; ACCESSORIES</span>
@@ -12686,10 +12686,10 @@ SUPPLY_EXTRA_HEAD = (
     '\n<link rel="stylesheet" href="../assets/css/supply-page.css?v=20260916-12" />'
 )
 
-SUPPLY_BODY = """  <section class="subhero-parallax aut-hero-stage sup-hero-stage">
+SUPPLY_BODY = """  <section class="subhero-parallax sup-hero-stage">
     <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 구매·공급</div>
     <div class="hero-fit">
-      <video class="subhero-parallax-img" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+      <video class="subhero-parallax-img" autoplay muted loop playsinline preload="auto" data-buffer="0" data-pan-scale="1">
         <source src="../assets/video/supply-hero.mp4" type="video/mp4" />
       </video>
       <div class="subhero-textbox">

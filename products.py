@@ -2139,7 +2139,7 @@ PELLETIZER_HUB_BODY = """
     <section class="subhero-parallax pel-hero-stage">
       <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 제조기</div>
       <div class="hero-fit">
-        <video class="subhero-parallax-img pel-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+        <video class="subhero-parallax-img pel-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="0" data-pan-scale="1">
           <source src="../../assets/video/pelletizer-hero.mp4" type="video/mp4" />
         </video>
         <div class="subhero-textbox">
@@ -2776,7 +2776,7 @@ RECOVERY_SCRIPT = """  <script>
 RECOVERY_BODY = """    <section class="subhero-parallax rec-hero-stage">
       <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; CO₂ 리커버리</div>
       <div class="hero-fit">
-        <video class="subhero-parallax-img rec-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="60" data-pan-scale="1.06" data-blur-start="0.5">
+        <video class="subhero-parallax-img rec-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="0" data-pan-scale="1">
           <source src="../../assets/video/recovery-hero.mp4" type="video/mp4" />
         </video>
         <div class="subhero-textbox">
