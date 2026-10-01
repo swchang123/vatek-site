@@ -967,7 +967,7 @@ BLASTER_HUB_BODY = """
   <section class="subhero-parallax bls-hero-stage">
     <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 세척기</div>
     <div class="hero-fit">
-      <video class="subhero-parallax-img bls-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/blaster-catalog-hero-natural.png" aria-label="Cold Jet Aero2 PCS ULTRA · PLT ULTRA 블라스터" data-buffer="100" data-pan-scale="1.08" data-no-blur="true">
+      <video class="subhero-parallax-img bls-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/blaster-catalog-hero-natural.png" aria-label="Cold Jet Aero2 PCS ULTRA · PLT ULTRA 블라스터" data-buffer="0" data-pan-scale="1">
         <source src="../../assets/video/blaster-hero-banner.mp4" type="video/mp4" />
       </video>
       <div class="subhero-textbox bls-hero-box">

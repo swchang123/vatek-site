@@ -14561,7 +14561,6 @@ def build_home():
   <section class="hero">
     <div class="hero-video-wrap">
       <video class="hero-video" autoplay muted loop playsinline poster="assets/video/main-hero-poster.jpg">
-        <source src="assets/video/main-hero.webm" type="video/webm">
         <source src="assets/video/main-hero.mp4" type="video/mp4">
       </video>
     </div>
@@ -14572,13 +14571,8 @@ def build_home():
       <div class="snap-flash"></div>
     </div>
     <div class="wrap">
-      <h1>세계가 선택한 세척 기술,<br />생산의 <span class="accent">차이</span>를 만듭니다.</h1>
-      <p class="lead">바테크는 세계 최초이자 글로벌 리더 Cold Jet의 대한민국 공식 총판입니다.
-      압도적인 기술력과 현장 경험으로 더 정확하고 효율적인 산업 세척 솔루션을 제공합니다.</p>
-      <div class="actions">
-        <a class="cta-btn" href="products/quote.html">견적문의</a>
-        <a class="cta-btn outline" href="rental/demo.html">데모 테스트 신청</a>
-      </div>
+      <h1>세계 시장에서 검증된 Cold Jet의 <span class="accent">기술</span>,<br />바테크가 한국 현장에 연결합니다.</h1>
+      <p class="lead">Cold Jet은 1986년 현대식 드라이아이스 블라스팅 장비의 원천 특허를 취득하고,<br>1988년 세계 최초의 특허 보호·산업 인증 상용 제품을 선보였습니다.<br>바테크는 Cold Jet의 대한민국 공식 총판으로 장비 도입부터 테스트, 설치, 교육과 A/S까지 지원합니다.</p>
     </div>
     <button type="button" class="hero-scroll autoscroll-hint" aria-label="다음 화면으로 스크롤">
       <span>Scroll down</span>
