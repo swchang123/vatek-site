@@ -13266,6 +13266,8 @@ MENU = [
              "desc": "드라이아이스 세척의 원리, 장점, 자주 묻는 질문을 한 곳에 정리했습니다.",
              "nav_desc": "드라이아이스의 물리적 특성부터 세척 원리와 주요 장점, 기존 세척 방식과의 차이, 드라이아이스 세척 장비의 기본 개념까지 체계적으로 살펴보세요.",
              "nav_img": "assets/img/guide-principle-thumb.jpg",
+             "nav_video": "assets/video/submenu-guide.mp4",
+             "nav_poster": "assets/img/submenu-guide-poster.jpg",
              "rich_content": True,
              "hero_parallax": True,
              "hero_img": "../assets/img/guide-hero-work.jpg",
@@ -13731,6 +13733,8 @@ def megamenu_html(m, depth):
                 "nav_desc": s["nav_desc"],
                 "nav_img": s.get("nav_img"),
                 "nav_img_preview_only": s.get("nav_img_preview_only", False),
+                "nav_video": s.get("nav_video"),
+                "nav_poster": s.get("nav_poster"),
                 "href": m["code"] + "/" + s["slug"] + ("/index.html" if s.get("is_group") else ".html"),
             }
             for s in m["subs"]
@@ -13745,9 +13749,12 @@ def megamenu_html(m, depth):
         active = " is-active" if i == 0 else ""
         href = asset(s["href"], depth)
         img_attr = f' data-img="{asset(s["nav_img"], depth)}"' if s.get("nav_img") and not s.get("nav_img_preview_only") else ""
+        video_attr = ""
+        if s.get("nav_video"):
+            video_attr = f' data-video="{asset(s["nav_video"], depth)}" data-poster="{asset(s["nav_poster"], depth)}"'
         index_items.append(
             f'<li class="megamenu-index-item{active}" data-i="{i}">'
-            f'<a href="{href}" data-desc="{s["nav_desc"]}"{img_attr}>{s["title"]}</a>'
+            f'<a href="{href}" data-desc="{s["nav_desc"]}"{img_attr}{video_attr}>{s["title"]}</a>'
             f'</li>'
         )
     first = nav_source[0]
@@ -13796,6 +13803,22 @@ def megamenu_html(m, depth):
 # 형제 페이지로의 링크를 "blaster/index.html"처럼 상대경로로 줄이고,
 # 그 외 모든 페이지에서는 기존과 동일하게 asset("products/...", depth)로
 # 계산한다(핸드오프 원본 HTML과 재조립 대조로 두 경우 모두 확인됨).
+PRODUCTS_MEGA_VIDEO = {
+    "blaster": ("assets/video/submenu-blaster.mp4", "assets/img/submenu-blaster-poster.jpg", None),
+    "pelletizer": ("assets/video/submenu-pelletizer.mp4", "assets/img/submenu-pelletizer-poster.jpg", None),
+    "recovery": ("assets/video/submenu-recovery.mp4", "assets/img/submenu-recovery-poster.jpg", None),
+    "supply": ("assets/video/submenu-supply.mp4", "assets/img/submenu-supply-poster.jpg", None),
+    "compare-equip": (
+        "https://videos.pexels.com/video-files/7735496/7735496-hd_1280_720_25fps.mp4",
+        "https://images.pexels.com/videos/7735496/pexels-photo-7735496.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=960",
+        "cover",
+    ),
+    "process": (
+        "https://videos.pexels.com/video-files/8170599/8170599-hd_1280_720_25fps.mp4",
+        "https://images.pexels.com/videos/8170599/pexels-photo-8170599.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=960",
+        "cover",
+    ),
+}
 PRODUCTS_MEGA_ITEMS = [
     ("blaster", True, "드라이아이스 세척기 (블라스터)",
      "정밀 세정부터 강한 산업 오염 제거까지, 세척 대상에 맞는 Cold Jet 블라스터를 선택합니다.",
@@ -13834,11 +13857,13 @@ def products_megamenu_html(depth, at_root=False):
             href = asset("products/" + slug + ("/index.html" if is_group else ".html"), depth)
         img_attr = f' data-img="{asset(nav_img, depth)}"' if nav_img else ""
         video_attr = ""
-        if slug == "blaster":
-            video_attr = (
-                f' data-video="{asset("assets/video/submenu-blaster.mp4", depth)}"'
-                f' data-poster="{asset("assets/img/submenu-blaster-poster.jpg", depth)}"'
-            )
+        vinfo = PRODUCTS_MEGA_VIDEO.get(slug)
+        if vinfo:
+            vsrc, vposter, vfit = vinfo
+            v = vsrc if vsrc.startswith("http") else asset(vsrc, depth)
+            p = vposter if vposter.startswith("http") else asset(vposter, depth)
+            fit_attr = f' data-fit="{vfit}"' if vfit else ""
+            video_attr = f' data-video="{v}"{fit_attr} data-poster="{p}"'
         items_html.append(
             f'<li class="megamenu-index-item{active}" data-i="{i}"><a href="{href}" data-desc="{desc}"{img_attr}{video_attr}>{title}</a></li>'
         )
