@@ -967,7 +967,7 @@ BLASTER_HUB_BODY = """
   <section class="subhero-parallax bls-hero-stage">
     <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 세척기</div>
     <div class="hero-fit">
-      <video class="subhero-parallax-img bls-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/blaster-catalog-hero-natural.png" aria-label="Cold Jet Aero2 PCS ULTRA · PLT ULTRA 블라스터" data-buffer="0" data-pan-scale="1">
+      <video class="subhero-parallax-img bls-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/blaster-hero-poster.jpg" aria-label="Cold Jet Aero2 PCS ULTRA · PLT ULTRA 블라스터" data-buffer="0" data-pan-scale="1">
         <source src="../../assets/video/blaster-hero-banner.mp4" type="video/mp4" />
       </video>
       <div class="subhero-textbox bls-hero-box">
@@ -2139,7 +2139,7 @@ PELLETIZER_HUB_BODY = """
     <section class="subhero-parallax pel-hero-stage">
       <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 제조기</div>
       <div class="hero-fit">
-        <video class="subhero-parallax-img pel-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="0" data-pan-scale="1">
+        <video class="subhero-parallax-img pel-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/pelletizer-hero-poster.jpg" data-buffer="0" data-pan-scale="1">
           <source src="../../assets/video/pelletizer-hero.mp4" type="video/mp4" />
         </video>
         <div class="subhero-textbox">
@@ -2776,7 +2776,7 @@ RECOVERY_SCRIPT = """  <script>
 RECOVERY_BODY = """    <section class="subhero-parallax rec-hero-stage">
       <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; CO₂ 리커버리</div>
       <div class="hero-fit">
-        <video class="subhero-parallax-img rec-hero-video" autoplay muted loop playsinline preload="auto" data-buffer="0" data-pan-scale="1">
+        <video class="subhero-parallax-img rec-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/recovery-hero-poster.jpg" data-buffer="0" data-pan-scale="1">
           <source src="../../assets/video/recovery-hero.mp4" type="video/mp4" />
         </video>
         <div class="subhero-textbox">
