@@ -255,6 +255,8 @@ body:not(.home) { padding-top: 76px; }
   position: relative;
   transition: color .2s ease;
 }
+.main-nav > ul > li > a.is-mega-trigger { cursor: default; } /* (2026-10-03) 대메뉴는 클릭 불가 — 메가메뉴 트리거 전용 */
+@media (max-width: 960px) { .main-nav > ul > li > a.is-mega-trigger { cursor: pointer; } }
 .main-nav > ul > li > a::after {
   content: ""; position: absolute; left: 13px; right: 13px; bottom: 21px; height: 2px;
   background: var(--blue); transform: scaleX(0); transform-origin: center;
@@ -350,6 +352,8 @@ body:not(.home) { padding-top: 76px; }
   word-break: keep-all; line-height: 1.4;
 }
 .megamenu-index-item.is-active a { color: var(--blue-dark); font-weight: 700; }
+/* (2026-10-03) 장비 렌탈 항목 우측 V RENTAL 로고 — 글자 높이(1em)에 맞춰 인라인 배치 */
+.megamenu-index-item a .mi-logo { display: inline-block; height: 1.55em; width: auto; vertical-align: -0.42em; margin-left: 10px; }
 .megamenu-preview-img {
   position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden;
   border-radius: 14px;
@@ -359,8 +363,8 @@ body:not(.home) { padding-top: 76px; }
 .megamenu-preview-img-bg {
   position: absolute; inset: 0;
   background-size: contain; background-repeat: no-repeat; background-position: center;
-  opacity: 0; transform: scale(1.04);
-  transition: opacity .28s ease, transform .28s cubic-bezier(.2,.7,.3,1);
+  opacity: 0; transform: scale(1.02);
+  transition: opacity .14s ease, transform .18s cubic-bezier(.2,.7,.3,1); /* (2026-10-03) .28s → .14s: 서브메뉴 오갈 때 즉답감 */
 }
 .megamenu-preview-img-bg.is-shown { opacity: 1; transform: scale(1); }
 /* (2026-10-02) 서브메뉴 미리보기 영상(data-video) — 4:3 칸에 contain(960×720 소스는 꽉 참) */
@@ -390,6 +394,7 @@ video.megamenu-preview-img-bg.is-cover { object-fit: cover; } /* (2026-10-02) da
   display: block; font-size: 18.5px; font-weight: 800; color: #fff; margin-bottom: 10px;
   word-break: keep-all; letter-spacing: -0.01em; line-height: 1.35;
 }
+.megamenu-detail-title .megamenu-detail-logo { display: inline-block; height: 1.45em; width: auto; vertical-align: -0.38em; margin-left: 10px; }
 .megamenu-detail-desc { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.78); margin: 0 0 22px; word-break: keep-all; }
 .megamenu-detail-link {
   display: flex; width: 100%; align-items: center; justify-content: center; gap: 8px;

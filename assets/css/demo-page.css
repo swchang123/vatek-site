@@ -10,7 +10,7 @@
 .dm-hero-stage .hero-fit .subhero-textbox h1 { font-size: clamp(20px, 2.8cqw, 42px); }
 .dm-hero-stage .hero-fit .subhero-textbox .bls-hero-main { font-size: clamp(12px, 1.05cqw, 15px); line-height: 1.65; }
 /* 밝은 배경 위 브레드크럼 가독성 — 상단 그라데이션만 조금 진하게 */
-.dm-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.55) 0%, rgba(15,22,23,.08) 26%, rgba(15,22,23,.06) 70%, rgba(15,22,23,.22) 100%); }
+.dm-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.66) 0%, rgba(15,22,23,.34) 14%, rgba(15,22,23,.08) 32%, rgba(15,22,23,.05) 70%, rgba(15,22,23,.2) 100%); }
 @media (min-width: 641px) and (max-width: 1100px) {
   .dm-hero-stage { height: min(calc(100vh - 76px), 56.25vw); }
   .dm-hero-stage .hero-fit { aspect-ratio: auto; left: 0; transform: none; width: 100%; }
@@ -38,7 +38,7 @@
 .dm-way-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,22,23,.7) 0%, rgba(15,22,23,0) 55%); }
 .dm-way-media.is-illust { aspect-ratio: 16 / 11; background: #fff; border-bottom: 1px solid var(--gray-line); background-image: radial-gradient(ellipse at 50% 100%, #f1f5f5 0%, #fff 70%); }
 .dm-way-media.is-illust::after { display: none; }
-.dm-way-media.is-illust img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 50%; padding: 6% 0 4%; transform: scale(1); }
+.dm-way-media.is-illust img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; padding: 0; transform: scale(1); } /* (2026-10-03) 4:3 라인 일러스트(자체 흰 배경)로 교체 — contain+padding → cover */
 .dm-way:hover .dm-way-media.is-illust img { transform: scale(1.03); }
 .dm-way-media .num { position: absolute; left: 18px; top: 18px; width: 40px; height: 40px; border-radius: 50%; background: var(--ice); color: var(--navy-deep); display: grid; place-items: center; font-size: 15px; font-weight: 800; z-index: 1; font-variant-numeric: tabular-nums; }
 .dm-way-media .fee { position: absolute; right: 18px; top: 18px; padding: 6px 11px; border-radius: 8px; background: rgba(255,255,255,.92); color: var(--navy); font-size: 11.5px; font-weight: 800; letter-spacing: 1.2px; z-index: 1; }
@@ -192,3 +192,10 @@
   .dm-form-foot { grid-template-columns: 1fr; }
   .dm-way-meta { grid-template-columns: 1fr; }
 }
+
+/* (2026-10-03) 밝은 히어로 이미지 위 브레드크럼 가독성 */
+.dm-hero-stage .subhero-breadcrumb, .dm-hero-stage .subhero-breadcrumb a { color: #fff; text-shadow: 0 1px 3px rgba(15,22,23,.85), 0 0 12px rgba(15,22,23,.7); }
+
+/* (2026-10-03) HOW EACH WORKS 미디어 3칸을 영상/사진 → 세 가지 방법 카드와 같은 라인 일러스트로. 밝은 배경이라 캡션은 어두운 필로 */
+.dm-detail-media.is-illust { background: #fff; border: 1px solid var(--gray-line); }
+.dm-detail-media.is-illust .cap { left: 20px; right: auto; bottom: 18px; padding: 7px 12px; border-radius: 8px; background: rgba(15,22,23,.72); backdrop-filter: blur(6px); color: #fff; text-shadow: none; }

@@ -88,14 +88,17 @@ document.addEventListener("DOMContentLoaded", function () {
       nav.classList.toggle("open");
     });
   }
-  // 모바일에서 대메뉴 탭 시 서브메뉴 펼치기
+  // (2026-10-03) 메가메뉴가 있는 대메뉴는 링크로 동작하지 않음 — 대메뉴 index 페이지는 사용하지 않기로 함.
+  // 데스크톱: 호버로 메가메뉴만 열림(클릭은 무시). 모바일(≤960): 탭 시 서브메뉴 아코디언 펼침/접힘.
   document.querySelectorAll(".main-nav > ul > li > a").forEach(function (a) {
+    var li = a.parentElement;
+    if (!li.querySelector(".megamenu")) return;
+    a.setAttribute("role", "button");
+    a.setAttribute("aria-haspopup", "true");
+    a.classList.add("is-mega-trigger");
     a.addEventListener("click", function (e) {
-      var li = a.parentElement;
-      if (li.querySelector(".megamenu") && window.innerWidth <= 960) {
-        e.preventDefault();
-        li.classList.toggle("open");
-      }
+      e.preventDefault();
+      if (window.innerWidth <= 960) li.classList.toggle("open");
     });
   });
 
@@ -1488,11 +1491,16 @@ document.addEventListener("DOMContentLoaded", function () {
       videoPool[url] = v;
       return v;
     };
+    // (2026-10-03) 이미지도 같은 방식으로 사전 로드 — 첫 호버 때 다운로드 대기로 한 박자 늦게 뜨던 문제
+    var imgPool = window.__megamenuImgPool || (window.__megamenuImgPool = {});
+    var warmImage = function (url) { if (!url || imgPool[url]) return; var im = new Image(); im.decoding = "async"; im.src = url; imgPool[url] = im; };
     var warmVideos = function () {
       items.forEach(function (it) {
         var a = it.querySelector("a");
-        var url = a && a.getAttribute("data-video");
+        if (!a) return;
+        var url = a.getAttribute("data-video");
         if (url) getPoolVideo(url, a.getAttribute("data-poster") || a.getAttribute("data-img"));
+        warmImage(a.getAttribute("data-img")); warmImage(a.getAttribute("data-poster"));
       });
     };
     if ("requestIdleCallback" in window) window.requestIdleCallback(warmVideos, { timeout: 2500 });
@@ -1551,7 +1559,18 @@ document.addEventListener("DOMContentLoaded", function () {
       if (detail) detail.classList.add("is-fading");
       window.clearTimeout(switchTimer);
       switchTimer = window.setTimeout(function () {
-        if (detailTitle) detailTitle.textContent = label;
+        if (detailTitle) {
+          detailTitle.textContent = label;
+          // (2026-10-03) 항목에 .mi-logo(V RENTAL 로고)가 있으면 상세 카드 제목에도 흰색 버전으로 함께 표시
+          var miLogo = a.querySelector(".mi-logo");
+          if (miLogo) {
+            var dl = document.createElement("img");
+            dl.className = "megamenu-detail-logo";
+            dl.src = miLogo.getAttribute("src").replace(/\.png$/, "-white.png");
+            dl.alt = miLogo.alt || "";
+            detailTitle.appendChild(dl);
+          }
+        }
         if (detailDesc) detailDesc.textContent = desc;
         if (detailLink) detailLink.setAttribute("href", href);
         if (detail) detail.classList.remove("is-fading");
