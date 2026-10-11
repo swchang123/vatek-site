@@ -1,5 +1,5 @@
 /* CERTIFIED SERVICE PARTNERS (rental/partners.html) — 2026-09-18. plt-*/rec-*/cmp-* 어휘 위에 pt-* 추가. */
-.pt-hero-stage .subhero-parallax-img { object-position: 50% 50%; filter: none; } /* (2026-10-03) 히어로 partners-hero.webp(21:9, 2206×946)로 교체 */
+.pt-hero-stage .subhero-parallax-img { object-position: 50% 50%; filter: none; } /* (2026-10-03) 히어로 partners-hero.webp → partners-hero-v2.webp(2026-10-11 교체, 21:9, 2206×946) */
 /* (2026-10-02) 전용 틴트 삭제 → 공용 .subhero-parallax::after 사용 */
 .pt-hero-stage .subhero-breadcrumb { text-shadow: 0 1px 8px rgba(15,22,23,.9); }
 .pt-hero-stage .subhero-textbox h1, .pt-hero-stage .bls-hero-main { word-break: keep-all; text-wrap: pretty; }

@@ -1,5 +1,5 @@
 /* DEMO TEST (rental/demo.html) — 2026-09-18. plt-*/rec-*/cmp-*/vr-* 어휘 위에 dm-* 추가. */
-.dm-hero-stage .subhero-parallax-img { object-position: 50% 50%; filter: none; } /* (2026-10-02) 히어로를 영상(pcs-demo-namecard.mp4) → 정지 이미지 demo-hero.webp(21:9, 2206×946)로 교체 */
+.dm-hero-stage .subhero-parallax-img { object-position: 50% 50%; filter: none; } /* (2026-10-02) 히어로를 영상(pcs-demo-namecard.mp4) → 정지 이미지 demo-hero.webp → demo-hero-test.webp(2026-10-10 교체, 21:9, 2206×946)로 교체 */
 .dm-way-media video, .dm-detail-media video { transform: scale(1.18); }
 .dm-way:hover .dm-way-media video { transform: scale(1.22); }
 /* (2026-10-02) 어두운 전용 틴트(.84/.55/.5/.72) 삭제 → 공용 .subhero-parallax::after 사용 */

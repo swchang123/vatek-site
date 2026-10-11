@@ -1,17 +1,27 @@
 /* TECHNICAL SUPPORT (support/techsupport.html) — 2026-10-03 v2. "세척이 되게 만드는" 기술지원(조건 설계·공정 검토·자동화·안전·Cold Jet 자문). A/S는 education.html. plt-*/rec-*/cmp-*/bls-*/cap-* 어휘 위에 ts-* 추가. */
-.ts-hero-stage .subhero-parallax-img { object-position: 50% 50%; filter: none; transform: none; } /* 히어로 = 자동화 페이지 영상(automation-hero.mp4, 21:9) + 포스터 재사용 */
+.ts-hero-stage .subhero-parallax-img { object-position: 50% 50%; filter: none; } /* 히어로 = techsupport-hero.webp(2026-10-11, 기술 검토 회의 장면, 21:9 2206×946). 구성은 education-page.css의 .edu-hero-stage와 동일 */
+.ts-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.66) 0%, rgba(15,22,23,.34) 14%, rgba(15,22,23,.12) 32%, rgba(15,22,23,.08) 70%, rgba(15,22,23,.22) 100%); }
 .ts-hero-stage .subhero-breadcrumb, .ts-hero-stage .subhero-breadcrumb a { color: #fff; text-shadow: 0 1px 3px rgba(15,22,23,.85), 0 0 12px rgba(15,22,23,.7); }
-.ts-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.66) 0%, rgba(15,22,23,.34) 14%, rgba(15,22,23,.12) 32%, rgba(15,22,23,.1) 70%, rgba(15,22,23,.3) 100%); }
 .ts-hero-stage .subhero-textbox h1, .ts-hero-stage .bls-hero-main { word-break: keep-all; text-wrap: pretty; }
-.ts-hero-stage .hero-fit .subhero-textbox { max-width: min(720px, 60cqw); }
-.ts-hero-stage .hero-fit .subhero-textbox h1 { font-size: clamp(22px, 3.4cqw, 48px); }
-.ts-hero-stage .hero-fit .subhero-textbox .bls-hero-main { font-size: clamp(12px, 1.15cqw, 16px); line-height: 1.65; }
+/* 교육·A/S 히어로와 동일 구성 — 텍스트 박스 좌측, 우측 화이트보드·발표자는 그대로 노출 */
+.ts-hero-stage .hero-fit .subhero-textbox { top: 46%; left: 5%; transform: translate(0, -50%); text-align: left; width: fit-content; max-width: min(520px, 36cqw); padding: 28px 32px; }
+.ts-hero-stage .hero-fit .subhero-textbox h1 { font-size: clamp(20px, 2.8cqw, 42px); }
+.ts-hero-stage .ts-hero-jump { justify-content: flex-start; }
 @media (min-width: 641px) and (max-width: 1100px) {
   .ts-hero-stage { height: min(calc(100vh - 76px), 56.25vw); }
   .ts-hero-stage .hero-fit { aspect-ratio: auto; left: 0; transform: none; width: 100%; }
   .ts-hero-stage .hero-fit-ambient { display: none; }
+  .ts-hero-stage .hero-fit .subhero-parallax-img { object-position: 0% 50%; }
+  .ts-hero-stage .hero-fit .subhero-textbox { max-width: min(340px, 38vw); top: 42%; padding: 22px 24px; }
+  .ts-hero-stage .hero-fit .subhero-textbox h1 { font-size: clamp(18px, 2.8vw, 28px); }
 }
-@media (max-width: 1000px) { .ts-hero-stage .hero-fit .subhero-textbox .bls-hero-main, .ts-hero-stage .cap-hero-jump { display: none; } }
+.ts-hero-stage .hero-fit .subhero-textbox .bls-hero-main { font-size: clamp(12px, 1.15cqw, 16px); line-height: 1.65; }
+.ts-hero-jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.ts-hero-jump a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.08); backdrop-filter: blur(4px); color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s, border-color .2s; }
+.ts-hero-jump a:hover { background: rgba(255,255,255,.18); border-color: #fff; }
+.ts-hero-jump a i { width: 8px; height: 8px; border-radius: 50%; background: var(--ice); }
+@media (max-width: 1280px) { .ts-hero-jump { display: none; } }
+@media (max-width: 1000px) { .ts-hero-stage .hero-fit .subhero-textbox .bls-hero-main { display: none; } }
 .plt-lead a { color: var(--ice-dark); font-weight: 700; text-decoration: none; }
 .plt-lead a:hover { text-decoration: underline; }
 

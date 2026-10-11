@@ -15,6 +15,41 @@
 .res-top h1 em { font-style: normal; color: var(--ice); }
 .res-top-lead { margin: 0; font-size: clamp(15.5px, 1.15vw, 17.5px); line-height: 1.85; color: rgba(255,255,255,.72); word-break: keep-all; text-wrap: pretty; }
 .res-top-lead b { color: #fff; font-weight: 800; }
+/* ---- TECHNICAL / CATALOG HERO (cases/technical.html · support/catalog.html, 2026-10-11) — .tec-hero-stage 공용. catalog-hero.webp(21:9 2206×946, 약 45KB) — technical-hero.webp(21:9 2206×946, 약 49KB). 교육·A/S·기술지원 히어로와 동일 구성: 풀 사진 + 좌측 텍스트박스. 검색창은 아래 슬림 밴드(.res-top-slim)로 이동 ---- */
+.tec-hero-stage .subhero-parallax-img { object-position: 50% 50%; filter: none; }
+.tec-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.66) 0%, rgba(15,22,23,.34) 14%, rgba(15,22,23,.12) 32%, rgba(15,22,23,.08) 70%, rgba(15,22,23,.22) 100%); }
+.tec-hero-stage .subhero-breadcrumb, .tec-hero-stage .subhero-breadcrumb a { color: #fff; text-shadow: 0 1px 3px rgba(15,22,23,.85), 0 0 12px rgba(15,22,23,.7); }
+.tec-hero-stage .subhero-textbox h1, .tec-hero-stage .bls-hero-main { word-break: keep-all; text-wrap: pretty; }
+.tec-hero-stage .hero-fit .subhero-textbox { top: 46%; left: 5%; transform: translate(0, -50%); text-align: left; width: fit-content; max-width: min(520px, 36cqw); padding: 28px 32px; }
+.tec-hero-stage .hero-fit .subhero-textbox h1 { font-size: clamp(20px, 2.8cqw, 42px); }
+.tec-hero-stage .hero-fit .subhero-textbox .bls-hero-main { font-size: clamp(12px, 1.15cqw, 16px); line-height: 1.65; }
+@media (min-width: 641px) and (max-width: 1100px) {
+  .tec-hero-stage { height: min(calc(100vh - 76px), 56.25vw); }
+  .tec-hero-stage .hero-fit { aspect-ratio: auto; left: 0; transform: none; width: 100%; }
+  .tec-hero-stage .hero-fit-ambient { display: none; }
+  .tec-hero-stage .hero-fit .subhero-parallax-img { object-position: 0% 50%; }
+  .tec-hero-stage .hero-fit .subhero-textbox { max-width: min(340px, 38vw); top: 42%; padding: 22px 24px; }
+  .tec-hero-stage .hero-fit .subhero-textbox h1 { font-size: clamp(18px, 2.8vw, 28px); }
+}
+.tec-hero-jump { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 8px; margin-top: 22px; }
+.tec-hero-jump a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.08); backdrop-filter: blur(4px); color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s, border-color .2s; }
+.tec-hero-jump a:hover { background: rgba(255,255,255,.18); border-color: #fff; }
+.tec-hero-jump a i { width: 8px; height: 8px; border-radius: 50%; background: var(--ice); }
+@media (max-width: 1280px) { .tec-hero-jump { display: none; } }
+@media (max-width: 1000px) { .tec-hero-stage .hero-fit .subhero-textbox .bls-hero-main { display: none; } }
+/* 본문은 기술지원과 같이 rec-cover(히어로 위로 라운드 겹침). 검색창은 본문 툴바 우측, 라이트 스타일 */
+.res-main.res-main-cover { padding-top: clamp(56px, 6vw, 88px); }
+.res-toolbar-search { align-items: center; flex-wrap: wrap; row-gap: 14px; }
+.res-toolbar-title { display: flex; align-items: baseline; gap: 16px; }
+.res-main .res-filterbar.res-filterbar-light { margin: 0; padding: 0; border: 0; flex: 0 1 460px; min-width: 260px; }
+.res-main .res-filterbar-light .res-search { flex: 1 1 auto; }
+.res-main .res-filterbar-light .res-search input { background: #fff; border-color: var(--gray-line); color: var(--navy); }
+.res-main .res-filterbar-light .res-search input::placeholder { color: var(--text-muted); }
+.res-main .res-filterbar-light .res-search input:focus { background: #fff; border-color: var(--ice); }
+.res-main .res-filterbar-light .res-search svg { color: var(--text-muted); }
+.res-main .res-filterbar-light .res-reset { color: var(--text-muted); margin-left: 0; }
+.res-main .res-filterbar-light .res-reset:hover { color: var(--navy); }
+@media (max-width: 760px) { .res-main .res-filterbar.res-filterbar-light { flex-basis: 100%; } }
 /* ---- FILTER BAR (top band, dark) — 검색만 (분류 드롭다운 제거, 하나씩 훑어보게) ---- */
 .res-filterbar { display: flex; align-items: center; gap: 12px; margin-top: clamp(28px, 3vw, 40px); padding-top: clamp(18px, 2vw, 24px); padding-bottom: clamp(18px, 2vw, 24px); border-top: 1px solid rgba(255,255,255,.14); }
 .res-filterbar .res-search { flex: 0 1 320px; min-width: 200px; }
