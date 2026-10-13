@@ -291,40 +291,37 @@
           </div>
         </div>
       </div>
+      <div class="cmp-dark-body bls-pcs-desc" style="margin-top:clamp(18px,2vw,28px); font-size:16.5px; line-height:1.85;">
+          <p>Cold Jet의 특허 PCS®는 3 mm 드라이아이스 펠렛을 투입해 0.3~3.0 mm 범위에서 0.1 mm 단위, 총 28개의 입자 크기를 선택할 수 있습니다.</p>
+          <p style="margin-bottom:0">민감한 표면에는 작은 입자와 낮은 압력을, 고착된 오염에는 큰 입자와 높은 압력을 적용해 작업에 맞는 세척 조건을 설정할 수 있습니다.</p>
+      </div>
       </div>
       <div class="bls-pcs-panel reveal">
         <div class="bls-pcs-panel-frame">
           <img class="bls-pcs-panel-img" src="../../assets/img/pcs-panel-frame.webp" alt="Cold Jet PCS 컨트롤 디스플레이" />
           <span class="bls-pcs-panel-num" id="pcsLiveNum">3.0</span>
-          <img class="bls-pcs-panel-dial" id="pcsDial" src="../../assets/img/pcs-dial-knob.png" alt="PCS 조절 다이얼" />
+          <img class="bls-pcs-panel-dial" id="pcsDial" src="../../assets/img/pcs-dial-knob.webp" alt="PCS 조절 다이얼" />
         </div>
-        <div class="bls-pcs-slider" id="pcsSlider">
-          <svg viewBox="0 0 500 74" preserveAspectRatio="none" width="100%" height="74" style="display:block;">
-            <defs>
-              <linearGradient id="pcsSliderGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#263238"></stop>
-                <stop offset="55%" stop-color="#2f6b74"></stop>
-                <stop offset="100%" stop-color="#6fd8cf"></stop>
-              </linearGradient>
-            </defs>
-            <path id="pcsSliderPath" d="M20,10 C20,64 480,64 480,10" fill="none" stroke="url(#pcsSliderGrad)" stroke-width="6" stroke-linecap="round"></path>
-            <circle id="pcsSliderThumb" r="9" fill="#fff" stroke="#1b6d78" stroke-width="2" cx="20" cy="10"></circle>
-          </svg>
+        <div class="au-pc-zoom">
+          <svg class="au-pc-leader" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M50,0 L50,60" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-dasharray="3 4" fill="none"></path></svg>
+          <div class="au-pc-knob" id="pcKnob" role="slider" tabindex="0" aria-label="입자 크기 다이얼" aria-valuemin="0.3" aria-valuemax="3.0" aria-valuenow="3.0" aria-valuetext="3.0mm">
+            <svg class="au-pc-ring" viewBox="0 0 300 300" aria-hidden="true">
+              <defs><linearGradient id="pcArcGrad" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#4fadb8"></stop><stop offset="100%" stop-color="#9fe3ea"></stop></linearGradient></defs>
+              <path d="M 62.9 237.1 A 125 125 0 1 1 237.1 237.1" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="8" stroke-linecap="round"></path>
+              <path id="pcArc" d="M 62.9 237.1 A 125 125 0 1 1 237.1 237.1" fill="none" stroke="url(#pcArcGrad)" stroke-width="8" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="0"></path>
+              <g id="pcTicks" stroke="rgba(255,255,255,.55)" stroke-width="1.5"></g>
+            </svg>
+            <div class="au-pc-knob-face" id="pcKnobFace"><img src="../../assets/img/pcs-dial-knob.webp" alt="" draggable="false" /><i class="au-pc-knob-mark"></i></div>
+            <span class="au-pc-knob-min">0.3</span><span class="au-pc-knob-max">3.0</span>
+            <span class="au-pc-knob-hint is-l">↺ 작게</span><span class="au-pc-knob-hint is-r">크게 ↻</span>
+            <div class="au-pc-guide" aria-hidden="true">
+              <div class="au-pc-orbit"><svg class="au-pc-hand" viewBox="0 0 24 24"><path d="M9 11.5V5.2a1.7 1.7 0 0 1 3.4 0V11m0-3.4a1.7 1.7 0 0 1 3.4 0v3.9m0-2.5a1.7 1.7 0 0 1 3.4 0v6.3c0 3.3-2.5 5.7-5.8 5.7h-1.2c-1.9 0-3.4-.7-4.5-2L4.3 15a1.6 1.6 0 0 1 2.4-2.1L9 15.3" fill="#fff" stroke="#1b2426" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+              <span class="au-pc-guide-label">잡고 돌려보세요</span>
+            </div>
+          </div>
         </div>
-        <span class="bls-pcs-panel-cap" style="color:#ffffff; opacity:1; font-size:15px">슬라이더를 움직여 입자 크기를 확인해보세요</span>
+        <span class="bls-pcs-panel-cap" style="color:#ffffff; opacity:1; font-size:15px; max-width:460px; margin-left:auto; margin-right:auto; line-height:1.6; word-break:keep-all">다이얼을 잡고 돌려보세요 — 시계방향으로 돌리면 입자가 커지고, 반시계방향으로 돌리면 작아집니다. (휠 · 방향키도 가능)</span>
       </div>
-      </div>
-      <div class="bls-pcs-grid">
-        <div class="cmp-dark-body bls-pcs-desc">
-          <p>Cold Jet의 특허 PCS®는 3 mm 드라이아이스 펠렛을 투입해 0.3~3.0 mm 범위에서 0.1 mm 단위, 총 28개의 입자 크기를 선택할 수 있습니다.</p>
-          <p>민감한 표면에는 작은 입자와 낮은 압력을, 고착된 오염에는 큰 입자와 높은 압력을 적용해 작업에 맞는 세척 조건을 설정할 수 있습니다.</p>
-        </div>
-        <ul class="bls-factors reveal">
-          <li><span>01</span><b>PARTICLE SIZE</b><small>입자 크기</small></li>
-          <li><span>02</span><b>PRESSURE</b><small>분사 압력</small></li>
-          <li><span>03</span><b>FEED RATE</b><small>드라이아이스 공급량</small></li>
-          <li><span>04</span><b>NOZZLE &amp; AIRFLOW</b><small>노즐과 공기 흐름</small></li>
-        </ul>
       </div>
       <p class="cmp-dark-final bls-dark-final">작업에 맞는 세척 조건을 찾는 것이<br><em>장비 선택의 출발점</em>입니다.</p>
     </div>
@@ -455,7 +452,7 @@
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="smart pellet" href="aero2-ultra.html" style="--reveal-delay:0.06s">
+      <a class="bls-prod reveal" data-cat="smart pellet" href="aero2-plt-ultra.html" style="--reveal-delay:0.06s">
         <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-plt-ultra-white.webp" data-bg-black="../../assets/img/blaster-aero2-plt-ultra.webp" data-bg-white="../../assets/img/blaster-aero2-plt-ultra-white.webp" alt="Aero2® PLT ULTRA" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span></div>
@@ -942,77 +939,41 @@
   })();
   (function(){
     var scaleEl=document.getElementById('blsScale'),fill=document.getElementById('blsScaleFill'),live=document.getElementById('blsScaleLive');
-    var dial=document.getElementById('pcsDial'),panelNum=document.getElementById('pcsLiveNum');
-    if (!scaleEl || !fill || !live) return;
-    var MIN=0.3, MAX=3.0, STEP=0.1, ticking=false;
-    var snapVal=function(v){ return Math.round((v-MIN)/STEP)*STEP+MIN; };
-    var sliderPath=document.getElementById('pcsSliderPath'),sliderThumbEl=document.getElementById('pcsSliderThumb');
-    var pathLen=sliderPath ? sliderPath.getTotalLength() : 0;
-    var placeThumb=function(progress){
-      if (!sliderPath || !sliderThumbEl) return;
-      var pt=sliderPath.getPointAtLength(progress*pathLen);
-      sliderThumbEl.setAttribute('cx',pt.x);
-      sliderThumbEl.setAttribute('cy',pt.y);
-    };
-    var update=function(){
-      ticking=false;
-      var rect=scaleEl.getBoundingClientRect();
-      var start=window.innerHeight*0.85, end=window.innerHeight*0.25;
-      var progress=(start-rect.top)/(start-end+rect.height);
-      progress=Math.min(Math.max(progress,0),1);
-      var value=snapVal(MAX-progress*(MAX-MIN));
-      var pct=((value-MIN)/(MAX-MIN))*100;
-      progress=(MAX-value)/(MAX-MIN);
-      fill.style.width=pct+'%';
-      live.textContent=value.toFixed(1)+' mm';
-      if (dial) dial.style.transform='translate(-50%,-50%) rotate('+(135-progress*270).toFixed(1)+'deg)';
-      if (panelNum) panelNum.textContent=value.toFixed(1);
-      placeThumb(progress);
-    };
-    var onScroll=function(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } };
-    window.addEventListener('scroll',onScroll,{passive:true});
-    window.addEventListener('resize',onScroll);
-    update();
-
-    // 슬라이더 바를 잡고 좌우로 움직여 다이얼 조작
-    var slider=document.getElementById('pcsSlider'),thumb=sliderThumbEl;
-    var applyProgress=function(progress){
-      progress=Math.min(Math.max(progress,0),1);
-      var value=snapVal(MAX-progress*(MAX-MIN));
-      var pct=((value-MIN)/(MAX-MIN))*100;
-      progress=(MAX-value)/(MAX-MIN);
-      fill.style.width=pct+'%';
-      live.textContent=value.toFixed(1)+' mm';
-      if (dial) dial.style.transform='translate(-50%,-50%) rotate('+(135-progress*270).toFixed(1)+'deg)';
-      if (panelNum) panelNum.textContent=value.toFixed(1);
-      placeThumb(progress);
-    };
-    if (slider && thumb) {
-      var sliding=false;
-      var progressFromEvent=function(e){
-        var r=slider.getBoundingClientRect();
-        return (e.clientX-r.left)/r.width;
-      };
-      slider.style.cursor='grab';
-      slider.addEventListener('pointerdown',function(e){
-        sliding=true;
-        slider.style.cursor='grabbing';
-        slider.setPointerCapture(e.pointerId);
-        applyProgress(progressFromEvent(e));
-        e.preventDefault();
+    var dial=document.getElementById('pcsDial'),num=document.getElementById('pcsLiveNum'),knob=document.getElementById('pcKnob'),face=document.getElementById('pcKnobFace'),arc=document.getElementById('pcArc'),ticks=document.getElementById('pcTicks');
+    if(!scaleEl||!fill||!live)return;
+    var MIN=0.3,MAX=3.0,STEP=0.1,SWEEP=270,ticking=false,touched=false,value=MAX;
+    var snap=function(v){return Math.round((v-MIN)/STEP)*STEP+MIN};
+    if(ticks){var h='';for(var i=0;i<28;i++){var a=(-135+i*(SWEEP/27))*Math.PI/180,big=(i%9===0),r1=big?108:113,r2=118;h+='<line x1="'+(150+r1*Math.sin(a)).toFixed(1)+'" y1="'+(150-r1*Math.cos(a)).toFixed(1)+'" x2="'+(150+r2*Math.sin(a)).toFixed(1)+'" y2="'+(150-r2*Math.cos(a)).toFixed(1)+'"'+(big?' stroke="#fff" stroke-width="2"':'')+'></line>'}ticks.innerHTML=h}
+    function setValue(v){
+      v=snap(Math.min(Math.max(v,MIN),MAX));value=v;
+      var f=(v-MIN)/(MAX-MIN),deg=-135+f*SWEEP;
+      fill.style.width=(f*100)+'%';live.textContent=v.toFixed(1)+' mm';if(num)num.textContent=v.toFixed(1);
+      if(dial)dial.style.transform='translate(-50%,-50%) rotate('+deg.toFixed(1)+'deg)';
+      if(face)face.style.transform='translate(-50%,-50%) rotate('+deg.toFixed(1)+'deg)';
+      if(arc)arc.style.strokeDashoffset=(1-f).toFixed(4);
+      if(knob){knob.setAttribute('aria-valuenow',v.toFixed(1));knob.setAttribute('aria-valuetext',v.toFixed(1)+'mm')}
+    }
+    function onScrollUpdate(){
+      ticking=false;if(touched)return;
+      var r=scaleEl.getBoundingClientRect(),a=window.innerHeight*0.85,b=window.innerHeight*0.25;
+      var p=Math.min(Math.max((a-r.top)/(a-b+r.height),0),1);
+      setValue(MAX-p*(MAX-MIN));
+    }
+    function req(){if(!ticking){ticking=true;requestAnimationFrame(onScrollUpdate)}}
+    window.addEventListener('scroll',req,{passive:true});window.addEventListener('resize',req);onScrollUpdate();
+    if(knob){
+      var turning=false,lastA=0,acc=0;
+      var markTouched=function(){touched=true;knob.classList.add('is-touched')};
+      var angleOf=function(e){var r=knob.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))*180/Math.PI};
+      knob.addEventListener('pointerdown',function(e){markTouched();turning=true;knob.classList.add('is-turning');knob.setPointerCapture(e.pointerId);lastA=angleOf(e);acc=(value-MIN)/(MAX-MIN)*SWEEP;e.preventDefault()});
+      knob.addEventListener('pointermove',function(e){
+        if(!turning)return;var a=angleOf(e),d=a-lastA;if(d>180)d-=360;if(d<-180)d+=360;lastA=a;
+        acc=Math.min(Math.max(acc+d,0),SWEEP);setValue(MIN+acc/SWEEP*(MAX-MIN));
       });
-      slider.addEventListener('pointermove',function(e){
-        if (!sliding) return;
-        applyProgress(progressFromEvent(e));
-      });
-      var stopSlide=function(e){
-        if (!sliding) return;
-        sliding=false;
-        slider.style.cursor='grab';
-        try { slider.releasePointerCapture(e.pointerId); } catch(err){}
-      };
-      slider.addEventListener('pointerup',stopSlide);
-      slider.addEventListener('pointercancel',stopSlide);
+      var stop=function(e){if(!turning)return;turning=false;knob.classList.remove('is-turning');try{knob.releasePointerCapture(e.pointerId)}catch(x){}};
+      knob.addEventListener('pointerup',stop);knob.addEventListener('pointercancel',stop);
+      knob.addEventListener('wheel',function(e){markTouched();setValue(value+(e.deltaY<0?STEP:-STEP));e.preventDefault()},{passive:false});
+      knob.addEventListener('keydown',function(e){var k=e.key;if(k==='ArrowRight'||k==='ArrowUp'){markTouched();setValue(value+STEP);e.preventDefault()}else if(k==='ArrowLeft'||k==='ArrowDown'){markTouched();setValue(value-STEP);e.preventDefault()}});
     }
   })();
     </script>

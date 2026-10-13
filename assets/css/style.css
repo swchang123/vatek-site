@@ -4566,3 +4566,35 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
   .bls-sys-media .is-scene { display: none; }
   .bls-scale-bar { gap: 12px; }
 }
+
+
+/* ============================================================
+   (2026-10-13) PCS 확대 다이얼 — 잡고 돌려서 입자 크기 조절(시계방향=커짐).
+   products/blaster/index.html · products/blaster/aero2-ultra.html 공용. JS는 각 페이지 하단 인라인.
+   ============================================================ */
+.au-pc-zoom{position:relative;display:flex;flex-direction:column;align-items:center;margin-top:-6px}
+.au-pc-leader{width:60px;height:46px;display:block}
+.au-pc-knob{position:relative;width:clamp(220px,24vw,300px);aspect-ratio:1;cursor:grab;touch-action:none;user-select:none;outline:none;border-radius:50%}
+.au-pc-knob:focus-visible{box-shadow:0 0 0 3px rgba(79,173,184,.6)}
+.au-pc-knob.is-turning{cursor:grabbing}
+.au-pc-ring{position:absolute;inset:0;width:100%;height:100%}
+.au-pc-knob-face{position:absolute;left:50%;top:50%;width:62%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(135deg);border-radius:50%;transition:transform .05s linear;filter:drop-shadow(0 14px 24px rgba(0,0,0,.55))}
+.au-pc-knob-face img{width:100%;height:100%;display:block;pointer-events:none}
+.au-pc-knob-mark{position:absolute;left:50%;top:7%;width:7%;height:16%;margin-left:-3.5%;border-radius:4px;background:var(--ice);box-shadow:0 0 10px rgba(79,173,184,.9)}
+.au-pc-knob-min,.au-pc-knob-max{position:absolute;bottom:4%;font-size:14px;font-weight:800;color:rgba(255,255,255,.8);font-variant-numeric:tabular-nums}
+.au-pc-knob-min{left:9%}.au-pc-knob-max{right:9%}
+.au-pc-knob-hint{position:absolute;top:48%;font-size:12px;font-weight:700;letter-spacing:.5px;color:var(--ice);opacity:.9;white-space:nowrap}
+.au-pc-knob-hint.is-l{right:calc(100% + 10px)}.au-pc-knob-hint.is-r{left:calc(100% + 10px)}
+.au-pc-knob::after{content:"";position:absolute;inset:14%;border-radius:50%;box-shadow:0 0 0 0 rgba(79,173,184,.55);animation:auPulse 2.4s ease-out infinite;pointer-events:none}
+.au-pc-knob:hover .au-pc-knob-face{filter:drop-shadow(0 14px 24px rgba(0,0,0,.55)) drop-shadow(0 0 16px rgba(79,173,184,.55))}
+.au-pc-guide{position:absolute;inset:0;pointer-events:none}
+.au-pc-orbit{position:absolute;inset:0;transform:rotate(-20deg);animation:auOrbit 3.2s cubic-bezier(.45,0,.55,1) infinite}
+.au-pc-hand{position:absolute;left:50%;top:9%;width:34px;height:34px;margin-left:-17px;transform:rotate(-20deg);filter:drop-shadow(0 4px 8px rgba(0,0,0,.5));animation:auHandPress 3.2s ease-in-out infinite}
+.au-pc-guide-label{position:absolute;left:50%;top:-40px;transform:translateX(-50%);white-space:nowrap;background:var(--ice);color:var(--navy-deep);font-size:13px;font-weight:800;letter-spacing:.3px;padding:7px 14px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.au-pc-guide-label::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:var(--ice);transform:translateX(-50%) rotate(45deg);border-radius:2px}
+.au-pc-knob.is-touched .au-pc-guide,.au-pc-knob.is-touched::after{display:none}
+@keyframes auOrbit{0%,12%{transform:rotate(-20deg)}50%{transform:rotate(70deg)}88%,100%{transform:rotate(-20deg)}}
+@keyframes auHandPress{0%,12%,88%,100%{transform:rotate(-20deg) scale(1)}20%,80%{transform:rotate(-20deg) scale(.86)}}
+@keyframes auPulse{0%{box-shadow:0 0 0 0 rgba(79,173,184,.5)}70%{box-shadow:0 0 0 22px rgba(79,173,184,0)}100%{box-shadow:0 0 0 22px rgba(79,173,184,0)}}
+@media (prefers-reduced-motion:reduce){.au-pc-orbit,.au-pc-hand,.au-pc-knob::after{animation:none}}
+@media (max-width: 640px) { .au-pc-knob-hint { display: none; } }

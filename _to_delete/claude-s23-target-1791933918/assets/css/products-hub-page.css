@@ -1,0 +1,131 @@
+/* 장비 · 드라이아이스 허브 (products/index.html) — phub-* */
+.phub-wrap { max-width: 1600px; margin: 0 auto; padding: 0 24px; }
+.phub-eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--blue); font-weight: 800; font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; }
+.phub-eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--blue); }
+
+/* ---------- Hero ---------- */
+.phub-hero { position: sticky; top: 0; z-index: 0; background: var(--white); padding: 0 0 clamp(40px, 4vw, 64px); overflow: hidden; }
+/* 뒤에 강하게 블러된 장비 이미지 — 흰 그라디언트로 덮어 텍스트 대비 유지 */
+.phub-hero-bg { position: absolute; inset: -120px; z-index: 0; pointer-events: none; overflow: hidden; }
+.phub-hero-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; filter: blur(60px) saturate(1.25) brightness(1.15); transform: scale(1.15); }
+.phub-hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.72) 0%, rgba(255,255,255,.28) 40%, rgba(255,255,255,.55) 78%, rgba(255,255,255,.96) 100%); }
+.phub-hero > .phub-wrap { position: relative; z-index: 1; }
+.phub-hero .breadcrumb { padding-top: 0; }
+.phub-hero .breadcrumb { margin-bottom: clamp(20px, 2.6vw, 40px); }
+.phub-hero-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
+.phub-hero-top { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+.phub-hero h1 { font-size: clamp(36px, 3.8vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; color: var(--text-dark); margin: 18px 0 0; word-break: keep-all; }
+.phub-hero-sub { margin: 14px 0 0; max-width: 520px; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.7; color: var(--text-body, #3a4a4d); word-break: keep-all; }
+.phub-hero-sub em { font-style: normal; color: var(--blue); font-weight: 700; }
+.phub-hero-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.phub-btn-ghost { display: inline-flex; align-items: center; gap: 6px; padding: 12px 22px; border-radius: 14px; border: 1px solid var(--gray-line); background: var(--white); color: var(--text-dark); font-weight: 700; font-size: 15px; transition: border-color .2s, background .2s, color .2s; }
+.phub-btn-ghost:hover { border-color: var(--blue); color: var(--blue-dark); background: var(--blue-pale); }
+
+/* 메뉴 맵: 01 | 02 좌우 2컬럼, 각 컬럼 안에 컴팩트 링크 리스트 */
+.phub-menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.phub-menu-row { background: rgba(255,255,255,.86); backdrop-filter: blur(8px); border: 1px solid var(--gray-line); border-radius: 18px; padding: 16px 16px 8px; box-shadow: 0 12px 32px rgba(40,55,57,.06); }
+.phub-menu-row.is-supply { background: rgba(232,242,244,.88); border-color: transparent; }
+.phub-menu-label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; padding: 0 6px 10px; border-bottom: 1px solid var(--gray-line); }
+.phub-menu-label small { font-size: 11px; letter-spacing: 2px; font-weight: 800; color: var(--blue); }
+.phub-menu-label h2 { margin: 0; font-size: clamp(15px, 1.1vw, 17px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: var(--text-dark); }
+.phub-menu-label p { margin: 0 0 0 auto; font-size: 12.5px; color: var(--text-muted); line-height: 1.5; word-break: keep-all; }
+.phub-menu-cards { display: flex; flex-direction: column; padding-top: 2px; }
+.phub-card { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 12px; row-gap: 0; padding: 9px 6px; border-radius: 10px; color: var(--text-dark); text-decoration: none; transition: background .2s; }
+.phub-card + .phub-card { border-top: 1px solid var(--gray-line); }
+.phub-menu-row.is-supply .phub-card + .phub-card { border-top-color: rgba(40,55,57,.10); }
+.phub-card b { grid-column: 1; display: block; font-size: 14.5px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.35; word-break: keep-all; }
+.phub-card b br { display: none; }
+.phub-card b sub { font-size: .65em; }
+.phub-card .d { display: none; margin-top: 0; font-size: 13px; line-height: 1.5; color: var(--text-muted); word-break: keep-all; }
+.phub-card .arr { grid-column: 2; grid-row: 1; width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--gray-line); display: grid; place-items: center; color: var(--text-muted); background: #fff; transition: transform .25s cubic-bezier(.22,.61,.36,1), background .2s, border-color .2s, color .2s; }
+.phub-card .arr svg { width: 11px; height: 11px; }
+.phub-card:hover b { color: var(--blue-dark); }
+.phub-card:hover .arr { background: var(--blue); border-color: var(--blue); color: #fff; transform: translateX(3px); }
+
+/* ---------- 라운드 패널 (섹션 공용) ---------- */
+.phub-sec { position: relative; z-index: 2; background: var(--white); padding: 10px 0 clamp(14px, 1.6vw, 20px); }
+#equipment { padding-top: 22px; border-radius: 40px 40px 0 0; box-shadow: 0 -24px 48px rgba(40,55,57,.10); }
+.phub-last { z-index: 2; margin-top: 0; padding: 0; background: var(--white); }
+.phub-last .phub-sec { z-index: auto; }
+.phub-panel { background: #f4f6f6; border-radius: 32px; padding: clamp(20px, 2.2vw, 36px); }
+.phub-panel-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: stretch; gap: clamp(18px, 2.2vw, 36px); margin-bottom: clamp(20px, 2.4vw, 30px); }
+.phub-panel-head > div:not(.phub-panel-num) { display: flex; flex-direction: column; justify-content: space-between; }
+.phub-panel-head p { align-self: flex-end; }
+.phub-panel-num { display: flex; align-items: center; font-size: clamp(88px, 9.2vw, 140px); font-weight: 800; letter-spacing: -0.05em; line-height: .8; color: transparent; -webkit-text-stroke: 2px var(--blue); font-variant-numeric: tabular-nums; }
+.phub-panel-head h2 { font-size: clamp(26px, 2.8vw, 40px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.25; color: var(--text-dark); margin: 8px 0 0; word-break: keep-all; }
+.phub-panel-head p { margin: 0; max-width: 420px; font-size: 16px; line-height: 1.7; color: var(--text-muted); text-align: right; word-break: keep-all; }
+
+/* ---------- 타일 (모든 카드 공용) — 홈 .stackdo-gallery-item 과 동일한 호버 ---------- */
+.phub-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.phub-tile { position: relative; display: block; aspect-ratio: 4 / 4.6; border-radius: 20px; overflow: hidden; background: #1b2426; color: #fff; box-shadow: var(--shadow); text-decoration: none; }
+.phub-tile-media { position: absolute; inset: 0; display: block; }
+.phub-tile-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.phub-tile-media .base { filter: grayscale(.45) brightness(.6) contrast(1.08) saturate(.9); }
+.phub-tile-media .color { clip-path: inset(100% 0 0 0); transition: clip-path .6s ease, transform .5s ease; }
+.phub-tile:hover .phub-tile-media img { transform: scale(1.04); }
+.phub-tile:hover .phub-tile-media .color { clip-path: inset(0 0 0 0); }
+.phub-tile::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1; background: linear-gradient(180deg, rgba(15,20,21,.58) 0%, transparent 33%, transparent 67%, rgba(15,20,21,.82) 100%); opacity: .82; transition: opacity .35s ease; }
+.phub-tile:hover::after { opacity: 1; }
+.phub-tile-body { position: absolute; left: 26px; right: 26px; bottom: 24px; z-index: 2; color: #fff; display: flex; flex-direction: column; gap: 10px; }
+.phub-tile-body small { display: none; }
+.phub-tile-body h3 { margin: 0; font-size: clamp(20px, 1.9vw, 26px); font-weight: 700; letter-spacing: -.01em; color: #fff; line-height: 1.3; word-break: keep-all; }
+.phub-tile-body h3 sub { font-size: .65em; }
+.phub-tile-body .divider { display: block; height: 1px; width: 0; background: rgba(255,255,255,.7); transition: width .4s ease .05s; }
+.phub-tile:hover .divider { width: 100%; }
+.phub-tile-body p { margin: 0; font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,.88); word-break: keep-all; max-height: 0; opacity: 0; transform: translateY(10px); overflow: hidden; transition: max-height .45s ease, opacity .35s ease, transform .45s ease; }
+.phub-tile-body .go { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 800; color: #fff; max-height: 0; opacity: 0; transform: translateY(10px); overflow: hidden; transition: max-height .45s ease .05s, opacity .35s ease .05s, transform .45s ease .05s; }
+.phub-tile-body .go svg { width: 15px; height: 15px; }
+.phub-tile:hover .phub-tile-body p, .phub-tile:focus-visible .phub-tile-body p { max-height: 105px; opacity: 1; transform: translateY(0); }
+.phub-tile:hover .phub-tile-body .go, .phub-tile:focus-visible .phub-tile-body .go { max-height: 24px; opacity: 1; transform: translateY(0); }
+.phub-tile.is-wide { grid-column: span 2; aspect-ratio: auto; }
+.phub-tile.is-wide .phub-tile-body, .phub-tile.is-tall .phub-tile-body { left: 32px; right: 32px; bottom: 30px; max-width: 620px; }
+.phub-tile.is-wide .phub-tile-body h3, .phub-tile.is-tall .phub-tile-body h3 { font-size: clamp(24px, 2.3vw, 34px); }
+.phub-tile.is-wide .phub-tile-body p, .phub-tile.is-tall .phub-tile-body p { font-size: 17px; }
+/* 공급: 2×2 피처 타일 + 우측 2단 스택 */
+.phub-tile.is-tall { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; min-height: 520px; }
+.phub-grid.has-tall .phub-tile:not(.is-tall) { aspect-ratio: 16 / 11; }
+
+/* ---------- 요청 밴드 ---------- */
+.phub-req { position: relative; padding: 0 0 clamp(40px, 5vw, 72px); background: var(--white); }
+.phub-req-inner { background: var(--navy); color: #fff; border-radius: 28px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(24px, 4vw, 64px); align-items: center; padding: clamp(28px, 3.4vw, 44px); }
+.phub-req h2 { color: #fff; margin: 12px 0 0; font-size: clamp(26px, 2.8vw, 40px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; word-break: keep-all; }
+.phub-req .phub-eyebrow { color: var(--ice); }
+.phub-req .phub-eyebrow::before { background: var(--ice); }
+.phub-req-links { display: grid; grid-template-columns: repeat(2, minmax(170px, 1fr)); gap: 10px; }
+.phub-req-links a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 18px; border-radius: 14px; border: 1px solid rgba(255,255,255,.16); color: #fff; font-weight: 700; font-size: 15px; transition: background .2s, border-color .2s; }
+.phub-req-links a svg { width: 14px; height: 14px; transition: transform .25s; }
+.phub-req-links a:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.4); }
+.phub-req-links a:hover svg { transform: translateX(3px); }
+.phub-req-links a.is-primary { background: var(--blue); border-color: var(--blue); }
+.phub-req-links a.is-primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 960px) {
+  .phub-hero { position: static; }
+  .phub-last { position: static; filter: none; }
+  #equipment { border-radius: 0; box-shadow: none; }
+  .phub-hero-grid { grid-template-columns: 1fr; gap: 24px; }
+  .phub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .phub-tile.is-wide { aspect-ratio: 16 / 9; }
+  .phub-tile.is-tall { grid-column: span 2; grid-row: auto; aspect-ratio: 16 / 9; min-height: 0; }
+  .phub-grid.has-tall .phub-tile:not(.is-tall) { aspect-ratio: 4 / 4.6; }
+  .phub-tile-body p, .phub-tile-body .go { max-height: none; opacity: 1; transform: none; }
+  .phub-tile-body .divider { width: 100%; }
+  .phub-tile-media .color { clip-path: inset(0 0 0 0); }
+  .phub-panel-head { grid-template-columns: auto minmax(0, 1fr); }
+  .phub-panel-head p { grid-column: 1 / -1; }
+  .phub-panel-head p { text-align: left; }
+  .phub-req-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .phub-grid { grid-template-columns: 1fr; }
+  .phub-menu { grid-template-columns: 1fr; }
+  .phub-menu-label p { margin-left: 0; flex-basis: 100%; }
+  .phub-tile.is-wide, .phub-tile.is-tall { grid-column: auto; aspect-ratio: 4 / 4.6; }
+  .phub-panel { border-radius: 20px; padding: 18px; }
+  .phub-req-inner { border-radius: 20px; }
+  .phub-req-links { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .phub-tile, .phub-tile img, .phub-card, .phub-card .arr, .phub-tile-media .color, .phub-tile-body .divider, .phub-tile-body p, .phub-tile-body .go { transition: none; }
+}

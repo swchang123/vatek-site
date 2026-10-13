@@ -75,7 +75,7 @@ window.VATEK_RESOURCES = {
       related: {
         videos: ['capabilities-applications'],
         industry: { label: '반도체 · 전자 제조', href: '../industries/semiconductor.html', img: '../assets/img/semiconductor-dry-ice-cleaning-removing-wax-and-gas-buildup-from-semiconductor-molds.webp', desc: '반도체 몰드 · 웨이퍼 장비 · PCB까지 정밀 세척 적용' },
-        task: { label: '금형 · 툴링 세척', href: '../applications/mold-tool-cleaning.html', img: '../assets/img/auto-semi-mold-die.png', desc: '미세 형상 금형의 왁스 · 가스 부산물을 표면 손상 없이 제거' }
+        task: { label: '금형 · 툴링 세척', href: '../applications/mold-tool-cleaning.html', img: '../assets/img/auto-semi-mold-die.webp', desc: '미세 형상 금형의 왁스 · 가스 부산물을 표면 손상 없이 제거' }
       },
       body: [
         ['과제', '몰딩 공정 후 다이에 남는 왁스와 가스 부산물을 작업자가 솔벤트로 닦아 냈습니다. 작업자에 따라 결과가 달랐고, 미세 형상 손상과 용제 취급이 부담이었습니다.'],
@@ -153,7 +153,7 @@ window.VATEK_RESOURCES = {
       industry: '전 산업',
       title: 'Cold Jet 제품 카탈로그 2026 — 블라스터 · 펠렛타이저 · 리커버리',
       excerpt: '전 모델의 주요 사양과 포지셔닝을 한 권에 담았습니다. 인쇄용 PDF는 요청 시 보내 드립니다.',
-      img: '../assets/img/coldjet-aero-family.png',
+      img: '../assets/img/blaster-catalog-hero-natural.webp',
       link: '../support/catalog.html',
       cta: '카탈로그 받기'
     }
@@ -170,7 +170,7 @@ window.VATEK_RESOURCES = {
       pages: '',
       title: 'Cold Jet 드라이아이스 블라스터 종합 카탈로그',
       excerpt: 'Aero2 · Elite · PCS · i³ MicroClean 전 모델의 사양, 압축공기 요구 조건, 노즐 구성을 한 권에 담았습니다.',
-      img: '../assets/img/blaster-catalog-original.jpg',
+      img: '../assets/img/blaster-catalog-hero-natural.webp',
       pdf: ''
     },
     {
