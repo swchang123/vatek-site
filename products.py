@@ -967,7 +967,7 @@ BLASTER_HUB_BODY = """
   <section class="subhero-parallax bls-hero-stage">
     <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 세척기</div>
     <div class="hero-fit">
-      <video class="subhero-parallax-img bls-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/blaster-hero-poster.jpg" aria-label="Cold Jet Aero2 PCS ULTRA · PLT ULTRA 블라스터" data-buffer="0" data-pan-scale="1">
+      <video class="subhero-parallax-img bls-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/blaster-hero-poster.webp" aria-label="Cold Jet Aero2 PCS ULTRA · PLT ULTRA 블라스터" data-buffer="0" data-pan-scale="1">
         <source src="../../assets/video/blaster-hero-banner.mp4" type="video/mp4" />
       </video>
       <div class="subhero-textbox bls-hero-box">
@@ -992,7 +992,7 @@ BLASTER_HUB_BODY = """
       <div class="bls-showcase-frame reveal">
       <div class="bls-showcase">
         <div class="bls-showcase-media">
-          <video id="blsDetailVideo" class="bls-media-fade" muted loop playsinline preload="metadata" poster="../../assets/img/blaster-detail-poster.png">
+          <video id="blsDetailVideo" class="bls-media-fade" muted loop playsinline preload="metadata" poster="../../assets/img/blaster-detail-poster.webp">
             <source src="../../assets/video/blaster-hero.mp4" type="video/mp4" />
           </video>
           <span class="bls-showcase-cap">COLD JET&nbsp;&nbsp;/&nbsp;&nbsp;PRODUCT DETAILS</span>
@@ -1063,7 +1063,7 @@ BLASTER_HUB_BODY = """
       </div>
       <div class="bls-pcs-panel reveal">
         <div class="bls-pcs-panel-frame">
-          <img class="bls-pcs-panel-img" src="../../assets/img/pcs-panel-frame.png" alt="Cold Jet PCS 컨트롤 디스플레이" />
+          <img class="bls-pcs-panel-img" src="../../assets/img/pcs-panel-frame.webp" alt="Cold Jet PCS 컨트롤 디스플레이" />
           <span class="bls-pcs-panel-num" id="pcsLiveNum">3.0</span>
           <img class="bls-pcs-panel-dial" id="pcsDial" src="../../assets/img/pcs-dial-knob.png" alt="PCS 조절 다이얼" />
         </div>
@@ -1110,7 +1110,7 @@ BLASTER_HUB_BODY = """
       <div class="bls-sys-grid">
         <article class="bls-sys reveal is-large-media" id="bls-sys-smart">
           <div class="bls-sys-media">
-            <img class="is-main" src="../../assets/img/blaster-smart-lineup.png" alt="Cold Jet Aero2 PCS ULTRA · PLT ULTRA · i3 MicroClean" loading="lazy" decoding="async" />
+            <img class="is-main" src="../../assets/img/blaster-smart-lineup.webp" alt="Cold Jet Aero2 PCS ULTRA · PLT ULTRA · i3 MicroClean" loading="lazy" decoding="async" />
           </div>
           <div class="bls-sys-body" style="position: relative">
             <div class="bls-sys-divider"></div>
@@ -1126,12 +1126,12 @@ BLASTER_HUB_BODY = """
               <div><dt>PCS ULTRA</dt><dd>0.3 – 3.0 mm · 28 Particle Sizes</dd></div>
             </dl>
             <a class="bls-more" href="aero2-ultra.html">Smart Blaster 자세히 보기 <i>→</i></a>
-            <img class="bls-sys-icon-inline" src="../../assets/img/icon-iot.png" alt="IoT" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
+            <img class="bls-sys-icon-inline" src="../../assets/img/icon-iot.webp" alt="IoT" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
           </div>
         </article>
         <article class="bls-sys reveal is-large-media" id="bls-sys-pellet" style="--reveal-delay:0.06s">
           <div class="bls-sys-media">
-            <img class="is-main" src="../../assets/img/blaster-pellet-lineup.png" alt="Cold Jet Aero Series · ELITE 20 · IceRocket PLT" loading="lazy" decoding="async" />
+            <img class="is-main" src="../../assets/img/blaster-pellet-lineup.webp" alt="Cold Jet Aero Series · ELITE 20 · IceRocket PLT" loading="lazy" decoding="async" />
           </div>
             <div class="bls-sys-body" style="position: relative">
             <div class="bls-sys-divider"></div>
@@ -1146,12 +1146,12 @@ BLASTER_HUB_BODY = """
               <div><dt>사용 입자</dt><dd>3 mm PELLET</dd></div>
             </dl>
             <a class="bls-more" href="aero-series.html">Pellet Blaster 자세히 보기 <i>→</i></a>
-            <img class="bls-sys-icon-inline" src="../../assets/img/icon-pellet.png" alt="3mm Pellet" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
+            <img class="bls-sys-icon-inline" src="../../assets/img/icon-pellet.webp" alt="3mm Pellet" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
           </div>
         </article>
         <article class="bls-sys reveal is-large-media" id="bls-sys-micro">
           <div class="bls-sys-media">
-            <img class="is-main" src="../../assets/img/blaster-micro-lineup.png" alt="Cold Jet i3 MicroClean · i3 MicroClean 2 · SDI Select 60" loading="lazy" decoding="async" />
+            <img class="is-main" src="../../assets/img/blaster-micro-lineup.webp" alt="Cold Jet i3 MicroClean · i3 MicroClean 2 · SDI Select 60" loading="lazy" decoding="async" />
           </div>
           <div class="bls-sys-body" style="position: relative">
             <div class="bls-sys-divider"></div>
@@ -1166,12 +1166,12 @@ BLASTER_HUB_BODY = """
               <div><dt>사용 입자</dt><dd>MICRO PARTICLE — 드라이아이스를 미세 입자로 가공해 분사</dd></div>
             </dl>
             <a class="bls-more" href="i3-microclean-2.html">MicroParticle Blaster 자세히 보기 <i>→</i></a>
-            <img class="bls-sys-icon-inline" src="../../assets/img/icon-micro.png" alt="Micro Particle" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
+            <img class="bls-sys-icon-inline" src="../../assets/img/icon-micro.webp" alt="Micro Particle" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
           </div>
         </article>
         <article class="bls-sys reveal is-large-media" id="bls-sys-specialty" style="--reveal-delay:0.06s">
           <div class="bls-sys-media is-contain">
-            <img class="is-main" src="../../assets/img/blaster-specialty-lineup.png" alt="Cold Jet C100 · E-CO2 150" loading="lazy" style="position: absolute; left: 21px; top: 21px; width: 662px; height: 461px" />
+            <img class="is-main" src="../../assets/img/blaster-specialty-lineup.webp" alt="Cold Jet C100 · E-CO2 150" loading="lazy" style="position: absolute; left: 21px; top: 21px; width: 662px; height: 461px" />
           </div>
           <div class="bls-sys-body" style="position: relative">
             <div class="bls-sys-divider"></div>
@@ -1185,7 +1185,7 @@ BLASTER_HUB_BODY = """
               <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="c100.html">C100 — 완전 공압식</a><a class="bls-model-chip" href="e-co2-150.html">E-CO2 150 — 드라이아이스 + 연마재</a></dd></div>
             </dl>
             <a class="bls-more" href="c100.html">Specialty System 자세히 보기 <i>→</i></a>
-            <img class="bls-sys-icon-inline" src="../../assets/img/icon-specialty.png" alt="Specialty" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
+            <img class="bls-sys-icon-inline" src="../../assets/img/icon-specialty.webp" alt="Specialty" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
           </div>
         </article>
       </div>
@@ -1212,7 +1212,7 @@ BLASTER_HUB_BODY = """
       </div>
       <div class="bls-prod-grid" id="blsProdGrid">
       <a class="bls-prod reveal" data-cat="core smart pellet micro" href="aero2-ultra.html" style="--reveal-delay:0s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-pcs-ultra-white.png" data-bg-black="../../assets/img/blaster-aero2-pcs-ultra.png" data-bg-white="../../assets/img/blaster-aero2-pcs-ultra-white.png" alt="Aero2® PCS ULTRA" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-pcs-ultra-white.webp" data-bg-black="../../assets/img/blaster-aero2-pcs-ultra.webp" data-bg-white="../../assets/img/blaster-aero2-pcs-ultra-white.webp" alt="Aero2® PCS ULTRA" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">PARTICLE CONTROL SYSTEM</span></div>
           <h3>Aero2® PCS ULTRA</h3>
@@ -1225,7 +1225,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="smart pellet" href="aero2-ultra.html" style="--reveal-delay:0.06s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-plt-ultra-white.png" data-bg-black="../../assets/img/blaster-aero2-plt-ultra.png" data-bg-white="../../assets/img/blaster-aero2-plt-ultra-white.png" alt="Aero2® PLT ULTRA" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero2-plt-ultra-white.webp" data-bg-black="../../assets/img/blaster-aero2-plt-ultra.webp" data-bg-white="../../assets/img/blaster-aero2-plt-ultra-white.webp" alt="Aero2® PLT ULTRA" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero2® PLT ULTRA</h3>
@@ -1238,7 +1238,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="core micro smart" href="i3-microclean-2.html" style="--reveal-delay:0.12s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-i3-microclean-2-white.png" data-bg-black="../../assets/img/blaster-i3-microclean-2.png" data-bg-white="../../assets/img/blaster-i3-microclean-2-white.png" alt="i³ MicroClean® 2" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-i3-microclean-2-white.webp" data-bg-black="../../assets/img/blaster-i3-microclean-2.png" data-bg-white="../../assets/img/blaster-i3-microclean-2-white.webp" alt="i³ MicroClean® 2" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SMART</span><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-badge">SMART MICRO PARTICLE</span></div>
           <h3>i³ MicroClean® 2</h3>
@@ -1251,7 +1251,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="pellet" href="aero-series.html" style="--reveal-delay:0.18s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-40fp-white.png" data-bg-black="../../assets/img/blaster-aero-40fp.png" data-bg-white="../../assets/img/blaster-aero-40fp-white.png" alt="Aero® 40FP" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-40fp-white.webp" data-bg-black="../../assets/img/blaster-aero-40fp.png" data-bg-white="../../assets/img/blaster-aero-40fp-white.webp" alt="Aero® 40FP" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero® 40FP</h3>
@@ -1264,7 +1264,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="pellet" href="aero-series.html" style="--reveal-delay:0.24s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-80fp-white.png" data-bg-black="../../assets/img/blaster-aero-80fp.png" data-bg-white="../../assets/img/blaster-aero-80fp-white.png" alt="Aero® 80FP" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-80fp-white.webp" data-bg-black="../../assets/img/blaster-aero-80fp.webp" data-bg-white="../../assets/img/blaster-aero-80fp-white.webp" alt="Aero® 80FP" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>Aero® 80FP</h3>
@@ -1277,7 +1277,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="core pellet micro" href="elite20-icerocket.html" style="--reveal-delay:0s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-elite-20-white.png" data-bg-black="../../assets/img/blaster-elite-20.png" data-bg-white="../../assets/img/blaster-elite-20-white.png" alt="ELITE 20" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-elite-20-white.webp" data-bg-black="../../assets/img/blaster-elite-20.webp" data-bg-white="../../assets/img/blaster-elite-20-white.webp" alt="ELITE 20" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span></div>
           <h3>ELITE 20</h3>
@@ -1290,7 +1290,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="core pellet" href="elite20-icerocket.html" style="--reveal-delay:0.06s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-icerocket-plt-white.png" data-bg-black="../../assets/img/blaster-icerocket-plt.png" data-bg-white="../../assets/img/blaster-icerocket-plt-white.png" alt="IceRocket PLT" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-icerocket-plt-white.webp" data-bg-black="../../assets/img/blaster-icerocket-plt.webp" data-bg-white="../../assets/img/blaster-icerocket-plt-white.webp" alt="IceRocket PLT" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
           <h3>IceRocket PLT</h3>
@@ -1303,7 +1303,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="micro" href="i3-microclean.html" style="--reveal-delay:0.12s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-i3-microclean-white.png" data-bg-black="../../assets/img/blaster-i3-microclean.png" data-bg-white="../../assets/img/blaster-i3-microclean-white.png" alt="i³ MicroClean®" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-i3-microclean-white.webp" data-bg-black="../../assets/img/blaster-i3-microclean.webp" data-bg-white="../../assets/img/blaster-i3-microclean-white.webp" alt="i³ MicroClean®" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span></div>
           <h3>i³ MicroClean®</h3>
@@ -1316,7 +1316,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="micro pellet" href="sdi-select-60.html" style="--reveal-delay:0.18s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-sdi-select-60-white.png" data-bg-black="../../assets/img/blaster-sdi-select-60.png" data-bg-white="../../assets/img/blaster-sdi-select-60-white.png" alt="SDI Select™ 60" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-sdi-select-60-white.webp" data-bg-black="../../assets/img/blaster-sdi-select-60.png" data-bg-white="../../assets/img/blaster-sdi-select-60-white.webp" alt="SDI Select™ 60" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">MICRO PARTICLE</span><span class="bls-prod-cat">PELLET</span></div>
           <h3>SDI Select™ 60</h3>
@@ -1329,7 +1329,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="specialty" href="c100.html" style="--reveal-delay:0s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-c100-white.png" data-bg-black="../../assets/img/blaster-c100.png" data-bg-white="../../assets/img/blaster-c100-white.png" alt="Cold Jet C100" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-c100-white.webp" data-bg-black="../../assets/img/blaster-c100.png" data-bg-white="../../assets/img/blaster-c100-white.webp" alt="Cold Jet C100" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SPECIALTY</span></div>
           <h3>Aero® C100</h3>
@@ -1342,7 +1342,7 @@ BLASTER_HUB_BODY = """
         </div>
       </a>
       <a class="bls-prod reveal" data-cat="specialty" href="e-co2-150.html" style="--reveal-delay:0.06s">
-        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-e-co2-150-white.png" data-bg-black="../../assets/img/blaster-e-co2-150.png" data-bg-white="../../assets/img/blaster-e-co2-150-white.png" alt="E-CO2™ 150" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
+        <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-e-co2-150-white.webp" data-bg-black="../../assets/img/blaster-e-co2-150.webp" data-bg-white="../../assets/img/blaster-e-co2-150-white.webp" alt="E-CO2™ 150" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">SPECIALTY</span></div>
           <h3>E-CO2™ 150</h3>
@@ -1388,7 +1388,7 @@ BLASTER_HUB_BODY = """
           </div>
         </article>
         <article class="bls-tech reveal">
-          <div class="bls-tech-media is-cad is-lg"><img src="../../assets/img/coldjet-nozzle-family.png" alt="Cold Jet 노즐 라인업" loading="lazy" style="object-fit: contain; width: 230%; height: 155%" /></div>
+          <div class="bls-tech-media is-cad is-lg"><img src="../../assets/img/coldjet-nozzle-family.webp" alt="Cold Jet 노즐 라인업" loading="lazy" style="object-fit: contain; width: 230%; height: 155%" /></div>
           <div class="bls-tech-body">
             <span class="bls-num">03</span>
             <span class="bls-en">NOZZLE TECHNOLOGY</span>
@@ -1398,7 +1398,7 @@ BLASTER_HUB_BODY = """
           </div>
         </article>
         <article class="bls-tech reveal" style="--reveal-delay:0.06s">
-          <div class="bls-tech-media is-product is-lg"><img src="../../assets/img/coldjet-connect-dashboard.png" alt="Cold Jet Connect 대시보드" loading="lazy" decoding="async" /></div>
+          <div class="bls-tech-media is-product is-lg"><img src="../../assets/img/coldjet-connect-dashboard.webp" alt="Cold Jet Connect 대시보드" loading="lazy" decoding="async" /></div>
           <div class="bls-tech-body">
             <span class="bls-num">04</span>
             <span class="bls-en">COLD JET CONNECT®</span>
@@ -1503,11 +1503,11 @@ BLASTER_HUB_BODY = """
         </div>
 
         <div class="bls-partner-photos reveal">
-          <img src="../../assets/img/coldjet-hq-building.jpg" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-building.webp" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-2.jpg" alt="Cold Jet 생산 공장" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-3.jpg" alt="Cold Jet 라운지" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-4.jpg" alt="Cold Jet 사내 카페" loading="lazy" decoding="async" />
-          <img src="../../assets/img/coldjet-hq-photo-5.jpg" alt="Cold Jet 컨퍼런스" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-5.webp" alt="Cold Jet 컨퍼런스" loading="lazy" decoding="async" />
         </div>
         <div class="bls-partner-photos reveal">
           <img src="../../assets/img/vatek-coldjet-photo-1.jpg" alt="Cold Jet 본사 방문" loading="lazy" decoding="async" />
@@ -2139,7 +2139,7 @@ PELLETIZER_HUB_BODY = """
     <section class="subhero-parallax pel-hero-stage">
       <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; 드라이아이스 제조기</div>
       <div class="hero-fit">
-        <video class="subhero-parallax-img pel-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/pelletizer-hero-poster.jpg" data-buffer="0" data-pan-scale="1">
+        <video class="subhero-parallax-img pel-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/pelletizer-hero-poster.webp" data-buffer="0" data-pan-scale="1">
           <source src="../../assets/video/pelletizer-hero.mp4" type="video/mp4" />
         </video>
         <div class="subhero-textbox">
@@ -2235,7 +2235,7 @@ PELLETIZER_HUB_BODY = """
               <img src="../../assets/img/pelletizer-use-foodprocess.webp" alt="드라이아이스와 함께 포장되는 육류 제품" loading="lazy" decoding="async">
               <img src="../../assets/img/pelletizer-use-coldchain.jpg" alt="냉동 탑차를 이용한 콜드체인 운송" loading="lazy" decoding="async">
               <img src="../../assets/img/pelletizer-use-aviation.jpg" alt="항공 기내식 케이터링 카트" loading="lazy" decoding="async">
-              <img src="../../assets/img/pelletizer-use-bio.png" alt="실험실에서 검체를 다루는 연구원" loading="lazy" decoding="async">
+              <img src="../../assets/img/pelletizer-use-bio.webp" alt="실험실에서 검체를 다루는 연구원" loading="lazy" decoding="async">
               <img src="../../assets/img/pelletizer-use-production.jpg" alt="노즐에서 분사되는 드라이아이스 펠렛" loading="lazy" decoding="async">
               <span class="plt-use-progress" aria-hidden="true"><i id="useProgress"></i></span>
             </div>
@@ -2482,11 +2482,11 @@ PELLETIZER_HUB_BODY = """
         </div>
 
         <div class="bls-partner-photos reveal">
-          <img src="../../assets/img/coldjet-hq-building.jpg" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-building.webp" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-2.jpg" alt="Cold Jet 생산 공장" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-3.jpg" alt="Cold Jet 라운지" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-4.jpg" alt="Cold Jet 사내 카페" loading="lazy" decoding="async" />
-          <img src="../../assets/img/coldjet-hq-photo-5.jpg" alt="Cold Jet 컨퍼런스" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-5.webp" alt="Cold Jet 컨퍼런스" loading="lazy" decoding="async" />
         </div>
         <div class="bls-partner-photos reveal">
           <img src="../../assets/img/vatek-coldjet-photo-1.jpg" alt="Cold Jet 본사 방문" loading="lazy" decoding="async" />
@@ -2776,7 +2776,7 @@ RECOVERY_SCRIPT = """  <script>
 RECOVERY_BODY = """    <section class="subhero-parallax rec-hero-stage">
       <div class="subhero-breadcrumb wrap"><a href="../../index.html">홈</a> &gt; <a href="../index.html">제품 · 자동화 · 공급</a> &gt; CO₂ 리커버리</div>
       <div class="hero-fit">
-        <video class="subhero-parallax-img rec-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/recovery-hero-poster.jpg" data-buffer="0" data-pan-scale="1">
+        <video class="subhero-parallax-img rec-hero-video" autoplay muted loop playsinline preload="auto" poster="../../assets/img/recovery-hero-poster.webp" data-buffer="0" data-pan-scale="1">
           <source src="../../assets/video/recovery-hero.mp4" type="video/mp4" />
         </video>
         <div class="subhero-textbox">
@@ -3136,11 +3136,11 @@ RECOVERY_BODY = """    <section class="subhero-parallax rec-hero-stage">
         </div>
 
         <div class="bls-partner-photos reveal">
-          <img src="../../assets/img/coldjet-hq-building.jpg" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-building.webp" alt="Cold Jet 글로벌 본사" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-2.jpg" alt="Cold Jet 생산 공장" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-3.jpg" alt="Cold Jet 라운지" loading="lazy" decoding="async" />
           <img src="../../assets/img/coldjet-hq-photo-4.jpg" alt="Cold Jet 사내 카페" loading="lazy" decoding="async" />
-          <img src="../../assets/img/coldjet-hq-photo-5.jpg" alt="Cold Jet 컨퍼런스" loading="lazy" decoding="async" />
+          <img src="../../assets/img/coldjet-hq-photo-5.webp" alt="Cold Jet 컨퍼런스" loading="lazy" decoding="async" />
         </div>
         <div class="bls-partner-photos reveal">
           <img src="../../assets/img/vatek-coldjet-photo-1.jpg" alt="Cold Jet 본사 방문" loading="lazy" decoding="async" />
