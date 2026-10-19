@@ -1508,10 +1508,16 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    부분이 이 여유를 소비하며 제목/영상을 서로 다른 속도로 밀어 올린다. */
 .coldjet-video-scroll {
   position: relative;
-  height: calc(100vh + 2 * 65vh + 100vh);
+  /* (2026-10-18) 제목이 막 박힌 첫 화면에서 영상이 제목 높이만큼 아래로
+     내려앉아 있다가 한 번 더 스크롤해야 상단에 붙는 문제 — 영상 컨테이너를
+     제목 높이(--coldjet-title-h, main.js가 실측해 갱신)만큼 위로 끌어올려
+     sticky 영상이 처음부터 제목 아래(뷰포트 top:0)에 깔리게 한다. 높이는
+     그만큼 보태 전체 스크롤 길이와 그 뒤 섹션 위치는 그대로 유지. */
+  margin-top: calc(-1 * var(--coldjet-title-h, 0px));
+  height: calc(100vh + 2 * 65vh + 100vh + var(--coldjet-title-h, 0px));
 }
 @supports (height: 100dvh) {
-  .coldjet-video-scroll { height: calc(100dvh + 2 * 65vh + 100dvh); }
+  .coldjet-video-scroll { height: calc(100dvh + 2 * 65vh + 100dvh + var(--coldjet-title-h, 0px)); }
 }
 /* (2026-09-02, 후속4) "영상을 다시 크게, 대신 전체 화면에 다 보이게" — 영상
    프레임을 더 이상 "제목 아래 남은 영역"이 아니라 뷰포트 전체(top:0,
@@ -1853,75 +1859,60 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   position: relative;
   z-index: 11;
   background-color: #ffffff;
-  background-image:
-    radial-gradient(circle at 12% 16%, rgba(79, 173, 184, .26), transparent 42%),
-    radial-gradient(circle at 88% 10%, rgba(216, 229, 140, .27), transparent 46%),
-    radial-gradient(circle at 72% 86%, rgba(34, 136, 150, .23), transparent 46%),
-    radial-gradient(circle at 14% 88%, rgba(227, 241, 242, .90), transparent 50%),
-    repeating-linear-gradient(135deg, rgba(27, 36, 38, .10) 0px, rgba(27, 36, 38, .10) 1px, transparent 1px, transparent 14px);
-  background-attachment: fixed;
   color: var(--text-body);
   margin-top: calc(-1 * 100vh);
 }
 @supports (height: 100dvh) {
   .section-menu-picker { margin-top: calc(-1 * 100dvh); }
 }
-.menu-picker-head { max-width: 640px; }
-
-.menu-picker-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 12px;
-}
-.menu-picker-card {
+/* (2026-10-18) "무엇을 도와드릴까요?" 카드 그리드 → 편집 디자인식 디렉터리 목록으로
+   재구성. 그라디언트·빗살 배경, 칩, +N개, 떠다니는 화살표, 카드 그림자 제거.
+   헤어라인으로 나눈 6행 — 사진 · 번호 · 영문 eyebrow · 제목 · 한 줄 설명 ·
+   하위 메뉴 텍스트 링크. */
+.menu-picker-head { max-width: 720px; margin-bottom: clamp(28px, 4vw, 48px); }
+.mp-eyebrow { display: block; font-size: 12px; font-weight: 800; letter-spacing: .16em; color: var(--blue); margin-bottom: 10px; }
+.menu-picker-head h2.mp-title { text-align: left; margin: 0 0 14px; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.15; letter-spacing: -0.025em; }
+.menu-picker-head p { margin: 0; font-size: 16px; line-height: 1.75; color: var(--text-muted); word-break: keep-all; text-wrap: pretty; }
+.mp-list { border-top: 1px solid var(--text-dark); }
+.mp-row {
   position: relative;
-  background: var(--white);
-  border: 1px solid var(--gray-line);
-  border-radius: var(--radius);
-  padding: 30px 28px 44px;
-  box-shadow: var(--shadow-sm);
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr) 96px;
+  gap: 0 clamp(16px, 2.4vw, 32px);
+  align-items: center;
+  padding: clamp(20px, 2.4vw, 30px) 0;
+  border-bottom: 1px solid var(--gray-line);
 }
-.menu-picker-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(79, 173, 184, 0.45);
-  box-shadow: var(--shadow-lift);
-}
-.menu-picker-card h3 { margin: 0 0 10px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
-.menu-picker-title-link { color: var(--text-dark); }
-/* 카드 전체를 클릭 영역으로 만드는 스트레치드 링크 — 실제 <a>는 제목에만
-   걸려 있지만 ::after가 카드 전체(inset:0)를 덮어 어디를 눌러도 이동한다.
-   아래 .menu-picker-chips가 z-index로 그 위에 있어 칩은 각자 따로 클릭됨. */
-.menu-picker-title-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
-.menu-picker-card p {
-  margin: 0 0 20px; font-size: 14.5px; line-height: 1.65; color: var(--text-muted);
-}
-.menu-picker-chips { display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 2; }
-.menu-picker-chip {
-  font-size: 12.5px; font-weight: 600; color: var(--text-body);
-  background: var(--blue-pale); border: 1px solid var(--gray-line);
-  padding: 6px 12px; border-radius: 999px;
-  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
-}
-.menu-picker-chip:hover { background: var(--ice-pale); border-color: var(--ice); color: var(--ice-dark); }
-.menu-picker-chip-more { color: var(--blue-dark); font-weight: 800; }
-.menu-picker-arrow {
-  position: absolute; right: 24px; bottom: 20px; font-size: 18px; color: var(--gray-line);
-  transition: transform .25s ease, color .25s ease;
-}
-.menu-picker-card:hover .menu-picker-arrow { transform: translate(4px, -4px); color: var(--ice-dark); }
-
+.mp-pic { display: block; aspect-ratio: 3/2; border-radius: 10px; overflow: hidden; background: var(--blue-pale); }
+.mp-pic img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.mp-row:hover .mp-pic img { transform: scale(1.04); }
+.mp-en { display: block; font-size: 11px; font-weight: 800; letter-spacing: .14em; color: var(--blue); margin-bottom: 6px; }
+.mp-body h3 { margin: 0 0 6px; font-size: clamp(20px, 1.9vw, 24px); font-weight: 800; letter-spacing: -0.01em; line-height: 1.3; }
+.mp-body h3 a { color: var(--text-dark); text-decoration: none; }
+.mp-row:hover .mp-body h3 a { color: var(--blue-dark); }
+.mp-body p { margin: 0 0 12px; font-size: 14.5px; line-height: 1.7; color: var(--text-muted); word-break: keep-all; text-wrap: pretty; max-width: 62ch; }
+.mp-links { display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 13.5px; font-weight: 600; }
+.mp-links a { color: var(--text-body); text-decoration: none; position: relative; padding-right: 12px; margin-right: 12px; }
+.mp-links a:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 50%; width: 1px; height: 11px; background: var(--gray-line); transform: translateY(-50%); }
+.mp-links a:hover { color: var(--blue-dark); text-decoration: underline; text-underline-offset: 3px; }
+/* 굵고 둥근 ↗ 화살표 */
+.mp-go { display: flex; align-items: center; justify-content: center; width: 96px; height: 96px; color: var(--text-dark); justify-self: end; transition: color .3s; }
+.mp-go svg { width: 64px; height: 64px; overflow: visible; }
+.mp-go-arrow { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+.mp-row:hover .mp-go { color: var(--blue-dark); }
+.mp-row:hover .mp-go-arrow { transform: translate(3px, -3px); }
 @media (max-width: 960px) {
-  .menu-picker-grid { grid-template-columns: repeat(2, 1fr); }
+  .mp-row { grid-template-columns: 140px minmax(0, 1fr) 64px; }
+  .mp-go { width: 64px; height: 64px; }
+  .mp-go svg { width: 44px; height: 44px; }
 }
 @media (max-width: 620px) {
-  .menu-picker-grid { grid-template-columns: 1fr; }
-  .menu-picker-card { padding: 26px 24px 40px; }
-  .menu-picker-arrow { display: none; }
+  .mp-row { grid-template-columns: minmax(0, 1fr); gap: 14px 0; align-items: start; }
+  .mp-pic { aspect-ratio: 16/9; }
+  .mp-go { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .menu-picker-card, .menu-picker-arrow, .menu-picker-chip { transition: none; }
+  .mp-pic img, .mp-go, .mp-go-arrow { transition: none; }
 }
 
 .value-content {
@@ -4365,6 +4356,25 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
 .bls-pcs-demo-cap b { color: #fff; font-weight: 700; }
 .bls-play-btn.is-small { right: 12px; bottom: 10px; padding: 7px 14px 7px 16px; font-size: 12px; gap: 6px; }
 .bls-play-btn.is-small .bls-play-icon { font-size: 10px; }
+/* PCS 데모 — 다이얼 가중 레이아웃 (--w = 입자 크기 비율 0~1) */
+.bls-pcs-demos { --w: .5; display: flex; align-items: stretch; height: clamp(180px, 20vw, 250px); }
+.bls-pcs-demo { flex: 1 1 0; min-width: 0; transition: flex-grow .45s cubic-bezier(.4,0,.2,1), filter .45s, box-shadow .45s; border-radius: 12px; box-shadow: 0 0 0 0 rgba(79,173,184,0); }
+.bls-pcs-demo.is-a { flex-grow: calc(1 + (1 - var(--w)) * 2.2); }
+.bls-pcs-demo.is-b { flex-grow: calc(1 + var(--w) * 2.2); }
+.bls-pcs-demo.is-lead { box-shadow: 0 0 0 2px var(--ice), 0 0 32px rgba(79,173,184,.35); }
+.bls-pcs-demo.is-dim { filter: saturate(.35) brightness(.55); }
+.bls-pcs-demo-media { flex: 1 1 auto; aspect-ratio: auto; height: 100%; }
+.bls-pcs-demo-overlay { background: linear-gradient(to top, rgba(10,16,18,.7), rgba(10,16,18,.15)); transition: opacity .3s, font-size .45s; }
+.bls-pcs-demo.is-dim .bls-pcs-demo-overlay { font-size: 14px; }
+.bls-pcs-demo-media.is-playing .bls-pcs-demo-overlay { opacity: .85; }
+.bls-pcs-demo-tag { position: absolute; left: 12px; top: 10px; z-index: 2; font-size: 10.5px; font-weight: 900; letter-spacing: .16em; color: var(--navy-deep); background: var(--ice); padding: 4px 9px; border-radius: 999px; opacity: 0; transform: translateY(-4px); transition: opacity .3s, transform .3s; }
+.bls-pcs-demo.is-lead .bls-pcs-demo-tag { opacity: 1; transform: none; }
+.bls-pcs-demo-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; z-index: 2; background: rgba(255,255,255,.12); }
+.bls-pcs-demo-bar i { display: block; height: 100%; background: var(--ice); width: 0; transition: width .3s; }
+.bls-pcs-demo .bls-play-btn { opacity: 0; transition: opacity .25s; }
+.bls-pcs-demo:hover .bls-play-btn, .bls-pcs-demo .bls-play-btn:focus-visible { opacity: 1; }
+.bls-pcs-demo.is-dim .bls-play-btn { opacity: 0; pointer-events: none; }
+@media (max-width: 640px) { .bls-pcs-demos { height: auto; flex-direction: column; } .bls-pcs-demo { flex: none !important; } .bls-pcs-demo-media { aspect-ratio: 16/9; height: auto; } }
 .bls-scale-row { display: flex; gap: clamp(32px, 4vw, 60px); align-items: flex-start; margin: clamp(56px, 6vw, 96px) auto; max-width: 1600px; }
 .bls-pcs-left { flex: 1 1 640px; min-width: 0; display: flex; flex-direction: column; gap: clamp(14px, 1.6vw, 22px); }
 .bls-pcs-left .bls-scale { margin: 0; max-width: none; }

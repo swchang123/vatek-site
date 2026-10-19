@@ -2026,7 +2026,7 @@ def build_group_index(root, code, group_slug, group_title, group_tagline, models
     </div>
   </section>
 """
-    html = page_shell(group_title, group_tagline, depth, code, body, extra_head=extra_head)
+    html = page_shell(group_title, group_tagline, depth, code, body, extra_head=extra_head, cur_dir=f"{code}/{group_slug}")
     with open(os.path.join(group_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
 
@@ -2040,7 +2040,7 @@ def build_model_page(root, code, group_slug, group_title, model, siblings,
     # (2026-10-14, §55) 핸드오프 HTML 본문을 통째로 쓰는 커스텀 상세 페이지
     if model.get("custom_body"):
         html = page_shell(model["custom_title"], model["custom_desc"], depth, code, model["custom_body"],
-                          extra_script=model.get("custom_script", ""))
+                          extra_script=model.get("custom_script", ""), cur_dir=f"{code}/{group_slug}")
         with open(os.path.join(group_dir, f"{model['slug']}.html"), "w", encoding="utf-8") as f:
             f.write(html)
         return
@@ -2121,7 +2121,7 @@ def build_model_page(root, code, group_slug, group_title, model, siblings,
     </div>
   </section>
 """
-    html = page_shell(f"{model['name']} | {group_title}", model["tagline"], depth, code, body)
+    html = page_shell(f"{model['name']} | {group_title}", model["tagline"], depth, code, body, cur_dir=f"{code}/{group_slug}")
     with open(os.path.join(group_dir, f"{model['slug']}.html"), "w", encoding="utf-8") as f:
         f.write(html)
 
@@ -2251,7 +2251,14 @@ BLASTER_SCRIPT = """  <script>
       if(face)face.style.transform='translate(-50%,-50%) rotate('+deg.toFixed(1)+'deg)';
       if(arc)arc.style.strokeDashoffset=(1-f).toFixed(4);
       if(knob){knob.setAttribute('aria-valuenow',v.toFixed(1));knob.setAttribute('aria-valuetext',v.toFixed(1)+'mm')}
+      if(demos){demos.style.setProperty('--w',f.toFixed(3));
+        var lead=f<.42?'a':f>.58?'b':null;
+        dA.classList.toggle('is-lead',lead==='a');dB.classList.toggle('is-lead',lead==='b');dA.classList.toggle('is-dim',lead==='b');dB.classList.toggle('is-dim',lead==='a');
+        if(bA)bA.style.width=((1-f)*100).toFixed(1)+'%';if(bB)bB.style.width=(f*100).toFixed(1)+'%';
+        if(v1)v1.playbackRate=lead==='b'?.5:1;if(v2)v2.playbackRate=lead==='a'?.5:1;}
     }
+    var demos=document.querySelector('.bls-pcs-demos'),dA=document.getElementById('pcsDemoA'),dB=document.getElementById('pcsDemoB'),bA=document.getElementById('pcsBarA'),bB=document.getElementById('pcsBarB'),v1=document.getElementById('pcsVideo1'),v2=document.getElementById('pcsVideo2');
+    if(demos&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(en){[v1,v2].forEach(function(v){if(!v)return;if(en.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause()})})},{threshold:.2}).observe(demos)}
     function onScrollUpdate(){
       ticking=false;if(touched)return;
       var r=scaleEl.getBoundingClientRect(),a=window.innerHeight*0.85,b=window.innerHeight*0.25;
@@ -2353,23 +2360,27 @@ BLASTER_HUB_BODY = """
         <div class="bls-scale-ends is-sub"><span>Micro Particle</span><span>Full Pellet</span></div>
       </div>
       <div class="bls-pcs-demos reveal">
-        <div class="bls-pcs-demo">
+        <div class="bls-pcs-demo is-a" id="pcsDemoA">
           <div class="bls-pcs-demo-media">
-            <video id="pcsVideo1" class="bls-media-fade" muted loop playsinline preload="none">
+            <span class="bls-pcs-demo-tag">PRECISION</span>
+            <video id="pcsVideo1" class="bls-media-fade" muted loop playsinline preload="metadata">
               <source src="../../assets/video/pcs-demo-namecard.mp4" type="video/mp4" />
             </video>
             <div class="bls-pcs-demo-overlay">Micro Particle<br />0.3mm</div>
+            <div class="bls-pcs-demo-bar"><i id="pcsBarA"></i></div>
             <button type="button" class="bls-play-btn is-small" id="pcsPlayBtn1" aria-label="영상 재생">
               <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
             </button>
           </div>
         </div>
-        <div class="bls-pcs-demo">
+        <div class="bls-pcs-demo is-b" id="pcsDemoB">
           <div class="bls-pcs-demo-media">
-            <video id="pcsVideo2" class="bls-media-fade" muted loop playsinline preload="none">
+            <span class="bls-pcs-demo-tag">PERFORMANCE</span>
+            <video id="pcsVideo2" class="bls-media-fade" muted loop playsinline preload="metadata">
               <source src="../../assets/video/pcs-demo-asphalt.mp4" type="video/mp4" />
             </video>
             <div class="bls-pcs-demo-overlay">Full Pellet<br />3.0mm</div>
+            <div class="bls-pcs-demo-bar"><i id="pcsBarB"></i></div>
             <button type="button" class="bls-play-btn is-small" id="pcsPlayBtn2" aria-label="영상 재생">
               <span class="bls-play-label">영상 재생</span><i class="bls-play-icon">▶</i>
             </button>
@@ -2455,10 +2466,10 @@ BLASTER_HUB_BODY = """
             <p>3 mm 드라이아이스 펠렛을 사용하는 산업용 블라스터 제품군입니다.</p>
             <p>생산설비와 금형의 세척, 오일 · 그리스 · 카본 및 고착된 공정 잔류물 제거 등 상대적으로 높은 세척력이 필요한 작업에 폭넓게 사용됩니다.</p>
             <dl class="bls-sys-models">
-              <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="aero-series.html">Aero Series</a><a class="bls-model-chip" href="elite20-icerocket.html">ELITE 20</a><a class="bls-model-chip" href="elite20-icerocket.html">IceRocket PLT</a></dd></div>
+              <div><dt>대표 모델</dt><dd><a class="bls-model-chip" href="aero-40fp.html">Aero Series</a><a class="bls-model-chip" href="elite-20.html">ELITE 20</a><a class="bls-model-chip" href="elite-20.html">IceRocket PLT</a></dd></div>
               <div><dt>사용 입자</dt><dd>3 mm PELLET</dd></div>
             </dl>
-            <a class="bls-more" href="aero-series.html">Pellet Blaster 자세히 보기 <i>→</i></a>
+            <a class="bls-more" href="aero-40fp.html">Pellet Blaster 자세히 보기 <i>→</i></a>
             <img class="bls-sys-icon-inline" src="../../assets/img/icon-pellet.webp" alt="3mm Pellet" style="position: absolute; left: 520px; top: 111px; width: 130px; height: 130px" />
           </div>
         </article>
@@ -2563,7 +2574,7 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="pellet" href="aero-series.html" style="--reveal-delay:0.18s">
+      <a class="bls-prod reveal" data-cat="pellet" href="aero-40fp.html" style="--reveal-delay:0.18s">
         <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-40fp-white.webp" data-bg-black="../../assets/img/blaster-aero-40fp.png" data-bg-white="../../assets/img/blaster-aero-40fp-white.webp" alt="Aero® 40FP" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
@@ -2576,7 +2587,7 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="pellet" href="aero-series.html" style="--reveal-delay:0.24s">
+      <a class="bls-prod reveal" data-cat="pellet" href="aero-80fp.html" style="--reveal-delay:0.24s">
         <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-aero-80fp-white.webp" data-bg-black="../../assets/img/blaster-aero-80fp.webp" data-bg-white="../../assets/img/blaster-aero-80fp-white.webp" alt="Aero® 80FP" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
@@ -2589,7 +2600,7 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="core pellet micro" href="elite20-icerocket.html" style="--reveal-delay:0s">
+      <a class="bls-prod reveal" data-cat="core pellet micro" href="elite-20.html" style="--reveal-delay:0s">
         <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-elite-20-white.webp" data-bg-black="../../assets/img/blaster-elite-20.webp" data-bg-white="../../assets/img/blaster-elite-20-white.webp" alt="ELITE 20" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span><span class="bls-prod-cat">MICRO PARTICLE</span></div>
@@ -2602,7 +2613,7 @@ BLASTER_HUB_BODY = """
           <span class="bls-more">자세히 보기 <i>→</i></span>
         </div>
       </a>
-      <a class="bls-prod reveal" data-cat="core pellet" href="elite20-icerocket.html" style="--reveal-delay:0.06s">
+      <a class="bls-prod reveal" data-cat="core pellet" href="icerocket-plt.html" style="--reveal-delay:0.06s">
         <div class="bls-prod-media is-fill"><img src="../../assets/img/blaster-icerocket-plt-white.webp" data-bg-black="../../assets/img/blaster-icerocket-plt.webp" data-bg-white="../../assets/img/blaster-icerocket-plt-white.webp" alt="IceRocket PLT" loading="lazy" decoding="async" /><button type="button" class="bls-prod-bg-btn" aria-label="검정 배경으로 보기">검정 배경</button></div>
         <div class="bls-prod-body">
           <div class="bls-prod-tags"><span class="bls-prod-cat">PELLET</span></div>
@@ -2869,7 +2880,7 @@ BLASTER_HUB_BODY = """
             <a class="cta-btn" href="../../rental/demo.html">세척 테스트 신청</a>
             <a class="cmp-btn-ghost" href="../compare-equip.html">장비 상담</a>
           </div>
-          <a class="bls-textlink" href="../../rental/index.html">렌탈 · 데모 보기 →</a>
+          <a class="bls-textlink" href="../../rental/demo.html">렌탈 · 데모 보기 →</a>
         </div>
       </div>
     </div>
@@ -3368,7 +3379,7 @@ PELLETIZER_SCRIPT = """  <script>
           } else if (makePellets && !pelletizer) {
             result = { name:'펠렛타이저 맞춤 구성 + ' + reformer.name, image:'../../assets/img/pelletizer-rseries-official.jpg', processImage:true, products:[{name:'펠렛타이저 맞춤 구성',image:'../../assets/img/pelletizer-pr1500h-official.jpg',role:'펠렛 생산'},{name:reformer.name,image:'../../assets/img/pelletizer-rseries-official.jpg',role:'슬라이스 재성형',processImage:true}], link:'../quote.html', linkText:'통합 생산 시스템 상담', type:shapeNames[shape] + ' 생산·리폼 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'리포머 처리량에 맞는 펠렛을 함께 생산하려면 복수 펠렛타이저 또는 생산라인 맞춤 구성이 필요합니다.', config:size + ' · 펠렛 생산 병렬 구성 → ' + reformer.name, next:'펠렛타이저 대수·버퍼 용량 확인', note:'R Series 자체는 드라이아이스를 생산하지 않습니다. 시간당 1,500 kg을 초과하는 펠렛 생산은 단일 표준 펠렛타이저 범위를 넘어 병렬 구성과 연속 운전 조건을 함께 검토해야 합니다.' };
           } else {
-            result = { name:reformer.name, image:'../../assets/img/pelletizer-rseries-official.jpg', processImage:true, link:'special-forms.html', linkText:'R Series 상세 보기', type:shapeNames[shape] + ' 리폼 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'기존에 공급되는 펠렛을 선택한 규격으로 재성형하며 필요한 처리량을 충족하는 가장 가까운 R Series 리포머입니다.', config:size + ' · 기존 펠렛 공급 → ' + reformer.name, next:'원료 펠렛 공급량·이송 확인', note:'R Series는 펠렛을 슬라이스·블록으로 재성형하는 리포머입니다. 이 구성은 필요한 양의 펠렛이 기존 제조기 또는 외부 공급을 통해 확보된다는 조건입니다.', tip:(capacityTip(reformers.filter(function (item) { return supportedModels.indexOf(item.code) !== -1; }), need, reformer) || {}).text };
+            result = { name:reformer.name, image:'../../assets/img/pelletizer-rseries-official.jpg', processImage:true, link:'reformer.html', linkText:'R Series 상세 보기', type:shapeNames[shape] + ' 리폼 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'기존에 공급되는 펠렛을 선택한 규격으로 재성형하며 필요한 처리량을 충족하는 가장 가까운 R Series 리포머입니다.', config:size + ' · 기존 펠렛 공급 → ' + reformer.name, next:'원료 펠렛 공급량·이송 확인', note:'R Series는 펠렛을 슬라이스·블록으로 재성형하는 리포머입니다. 이 구성은 필요한 양의 펠렛이 기존 제조기 또는 외부 공급을 통해 확보된다는 조건입니다.', tip:(capacityTip(reformers.filter(function (item) { return supportedModels.indexOf(item.code) !== -1; }), need, reformer) || {}).text };
           }
         } else {
           result = { name:'R Series 맞춤 검토', image:'../../assets/img/pelletizer-rseries-official.jpg', processImage:true, link:'../quote.html', linkText:'리포머 구성 상담', type:shapeNames[shape] + ' 리폼 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'선택한 규격과 처리량을 동시에 충족하는 표준 R Series 구성이 없어 규격 또는 병렬 운전을 검토해야 합니다.', config:size + (makePellets ? ' · 펠렛타이저 함께 검토' : ' · 기존 펠렛 공급 조건'), next:'규격·처리량 재검토', note:'R Series는 리포머입니다. 펠렛도 함께 생산하는 경우에는 필요한 처리량에 맞는 드라이아이스 제조기 구성까지 함께 검토해야 합니다.' };
@@ -3446,6 +3457,7 @@ PELLETIZER_SCRIPT = """  <script>
     setFinderStep(1);
   })();
   </script>
+
 """
 PELLETIZER_HUB_BODY = """
   <main class="plt-page">
@@ -3503,23 +3515,23 @@ PELLETIZER_HUB_BODY = """
           <p class="plt-lead">드라이아이스의 형태와 크기, 생산량 그리고 환경 조건에 따라 장비를 구성할 수 있습니다. 각 제품군을 선택해 상세 내용을 확인해보세요.</p>
         </div>
         <div class="plt-category-grid">
-          <a class="plt-category-card" href="#model-finder">
+          <a class="plt-category-card" href="pellet.html">
             <div class="plt-category-media"><img src="../../assets/img/pelletizer-category-pellet-lineup.jpg" alt="Cold Jet 펠렛 제조기" loading="lazy" decoding="async" /></div>
             <div class="plt-category-body"><span class="plt-category-num">01</span><h3>펠렛 제조기</h3><p>PE 80 · PR120H · PR350H · PR750H · PR1500H — 소규모 자체 생산부터 대용량 생산까지, 액화 CO<sub>2</sub>로 펠렛과 너겟을 생산하는 Cold Jet의 펠렛타이저 라인업입니다.</p><span class="bls-more">시리즈 보기 <i>→</i></span></div>
           </a>
-          <a class="plt-category-card" href="#model-finder">
+          <a class="plt-category-card" href="slice.html">
             <div class="plt-category-media"><img src="../../assets/img/pelletizer-category-slice-ds1000.jpg" alt="Cold Jet 슬라이스 제조기" loading="lazy" decoding="async" /></div>
             <div class="plt-category-body"><span class="plt-category-num">02</span><h3>다이렉트 슬라이스 제조기</h3><p>DS500E · DS1000E — 펠렛을 별도로 생산하지 않고 액화 CO<sub>2</sub>에서 드라이아이스 슬라이스를 직접 생산하는 시스템입니다.</p><span class="bls-more">시리즈 보기 <i>→</i></span></div>
           </a>
-          <a class="plt-category-card" href="#model-finder">
+          <a class="plt-category-card" href="production-hub.html">
             <div class="plt-category-media"><img src="../../assets/img/pelletizer-category-special-unit.jpg" alt="Cold Jet 특수 제조기" loading="lazy" decoding="async" /></div>
             <div class="plt-category-body"><span class="plt-category-num">03</span><h3>특수 생산 시스템</h3><p>Production Hub · P3000 · Dosing &amp; Bagging System — 일반적인 고정형 펠렛 생산과 다른 조건에 대응하는 시스템입니다. 현장 이동형 Production Hub, Integrated Dosing System 등 사용 목적에 맞는 구성을 선택할 수 있습니다.</p><span class="bls-more">자세히 보기 <i>→</i></span></div>
           </a>
-          <a class="plt-category-card" href="#model-finder">
+          <a class="plt-category-card" href="dosing-system.html">
             <div class="plt-category-media"><img src="../../assets/img/pelletizer-category-dosing-system.jpg" alt="Cold Jet 통합 정량 공급 시스템" loading="lazy" decoding="async" /></div>
             <div class="plt-category-body"><span class="plt-category-num">04</span><h3>통합 정량 공급 시스템</h3><p>드라이아이스 생산과 정량 공급을 하나의 시스템으로 구성합니다. 생산된 드라이아이스를 설정한 양만큼 용기나 생산 공정에 바로 공급할 수 있습니다.</p><span class="bls-more">자세히 보기 <i>→</i></span></div>
           </a>
-          <a class="plt-category-card" href="special-forms.html">
+          <a class="plt-category-card" href="reformer.html">
             <div class="plt-category-media"><img src="../../assets/img/pelletizer-category-reformer.jpg" alt="Cold Jet R Series 리포머" loading="lazy" decoding="async" /></div>
             <div class="plt-category-body"><span class="plt-category-num">05</span><h3>리포머</h3><p>R500H · R1000H · R2000H — 드라이아이스 펠렛을 다시 압축해 슬라이스나 블록 형태로 만드는 장비입니다. R500H · R1000H · R2000H 등 필요한 생산량과 제품 규격에 맞춰 선택할 수 있습니다.</p><span class="bls-more">R Series 자세히 보기 <i>→</i></span></div>
           </a>
@@ -3737,6 +3749,7 @@ PELLETIZER_HUB_BODY = """
             </aside>
           </div>
         </section>
+
       </div>
     </section>
 
@@ -3834,32 +3847,29 @@ PELLETIZER_HUB_BODY = """
 def build_blaster(root, nav_html, footer_html, page_shell, asset):
     depth = 2
     html = page_shell(BLASTER_PAGE_TITLE, BLASTER_PAGE_DESC, depth, "products", BLASTER_HUB_BODY,
-                       extra_script=BLASTER_SCRIPT,
+                       extra_script=BLASTER_SCRIPT, cur_dir="products/blaster",
                        footer_hero_p="설비 특성, 오염 상태와 작업 환경을 고려해 현장에 맞는 솔루션을 제안합니다.")
     group_dir = os.path.join(root, "products", "blaster")
     os.makedirs(group_dir, exist_ok=True)
     with open(os.path.join(group_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
-    for m in BLASTER_MODELS + BLASTER_EXTRA_PAGES:
-        build_model_page(root, "products", "blaster", "드라이아이스 세척기 (블라스터)", m, BLASTER_MODELS,
-                          nav_html, footer_html, page_shell, asset)
-    return 1 + len(BLASTER_MODELS) + len(BLASTER_EXTRA_PAGES)
+    # (2026-10-19, 24차 §54) 모델 상세 페이지는 전부 custom_pages.py(generate.build_custom_pages)에서 생성.
+    # BLASTER_MODELS 데이터와 build_model_page()는 더 이상 출력에 쓰이지 않는다(참고용으로 보존).
+    return 1
 
 
 def build_pelletizer(root, nav_html, footer_html, page_shell, asset):
     depth = 2
-    extra_head = '\n<link rel="stylesheet" href="%spelletizer-page.css?v=20260914-10" />' % asset('assets/css/', depth)
+    extra_head = '\n<link rel="stylesheet" href="%spelletizer-page.css?v=20261015-2" />' % asset('assets/css/', depth)
     html = page_shell(PELLETIZER_PAGE_TITLE, PELLETIZER_PAGE_DESC, depth, "products", PELLETIZER_HUB_BODY,
-                       extra_script=PELLETIZER_SCRIPT, extra_head=extra_head,
+                       extra_script=PELLETIZER_SCRIPT, extra_head=extra_head, cur_dir="products/pelletizer",
                        footer_hero_p="필요한 생산량과 드라이아이스 형태, LCO<sub>2</sub> 공급 조건과 후공정 구성을 확인해 현장에 맞는 생산 시스템을 제안합니다.")
     group_dir = os.path.join(root, "products", "pelletizer")
     os.makedirs(group_dir, exist_ok=True)
     with open(os.path.join(group_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
-    for m in PELLETIZER_MODELS:
-        build_model_page(root, "products", "pelletizer", "드라이아이스 제조기 (펠렛타이저)", m, PELLETIZER_MODELS,
-                          nav_html, footer_html, page_shell, asset)
-    return 1 + len(PELLETIZER_MODELS)
+    # (2026-10-19, 24차 §55) 모델·시리즈 상세 페이지는 전부 custom_pages.py에서 생성 — 허브만 여기서.
+    return 1
 
 
 RECOVERY_SCRIPT = """  <script>
@@ -4494,13 +4504,11 @@ def build_recovery(root, nav_html, footer_html, page_shell, asset):
         "CO2 리커버리",
         "드라이아이스 생산 중 배출되는 CO2 가스를 회수해 재사용하는 리커버리 시스템입니다. "
         "펠렛타이저 생산능력에 맞춰 4단계 모델을 제공합니다.",
-        depth, "products", RECOVERY_BODY, extra_script=RECOVERY_SCRIPT, extra_head=extra_head,
+        depth, "products", RECOVERY_BODY, extra_script=RECOVERY_SCRIPT, extra_head=extra_head, cur_dir="products/recovery",
     )
     group_dir = os.path.join(root, "products", "recovery")
     os.makedirs(group_dir, exist_ok=True)
     with open(os.path.join(group_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
-    for m in RECOVERY_MODELS:
-        build_model_page(root, "products", "recovery", "CO2 리커버리", m, RECOVERY_MODELS,
-                          nav_html, footer_html, page_shell, asset)
-    return 1 + len(RECOVERY_MODELS)
+    # (2026-10-19, 24차 §56) 모델 상세 페이지는 전부 custom_pages.py에서 생성 — 허브만 여기서.
+    return 1

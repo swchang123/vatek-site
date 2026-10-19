@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var coldjetPinTitleEl = document.querySelector(".coldjet-pin-title");
       var coldjetVideoScrollEl = document.querySelector(".coldjet-video-scroll");
       if (coldjetVideoScrollEl) {
-        var coldjetTop = docTopOf(coldjetVideoScrollEl);
+        var coldjetTop = docTopOf(coldjetVideoScrollEl) + (coldjetVideoScrollEl.__titleH || 0);
         var coldjetZoneW = 0.65 * vh;
         // (2026-09-05) 제목 도킹 체크포인트를 정확히 "제목이 상단에 닿는 지점"
         // 으로 — 기존처럼 구간 안쪽(HS_LEAD)으로 당겨두면 감속(lerp)의 느린
@@ -396,12 +396,28 @@ document.addEventListener("DOMContentLoaded", function () {
       document.documentElement.classList.toggle("is-scrolling", v);
     };
 
-    var smoothScrollLoop = function () {
+    // (2026-10-18) 제목 도킹(우리의 가치 등)은 lerp 감쇠 대신 "고정 시간" 트윈으로
+    // — 거리와 무관하게 정확히 HS_TITLE_DOCK_MS 만에 상단에 박힌다. 아래
+    // hsAnimateTo()가 isTitleDock일 때 hsTween을 세팅하고, 이 루프는 hsTween이
+    // 있으면 그 진행률(ease-out quint)로 위치를 계산한다. 휠을 다시 굴려
+    // smoothTarget이 바뀌면(기존 자유 스크롤) hsTween을 버리고 lerp로 복귀.
+    var hsTween = null;
+    var HS_TITLE_DOCK_MS = 1000;
+    var smoothScrollLoop = function (ts) {
       var diff = smoothTarget - smoothCurrent;
-      if (Math.abs(diff) < 0.5) {
-        smoothCurrent = smoothTarget;
+      if (hsTween && hsTween.to === smoothTarget) {
+        if (hsTween.start === null) hsTween.start = ts || performance.now();
+        var t = Math.min(((ts || performance.now()) - hsTween.start) / HS_TITLE_DOCK_MS, 1);
+        var e = 1 - Math.pow(1 - t, 5);
+        smoothCurrent = t >= 1 ? smoothTarget : hsTween.from + (hsTween.to - hsTween.from) * e;
+        if (t >= 1) hsTween = null;
       } else {
-        smoothCurrent += diff * currentEase;
+        hsTween = null;
+        if (Math.abs(diff) < 0.5) {
+          smoothCurrent = smoothTarget;
+        } else {
+          smoothCurrent += diff * currentEase;
+        }
       }
       window.scrollTo(0, smoothCurrent);
       if (smoothCurrent !== smoothTarget) {
@@ -452,6 +468,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentEase = easeDist > 0 ? Math.min(SMOOTH_EASE, maxStep / easeDist) : SMOOTH_EASE;
       smoothCurrent = window.scrollY;
       smoothTarget = targetY;
+      hsTween = isTitleDock ? { from: smoothCurrent, to: targetY, start: null } : null;
       if (smoothRaf === null) {
         smoothRaf = window.requestAnimationFrame(smoothScrollLoop);
       }
@@ -1121,6 +1138,13 @@ document.addEventListener("DOMContentLoaded", function () {
         : false;
       if (coldjetPinTitleEl) {
         coldjetPinTitleEl.classList.toggle("is-pinned", coldjetTitlePinned);
+        // (2026-10-18) 제목 실측 높이를 CSS 변수로 — .coldjet-video-scroll이
+        // 이만큼 위로 당겨져 영상이 제목 아래에 처음부터 깔린다.
+        var cjTitleH = Math.round(coldjetPinTitleEl.offsetHeight);
+        if (coldjetVideoScroll && coldjetVideoScroll.__titleH !== cjTitleH) {
+          coldjetVideoScroll.__titleH = cjTitleH;
+          coldjetVideoScroll.style.setProperty("--coldjet-title-h", cjTitleH + "px");
+        }
       }
       // (2026-09-02, 후속4) 영상 프레임이 이제 "제목 아래 남은 영역"이 아니라
       // 뷰포트 전체(top:0/height:100vh, style.css의 .coldjet-video-wrap 참고)로
@@ -1146,7 +1170,10 @@ document.addEventListener("DOMContentLoaded", function () {
       // 등장).
       if (coldjetVideoScroll && (coldjetVideoBoxLead || coldjetVideoDescText)) {
         var coldjetScrollRect = coldjetVideoScroll.getBoundingClientRect();
-        var coldjetScrolled = -coldjetScrollRect.top;
+        // (2026-10-18) 컨테이너가 제목 높이만큼 위로 당겨졌으므로(style.css
+        // .coldjet-video-scroll margin-top) 그만큼 되돌려, 박스·전환 진행률의
+        // 기준점(= 제목이 상단에 닿는 지점)을 예전과 동일하게 유지.
+        var coldjetScrolled = -coldjetScrollRect.top - (coldjetVideoScroll.__titleH || 0);
         // (2026-09-02, 후속15) belief와 동일하게, 2구간 박스 진행률은 컨테이너
         // 전체 높이(이제 전환 여유 +100vh가 추가돼 있음)와 무관하게 고정
         // 예산(2 * 0.65 * vh)만 기준으로 계산 — 아래 전환 블록이 그 이후분을

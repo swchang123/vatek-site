@@ -477,3 +477,4 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
   .plt-result-row { flex-wrap: wrap; }
   .plt-result-products { display: flex; flex-wrap: wrap; gap: 16px; width: 100%; }
 }
+
