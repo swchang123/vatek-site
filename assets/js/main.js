@@ -8,13 +8,21 @@ document.addEventListener("DOMContentLoaded", function () {
   // (2026-09-05) 푸터 내용이 뷰포트보다 높으면 sticky 리빌로는 윗부분에
   // 닿을 수 없어 .is-tall을 붙여 일반 플로우로 전환(리사이즈 시 재판정).
   var revealWrap = document.querySelector(".footer-reveal-wrap");
-  var freezeEl = document.querySelector(".last-freeze");
+  var freezeEl = document.querySelector(".last-freeze, .tail-freeze");
   var revealFooter = document.querySelector(".site-footer");
   if (freezeEl && revealFooter) {
     var FREEZE_BLUR_MAX = 10;
+    // (2026-10-23) .tail-freeze: 섹션이 뷰포트보다 높으면 sticky top을 음수(뷰포트 높이 - 섹션 높이)로 잡아
+    // 섹션 하단이 화면 하단에 닿는 순간부터 고정 → 내용이 잘리지 않으면서 푸터가 그 위를 덮는다.
+    var checkFreezeTall = function () {
+      if (!freezeEl.classList.contains("tail-freeze")) return;
+      var over = freezeEl.offsetHeight - (window.innerHeight || 0);
+      freezeEl.style.top = over > 0 ? (-over) + "px" : "";
+    };
     var freezeTick = false;
     var updateFreezeBlur = function () {
       freezeTick = false;
+      checkFreezeTall();
       var vh = window.innerHeight || 1;
       var top = revealFooter.getBoundingClientRect().top;
       var covered = Math.min(1, Math.max(0, (vh - top) / vh));
@@ -26,9 +34,28 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", function () {
       if (!freezeTick) { freezeTick = true; requestAnimationFrame(updateFreezeBlur); }
     }, { passive: true });
-    window.addEventListener("resize", updateFreezeBlur);
+    window.addEventListener("resize", function () { checkFreezeTall(); updateFreezeBlur(); });
+    checkFreezeTall();
     updateFreezeBlur();
   }
+  // (2026-10-23) 위치/연락처 — 주소·전화·이메일 복사 버튼(.lc-copy[data-copy]). 2초간 "복사됨" 표시.
+  document.querySelectorAll(".lc-copy[data-copy]").forEach(function (btn) {
+    var label = btn.querySelector("span");
+    var orig = label ? label.textContent : "";
+    var done = function () {
+      btn.classList.add("is-done"); if (label) label.textContent = "복사됨";
+      setTimeout(function () { btn.classList.remove("is-done"); if (label) label.textContent = orig; }, 2000);
+    };
+    btn.addEventListener("click", function () {
+      var text = btn.getAttribute("data-copy");
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () { fallback(); }); }
+      else fallback();
+      function fallback() {
+        var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); done(); } catch (e) {} document.body.removeChild(ta);
+      }
+    });
+  });
   // FAQ 아코디언 슬라이드: 기본 <details> 토글을 가로채 .faq-a 높이를 애니메이션.
   document.querySelectorAll(".faq-item").forEach(function (item) {
     var summary = item.querySelector("summary");
@@ -716,11 +743,21 @@ document.addEventListener("DOMContentLoaded", function () {
   var heroVideoWrap = document.querySelector(".hero-video-wrap");
   if (heroVideoWrap && !prefersReducedMotion) {
     var parallaxTicking = false;
+    var heroStickyEl = heroVideoWrap.closest(".hero-sticky");
     var applyHeroParallax = function () {
       // 영상은 스크롤량의 20%만 이동해야 하므로, 페이지와 함께 움직이는 나머지 80%를
       // 반대 방향으로 되돌려(보정해) 순수 이동량이 20%만 남도록 함
-      var offset = window.scrollY * 0.8;
-      heroVideoWrap.style.transform = "translateY(" + offset + "px)";
+      var offset;
+      if (heroStickyEl) {
+        // (2026-10-23) sticky 히어로: 본문이 위로 덮는 동안 영상은 그 1/3 속도로만 위로 이동
+        var heroH = heroStickyEl.offsetHeight || 1;
+        var heroP = Math.min(Math.max(window.scrollY / heroH, 0), 1);
+        heroStickyEl.classList.toggle("is-passed", window.scrollY >= heroH);
+        offset = -heroP * heroH / 3;
+      } else {
+        offset = window.scrollY * 0.8;
+      }
+      heroVideoWrap.style.transform = "translateY(" + offset.toFixed(1) + "px)";
       parallaxTicking = false;
     };
     window.addEventListener(
@@ -1643,7 +1680,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // (2026-09-14) 고정 16:9 스테이지(.hero-fit) 히어로: 좌우 여백을 채우는 블러 앰비언트 영상 복제
   if (subheroStage) {
     var fitBox = subheroStage.querySelector(".hero-fit");
-    var fitVideo = fitBox && fitBox.querySelector("video");
+    var fitVideo = fitBox && fitBox.querySelector("video, img.subhero-parallax-img");
     if (fitVideo && !subheroStage.querySelector(".hero-fit-ambient")) {
       var ambient = fitVideo.cloneNode(true);
       ambient.className = "hero-fit-ambient";
@@ -1651,9 +1688,9 @@ document.addEventListener("DOMContentLoaded", function () {
       ambient.removeAttribute("aria-label");
       ambient.setAttribute("aria-hidden", "true");
       Object.keys(ambient.dataset).forEach(function (k) { delete ambient.dataset[k]; });
-      ambient.muted = true;
+      ambient.removeAttribute("alt"); ambient.removeAttribute("id");
       subheroStage.insertBefore(ambient, fitBox);
-      var p = ambient.play(); if (p && p.catch) p.catch(function () {});
+      if (ambient.tagName === "VIDEO") { ambient.muted = true; var p = ambient.play(); if (p && p.catch) p.catch(function () {}); }
     }
   }
   if (subheroStage) {
@@ -1669,6 +1706,16 @@ document.addEventListener("DOMContentLoaded", function () {
     var SUBHERO_BUFFER = 420; // px — CSS 버퍼량과 반드시 일치시킬 것
     var customBuffer = parseFloat(subheroImg.dataset.buffer);
     if (!isNaN(customBuffer)) SUBHERO_BUFFER = customBuffer;
+    // (2026-10-23) data-buffer-ratio="0.333": 스테이지 높이 대비 비율로 버퍼 지정(sticky 모드에서 본문 대비 이미지 속도 = 비율).
+    var bufferRatio = parseFloat(subheroImg.dataset.bufferRatio);
+    var stickyStage = subheroStage.classList.contains("subhero-sticky");
+    var applyBufferRatio = function () {
+      if (isNaN(bufferRatio)) return;
+      var stageH = subheroStage.offsetHeight || 0;
+      SUBHERO_BUFFER = Math.round(stageH * bufferRatio);
+      subheroStage.style.setProperty("--sticky-buffer", SUBHERO_BUFFER + "px");
+    };
+    applyBufferRatio();
     var panScale = subheroImg.dataset.panScale ? parseFloat(subheroImg.dataset.panScale) : null;
     // (2026-10-02) 히어로 <video>는 스크롤 블러 적용 안 함 — 필터 레이어가 영상을 뿌옇게 만듦. 정지 이미지만 유지.
     var noBlur = subheroImg.dataset.noBlur === "true" || subheroImg.tagName === "VIDEO";
@@ -1679,7 +1726,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var SUBHERO_BLUR_MAX = 10; // px
     var subheroTicking = false;
 
-    var stickyStage = subheroStage.classList.contains("subhero-sticky");
     var subheroNext = subheroStage.nextElementSibling;
     var updateSubhero = function () {
       subheroTicking = false;
@@ -1688,12 +1734,20 @@ document.addEventListener("DOMContentLoaded", function () {
       var scrolled;
       if (stickyStage && subheroNext) {
         // sticky 히어로: 다음 섹션(본문 카드)이 위로 올라온 거리를 진행도로 사용
-        scrolled = Math.min(Math.max(stageHeight - subheroNext.getBoundingClientRect().top, 0), stageHeight);
+        var nextTop = subheroNext.getBoundingClientRect().top;
+        // (2026-10-23) 본문이 히어로를 완전히 덮은 뒤에는 sticky를 해제(.is-passed → 일반 플로우로 복귀해
+        // 화면 위로 빠져나감). 그대로 두면 페이지 끝까지 고정돼 배경이 투명한 섹션 뒤로 히어로가 비쳐 보인다.
+        var stickyTop = parseFloat(getComputedStyle(subheroStage).top) || 0;
+        var passed = nextTop <= stickyTop + 0.5;
+        if (passed !== subheroStage.classList.contains("is-passed")) subheroStage.classList.toggle("is-passed", passed);
+        scrolled = Math.min(Math.max(stageHeight - (nextTop - stickyTop), 0), stageHeight);
       } else {
         scrolled = Math.min(Math.max(-rect.top, 0), stageHeight);
       }
       var progress = scrolled / stageHeight;
-      var shift = stickyStage ? (SUBHERO_BUFFER / 2 - progress * SUBHERO_BUFFER) : (progress * SUBHERO_BUFFER - SUBHERO_BUFFER / 2);
+      // sticky + 비율 버퍼: 이미지가 0에서 시작해 버퍼만큼만 위로(본문보다 느리게) 이동
+      var shift = (stickyStage && !isNaN(bufferRatio)) ? (-progress * SUBHERO_BUFFER)
+        : stickyStage ? (SUBHERO_BUFFER / 2 - progress * SUBHERO_BUFFER) : (progress * SUBHERO_BUFFER - SUBHERO_BUFFER / 2);
       if (panScale) {
         subheroImg.style.transform = "scale(" + panScale + ") translate3d(0, " + (shift / panScale).toFixed(2) + "px, 0)";
       } else {
@@ -1708,8 +1762,9 @@ document.addEventListener("DOMContentLoaded", function () {
         requestAnimationFrame(updateSubhero);
       }
     };
-    window.addEventListener("scroll", onSubheroScroll, { passive: true });
-    window.addEventListener("resize", onSubheroScroll);
+    // 스크롤 시에는 rAF를 기다리지 않고 즉시 갱신 — 한 프레임 지연으로 sticky 히어로 이미지가 떨리는 현상 방지
+    window.addEventListener("scroll", function () { subheroTicking = false; updateSubhero(); }, { passive: true });
+    window.addEventListener("resize", function () { applyBufferRatio(); onSubheroScroll(); });
     updateSubhero();
     }
   }

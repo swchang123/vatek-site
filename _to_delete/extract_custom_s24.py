@@ -1,7 +1,7 @@
 import sys,os,re,glob
 sys.path.insert(0,'.')
 import generate as G
-T='.claude-s24-target/'
+T=".claude-s25-target/"
 NAV_END='    <button class="peek-toggle" aria-label="메뉴 열기">☰</button>\n  </div>\n'
 MAINJS='assets/js/main.js"></script>\n'
 pages=sys.argv[1:]

@@ -1,5 +1,5 @@
 import difflib,sys,re,ast,os
-T='.claude-s24-target/'
+T=".claude-s25-target/"
 def enc_single(x): return x.replace('\\','\\\\').replace("'","\\'").replace('\n','\\n')
 def run(page,const,single,write=False,pyfile='generate.py'):
     src=open(pyfile,encoding='utf-8').read()

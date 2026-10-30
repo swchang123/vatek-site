@@ -1,0 +1,52 @@
+/* LOCATION & CONTACT (company/location.html) — 2026-10-11. 히어로 location-hero.webp(21:9 2206×946, 지도 위 VATEK 핀). 구성은 기술지원(.ts-hero-stage)과 동일 — 좌측 텍스트박스 + 본문 rec-cover 라운드 겹침. */
+.lc-hero-stage .subhero-parallax-img { object-position: 50% 50%; filter: none; }
+.lc-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.66) 0%, rgba(15,22,23,.34) 14%, rgba(15,22,23,.12) 32%, rgba(15,22,23,.08) 70%, rgba(15,22,23,.22) 100%); }
+.lc-hero-stage .subhero-breadcrumb, .lc-hero-stage .subhero-breadcrumb a { color: #fff; text-shadow: 0 1px 3px rgba(15,22,23,.85), 0 0 12px rgba(15,22,23,.7); }
+.lc-hero-stage .subhero-textbox h1, .lc-hero-stage .bls-hero-main { word-break: keep-all; text-wrap: pretty; }
+.lc-hero-stage .hero-fit .subhero-textbox { top: 46%; left: 5%; transform: translate(0, -50%); text-align: left; width: fit-content; max-width: min(520px, 36cqw); padding: 28px 32px; }
+.lc-hero-stage .hero-fit .subhero-textbox h1 { font-size: clamp(20px, 2.8cqw, 42px); }
+.lc-hero-stage .hero-fit .subhero-textbox .bls-hero-main { font-size: clamp(12px, 1.15cqw, 16px); line-height: 1.65; }
+@media (min-width: 641px) and (max-width: 1100px) {
+  .lc-hero-stage { height: min(calc(100vh - 76px), 56.25vw); }
+  .lc-hero-stage .hero-fit { aspect-ratio: auto; left: 0; transform: none; width: 100%; }
+  .lc-hero-stage .hero-fit-ambient { display: none; }
+  .lc-hero-stage .hero-fit .subhero-parallax-img { object-position: 0% 50%; }
+  .lc-hero-stage .hero-fit .subhero-textbox { max-width: min(340px, 38vw); top: 42%; padding: 22px 24px; }
+  .lc-hero-stage .hero-fit .subhero-textbox h1 { font-size: clamp(18px, 2.8vw, 28px); }
+}
+@media (max-width: 1000px) { .lc-hero-stage .hero-fit .subhero-textbox .bls-hero-main { display: none; } }
+#contact .compare-table { background: #fff; margin-top: 8px; }
+.lc-table td:first-child { width: 160px; font-weight: 700; color: var(--navy); white-space: nowrap; }
+.lc-table a { color: var(--blue); font-weight: 700; }
+.lc-tail { background: var(--white); padding: clamp(56px, 6vw, 88px) 0 clamp(72px, 8vw, 128px); }
+.lc-tail > .wrap { max-width: 1560px; padding: 0 clamp(24px, 4vw, 64px); }
+.lc-maplinks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.lc-maplink { display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px 9px 12px; border: 1px solid var(--gray-line); border-radius: 999px; background: #fff; color: var(--navy) !important; font-weight: 700 !important; font-size: 14px; text-decoration: none; transition: border-color .2s, box-shadow .2s, transform .2s; }
+.lc-maplink svg { width: 20px; height: 20px; flex-shrink: 0; }
+.lc-maplink:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.lc-maplink.is-google:hover { border-color: #4285F4; }
+.lc-maplink.is-naver:hover { border-color: #03C75A; }
+.lc-val { display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.lc-copy { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px 4px 8px; border: 1px solid var(--gray-line); border-radius: 999px; background: #fff; color: var(--text-muted); font: inherit; font-size: 12.5px; font-weight: 700; line-height: 1; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+.lc-copy svg { width: 14px; height: 14px; }
+.lc-copy:hover { color: var(--navy); border-color: var(--navy); }
+.lc-copy.is-done { color: #fff; background: var(--blue); border-color: var(--blue); }
+/* 지도 보기 — 전폭 지도 + 좌측 플로팅 정보 카드 */
+.lc-map-sec { background: var(--white); padding: clamp(56px, 6vw, 88px) 0 clamp(64px, 7vw, 104px); }
+.lc-map-sec > .wrap { max-width: 1560px; padding: 0 clamp(24px, 4vw, 64px); }
+.lc-mapwrap { position: relative; border-radius: 18px; overflow: hidden; background: #e9eef0; border: 1px solid var(--gray-line); box-shadow: 0 24px 60px rgba(27,36,38,.12); }
+.lc-mapwrap iframe { display: block; width: 100%; height: clamp(380px, 46vw, 600px); border: 0; filter: saturate(.85); }
+@media (max-width: 640px) {
+    .lc-mapwrap iframe { height: 320px; }
+}
+.lc-maptabs { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.lc-maptab { display: inline-flex; align-items: center; gap: 9px; padding: 10px 18px 10px 14px; border: 1px solid var(--gray-line); border-radius: 999px; background: #fff; color: var(--text-muted); font: inherit; font-size: 14.5px; font-weight: 700; line-height: 1; cursor: pointer; transition: color .2s, border-color .2s, background .2s, box-shadow .2s; }
+.lc-maptab svg { width: 18px; height: 18px; }
+.lc-maptab:hover { color: var(--navy); border-color: var(--navy); }
+.lc-maptab.is-on { color: var(--navy); border-color: var(--navy); background: var(--blue-pale, #e8f2f4); box-shadow: inset 0 0 0 1px var(--navy); }
+.lc-mapopen { margin-left: auto; font-size: 13.5px; font-weight: 700; color: var(--text-muted); }
+.lc-mapopen:hover { color: var(--navy); }
+@media (max-width: 560px) { .lc-maptabs { flex-wrap: wrap; } .lc-mapopen { margin-left: 0; } }
+.lc-maptab.is-ext { text-decoration: none; color: var(--text-muted) !important; }
+.lc-maptab.is-ext small { font-size: 11px; font-weight: 700; color: var(--text-muted); margin-left: 2px; }
+.lc-maptab.is-ext:hover { color: var(--navy) !important; border-color: #03C75A; }

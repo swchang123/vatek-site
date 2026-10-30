@@ -2202,6 +2202,10 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
   will-change: filter;
 }
 .last-freeze .wrap { width: 100%; }
+/* (2026-10-23) .tail-freeze — .last-freeze의 경량판. 배경·패딩은 건드리지 않고 본문 마지막 섹션을
+   화면 상단에 고정만 해, 푸터가 아래에서 올라와 덮게 한다. 섹션이 뷰포트보다 높으면 main.js가
+   top을 음수로 조정해 섹션 하단이 화면 하단에 닿은 뒤 고정되게 한다(내용이 잘리지 않게). */
+.tail-freeze { position: sticky; top: 0; z-index: 1; filter: blur(var(--freeze-blur, 0px)); will-change: filter; }
 .footer-spacer { height: 100vh; }
 .site-footer {
   /* 다크 빗금 배경·로고 등 외관은 모든 페이지 공통. 스티키 리빌(bottom:0,
@@ -2595,7 +2599,7 @@ a.footer-line:hover { color: var(--white); }
 .bls-hero-stage .hero-fit { aspect-ratio: 21 / 9; } /* (2026-10-01) 블라스터 히어로 영상 삽입 방식을 펠렛타이저와 동일하게 21:9로 전환 */
 .aut-hero-stage .hero-fit { aspect-ratio: 21 / 9; } /* (2026-09-24) 자동화 히어로 영상 21:9(1260×540)로 교체 */
 .hero-fit .subhero-parallax-img { top: 0 !important; height: 100% !important; object-fit: cover; object-position: 50% 50%; }
-.hero-fit-ambient { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; filter: blur(28px) brightness(.55) saturate(.9); z-index: 0; pointer-events: none; }
+img.hero-fit-ambient, .hero-fit-ambient { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; filter: blur(28px) brightness(.55) saturate(.9); z-index: 0; pointer-events: none; }
 .subhero-parallax:has(.hero-fit)::after { z-index: 2; }
 .hero-fit .subhero-textbox, .hero-fit .bls-hero-mask, .hero-fit .pel-hero-mask { z-index: 3; }
 .hero-fit .subhero-textbox { max-width: min(560px, 44cqw); }
@@ -2663,6 +2667,22 @@ img.pel-hero-video { position: absolute; top: 0 !important; height: 100% !import
    (co2-story가 여전히 위로 튀어나와 보이면서) 이 마진 상쇄만 막아, 노치가
    진짜로 투명해져 뒤의 대표이미지가 스크롤에 따라 그대로 비쳐 보인다. */
 .subhero-cover { display: flow-root; }
+
+/* (2026-10-23) 가이드 히어로 sticky 모드 — 히어로는 헤더 아래에 고정되고 본문(.subhero-cover)이
+   그 위로 덮으며 올라온다. 히어로 이미지는 main.js(subhero-sticky 분기)가 본문 이동량의 1/3만큼만
+   위로 밀어 3배 느린 패럴랙스. 이미지 하단이 비지 않도록 .hero-fit 안에서 아래로 버퍼를 둔다. */
+.subhero-parallax.subhero-sticky { position: sticky; top: 0; z-index: 0; } /* top:0 — 헤더가 숨겨져도 히어로 위에 빈 띠가 생기지 않도록(본문이 0까지 덮은 뒤 해제) */
+.subhero-parallax.subhero-sticky.is-passed { position: relative; top: auto; } /* 본문이 완전히 덮은 뒤 — main.js가 토글 */
+.subhero-sticky + section, .subhero-sticky + div { position: relative; z-index: 2; }
+/* sticky 히어로 뒤에 오는 모든 섹션은 불투명해야 한다 — 배경이 없는 섹션이면 고정된 히어로가 비쳐 어두운 띠로 보임 */
+.subhero-sticky ~ section:not(.last-freeze):not(.tail-freeze):not([class*="cmp-dark"]):not(.tint-hatch):not(.rec-how) { background-color: var(--white); }
+.subhero-sticky ~ section:not(.last-freeze):not(.tail-freeze) { position: relative; z-index: 2; }
+.subhero-sticky ~ section.last-freeze, .subhero-sticky ~ section.tail-freeze { background-color: var(--white); }
+.subhero-sticky + .tail-freeze { position: sticky; }
+/* 홈 히어로(영상)도 동일 — 헤더가 fixed로 겹치므로 top:0. main.js가 영상을 1/3 속도로 밀어 올림 */
+.hero.hero-sticky { position: sticky; top: 0; z-index: 0; }
+.hero.hero-sticky.is-passed { position: relative; }
+.hero-sticky + .stackdo-section { position: relative; z-index: 2; }
 @media (max-width: 900px) {
   .subhero-textbox { padding: 26px 28px; max-width: 92vw; }
   .subhero-textbox h1, .subhero-textbox p { white-space: normal; }
@@ -2965,10 +2985,10 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 /* "왜 드라이아이스인가?" 3가지 용도 — 원형 사진 + 제목 + 설명을 3열로.
    사진은 이미 파란 테두리가 있는 원형 컷이라 별도 테두리 없이 그대로 표시. */
 .use-trio {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 56px);
+  display: grid; grid-template-columns: repeat(3, 1fr); align-items: start; gap: clamp(24px, 4vw, 56px);
   margin: 28px 0 8px; text-align: center;
 }
-.use-item img { display: block; width: min(100%, 240px); height: auto; margin: 0 auto 22px; }
+.use-item img { display: block; width: min(100%, 240px); aspect-ratio: 1 / 1; height: auto; object-fit: cover; margin: 0 auto 22px; }
 .use-item h4 { margin: 0 0 12px; font-size: 19px; font-weight: 800; color: #1b4f9c; }
 .use-item p { margin: 0; font-size: 16px; line-height: 1.85; color: var(--text-body); word-break: keep-all; }
 @media (max-width: 860px) {
@@ -3716,13 +3736,13 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
    향후 다른 산업 상세페이지의 기준 템플릿. .cmp-*/.ind-* 어휘를 그대로 쓰고
    적용 공정 7블록(좌우 교차) · 오염물 9타일 · 이유 5 · AE · 관련 작업/산업 링크만 추가.
    ============================================================ */
-.subhero-textbox.auto-hero-box { max-width: 960px; }
+.subhero-textbox.auto-hero-box { max-width: 760px; }
 /* 히어로 영상 — img와 같은 .subhero-parallax-img 버퍼/패럴랙스 규칙을 그대로 받음 */
 video.auto-hero-video { object-fit: cover; background: var(--navy-deep); }
 /* 자동차 상세 히어로는 다른 서브페이지(100vh)보다 40% 낮게 — 영상이 화면을 다 채우지 않도록. 패럴랙스 버퍼(420px)는 그대로 */
 .auto-hero-stage { height: calc((100vh - 76px) * 0.6); min-height: 380px; }
 .auto-hero-stage .subhero-textbox { top: 50%; }
-.subhero-textbox p.auto-hero-lead { font-weight: 400; max-width: none; }
+.subhero-textbox p.auto-hero-lead { font-weight: 400; max-width: 640px; margin-left: auto; margin-right: auto; }
 
 /* 02 인트로 — 제목 좌 / 본문 우, 아래 와이드 사진 */
 .auto-intro-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 4vw, 72px); align-items: start; }
@@ -4608,3 +4628,16 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
 @keyframes auPulse{0%{box-shadow:0 0 0 0 rgba(79,173,184,.5)}70%{box-shadow:0 0 0 22px rgba(79,173,184,0)}100%{box-shadow:0 0 0 22px rgba(79,173,184,0)}}
 @media (prefers-reduced-motion:reduce){.au-pc-orbit,.au-pc-hand,.au-pc-knob::after{animation:none}}
 @media (max-width: 640px) { .au-pc-knob-hint { display: none; } }
+
+/* 고무·타이어 산업 - ASP-T 소개 블록(검증 로고 아래). 블록 전체가 ASP-T 상세 페이지 링크 */
+.auto-aspt { display: block; color: inherit; text-decoration: none; }
+.auto-aspt .auto-app-media img { aspect-ratio: auto; height: auto; object-fit: contain; background: transparent; padding: 0; filter: none; border-radius: 0; transition: transform .35s ease; }
+.auto-aspt .auto-app-grid { align-items: center; }
+.auto-aspt:hover .auto-app-media img { transform: scale(1.03); }
+.auto-aspt-facts { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.auto-aspt-facts li { display: flex; flex-direction: column; gap: 4px; padding: 14px 0 0; border-top: 1px solid var(--gray-line); }
+.auto-aspt-facts b { font-size: clamp(18px, 1.5vw, 22px); font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+.auto-aspt-facts span { font-size: 13.5px; color: var(--text-muted); word-break: keep-all; }
+.auto-aspt-more { display: inline-flex; align-items: center; margin-top: 28px; padding: 14px 26px; border: 1.5px solid var(--navy); border-radius: 14px; color: var(--navy); font-weight: 700; font-size: 16px; transition: background .2s, color .2s; }
+.auto-aspt:hover .auto-aspt-more { background: var(--navy); color: #fff; }
+@media (max-width: 560px) { .auto-aspt-facts { grid-template-columns: 1fr; gap: 10px; } }
