@@ -1563,8 +1563,12 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    영상이 작아 보이는 문제가 생겨, "크게 보이되 잘림의 답답함은 제목바
    반투명화로 상쇄"하는 방향으로 바꿈(위 .coldjet-pin-title.is-pinned 참고). */
 .coldjet-video {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
+  position: absolute; inset: 0; bottom: auto;
+  /* (2026-10-30) 전환 구간의 영상 지연(0.35배)을 프레임(.coldjet-video-wrap)이
+     아니라 영상 자체에 적용하도록 바꾸면서, 위로 최대 35vh 밀려도 프레임
+     바닥이 비지 않도록 영상 높이를 그만큼 여유 있게 둠(object-fit: cover라
+     더 잘려 보일 뿐 화면은 항상 채워짐). */
+  width: 100%; height: calc(100% + 36vh);
   object-fit: cover; object-position: center;
   display: block;
   background: var(--navy-deep);
@@ -2206,6 +2210,11 @@ section { padding: clamp(64px, 9vw, 128px) 0; }
    화면 상단에 고정만 해, 푸터가 아래에서 올라와 덮게 한다. 섹션이 뷰포트보다 높으면 main.js가
    top을 음수로 조정해 섹션 하단이 화면 하단에 닿은 뒤 고정되게 한다(내용이 잘리지 않게). */
 .tail-freeze { position: sticky; top: 0; z-index: 1; filter: blur(var(--freeze-blur, 0px)); will-change: filter; }
+/* (2026-10-30) 홈 디렉터리 섹션은 .tail-freeze의 z-index:1에 밀려 앞선 .section-coldjet(z 10)
+   아래로 깔리면서 제목("무엇을 찾고 계신가요?")과 상단 행이 가려지던 문제 — 원래 값(11)으로
+   되돌려 영상 위로 올라오게 하고, 푸터는 그보다 위(12)에 둬 덮는 동작은 유지. */
+body.home .section-menu-picker.tail-freeze { z-index: 11; }
+body.home .site-footer { z-index: 12; }
 .footer-spacer { height: 100vh; }
 .site-footer {
   /* 다크 빗금 배경·로고 등 외관은 모든 페이지 공통. 스티키 리빌(bottom:0,
@@ -2829,9 +2838,12 @@ body.home .section-head h2 {
 /* ---- 6개 정적 섹션 공통 리듬: 여백을 조금 더 넉넉하게 + 은은한 배경 광원으로
    섹션 사이 흐름에 깊이감을 더함(히어로/WHAT WE DO/우리의 능력은 자체 리듬이
    있으므로 제외) ---- */
-body.home section:not(.hero):not(.stackdo-section):not(.section-value) {
+body.home section:not(.hero):not(.stackdo-section):not(.section-value):not(.section-coldjet) {
   padding: clamp(76px, 9.5vw, 144px) 0;
 }
+/* (2026-10-30) 콜드젯 섹션은 하단 여백 제거 — 영상 전환 끝에서 다음 섹션이
+   올라오기 전 짙은 네이비 빗살 배경만 보이는 빈 띠가 생기던 원인. */
+body.home .section-coldjet { padding: clamp(76px, 9.5vw, 144px) 0 0; }
 body.home .section-voice {
   position: relative;
   isolation: isolate;

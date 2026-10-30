@@ -1257,10 +1257,17 @@ document.addEventListener("DOMContentLoaded", function () {
             : "";
         }
         if (coldjetVideoWrap) {
+          // (2026-10-30) 프레임 전체가 아니라 안쪽 영상(.coldjet-video)만 지연 이동 —
+          // 프레임을 올리면 그 아래로 섹션의 짙은 배경 띠가 드러나 빈 화면처럼
+          // 보였음(style.css .coldjet-video 높이 여유 주석 참고).
           var coldjetVideoLagPx = coldjetTransitionScrolled * 0.35;
-          coldjetVideoWrap.style.transform = coldjetTransitionScrolled > 0
-            ? "translateY(-" + coldjetVideoLagPx + "px)"
-            : "";
+          var coldjetVideoEl = coldjetVideoWrap.querySelector(".coldjet-video");
+          if (coldjetVideoWrap.style.transform) coldjetVideoWrap.style.transform = "";
+          if (coldjetVideoEl) {
+            coldjetVideoEl.style.transform = coldjetTransitionScrolled > 0
+              ? "translateY(-" + coldjetVideoLagPx + "px)"
+              : "";
+          }
         }
         if (coldjetVideoDescText) {
           coldjetVideoDescText.style.opacity = coldjetTransitionProgress > 0
