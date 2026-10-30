@@ -3492,7 +3492,7 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
       낫고 3열 이하에서는 한 줄로 돌아온다. */
 .ind-card p.ind-card-kw { font-size: 13.5px; font-weight: 700; color: var(--ice-dark); line-height: 1.6; }
 .ind-card p.ind-card-desc { font-size: 14px; line-height: 1.75; color: var(--text-body); }
-.ind-card-en { padding-right: 30px; }
+.ind-card-en { padding-right: 0; } /* (2026-10-30) 번호 제거로 우측 여백 불필요 */
 
 
 /* ============================================================
@@ -3543,7 +3543,7 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 .ind-svc { position: relative; border-top: none; isolation: isolate; }
 .ind-svc::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; margin-left: -50vw; background: var(--gray-bg); z-index: -1; }
 .ind-list { border-top: 1px solid rgba(40,55,57,.18); }
-.ind-row { display: grid; grid-template-columns: 110px 260px minmax(0, 1fr) minmax(0, 1.5fr) auto; gap: 0 clamp(20px, 2.6vw, 44px); align-items: center; padding: 30px 0; border-bottom: 1px solid rgba(40,55,57,.18); color: inherit; text-decoration: none; transition: background .3s; }
+.ind-row { display: grid; grid-template-columns: 260px minmax(0, 1fr) minmax(0, 1.5fr) auto; gap: 0 clamp(20px, 2.6vw, 44px); align-items: center; padding: 30px 0; border-bottom: 1px solid rgba(40,55,57,.18); color: inherit; text-decoration: none; transition: background .3s; }
 .ind-row:hover { background: rgba(255,255,255,.7); box-shadow: 0 0 0 clamp(12px, 1.5vw, 24px) rgba(255,255,255,.7); }
 .ind-row-num { font-size: clamp(30px, 2.6vw, 40px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--ice); font-variant-numeric: tabular-nums; }
 .ind-row-media { display: block; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 3px; background: var(--navy-deep); }
@@ -3560,7 +3560,7 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 .ind-row-more i { font-style: normal; color: var(--ice); transition: transform .3s cubic-bezier(.22,.61,.36,1); }
 .ind-row:hover .ind-row-more i { transform: translateX(4px); }
 
-@media (max-width: 1300px) { .ind-row { grid-template-columns: 72px 200px minmax(0, 1fr) minmax(0, 1.4fr); } .ind-row-more { display: none; } }
+@media (max-width: 1300px) { .ind-row { grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1.4fr); } .ind-row-more { display: none; } }
 @media (max-width: 1100px) {
   .ind-feat-inner { grid-template-columns: 1fr; }
   .ind-feat-media { grid-column: 1; aspect-ratio: 16 / 9; }
@@ -3568,7 +3568,7 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
   .ind-feat-body { grid-column: 1; grid-row: 2; margin: -48px clamp(16px, 3vw, 40px) 0; }
 }
 @media (max-width: 900px) {
-  .ind-row { grid-template-columns: 56px 150px minmax(0, 1fr); grid-template-rows: auto auto; row-gap: 12px; }
+  .ind-row { grid-template-columns: 150px minmax(0, 1fr); grid-template-rows: auto auto; row-gap: 12px; }
   .ind-ghost { font-size: 140px; top: 8px; }
   .ind-head { grid-template-columns: 1fr; gap: 12px; }
   .ind-row-text { grid-column: 2 / -1; }
@@ -3576,9 +3576,9 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 }
 @media (max-width: 560px) {
   .ind-feat-list { grid-template-columns: 1fr; }
-  .ind-row { grid-template-columns: 44px minmax(0, 1fr); }
-  .ind-row-media { grid-column: 2; }
-  .ind-row-title, .ind-row-text { grid-column: 2; }
+  .ind-row { grid-template-columns: minmax(0, 1fr); }
+  .ind-row-media { grid-column: 1; }
+  .ind-row-title, .ind-row-text { grid-column: 1; }
   .ind-ghost { display: none; }
 }
 
@@ -3612,7 +3612,7 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 /* 01~04 흐름 — 좌측 teal 헤어라인 하나에 번호가 매달리고, 각 단계는 사진 + 제목 + 조건 태그 */
 .ind-ae-steps { list-style: none; margin: clamp(44px, 4.5vw, 64px) 0 0; padding: 0; position: relative; }
 .ind-ae-steps::before { content: ""; position: absolute; left: 0; top: 12px; bottom: 12px; width: 1px; background: linear-gradient(180deg, var(--ice) 0%, rgba(79,173,184,.35) 100%); }
-.ind-ae-step { position: relative; display: grid; grid-template-columns: 96px 240px minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 40px); align-items: start; padding: clamp(28px, 3vw, 40px) 0 clamp(28px, 3vw, 40px) 28px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.ind-ae-step { position: relative; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 40px); align-items: start; padding: clamp(28px, 3vw, 40px) 0 clamp(28px, 3vw, 40px) 28px; border-bottom: 1px solid rgba(255,255,255,.12); }
 .ind-ae-step:last-child { border-bottom: none; }
 .ind-ae-step::before { content: ""; position: absolute; left: -4px; top: calc(clamp(28px, 3vw, 40px) + 14px); width: 9px; height: 9px; border-radius: 50%; background: var(--navy-deep); border: 1.5px solid var(--ice); box-sizing: border-box; }
 .ind-ae-num { font-size: clamp(34px, 3vw, 46px); font-weight: 800; line-height: 1; letter-spacing: -0.05em; color: var(--ice); font-variant-numeric: tabular-nums; padding-top: 2px; }
@@ -3626,9 +3626,9 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 .ind-ae-tags li { display: inline-flex; align-items: center; }
 .ind-ae-tags li + li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--ice); margin: 0 12px; flex: none; }
 
-@media (max-width: 1300px) { .ind-ae-step { grid-template-columns: 72px 200px minmax(0, 1fr); } }
+@media (max-width: 1300px) { .ind-ae-step { grid-template-columns: 72px minmax(0, 1fr); } }
 @media (max-width: 1100px) { .ind-ae { grid-template-columns: 1fr; gap: 56px; } .ind-ae-copy { position: static; } }
-@media (max-width: 900px) { .ind-ae-step { grid-template-columns: 56px minmax(0, 1fr); } .ind-ae-step-img { grid-column: 2; max-width: 320px; } .ind-ae-step-body { grid-column: 2; margin-top: 16px; } }
+@media (max-width: 900px) { .ind-ae-step { grid-template-columns: 56px minmax(0, 1fr); } .ind-ae-step-img { grid-column: 2; max-width: 320px; } .ind-ae-step-body { grid-column: 2; margin-top: 0; } }
 @media (max-width: 560px) { .ind-ae-case-list { grid-template-columns: 1fr; } .ind-ae-case-img { aspect-ratio: 16 / 9; } .ind-ae-step { grid-template-columns: 44px minmax(0, 1fr); padding-left: 20px; } }
 
 /* (2026-09-08) 인트로 4개 항목 — 체크리스트 느낌 완화: 제목 더 크게, 키워드는 본문색으로 또렷하게 */
@@ -4084,6 +4084,37 @@ video.auto-hero-video { object-fit: cover; background: var(--navy-deep); }
 .adopt-2col li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--ice); }
 .adopt-note { margin: 18px 0 0; padding: 16px 20px; background: var(--blue-light); border-radius: 10px; font-size: 15px; color: var(--navy); line-height: 1.7; }
 .process-flow.is-7 { grid-template-columns: repeat(7, 1fr); }
+/* (2026-10-30) 도입 가이드 재구성 — 기본 구성 일러스트(중앙, 최대 880px) + 4개 라벨 / 제품컷 배너(전폭, 원본 비율) + 2단 본문 */
+.cmp-panel.adopt-intro-panel { background-image: none; background-color: #fff; }
+.adopt-diagram { margin: clamp(40px, 4.5vw, 64px) 0 0; }
+.adopt-diagram-stage { position: relative; width: 1024px; max-width: 100%; margin: 0 auto; padding-top: 44px; }
+.adopt-diagram-stage img { display: block; width: 100%; height: auto; }
+.adopt-pin { position: absolute; transform: translate(-50%, -100%); display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: -0.01em; line-height: 1; border-radius: 4px; white-space: nowrap; box-shadow: 0 6px 18px rgba(14,30,34,.18); }
+.adopt-pin i { width: 6px; height: 6px; border-radius: 50%; background: var(--ice); flex: none; }
+.adopt-pin::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 22px; background: var(--navy); transform: translateX(-50%); }
+@media (max-width: 760px) { .adopt-pin { font-size: 11px; padding: 5px 8px; gap: 6px; } .adopt-pin::after { height: 14px; } }
+.adopt-needs { list-style: none; margin: clamp(44px, 5vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(32px, 3.5vw, 52px) clamp(28px, 3.5vw, 56px); }
+.adopt-needs li { display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1px solid var(--gray-line); }
+.adopt-needs b { font-size: 18px; font-weight: 800; color: var(--navy); letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
+.cmp-page .adopt-needs p, .subhero-cover .adopt-needs p { margin: 0; font-size: 15.5px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+@media (max-width: 1100px) { .adopt-needs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .adopt-needs { grid-template-columns: 1fr; } }
+.adopt-ppe-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 4vw, 64px); align-items: start; }
+.adopt-ppe-media { margin: 0; }
+.adopt-ppe-media img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.adopt-2col.is-stack { grid-template-columns: 1fr; margin-top: 0; gap: 20px; }
+@media (max-width: 900px) { .adopt-ppe-grid { grid-template-columns: 1fr; } }
+.adopt-banner { margin: 0 0 clamp(28px, 3vw, 44px); }
+.adopt-banner img { display: block; width: 100%; height: auto; }
+.adopt-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 4vw, 72px); align-items: start; }
+.cmp-page .adopt-split p.auto-app-h, .subhero-cover .adopt-split p.auto-app-h { margin: 0; }
+.adopt-split .auto-text p:first-child { margin-top: 0; }
+.adopt-split .auto-targets { margin-top: 22px; }
+.auto-app-media img.is-product { object-fit: contain; background: #fff; border: 1px solid var(--gray-line); filter: none; }
+.auto-why.is-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 1200px) { .auto-why.is-5 { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 36px; } }
+@media (max-width: 900px) { .adopt-diagram figcaption { grid-template-columns: repeat(2, minmax(0, 1fr)); } .adopt-split { grid-template-columns: 1fr; gap: 20px; } }
+@media (max-width: 700px) { .auto-why.is-5 { grid-template-columns: 1fr; } }
 @media (max-width: 1100px) { .process-flow.is-7 { grid-template-columns: repeat(4, 1fr); } .adopt-2col { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .process-flow.is-7 { grid-template-columns: 1fr 1fr; } }
 

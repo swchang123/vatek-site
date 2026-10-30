@@ -303,9 +303,8 @@ COMPARE_BODY = """
       <img class="subhero-parallax-img" src="../assets/img/compare-hero.webp" alt="책상 위에 펼쳐진 Cold Jet 비교 안내서 - 수작업·화학세척, 고압수 세척과 드라이아이스 세척 비교 페이지, 옆에 금속 브라켓과 걸레" data-buffer-ratio="0.333" data-pan-scale="1" data-no-blur="true" />
       <div class="subhero-textbox">
         <span class="ind-hero-eyebrow">COMPARISON</span>
-        <h1>가장 강한 세척보다,<br><span class="bls-hero-accent">가장 적합한 세척이 중요합니다.</span></h1>
-        <p class="bls-hero-main">세정 방식은 제거력만으로 결정할 수 없습니다. 표면에 미치는 영향, 세정 후 남는 잔여물, 수분 발생, 작업시간과 후처리까지 함께 고려해야 합니다.</p>
-        <p class="bls-hero-main">연마재와 샌드 블라스팅, 수작업과 화학 세척, 고압 세척 등 주요 산업 세정 방식과 드라이아이스 세척의 차이를 실제 공정 관점에서 비교해 보세요.</p>
+        <h1>강력한 세척보다,<br><span class="bls-hero-accent">내 공정에 맞는 세척이 중요합니다.</span></h1>
+        <p class="bls-hero-main">세정 방식은 단순한 제거력만으로 결정할 수 없습니다. 세정 대상의 재질과 오염물, 표면에 미치는 영향, 세정 후 남는 잔여물과 수분, 작업시간과 후처리까지 함께 고려해야 합니다.</p>
       </div>
     </div>
   </section>
@@ -316,7 +315,7 @@ COMPARE_BODY = """
 <div class="wrap">
 <div class="cmp-section cmp-rule is-first">
   <span class="cmp-eyebrow">A SIMPLE RULE</span>
-  <h2 class="cmp-h2">잘 닦인다는 이유만으로<br>더 거친 도구를 선택하지는 않습니다.</h2>
+  <h2 class="cmp-h2">잘 닦인다고<br>항상 거친 도구를 선택하지는 않습니다.</h2>
   <figure class="cmp-rule-photo reveal">
     <img src="../assets/img/rule-pan.webp" alt="코팅 프라이팬을 철수세미로 닦는 장면" loading="lazy" />
     <figcaption>일상의 판단 - 코팅 프라이팬에 철수세미를 쓰지 않는 이유는 누구나 알고 있습니다.</figcaption>
@@ -348,7 +347,7 @@ COMPARE_BODY = """
     <p class="cmp-key-main">좋은 세척은 더 강하게 닦는 것이 아니라,<br>필요한 오염물은 <em>제거</em>하고<br>지켜야 할 표면은 <em>지키는</em> 것입니다.</p>
     <div class="cmp-key-sub">
       <span class="cmp-key-en">CLEANING PERFORMANCE <b>≠</b> AGGRESSIVENESS</span>
-      <p>세정 성능과 표면에 가해지는 공격성은<br>같은 의미가 아닙니다.<br>잘 닦이는 것보다 더 중요한 것은,<br>세척 후에도 원래의 상태를 유지하는 것입니다.</p>
+      <p>세정능력과 세정력은 의미가 다릅니다.<br>잘 닦이는 것보다 중요한 것은<br>세척 후에도 원래의 상태를 유지하는 것입니다.</p>
     </div>
   </div>
 </div>
@@ -524,7 +523,7 @@ COMPARE_BODY = """
     <span class="cmp-num">06<span class="cmp-num-of">/ 06</span></span>
     <div>
       <span class="cmp-vs-title">드라이아이스 세척 vs 소다 블라스팅</span>
-      <h2 class="cmp-vs-sub">분사 방식은 비슷하지만,<br>세정 매체의 거동은 다릅니다.</h2>
+      <h2 class="cmp-vs-sub">세정 방식은 비슷하지만,<br>세정 후 무엇이 남는지 생각해야 합니다.</h2>
     </div>
   </div>
   <div class="cmp-vs-body">
@@ -10118,7 +10117,7 @@ DEBURRING_DEFLASHING_BODY = """
     <div><span class="auto-en">DEFLASHING — MOLDED PARTS</span><h3>성형 부품 디플래싱</h3></div>
   </div>
   <div class="auto-app-grid">
-    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/plastics-composites-deburring-plastic-part.webp" alt="플라스틱 부품 플래시 제거" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/aerospace-deburring-plastic-part-with-dry-ice-cleaning.webp" alt="정밀 성형부품 디플래싱" loading="lazy" /></figure></div>
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/deburr-gear-flash-knife.webp" alt="성형 부품 파팅라인에 남은 플래시" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/deburr-perforated-plate.webp" alt="타공 성형 부품의 플래시를 드라이아이스로 제거" loading="lazy" /></figure></div>
     <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
       <p class="auto-app-h">파팅라인과 게이트 주변의<br>플래시를 정밀하게 제거합니다.</p>
       <div class="cmp-text auto-text"><p>사출성형/압축성형 플라스틱, 고무, 서모셋 부품은 파팅라인, 게이트, 벤트 주변에 플래시가 남습니다. ABS, PP, 나일론, 페놀릭 등 재질에 따라 필요한 세척 강도가 다릅니다.</p><p>드라이아이스 세척은 노즐과 분사 조건을 조절해 이 부위를 타겟팅하며, 연마재가 부품 내부에 잔류하지 않는 방식으로 활용됩니다.</p></div>
@@ -10133,7 +10132,7 @@ DEBURRING_DEFLASHING_BODY = """
     <div><span class="auto-en">DEBURRING — MACHINED &amp; PRECISION PARTS</span><h3>가공, 정밀부품 디버링</h3></div>
   </div>
   <div class="auto-app-grid">
-    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/medical-orthopedic-uhmw-implant-deburring.webp" alt="정밀 임플란트 부품 디버링" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/plastics-composites-deburring-machined-part.webp" alt="가공부품 디버링" loading="lazy" /></figure></div>
+    <div class="auto-app-media is-pair"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/medical-orthopedic-uhmw-implant-deburring.webp" alt="정밀 임플란트 부품 디버링" loading="lazy" /></figure><figure class="reveal-scale" style="--reveal-delay:0.20s"><img src="../assets/img/deburr-bracket-nozzle.webp" alt="정밀 브래킷 부품 모서리 디버링" loading="lazy" /></figure></div>
     <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
       <p class="auto-app-h">홀과 나사산 주변의 버를<br>공차를 고려하며 제거합니다.</p>
       <div class="cmp-text auto-text"><p>가공 후 남는 금속/플라스틱 버는 홀, 나사산, 모서리 주변에 발생합니다. 의료기기 부품, 커넥터, 자동차/항공 정밀부품처럼 공차가 중요한 대상에서는 형상 변화를 최소화하는 방식이 필요합니다.</p><p>드라이아이스는 세척 강도를 조절해 타겟 부위만 처리할 수 있어, 좁은 공차의 정밀부품 마무리에 검토됩니다. 다만 금속 버 전체를 모두 제거할 수 있다고 일반화하지 않으며, 버의 재질/형상/크기/부착 상태에 따라 적용 가능성이 달라집니다.</p></div>
@@ -10176,8 +10175,8 @@ DEBURRING_DEFLASHING_BODY = """
         </div>
         <div class="auto-ae-side reveal" style="--reveal-delay:0.16s">
           <ul class="auto-ae-cases">
-            <li class="reveal" style="--reveal-delay:0.45s"><img src="../assets/img/plastics-composites-deburring-plastic-part.webp" alt="" loading="lazy" /><b>사출성형 부품</b><small>파팅라인 플래시</small></li>
-            <li class="reveal" style="--reveal-delay:0.54s"><img src="../assets/img/medical-orthopedic-uhmw-implant-deburring.webp" alt="" loading="lazy" /><b>정밀 임플란트 부품</b><small>가공 버</small></li>
+            <li class="reveal" style="--reveal-delay:0.45s"><img src="../assets/img/deburr-gear-flash-knife.webp" alt="" loading="lazy" /><b>사출성형 부품</b><small>파팅라인 플래시</small></li>
+            <li class="reveal" style="--reveal-delay:0.54s"><img src="../assets/img/deburr-bracket-nozzle.webp" alt="" loading="lazy" /><b>정밀 가공 부품</b><small>가공 버</small></li>
           </ul>
           <p class="auto-ae-key">장비를 먼저 정하기보다,<br><em>먼저 적합한 세척 조건</em>을 확인합니다.</p>
         </div>
@@ -10334,7 +10333,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/automotive.html" aria-label="자동차 제조 자세히 보기" style="--reveal-delay:0s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-automotive.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">01</span>
         <span class="ind-card-en">AUTOMOTIVE MANUFACTURING</span>
         <h3>자동차 제조</h3>
         <p class="ind-card-kw">금형, 용접 셀, 도장라인, 다이캐스팅</p>
@@ -10345,7 +10343,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/semiconductor.html" aria-label="반도체, 전자 제조 자세히 보기" style="--reveal-delay:0.06s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-semiconductor.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">02</span>
         <span class="ind-card-en">SEMICONDUCTOR & ELECTRONICS</span>
         <h3>반도체, 전자 제조</h3>
         <p class="ind-card-kw">웨이퍼 공정, CVD, 증착 툴링, 진공펌프, 이온주입기</p>
@@ -10356,7 +10353,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/plastics-composites.html" aria-label="플라스틱, 복합소재 자세히 보기" style="--reveal-delay:0.12s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-plastics.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">03</span>
         <span class="ind-card-en">PLASTICS & COMPOSITES</span>
         <h3>플라스틱, 복합소재</h3>
         <p class="ind-card-kw">사출금형, 디플래싱, 표면 전처리, 복합재 툴링</p>
@@ -10367,7 +10363,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/rubber-tires.html" aria-label="고무, 타이어 자세히 보기" style="--reveal-delay:0.18s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-rubber-tire.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">04</span>
         <span class="ind-card-en">RUBBER & TIRES</span>
         <h3>고무, 타이어</h3>
         <p class="ind-card-kw">타이어 금형, 가류기, 고무 사출금형, 압축금형, 벤트</p>
@@ -10378,7 +10373,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/food-beverage.html" aria-label="식품, 음료 자세히 보기" style="--reveal-delay:0s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-food.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">05</span>
         <span class="ind-card-en">FOOD & BEVERAGE</span>
         <h3>식품, 음료</h3>
         <p class="ind-card-kw">오븐, 믹서, 프라이어, 컨베이어, 포장설비</p>
@@ -10389,7 +10383,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/foundry.html" aria-label="주조, 다이캐스팅 자세히 보기" style="--reveal-delay:0.06s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-foundry.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">06</span>
         <span class="ind-card-en">FOUNDRY & DIE CASTING</span>
         <h3>주조, 다이캐스팅</h3>
         <p class="ind-card-kw">영구금형, 코어박스, 다이캐스팅 금형, 주조설비</p>
@@ -10400,7 +10393,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/aerospace.html" aria-label="우주, 항공 자세히 보기" style="--reveal-delay:0.12s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-aerospace.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">07</span>
         <span class="ind-card-en">AEROSPACE & AVIATION</span>
         <h3>우주, 항공</h3>
         <p class="ind-card-kw">복합재 툴링, 금형, 접착제 제거, 표면 전처리</p>
@@ -10411,7 +10403,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/medical.html" aria-label="의료기기 제조 자세히 보기" style="--reveal-delay:0.18s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-medical.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">08</span>
         <span class="ind-card-en">MEDICAL DEVICE MANUFACTURING</span>
         <h3>의료기기 제조</h3>
         <p class="ind-card-kw">정밀금형, 임플란트, 스텐트, 카테터, 의료부품</p>
@@ -10422,7 +10413,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/power-generation.html" aria-label="발전, 전력 자세히 보기" style="--reveal-delay:0s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-power.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">09</span>
         <span class="ind-card-en">POWER GENERATION</span>
         <h3>발전, 전력</h3>
         <p class="ind-card-kw">터빈, 발전기, HRSG, 변압기, 전기설비, 원자력, 제염</p>
@@ -10433,7 +10423,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/oil-gas.html" aria-label="오일, 가스 자세히 보기" style="--reveal-delay:0.06s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-oilgas.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">10</span>
         <span class="ind-card-en">OIL & GAS</span>
         <h3>오일, 가스</h3>
         <p class="ind-card-kw">배관, 탱크, 열교환기, 펌프, 플랜트 설비</p>
@@ -10444,7 +10433,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/packaging.html" aria-label="포장 자세히 보기" style="--reveal-delay:0.12s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-packaging.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">11</span>
         <span class="ind-card-en">PACKAGING</span>
         <h3>포장</h3>
         <p class="ind-card-kw">포장기, 라벨러, 접착제 노즐, 컨베이어, 실링설비</p>
@@ -10455,7 +10443,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/printing.html" aria-label="인쇄 자세히 보기" style="--reveal-delay:0.18s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-printing.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">12</span>
         <span class="ind-card-en">PRINTING</span>
         <h3>인쇄</h3>
         <p class="ind-card-kw">인쇄기, 롤러, 잉크 트레이, 기어, 피더</p>
@@ -10466,7 +10453,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/textiles.html" aria-label="섬유 자세히 보기" style="--reveal-delay:0s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-textile.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">13</span>
         <span class="ind-card-en">TEXTILES</span>
         <h3>섬유</h3>
         <p class="ind-card-kw">카딩기, 방적기, 직기, 텐터, 염색 롤러</p>
@@ -10477,7 +10463,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/engineered-wood.html" aria-label="엔지니어드 우드 자세히 보기" style="--reveal-delay:0.06s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-wood.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">14</span>
         <span class="ind-card-en">ENGINEERED WOOD</span>
         <h3>엔지니어드 우드</h3>
         <p class="ind-card-kw">프레스, 프레스 플레이트, 건조기, 접착제 도포설비</p>
@@ -10488,7 +10473,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/rail.html" aria-label="철도, 대중교통 자세히 보기" style="--reveal-delay:0.12s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-transit.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">15</span>
         <span class="ind-card-en">RAIL & PUBLIC TRANSPORTATION</span>
         <h3>철도, 대중교통</h3>
         <p class="ind-card-kw">대차, 차축, 견인모터, 제어반, 전기설비</p>
@@ -10499,7 +10483,6 @@ INDUSTRY_BODY = """
     <a class="ind-card reveal" href="../industries/mining.html" aria-label="광업 자세히 보기" style="--reveal-delay:0.18s">
       <div class="ind-card-media"><img src="../assets/img/ind-card-mining.webp" alt="" loading="lazy" /></div>
       <div class="ind-card-body">
-        <span class="ind-card-num">16</span>
         <span class="ind-card-en">MINING</span>
         <h3>광업</h3>
         <p class="ind-card-kw">크러셔, 컨베이어, 중장비, 펌프, 전기설비</p>
@@ -10517,7 +10500,7 @@ INDUSTRY_BODY = """
       <span class="cmp-num">02<span class="cmp-num-of">/ 03</span></span>
       <div>
         <span class="cmp-vs-title">CROSS-INDUSTRY MAINTENANCE / FACILITY MAINTENANCE</span>
-        <h2 class="cmp-h2">산업을 넘어 공통으로 필요한<br>설비/시설 유지보수</h2>
+        <h2 class="cmp-h2">모든 산업을 위한<br>설비/시설 유지보수</h2>
         <div class="cmp-lead ind-lead">
           <p>생산설비와 공장 인프라의 유지보수는 특정 산업에만 해당하지 않습니다.</p>
           <p>컨베이어, 로봇, 모터, 열교환기, 제어반, 배관 및 각종 생산 지원설비처럼 거의 모든 제조현장에 공통으로 존재하는 설비도 드라이아이스 세척의 중요한 적용 대상입니다.</p>
@@ -10530,7 +10513,7 @@ INDUSTRY_BODY = """
         <span class="ind-feat-tag">CROSS-INDUSTRY / ALL PLANTS</span>
       </div>
       <div class="ind-feat-body reveal" style="--reveal-delay:0.12s">
-        <span class="ind-feat-label">대표 대상 <em>08</em></span>
+        <span class="ind-feat-label">대표 대상</span>
         <ul class="ind-feat-list">
           <li>생산설비</li>
           <li>산업용 로봇</li>
@@ -10562,35 +10545,30 @@ INDUSTRY_BODY = """
   </div>
   <div class="ind-list">
     <a class="ind-row reveal" href="../industries/contract-cleaning.html" aria-label="전문 세척 서비스 자세히 보기" style="--reveal-delay:0s">
-      <span class="ind-row-num">17</span>
       <span class="ind-row-media"><img src="../assets/img/ind-card-cleaning-service.webp" alt="" loading="lazy" /></span>
       <span class="ind-row-title"><span class="ind-row-en">CONTRACT CLEANING</span><b>전문 세척 서비스</b></span>
       <span class="ind-row-text"><span class="ind-row-kw">산업설비, 현장 세척, 복원, 전문 클리닝 서비스</span><span class="ind-row-desc">다양한 고객 현장과 오염물에 대응할 수 있는 유연한 세정 조건을 제공합니다.</span></span>
       <span class="ind-row-more">자세히 보기 <i>→</i></span>
     </a>
     <a class="ind-row reveal" href="../industries/restoration.html" aria-label="화재, 수해 복원 자세히 보기" style="--reveal-delay:0.06s">
-      <span class="ind-row-num">18</span>
       <span class="ind-row-media"><img src="../assets/img/ind-card-fire-restoration.webp" alt="" loading="lazy" /></span>
       <span class="ind-row-title"><span class="ind-row-en">FIRE & WATER RESTORATION</span><b>화재, 수해 복원</b></span>
       <span class="ind-row-text"><span class="ind-row-kw">그을음, 탄화물, 연기 오염, 수해 손상, 악취</span><span class="ind-row-desc">그을음과 연기 잔류물을 물 사용을 늘리지 않고 표면에서 제거합니다.</span></span>
       <span class="ind-row-more">자세히 보기 <i>→</i></span>
     </a>
     <a class="ind-row reveal" href="../industries/mold-remediation.html" aria-label="곰팡이 제거 자세히 보기" style="--reveal-delay:0.12s">
-      <span class="ind-row-num">19</span>
       <span class="ind-row-media"><img src="../assets/img/ind-card-mold-removal.webp" alt="" loading="lazy" /></span>
       <span class="ind-row-title"><span class="ind-row-en">MOLD REMEDIATION</span><b>곰팡이 제거</b></span>
       <span class="ind-row-text"><span class="ind-row-kw">목재 구조물, 다락, 크롤스페이스, 벽체 내부</span><span class="ind-row-desc">목재와 구조물 표면의 곰팡이 오염을 후속 집진과 함께 관리합니다.</span></span>
       <span class="ind-row-more">자세히 보기 <i>→</i></span>
     </a>
     <a class="ind-row reveal" href="../industries/historical-restoration.html" aria-label="역사적 건축물, 문화재 복원 자세히 보기" style="--reveal-delay:0.18s">
-      <span class="ind-row-num">20</span>
       <span class="ind-row-media"><img src="../assets/img/ind-card-heritage.webp" alt="" loading="lazy" /></span>
       <span class="ind-row-title"><span class="ind-row-en">HISTORICAL RESTORATION</span><b>역사적 건축물, 문화재 복원</b></span>
       <span class="ind-row-text"><span class="ind-row-kw">석재, 벽돌, 목재, 금속, 조형물, 문화재</span><span class="ind-row-desc">기재 보존이 중요한 표면은 사전 테스트를 통해 세정 조건을 설정합니다.</span></span>
       <span class="ind-row-more">자세히 보기 <i>→</i></span>
     </a>
     <a class="ind-row reveal" href="../industries/automotive-detailing.html" aria-label="자동차 복원, 디테일링 자세히 보기" style="--reveal-delay:0.24s">
-      <span class="ind-row-num">21</span>
       <span class="ind-row-media"><img src="../assets/img/ind-card-detailing.webp" alt="" loading="lazy" /></span>
       <span class="ind-row-title"><span class="ind-row-en">AUTOMOTIVE RESTORATION & DETAILING</span><b>자동차 복원, 디테일링</b></span>
       <span class="ind-row-text"><span class="ind-row-kw">하부, 엔진룸, 휠하우스, 섀시, 정밀부품</span><span class="ind-row-desc">엔진룸과 하부, 기계 부품의 오일과 그리스를 건식으로 제거합니다.</span></span>
@@ -10639,7 +10617,6 @@ INDUSTRY_BODY = """
           <ol class="ind-ae-steps">
             <li class="ind-ae-step reveal">
               <span class="ind-ae-num">01</span>
-              <span class="ind-ae-step-img"><img src="../assets/img/ind-card-rubber-tire.webp" alt="오염된 금형 근접" loading="lazy" /></span>
               <div class="ind-ae-step-body">
                 <span class="ind-ae-step-en">SITE ASSESSMENT</span>
                 <h3>현장 조건 확인</h3>
@@ -10649,7 +10626,6 @@ INDUSTRY_BODY = """
             </li>
             <li class="ind-ae-step reveal" style="--reveal-delay:0.06s">
               <span class="ind-ae-num">02</span>
-              <span class="ind-ae-step-img"><img src="../assets/img/guide-hero-work.jpg" alt="실제 드라이아이스 세척 테스트" loading="lazy" /></span>
               <div class="ind-ae-step-body">
                 <span class="ind-ae-step-en">CLEANING TEST</span>
                 <h3>실제 세척 테스트</h3>
@@ -10659,7 +10635,6 @@ INDUSTRY_BODY = """
             </li>
             <li class="ind-ae-step reveal" style="--reveal-delay:0.12s">
               <span class="ind-ae-num">03</span>
-              <span class="ind-ae-step-img"><img src="../assets/img/compare-hero.jpg" alt="노즐과 분사 조건 디테일" loading="lazy" /></span>
               <div class="ind-ae-step-body">
                 <span class="ind-ae-step-en">OPTIMIZATION</span>
                 <h3>조건 최적화</h3>
@@ -10669,7 +10644,6 @@ INDUSTRY_BODY = """
             </li>
             <li class="ind-ae-step reveal" style="--reveal-delay:0.18s">
               <span class="ind-ae-num">04</span>
-              <span class="ind-ae-step-img"><img src="../assets/img/stackdo-automation.jpg" alt="Cold Jet 장비와 자동화 시스템" loading="lazy" /></span>
               <div class="ind-ae-step-body">
                 <span class="ind-ae-step-en">PROPOSAL</span>
                 <h3>장비 및 적용방법 제안</h3>
@@ -10702,22 +10676,9 @@ INDUSTRY_BODY = """
 </div>
     </div>
   </section>
-  <section class="res-cross">
-    <div class="wrap">
-      <div class="plt-head">
-        <div><span class="plt-eyebrow">EXPLORE MORE</span><h2 class="plt-title">산업 다음엔,<br>사례와 영상으로.</h2></div>
-        <p class="plt-lead">우리 산업의 적용 사례와 현장 영상을 보고, 작업 목적에 맞는 세척 방식으로 이어가세요.</p>
-      </div>
-      <div class="res-cross-grid">
-          <a class="res-link-card reveal" href="../cases/case-studies.html"><div class="res-link-media"><img src="../assets/img/rubber-tires-cleaning-tire-mold-while-hot-and-online-with-dry-ice-blasting.webp" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>CASE STUDIES</small><b>케이스 스터디</b><span>산업별 현장의 과제, 적용 장비, 결과를 세 단락으로 정리한 실제 사례.</span><i>사례 보러 가기 →</i></div></a>
-          <a class="res-link-card reveal" href="../cases/videos.html" style="--reveal-delay:0.06s"><div class="res-link-media"><img src="../assets/img/blaster-operator-t.webp" alt="" loading="lazy" decoding="async" /><span class="res-play" aria-hidden="true"></span></div><div class="res-link-body"><small>VIDEOS</small><b>동영상 보기</b><span>장비 소개와 현장 시연 영상. 카드를 누르면 바로 볼 수 있습니다.</span><i>영상 보러 가기 →</i></div></a>
-          <a class="res-link-card reveal" href="../cleaning/task.html" style="--reveal-delay:0.12s"><div class="res-link-media"><img src="../assets/img/task-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>APPLICATIONS</small><b>작업별 솔루션</b><span>금형 세척부터 표면 전처리, 디버링까지 작업 목적에 맞는 방법.</span><i>작업별로 보기 →</i></div></a>
-      </div>
-    </div>
-  </section>
 <div class="last-freeze">
 <div class="wrap">
-<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+<h2 style="font-size: 46px; padding-top: clamp(64px, 7vw, 112px); margin-bottom: 36px">함께 보면 좋은 페이지</h2>
       <div class="sub-grid" id="subGrid">
   <a class="sub-card" href="guide.html">
     <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
@@ -10774,9 +10735,8 @@ TASK_BODY = """
       <img class="subhero-parallax-img" src="../assets/img/task-hero.webp" alt="공장에서 오염된 롤러를 손전등으로 점검하며 드라이아이스 세척 가이드를 함께 확인하는 두 작업자" data-buffer-ratio="0.333" data-pan-scale="1" data-no-blur="true" />
       <div class="subhero-textbox">
         <span class="ind-hero-eyebrow">APPLICATIONS</span>
-        <h1>세정의 목적이 다르면,<br><span class="bls-hero-accent">필요한 조건도 달라집니다.</span></h1>
-        <p class="bls-hero-main">금형 세척, 설비 유지보수, 접착제 제거, 표면 전처리, 디버링처럼 작업마다 제거해야 할 오염물과 지켜야 할 표면이 다릅니다. 작업 목적을 기준으로 드라이아이스 세정의 적용 방법을 확인해 보세요.</p>
-        <div class="tec-hero-jump"><a href="#tsk-g1"><i></i>설비, 툴링 세척</a><a href="#tsk-g2"><i></i>오염물 제거</a><a href="#tsk-g3"><i></i>공정, 부품 마무리</a></div>
+        <h1>작업이 다르면,<br><span class="bls-hero-accent">세정 방법도 달라집니다.</span></h1>
+        <p class="bls-hero-main">금형 세척, 설비 유지보수, 접착제 제거, 표면 전처리, 디버링처럼 작업마다 제거해야 할 오염물과 보호해야 할 표면이 다릅니다.<br>작업 목적과 대상의 특성에 따라 달라지는 드라이아이스 세정의 적용 방법을 확인해 보세요.</p>
       </div>
     </div>
   </section>
@@ -10811,7 +10771,7 @@ TASK_BODY = """
   </div>
   <div class="tsk-grid">
       <a class="tsk-card reveal is-wide" id="tsk-01" href="../applications/mold-tool-cleaning.html" aria-label="금형, 툴링 세척 자세히 보기" style="--reveal-delay:0s">
-        <span class="tsk-media"><img src="../assets/img/task-mold-tool-cleaning.webp" alt="" loading="lazy" /><span class="tsk-num">01</span></span>
+        <span class="tsk-media"><img src="../assets/img/task-mold-tool-cleaning.webp" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">MOLD & TOOL CLEANING</span>
           <h3>금형, 툴링 세척</h3>
@@ -10825,7 +10785,7 @@ TASK_BODY = """
         </div>
       </a>
       <a class="tsk-card reveal" id="tsk-02" href="../industries/facility-maintenance.html" aria-label="생산설비, 시설 유지보수 자세히 보기" style="--reveal-delay:0.06s">
-        <span class="tsk-media"><img src="../assets/img/ind-card-maintenance.webp" alt="" loading="lazy" /><span class="tsk-num">02</span></span>
+        <span class="tsk-media"><img src="../assets/img/ind-card-maintenance.webp" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">PRODUCTION & FACILITY MAINTENANCE</span>
           <h3>생산설비, 시설 유지보수</h3>
@@ -10837,7 +10797,7 @@ TASK_BODY = """
         </div>
       </a>
       <a class="tsk-card reveal" id="tsk-03" href="../applications/weld-fixture-robot.html" aria-label="용접라인, 지그, 로봇 세척 자세히 보기" style="--reveal-delay:0.12s">
-        <span class="tsk-media"><img src="../assets/img/task-weld-fixture.webp" alt="" loading="lazy" /><span class="tsk-num">03</span></span>
+        <span class="tsk-media"><img src="../assets/img/task-weld-fixture.webp" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">WELD LINE, FIXTURE & ROBOT CLEANING</span>
           <h3>용접라인, 지그, 로봇 세척</h3>
@@ -10851,7 +10811,7 @@ TASK_BODY = """
         </div>
       </a>
       <a class="tsk-card reveal" id="tsk-04" href="../applications/paint-booth-coating-line.html" aria-label="도장부스, 코팅라인 세척 자세히 보기" style="--reveal-delay:0.18s">
-        <span class="tsk-media"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /><span class="tsk-num">04</span></span>
+        <span class="tsk-media"><img src="../assets/img/task-pretreatment.jpg" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">PAINT BOOTH & COATING LINE CLEANING</span>
           <h3>도장부스, 코팅라인 세척</h3>
@@ -10864,7 +10824,7 @@ TASK_BODY = """
         </div>
       </a>
       <a class="tsk-card reveal" id="tsk-05" href="../applications/electrical-electronic.html" aria-label="전기, 전자 장비 세척 자세히 보기" style="--reveal-delay:0s">
-        <span class="tsk-media"><img src="../assets/img/method-electrical-terminal.webp" alt="" loading="lazy" /><span class="tsk-num">05</span></span>
+        <span class="tsk-media"><img src="../assets/img/task-electrical-panel.webp" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">ELECTRICAL & ELECTRONIC EQUIPMENT CLEANING</span>
           <h3>전기, 전자 장비 세척</h3>
@@ -10889,7 +10849,7 @@ TASK_BODY = """
   </div>
   <div class="tsk-grid">
       <a class="tsk-card reveal" id="tsk-06" href="../applications/adhesive-resin-removal.html" aria-label="접착제, 수지 제거 자세히 보기" style="--reveal-delay:0s">
-        <span class="tsk-media"><img src="../assets/img/task-adhesive-rollers.webp" alt="" loading="lazy" /><span class="tsk-num">06</span></span>
+        <span class="tsk-media"><img src="../assets/img/task-adhesive-rollers.webp" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">ADHESIVE & RESIN REMOVAL</span>
           <h3>접착제, 수지 제거</h3>
@@ -10903,7 +10863,7 @@ TASK_BODY = """
         </div>
       </a>
       <a class="tsk-card reveal" id="tsk-07" href="../applications/ink-paint-coating-removal.html" aria-label="잉크, 도료, 코팅 제거 자세히 보기" style="--reveal-delay:0.06s">
-        <span class="tsk-media"><img src="../assets/img/ind-card-printing.webp" alt="" loading="lazy" /><span class="tsk-num">07</span></span>
+        <span class="tsk-media"><img src="../assets/img/ind-card-printing.webp" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">INK, PAINT & COATING REMOVAL</span>
           <h3>잉크, 도료, 코팅 제거</h3>
@@ -10916,7 +10876,7 @@ TASK_BODY = """
         </div>
       </a>
       <a class="tsk-card reveal" id="tsk-08" href="../applications/oil-grease-residue-removal.html" aria-label="오일, 그리스, 고착 오염 제거 자세히 보기" style="--reveal-delay:0.12s">
-        <span class="tsk-media"><img src="../assets/img/task-oil-tar-pipe.webp" alt="" loading="lazy" /><span class="tsk-num">08</span></span>
+        <span class="tsk-media"><img src="../assets/img/task-oil-tar-pipe.webp" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">OIL, GREASE & HEAVY RESIDUE REMOVAL</span>
           <h3>오일, 그리스, 고착 오염 제거</h3>
@@ -10929,7 +10889,7 @@ TASK_BODY = """
         </div>
       </a>
       <a class="tsk-card reveal" id="tsk-09" href="../applications/rust-corrosion-removal.html" aria-label="녹, 부식, 산화물 제거 자세히 보기" style="--reveal-delay:0.18s">
-        <span class="tsk-media"><img src="../assets/img/task-surface-rust.webp" alt="" loading="lazy" /><span class="tsk-num">09</span></span>
+        <span class="tsk-media"><img src="../assets/img/task-surface-rust.webp" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">RUST, CORROSION & OXIDATION REMOVAL</span>
           <h3>녹, 부식, 산화물 제거</h3>
@@ -10955,7 +10915,7 @@ TASK_BODY = """
   </div>
   <div class="tsk-grid">
       <a class="tsk-card reveal" id="tsk-10" href="../applications/surface-preparation.html" aria-label="표면 전처리 자세히 보기" style="--reveal-delay:0s">
-        <span class="tsk-media"><img src="../assets/img/ind-card-aerospace.webp" alt="" loading="lazy" /><span class="tsk-num">10</span></span>
+        <span class="tsk-media"><img src="../assets/img/task-surface-prep-automotive.webp" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">SURFACE PREPARATION</span>
           <h3>표면 전처리</h3>
@@ -10969,7 +10929,7 @@ TASK_BODY = """
         </div>
       </a>
       <a class="tsk-card reveal is-finishing" id="tsk-11" href="../applications/deburring-deflashing.html" aria-label="디버링, 디플래싱 자세히 보기" style="--reveal-delay:0.06s">
-        <span class="tsk-media"><img src="../assets/img/task-deburring-precision.jpg" alt="" loading="lazy" /><span class="tsk-num">11</span></span>
+        <span class="tsk-media"><img src="../assets/img/task-deburring-precision.jpg" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">DEBURRING & DEFLASHING</span>
           <h3>디버링, 디플래싱</h3>
@@ -10995,7 +10955,7 @@ TASK_BODY = """
   </div>
   <div class="tsk-grid">
       <a class="tsk-card reveal is-wide" id="tsk-12" href="../cleaning/industry.html#ind-svc" aria-label="복원, 재해복구 자세히 보기" style="--reveal-delay:0s">
-        <span class="tsk-media"><img src="../assets/img/ind-card-fire-restoration.webp" alt="" loading="lazy" /><span class="tsk-num">12</span></span>
+        <span class="tsk-media"><img src="../assets/img/ind-card-fire-restoration.webp" alt="" loading="lazy" /></span>
         <div class="tsk-body">
           <span class="tsk-en">RESTORATION & REMEDIATION</span>
           <h3>복원, 재해복구</h3>
@@ -11046,22 +11006,9 @@ TASK_BODY = """
     <a href="#tsk-01" data-title="금형, 툴링 세척"><i></i>01</a><a href="#tsk-02" data-title="생산설비, 시설 유지보수"><i></i>02</a><a href="#tsk-03" data-title="용접라인, 지그, 로봇 세척"><i></i>03</a><a href="#tsk-04" data-title="도장부스, 코팅라인 세척"><i></i>04</a><a href="#tsk-05" data-title="전기, 전자 장비 세척"><i></i>05</a><a href="#tsk-06" data-title="접착제, 수지 제거"><i></i>06</a><a href="#tsk-07" data-title="잉크, 도료, 코팅 제거"><i></i>07</a><a href="#tsk-08" data-title="오일, 그리스, 고착 오염 제거"><i></i>08</a><a href="#tsk-09" data-title="녹, 부식, 산화물 제거"><i></i>09</a><a href="#tsk-10" data-title="표면 전처리"><i></i>10</a><a href="#tsk-11" data-title="디버링, 디플래싱"><i></i>11</a><a href="#tsk-12" data-title="복원, 재해복구"><i></i>12</a>
   </nav>
 
-  <section class="res-cross">
-    <div class="wrap">
-      <div class="plt-head">
-        <div><span class="plt-eyebrow">EXPLORE MORE</span><h2 class="plt-title">작업 다음엔,<br>사례와 영상으로.</h2></div>
-        <p class="plt-lead">작업별 방식을 실제 현장 사례와 영상으로 확인하고, 우리 산업의 적용 포인트를 이어서 살펴보세요.</p>
-      </div>
-      <div class="res-cross-grid">
-          <a class="res-link-card reveal" href="../cases/case-studies.html"><div class="res-link-media"><img src="../assets/img/rubber-tires-cleaning-tire-mold-while-hot-and-online-with-dry-ice-blasting.webp" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>CASE STUDIES</small><b>케이스 스터디</b><span>산업별 현장의 과제, 적용 장비, 결과를 세 단락으로 정리한 실제 사례.</span><i>사례 보러 가기 →</i></div></a>
-          <a class="res-link-card reveal" href="../cases/videos.html" style="--reveal-delay:0.06s"><div class="res-link-media"><img src="../assets/img/blaster-operator-t.webp" alt="" loading="lazy" decoding="async" /><span class="res-play" aria-hidden="true"></span></div><div class="res-link-body"><small>VIDEOS</small><b>동영상 보기</b><span>장비 소개와 현장 시연 영상. 카드를 누르면 바로 볼 수 있습니다.</span><i>영상 보러 가기 →</i></div></a>
-          <a class="res-link-card reveal" href="../cleaning/industry.html" style="--reveal-delay:0.12s"><div class="res-link-media"><img src="../assets/img/industry-thumb.jpg" alt="" loading="lazy" decoding="async" /></div><div class="res-link-body"><small>INDUSTRY SOLUTIONS</small><b>산업별 솔루션</b><span>자동차, 식품, 반도체, 타이어 등 22개 산업/적용 분야의 세척 솔루션.</span><i>산업별로 보기 →</i></div></a>
-      </div>
-    </div>
-  </section>
 <div class="last-freeze">
 <div class="wrap">
-<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+<h2 style="font-size: 46px; padding-top: clamp(64px, 7vw, 112px); margin-bottom: 36px">함께 보면 좋은 페이지</h2>
       <div class="sub-grid" id="subGrid">
   <a class="sub-card" href="guide.html">
     <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
@@ -11114,152 +11061,170 @@ TASK_BODY = """
 # (2026-09-08, 11차 핸드오프) "도입 가이드" 전면 개편 — compare/industry와 같은 편집형 구조로 전환.
 ADOPT_BODY = """
   
-  <!-- 기술 내용 출처(Cold Jet 공식): The Definitive Guide to Dry Ice Blasting, Cold Jet FAQ, Dry Ice Blasting Startup Guide,
-       Compressed Air Guide, Facility Maintenance 자료. 수치(공기량 예시 등)는 Cold Jet 매뉴얼의 대표값이며 실제 요구조건은
-       장비·노즐·작업조건에 따라 달라진다는 점을 각 섹션에 명시. 이미지는 기존 로컬 자료(adopt-*.jpg) 재사용. -->
+  <!-- (2026-10-30) 재구성 — Cold Jet "The Definitive Guide to Dry Ice Blasting" pp.22–23
+       (What equipment is needed? / How to choose a dry ice blaster) 구성을 따름. 이미지 4종은 같은 자료에서 추출해 WebP로 최적화
+       (adopt-blaster-lineup, adopt-setup-illustration, adopt-mobile-compressor, adopt-dry-ice-delivery). 수치는 Cold Jet 대표값이며
+       실제 요구조건은 장비·노즐·작업조건에 따라 달라진다는 점을 명시. -->
   <section class="subhero-parallax aut-hero-stage tec-hero-stage subhero-sticky">
     <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="guide.html">드라이아이스 세척 가이드북</a> &gt; 도입 가이드</div>
     <div class="hero-fit">
       <img class="subhero-parallax-img" src="../assets/img/adopt-hero.webp" alt="책상 위에 펼쳐진 Cold Jet 도입 안내서와 장비 구성 체크리스트 메모, 현장 스케치" data-buffer-ratio="0.333" data-pan-scale="1" data-no-blur="true" />
       <div class="subhero-textbox">
         <span class="ind-hero-eyebrow">IMPLEMENTATION GUIDE</span>
-        <h1>장비를 고르기 전에,<br><span class="bls-hero-accent">세척 조건부터.</span></h1>
-        <p class="bls-hero-main">세척 대상과 오염물, 압축공기와 드라이아이스 공급, 작업 환경과 안전까지. 우리 현장에 맞는 조건을 먼저 확인하고 장비와 노즐을 선정하는 다섯 단계를 안내합니다.</p>
-        <div class="tec-hero-jump"><a href="#adopt-test"><i></i>세척 테스트</a><a href="#adopt-air"><i></i>압축공기 · 공급</a><a href="#adopt-machine"><i></i>장비 · 노즐 선정</a></div>
+        <h1>드라이아이스 세척,<br><span class="bls-hero-accent">무엇이 필요하고 어떻게 고를까.</span></h1>
+        <p class="bls-hero-main">블라스터와 압축공기, 드라이아이스, 전원과 보호장비까지. 도입에 필요한 구성과 현장 조건을 확인하고, 작업에 맞는 장비를 선택하는 기준을 안내합니다.</p>
+        <div class="tec-hero-jump"><a href="#adopt-setup"><i></i>필요한 구성</a><a href="#adopt-air"><i></i>압축공기</a><a href="#adopt-choose"><i></i>장비 선택 기준</a></div>
       </div>
     </div>
   </section>
 
   <section class="subhero-cover cmp-page ind-page auto-page">
     <div class="wrap">
-<div class="cmp-panel">
+<div class="cmp-panel adopt-intro-panel">
 <div class="wrap">
-<div class="cmp-section is-first auto-intro">
+<div class="cmp-section is-first auto-intro" id="adopt-setup">
   <div class="auto-intro-grid">
     <div class="reveal">
-      <span class="cmp-eyebrow">START WITH THE APPLICATION</span>
-      <h2 class="cmp-h2">첫 번째 질문은<br>"어떤 장비가 좋은가?"가 아닙니다.</h2>
+      <span class="cmp-eyebrow">WHAT YOU NEED</span>
+      <h2 class="cmp-h2">드라이아이스 세척은<br>간단한 구성으로 시작합니다.</h2>
     </div>
     <div class="cmp-lead auto-intro-lead reveal" style="--reveal-delay:0.14s">
-      <p>드라이아이스 세척의 도입은 장비 한 대를 선택하는 것으로 끝나지 않습니다. 무엇을 세척하는지, 어떤 오염물을 제거해야 하는지, 어느 정도까지 세척해야 하는지부터 압축공기와 드라이아이스 공급, 작업공간과 안전조건, 장비와 노즐 구성까지 함께 검토해야 합니다.</p>
-      <p class="auto-intro-close">바테크는 실제 세척 대상과 작업 조건을 확인하고 테스트를 통해 적용 가능성을 검토한 뒤, 현장에 맞는 장비와 운용 방법을 제안합니다.</p>
+      <p class="auto-intro-close">블라스터, 압축공기, 드라이아이스, 전원, 그리고 작업자 보호장비. 이 다섯 가지를 기준으로 우리 현장의 조건을 확인해 보세요.</p>
     </div>
   </div>
-  <ol class="auto-why">
-    <li class="reveal" style="--reveal-delay:0.00s"><b>무엇을 세척합니까?</b><p>금형, 생산설비, 모터, 제어반, 부품, 로봇, 컨베이어, 표면 등</p></li>
-    <li class="reveal" style="--reveal-delay:0.06s"><b>무엇을 제거해야 합니까?</b><p>이형제, 수지, 접착제, 오일, 그리스, 카본, 잉크, 도료, 스패터, 표면 녹 등</p></li>
-    <li class="reveal" style="--reveal-delay:0.12s"><b>지켜야 할 것은 무엇입니까?</b><p>정밀한 금형면, 도장면, 코팅, 치수, 마킹, 센서, 배선, 제품 외관</p></li>
-    <li class="reveal" style="--reveal-delay:0.18s"><b>어느 정도까지 세척해야 합니까?</b><p>육안 청정, 후공정 전처리, 설비 유지보수, 품질 안정, 검사 전 세척</p></li>
-    <li class="reveal" style="--reveal-delay:0.24s"><b>지금 가장 문제되는 것은?</b><p>세척 시간, 많은 인력, 설비 분해, 화학약품, 생산 중단시간</p></li>
-  </ol>
+  <figure class="adopt-diagram reveal" style="--reveal-delay:0.2s">
+    <div class="adopt-diagram-stage">
+      <img src="../assets/img/adopt-setup-illustration.webp" width="1024" height="478" alt="드라이아이스 세척 기본 구성 — 작업자와 블라스터, 드라이아이스 보관함, 압축공기 공급원" loading="lazy" />
+      <span class="adopt-pin" style="left:26%; top:12%"><i></i>작업자, 보호장비</span>
+      <span class="adopt-pin" style="left:48%; top:30%"><i></i>블라스터, 호스, 노즐</span>
+      <span class="adopt-pin" style="left:74%; top:36%"><i></i>드라이아이스 공급, 보관</span>
+      <span class="adopt-pin" style="left:92%; top:16%"><i></i>콤프레샤</span>
+    </div>
+  </figure>
+  <ul class="adopt-needs reveal" style="--reveal-delay:0.26s">
+    <li><b>드라이아이스 블라스터</b><p>안정적이고 사용하기 쉬운 블라스터가 기본입니다. Cold Jet은 특허 기술인 입자 제어 시스템(PCS®)을 갖춘 모델을 포함해 다양한 장비를 제공합니다. PCS로 분사 조건을 작업에 맞게 세밀하게 조정할 수 있습니다. 모든 블라스터에는 블라스트 호스와 에어 호스, 애플리케이터, 그리고 작업에 가장 적합한 노즐이 함께 구성됩니다.</p></li>
+    <li><b>압축공기</b><p>압축공기는 필터가 설치된 공장의 기존 압축공기 배관에서 공급받을 수 있습니다. Cold Jet 블라스터는 일반적으로 5.5 bar(80 psi)에서 약 2.8 m³/min(100 cfm)의 공기량이 있어야 제 성능을 냅니다.</p></li>
+    <li><b>드라이아이스 공급</b><p>드라이아이스 공급처를 찾고, 사용량에 맞는 주문량을 정하는 과정을 바테크가 함께 합니다. 공급처가 정해지면 생산 일정에 맞춰 배송 일정을 세울 수 있습니다.</p></li>
+    <li><b>운영자와 장비 교육</b><p>안전하고 효과적인 장비 운용 방법과 작업별 분사 요령, 안전 수칙에 대한 교육을 제공합니다. 작업자가 장비를 올바르고 안전하게 사용할 수 있도록 교육 과정을 운영합니다.</p></li>
+    <li><b>개인 보호장비(PPE)</b><p>작업자는 장비를 사용하는 동안 장갑, 청력 보호구, 눈 보호구 등 적절한 보호장비를 갖추어야 합니다.</p></li>
+    <li><b>자동화 (선택)</b><p>반복적인 세척 공정, 특히 도장 전 플라스틱 부품 전처리는 자동화하는 경우가 많습니다. 완전 자동화 시스템은 드라이아이스 제조기와 블라스터, 로봇 암을 하나로 묶어 일정하고 반복 가능한 결과를 냅니다.</p></li>
+  </ul>
 </div>
 </div>
 </div>
 
 <div class="cmp-section auto-apps-sec" id="auto-apps">
 
-<article class="auto-app is-wide" id="adopt-test">
+<article class="auto-app is-wide adopt-banner-app" id="adopt-machine">
   <div class="auto-app-head reveal">
     <span class="auto-num">01</span>
-    <div><span class="auto-en">APPLICATION TEST</span><h3>실제 세척 테스트</h3></div>
+    <div><span class="auto-en">DRY ICE BLASTING MACHINE</span><h3>드라이아이스 블라스터</h3></div>
   </div>
-  <div class="cmp-lead reveal" style="--reveal-delay:0.1s; max-width:820px">
-    <p>같은 오염물이라도 부착 정도와 두께, 세척 대상의 재질과 형상, 온도와 표면 상태에 따라 세척 결과는 달라질 수 있습니다. 따라서 장비를 선택하기 전에 가능하면 실제 생산부품이나 금형, 설비 또는 동일 조건의 샘플을 이용해 세척 테스트를 진행하는 것이 좋습니다.</p>
-    <p class="auto-intro-close">테스트의 목적은 단순히 "닦이는지"를 확인하는 것이 아니라, 현장에서 반복해서 사용할 수 있는 조건을 찾는 것입니다.</p>
+  <figure class="adopt-banner reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/lineup-trimmed-t.webp" width="1600" height="767" alt="Cold Jet 드라이아이스 블라스터 전 제품 라인업" loading="lazy" /></figure>
+  <div class="adopt-split reveal" style="--reveal-delay:0.16s">
+    <p class="auto-app-h">산업 현장의 세척은 거친 환경에서 이루어집니다.<br>내구성과 사용 편의성이 장비의 기본 조건입니다.</p>
+    <div>
+      <div class="cmp-text auto-text"><p>Cold Jet은 분사 압력을 조절할 수 있는 모델, 스테인리스 구성품과 견고한 프레임을 갖춘 모델 등 작업 조건에 따라 선택할 수 있는 다양한 블라스터를 제공합니다.</p><p>블라스터에는 블라스트 호스와 에어 호스, 애플리케이터(건), 그리고 작업에 적합한 노즐이 함께 구성됩니다.</p></div>
+      <div class="auto-targets"><span>기본 구성</span><ul><li>블라스터 본체</li><li>블라스트 호스</li><li>에어 호스</li><li>애플리케이터</li><li>작업용 노즐</li></ul></div>
+      <a class="auto-rel-link" href="../products/blaster/index.html"><span>관련 페이지</span>Cold Jet 블라스터 라인업 <i>→</i></a>
+    </div>
   </div>
-  <div class="auto-targets reveal" style="--reveal-delay:0.16s">
-    <span>테스트 확인 항목</span>
-    <ul><li>오염물 제거 정도</li><li>세척 속도</li><li>표면 변화</li><li>세밀한 형상 접근성</li><li>드라이아이스 소비량</li><li>필요한 압축공기</li><li>적절한 노즐</li><li>작업 편의성</li><li>예상 작업 시간</li><li>자동화 가능성</li></ul>
-  </div>
-  <div class="auto-targets reveal" style="--reveal-delay:0.22s">
-    <span>테스트 전 준비사항</span>
-    <ul><li>실제 세척 대상 또는 샘플</li><li>제거해야 할 오염물</li><li>현재 세척방법 · 세척 시간 · 작업 인원</li><li>설비 분해 여부</li><li>반드시 보호해야 할 표면</li><li>원하는 세척 결과</li><li>세척 빈도(일/주/월)</li><li>예상 작업 면적</li><li>사용 가능한 압축공기 정보</li><li>현장 사진 또는 동영상</li></ul>
-  </div>
-  <a class="auto-rel-link reveal" href="../rental/demo.html" style="--reveal-delay:0.28s"><span>다음 단계</span>세척 테스트 신청 <i>→</i></a>
 </article>
 
-<article class="auto-app is-wide" id="adopt-air">
+<article class="auto-app" id="adopt-air">
   <div class="auto-app-head reveal">
     <span class="auto-num">02</span>
-    <div><span class="auto-en">COMPRESSED AIR</span><h3>압축공기 확인</h3></div>
+    <div><span class="auto-en">COMPRESSED AIR SOURCE</span><h3>압축공기 공급원</h3></div>
   </div>
-  <div class="cmp-lead reveal" style="--reveal-delay:0.1s; max-width:820px">
-    <p>드라이아이스 블라스터는 압축공기로 드라이아이스 입자를 가속합니다. 실제 세척 성능에는 압력뿐 아니라 공기량, 수분, 온도, 배관 크기와 호스 길이도 영향을 줍니다.</p>
+  <div class="auto-app-grid">
+    <div class="auto-app-media"><figure class="reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/adopt-mobile-compressor.webp" alt="이동식 디젤 콤프레서" loading="lazy" /></figure></div>
+    <div class="auto-app-copy reveal" style="--reveal-delay:0.16s">
+      <p class="auto-app-h">공장 배관의 압축공기를 쓰거나,<br>이동식 콤프레서를 사용할 수 있습니다.</p>
+      <div class="cmp-text auto-text"><p>압축공기는 필터가 설치된 기존 공장 배관에서 공급받거나, 적절한 필터를 갖춘 전용 이동식 콤프레서로 공급할 수 있습니다.</p><p>이동식 디젤 콤프레서를 사용할 때는 애프터쿨러가 필수입니다. 애프터쿨러는 압축공기의 수분 대부분을 제거하고, 공기 온도를 주변 온도에 가깝게 낮춰 줍니다.</p></div>
+    </div>
   </div>
-  <p class="mtc-quote reveal" style="--reveal-delay:0.14s">압력(bar)과 함께 반드시 확인해야 할 항목이 <em>공기 유량(CFM · m³/min)</em>입니다.</p>
   <div class="adopt-2col reveal" style="--reveal-delay:0.18s">
     <div>
       <h4>공장 압축공기 · PLANT AIR</h4>
-      <p class="adopt-2col-b">기존 설비를 활용할 수 있어 별도 콤프레서 이동이 필요 없는 경우가 많습니다.</p>
-      <ul><li>사용 가능한 압력·유량</li><li>동시에 사용 중인 다른 에어툴</li><li>배관 직경 · 커넥션 크기</li><li>압력강하 · 공기 품질</li></ul>
+      <p class="adopt-2col-b">기존 설비를 활용할 수 있어 별도 콤프레서가 필요 없는 경우가 많습니다.</p>
+      <ul><li>사용 가능한 압력과 유량</li><li>동시에 사용 중인 다른 에어툴</li><li>배관 직경, 커넥션 크기</li><li>필터와 공기 품질</li></ul>
     </div>
     <div>
       <h4>이동식 콤프레서 · MOBILE COMPRESSOR</h4>
       <p class="adopt-2col-b">야외 작업, 공장 에어가 부족한 장소, 이동 작업에 적합합니다.</p>
-      <ul><li>디젤 콤프레서는 토출 공기가 뜨겁고 수분이 많을 수 있음</li><li>애프터쿨러 필요 여부</li><li>수분 분리기 필요 여부</li></ul>
+      <ul><li>디젤 콤프레서는 토출 공기가 뜨겁고 수분이 많을 수 있음</li><li>애프터쿨러 필수</li><li>수분 분리기, 필터 구성 확인</li></ul>
     </div>
   </div>
-  <p class="adopt-note reveal" style="--reveal-delay:0.24s"><b>AIR QUALITY MATTERS —</b> 드라이아이스는 약 −78.5°C로 매우 낮은 온도입니다. 공급공기에 수분이 많으면 얼어 피드라인과 노즐, 장비 내부에 문제를 일으킬 수 있고, 지나치게 뜨거운 공기는 드라이아이스의 승화를 촉진할 수 있습니다. 건조하고(Dry) 적정 온도(Cool)이며 충분한 유량(Flow)인지 함께 확인해야 합니다.</p>
+  <p class="adopt-note reveal" style="--reveal-delay:0.24s"><b>DRY · COOL · FLOW —</b> 드라이아이스는 약 −78.5°C입니다. 공급 공기에 수분이 많으면 얼어서 피드라인과 노즐에 문제를 일으킬 수 있고, 뜨거운 공기는 승화를 촉진합니다. 압력(bar)과 함께 유량(m³/min)과 공기 품질을 반드시 확인해야 합니다.</p>
   <table class="spec-table reveal" style="--reveal-delay:0.30s">
     <tr><th>펠렛 타입 참고값</th><td>약 2.8 m³/min (100 CFM), 5.5 bar (80 psi) 수준</td></tr>
     <tr><th>마이크로파티클 참고값</th><td>약 0.9 m³/min (30 CFM) 수준</td></tr>
   </table>
-  <p style="font-size:13px; color:var(--text-muted); margin-top:-6px;">* Cold Jet 매뉴얼의 대표값이며, 실제 요구 조건은 장비 모델과 노즐, 작업 조건에 따라 달라질 수 있습니다.</p>
+  <p style="font-size:13px; color:var(--text-muted); margin-top:-6px;">* Cold Jet 자료의 대표값이며, 실제 요구 조건은 장비 모델과 노즐, 작업 조건에 따라 달라질 수 있습니다.</p>
 </article>
 
-<article class="auto-app is-wide">
+<article class="auto-app is-wide adopt-banner-app" id="adopt-supply">
   <div class="auto-app-head reveal">
     <span class="auto-num">03</span>
     <div><span class="auto-en">DRY ICE SUPPLY</span><h3>드라이아이스 공급</h3></div>
   </div>
-  <div class="cmp-lead reveal" style="--reveal-delay:0.1s; max-width:820px">
-    <p>드라이아이스는 보관 중에도 계속 승화합니다. 따라서 사용량과 사용 빈도, 배송 일정, 보관 방법을 장비 선택과 함께 고려해야 합니다.</p>
+  <figure class="adopt-banner reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/adopt-dry-ice-delivery.webp" width="1400" height="629" alt="드라이아이스 보관 컨테이너 납품 장면" loading="lazy" /></figure>
+  <div class="adopt-split reveal" style="--reveal-delay:0.16s">
+    <p class="auto-app-h">필요한 드라이아이스를<br>안정적으로 공급받을 수 있어야 합니다.</p>
+    <div>
+      <div class="cmp-text auto-text"><p>바테크는 고품질의 드라이아이스를 직접 생산하며, 생산부터 포장과 출고까지 전 과정을 관리해 전국 각 지역에 공급하고 있습니다.</p><p>드라이아이스 세척에 사용되는 펠렛(Pellet)은 물론, 용도에 따라 너겟(Nugget), 블록(Block), 슬라이스(Slice) 등 다양한 형태로 생산하고 배송할 수 있습니다. 고객의 사용 목적과 예상 소비량, 작업 주기에 맞춰 필요한 형태와 공급 일정을 함께 검토합니다.</p><p>특히 Cold Jet 장비를 사용하는 고객에게 드라이아이스 공급은 단순한 소모품 배송 이상의 의미가 있습니다. 정기적인 공급 과정에서 바테크와 자연스럽게 소통하며 장비의 사용 빈도와 운용 상황을 지속적으로 확인할 수 있고, 필요한 경우 장비 점검, 소모품과 부품, 운전 조건에 대한 기술지원으로 빠르게 연결할 수 있습니다.</p><p>장비 도입 이후에도 드라이아이스 공급부터 장비 운용과 기술지원까지 지속적으로 이어지는 지원 체계를 갖추는 것, 이것이 안정적인 드라이아이스 세정 운영에 중요한 이유입니다.</p></div>
+      <a class="auto-rel-link" href="../products/supply.html"><span>관련 페이지</span>드라이아이스 공급 안내 <i>→</i></a>
+    </div>
   </div>
-  <div class="auto-targets reveal" style="--reveal-delay:0.16s">
-    <span>확인 요소</span>
-    <ul><li>사용하는 드라이아이스 형태(펠렛 · 마이크로파티클)</li><li>예상 소비량 · 작업 빈도</li><li>공급 거리 · 배송 주기</li><li>보관 컨테이너 · 보관시간</li><li>작업당 필요 수량</li></ul>
-  </div>
-  <p class="adopt-note reveal" style="--reveal-delay:0.22s">실제 소비량은 장비, 분사 조건, 노즐, 오염물, 작업 속도에 따라 달라지므로 일반화된 수치보다 테스트를 통한 확인을 권장합니다.</p>
-  <a class="auto-rel-link reveal" href="../products/supply.html" style="--reveal-delay:0.28s"><span>관련 페이지</span>드라이아이스 공급 안내 <i>→</i></a>
 </article>
 
-<article class="auto-app is-wide">
+<article class="auto-app adopt-ppe-app" id="adopt-power">
   <div class="auto-app-head reveal">
     <span class="auto-num">04</span>
-    <div><span class="auto-en">SITE &amp; SAFETY</span><h3>작업 환경과 안전</h3></div>
+    <div><span class="auto-en">POWER &amp; PPE</span><h3>전원과 보호장비</h3></div>
   </div>
-  <div class="cmp-lead reveal" style="--reveal-delay:0.1s; max-width:820px"><p>작업 장소도 장비 선택의 중요한 조건입니다.</p></div>
-  <ol class="auto-why">
-    <li class="reveal" style="--reveal-delay:0.00s"><b>환기</b><p>드라이아이스는 승화하며 CO₂가 됩니다. 밀폐공간·지하·탱크·피트처럼 환기가 제한된 곳에서는 CO₂가 축적될 수 있어 환기와 CO₂ 모니터링을 검토해야 합니다.</p></li>
-    <li class="reveal" style="--reveal-delay:0.06s"><b>보호장비(PPE)</b><p>보안경, 적절한 장갑, 청력 보호구 착용이 필요합니다.</p></li>
-    <li class="reveal" style="--reveal-delay:0.12s"><b>소음</b><p>압축공기를 사용하는 공정이므로 작업자 청력 보호와 주변 환경을 함께 고려합니다.</p></li>
-    <li class="reveal" style="--reveal-delay:0.18s"><b>제거된 오염물</b><p>드라이아이스는 승화하지만 제거된 오염물은 남습니다. 오염물 종류에 따라 집진·격리·회수·처리가 필요할 수 있습니다.</p></li>
-    <li class="reveal" style="--reveal-delay:0.24s"><b>전기설비</b><p>건식·비전도성이라는 특성만으로 모든 활선 설비를 안전하게 세척할 수 있다고 일반화하지 않습니다. 제조사 기준과 전원 상태, 절연·밀폐 상태, 현장 안전규정을 확인해야 합니다.</p></li>
-  </ol>
+  <div class="adopt-ppe-grid">
+  <figure class="adopt-ppe-media reveal-scale" style="--reveal-delay:0.08s"><img src="../assets/img/adopt-ppe.webp" width="1200" height="858" alt="드라이아이스 세척 작업용 보호장비 — 청력 보호구, 방한 장갑, 보안경" loading="lazy" /></figure>
+  <div class="adopt-2col is-stack reveal" style="--reveal-delay:0.14s">
+    <div>
+      <h4>전원 · ELECTRIC POWER</h4>
+      <p class="adopt-2col-b">대부분의 블라스터는 일반 단상 전원에 연결해 사용하며 소비 전력이 크지 않습니다.</p>
+      <ul><li>모델별 정격 전압과 소비 전류 확인</li><li>작업 위치까지의 전원 연결 방법</li></ul>
+    </div>
+    <div>
+      <h4>보호장비 · PPE</h4>
+      <p class="adopt-2col-b">작업자는 적절한 개인 보호장비를 갖추어야 합니다.</p>
+      <ul><li>보호 장갑</li><li>보안경 등 눈 보호구</li><li>청력 보호구</li></ul>
+    </div>
+  </div>
+  </div>
+  <p class="adopt-note reveal" style="--reveal-delay:0.18s">드라이아이스는 승화하며 CO₂가 됩니다. 밀폐공간이나 환기가 제한된 장소에서는 환기와 CO₂ 모니터링을 검토해야 하며, 제거된 오염물은 종류에 따라 집진, 회수, 처리가 필요할 수 있습니다.</p>
 </article>
 
-<article class="auto-app is-wide" id="adopt-machine">
+<article class="auto-app is-wide" id="adopt-choose">
   <div class="auto-app-head reveal">
     <span class="auto-num">05</span>
-    <div><span class="auto-en">MACHINE SELECTION</span><h3>장비 · 노즐 선정</h3></div>
+    <div><span class="auto-en">HOW TO CHOOSE A DRY ICE BLASTER</span><h3>장비 선택 기준</h3></div>
   </div>
-  <div class="cmp-lead reveal" style="--reveal-delay:0.1s; max-width:820px"><p>세척 테스트가 끝나면, 그 조건을 안정적으로 구현할 장비를 선택합니다. 모델을 먼저 보기보다, 아래 요소를 먼저 확인합니다.</p></div>
-  <div class="auto-targets reveal" style="--reveal-delay:0.16s">
-    <span>선정 시 고려 요소</span>
-    <ul><li>필요한 세척 강도(정밀 ↔ 중오염 제거)</li><li>입자 크기(마이크로파티클 · 3 mm 펠렛 · PCS 조절)</li><li>필요 압력과 공기량</li><li>드라이아이스 공급량</li><li>작업 면적 · 작업 시간</li><li>장비 이동성</li><li>현장 에어 공급 방식</li><li>정밀 제어 필요성</li><li>자동화 가능성 · 작업 빈도</li></ul>
+  <div class="cmp-lead reveal" style="--reveal-delay:0.1s; max-width:820px">
+    <p>적합한 블라스터를 선택할 때는 여러 요소를 함께 고려해야 합니다. 모델을 먼저 보기보다, 아래 다섯 가지를 먼저 정리하는 것이 순서입니다.</p>
   </div>
+  <ol class="auto-why is-5">
+    <li class="reveal" style="--reveal-delay:0.00s"><b>적용 분야와 산업</b><p>어떤 산업의 어떤 공정에서 사용하는지</p></li>
+    <li class="reveal" style="--reveal-delay:0.06s"><b>세척 대상</b><p>어떤 설비, 금형, 툴링을 세척하는지</p></li>
+    <li class="reveal" style="--reveal-delay:0.12s"><b>오염물</b><p>무엇을 제거해야 하는지</p></li>
+    <li class="reveal" style="--reveal-delay:0.18s"><b>작업 면적</b><p>세척해야 할 영역의 크기와 접근성</p></li>
+    <li class="reveal" style="--reveal-delay:0.24s"><b>원하는 결과</b><p>어느 정도까지 세척해야 하는지</p></li>
+  </ol>
   <table class="spec-table reveal" style="--reveal-delay:0.22s">
-    <tr><th>정밀 금형 · 전자부품</th><td>낮은 공급량, 미세 입자, 세밀한 제어</td></tr>
-    <tr><th>생산설비 · 오일·그리스</th><td>적절한 분사력, 작업 속도, 넓은 노즐 선택지</td></tr>
-    <tr><th>주조 · 고착 오염</th><td>높은 제거력, 충분한 공기량, 높은 작업량</td></tr>
-    <tr><th>표면 전처리 · 자동화</th><td>반복성, 정밀한 제어, 로봇 통합</td></tr>
+    <tr><th>정밀 금형, 전자부품</th><td>낮은 공급량, 미세 입자, 세밀한 제어</td></tr>
+    <tr><th>생산설비, 오일과 그리스</th><td>적절한 분사력, 작업 속도, 넓은 노즐 선택지</td></tr>
+    <tr><th>주조, 고착 오염</th><td>높은 세척력, 충분한 공기량, 높은 작업량</td></tr>
+    <tr><th>표면 전처리, 자동화</th><td>반복성, 정밀한 제어, 로봇 통합</td></tr>
   </table>
-  <p style="font-size:13px; color:var(--text-muted); margin-top:-6px;">* 예시이며, 실제 장비 모델은 VATEK 제품 라인업과 Cold Jet 최신 사양을 확인해 상담을 통해 안내합니다.</p>
-  <div class="cmp-text auto-text reveal" style="--reveal-delay:0.28s">
-    <p><b>노즐 선택이 중요한 이유.</b> 같은 장비도 어떤 노즐을 쓰느냐에 따라 분사폭, 집중도, 접근성, 공기 소비량이 달라집니다. 넓은 면에는 넓은 분사폭, 좁은 홈에는 집중 노즐, 깊은 구조에는 긴 노즐, 민감한 표면에는 낮은 임팩트 조건이 검토됩니다.</p>
-    <p><b>자동화 검토 기준.</b> 동일 부품을 반복 세척하고 작업 주기와 오염물이 일정하며 작업자 접근이 어려운 위치라면 자동화를 검토할 수 있습니다. 다품종·낮은 작업빈도·불규칙한 설비에는 수동 장비가 더 적합할 수 있습니다.</p>
-  </div>
-  <a class="auto-rel-link reveal" href="../products/compare-equip.html" style="--reveal-delay:0.34s"><span>관련 페이지</span>장비 비교·추천받기 <i>→</i></a>
+  <p style="font-size:13px; color:var(--text-muted); margin-top:-6px;">* 예시이며, 실제 장비 모델은 바테크 상담을 통해 안내합니다.</p>
+  <p class="mtc-quote reveal" style="--reveal-delay:0.28s">결국 올바른 장비 선택은 <em>우리 현장의 세척 요구조건</em>에 달려 있습니다. 바테크가 요구조건을 함께 검토하고 선택 과정을 안내합니다.</p>
+  <a class="auto-rel-link reveal" href="../products/compare-equip.html" style="--reveal-delay:0.34s"><span>관련 페이지</span>장비 비교, 추천받기 <i>→</i></a>
 </article>
 
 </div>
@@ -11269,24 +11234,14 @@ ADOPT_BODY = """
 <div class="cmp-panel auto-cont-panel">
 <div class="wrap">
 <div class="cmp-section is-first">
-  <span class="cmp-eyebrow">TOTAL CLEANING COST</span>
-  <h2 class="cmp-h2 reveal">장비 가격만 비교하면,<br>실제 세척비용을 알기 어렵습니다.</h2>
-  <div class="auto-targets reveal" style="--reveal-delay:0.1s">
-    <span>비교해야 할 요소</span>
-    <ul><li>세척 시간 · 인력</li><li>생산 중단시간</li><li>분해 · 재조립</li><li>냉각 · 건조 시간</li><li>화학약품 · 폐수 처리</li><li>연마재 처리 비용</li><li>드라이아이스 · 압축공기</li><li>장비 유지보수</li><li>표면 손상 위험</li></ul>
-  </div>
-  <p class="mtc-quote reveal" style="--reveal-delay:0.16s">세척하는 시간뿐 아니라, <em>세척 때문에 멈추는 시간</em>까지 함께 비교해보세요.</p>
-</div>
-
-<div class="cmp-section">
   <span class="cmp-eyebrow">TEST BEFORE YOU INVEST</span>
-  <h2 class="cmp-h2 reveal">구매를 결정하기 전에,<br>실제 현장에서 확인해보세요.</h2>
+  <h2 class="cmp-h2 reveal">구매를 결정하기 전에,<br>실제 현장에서 확인해 보세요.</h2>
   <div class="process-flow reveal" style="--reveal-delay:0.1s">
     <div class="step"><div class="num">1</div><h4>TEST</h4><p>실제 오염물 세척 가능성 확인</p></div>
     <div class="step"><div class="num">2</div><h4>DEMO</h4><p>작업자가 장비와 작업성 확인</p></div>
-    <div class="step"><div class="num">3</div><h4>RENTAL</h4><p>일정기간 생산 현장에서 사용</p></div>
+    <div class="step"><div class="num">3</div><h4>RENTAL</h4><p>일정 기간 생산 현장에서 사용</p></div>
     <div class="step"><div class="num">4</div><h4>PURCHASE</h4><p>적합한 조건 확인 후 도입</p></div>
-    <div class="step"><div class="num">5</div><h4>AUTOMATION</h4><p>반복공정은 자동화 검토</p></div>
+    <div class="step"><div class="num">5</div><h4>AUTOMATION</h4><p>반복 공정은 자동화 검토</p></div>
   </div>
 </div>
 
@@ -11295,23 +11250,9 @@ ADOPT_BODY = """
   <h2 class="cmp-h2 reveal">장비를 공급하는 것으로,<br>도입이 끝나지는 않습니다.</h2>
   <div class="auto-targets reveal" style="--reveal-delay:0.1s">
     <span>도입 이후 지원</span>
-    <ul><li>설치 · 시운전</li><li>운영자 교육</li><li>노즐 선택 지원</li><li>예방정비 · A/S</li><li>부품 공급</li><li>드라이아이스 공급</li></ul>
+    <ul><li>설치, 시운전</li><li>운영자 교육</li><li>노즐 선택 지원</li><li>예방정비, A/S</li><li>부품 공급</li><li>드라이아이스 공급</li></ul>
   </div>
   <p class="mtc-quote reveal" style="--reveal-delay:0.16s">도입 검토부터 현장 적용, <em>교육과 A/S까지</em> 바테크가 전 과정을 지원합니다.</p>
-</div>
-
-<div class="cmp-section">
-  <span class="cmp-eyebrow">BEFORE YOU START</span>
-  <h2 class="cmp-h2 reveal">전체 도입 흐름</h2>
-  <div class="process-flow is-7 reveal" style="--reveal-delay:0.1s">
-    <div class="step"><div class="num">1</div><h4>APPLICATION</h4><p>세척 과제 확인</p></div>
-    <div class="step"><div class="num">2</div><h4>TEST</h4><p>실제 세척 테스트</p></div>
-    <div class="step"><div class="num">3</div><h4>SITE</h4><p>현장조건 확인</p></div>
-    <div class="step"><div class="num">4</div><h4>UTILITY</h4><p>압축공기 · 드라이아이스</p></div>
-    <div class="step"><div class="num">5</div><h4>EQUIPMENT</h4><p>장비 · 노즐 선정</p></div>
-    <div class="step"><div class="num">6</div><h4>VALIDATION</h4><p>데모 · 렌탈 · 도입</p></div>
-    <div class="step"><div class="num">7</div><h4>SUPPORT</h4><p>교육 · 운영 · A/S</p></div>
-  </div>
 </div>
 </div>
 </div>
@@ -11376,7 +11317,7 @@ ADOPT_BODY = """
 
 <div class="last-freeze">
 <div class="wrap">
-<h2 style="font-size: 46px; padding-top: 30px">함께 보면 좋은 페이지</h2>
+<h2 style="font-size: 46px; padding-top: clamp(64px, 7vw, 112px); margin-bottom: 36px">함께 보면 좋은 페이지</h2>
       <div class="sub-grid" id="subGrid">
   <a class="sub-card" href="../cleaning/guide.html">
     <div class="sub-card-media"><img src="../assets/img/guide-principle-thumb.jpg" alt="" loading="lazy" /></div>
@@ -13524,7 +13465,7 @@ MENU = [
              # desc/nav_desc는 메가메뉴·허브 카드 공유값이라 유지, 페이지 자신의
              # <title>/메타 설명만 page_title/page_desc로 덮어쓴다.
              "page_title": "도입 가이드 | 드라이아이스 세척 가이드북",
-             "page_desc": "장비를 고르기 전에 세척 대상과 오염물, 압축공기와 드라이아이스 공급, 작업 환경과 안전조건을 확인하는 드라이아이스 세척 도입 절차 가이드.",
+             "page_desc": "드라이아이스 세척 도입에 필요한 구성(블라스터, 압축공기, 드라이아이스 공급, 전원과 보호장비)과 현장에 맞는 블라스터를 선택하는 기준을 안내합니다.",
              "full_custom_body": True,
              "extra_script": AUTOMOTIVE_SCRIPT,
              "extra_head": CLEANING_HERO_EXTRA_HEAD,
