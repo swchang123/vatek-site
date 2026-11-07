@@ -478,3 +478,7 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
   .plt-result-products { display: flex; flex-wrap: wrap; gap: 16px; width: 100%; }
 }
 
+
+/* (2026-11-07) 생산 시스템 찾기 섹션 — style.css의 ".subhero-sticky ~ section { background: white }" 공통 규칙이
+   이 섹션의 네이비 배경을 덮어써 흰 글자가 보이지 않던 문제. id 선택자로 우선순위를 올려 네이비 배경을 복원. */
+#pelletizer-lineup.plt-lineup { background-color: var(--navy); }

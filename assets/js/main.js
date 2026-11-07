@@ -92,7 +92,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // preload="none" 자동재생 영상: 뷰포트에 들어올 때만 로드·재생, 벗어나면 정지
   // (모바일 데이터·초기 로딩 부담 최소화).
-  var lazyVideos = document.querySelectorAll('video[preload="none"][autoplay]');
+  // (2026-11-07 성능) preload="none"이 아닌 자동재생 영상(히어로 등)도 포함 — 화면 밖에서도 계속 디코딩되며
+  // 스크롤 성능을 깎던 것을 뷰포트를 벗어나면 일시정지, 들어오면 재생하도록 확장.
+  // (2026-11-07 성능) 스크롤 진행 변수(--postdo-dark/--postdo-light)를 :root 대신 실제로 쓰는 섹션에만 설정 —
+  // 루트에 두면 매 프레임 문서 전체가 스타일 재계산되고 헤더·푸터까지 다시 그려졌다. 값이 같으면 건너뜀.
+  var scrollVarHosts = Array.prototype.slice.call(document.querySelectorAll('.stackdo-section, .section-value, .section-voice'));
+  var scrollVarLast = {};
+  var setScrollVar = function (name, value) {
+    if (scrollVarLast[name] === value) return;
+    scrollVarLast[name] = value;
+    for (var i = 0; i < scrollVarHosts.length; i++) scrollVarHosts[i].style.setProperty(name, value);
+  };
+  var lazyVideos = document.querySelectorAll('video[autoplay]');
+  // (2026-11-07 성능) 무한 반복 애니메이션 요소가 뷰포트를 벗어나면 .anim-off로 일시정지(style.css 참고)
+  if ("IntersectionObserver" in window) {
+    var animEls = document.querySelectorAll('.hero-scroll-chevrons, .stackdo-scroll-hint-chevrons, .value-scroll-hint-chevrons, .belief-scroll-hint-chevrons, .coldjet-scroll-hint-chevrons, .stackdo-panel-desc .more, .footer-scroll-chevrons');
+    if (animEls.length) {
+      var animObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { e.target.classList.toggle('anim-off', !e.isIntersecting); });
+      }, { rootMargin: "0px" });
+      animEls.forEach(function (el) { animObs.observe(el); });
+    }
+  }
   if (lazyVideos.length && "IntersectionObserver" in window) {
     var vidObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -360,7 +381,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // applyTitleShrinkZoom()이 완료되므로, 동일하게 title-dock 인덱스로
         // 등록해야 hsAnimateTo()가 같은 속도로 늦춰준다.
         hsTitleDockIndices.push(points.length - 1);
-        points.push(coldjetTop + coldjetZoneW * (1 + HS_LEAD) + HS_EPS); // VATEK×Cold Jet 로고 등장
+        // (2026-11-07) 3구간: 1구간 = WE ARE ONE TEAM 박스 등장, 2구간 = VATEK×Cold Jet 로고 등장
+        points.push(coldjetTop + coldjetZoneW * (1 + HS_LEAD) + HS_EPS); // WE ARE ONE TEAM 박스 등장
+        points.push(coldjetTop + coldjetZoneW * (2 + HS_LEAD) + HS_EPS); // VATEK×Cold Jet 로고 등장
       } else if (coldjetPinTitleEl) {
         // (대비책) coldjetVideoScrollEl을 못 찾을 때만 예전 방식으로 대체
         points.push(stableDocTopOf(coldjetPinTitleEl, "coldjet") + HS_EPS);
@@ -1020,8 +1043,13 @@ document.addEventListener("DOMContentLoaded", function () {
           // 있었음(Playwright로 확인). 일반 스크롤-진입 카운트업 리셋과 동일하게
           // runId를 새 세대로 올려 이전 tick이 스스로 멈추게 함.
           countUpRunId.set(countEl, (countUpRunId.get(countEl) || 0) + 1);
+          // (2026-11-07) 포커스를 잃을 때 0으로 되돌리지 않고 최종값으로 고정 — 카드가 위로
+          // 밀려 올라가는 중에 숫자가 0으로 뚝 떨어지는 게 거슬린다는 피드백. 다시 포커스되면
+          // (counted 삭제됨) 0부터 다시 카운트업되는 동작은 그대로.
           if (!prefersReducedMotion) {
-            countEl.textContent = countUpResetText.get(countEl) || "0";
+            var tgt = parseInt(countEl.getAttribute("data-target"), 10) || 0;
+            var pre = countEl.getAttribute("data-prefix") || "", suf = countEl.getAttribute("data-suffix") || "";
+            countEl.textContent = pre + (countEl.hasAttribute("data-comma") ? tgt.toLocaleString("en-US") : String(tgt)) + suf;
           }
         }
       });
@@ -1215,20 +1243,22 @@ document.addEventListener("DOMContentLoaded", function () {
         // 전체 높이(이제 전환 여유 +100vh가 추가돼 있음)와 무관하게 고정
         // 예산(2 * 0.65 * vh)만 기준으로 계산 — 아래 전환 블록이 그 이후분을
         // 별도로 가져다 쓴다(belief의 beliefBoxTotalPx와 정확히 같은 방식).
-        var coldjetBoxTotalPx = 2 * 0.65 * vh;
+        // (2026-11-07) 사용자 요청: 처음엔 영상만 보이고, 한 번 더 스크롤해야 박스가
+        // 올라오도록 3구간으로 복귀(0: 영상만 / 1: 박스 등장 / 2: 박스 퇴장+브랜드 행).
+        var coldjetBoxTotalPx = 3 * 0.65 * vh;
         var coldjetProgress = coldjetBoxTotalPx > 0
           ? Math.min(1, Math.max(0, coldjetScrolled / coldjetBoxTotalPx))
           : 0;
-        var coldjetZones = 2;
+        var coldjetZones = 3;
         var coldjetIdx = coldjetProgress > 0
           ? Math.min(coldjetZones - 1, Math.floor(coldjetProgress * coldjetZones))
           : 0;
         if (coldjetVideoBoxLead) {
-          coldjetVideoBoxLead.classList.toggle("is-risen", coldjetTitlePinned);
-          coldjetVideoBoxLead.classList.toggle("is-exited", coldjetIdx >= 1);
+          coldjetVideoBoxLead.classList.toggle("is-risen", coldjetTitlePinned && coldjetIdx >= 1);
+          coldjetVideoBoxLead.classList.toggle("is-exited", coldjetIdx >= 2);
         }
         if (coldjetVideoDescText) {
-          coldjetVideoDescText.classList.toggle("is-risen", coldjetIdx >= 1);
+          coldjetVideoDescText.classList.toggle("is-risen", coldjetIdx >= 2);
         }
         // (2026-09-02, 후속15) "우리의 신념" → "우리는 콜드젯입니다" 전환
         // 블록(위 beliefTransition* 부분)과 완전히 동일한 방식·속도 —
@@ -1318,7 +1348,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var lightProgress = vh > 0
           ? Math.min(1, Math.max(0, (vh - beliefRect.top) / vh))
           : 0;
-        document.documentElement.style.setProperty("--postdo-light", lightProgress.toFixed(3));
+        setScrollVar("--postdo-light", lightProgress.toFixed(3));
       }
       if (best !== valueFocusedBlock) {
         if (valueFocusedBlock) resetValueFocusCountUp(valueFocusedBlock);
@@ -1480,7 +1510,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var darkProgress = darkFadeDistance > 0
         ? Math.min(1, Math.max(0, (scrolled - total) / darkFadeDistance))
         : 0;
-      document.documentElement.style.setProperty("--postdo-dark", darkProgress.toFixed(3));
+      setScrollVar("--postdo-dark", darkProgress.toFixed(3));
       if (idx !== stackdoIdx) {
         stackdoIdx = idx;
         if (stackdoFrame) stackdoFrame.classList.toggle("is-gallery", idx >= stackdoPanels.length + 1);

@@ -6,9 +6,9 @@
 
 /* ---- HERO (21:9 영상, 2026-09-24) ---- */
 .sup-hero-stage .subhero-parallax-img { object-position: 50% 50%; }
-.sup-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.78) 0%, rgba(15,22,23,.4) 26%, rgba(15,22,23,.18) 45%, rgba(15,22,23,.32) 100%); }
+.sup-hero-stage::after { background: linear-gradient(to bottom, rgba(8,12,40,.78) 0%, rgba(8,12,40,.4) 26%, rgba(8,12,40,.18) 45%, rgba(8,12,40,.32) 100%); }
 .sup-hero-stage .hero-fit::before { display: none; } /* 정지 이미지용 1.5px 블러 — 영상 선명도 위해 해제 */
-.sup-hero-stage .subhero-breadcrumb { text-shadow: 0 1px 8px rgba(15,22,23,.7); }
+.sup-hero-stage .subhero-breadcrumb { text-shadow: 0 1px 8px rgba(8,12,40,.7); }
 /* 641~1100px: 21:9 스테이지가 낮아져 텍스트 박스가 브레드크럼과 겹침 → 이 구간은 16:9 높이로 복귀(영상은 cover로 좌우 크롭) */
 @media (min-width: 641px) and (max-width: 1100px) {
   .sup-hero-stage { height: min(calc(100vh - 76px), 56.25vw); }
@@ -20,10 +20,10 @@
 .sup-forms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2vw, 28px); }
 .sup-form { display: flex; flex-direction: column; min-width: 0; background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); overflow: hidden; transition: transform .35s ease, box-shadow .35s ease; }
 .sup-form:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.sup-form-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #eaf6f7; }
+.sup-form-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #eef3fb; }
 .sup-form-media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
 .sup-form:hover .sup-form-media img { transform: scale(1.04); }
-.sup-form-media .sup-form-tag { position: absolute; left: 18px; top: 18px; padding: 7px 12px; border-radius: 999px; background: rgba(27,36,38,.78); color: #fff; font-size: 11.5px; font-weight: 800; letter-spacing: 1.8px; backdrop-filter: blur(4px); }
+.sup-form-media .sup-form-tag { position: absolute; left: 18px; top: 18px; padding: 7px 12px; border-radius: 999px; background: rgba(13, 19, 51,.78); color: #fff; font-size: 11.5px; font-weight: 800; letter-spacing: 1.8px; backdrop-filter: blur(4px); }
 .sup-form-body { display: flex; flex-direction: column; gap: 16px; flex: 1; padding: clamp(22px, 2.2vw, 30px) clamp(22px, 2.2vw, 30px) clamp(24px, 2.4vw, 32px); }
 .sup-form-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: start; }
 .sup-form h3 { margin: 0; font-size: clamp(22px, 1.8vw, 27px); font-weight: 800; color: #000; letter-spacing: -0.02em; line-height: 1.2; }
@@ -45,7 +45,7 @@
 /* --w/--h/--d = mm. --s = px per mm. 정면(w×h) + 윗면/옆면은 45° 사투영(깊이의 1/2). */
 .sup-box { --s: .58; position: relative; box-sizing: border-box; width: calc(var(--w) * var(--s) * 1px); height: calc(var(--h) * var(--s) * 1px); margin-right: calc(var(--d) * var(--s) * .5px); background: #fff; border: 1.5px solid var(--navy); }
 .sup-box::before { content: ""; position: absolute; left: -1.5px; bottom: 100%; box-sizing: border-box; width: calc(100% + 3px); height: calc(var(--d) * var(--s) * .5px); background: var(--ice-pale); border: 1.5px solid var(--navy); border-bottom: 0; transform: skewX(-45deg); transform-origin: bottom left; }
-.sup-box::after { content: ""; position: absolute; left: 100%; top: -1.5px; box-sizing: border-box; width: calc(var(--d) * var(--s) * .5px); height: calc(100% + 3px); background: #d3e2e4; border: 1.5px solid var(--navy); border-left: 0; transform: skewY(-45deg); transform-origin: top left; }
+.sup-box::after { content: ""; position: absolute; left: 100%; top: -1.5px; box-sizing: border-box; width: calc(var(--d) * var(--s) * .5px); height: calc(100% + 3px); background: #d6dff0; border: 1.5px solid var(--navy); border-left: 0; transform: skewY(-45deg); transform-origin: top left; }
 .sup-box b { position: absolute; font-size: 11px; font-weight: 800; letter-spacing: .5px; color: var(--ice-dark); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .sup-box .lw { left: 50%; top: 100%; transform: translate(-50%, 8px); }
 .sup-box .lh { right: 100%; top: 50%; transform: translate(-8px, -50%); }
@@ -71,7 +71,7 @@
 .sup-matrix td:first-child small { display: block; margin-top: 3px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.55); white-space: normal; }
 .sup-matrix tr:hover td { background: rgba(255,255,255,.04); }
 .sup-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--ice); vertical-align: middle; }
-.sup-dot.is-best { background: var(--ice); box-shadow: 0 0 0 4px rgba(79,173,184,.22); }
+.sup-dot.is-best { background: var(--ice); box-shadow: 0 0 0 4px rgba(127, 163, 224,.22); }
 .sup-dot.is-no { width: 12px; height: 2px; border: 0; border-radius: 1px; background: rgba(255,255,255,.28); }
 .sup-legend { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 16px; font-size: 13px; color: rgba(255,255,255,.65); }
 .sup-legend span { display: inline-flex; align-items: center; gap: 9px; }
@@ -83,7 +83,7 @@
 .sup-use h3 { margin: 6px 0 10px; font-size: clamp(19px, 1.5vw, 22px); font-weight: 800; color: #fff; letter-spacing: -0.01em; }
 .sup-use p { margin: 0; font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,.74); word-break: keep-all; }
 .sup-use-pick { margin-top: auto; padding-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
-.sup-use-pick span { padding: 6px 12px; border-radius: 999px; background: rgba(79,173,184,.18); border: 1px solid rgba(79,173,184,.55); color: #fff; font-size: 12.5px; font-weight: 700; }
+.sup-use-pick span { padding: 6px 12px; border-radius: 999px; background: rgba(127, 163, 224,.18); border: 1px solid rgba(127, 163, 224,.55); color: #fff; font-size: 12.5px; font-weight: 700; }
 
 /* ---- 04 ORDER & DELIVERY ---- */
 .sup-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 24px); }
@@ -124,9 +124,9 @@
 .sup-particles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .sup-particle-stage { height: 210px; }
 .sup-cyl { --s3: 5; position: relative; width: calc(var(--d) * var(--s3) * 1px); height: calc(var(--l) * var(--s3) * 1px); min-width: 16px; }
-.sup-cyl .cyl-top { position: absolute; left: 0; top: 0; width: 100%; height: calc(var(--d) * var(--s3) * .5px); border-radius: 50%; box-sizing: border-box; border: 1.5px solid var(--ice); background: radial-gradient(ellipse at 32% 30%, #fff 0%, var(--ice-pale) 55%, #bcd8da 100%); z-index: 2; }
-.sup-cyl .cyl-body { position: absolute; left: 0; top: calc(var(--d) * var(--s3) * .25px); width: 100%; height: calc(100% - var(--d) * var(--s3) * .5px); box-sizing: border-box; border-left: 1.5px solid var(--ice); border-right: 1.5px solid var(--ice); background: linear-gradient(90deg, #a9cdd0, #eef8f9 30%, #fff 46%, #eef8f9 62%, #a9cdd0); z-index: 1; }
-.sup-cyl .cyl-bot { position: absolute; left: 0; bottom: 0; width: 100%; height: calc(var(--d) * var(--s3) * .5px); border-radius: 50%; box-sizing: border-box; border: 1.5px solid var(--ice); background: linear-gradient(180deg, #cfe6e8, #9fc6ca); z-index: 0; }
+.sup-cyl .cyl-top { position: absolute; left: 0; top: 0; width: 100%; height: calc(var(--d) * var(--s3) * .5px); border-radius: 50%; box-sizing: border-box; border: 1.5px solid var(--ice); background: radial-gradient(ellipse at 32% 30%, #fff 0%, var(--ice-pale) 55%, #bfcdea 100%); z-index: 2; }
+.sup-cyl .cyl-body { position: absolute; left: 0; top: calc(var(--d) * var(--s3) * .25px); width: 100%; height: calc(100% - var(--d) * var(--s3) * .5px); box-sizing: border-box; border-left: 1.5px solid var(--ice); border-right: 1.5px solid var(--ice); background: linear-gradient(90deg, #aabde3, #eef3fb 30%, #fff 46%, #eef3fb 62%, #aabde3); z-index: 1; }
+.sup-cyl .cyl-bot { position: absolute; left: 0; bottom: 0; width: 100%; height: calc(var(--d) * var(--s3) * .5px); border-radius: 50%; box-sizing: border-box; border: 1.5px solid var(--ice); background: linear-gradient(180deg, #cfdaf0, #9fb5df); z-index: 0; }
 
 .sup-group-label { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; letter-spacing: 2.2px; color: var(--ice-dark); text-transform: uppercase; margin: 0 0 18px; }
 .sup-group-label::before { content: ""; width: 20px; height: 2px; background: var(--ice); flex: none; }

@@ -50,11 +50,11 @@
 video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 .rec-hero-stage .subhero-parallax-img{top:0 !important;height:100% !important}
 .rec-cover{position:relative;left:50%;right:50%;width:100vw;z-index:2;margin-left:-50vw;margin-right:-50vw;margin-top:-64px;padding:clamp(64px,8vw,96px) 0 clamp(72px,8vw,128px);background:var(--white);clip-path:inset(0 round 72px 72px 0 0)}
-.rec-cover.tint-hatch{background-color:#eaf0f0;background-image:radial-gradient(ellipse at 15% 0%, rgba(79,173,184,.14), transparent 55%), repeating-linear-gradient(135deg, rgba(40,55,57,.045) 0px, rgba(40,55,57,.045) 1px, transparent 1px, transparent 14px)}
+.rec-cover.tint-hatch{background-color:#eaf0f0;background-image:radial-gradient(ellipse at 15% 0%, rgba(127, 163, 224,.14), transparent 55%), repeating-linear-gradient(135deg, rgba(22, 32, 74,.045) 0px, rgba(22, 32, 74,.045) 1px, transparent 1px, transparent 14px)}
 .rec-cover > .wrap{max-width:1560px;padding:0 clamp(24px,4vw,64px)}
 @media (max-width:640px){.rec-cover{margin-top:-28px;clip-path:inset(0 round 40px 40px 0 0);padding-top:40px}}
 /* ---- body sections (pelletizer/blaster vocabulary) ---- */
-.plt-section.tint-hatch{background-color:#eaf0f0;background-image:radial-gradient(ellipse at 15% 0%, rgba(79,173,184,.14), transparent 55%), repeating-linear-gradient(135deg, rgba(40,55,57,.045) 0px, rgba(40,55,57,.045) 1px, transparent 1px, transparent 14px)}
+.plt-section.tint-hatch{background-color:#eaf0f0;background-image:radial-gradient(ellipse at 15% 0%, rgba(127, 163, 224,.14), transparent 55%), repeating-linear-gradient(135deg, rgba(22, 32, 74,.045) 0px, rgba(22, 32, 74,.045) 1px, transparent 1px, transparent 14px)}
 .rec-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px;padding-top:24px;border-top:1px solid var(--gray-line)}
 /* 텍스트(좌) + 영상(우, 작게) 2단 배치. 영상은 원본 852×480 중 위아래 62px 레터박스만 제거한 852×356 유효화면을 그대로 보이며,
    경계 혼합 픽셀(상하 1px)만 숨기기 위해 박스 바율을 852/354로 잡고 영상 배경과 동일한 흰색으로 맞춰 테두리·모서리가 드러나지 않게 한다. */
@@ -66,11 +66,11 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 #what-is-reco2 .rec-showcase-ctrl{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 2px}
 #what-is-reco2 .bls-showcase-cap{position:static;background:none;padding:0;border-radius:0;backdrop-filter:none;color:var(--text-muted);font-size:12px;font-weight:700;letter-spacing:1.5px;white-space:nowrap}
 /* 재생 버튼 강조: 진한 틸 배경 + 원형 아이콘 + 펄스 링 (재생 중에는 정지) */
-#what-is-reco2 .bls-play-btn{position:relative;right:auto;bottom:auto;flex:none;white-space:nowrap;padding:9px 16px 9px 18px;gap:9px;border:0;border-radius:8px;background:var(--ice-dark,#186973);color:#fff;font-size:13.5px;font-weight:700;letter-spacing:.2px;box-shadow:0 6px 18px rgba(24,105,115,.28);backdrop-filter:none}
-#what-is-reco2 .bls-play-btn:hover{background:var(--ice,#4fadb8);box-shadow:0 8px 22px rgba(24,105,115,.36)}
-#what-is-reco2 .bls-play-btn .bls-play-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;background:#fff;color:var(--ice-dark,#186973);font-size:10px;padding-left:1px}
+#what-is-reco2 .bls-play-btn{position:relative;right:auto;bottom:auto;flex:none;white-space:nowrap;padding:9px 16px 9px 18px;gap:9px;border:0;border-radius:8px;background:var(--ice-dark,#243a94);color:#fff;font-size:13.5px;font-weight:700;letter-spacing:.2px;box-shadow:0 6px 18px rgba(24,105,115,.28);backdrop-filter:none}
+#what-is-reco2 .bls-play-btn:hover{background:var(--ice,#7fa3e0);box-shadow:0 8px 22px rgba(24,105,115,.36)}
+#what-is-reco2 .bls-play-btn .bls-play-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;background:#fff;color:var(--ice-dark,#243a94);font-size:10px;padding-left:1px}
 #what-is-reco2 .bls-play-btn.is-playing .bls-play-icon{font-size:9px;padding-left:0}
-#what-is-reco2 .bls-play-btn::before{content:"";position:absolute;inset:-5px;border-radius:12px;border:2px solid rgba(79,173,184,.7);animation:recPlayPulse 1.8s ease-out infinite;pointer-events:none}
+#what-is-reco2 .bls-play-btn::before{content:"";position:absolute;inset:-5px;border-radius:12px;border:2px solid rgba(127, 163, 224,.7);animation:recPlayPulse 1.8s ease-out infinite;pointer-events:none}
 #what-is-reco2 .bls-play-btn.is-playing::before{animation:none;opacity:0}
 @keyframes recPlayPulse{0%{transform:scale(.92);opacity:.9}100%{transform:scale(1.28);opacity:0}}
 @media (prefers-reduced-motion:reduce){#what-is-reco2 .bls-play-btn::before{animation:none;opacity:0}}
@@ -113,14 +113,14 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 #why-reco2 .bls-tech-media{aspect-ratio:4/3}
 #why-reco2 .bls-tech-media img{width:100%;height:100%;object-fit:cover}
 #why-reco2 .bls-tech-body{position:relative;padding-left:clamp(20px,2.4vw,32px)}
-#why-reco2 .bls-tech-body::before{content:"";position:absolute;left:0;top:10%;bottom:10%;width:1.5px;background:rgba(40,55,57,.42)}
+#why-reco2 .bls-tech-body::before{content:"";position:absolute;left:0;top:10%;bottom:10%;width:1.5px;background:rgba(22, 32, 74,.42)}
 .bls-quote cite{display:block;margin-top:18px;font-style:normal;font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--text-muted)}
 /* ---- RE-CO2 LINEUP: 3 세로형 제품 카드(80·160·320) + 하단 가로형 3500. 이미지 우선(카드 높이의 2/3), 흰 배경 위 contain. ---- */
 .rec-lineup{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.2vw,32px);background:transparent}
 .rec-lineup-item{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid var(--gray-line);border-radius:var(--radius);overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s}
 .rec-lineup-item:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .rec-lineup-media{position:relative;aspect-ratio:1/1.05;background:#fff;display:flex;align-items:center;justify-content:center;padding:clamp(18px,2vw,32px) clamp(18px,2vw,32px) 0;box-sizing:border-box}
-.rec-lineup-media::after{content:"";position:absolute;left:8%;right:8%;bottom:6%;height:14%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(27,36,38,.10),rgba(27,36,38,0) 70%);pointer-events:none}
+.rec-lineup-media::after{content:"";position:absolute;left:8%;right:8%;bottom:6%;height:14%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(13, 19, 51,.10),rgba(13, 19, 51,0) 70%);pointer-events:none}
 .rec-lineup-media img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;transition:transform .4s ease}
 .rec-lineup-item:hover .rec-lineup-media img{transform:scale(1.03)}
 .rec-lineup-body{display:flex;flex-direction:column;flex:1;padding:clamp(20px,2vw,28px) clamp(22px,2.2vw,32px) clamp(24px,2.2vw,32px);border-top:1px solid var(--gray-line)}
@@ -190,5 +190,5 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 @media (max-width:760px){.rec-stats{grid-template-columns:1fr;gap:18px}.rec-faq summary{font-size:16px}.rec-faq details p{padding-right:16px}}
 .pel-hero-mask{position:absolute;z-index:2;right:2%;bottom:11%;width:20%;aspect-ratio:325/92;background:rgba(255,255,255,.7);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:14px}
 .pel-hero-mask img{height:26%;width:auto;object-fit:contain}
-.pel-hero-mask span{font-size:20px;font-weight:800;color:#0f1c1d}
+.pel-hero-mask span{font-size:20px;font-weight:800;color:#0a1030}
 .rec-model-dark h3{color:#fff}
