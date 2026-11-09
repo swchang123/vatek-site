@@ -103,14 +103,58 @@ document.addEventListener("DOMContentLoaded", function () {
     scrollVarLast[name] = value;
     for (var i = 0; i < scrollVarHosts.length; i++) scrollVarHosts[i].style.setProperty(name, value);
   };
+  // (2026-11-08) 지연 로딩 이미지 페이드인(style.css img[loading="lazy"] 규칙과 짝) — 로드 완료 시 is-loaded
+  (function () {
+    // (2026-11-08) 본문의 모든 이미지에 적용 — 단, 스크립트가 직접 변형하는 히어로 배경, 헤더/푸터 로고,
+    // 메가메뉴·칩 미리보기 등 즉시 보여야 하거나 자체 연출이 있는 이미지는 제외
+    var imgs = Array.prototype.filter.call(document.querySelectorAll('img'), function (img) {
+      if (img.closest('.site-header, .header-peek, .megamenu, .chip-preview, .hero-video-wrap, .hero-fit, .subhero-parallax, .pel-hero-mask, .site-footer, .mobile-nav')) return false;
+      if (img.classList.contains('subhero-parallax-img') || img.classList.contains('hero-fit-ambient')) return false;
+      return true;
+    });
+    var mark = function (img) { img.classList.add('is-loaded'); };
+    for (var i = 0; i < imgs.length; i++) {
+      var img = imgs[i];
+      img.classList.add('img-fade');
+      if (img.complete && img.naturalWidth > 0) { mark(img); continue; }
+      img.addEventListener('load', function (e) { mark(e.target); }, { once: true });
+      img.addEventListener('error', function (e) { mark(e.target); }, { once: true });
+    }
+    // 안전장치: 어떤 이유로든 load 이벤트를 놓친 이미지가 영영 숨겨지지 않도록 8초 뒤 전부 표시
+    setTimeout(function () { for (var j = 0; j < imgs.length; j++) mark(imgs[j]); }, 8000);
+  })();
+  // (2026-11-08) TOP 버튼 — 전 페이지 공통 생성. 한 화면 높이(히어로)를 지나면 표시, 클릭 시 0.7초 감속 스크롤
+  (function () {
+    if (document.getElementById('toTop')) return;
+    var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'to-top'; btn.id = 'toTop'; btn.setAttribute('aria-label', '맨 위로');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>';
+    document.body.appendChild(btn);
+    var ticking = false;
+    var update = function () { ticking = false; btn.classList.toggle('is-shown', window.scrollY > window.innerHeight * 0.9); };
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+    btn.addEventListener('click', function () {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { window.scrollTo(0, 0); return; }
+      var start = window.scrollY, dur = 700, t0 = null;
+      var step = function (ts) {
+        if (t0 === null) t0 = ts;
+        var p = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        window.scrollTo(0, Math.round(start * (1 - e)));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  })();
   var lazyVideos = document.querySelectorAll('video[autoplay]');
   // (2026-11-07 성능) 무한 반복 애니메이션 요소가 뷰포트를 벗어나면 .anim-off로 일시정지(style.css 참고)
   if ("IntersectionObserver" in window) {
-    var animEls = document.querySelectorAll('.hero-scroll-chevrons, .stackdo-scroll-hint-chevrons, .value-scroll-hint-chevrons, .belief-scroll-hint-chevrons, .coldjet-scroll-hint-chevrons, .stackdo-panel-desc .more, .footer-scroll-chevrons');
+    var animEls = document.querySelectorAll('.hero-scroll-chevrons, .stackdo-scroll-hint-chevrons, .value-scroll-hint-chevrons, .belief-scroll-hint-chevrons, .coldjet-scroll-hint-chevrons, .stackdo-panel-desc .more, .footer-scroll-chevrons, .bls-ref-track');
     if (animEls.length) {
       var animObs = new IntersectionObserver(function (entries) {
+        // (2026-11-09) 문서가 스크롤되지 않는 환경(디자인 캔버스처럼 전체 높이로 펼쳐진 미리보기)에서는 교차 판정이 어긋날 수 있어 멈추지 않음
+        if (document.documentElement.scrollHeight <= window.innerHeight + 10) { entries.forEach(function (e) { e.target.classList.remove('anim-off'); }); return; }
         entries.forEach(function (e) { e.target.classList.toggle('anim-off', !e.isIntersecting); });
-      }, { rootMargin: "0px" });
+      }, { rootMargin: "200px 0px" });
       animEls.forEach(function (el) { animObs.observe(el); });
     }
   }
@@ -767,6 +811,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (heroVideoWrap && !prefersReducedMotion) {
     var parallaxTicking = false;
     var heroStickyEl = heroVideoWrap.closest(".hero-sticky");
+    var heroMedia = heroVideoWrap.querySelector("video, img");
+    var heroBadge = (heroStickyEl || heroVideoWrap.parentElement).querySelector(".pel-hero-mask");
     var applyHeroParallax = function () {
       // 영상은 스크롤량의 20%만 이동해야 하므로, 페이지와 함께 움직이는 나머지 80%를
       // 반대 방향으로 되돌려(보정해) 순수 이동량이 20%만 남도록 함
@@ -781,6 +827,10 @@ document.addEventListener("DOMContentLoaded", function () {
         offset = window.scrollY * 0.8;
       }
       heroVideoWrap.style.transform = "translateY(" + offset.toFixed(1) + "px)";
+      // (2026-11-08) 배지는 본문과 같은 속도로 위로 이동
+      if (heroBadge) heroBadge.style.transform = "translate3d(0, " + (-Math.min(window.scrollY, heroStickyEl ? heroStickyEl.offsetHeight : window.innerHeight)).toFixed(1) + "px, 0)";
+      // (2026-11-08) 메인 히어로 영상도 스크롤 진행(0~1)에 따라 0 → 12px 블러
+      if (heroMedia) heroMedia.style.filter = "blur(" + ((heroStickyEl ? Math.min(Math.max(window.scrollY / (heroStickyEl.offsetHeight || 1), 0), 1) : 0) * 12).toFixed(2) + "px)";
       parallaxTicking = false;
     };
     window.addEventListener(
@@ -1755,15 +1805,18 @@ document.addEventListener("DOMContentLoaded", function () {
     applyBufferRatio();
     var panScale = subheroImg.dataset.panScale ? parseFloat(subheroImg.dataset.panScale) : null;
     // (2026-10-02) 히어로 <video>는 스크롤 블러 적용 안 함 — 필터 레이어가 영상을 뿌옇게 만듦. 정지 이미지만 유지.
-    var noBlur = subheroImg.dataset.noBlur === "true" || subheroImg.tagName === "VIDEO";
+    // (2026-11-08) 사용자 요청: 모든 페이지의 히어로 이미지·영상이 스크롤에 따라 점점 흐려지도록 —
+    // data-no-blur 속성과 VIDEO 예외를 더 이상 적용하지 않는다(실시간 블러, 사용자가 성능 트레이드오프를 알고 선택).
+    var noBlur = false;
     // (2026-09-11) data-blur-start="0.5" 등으로 블러 시작 지점을 지연할 수 있음(0~1, 기본 0 = 즉시).
     var blurStart = parseFloat(subheroImg.dataset.blurStart);
     if (isNaN(blurStart)) blurStart = 0;
     blurStart = Math.min(Math.max(blurStart, 0), 0.95);
-    var SUBHERO_BLUR_MAX = 10; // px
+    var SUBHERO_BLUR_MAX = 12; // px (2026-11-08) 10 → 12
     var subheroTicking = false;
 
     var subheroNext = subheroStage.nextElementSibling;
+    var subheroBadge = subheroStage.querySelector(".pel-hero-mask");
     var updateSubhero = function () {
       subheroTicking = false;
       var rect = subheroStage.getBoundingClientRect();
@@ -1792,6 +1845,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       var blurProgress = blurStart > 0 ? Math.max(0, (progress - blurStart) / (1 - blurStart)) : progress;
       subheroImg.style.filter = noBlur ? "" : "blur(" + (blurProgress * SUBHERO_BLUR_MAX).toFixed(2) + "px)";
+      // (2026-11-08) Cold Jet × VATEK 배지는 본문과 같은 속도로 위로 올라가며 히어로 위쪽으로 사라짐
+      if (subheroBadge) subheroBadge.style.transform = "translate3d(0, " + (-scrolled).toFixed(1) + "px, 0)";
     };
     var onSubheroScroll = function () {
       if (!subheroTicking) {

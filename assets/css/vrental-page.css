@@ -70,7 +70,7 @@
 .vr-model:hover .vr-model-media img { transform: scale(1.04); }
 .vr-model-media .ph { display: grid; place-items: center; gap: 6px; text-align: center; color: var(--text-muted); font-size: 12.5px; font-weight: 700; letter-spacing: 1px; }
 .vr-model-media .ph b { font-size: clamp(22px, 1.8vw, 28px); font-weight: 800; color: var(--gray-line); letter-spacing: -0.02em; }
-.vr-model-media .tag { position: absolute; left: 14px; top: 14px; padding: 6px 10px; border-radius: 8px; background: var(--navy); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 1.2px; }
+.vr-model-media .tag { position: absolute; left: 14px; top: 14px; z-index: 2; padding: 6px 10px; border-radius: 8px; background: var(--navy); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 1.2px; } /* (2026-11-08) z-index: 호버 시 확대되는 사진(transform)이 배지 위로 올라와 글자를 가리던 문제 */
 .vr-model-media .tag.is-indoor { left: auto; right: 14px; background: var(--ice-pale); color: var(--ice-dark); }
 .vr-model-body { padding: clamp(18px, 1.8vw, 24px) clamp(18px, 1.8vw, 24px) 0; }
 .vr-model-body .bls-en { color: var(--ice-dark); }

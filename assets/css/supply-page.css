@@ -146,3 +146,5 @@
   .sup-dim-stage { height: 250px; }
   .sup-box { --s: .5; }
 }
+
+.sup-plan:not(.is-light) h3 { color: #fff; }

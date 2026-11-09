@@ -2249,9 +2249,12 @@ body.home .site-footer { z-index: 12; }
   position: relative; z-index: 5;
   background-color: #0f1740;
   background-image:
-    radial-gradient(circle at 12% 12%, rgba(127, 163, 224, .22), transparent 42%),
-    radial-gradient(circle at 88% 8%, rgba(36, 58, 148, .16), transparent 46%),
-    radial-gradient(circle at 70% 90%, rgba(62, 104, 179, .22), transparent 46%),
+    /* (2026-11-08) 그라데이션 복원·강화 — 팔레트 교체 때 보조색 빛무리(36,58,148)가 바탕 네이비와 거의 같아져
+       평평해 보이던 것. 하늘색·프라이머리 빛무리를 더 넓고 진하게, 아래쪽은 더 깊은 네이비로 */
+    radial-gradient(ellipse at 10% 8%, rgba(127, 163, 224, .42), transparent 48%),
+    radial-gradient(circle at 90% 6%, rgba(147, 179, 232, .22), transparent 40%),
+    radial-gradient(ellipse at 72% 92%, rgba(62, 104, 179, .45), transparent 50%),
+    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(5, 8, 30, .35) 100%),
     url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2720%27%20height=%2720%27%3E%3Cpath%20d=%27M0%2020L20%200%27%20stroke=%27rgb(255,255,255)%27%20stroke-opacity=%27.06%27%20stroke-width=%271%27/%3E%3C/svg%3E");
   color: rgba(255,255,255,0.72); padding: clamp(28px, 4.5vh, 56px) 0 clamp(16px, 2.5vh, 28px); font-size: clamp(13px, 1.55vh, 16.5px);
   display: flex; flex-direction: column; justify-content: space-between;
@@ -2710,7 +2713,7 @@ img.pel-hero-video { position: absolute; top: 0 !important; height: 100% !import
 .subhero-parallax.subhero-sticky.is-passed { position: relative; top: auto; } /* 본문이 완전히 덮은 뒤 — main.js가 토글 */
 .subhero-sticky + section, .subhero-sticky + div { position: relative; z-index: 2; }
 /* sticky 히어로 뒤에 오는 모든 섹션은 불투명해야 한다 — 배경이 없는 섹션이면 고정된 히어로가 비쳐 어두운 띠로 보임 */
-.subhero-sticky ~ section:not(.last-freeze):not(.tail-freeze):not([class*="cmp-dark"]):not(.tint-hatch):not(.rec-how) { background-color: var(--white); }
+.subhero-sticky ~ section:not(.last-freeze):not(.tail-freeze):not([class*="cmp-dark"]):not(.tint-hatch):not(.rec-how):not(.auto-feature) { background-color: var(--white); }
 .subhero-sticky ~ section:not(.last-freeze):not(.tail-freeze) { position: relative; z-index: 2; }
 .subhero-sticky ~ section.last-freeze, .subhero-sticky ~ section.tail-freeze { background-color: var(--white); }
 .subhero-sticky + .tail-freeze { position: sticky; }
@@ -3685,9 +3688,9 @@ body.home .compare-table tr:hover td { background: var(--blue-pale); }
 
 .tsk-group .ind-head { margin-bottom: clamp(40px, 4.5vw, 64px); grid-template-columns: 1fr; }
 /* 우측 고정 레일 — compare.html의 .cmp-rail 재사용 + 숫자에 호버하면 좌측으로 반투명 검은 툴팁(그룹 제목) */
-.tsk-rail a { position: relative; }
-.tsk-rail a::after { content: attr(data-title); position: absolute; right: calc(100% + 14px); top: 50%; transform: translate(8px, -50%); padding: 9px 14px; border-radius: 3px; background: rgba(13, 19, 51,.82); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .25s, transform .3s cubic-bezier(.22,.61,.36,1); }
-.tsk-rail a:hover::after { opacity: 1; transform: translate(0, -50%); }
+.cmp-rail a[data-title] { position: relative; }
+.cmp-rail a[data-title]::after { content: attr(data-title); position: absolute; right: calc(100% + 14px); top: 50%; transform: translate(8px, -50%); padding: 9px 14px; border-radius: 3px; background: rgba(13, 19, 51,.82); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .25s, transform .3s cubic-bezier(.22,.61,.36,1); }
+.cmp-rail a[data-title]:hover::after { opacity: 1; transform: translate(0, -50%); }
 .tsk-group { scroll-margin-top: 96px; }
 .tsk-card[id] { scroll-margin-top: 110px; }
 .tsk-rail { gap: 9px; }
@@ -4297,7 +4300,7 @@ video.auto-hero-video { object-fit: cover; background: var(--navy-deep); }
 
 /* (2026-09-09) 사이트 공통 규칙 — 흰색이 아닌 섹션 배경은 항상 이 은은한 혼합색 + 빗금 틴트를 사용한다
    (.ind-feat/.cmp-dark와 같은 계열). 앞으로 새 섹션에 흰색이 아닌 배경이 필요하면 이 클래스를 재사용할 것. */
-.tint-hatch { background-color: #eaf0f0; background-image: radial-gradient(ellipse at 15% 0%, rgba(127, 163, 224,.14), transparent 55%), url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2720%27%20height=%2720%27%3E%3Cpath%20d=%27M0%2020L20%200%27%20stroke=%27rgb(22,32,74)%27%20stroke-opacity=%27.045%27%20stroke-width=%271%27/%3E%3C/svg%3E"); }
+.tint-hatch { background-color: #eaf0f0; background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2720%27%20height=%2720%27%3E%3Cpath%20d=%27M0%2020L20%200%27%20stroke=%27rgb(22,32,74)%27%20stroke-opacity=%27.045%27%20stroke-width=%271%27/%3E%3C/svg%3E"); }
 
 /* ============================================================
    (2026-09-09) 제품 · 자동화 · 공급 > 드라이아이스 세척기 (products/blaster/index.html, .bls-*)
@@ -4312,16 +4315,16 @@ video.auto-hero-video { object-fit: cover; background: var(--navy-deep); }
 }
 .pel-cover { position: relative; left: 50%; right: 50%; width: 100vw; z-index: 2; margin-left: -50vw; margin-right: -50vw; margin-top: -64px; padding: clamp(64px, 8vw, 96px) 0 0; background: var(--white); clip-path: inset(0 round 72px 72px 0 0); }
 @media (max-width: 640px) { .pel-cover { margin-top: -28px; clip-path: inset(0 round 40px 40px 0 0); padding-top: 40px; } }
-.pel-cover.tint-hatch { background-color: #eaf0f0; background-image: radial-gradient(ellipse at 15% 0%, rgba(127, 163, 224,.14), transparent 55%), url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2714%27%20height=%2714%27%3E%3Cpath%20d=%27M0%2014L14%200%27%20stroke=%27rgb(22,32,74)%27%20stroke-opacity=%27.045%27%20stroke-width=%271%27/%3E%3C/svg%3E"); }
+.pel-cover.tint-hatch { background-color: #eaf0f0; background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2714%27%20height=%2714%27%3E%3Cpath%20d=%27M0%2014L14%200%27%20stroke=%27rgb(22,32,74)%27%20stroke-opacity=%27.045%27%20stroke-width=%271%27/%3E%3C/svg%3E"); }
 .aut-hero-stage .subhero-textbox { top: calc(50% - 38px); left: 6%; transform: translate(0, -50%); text-align: left; width: fit-content; max-width: min(560px, 90vw); padding: 36px 44px; }
 .aut-hero-stage .subhero-textbox h1 { white-space: normal; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.22; }
 video.aut-hero-video { object-fit: cover; background: var(--navy-deep); }
 .aut-hero-stage .subhero-parallax-img { top: 0 !important; height: 100% !important; }
 .aut-cover { position: relative; left: 50%; right: 50%; width: 100vw; z-index: 2; margin-left: -50vw; margin-right: -50vw; margin-top: -64px; padding: clamp(64px, 8vw, 96px) 0 0; background: var(--white); clip-path: inset(0 round 72px 72px 0 0); }
 @media (max-width: 640px) { .aut-cover { margin-top: -28px; clip-path: inset(0 round 40px 40px 0 0); padding-top: 40px; } }
-.pel-hero-mask { position: absolute; z-index: 2; right: 2%; bottom: 11%; width: 20%; aspect-ratio: 325 / 92; background: rgba(255,255,255,.7); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 14px; }
-.pel-hero-mask img { height: 26%; width: auto; object-fit: contain; }
-.pel-hero-mask span { font-size: 20px; font-weight: 800; color: #0a1030; }
+.pel-hero-mask { position: absolute; z-index: 2; right: 2%; bottom: 11%; width: auto; will-change: transform; padding: clamp(8px, .7vw, 13px) clamp(14px, 1.2vw, 24px); background: rgba(255,255,255,.7); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: clamp(8px, .8vw, 14px); }
+.pel-hero-mask img { height: clamp(14px, 1.35vw, 27px); width: auto; object-fit: contain; }
+.pel-hero-mask span { font-size: 20px; line-height: 1; font-weight: 800; color: #0a1030; }
 .bls-cover > .wrap { position: relative; z-index: 1; }
 @media (max-width: 640px) { .bls-cover { margin-top: -28px; clip-path: inset(0 round 40px 40px 0 0); } }
 .bls-sec > .wrap { max-width: 1560px; padding: 0 clamp(24px, 4vw, 64px); }
@@ -4352,7 +4355,7 @@ video.aut-hero-video { object-fit: cover; background: var(--navy-deep); }
   .bls-hero-stage .hero-fit { aspect-ratio: auto; left: 0; transform: none; width: 100%; }
   .bls-hero-stage .hero-fit-ambient { display: none; }
 }
-.bls-hero-accent { color: var(--ice); }
+.bls-hero-accent { color: #8db3f2; text-shadow: none; } /* (2026-11-09) 서브페이지 히어로 강조 줄 — 빛무리 없이 선명한 밝은 파랑(사용자: 번져 보임) */
 .bls-hero-mask { position: absolute; z-index: 2; right: 2%; bottom: 11%; width: 20%; aspect-ratio: 325 / 92; background: rgba(255,255,255,.7); border-radius: 12px; }
 video.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: var(--navy-deep); top: 0 !important; height: 100% !important; } /* (2026-10-02) saturate/brightness/hue-rotate 필터 제거 — 영상 선명도 */
 img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: var(--navy-deep); top: 0 !important; height: 100% !important; }
@@ -4387,8 +4390,8 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
 @media (max-width: 900px) { .bls-showcase { grid-template-columns: 1fr; } .bls-showcase-grid { grid-template-columns: 1fr; } }
 
 /* 03 SYSTEMS — 2×2 editorial (제품 사진 무대 + 텍스트) */
-.bls-sys-sec { background-color: #eaf0f0; background-image: radial-gradient(ellipse at 15% 0%, rgba(127, 163, 224,.14), transparent 55%), url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2720%27%20height=%2720%27%3E%3Cpath%20d=%27M0%2020L20%200%27%20stroke=%27rgb(22,32,74)%27%20stroke-opacity=%27.045%27%20stroke-width=%271%27/%3E%3C/svg%3E"); }
-.bls-lineup-sec, .bls-test, .bls-ref-sec { background-color: #eaf0f0; background-image: radial-gradient(ellipse at 15% 0%, rgba(127, 163, 224,.14), transparent 55%), url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2720%27%20height=%2720%27%3E%3Cpath%20d=%27M0%2020L20%200%27%20stroke=%27rgb(22,32,74)%27%20stroke-opacity=%27.045%27%20stroke-width=%271%27/%3E%3C/svg%3E"); }
+.bls-sys-sec { background-color: #eaf0f0; background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2720%27%20height=%2720%27%3E%3Cpath%20d=%27M0%2020L20%200%27%20stroke=%27rgb(22,32,74)%27%20stroke-opacity=%27.045%27%20stroke-width=%271%27/%3E%3C/svg%3E"); }
+.bls-lineup-sec, .bls-test, .bls-ref-sec { background-color: #eaf0f0; background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2720%27%20height=%2720%27%3E%3Cpath%20d=%27M0%2020L20%200%27%20stroke=%27rgb(22,32,74)%27%20stroke-opacity=%27.045%27%20stroke-width=%271%27/%3E%3C/svg%3E"); }
 .bls-sys-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 2.2vw, 36px); }
 .bls-sys { display: grid; grid-template-rows: auto 1fr; background: var(--white); border: 1px solid var(--gray-line); border-radius: 4px; overflow: hidden; }
 .bls-sys-media { position: relative; height: clamp(300px, 28vw, 420px); padding: 28px 28px 0; display: flex; align-items: flex-end; justify-content: center; background: #fff; }
@@ -4433,7 +4436,7 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
 .bls-scale-bar b { font-size: clamp(32px, 3.6vw, 56px); font-weight: 800; letter-spacing: -0.04em; color: #fff; line-height: 1; white-space: nowrap; }
 .bls-scale-line { position: relative; height: 40px; display: flex; align-items: flex-end; justify-content: space-between; }
 .bls-scale-line::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(255,255,255,.18); }
-.bls-scale-fill { position: absolute; left: 0; bottom: 0; top: 0; width: 100%; background: linear-gradient(90deg, rgba(255,255,255,.1), var(--ice)); border-radius: 2px 0 0 2px; transition: width .05s linear; }
+.bls-scale-fill { position: absolute; left: 0; bottom: 0; top: 0; width: 100%; transform-origin: left center; background: linear-gradient(90deg, rgba(255,255,255,.1), var(--ice)); border-radius: 2px 0 0 2px; transition: transform .05s linear; will-change: transform; } /* (2026-11-09 성능) width → scaleX */
 .bls-scale-line i { position: relative; z-index: 1; display: block; width: 1px; background: rgba(255,255,255,.55); height: 14px; }
 .bls-scale-line i:nth-child(1), .bls-scale-line i:nth-child(10), .bls-scale-line i:nth-child(19), .bls-scale-line i:nth-child(28) { height: 28px; background: #fff; }
 .bls-scale-note { display: block; margin-top: 22px; text-align: center; font-size: 13px; color: rgba(255,255,255,.55); letter-spacing: .5px; }
@@ -4460,10 +4463,10 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
 .bls-pcs-demo-overlay { background: linear-gradient(to top, rgba(10,16,18,.7), rgba(10,16,18,.15)); transition: opacity .3s, font-size .45s; }
 .bls-pcs-demo.is-dim .bls-pcs-demo-overlay { font-size: 14px; }
 .bls-pcs-demo-media.is-playing .bls-pcs-demo-overlay { opacity: .85; }
-.bls-pcs-demo-tag { position: absolute; left: 12px; top: 10px; z-index: 2; font-size: 10.5px; font-weight: 900; letter-spacing: .16em; color: var(--navy-deep); background: var(--ice); padding: 4px 9px; border-radius: 999px; opacity: 0; transform: translateY(-4px); transition: opacity .3s, transform .3s; }
+.bls-pcs-demo-tag { position: absolute; left: 12px; top: 10px; z-index: 2; font-size: 10.5px; font-weight: 900; letter-spacing: .16em; color: #fff; background: var(--ice); padding: 4px 9px; border-radius: 999px; opacity: 0; transform: translateY(-4px); transition: opacity .3s, transform .3s; }
 .bls-pcs-demo.is-lead .bls-pcs-demo-tag { opacity: 1; transform: none; }
 .bls-pcs-demo-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; z-index: 2; background: rgba(255,255,255,.12); }
-.bls-pcs-demo-bar i { display: block; height: 100%; background: var(--ice); width: 0; transition: width .3s; }
+.bls-pcs-demo-bar i { display: block; height: 100%; background: var(--ice); width: 100%; transform: scaleX(0); transform-origin: left center; transition: transform .3s; } /* (2026-11-09 성능) width → scaleX */
 .bls-pcs-demo .bls-play-btn { opacity: 0; transition: opacity .25s; }
 .bls-pcs-demo:hover .bls-play-btn, .bls-pcs-demo .bls-play-btn:focus-visible { opacity: 1; }
 .bls-pcs-demo.is-dim .bls-play-btn { opacity: 0; pointer-events: none; }
@@ -4693,7 +4696,7 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
 .au-pc-guide{position:absolute;inset:0;pointer-events:none}
 .au-pc-orbit{position:absolute;inset:0;transform:rotate(-20deg);animation:auOrbit 3.2s cubic-bezier(.45,0,.55,1) infinite}
 .au-pc-hand{position:absolute;left:50%;top:9%;width:34px;height:34px;margin-left:-17px;transform:rotate(-20deg);filter:drop-shadow(0 4px 8px rgba(0,0,0,.5));animation:auHandPress 3.2s ease-in-out infinite}
-.au-pc-guide-label{position:absolute;left:50%;top:-40px;transform:translateX(-50%);white-space:nowrap;background:var(--ice);color:var(--navy-deep);font-size:13px;font-weight:800;letter-spacing:.3px;padding:7px 14px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.au-pc-guide-label{position:absolute;left:50%;top:-40px;transform:translateX(-50%);white-space:nowrap;background:var(--ice);color:#fff;font-size:13px;font-weight:800;letter-spacing:.3px;padding:7px 14px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.35)}
 .au-pc-guide-label::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:var(--ice);transform:translateX(-50%) rotate(45deg);border-radius:2px}
 .au-pc-knob.is-touched .au-pc-guide,.au-pc-knob.is-touched::after{display:none}
 @keyframes auOrbit{0%,12%{transform:rotate(-20deg)}50%{transform:rotate(70deg)}88%,100%{transform:rotate(-20deg)}}
@@ -4743,7 +4746,8 @@ img.bls-hero-video { object-fit: cover; object-position: 50% 42%; background: va
 .site-footer, .cmp-dark, .cmp-conclusion, .cmp-duo-col, .cmp-cost-total, .cmp-dark-final,
 .auto-feature, .auto-cont li, .prd-auto, .rec-how, .sup-plan:not(.is-light), .adopt-pin,
 .bls-dark-final, .tsk-media, .bls-showcase-media, .bls-showcase-item-media, .bls-pcs-demo-media,
-.bls-auto-media, .bls-partner-media, .value-content, .stackdo-frame, .sup-matrix-wrap, .sup-uses, .tint-hatch {
+.bls-auto-media, .bls-partner-media, .value-content, .stackdo-frame, .sup-matrix-wrap, .sup-uses, .tint-hatch,
+.vr-compressor, .vr-path.is-primary, .plt-lineup {
   --ice: var(--ice-on-dark);
 }
 
@@ -4839,3 +4843,59 @@ html.is-scrolling .autoscroll-hint .chevron,
 /* (2026-11-07 성능) 틀고정 전의 "우리의 신념" 제목 띠도 투명 — 섹션 오버레이와 색·무늬가 정확히 이어진다
    (틀고정되면 기존대로 흰 바 .belief-pin-title.is-pinned 적용) */
 .belief-pin-title:not(.is-pinned) { background-color: transparent !important; background-image: none !important; box-shadow: none; }
+
+/* (2026-11-08) 히어로 미디어 스크롤 블러 — 필터를 GPU 레이어에서 처리하도록 */
+.hero-video, .hero-video-wrap img, .subhero-parallax-img { will-change: transform, filter; }
+
+/* (2026-11-08) 지연 로딩 이미지 페이드인 — 스크롤 중 이미지가 로드되는 순간 "툭" 나타나던 것을
+   부드럽게. 로드 전엔 숨기고(is-loaded 전), 로드되면 각 요소의 원래 투명도까지 0.6s 페이드.
+   (from 키프레임만 두면 'to'는 요소 자신의 계산값이라 로고처럼 반투명한 이미지도 그 값으로 멈춘다) */
+/* (2026-11-08) 대상을 지연 로딩 이미지에서 "본문의 모든 이미지"(.img-fade — main.js가 표시)로 확대.
+   헤더 로고·히어로 배경·메뉴 미리보기처럼 스크립트가 직접 움직이거나 즉시 보여야 하는 이미지는 제외. */
+img.img-fade:not(.is-loaded) { opacity: 0 !important; }
+img.img-fade.is-loaded { animation: imgFadeIn .95s cubic-bezier(.22, .61, .36, 1) backwards; } /* (2026-11-08) both → backwards: 애니메이션이 끝난 뒤에도 transform을 붙잡고 있어 호버 확대 전환(transition)이 무시되던 문제 */
+/* (2026-11-08) 아래에서 살짝 떠오르며(14px) 미세하게 줄어들어(1.03→1) 펼여지는 느낌 — 위치·크기는 마지막에 요소 자신의 값으로 돌아온다 */
+@keyframes imgFadeIn { from { opacity: 0; transform: translateY(14px) scale(1.03); } 60% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { img.img-fade:not(.is-loaded) { opacity: 1 !important; } img.img-fade.is-loaded { animation: none; } }
+
+/* (2026-11-08) TOP 버튼(전 페이지 공통, main.js가 생성) — 우측 하단 고정, 한 화면 높이를 지나면 표시 */
+.to-top { position: fixed; right: clamp(16px, 2vw, 28px); bottom: calc(clamp(16px, 2vw, 28px) + env(safe-area-inset-bottom, 0px)); z-index: 90;
+  width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--ice-on-dark); background: rgba(255,255,255,.96); color: var(--blue);
+  box-shadow: 0 8px 22px rgba(13, 19, 51, .2), 0 0 0 4px rgba(127, 163, 224, .18); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;
+  opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .3s ease, transform .3s ease, visibility .3s, background .2s, color .2s, border-color .2s; }
+.to-top.is-shown { opacity: 1; visibility: visible; transform: translateY(0); }
+.to-top:hover, .to-top:focus-visible { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 8px 22px rgba(62, 104, 179, .35); }
+.to-top svg { width: 22px; height: 22px; display: block; }
+@media (prefers-reduced-motion: reduce) { .to-top { transition: none; } }
+
+/* 장식용 번호 라벨(01, 02 …) 전역 숨김 */
+.plt-category-num, .bls-num:not(.bls-steps .bls-num), .au-adv-num, .rec-how .plt-reason .num, .stackdo-panel-head .num { display: none !important; }
+
+/* 히어로 공통 Cold Jet × VATEK 배지 — 메인 히어로에서는 인트로 애니메이션 뒤에 등장 */
+.hero .pel-hero-mask { z-index: 2; opacity: 0; animation: heroScrollFadeIn .6s ease-out 6.3s both; }
+@media (prefers-reduced-motion: reduce) { .hero .pel-hero-mask { animation: none; opacity: 1; } }
+
+/* (2026-11-08) 대비 보정: 밝은 배경 위 스크롤 힌트, 남색 카드 제목 */
+.stackdo-scroll-hint { color: rgba(36,58,148,.75); text-shadow: none; }
+.stackdo-scroll-hint .chevron { border-right-color: rgba(36,58,148,.75); border-bottom-color: rgba(36,58,148,.75); filter: none; }
+
+/* (2026-11-09) 블라스터 마지막 CTA — 파란 버튼 3개 + 호버 시 살짝 떠오르며 밝아지고 화살표가 나타남 */
+.bls-final-btns .cta-btn { position: relative; padding: 14px 28px; font-size: 16px; border-radius: 14px; overflow: hidden; background: var(--blue); box-shadow: 0 6px 16px rgba(62,104,179,.22); transition: transform .22s cubic-bezier(.22,.61,.36,1), box-shadow .22s, background-color .22s, padding .22s cubic-bezier(.22,.61,.36,1); }
+.bls-final-btns .cta-btn::after { content: "→"; display: inline-block; width: 0; opacity: 0; margin-left: 0; transform: translateX(-6px); transition: width .22s cubic-bezier(.22,.61,.36,1), opacity .22s, margin .22s, transform .22s cubic-bezier(.22,.61,.36,1); }
+.bls-final-btns .cta-btn:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 12px 26px rgba(36,58,148,.32); filter: none; }
+.bls-final-btns .cta-btn:hover::after { width: 1em; opacity: 1; margin-left: 8px; transform: translateX(0); }
+.bls-final-btns .cta-btn:active { transform: translateY(0) scale(.98); box-shadow: 0 4px 12px rgba(36,58,148,.25); }
+@media (prefers-reduced-motion: reduce) { .bls-final-btns .cta-btn, .bls-final-btns .cta-btn::after { transition: none; } }
+
+/* (2026-11-09 성능) 밝은 해치 섹션의 상단 파란 빛(radial-gradient)을 섹션 전체 배경에서 떼어내
+   높이가 제한된 ::before 레이어로 옮김 — 수천 px 높이 섹션의 모든 타일이 그라데이션을 계산하던 비용 제거 */
+.tint-hatch, .bls-sys-sec, .bls-lineup-sec, .bls-test, .bls-ref-sec { position: relative; isolation: isolate; }
+.tint-hatch::before, .bls-sys-sec::before, .bls-lineup-sec::before, .bls-test::before, .bls-ref-sec::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: min(100%, 1100px); z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse at 15% 0%, rgba(127, 163, 224,.14), transparent 55%);
+}
+/* (2026-11-09 성능) 화면 밖 무한 애니메이션 일시정지 — 요소 자신과 의사요소까지 */
+.anim-off, .anim-off::before, .anim-off::after { animation-play-state: paused; }
+
+/* (2026-11-09) 히어로 텍스트 박스 위 작은 영문 라벨(COMPARISON, COLD JET × VATEK …) — 어두운 사진 위에서 진한 파랑이 묻혀 밝은 파랑으로 */
+.subhero-textbox .ind-hero-eyebrow { color: var(--ice-on-dark); }

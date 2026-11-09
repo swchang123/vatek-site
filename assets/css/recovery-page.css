@@ -188,7 +188,7 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 .rec-faq details p{margin:0;padding:0 60px 26px 6px;font-size:16px;line-height:1.8;color:var(--text-body);word-break:keep-all}
 @media (max-width:1100px){.rec-how .plt-reason-stage{grid-template-columns:1fr}.rec-stats{grid-template-columns:1fr;gap:18px}}
 @media (max-width:760px){.rec-stats{grid-template-columns:1fr;gap:18px}.rec-faq summary{font-size:16px}.rec-faq details p{padding-right:16px}}
-.pel-hero-mask{position:absolute;z-index:2;right:2%;bottom:11%;width:20%;aspect-ratio:325/92;background:rgba(255,255,255,.7);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:14px}
-.pel-hero-mask img{height:26%;width:auto;object-fit:contain}
-.pel-hero-mask span{font-size:20px;font-weight:800;color:#0a1030}
+.pel-hero-mask { position: absolute; z-index: 2; right: 2%; bottom: 11%; width: auto; padding: clamp(8px, .7vw, 13px) clamp(14px, 1.2vw, 24px); background: rgba(255,255,255,.7); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: clamp(8px, .8vw, 14px); }
+.pel-hero-mask img { height: clamp(14px, 1.35vw, 27px); width: auto; object-fit: contain; }
+.pel-hero-mask span{font-size:20px; line-height: 1;font-weight:800;color:#0a1030}
 .rec-model-dark h3{color:#fff}

@@ -243,7 +243,11 @@
         <h1>작업에 맞는 세척 조건을<br><span class="bls-hero-accent">정밀하게 제어합니다.</span></h1>
         <p class="bls-hero-main">Cold Jet 드라이아이스 블라스터는 분사 압력과 드라이아이스 공급량, 입자 크기와 노즐을 조절해<br>세정 대상과 오염 상태에 맞는 작업 조건을 설정할 수 있습니다.<br>Cold Jet의 핵심 기술에 바테크의 국내 현장 지원을 더합니다.</p>
       </div>
-      <div class="bls-hero-mask" aria-hidden="true"></div>
+      <div class="pel-hero-mask" aria-hidden="true">
+        <img src="../../assets/img/coldjet-logo.png" alt="" />
+        <span>×</span>
+        <img src="../../assets/img/vatek-logo-wordmark.png" alt="" />
+      </div>
     </div>
   </section>
 
@@ -255,7 +259,6 @@
           <span class="bls-dot-eyebrow">BUILT WITH PRECISION</span>
           <h2 class="cmp-h2">가까이서 확인하는<br>Cold Jet의 설계와 완성도.</h2>
         </div>
-        <p class="bls-sub is-side">Cold Jet 블라스터의 구조와 마감을<br>제품 영상으로 확인해 보세요.</p>
       </div>
       <div class="bls-showcase-frame reveal">
       <div class="bls-showcase">
@@ -821,18 +824,18 @@
       <div class="bls-final-grid">
         <div>
           <span class="cmp-eyebrow">FIND YOUR BLASTER</span>
-          <h2 class="cmp-h2">장비를 결정하기 전에,<br>실제 오염물로 확인해 보세요.</h2>
+          <h2 class="cmp-h2">장비를 결정하기 전에,<br>실제 오염 제품으로 확인해보세요.</h2>
         </div>
         <div>
           <div class="cmp-lead">
             <p>드라이아이스 세척의 결과는 같은 장비를 사용해도 소재와 오염물, 부착 상태와 작업 조건에 따라 달라질 수 있습니다.</p>
-            <p>바테크는 실제 부품과 금형, 오염 샘플을 이용한 테스트로 필요한 세척 조건을 확인하고, 그 결과에 맞는 Cold Jet 블라스터와 노즐을 제안합니다.</p>
+            <p>바테크는 실제 부품과 제품, 오염 샘플을 이용한 테스트로 필요한 세척 조건을 확인하고, 대상에 적합한 Cold Jet 블라스터와 노즐을 제안합니다. 또한 장비를 렌탈하시어 현장에서 직접 테스트를 해보실 수도 있습니다.</p>
           </div>
-          <div class="cmp-cta-btns">
-            <a class="cta-btn" href="../../rental/demo.html">세척 테스트 신청</a>
-            <a class="cmp-btn-ghost" href="../compare-equip.html">장비 상담</a>
+          <div class="cmp-cta-btns bls-final-btns">
+            <a class="cta-btn" href="../../rental/demo-apply.html">세척 테스트 신청</a>
+            <a class="cta-btn" href="../../rental/apply.html">장비 렌탈 신청</a>
+            <a class="cta-btn" href="../../products/quote.html">장비 상담</a>
           </div>
-          <a class="bls-textlink" href="../../rental/demo.html">렌탈과 데모 보기 →</a>
         </div>
       </div>
     </div>
@@ -1007,10 +1010,13 @@
     var MIN=0.3,MAX=3.0,STEP=0.1,SWEEP=270,ticking=false,touched=false,value=MAX;
     var snap=function(v){return Math.round((v-MIN)/STEP)*STEP+MIN};
     if(ticks){var h='';for(var i=0;i<28;i++){var a=(-135+i*(SWEEP/27))*Math.PI/180,big=(i%9===0),r1=big?108:113,r2=118;h+='<line x1="'+(150+r1*Math.sin(a)).toFixed(1)+'" y1="'+(150-r1*Math.cos(a)).toFixed(1)+'" x2="'+(150+r2*Math.sin(a)).toFixed(1)+'" y2="'+(150-r2*Math.cos(a)).toFixed(1)+'"'+(big?' stroke="#fff" stroke-width="2"':'')+'></line>'}ticks.innerHTML=h}
+    var appliedKey=null;
     function setValue(v){
-      v=snap(Math.min(Math.max(v,MIN),MAX));value=v;
+      v=snap(Math.min(Math.max(v,MIN),MAX));
+      var key=v.toFixed(1); if(key===appliedKey)return; appliedKey=key; // (2026-11-09 성능) 값이 같으면 DOM을 건드리지 않음 — 스크롤마다 텍스트/레이아웃이 갱신되던 비용 제거
+      value=v;
       var f=(v-MIN)/(MAX-MIN),deg=-135+f*SWEEP;
-      fill.style.width=(f*100)+'%';live.textContent=v.toFixed(1)+' mm';if(num)num.textContent=v.toFixed(1);
+      fill.style.transform='scaleX('+f.toFixed(4)+')';live.textContent=v.toFixed(1)+' mm';if(num)num.textContent=v.toFixed(1);
       if(dial)dial.style.transform='translate(-50%,-50%) rotate('+deg.toFixed(1)+'deg)';
       if(face)face.style.transform='translate(-50%,-50%) rotate('+deg.toFixed(1)+'deg)';
       if(arc)arc.style.strokeDashoffset=(1-f).toFixed(4);
@@ -1018,7 +1024,7 @@
       if(demos){demos.style.setProperty('--w',f.toFixed(3));
         var lead=f<.42?'a':f>.58?'b':null;
         dA.classList.toggle('is-lead',lead==='a');dB.classList.toggle('is-lead',lead==='b');dA.classList.toggle('is-dim',lead==='b');dB.classList.toggle('is-dim',lead==='a');
-        if(bA)bA.style.width=((1-f)*100).toFixed(1)+'%';if(bB)bB.style.width=(f*100).toFixed(1)+'%';
+        if(bA)bA.style.transform='scaleX('+(1-f).toFixed(3)+')';if(bB)bB.style.transform='scaleX('+f.toFixed(3)+')';
         if(v1)v1.playbackRate=lead==='b'?.5:1;if(v2)v2.playbackRate=lead==='a'?.5:1;}
     }
     var demos=document.querySelector('.bls-pcs-demos'),dA=document.getElementById('pcsDemoA'),dB=document.getElementById('pcsDemoB'),bA=document.getElementById('pcsBarA'),bB=document.getElementById('pcsBarB'),v1=document.getElementById('pcsVideo1'),v2=document.getElementById('pcsVideo2');

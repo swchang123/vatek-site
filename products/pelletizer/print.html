@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>드라이아이스 생산 시스템 추천 결과 — VATEK</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #e9edf5; }
+  body { font-family: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", -apple-system, "Segoe UI", sans-serif; color: #111; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  .bar { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 20px; background: #182a5e; color: #fff; }
+  .bar p { margin: 0; font-size: 14px; }
+  .bar p span { font-size: 12px; opacity: .72; margin-left: 10px; }
+  .bar div { display: flex; gap: 8px; }
+  .bar button { height: 38px; padding: 0 18px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.55); background: none; color: #fff; font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; }
+  .bar button.go { background: #3e68b3; border-color: #3e68b3; }
+  .bar button.go:hover { background: #243a94; border-color: #243a94; }
+  .bar button:hover { background: rgba(255,255,255,.12); }
+  .sheet { width: min(794px, 100%); margin: 24px auto 48px; background: #fff; padding: clamp(28px, 6vw, 56px); box-shadow: 0 20px 60px rgba(0,0,0,.18); }
+  header { border-bottom: 2px solid #243a94; padding-bottom: 12px; margin-bottom: 18px; display: grid; gap: 4px; }
+  header b { font-size: 12px; letter-spacing: 1px; color: #3e68b3; }
+  header h1 { margin: 0; font-size: 22px; color: #243a94; }
+  header span { font-size: 12px; color: #666; }
+  dl.cond { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 20px; }
+  dl.cond div { border: 1px solid #ccd; border-radius: 8px; padding: 10px 12px; }
+  dl.cond dt { font-size: 11px; color: #666; margin-bottom: 4px; }
+  dl.cond dd { margin: 0; font-size: 14px; font-weight: 700; }
+  .row { display: flex; gap: 16px; align-items: stretch; break-inside: avoid; }
+  .row article { flex: 1; text-align: center; border: 1px solid #dde2ee; border-radius: 12px; overflow: hidden; background: #fff; padding-bottom: 18px; min-width: 0; }
+  .row article > div { background: #edf2fb; }
+  .row article img { display: block; width: 100%; height: 180px; object-fit: contain; padding: 16px; mix-blend-mode: multiply; }
+  .row article span { display: block; font-size: 12px; font-weight: 800; color: #666; letter-spacing: 1px; margin-top: 12px; }
+  .row article strong { display: block; font-size: 18px; font-weight: 800; color: #1b2a5e; margin-top: 4px; }
+  .op { flex: 0 0 auto; align-self: center; width: 30px; height: 30px; position: relative; }
+  .op::before, .op::after { content: ""; position: absolute; background: #000; border-radius: 2px; }
+  .op.plus::before { left: 12px; width: 6px; top: 0; bottom: 0; }
+  .op.plus::after { top: 12px; height: 6px; left: 0; right: 0; }
+  .op.eq::before { left: 2px; right: 2px; top: 8px; height: 6px; }
+  .op.eq::after { left: 2px; right: 2px; top: 16px; height: 6px; }
+  .sum { flex: 1; display: flex; flex-direction: column; justify-content: center; border: 1px solid #dde2ee; border-radius: 12px; padding: 22px 24px; min-width: 0; }
+  .sum small { display: block; font-size: 12px; font-weight: 700; color: #666; margin-bottom: 6px; }
+  .sum h2 { font-size: 22px; font-weight: 800; color: #1b2a5e; margin: 0 0 10px; }
+  .sum p { font-size: 14px; line-height: 1.7; margin: 0; }
+  .note { margin-top: 24px; padding-top: 16px; border-top: 1px solid #dde2ee; }
+  .note b { display: block; font-size: 11px; letter-spacing: 2px; color: #666; margin-bottom: 8px; }
+  .note p { margin: 0 0 8px; font-size: 12.5px; line-height: 1.65; color: #555; }
+  .note p.tip { color: #243a94; font-weight: 700; }
+  footer { margin-top: 24px; padding-top: 14px; border-top: 1px solid #ccd; display: flex; justify-content: space-between; gap: 12px; font-size: 11px; color: #666; }
+  footer b { color: #243a94; }
+  .empty { text-align: center; padding: 60px 20px; color: #666; }
+  @media (max-width: 640px) {
+    dl.cond { grid-template-columns: repeat(2, 1fr); }
+    .row { flex-direction: column; }
+    .op { align-self: center; }
+    .op.eq::before { top: 8px; } .op.eq::after { top: 16px; }
+  }
+  @media print {
+    @page { size: A4 portrait; margin: 14mm; }
+    html, body { background: #fff; }
+    .bar { display: none; }
+    .sheet { width: auto; margin: 0; padding: 0; box-shadow: none; }
+    dl.cond { grid-template-columns: repeat(4, 1fr); }
+    .row { flex-direction: row; }
+    .row article > div, .row article img { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="bar"><p><strong>출력 미리보기</strong><span>A4 세로</span></p><div><button type="button" onclick="window.close()">닫기</button><button type="button" class="go" onclick="window.print()">인쇄</button></div></div>
+<main class="sheet" id="sheet"><div class="empty">출력할 결과가 없습니다. 생산 시스템 찾기에서 결과를 확인한 뒤 출력하기를 눌러 주세요.</div></main>
+<script>
+(function () {
+  function esc(v) { return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) { return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
+  var data = null;
+  try {
+    var raw = location.hash.slice(1);
+    if (raw) data = JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(raw)))));
+  } catch (e) { data = null; }
+  if (!data || !data.products) return;
+  var d = new Date();
+  var html = '<header><b>VATEK × Cold Jet</b><h1>드라이아이스 생산 시스템 추천 결과</h1><span>' + d.getFullYear() + '. ' + (d.getMonth() + 1) + '. ' + d.getDate() + '.</span></header>';
+  html += '<dl class="cond">' + (data.conditions || []).map(function (c) { return '<div><dt>' + esc(c[0]) + '</dt><dd>' + esc(c[1]) + '</dd></div>'; }).join('') + '</dl>';
+  html += '<div class="row">' + data.products.map(function (p, i) {
+    return '<article><div><img src="' + esc(p.image) + '" alt="' + esc(p.name) + '"></div><span>' + String(i + 1).padStart(2, '0') + ' / ' + esc(p.role) + '</span><strong>' + esc(p.name) + '</strong></article>';
+  }).join('<span class="op plus"></span>') + (data.products.length > 1 ? '<span class="op eq"></span>' : '') +
+    '<div class="sum"><small>' + esc(data.type) + '</small><h2>' + esc(data.name) + '</h2><p>' + esc(data.reason) + '</p></div></div>';
+  html += '<div class="note"><b>NOTE</b><p>' + esc(data.note) + '</p>' + (data.tip ? '<p class="tip">' + esc(data.tip) + '</p>' : '') + '</div>';
+  html += '<footer><b>(주)바테크 VATEK</b><span>Cold Jet 공식 대리점 · 드라이아이스 생산 시스템 상담</span></footer>';
+  document.getElementById('sheet').innerHTML = html;
+  document.title = '추천 결과 — ' + data.name + ' — VATEK';
+  var imgs = Array.prototype.slice.call(document.images), pending = imgs.filter(function (im) { return !im.complete; }).length;
+  function go() { setTimeout(function () { window.print(); }, 150); }
+  if (!pending) go();
+  else imgs.forEach(function (im) { if (!im.complete) { im.onload = im.onerror = function () { if (--pending === 0) go(); }; } });
+})();
+</script>
+</body>
+</html>

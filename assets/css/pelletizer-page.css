@@ -27,9 +27,9 @@
 video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .pel-hero-stage .subhero-parallax-img { top: 0 !important; height: 100% !important; }
 .pel-hero-stage .subhero-parallax-img { top: 0 !important; height: 100% !important; }
-.pel-hero-mask { position: absolute; z-index: 2; right: 2%; bottom: 11%; width: 20%; aspect-ratio: 325 / 92; background: rgba(255,255,255,.7); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-.pel-hero-mask img { height: 26%; width: auto; object-fit: contain; }
-.pel-hero-mask span { font-size: 20px; font-weight: 800; color: #0f1c1d; }
+.pel-hero-mask { position: absolute; z-index: 2; right: 2%; bottom: 11%; width: auto; padding: clamp(8px, .7vw, 13px) clamp(14px, 1.2vw, 24px); background: rgba(255,255,255,.7); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: clamp(8px, .8vw, 14px); }
+.pel-hero-mask img { height: clamp(14px, 1.35vw, 27px); width: auto; object-fit: contain; }
+.pel-hero-mask span { font-size: 20px; line-height: 1; font-weight: 800; color: #0f1c1d; }
 .subhero-textbox .plt-btns { margin-top: 20px; }
 .subhero-textbox .plt-btn.is-outline { border-color: rgba(255,255,255,.5); color: #fff; }
 .subhero-textbox .plt-btn.is-outline:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.7); }
@@ -110,9 +110,9 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .plt-reason-video .bls-showcase-media::before { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; border: 1px solid rgba(255,255,255,.14); pointer-events: none; }
 .plt-reason-grid { display: grid; grid-template-rows: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .plt-reason { position: relative; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid var(--gray-line); border-radius: 16px; padding: 18px 24px; overflow: hidden; transition: transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .4s, border-color .4s; }
-.plt-reason::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--ice); transform: scaleY(0); transform-origin: top; transition: transform .45s cubic-bezier(.22,.61,.36,1); }
-.plt-reason:hover { transform: translateX(6px); box-shadow: var(--shadow); border-color: transparent; }
-.plt-reason:hover::before { transform: scaleY(1); }
+.plt-reason::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--ice); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.22,.61,.36,1); }
+.plt-reason:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: transparent; }
+.plt-reason:hover::before { transform: scaleX(1); }
 .plt-reason h3 { margin: 0 0 6px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; color: var(--navy); word-break: keep-all; }
 .plt-reason p { margin: 0; font-size: 15.5px; line-height: 1.7; color: var(--text-body); word-break: keep-all; }
 
@@ -161,7 +161,7 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .plt-finder-progress button i { position: relative; z-index: 1; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-style: normal; font-size: 15px; font-weight: 800; color: rgba(255,255,255,.55); border: 2px solid rgba(255,255,255,.22); background: #334143; transition: color .25s, border-color .25s, background .25s, box-shadow .25s; }
 .plt-finder-progress button span { font-size: 16px; font-weight: 700; color: rgba(255,255,255,.55); line-height: 1.4; transition: color .25s; word-break: keep-all; }
 .plt-finder-progress button small { display: inline-block; font-size: 12.5px; font-weight: 700; color: rgba(255,255,255,.4); background: rgba(255,255,255,.08); border-radius: 999px; padding: 4px 12px; transition: color .25s, background .25s; }
-.plt-finder-progress button.is-active i { background: var(--ice); border-color: var(--ice); color: #0b2c2f; box-shadow: 0 0 0 6px rgba(79,173,184,.18); }
+.plt-finder-progress button.is-active i { background: var(--ice); border-color: var(--ice); color: #fff; box-shadow: 0 0 0 6px rgba(79,173,184,.18); }
 .plt-finder-progress button.is-active span { color: #fff; }
 .plt-finder-progress button.is-active small { background: rgba(79,173,184,.2); color: var(--ice); }
 .plt-finder-progress button.is-complete:not(.is-active) i { background: #334143; border-color: var(--ice); color: var(--ice); }
@@ -482,3 +482,54 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 /* (2026-11-07) 생산 시스템 찾기 섹션 — style.css의 ".subhero-sticky ~ section { background: white }" 공통 규칙이
    이 섹션의 네이비 배경을 덮어써 흰 글자가 보이지 않던 문제. id 선택자로 우선순위를 올려 네이비 배경을 복원. */
 #pelletizer-lineup.plt-lineup { background-color: var(--navy); }
+
+/* (2026-11-09) 히어로 제목이 길어져(3줄) 글자 크기를 줄이고 박스를 넓힘 — 줄바꿈은 마크업의 <br>만 사용 */
+.pel-hero-stage .hero-fit .subhero-textbox { max-width: min(720px, 56cqw); }
+.pel-hero-stage .hero-fit .subhero-textbox h1 { font-size: clamp(20px, 3cqw, 42px); line-height: 1.28; }
+.pel-hero-stage .hero-fit .subhero-textbox h1 .bls-hero-accent { white-space: nowrap; }
+
+/* (2026-11-09) 생산 시스템 찾기 — 단계 제목이 질문형 문장으로 길어짐 */
+.plt-finder-form legend { font-size: clamp(20px, 1.9vw, 25px); line-height: 1.4; word-break: keep-all; }
+.plt-finder-form legend span.plt-legend-text { color: inherit; margin: 0; font-size: inherit; }
+
+/* ---- finder result: 제품 보러가기 / 다시하기 / 출력하기 ---- */
+.plt-result-products article { display: flex; flex-direction: column; align-items: center; padding-bottom: 20px; }
+.plt-result-products article > div { width: 100%; background: var(--blue-pale); }
+.plt-result-products img { mix-blend-mode: multiply; background: transparent; height: 200px; padding: 18px; }
+.plt-result-products strong { margin: 4px 0 14px; }
+.plt-result-go { display: inline-flex; align-items: center; gap: 6px; height: 38px; padding: 0 18px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 13.5px; font-weight: 700; text-decoration: none; transition: background .2s, transform .2s; }
+.plt-result-go i { font-style: normal; display: inline-block; transition: transform .3s cubic-bezier(.22,.61,.36,1); }
+.plt-result-go:hover { background: var(--blue-dark); transform: translateY(-1px); }
+.plt-result-go:hover i { transform: translateX(3px); }
+.plt-result-go.is-consult { background: #fff; color: var(--blue); box-shadow: inset 0 0 0 1.5px var(--blue); }
+.plt-result-go.is-consult:hover { background: var(--blue); color: #fff; }
+.plt-result-note-footer { gap: 10px; justify-content: flex-end; }
+.plt-result-note-footer .plt-btn { cursor: pointer; font-family: inherit; }
+.plt-result-note-footer .plt-btn i { font-style: normal; font-size: 1.1em; line-height: 1; }
+.plt-result-note-footer .plt-btn.is-outline { color: var(--blue); border-color: var(--blue); }
+.plt-result-note-footer .plt-btn.is-outline:hover { background: var(--blue); color: #fff; }
+/* ---- 출력하기: 브라우저 기본 인쇄 미리보기에 결과만 출력 ---- */
+#finderPrintSheet { display: none; }
+.plt-result-print-fallback { align-self: center; font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+@media print {
+  @page { size: A4 portrait; margin: 14mm; }
+  body > *:not(#finderPrintSheet) { display: none !important; }
+  body, html { background: #fff !important; overflow: visible !important; height: auto !important; }
+  #finderPrintSheet { display: block; color: #111; }
+  #finderPrintSheet header { border-bottom: 2px solid #243a94; padding-bottom: 12px; margin-bottom: 18px; display: grid; gap: 4px; }
+  #finderPrintSheet header b { font-size: 12px; letter-spacing: 1px; color: #3e68b3; }
+  #finderPrintSheet header h2 { margin: 0; font-size: 22px; color: #243a94; }
+  #finderPrintSheet header span { font-size: 12px; color: #666; }
+  #finderPrintSheet > dl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 20px; }
+  #finderPrintSheet > dl div { border: 1px solid #ccd; border-radius: 8px; padding: 10px 12px; }
+  #finderPrintSheet dt { font-size: 11px; color: #666; margin-bottom: 4px; }
+  #finderPrintSheet dd { margin: 0; font-size: 14px; font-weight: 700; }
+  #finderPrintSheet .plt-finder-result { opacity: 1 !important; transform: none !important; box-shadow: none; border: none; padding: 0; transition: none; }
+  #finderPrintSheet .plt-result-top { display: none; }
+  #finderPrintSheet .plt-result-row { break-inside: avoid; flex-direction: row !important; flex-wrap: nowrap; }
+  #finderPrintSheet .plt-result-products { display: contents; }
+  #finderPrintSheet img { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+  #finderPrintSheet .plt-result-products article > div, #finderPrintSheet .plt-result-products img { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  #finderPrintSheet footer { margin-top: 24px; padding-top: 14px; border-top: 1px solid #ccd; display: flex; justify-content: space-between; gap: 12px; font-size: 11px; color: #666; }
+  #finderPrintSheet footer b { color: #243a94; }
+}

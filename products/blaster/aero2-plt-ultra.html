@@ -276,7 +276,7 @@
     .au-gauge-orbit{position:absolute;left:50%;top:65.4%;width:0;height:0;animation:pwOrbit 3.2s ease-in-out infinite alternate}
     .au-gauge-hand{position:absolute;width:30px;height:30px;left:-15px;top:-15px;transform:translateY(calc(-1 * var(--orbit,120px)));filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
     @keyframes pwOrbit{0%{transform:rotate(-70deg)}100%{transform:rotate(70deg)}}
-    .au-gauge-bubble{position:absolute;left:50%;top:-14px;transform:translateX(-50%);background:var(--ice);color:var(--navy-deep);font-size:13px;font-weight:800;padding:8px 14px;border-radius:999px;white-space:nowrap;animation:pwBob 1.6s ease-in-out infinite}
+    .au-gauge-bubble{position:absolute;left:50%;top:-14px;transform:translateX(-50%);background:var(--ice);color:#fff;font-size:13px;font-weight:800;padding:8px 14px;border-radius:999px;white-space:nowrap;animation:pwBob 1.6s ease-in-out infinite}
     .au-gauge-bubble::after{content:"";position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);border:6px solid transparent;border-bottom:0;border-top-color:var(--ice)}
     @keyframes pwBob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-5px)}}
     .au-gauge-cap{display:block;margin-top:6px;text-align:center;font-size:13.5px;color:rgba(255,255,255,.75)}
