@@ -170,3 +170,68 @@ video.noz-hero-video{object-fit:cover;background:var(--navy-deep)}
 .noz-code-foot{margin:18px 0 0;font-size:12.5px;color:var(--text-muted);word-break:keep-all}
 @media (max-width:1100px){.noz-code-cols{grid-template-columns:repeat(2,minmax(0,1fr))}.noz-code-col:nth-child(3)::before{display:none}}
 @media (max-width:560px){.noz-code-cols{grid-template-columns:1fr}.noz-code-col+.noz-code-col::before{display:none}}
+
+/* v6 (2026-11-09): 장비 선택(좌) → 호환 노즐(우) 2단 배치. 선택이 바뀌면 바로 옆에서 노즐이 바뀌는 것이 보인다 */
+.noz-layout{display:grid;grid-template-columns:minmax(260px,300px) minmax(0,1fr);gap:clamp(18px,2.2vw,28px);align-items:start;margin-bottom:clamp(28px,3vw,40px)}
+.noz-side{min-width:0}
+.noz-side .noz-picker{margin:0;padding:clamp(16px,1.6vw,20px) clamp(16px,1.6vw,20px) clamp(14px,1.4vw,18px)}
+.noz-side .noz-picker-head{margin-bottom:14px;padding-bottom:12px}
+.noz-side .noz-picker-title p{font-size:12.5px}
+.noz-side .noz-picker-body{grid-template-columns:1fr;gap:16px}
+.noz-side .noz-pgroup+.noz-pgroup::before{left:0;right:0;top:-8px;bottom:auto;width:auto;height:1px}
+.noz-side .noz-pgroup .noz-pgroup-label{margin-bottom:8px}
+.noz-side .noz-chip{padding:8px 12px}
+.noz-side .noz-pgroup-chips{gap:5px}
+.noz-side .noz-chip b{font-size:13px}
+.noz-side .noz-chip small{font-size:10.5px}
+.noz-side-unit{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-line)}
+.noz-side-unit .noz-unit-switch{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+.noz-side-unit .noz-unit-switch .bls-tabs button{padding:6px 10px 7px}
+.noz-side-unit .noz-unit-switch .bls-tabs button small{display:none}
+.noz-main{min-width:0;min-height:420px}
+.noz-main-head{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin:0 0 14px;padding:0 4px}
+.noz-main-head .noz-picker-title h3{font-size:clamp(18px,1.5vw,22px)}
+.noz-count{font-size:12.5px;font-weight:800;letter-spacing:.5px;color:var(--ice-dark);padding:5px 12px;border-radius:999px;background:#fff;border:1px solid var(--gray-line)}
+.noz-count:empty{display:none}
+.noz-main .noz-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.noz-main .noz-nodefault{margin:0;min-height:320px;justify-content:center}
+.noz-main .noz-nodefault p{color:var(--text-muted)}
+.noz-main .noz-nodefault p::before{content:"←";display:block;margin:0 auto 12px;width:44px;height:44px;line-height:44px;border-radius:50%;background:var(--blue-pale);color:var(--blue);font-size:20px;font-weight:800}
+.noz-main .noz-finder-foot{margin-top:clamp(24px,2.6vw,36px)}
+@media (max-width:1200px){.noz-main .noz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){
+  .noz-layout{grid-template-columns:1fr}
+  .noz-side .noz-picker-body{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px}
+  .noz-side .noz-pgroup+.noz-pgroup::before{display:none}
+  .noz-main .noz-nodefault p::before{content:"↑"}
+  .noz-main .noz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .noz-side .noz-picker-body{grid-template-columns:1fr}
+  .noz-main .noz-grid{grid-template-columns:1fr}
+  .noz-side-unit .noz-unit-switch .bls-tabs button small{display:block}
+}
+
+/* v7 (2026-11-09): 모델명에 익숙하지 않은 방문객용 — 장비 사진 + 쉬운 설명 */
+.noz-side .noz-chip{grid-template-columns:40px minmax(0,1fr) auto;gap:1px 10px}
+.noz-chip-img{grid-column:1;grid-row:1/3;width:40px;height:40px;border-radius:8px;background:#fff;border:1px solid var(--gray-line);object-fit:contain;padding:2px;box-sizing:border-box;display:block}
+.noz-side .noz-chip b,.noz-side .noz-chip small{grid-column:2}
+.noz-side .noz-chip::after{grid-column:3}
+.noz-chip.is-active .noz-chip-img{border-color:rgba(255,255,255,.35)}
+.noz-machine-note{grid-template-columns:auto minmax(0,1fr) auto;align-items:center;row-gap:16px}
+.noz-machine-note>p:not(.noz-mn-plain){grid-column:1/-1;grid-row:2;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
+.noz-machine-note .noz-rec{grid-column:3;grid-row:1}
+.noz-mn-media{width:116px;height:116px;border-radius:14px;background:#fff;padding:8px;box-sizing:border-box;flex-shrink:0}
+.noz-mn-media img{width:100%;height:100%;object-fit:contain;display:block}
+.noz-machine-note .noz-mn-plain{margin:8px 0 0;font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.84)}
+.noz-mn-link{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12.5px;font-weight:800;letter-spacing:.2px;color:var(--ice);text-decoration:none}
+.noz-mn-link i{font-style:normal;transition:transform .25s}
+.noz-mn-link:hover{text-decoration:underline;text-underline-offset:3px}
+.noz-mn-link:hover i{transform:translateX(3px)}
+.noz-machine-note>p:not(.noz-mn-plain){font-size:13.5px;color:rgba(255,255,255,.66)}
+@media (max-width:1000px){
+  .noz-machine-note{grid-template-columns:auto minmax(0,1fr)}
+  .noz-machine-note>p{grid-column:1/-1}
+  .noz-machine-note .noz-rec{grid-column:1/-1;grid-row:auto}
+}
+@media (max-width:560px){.noz-mn-media{width:88px;height:88px}}

@@ -4322,9 +4322,14 @@ video.aut-hero-video { object-fit: cover; background: var(--navy-deep); }
 .aut-hero-stage .subhero-parallax-img { top: 0 !important; height: 100% !important; }
 .aut-cover { position: relative; left: 50%; right: 50%; width: 100vw; z-index: 2; margin-left: -50vw; margin-right: -50vw; margin-top: -64px; padding: clamp(64px, 8vw, 96px) 0 0; background: var(--white); clip-path: inset(0 round 72px 72px 0 0); }
 @media (max-width: 640px) { .aut-cover { margin-top: -28px; clip-path: inset(0 round 40px 40px 0 0); padding-top: 40px; } }
-.pel-hero-mask { position: absolute; z-index: 2; right: 2%; bottom: 11%; width: auto; will-change: transform; padding: clamp(8px, .7vw, 13px) clamp(14px, 1.2vw, 24px); background: rgba(255,255,255,.7); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: clamp(8px, .8vw, 14px); }
+.pel-hero-mask { position: absolute; z-index: 2; right: 2%; bottom: 8.25%; /* (2026-11-09) 본문과의 간격: 11% → 16.5% → 8.25%(절반), 전 페이지 공통 */ width: auto; will-change: transform; padding: clamp(8px, .7vw, 13px) clamp(14px, 1.2vw, 24px); background: rgba(255,255,255,.7); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: clamp(8px, .8vw, 14px); }
 .pel-hero-mask img { height: clamp(14px, 1.35vw, 27px); width: auto; object-fit: contain; }
-.pel-hero-mask span { font-size: 20px; line-height: 1; font-weight: 800; color: #0a1030; }
+.pel-hero-mask .pel-hero-x { font-size: 20px; line-height: clamp(14px, 1.35vw, 27px); font-weight: 800; color: #0a1030; align-self: flex-start; }
+/* (2026-11-09) 로고 아래 한글 회사명 — 콜드젯 · 바테크 */
+.pel-hero-mask { align-items: flex-start; }
+.pel-hero-brand { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+/* 로고와 균형: 맑은 고딕, 검정, 자간 1px */
+.pel-hero-brand small { font-family: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif; font-size: clamp(12px, 1.05vw, 15px); line-height: 1; font-weight: 700; letter-spacing: 1.5px; padding-left: 1.5px; color: #111; white-space: nowrap; }
 .bls-cover > .wrap { position: relative; z-index: 1; }
 @media (max-width: 640px) { .bls-cover { margin-top: -28px; clip-path: inset(0 round 40px 40px 0 0); } }
 .bls-sec > .wrap { max-width: 1560px; padding: 0 clamp(24px, 4vw, 64px); }
@@ -4873,6 +4878,9 @@ img.img-fade.is-loaded { animation: imgFadeIn .95s cubic-bezier(.22, .61, .36, 1
 
 /* 히어로 공통 Cold Jet × VATEK 배지 — 메인 히어로에서는 인트로 애니메이션 뒤에 등장 */
 .hero .pel-hero-mask { z-index: 2; opacity: 0; animation: heroScrollFadeIn .6s ease-out 6.3s both; }
+/* (2026-11-09) 메인 히어로는 높이가 100vh라 %로는 서브 히어로(높이 42.85vw의 16.5% = 7.07vw)와 간격이 달라짐 → 같은 px가 되도록 vw로 지정 */
+.hero .pel-hero-mask { bottom: 3.54vw; }
+@media (max-width: 700px) { .hero .pel-hero-mask { bottom: 8.25%; } }
 @media (prefers-reduced-motion: reduce) { .hero .pel-hero-mask { animation: none; opacity: 1; } }
 
 /* (2026-11-08) 대비 보정: 밝은 배경 위 스크롤 힌트, 남색 카드 제목 */
@@ -4890,6 +4898,9 @@ img.img-fade.is-loaded { animation: imgFadeIn .95s cubic-bezier(.22, .61, .36, 1
 /* (2026-11-09 성능) 밝은 해치 섹션의 상단 파란 빛(radial-gradient)을 섹션 전체 배경에서 떼어내
    높이가 제한된 ::before 레이어로 옮김 — 수천 px 높이 섹션의 모든 타일이 그라데이션을 계산하던 비용 제거 */
 .tint-hatch, .bls-sys-sec, .bls-lineup-sec, .bls-test, .bls-ref-sec { position: relative; isolation: isolate; }
+/* (2026-11-09 수정) 위 position:relative가 .tail-freeze/.last-freeze의 sticky를 덮어써, main.js가 sticky용으로 주는 음수 top이
+   상대 위치 이동이 되어 라인업 섹션이 앞 섹션(액세서리)을 덮던 문제 — 고정 섹션은 sticky 유지 */
+.tail-freeze.tint-hatch, .last-freeze.tint-hatch { position: sticky; }
 .tint-hatch::before, .bls-sys-sec::before, .bls-lineup-sec::before, .bls-test::before, .bls-ref-sec::before {
   content: ""; position: absolute; left: 0; right: 0; top: 0; height: min(100%, 1100px); z-index: -1; pointer-events: none;
   background: radial-gradient(ellipse at 15% 0%, rgba(127, 163, 224,.14), transparent 55%);
@@ -4899,3 +4910,83 @@ img.img-fade.is-loaded { animation: imgFadeIn .95s cubic-bezier(.22, .61, .36, 1
 
 /* (2026-11-09) 히어로 텍스트 박스 위 작은 영문 라벨(COMPARISON, COLD JET × VATEK …) — 어두운 사진 위에서 진한 파랑이 묻혀 밝은 파랑으로 */
 .subhero-textbox .ind-hero-eyebrow { color: var(--ice-on-dark); }
+
+/* (2026-11-09) 블라스터 모델 페이지 액세서리 — "대표 노즐만" 안내 + 노즐 페이지 장비 자동 선택 딥링크 */
+.au-acc-more { display: flex; align-items: center; justify-content: space-between; gap: 18px 28px; flex-wrap: wrap; margin: -6px 0 30px; padding: 16px 20px 16px 22px; border: 1px solid #dde6f5; border-left: 4px solid var(--blue); border-radius: 12px; background: var(--blue-pale, #f3f6fc); }
+.au-acc-more p { margin: 0; flex: 1 1 360px; font-size: 14.5px; line-height: 1.65; color: var(--text-body); word-break: keep-all; }
+.au-acc-more p b { color: var(--navy); font-weight: 800; }
+.au-acc-more-btn { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 22px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 14.5px; font-weight: 700; text-decoration: none; white-space: nowrap; box-shadow: 0 8px 20px rgba(62,104,179,.22); transition: background .2s, transform .2s, box-shadow .2s; }
+.au-acc-more-btn span { display: inline-block; transition: transform .3s cubic-bezier(.22,.61,.36,1); }
+.au-acc-more-btn:hover { background: var(--blue-dark, #243a94); transform: translateY(-2px); box-shadow: 0 12px 26px rgba(62,104,179,.3); }
+.au-acc-more-btn:hover span { transform: translateX(4px); }
+.au-acc-more-btn sub { font-size: .6em; vertical-align: -.15em; }
+@media (max-width: 640px) { .au-acc-more { padding: 16px; } .au-acc-more-btn { width: 100%; justify-content: center; } }
+
+/* (2026-11-13) '관련 페이지' 링크를 버튼 형태로 — 라벨은 기존 열(96px)에 그대로 두고, 링크 부분만 테두리 있는 알약 버튼 + 원형 화살표.
+   (.reveal과 함께 쓰이는 곳이 있어 등장 애니메이션용 opacity · transform 전환은 유지) */
+.auto-rel-link { position: relative; width: auto; max-width: calc(100% - 112px); margin-left: 112px; gap: 12px; padding: 9px 9px 9px 20px; border: 1.5px solid var(--blue-dark); border-radius: 999px; background: #fff; color: var(--blue-dark); font-size: 16px; line-height: 1.35; word-break: keep-all; transition: background-color .2s, color .2s, box-shadow .2s, opacity .9s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1); transition-delay: 0s, 0s, 0s, var(--reveal-delay, 0s), var(--reveal-delay, 0s); }
+.auto-rel-link span { position: absolute; left: -113.5px; top: 50%; width: 96px; margin: 0; transform: translateY(-50%); }
+.auto-rel-link i { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--blue-dark); color: #fff; font-size: 15px; line-height: 1; transition: transform .3s, background-color .2s, color .2s; }
+.auto-rel-link:hover { background: var(--blue-dark); color: #fff; box-shadow: 0 12px 22px -14px rgba(36, 58, 148, .85); }
+.auto-rel-link:hover i { background: #fff; color: var(--blue-dark); transform: translateX(3px); }
+.auto-rel-link:focus-visible { outline: 2px solid var(--blue-dark); outline-offset: 3px; }
+@media (max-width: 640px) {
+  .auto-rel-link { margin-left: 0; max-width: 100%; margin-top: 48px; }
+  .auto-rel-link span { left: -1.5px; top: -26px; transform: none; }
+}
+
+/* (2026-11-13) 섹션 번호(01, 02 …)를 오른쪽 두 줄(영문 라벨 + 제목)을 합친 높이만큼 크게.
+   숫자 윗변은 영문 라벨 대문자 윗변에, 아랫변은 제목 글자 아랫변에 맞춤. 숫자가 커진 만큼 왼쪽 칸은 내용 폭(auto)으로. */
+.auto-app-head { grid-template-columns: auto minmax(0, 1fr); gap: 0 clamp(18px, 2vw, 32px); }
+.auto-num { font-size: clamp(76.8px, calc(46.7px + 2.735vw), 90.4px); line-height: 1; margin-top: calc(12.5px - 0.118em); }
+@media (max-width: 1000px) { .auto-app-head { grid-template-columns: auto minmax(0, 1fr); } }
+@media (max-width: 640px) { .auto-app-head { gap: 0 14px; } .auto-num { font-size: 64px; } }
+
+/* ============================================================
+   (2026-11-13) 히어로 텍스트 박스 통일 — 모든 서브 페이지 히어로(이미지·영상) 위의 박스를
+   펠렛타이저 히어로와 같은 크기 · 위치로. 박스 폭(--htb-w)을 기준으로 높이 · 여백 · 글자 크기를 모두 비례 계산하므로
+   화면 폭이 달라져도 구도가 그대로 유지된다. 글이 긴 페이지는 main.js가 --htb-s(글자 배율)를 조금 줄여 같은 박스 안에 맞춘다.
+   페이지별 CSS(…-page.css)의 박스 규칙보다 우선하도록 선택자를 겹쳐 씀.
+   ============================================================ */
+.subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox {
+  --htb-w: min(720px, 54.5cqw);
+  --htb-s: 1;
+  left: 6%; right: auto; top: max(56px, calc(50% - 38px - var(--htb-w) * .2515)); transform: none;
+  box-sizing: border-box; width: var(--htb-w); min-width: 0; max-width: none; height: calc(var(--htb-w) * .503);
+  padding: calc(var(--htb-w) * .05) calc(var(--htb-w) * .061);
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; overflow: hidden;
+}
+.subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox > * { flex: none; max-width: 100%; }
+.subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox .ind-hero-eyebrow { display: block; margin: 0 0 calc(var(--htb-w) * .014 * var(--htb-s)); font-size: max(10px, calc(var(--htb-w) * .0167 * var(--htb-s))); line-height: 1.5; }
+.subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox h1 { margin: 0; font-size: calc(var(--htb-w) * .0551 * var(--htb-s)); line-height: 1.28; white-space: normal; word-break: keep-all; text-wrap: balance; }
+.subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox p { display: block; margin: calc(var(--htb-w) * .022 * var(--htb-s)) 0 0; max-width: none; font-size: max(11.5px, calc(var(--htb-w) * .0229 * var(--htb-s))); line-height: 1.7; white-space: normal; word-break: keep-all; text-align: left; }
+.subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox p + p { margin-top: calc(var(--htb-w) * .012 * var(--htb-s)); }
+@media (min-width: 641px) and (max-width: 1100px) {
+  /* 태블릿: 21:9 스테이지는 박스가 들어가기엔 낮으므로 16:9 높이로 (자동화 · 회사소개 등 기존 페이지와 같은 방식) */
+  .subhero-parallax.subhero-parallax:has(.hero-fit) { height: min(calc(100vh - 76px), 56.25vw); }
+  .subhero-parallax.subhero-parallax .hero-fit { aspect-ratio: auto; left: 0; transform: none; width: 100%; }
+  .subhero-parallax.subhero-parallax .hero-fit-ambient { display: none; }
+  .subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox { --htb-w: clamp(420px, calc(56cqw + 40px), 720px); top: max(52px, calc(50% - 22px - var(--htb-w) * .2515)); }
+}
+@media (max-width: 640px) {
+  /* 모바일: 박스를 화면 가운데에, 폭 90% · 세로는 폭에 비례한 같은 크기로 */
+  .subhero-parallax.subhero-parallax { min-height: calc(min(90vw, 420px) * 1.1 + 260px); } /* 박스 + 브레드크럼 + 배지와 본문 간격이 모두 들어가는 최소 높이 */
+  .subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox {
+    --htb-w: min(90vw, 420px);
+    left: 50%; top: max(64px, calc(50% - 50px - var(--htb-w) * .55)); transform: translateX(-50%);
+    height: calc(var(--htb-w) * 1.1);
+    padding: calc(var(--htb-w) * .08) calc(var(--htb-w) * .085);
+  }
+  .subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox .ind-hero-eyebrow { font-size: max(10px, calc(var(--htb-w) * .031 * var(--htb-s))); margin-bottom: calc(var(--htb-w) * .03 * var(--htb-s)); }
+  .subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox h1 { font-size: calc(var(--htb-w) * .074 * var(--htb-s)); line-height: 1.3; text-wrap: pretty; }
+  .subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox p { font-size: max(12px, calc(var(--htb-w) * .0415 * var(--htb-s))); margin-top: calc(var(--htb-w) * .045 * var(--htb-s)); }
+}
+/* 글자를 줄여도 넘치는 페이지(문단이 둘인 산업 페이지 등)는 main.js가 is-tight를 붙여 둘째 문단을 접는다 */
+.subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox.is-tight p + p { display: none; }
+
+/* (2026-11-13) Cold Jet × VATEK 배지와 본문 사이 간격을 모든 페이지에서 블라스터 페이지와 같게.
+   블라스터 히어로 높이(=min(화면 높이-76px, 42.86vw))의 8.25%를 기준값으로 쓰고, 히어로 높이가 다른 페이지(산업별, 작업별)에도 같은 값을 적용.
+   본문이 히어로 위로 겹쳐 올라오는 만큼은 main.js(applyBadgeOverlap)가 더해 준다. */
+.subhero-parallax.subhero-parallax .pel-hero-mask { bottom: calc(min(100vh - 76px, 42.86vw) * .0825); }
+@media (min-width: 641px) and (max-width: 1100px) { .subhero-parallax.subhero-parallax .pel-hero-mask { bottom: calc(min(100vh - 76px, 56.25vw) * .0825); } }
+@media (max-width: 640px) { .subhero-parallax.subhero-parallax .pel-hero-mask { bottom: calc(max(100vh - 76px, min(90vw, 420px) * 1.1 + 260px) * .0825); } }

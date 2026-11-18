@@ -209,9 +209,9 @@
         <p class="bls-hero-main">분사 폭과 강도, 길이와 각도. 세척 대상에 맞는 노즐과 어플리케이터, 호스 구성으로 같은 블라스터에서 더 빠르고 정확한 결과를 얻습니다.</p>
       </div>
       <div class="pel-hero-mask" aria-hidden="true">
-        <img src="../assets/img/coldjet-logo.png" alt="" />
-        <span>×</span>
-        <img src="../assets/img/vatek-logo-wordmark.png" alt="" />
+        <span class="pel-hero-brand"><img src="../assets/img/coldjet-logo.png" alt="" /><small>콜드젯</small></span>
+        <span class="pel-hero-x">×</span>
+        <span class="pel-hero-brand"><img src="../assets/img/vatek-logo-wordmark.png" alt="" /><small>바테크</small></span>
       </div>
     </div>
   </section>
@@ -278,69 +278,63 @@
         <div>
           <span class="cmp-eyebrow">NOZZLE FINDER · BY MACHINE</span>
           <h2 class="cmp-h2">장비를 먼저 고르면<br>맞는 노즐만 보입니다.</h2>
-          <p class="bls-sub">노즐은 장비의 유량 등급과 호스·어플리케이터 규격에 따라 호환 여부가 정해집니다. 보유 장비를 선택하면 그 장비에서 쓸 수 있는 노즐만 표시됩니다.</p>
+          <p class="bls-sub">노즐은 장비의 유량 등급과 호스·어플리케이터 규격에 따라 호환 여부가 정해집니다. 왼쪽에서 보유 장비를 고르면 오른쪽에 그 장비에서 쓸 수 있는 노즐만 바로 표시됩니다.</p>
         </div>
       </div>
-      <div class="noz-picker reveal" role="tablist" aria-label="장비별 노즐 필터">
-        <div class="noz-picker-head">
-          <div class="noz-picker-title"><span class="num">STEP 1</span><h3>보유 장비를 선택하세요</h3><button class="noz-reset-link" data-filter="all" type="button">전체 보기</button><p>장비 종류별로 정리되어 있습니다</p></div>
-          <div class="noz-unit-switch"><span class="noz-pgroup-label">UNIT</span><div class="bls-tabs" id="nozUnit">
-            <button class="is-active" data-unit="si" type="button"><b>METRIC</b><small>mm · m³/min · kg</small></button>
-            <button data-unit="us" type="button"><b>US</b><small>in · cfm · lb</small></button>
-          </div></div>
-        </div>
-        <div class="noz-picker-body">
+      <div class="noz-layout">
+        <aside class="noz-side">
+          <div class="noz-picker reveal" role="tablist" aria-label="장비별 노즐 필터">
+            <div class="noz-picker-head">
+              <div class="noz-picker-title"><span class="num">STEP 1</span><h3>보유 장비를 선택하세요</h3><button class="noz-reset-link" data-filter="all" type="button">전체 보기</button><p>장비 종류별로 정리되어 있습니다</p></div>
+            </div>
+            <div class="noz-picker-body">
           <div class="noz-pgroup"><span class="noz-pgroup-label">SMART BLASTER</span><div class="noz-pgroup-chips">
-            <button class="noz-chip" data-filter="pcs60" type="button"><b>Aero2 PCS ULTRA</b><small>마이크로파티클 · 3/4"</small></button>
-            <button class="noz-chip" data-filter="plt60" type="button"><b>Aero2 PLT ULTRA</b><small>펠렛 · 1" · 고유량</small></button>
-            <button class="noz-chip" data-filter="mc2" type="button"><b>i³ MicroClean 2</b><small>정밀 · 1/2"</small></button>
+            <button class="noz-chip" data-filter="pcs60" type="button"><img class="noz-chip-img" src="../assets/img/blaster-aero2-pcs-ultra-thumb.webp" alt="" loading="lazy" decoding="async"><b>Aero2 PCS ULTRA</b><small>마이크로파티클 · 3/4"</small></button>
+            <button class="noz-chip" data-filter="plt60" type="button"><img class="noz-chip-img" src="../assets/img/blaster-aero2-plt-ultra-thumb.webp" alt="" loading="lazy" decoding="async"><b>Aero2 PLT ULTRA</b><small>펠렛 · 1" · 고유량</small></button>
+            <button class="noz-chip" data-filter="mc2" type="button"><img class="noz-chip-img" src="../assets/img/blaster-i3-microclean-2-thumb.webp" alt="" loading="lazy" decoding="async"><b>i³ MicroClean 2</b><small>정밀 · 1/2"</small></button>
           </div></div>
           <div class="noz-pgroup"><span class="noz-pgroup-label">PELLET BLASTER</span><div class="noz-pgroup-chips">
-            <button class="noz-chip" data-filter="aero40" type="button"><b>Aero 40FP</b><small>펠렛 · 100 cfm 이하</small></button>
-            <button class="noz-chip" data-filter="aero80" type="button"><b>Aero 80FP</b><small>펠렛 · Aero 전체</small></button>
-            <button class="noz-chip" data-filter="elite" type="button"><b>ELITE 20</b><small>IceTech 노즐</small></button>
-            <button class="noz-chip" data-filter="icerocket" type="button"><b>IceRocket PLT</b><small>저유량 · 1/2"</small></button>
+            <button class="noz-chip" data-filter="aero40" type="button"><img class="noz-chip-img" src="../assets/img/blaster-aero-40fp-thumb.webp" alt="" loading="lazy" decoding="async"><b>Aero 40FP</b><small>펠렛 · 100 cfm 이하</small></button>
+            <button class="noz-chip" data-filter="aero80" type="button"><img class="noz-chip-img" src="../assets/img/blaster-aero-80fp-thumb.webp" alt="" loading="lazy" decoding="async"><b>Aero 80FP</b><small>펠렛 · Aero 전체</small></button>
+            <button class="noz-chip" data-filter="elite" type="button"><img class="noz-chip-img" src="../assets/img/blaster-elite-20-thumb.webp" alt="" loading="lazy" decoding="async"><b>ELITE 20</b><small>IceTech 노즐</small></button>
+            <button class="noz-chip" data-filter="icerocket" type="button"><img class="noz-chip-img" src="../assets/img/blaster-icerocket-plt-thumb.webp" alt="" loading="lazy" decoding="async"><b>IceRocket PLT</b><small>저유량 · 1/2"</small></button>
           </div></div>
           <div class="noz-pgroup"><span class="noz-pgroup-label">MICRO PARTICLE</span><div class="noz-pgroup-chips">
-            <button class="noz-chip" data-filter="mc" type="button"><b>i³ MicroClean</b><small>정밀 · 1/2"</small></button>
-            <button class="noz-chip" data-filter="sdi" type="button"><b>SDI Select 60</b><small>Aero 전체 + 정밀 키트</small></button>
+            <button class="noz-chip" data-filter="mc" type="button"><img class="noz-chip-img" src="../assets/img/blaster-i3-microclean-thumb.webp" alt="" loading="lazy" decoding="async"><b>i³ MicroClean</b><small>정밀 · 1/2"</small></button>
+            <button class="noz-chip" data-filter="sdi" type="button"><img class="noz-chip-img" src="../assets/img/blaster-sdi-select-60-thumb.webp" alt="" loading="lazy" decoding="async"><b>SDI Select 60</b><small>Aero 전체 + 정밀 키트</small></button>
           </div></div>
           <div class="noz-pgroup"><span class="noz-pgroup-label">SPECIALTY</span><div class="noz-pgroup-chips">
-            <button class="noz-chip" data-filter="c100" type="button"><b>Aero C100</b><small>공압식 · Aero 전체</small></button>
-            <button class="noz-chip" data-filter="eco2" type="button"><b>E-CO2 150</b><small>연마재 혼합 · 전용</small></button>
+            <button class="noz-chip" data-filter="c100" type="button"><img class="noz-chip-img" src="../assets/img/blaster-c100-thumb.webp" alt="" loading="lazy" decoding="async"><b>Aero C100</b><small>공압식 · Aero 전체</small></button>
+            <button class="noz-chip" data-filter="eco2" type="button"><img class="noz-chip-img" src="../assets/img/blaster-e-co2-150-thumb.webp" alt="" loading="lazy" decoding="async"><b>E-CO2 150</b><small>연마재 혼합 · 전용</small></button>
           </div></div>
         </div>
+            <div class="noz-side-unit"><div class="noz-unit-switch"><span class="noz-pgroup-label">UNIT</span><div class="bls-tabs" id="nozUnit">
+            <button class="is-active" data-unit="si" type="button"><b>METRIC</b><small>mm · m³/min · kg</small></button>
+            <button data-unit="us" type="button"><b>US</b><small>in · cfm · lb</small></button>
+          </div></div></div>
+          </div>
+        </aside>
+        <div class="noz-main" id="nozMain">
+          <div class="noz-main-head">
+            <div class="noz-picker-title"><span class="num">STEP 2</span><h3 id="nozMainTitle">호환 노즐</h3></div>
+            <span class="noz-count" id="nozCount" aria-live="polite"></span>
+          </div>
+          <div class="noz-machine-notes">
+        <div class="noz-machine-note" data-machine="pcs60"><div class="noz-mn-media"><img src="../assets/img/blaster-aero2-pcs-ultra-thumb.webp" alt="Aero2 PCS ULTRA (PCS 60)" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero2 PCS ULTRA (PCS 60)</h3><p class="noz-mn-plain">입자 크기(3→0.3 mm)를 장비에서 바로 조절하는 스마트 블라스터입니다. 거친 세척부터 정밀 세척까지 한 대로 처리하려는 현장에 맞습니다.</p><a class="noz-mn-link" href="blaster/aero2-ultra.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p><span class="u-val" data-us='12–100 cfm' data-si='0.3–2.8 m³/min'>0.3–2.8 m³/min</span>, 3/4" 블라스트 경로. 입자 크기(3–0.3 mm)를 장비에서 조절하므로 표준 유량 가변 노즐과 MicroClean 정밀 노즐을 모두 사용합니다. 정밀 키트(1/2" 어플리케이터)로 MC 노즐 장착.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>정밀 작업은</small><b>MC26M</b></div></div>
+        <div class="noz-machine-note" data-machine="plt60"><div class="noz-mn-media"><img src="../assets/img/blaster-aero2-plt-ultra-thumb.webp" alt="Aero2 PLT ULTRA (PLT 60)" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero2 PLT ULTRA (PLT 60)</h3><p class="noz-mn-plain">최대 250 psi까지 쓰는 고출력 풀펠렛 스마트 블라스터입니다. 고착 오염과 넓은 면적을 빠르게 세척할 때 맞습니다.</p><a class="noz-mn-link" href="blaster/aero2-plt-ultra.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p><span class="u-val" data-us='50–165 cfm' data-si='1.4–4.7 m³/min'>1.4–4.7 m³/min</span>, 1" 블라스트 경로, 최대 250 psi. 고유량(5xx) 노즐을 쓸 수 있는 장비로, 고착 오염과 넓은 면적에 가장 강한 세척력을 냅니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>523V2</b><small>협소부는</small><b>508V.8</b></div></div>
+        <div class="noz-machine-note" data-machine="mc2"><div class="noz-mn-media"><img src="../assets/img/blaster-i3-microclean-2-thumb.webp" alt="i³ MicroClean 2" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>i³ MicroClean 2</h3><p class="noz-mn-plain">미세한 쉐이브드 아이스로 세척하는 2세대 정밀 블라스터입니다. 정밀 금형·전자 부품처럼 섬세한 표면에 맞습니다.</p><a class="noz-mn-link" href="blaster/i3-microclean-2.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p><span class="u-val" data-us='12–50 cfm' data-si='0.3–1.4 m³/min'>0.3–1.4 m³/min</span> 쉐이브드 아이스 정밀 세척기의 2세대. 1/2" 어플리케이터에 MC 노즐(핀포인트 · 팬 · MERN)을 장착해 정밀 금형, 전자 부품, 복잡한 캐비티를 손상 없이 세척합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>MC26M</b><small>넓은 면은</small><b>MC88</b></div></div>
+        <div class="noz-machine-note" data-machine="mc"><div class="noz-mn-media"><img src="../assets/img/blaster-i3-microclean-thumb.webp" alt="i³ MicroClean" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>i³ MicroClean</h3><p class="noz-mn-plain">탁상형 정밀 블라스터입니다. 작은 부품과 정밀 금형을 다루는 작업장에 맞습니다.</p><a class="noz-mn-link" href="blaster/i3-microclean.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p><span class="u-val" data-us='12–50 cfm' data-si='0.3–1.4 m³/min'>0.3–1.4 m³/min</span>의 탁상형 정밀 세척기. MicroClean 2와 같은 1/2" MC 노즐 체계를 사용합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>MC26M</b><small>미세 홈은</small><b>MC13</b></div></div>
+        <div class="noz-machine-note" data-machine="aero40"><div class="noz-mn-media"><img src="../assets/img/blaster-aero-40fp-thumb.webp" alt="Aero 40FP" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero 40FP</h3><p class="noz-mn-plain">40 lb 호퍼의 풀프레셔 펠렛 블라스터입니다. 중소 규모 설비 세척에 맞는 전문가용 기본 모델입니다.</p><a class="noz-mn-link" href="blaster/aero-40fp.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p>노즐 공기 소비량 100 cfm(2.8 m³/min) 이하만 지원하는 입문형 펠렛 블라스터. 저유량·표준 유량 노즐만 사용하며, 150 cfm 이상 고유량 노즐은 장착할 수 없습니다. 정밀 키트(MC88·MC31)는 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>저유량은</small><b>110V.6</b></div></div>
+        <div class="noz-machine-note" data-machine="aero80"><div class="noz-mn-media"><img src="../assets/img/blaster-aero-80fp-thumb.webp" alt="Aero 80FP" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero 80FP</h3><p class="noz-mn-plain">80 lb 대용량 호퍼의 풀프레셔 펠렛 블라스터입니다. 긴 작업 시간과 높은 세척력이 필요할 때 맞습니다.</p><a class="noz-mn-link" href="blaster/aero-80fp.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p>80 lb 대용량 호퍼의 풀프레셔 펠렛 블라스터. 저유량부터 고유량(최대 165 cfm), 스페셜 앵글 노즐까지 Aero 노즐 전 라인업을 지원하며, 정밀 키트(MC88·MC31)도 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>523V2</b><small>넓은 면은</small><b>523V4</b></div></div>
+        <div class="noz-machine-note" data-machine="elite"><div class="noz-mn-media"><img src="../assets/img/blaster-elite-20-thumb.webp" alt="IceTech Elite 20" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>IceTech Elite 20</h3><p class="noz-mn-plain">다루기 쉬운 실용형 펠렛 블라스터입니다. 전용 IceTech 노즐을 쓰며 일반 산업 설비 세척에 두루 쓰입니다.</p><a class="noz-mn-link" href="blaster/elite-20.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p>3/4" 블라스트 호스, 2–16 bar. Aero 시리즈와 달리 IceTech 노즐 체계를 사용합니다. 라운드 · 플랫 · 콘 세 형태에 인서트 구경(Ø7–16 mm)을 바꿔 세척 강도를 조절하며, 연장 파이프와 벤드를 결합할 수 있습니다.</p><div class="noz-rec"><span>기본 구성</span><b>라운드 Ø8</b><small>넓은 면은</small><b>플랫 50 mm</b></div></div>
+        <div class="noz-machine-note" data-machine="icerocket"><div class="noz-mn-media"><img src="../assets/img/blaster-icerocket-plt-thumb.webp" alt="IceRocket PLT" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>IceRocket PLT</h3><p class="noz-mn-plain">소형 컴프레서로도 운전되는 입문형 펠렛 블라스터입니다. 드라이아이스 세척을 처음 도입하는 현장에 맞습니다.</p><a class="noz-mn-link" href="blaster/icerocket-plt.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span> 저유량, 1/2" 컴팩트 어플리케이터. 소형 컴프레서(15 HP 권장)로 운용하는 입문형 장비라 1xx 저유량 노즐만 사용합니다. 자동차 하체·엔진룸, 소형 설비 세척용.</p><div class="noz-rec"><span>기본 구성</span><b>110V.6</b><small>짧은 부위는</small><b>106S.6</b></div></div>
+        <div class="noz-machine-note" data-machine="sdi"><div class="noz-mn-media"><img src="../assets/img/blaster-sdi-select-60-thumb.webp" alt="SDI Select 60" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>SDI Select 60</h3><p class="noz-mn-plain">쉐이브드 아이스와 3 mm 펠렛을 한 대로 전환하는 범용 모델입니다. 정밀 세척과 일반 세척을 번갈아 하는 현장에 맞습니다.</p><a class="noz-mn-link" href="blaster/sdi-select-60.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p>쉐이브드 아이스와 3 mm 펠렛을 한 대로 전환하는 범용 모델. Aero 표준·고유량·가변·스페셜 노즐 전 라인업을 그대로 사용하며, 정밀 키트(MC88·MC31 어플리케이터)로 정밀 세척도 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>정밀 모드는</small><b>MC88</b></div></div>
+        <div class="noz-machine-note" data-machine="c100"><div class="noz-mn-media"><img src="../assets/img/blaster-c100-thumb.webp" alt="Aero C100" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero C100</h3><p class="noz-mn-plain">전원 없이 압축공기만으로 작동하는 공압식 펠렛 블라스터입니다. 전원을 끌어오기 어려운 현장에 맞습니다.</p><a class="noz-mn-link" href="blaster/c100.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p>전원 없는 완전 공압식 펠렛 블라스터. 노즐 공기 소비량 50–165 cfm(1.4–4.7 m³/min) 전 구간을 지원해 Aero 80FP와 동일한 노즐 라인업(저유량부터 고유량·스페셜까지)을 그대로 사용하며, 정밀 키트(MC88·MC31)도 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>저소음은</small><b>123V.7</b></div></div>
+        <div class="noz-machine-note" data-machine="eco2"><div class="noz-mn-media"><img src="../assets/img/blaster-e-co2-150-thumb.webp" alt="E-CO2 150" loading="lazy" decoding="async"></div><div><span class="bls-en">RECOMMENDED FOR</span><h3>E-CO2 150</h3><p class="noz-mn-plain">드라이아이스에 연마재를 섞어 분사하는 표면처리 시스템입니다. 강한 연마가 필요한 표면처리 작업에 맞습니다.</p><a class="noz-mn-link" href="blaster/e-co2-150.html">장비 자세히 보기 <i aria-hidden="true">→</i></a></div><p>드라이아이스 + 연마재 혼합 분사용 표면처리 시스템. 연마재가 통과하는 전용 내마모 노즐과 어플리케이터를 사용하므로 일반 드라이아이스 노즐과 호환되지 않습니다.</p><div class="noz-rec"><span>전용 노즐 · 어플리케이터</span><b>별도 문의</b></div></div>
       </div>
-      <div class="noz-scroll-cue" id="nozScrollCue" aria-hidden="true"><span>아래에서 맞는 노즐을 확인하세요</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="noz-machine-notes">
-        <div class="noz-machine-note" data-machine="pcs60"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero2 PCS ULTRA (PCS 60)</h3></div><p><span class="u-val" data-us='12–100 cfm' data-si='0.3–2.8 m³/min'>0.3–2.8 m³/min</span>, 3/4" 블라스트 경로. 입자 크기(3–0.3 mm)를 장비에서 조절하므로 표준 유량 가변 노즐과 MicroClean 정밀 노즐을 모두 사용합니다. 정밀 키트(1/2" 어플리케이터)로 MC 노즐 장착.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>정밀 작업은</small><b>MC26M</b></div></div>
-        <div class="noz-machine-note" data-machine="plt60"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero2 PLT ULTRA (PLT 60)</h3></div><p><span class="u-val" data-us='50–165 cfm' data-si='1.4–4.7 m³/min'>1.4–4.7 m³/min</span>, 1" 블라스트 경로, 최대 250 psi. 고유량(5xx) 노즐을 쓸 수 있는 장비로, 고착 오염과 넓은 면적에 가장 강한 세척력을 냅니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>523V2</b><small>협소부는</small><b>508V.8</b></div></div>
-        <div class="noz-machine-note" data-machine="mc2"><div><span class="bls-en">RECOMMENDED FOR</span><h3>i³ MicroClean 2</h3></div><p><span class="u-val" data-us='12–50 cfm' data-si='0.3–1.4 m³/min'>0.3–1.4 m³/min</span> 쉐이브드 아이스 정밀 세척기의 2세대. 1/2" 어플리케이터에 MC 노즐(핀포인트 · 팬 · MERN)을 장착해 정밀 금형, 전자 부품, 복잡한 캐비티를 손상 없이 세척합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>MC26M</b><small>넓은 면은</small><b>MC88</b></div></div>
-        <div class="noz-machine-note" data-machine="mc"><div><span class="bls-en">RECOMMENDED FOR</span><h3>i³ MicroClean</h3></div><p><span class="u-val" data-us='12–50 cfm' data-si='0.3–1.4 m³/min'>0.3–1.4 m³/min</span>의 탁상형 정밀 세척기. MicroClean 2와 같은 1/2" MC 노즐 체계를 사용합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>MC26M</b><small>미세 홈은</small><b>MC13</b></div></div>
-        <div class="noz-machine-note" data-machine="aero40"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero 40FP</h3></div><p>노즐 공기 소비량 100 cfm(2.8 m³/min) 이하만 지원하는 입문형 펠렛 블라스터. 저유량·표준 유량 노즐만 사용하며, 150 cfm 이상 고유량 노즐은 장착할 수 없습니다. 정밀 키트(MC88·MC31)는 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>저유량은</small><b>110V.6</b></div></div>
-        <div class="noz-machine-note" data-machine="aero80"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero 80FP</h3></div><p>80 lb 대용량 호퍼의 풀프레셔 펠렛 블라스터. 저유량부터 고유량(최대 165 cfm), 스페셜 앵글 노즐까지 Aero 노즐 전 라인업을 지원하며, 정밀 키트(MC88·MC31)도 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>523V2</b><small>넓은 면은</small><b>523V4</b></div></div>
-        <div class="noz-machine-note" data-machine="elite"><div><span class="bls-en">RECOMMENDED FOR</span><h3>IceTech Elite 20</h3></div><p>3/4" 블라스트 호스, 2–16 bar. Aero 시리즈와 달리 IceTech 노즐 체계를 사용합니다. 라운드 · 플랫 · 콘 세 형태에 인서트 구경(Ø7–16 mm)을 바꿔 세척 강도를 조절하며, 연장 파이프와 벤드를 결합할 수 있습니다.</p><div class="noz-rec"><span>기본 구성</span><b>라운드 Ø8</b><small>넓은 면은</small><b>플랫 50 mm</b></div></div>
-        <div class="noz-machine-note" data-machine="icerocket"><div><span class="bls-en">RECOMMENDED FOR</span><h3>IceRocket PLT</h3></div><p><span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span> 저유량, 1/2" 컴팩트 어플리케이터. 소형 컴프레서(15 HP 권장)로 운용하는 입문형 장비라 1xx 저유량 노즐만 사용합니다. 자동차 하체·엔진룸, 소형 설비 세척용.</p><div class="noz-rec"><span>기본 구성</span><b>110V.6</b><small>짧은 부위는</small><b>106S.6</b></div></div>
-        <div class="noz-machine-note" data-machine="sdi"><div><span class="bls-en">RECOMMENDED FOR</span><h3>SDI Select 60</h3></div><p>쉐이브드 아이스와 3 mm 펠렛을 한 대로 전환하는 범용 모델. Aero 표준·고유량·가변·스페셜 노즐 전 라인업을 그대로 사용하며, 정밀 키트(MC88·MC31 어플리케이터)로 정밀 세척도 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>정밀 모드는</small><b>MC88</b></div></div>
-        <div class="noz-machine-note" data-machine="c100"><div><span class="bls-en">RECOMMENDED FOR</span><h3>Aero C100</h3></div><p>전원 없는 완전 공압식 펠렛 블라스터. 노즐 공기 소비량 50–165 cfm(1.4–4.7 m³/min) 전 구간을 지원해 Aero 80FP와 동일한 노즐 라인업(저유량부터 고유량·스페셜까지)을 그대로 사용하며, 정밀 키트(MC88·MC31)도 사용 가능합니다.</p><div class="noz-rec"><span>첫 노즐 추천</span><b>323V2</b><small>저소음은</small><b>123V.7</b></div></div>
-        <div class="noz-machine-note" data-machine="eco2"><div><span class="bls-en">RECOMMENDED FOR</span><h3>E-CO2 150</h3></div><p>드라이아이스 + 연마재 혼합 분사용 표면처리 시스템. 연마재가 통과하는 전용 내마모 노즐과 어플리케이터를 사용하므로 일반 드라이아이스 노즐과 호환되지 않습니다.</p><div class="noz-rec"><span>전용 노즐 · 어플리케이터</span><b>별도 문의</b></div></div>
-      </div>
-      <div class="noz-nodefault is-active" id="nozNoDefault"><p>위에서 보유 장비를 먼저 선택해주세요.</p></div>
-      <div class="noz-empty" id="nozEmpty"><p>이 장비는 전용 노즐 시스템을 사용합니다. 호환 노즐과 어플리케이터는 견적 문의 시 함께 안내드립니다.</p><a class="cta-btn" href="../products/quote.html">전용 노즐 문의</a></div>
-      <div class="noz-code reveal">
-        <div class="noz-code-head">
-          <div class="noz-picker-title"><span class="num">HOW TO READ</span><h3>모델명 읽는 법</h3><p>네 자리가 순서대로 유량 · 길이 · 형태 · 분사 폭을 뜻합니다</p></div>
-          <span class="noz-code-sample" aria-label="예시 모델명 523V2"><em>5</em><em>23</em><em>V</em><em>2</em></span>
-        </div>
-        <div class="noz-code-cols">
-          <div class="noz-code-col"><b class="glyph">5</b><strong>유량 등급</strong><p>1 = 저유량 <span class="u-val" data-us='50 cfm' data-si='1.4 m³/min'>1.4 m³/min</span> · 3 = 표준 <span class="u-val" data-us='100 cfm' data-si='2.8 m³/min'>2.8 m³/min</span> · 5 = 고유량 <span class="u-val" data-us='150 cfm' data-si='4.3 m³/min'>4.3 m³/min</span> 이상</p></div>
-          <div class="noz-code-col"><b class="glyph">23</b><strong>길이 (in)</strong><p>노즐 길이(인치). 23"은 거리를 두고, 5–8"은 협소 공간에서 사용</p></div>
-          <div class="noz-code-col"><b class="glyph">V</b><strong>노즐 형태</strong><p>S = 고정 직선 · V = 가변 프래그멘팅 · M = MERN · A = 앵글 · MC = 정밀</p></div>
-          <div class="noz-code-col"><b class="glyph">2</b><strong>분사 폭 (in)</strong><p>인치 단위. .6은 집중 분사, 2–4는 넓은 면적</p></div>
-        </div>
-        <p class="noz-code-foot">* Elite 20용 IceTech 노즐은 이 체계 대신 인서트 구경(mm)과 형태(라운드 · 플랫 · 콘)로 표기합니다.</p>
-      </div>
-      <div class="noz-grid" id="nozGrid">
+          <div class="noz-nodefault is-active" id="nozNoDefault"><p>왼쪽에서 보유 장비를 선택하면<br>이 자리에 그 장비에 맞는 노즐이 나타납니다.</p></div>
+          <div class="noz-empty" id="nozEmpty"><p>이 장비는 전용 노즐 시스템을 사용합니다. 호환 노즐과 어플리케이터는 견적 문의 시 함께 안내드립니다.</p><a class="cta-btn" href="../products/quote.html">전용 노즐 문의</a></div>
+          <div class="noz-grid" id="nozGrid">
       <article class="noz-card reveal" data-cat="pcs60 plt60 aero sdi aero40 aero80 c100">
         <div class="noz-media"><img src="../assets/img/nozzles/323V2.webp" alt="323V2 노즐" loading="lazy" decoding="async" /></div>
         <div class="noz-card-top"><span class="bls-prod-cat">VARIABLE · MERN</span><span class="bls-badge">BEST SELLER</span></div>
@@ -702,10 +696,13 @@
         <div class="noz-fit"><span>ELITE 20</span></div>
       </article>
       </div>
-      <div class="noz-finder-foot">
+          <div class="noz-finder-foot">
         <p>여기 없는 노즐(310S.5 · 312S1 · 323S1 · MC19 · 팬 MC28/35/47 · 앵글 MC25A · 307/308/317 앵글 시리즈 등)은 장비별 액세서리 카탈로그에 정리되어 있습니다. 어떤 노즐이 맞는지 확실하지 않다면 세척 대상 사진과 장비 모델만 알려주세요.</p>
         <a class="cta-btn" href="../products/quote.html">노즐 추천 받기</a>
       </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="plt-section" id="accessories">
@@ -974,9 +971,10 @@
     function apply(f, animate){
       var nodef=document.getElementById('nozNoDefault'); if(nodef) nodef.classList.toggle('is-active', !f);
       var cue=document.getElementById('nozScrollCue'); if(cue) cue.classList.toggle('is-active', !!f && f!=='all');
+      var ttl=document.getElementById('nozMainTitle'), cnt=document.getElementById('nozCount');
+      if(ttl){ var chipB=null; tabs.forEach(function(t){ if(t.getAttribute('data-filter')===f){ chipB=t.querySelector('b'); } }); ttl.innerHTML = !f ? '호환 노즐' : (f==='all' ? '전체 노즐' : (chipB?chipB.innerHTML:'')+' 호환 노즐'); }
       var grid=document.getElementById('nozGrid'); if(grid) grid.style.display=f?'':'none';
       var notesWrap=document.querySelector('.noz-machine-notes'); if(notesWrap) notesWrap.style.display=f?'':'none';
-      var codeBox=document.querySelector('.noz-code'); if(codeBox) codeBox.style.display=f?'':'none';
       var toShow=[],toHide=[];
       cards.forEach(function(c){
         var cats=(c.getAttribute('data-cat')||'').split(' ');
@@ -988,6 +986,7 @@
       document.querySelectorAll('.noz-machine-note').forEach(function(n){ n.classList.toggle('is-active', !!f && n.getAttribute('data-machine')===f); });
       var total=0; cards.forEach(function(c){ if(!!f&&(f==='all'||(' '+c.getAttribute('data-cat')+' ').indexOf(' '+f+' ')>-1)) total++; });
       var emp=document.getElementById('nozEmpty'); if(emp) emp.classList.toggle('is-active', !!f && total===0);
+      if(cnt) cnt.textContent = f ? (total ? total+'개' : '') : '';
       if (!animate){ toHide.forEach(function(c){c.classList.add('is-hidden');}); toShow.forEach(function(c){c.classList.remove('is-hidden');}); return; }
       toHide.forEach(function(c){ c.classList.add('is-filter-out'); });
       setTimeout(function(){
@@ -1000,6 +999,8 @@
       if (b.classList.contains('is-active')) return;
       tabs.forEach(function(t){ t.classList.toggle('is-active', t===b); });
       apply(b.getAttribute('data-filter'), true);
+      /* 좁은 화면(세로 배치)에서는 선택 직후 결과 영역으로 이동 */
+      if (window.matchMedia('(max-width: 900px)').matches) { var main=document.getElementById('nozMain'); if(main){ var y=main.getBoundingClientRect().top+window.pageYOffset-84; window.scrollTo({top:y, behavior:'smooth'}); } }
     }); });
     if (resetLink) resetLink.addEventListener('click', function(){
       tabs.forEach(function(t){ t.classList.remove('is-active'); });
@@ -1007,6 +1008,27 @@
     });
     var init=document.querySelector('#nozzle-finder .noz-picker button[data-filter].is-active');
     apply(init?init.getAttribute('data-filter'):null, false);
+    /* (2026-11-09) 블라스터 모델 페이지의 "노즐 종류 살펴보기" 딥링크: ?machine=pcs60 → 해당 장비 자동 선택 후 노즐 목록으로 이동 */
+    (function(){
+      var m=null; try{ m=new URLSearchParams(location.search).get('machine'); }catch(e){}
+      if(!m) return;
+      var chip=null; tabs.forEach(function(t){ if(t.getAttribute('data-filter')===m) chip=t; });
+      if(!chip) return;
+      tabs.forEach(function(t){ t.classList.toggle('is-active', t===chip); });
+      apply(m, false);
+      var cue=document.getElementById('nozScrollCue'); if(cue) cue.classList.remove('is-active');
+      var go=function(){
+        var target=document.querySelector('.noz-machine-note.is-active') || document.getElementById('nozGrid');
+        if(!target) return;
+        if('scrollRestoration' in history) history.scrollRestoration='manual';
+        var y=target.getBoundingClientRect().top + window.pageYOffset - 96;
+        window.scrollTo(0, Math.max(0,y));
+        /* 도착 지점의 장비 안내·노즐 카드가 리빌 대기 상태로 비어 보이지 않도록 바로 표시 */
+        document.querySelectorAll('#nozzle-finder .reveal, #nozzle-finder .reveal-scale, #nozzle-finder .reveal-pop').forEach(function(el){ el.classList.add('is-visible'); });
+        setTimeout(function(){ var y2=target.getBoundingClientRect().top + window.pageYOffset - 96; if(Math.abs(y2-window.pageYOffset)>4) window.scrollTo(0, Math.max(0,y2)); }, 350);
+      };
+      if(document.readyState==='complete') requestAnimationFrame(go); else window.addEventListener('load', function(){ requestAnimationFrame(go); });
+    })();
     var cueEl=document.getElementById('nozScrollCue');
     if(cueEl){
       cueEl.addEventListener('click', function(){

@@ -6,7 +6,7 @@
 <title>드라이아이스 생산 시스템 | 펠렛타이저·슬라이스·자동화 | VATEK</title>
 <meta name="description" content="펠렛타이저부터 슬라이스 제조기, 리포머, 정량 투입·포장·CO2 회수까지 Cold Jet 드라이아이스 생산 시스템과 적용 분야를 살펴보세요." />
 <link rel="stylesheet" href="../../assets/css/style.css" />
-<link rel="stylesheet" href="../../assets/css/pelletizer-page.css?v=20261015-2" />
+<link rel="stylesheet" href="../../assets/css/pelletizer-page.css?v=20261110-2" />
 </head>
 <body>
 
@@ -209,9 +209,9 @@
           
         </div>
         <div class="pel-hero-mask" aria-hidden="true">
-          <img src="../../assets/img/coldjet-logo.png" alt="" />
-          <span>×</span>
-          <img src="../../assets/img/vatek-logo-wordmark.png" alt="" />
+          <span class="pel-hero-brand"><img src="../../assets/img/coldjet-logo.png" alt="" /><small>콜드젯</small></span>
+        <span class="pel-hero-x">×</span>
+        <span class="pel-hero-brand"><img src="../../assets/img/vatek-logo-wordmark.png" alt="" /><small>바테크</small></span>
         </div>
       </div>
     </section>
@@ -382,27 +382,35 @@
 
     <section class="plt-section plt-lineup" id="pelletizer-lineup">
       <div class="wrap">
-        <section class="plt-finder" id="model-finder" aria-labelledby="finderTitle">
+        <section class="plt-finder pfv2" id="model-finder" aria-labelledby="finderTitle">
           <div class="plt-finder-head">
-            <div><span class="plt-eyebrow">FIND YOUR PRODUCTION SYSTEM</span><h2 id="finderTitle">조건을 선택하고<br>적합한 생산 시스템을 확인해보세요.</h2></div>
+            <div><span class="plt-eyebrow">FIND YOUR PRODUCTION SYSTEM</span><h2 id="finderTitle">필요한 장비를 추천드리겠습니다.</h2></div>
             <div class="plt-finder-intro"><p>필요한 드라이아이스 형태와 규격, 설치 방법과 시간당 생산량을 선택하면 검토 가능한 장비 구성을 확인할 수 있습니다.</p></div>
-            <nav class="plt-finder-progress" aria-label="장비 선택 단계">
-              <button type="button" class="is-active" data-go-step="1"><i>01</i><span>드라이아이스 형태 선택</span><small id="stepSummary1">펠렛 · 너겟</small></button>
-              <button type="button" data-go-step="2"><i>02</i><span>희망 규격 선택</span><small id="stepSummary2">Ø 3 mm</small></button>
-              <button type="button" data-go-step="3"><i>03</i><span id="stepThreeLabel">설치 방법 선택</span><small id="stepSummary3">고정 설치</small></button>
-              <button type="button" data-go-step="4"><i>04</i><span>희망 생산량 선택</span><small id="stepSummary4">350 kg/h</small></button>
-            </nav>
           </div>
 
-          <div class="plt-finder-shell">
+          <div class="plt-finder-shell" id="finderShell">
+            <div class="pf-bar">
+              <button type="button" class="pf-bar-back" id="finderPrev" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>이전</button>
+              <p class="pf-bar-step" aria-live="polite"><b id="finderStepText">질문 <span id="finderCurrentStep">1</span></b><span id="finderStepTotal"> / 4</span></p>
+              <nav class="plt-finder-progress" aria-label="지금까지 고른 조건">
+                <button type="button" class="is-active" data-go-step="1" title="이 선택을 지우고 다시 고르기"><span>드라이아이스 형태</span><small id="stepSummary1">펠렛 및 너겟</small></button>
+                <button type="button" data-go-step="2" title="이 선택을 지우고 다시 고르기"><span>희망 규격</span><small id="stepSummary2">Ø 3 mm</small></button>
+                <button type="button" data-go-step="3" title="이 선택을 지우고 다시 고르기"><span id="stepThreeLabel">설치 방법</span><small id="stepSummary3">고정 설치</small></button>
+                <button type="button" data-go-step="4" title="이 선택을 지우고 다시 고르기"><span>희망 생산량</span><small id="stepSummary4">350 kg/h</small></button>
+              </nav>
+              <span class="pf-bar-hint" id="finderBarHint">질문 네 가지에 답하면 맞는 생산 시스템이 바로 나옵니다.</span>
+              <button type="button" class="pf-bar-reset" id="finderResetTop" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>처음부터 다시</button>
+              <div class="pf-bar-line" aria-hidden="true"><i id="finderLine"></i></div>
+            </div>
+            <div class="pf-body">
             <div class="plt-finder-row">
               <div class="plt-finder-main">
                 <form class="plt-finder-form" id="productionFinder">
               <fieldset class="plt-shape-field is-active" data-finder-step="1">
                 <legend><span>01</span> 원하는 드라이아이스 형태가 무엇인가요?</legend>
                 <div class="plt-shape-options">
-                  <label><input type="radio" name="iceShape" value="pellet" checked><span><i class="shape-pellet" aria-hidden="true"></i><b>펠렛 · 너겟</b><small>블라스팅 · 공정 냉각 · 대용량 냉각</small></span></label>
-                  <label><input type="radio" name="iceShape" value="slice"><span><i class="shape-slice" aria-hidden="true"></i><b>슬라이스 · 블록</b><small>운송 · 콜드체인 · 장시간 보냉</small></span></label>
+                  <label><input type="radio" name="iceShape" value="pellet" checked><span><i class="shape-pellet" aria-hidden="true"></i><b>펠렛 및 너겟</b><small>블라스팅, 공정 냉각, 대용량 냉각</small></span></label>
+                  <label><input type="radio" name="iceShape" value="slice"><span><i class="shape-slice" aria-hidden="true"></i><b>슬라이스 및 블록</b><small>운송, 콜드체인, 장시간 보냉</small></span></label>
                 </div>
               </fieldset>
 
@@ -426,8 +434,8 @@
                 <legend><span>03</span> 드라이아이스도 함께 생산하실건가요? 아니면 리포머(블록/슬라이스) 성형기만 필요하신가요?</legend>
                 <p class="plt-field-intro">R Series 리포머는 드라이아이스 펠렛을 압축해 슬라이스 또는 블록 형태로 만듭니다. 리포머에 사용할 펠렛을 직접 생산할지, 기존 펠렛이나 외부 공급을 이용할지 선택하세요.</p>
                 <div class="plt-binary-options">
-                  <label><input type="radio" name="sliceSupply" value="produce" checked><span><b>펠렛도 함께 생산</b><small>펠렛타이저 + R Series 구성</small><em>필요 설비: 드라이아이스 펠렛 제조기 + 리포머. 펠렛타이저가 펠렛을 생산하고, 리포머가 이를 압축해 원하는 슬라이스·블록 규격으로 성형합니다.</em></span></label>
-                  <label><input type="radio" name="sliceSupply" value="existing"><span><b>기존 펠렛 사용</b><small>R Series 단독 구성</small><em>필요 설비: 리포머. 이미 확보한 드라이아이스 펠렛을 리포머에 투입해 원하는 슬라이스·블록 규격으로 압축·성형합니다.</em></span></label>
+                  <label><input type="radio" name="sliceSupply" value="produce" checked><span><b>펠렛도 함께 생산</b><small>펠렛타이저 + R Series 구성</small><em>필요 설비: 드라이아이스 펠렛 제조기 + 리포머. 펠렛타이저가 펠렛을 생산하고, 리포머가 이를 압축해 원하는 슬라이스 또는 블록 규격으로 성형합니다.</em></span></label>
+                  <label><input type="radio" name="sliceSupply" value="existing"><span><b>기존 펠렛 사용</b><small>R Series 단독 구성</small><em>필요 설비: 리포머. 이미 확보한 드라이아이스 펠렛을 리포머에 투입해 원하는 슬라이스 또는 블록 규격으로 압축하고 성형합니다.</em></span></label>
                 </div>
               </fieldset>
 
@@ -462,17 +470,16 @@
             </div>
 
             <div class="plt-finder-nav">
-              <button type="button" class="plt-step-back" id="finderPrev" disabled>이전</button>
-              <span><b id="finderCurrentStep">1</b> / 4</span>
+              <p class="pf-hint" id="finderHint">하나를 고르면 바로 다음 질문으로 넘어갑니다.</p>
               <button type="button" class="plt-step-next" id="finderNextStep">다음 <i>→</i></button>
             </div>
 
             <aside class="plt-finder-result" id="finderResult" aria-live="polite" hidden>
-              <div class="plt-result-top"><span class="plt-result-label">선택한 조건에 맞는 장비</span><span class="plt-result-live">실시간 확인</span></div>
+              <div class="plt-result-top"><span class="plt-result-label">추천 결과</span><span class="plt-result-live">선택하신 조건에 맞춰 먼저 검토할 생산 시스템입니다.</span></div>
               <div class="plt-result-row">
               <div class="plt-result-products" id="finderProducts" aria-label="추천 제품 구성"></div>
               <span class="plt-result-op is-eq" id="finderResultEq" aria-hidden="true"></span>
-              <div class="plt-result-summary"><small id="finderType">펠렛 생산 · 350 kg/h</small><h3 id="finderModel">PR350H</h3><p id="finderReason">입력한 조건과 생산량을 기준으로 우선 검토할 수 있는 펠렛타이저입니다.</p></div>
+              <div class="plt-result-summary"><small id="finderType">펠렛 생산, 350 kg/h</small><h3 id="finderModel">PR350H</h3><p id="finderReason">입력한 조건과 생산량을 기준으로 우선 검토할 수 있는 펠렛타이저입니다.</p></div>
               </div>
               <div class="plt-result-actions" hidden><dl><div><dt>확인 사항</dt><dd id="finderConfig">펠렛 규격 확인</dd></div><div><dt>다음 단계</dt><dd id="finderNext">실제 사용량 확인</dd></div></dl></div>
               <div class="plt-result-note-box">
@@ -482,6 +489,7 @@
                 <div class="plt-result-note-footer"><button type="button" class="plt-btn is-small is-outline" id="finderReset"><i aria-hidden="true">↺</i> 다시하기</button><button type="button" class="plt-btn is-small" id="finderPrint"><i aria-hidden="true">⎙</i> 출력하기</button></div>
               </div>
             </aside>
+            </div>
           </div>
         </section>
 
@@ -780,6 +788,15 @@
     var progressButtons = Array.prototype.slice.call(document.querySelectorAll('[data-go-step]'));
     var finderSteps = Array.prototype.slice.call(form.querySelectorAll('[data-finder-step]'));
     var currentFinderStep = 1;
+    /* (2026-11-10) v2 — 상단 바(이전, 질문 n/4, 고른 조건, 처음부터 다시) + 결과는 같은 카드 안에서 전환 */
+    var showingResult = false;
+    var finderShellEl = document.getElementById('finderShell');
+    var finderStepText = document.getElementById('finderStepText');
+    var finderStepTotal = document.getElementById('finderStepTotal');
+    var finderLine = document.getElementById('finderLine');
+    var finderHint = document.getElementById('finderHint');
+    var finderBarHint = document.getElementById('finderBarHint');
+    var finderResetTop = document.getElementById('finderResetTop');
     var cards = Array.prototype.slice.call(document.querySelectorAll('.plt-product[data-capacity]'));
     if (!slider || !capacityNumber || !form || !dimensionFields) return;
 
@@ -801,39 +818,39 @@
     ];
     var pelletSizes = [1.7,3,6,10,16];
     var sliceFormats = [
-      { value:'125 × 125 × 19 mm', models:'500,1000', label:'125 × 125 × 19 mm · R500H / R1000H' },
-      { value:'125 × 125 × 25 mm', models:'500,1000,2000', label:'125 × 125 × 25 mm · R500H / R1000H / R2000H' },
-      { value:'125 × 125 × 50 mm', models:'500,1000,2000', label:'125 × 125 × 50 mm · R500H / R1000H / R2000H' },
-      { value:'127 × 254 × 19 mm', models:'500,1000', label:'127 × 254 × 19 mm · R500H / R1000H' },
-      { value:'127 × 254 × 25 mm', models:'500,1000,2000', label:'127 × 254 × 25 mm · R500H / R1000H / R2000H' },
-      { value:'127 × 254 × 50 mm', models:'500,1000,2000', label:'127 × 254 × 50 mm · R500H / R1000H / R2000H' },
-      { value:'127 × 254 × 60 mm', models:'500,1000,2000', label:'127 × 254 × 60 mm · R500H / R1000H / R2000H' },
-      { value:'127 × 254 × 64 mm', models:'500,1000,2000', label:'127 × 254 × 64 mm · R500H / R1000H / R2000H' },
-      { value:'127 × 254 × 68 mm', models:'500,1000', label:'127 × 254 × 68 mm · R500H / R1000H' },
-      { value:'127 × 254 × 76 mm', models:'2000', label:'127 × 254 × 76 mm · R2000H' },
-      { value:'210 × 125 × 19 mm', models:'500,1000', label:'210 × 125 × 19 mm · R500H / R1000H' },
-      { value:'210 × 125 × 25 mm', models:'500,1000', label:'210 × 125 × 25 mm · R500H / R1000H' },
-      { value:'210 × 125 × 50 mm', models:'500,1000', label:'210 × 125 × 50 mm · R500H / R1000H' },
-      { value:'210 × 125 × 60 mm', models:'500,1000', label:'210 × 125 × 60 mm · R500H / R1000H' },
-      { value:'210 × 125 × 70 mm', models:'500,1000', label:'210 × 125 × 70 mm · R500H / R1000H' },
-      { value:'150 × 150 × 19 mm', models:'500,1000', label:'150 × 150 × 19 mm · R500H / R1000H' },
-      { value:'150 × 150 × 25 mm', models:'500,1000', label:'150 × 150 × 25 mm · R500H / R1000H' },
-      { value:'150 × 150 × 50 mm', models:'500,1000', label:'150 × 150 × 50 mm · R500H / R1000H' },
-      { value:'150 × 150 × 60 mm', models:'500,1000', label:'150 × 150 × 60 mm · R500H / R1000H' },
-      { value:'150 × 150 × 70 mm', models:'500,1000', label:'150 × 150 × 70 mm · R500H / R1000H' },
-      { value:'150 × 150 × 80 mm', models:'500,1000', label:'150 × 150 × 80 mm · R500H / R1000H' },
-      { value:'150 × 150 × 90 mm', models:'500,1000', label:'150 × 150 × 90 mm · R500H / R1000H' },
-      { value:'125 × 105 × 19 mm', models:'500,1000', label:'125 × 105 × 19 mm · R500H / R1000H' },
-      { value:'125 × 105 × 25 mm', models:'500,1000', label:'125 × 105 × 25 mm · R500H / R1000H' },
-      { value:'125 × 105 × 50 mm', models:'500,1000', label:'125 × 105 × 50 mm · R500H / R1000H' },
-      { value:'138 × 60 × 19 mm', models:'500,1000', label:'138 × 60 × 19 mm · R500H / R1000H' },
-      { value:'138 × 60 × 25 mm', models:'500,1000', label:'138 × 60 × 25 mm · R500H / R1000H' },
-      { value:'138 × 60 × 50 mm', models:'500,1000', label:'138 × 60 × 50 mm · R500H / R1000H' },
-      { value:'254 × 254 × 25 mm', models:'2000', label:'254 × 254 × 25 mm · R2000H' },
-      { value:'254 × 254 × 50 mm', models:'2000', label:'254 × 254 × 50 mm · R2000H' },
-      { value:'254 × 254 × 60 mm', models:'2000', label:'254 × 254 × 60 mm · R2000H' },
-      { value:'254 × 254 × 64 mm', models:'2000', label:'254 × 254 × 64 mm · R2000H' },
-      { value:'254 × 254 × 76 mm', models:'2000', label:'254 × 254 × 76 mm · R2000H' }
+      { value:'125 × 125 × 19 mm', models:'500,1000', label:'125 × 125 × 19 mm, R500H / R1000H' },
+      { value:'125 × 125 × 25 mm', models:'500,1000,2000', label:'125 × 125 × 25 mm, R500H / R1000H / R2000H' },
+      { value:'125 × 125 × 50 mm', models:'500,1000,2000', label:'125 × 125 × 50 mm, R500H / R1000H / R2000H' },
+      { value:'127 × 254 × 19 mm', models:'500,1000', label:'127 × 254 × 19 mm, R500H / R1000H' },
+      { value:'127 × 254 × 25 mm', models:'500,1000,2000', label:'127 × 254 × 25 mm, R500H / R1000H / R2000H' },
+      { value:'127 × 254 × 50 mm', models:'500,1000,2000', label:'127 × 254 × 50 mm, R500H / R1000H / R2000H' },
+      { value:'127 × 254 × 60 mm', models:'500,1000,2000', label:'127 × 254 × 60 mm, R500H / R1000H / R2000H' },
+      { value:'127 × 254 × 64 mm', models:'500,1000,2000', label:'127 × 254 × 64 mm, R500H / R1000H / R2000H' },
+      { value:'127 × 254 × 68 mm', models:'500,1000', label:'127 × 254 × 68 mm, R500H / R1000H' },
+      { value:'127 × 254 × 76 mm', models:'2000', label:'127 × 254 × 76 mm, R2000H' },
+      { value:'210 × 125 × 19 mm', models:'500,1000', label:'210 × 125 × 19 mm, R500H / R1000H' },
+      { value:'210 × 125 × 25 mm', models:'500,1000', label:'210 × 125 × 25 mm, R500H / R1000H' },
+      { value:'210 × 125 × 50 mm', models:'500,1000', label:'210 × 125 × 50 mm, R500H / R1000H' },
+      { value:'210 × 125 × 60 mm', models:'500,1000', label:'210 × 125 × 60 mm, R500H / R1000H' },
+      { value:'210 × 125 × 70 mm', models:'500,1000', label:'210 × 125 × 70 mm, R500H / R1000H' },
+      { value:'150 × 150 × 19 mm', models:'500,1000', label:'150 × 150 × 19 mm, R500H / R1000H' },
+      { value:'150 × 150 × 25 mm', models:'500,1000', label:'150 × 150 × 25 mm, R500H / R1000H' },
+      { value:'150 × 150 × 50 mm', models:'500,1000', label:'150 × 150 × 50 mm, R500H / R1000H' },
+      { value:'150 × 150 × 60 mm', models:'500,1000', label:'150 × 150 × 60 mm, R500H / R1000H' },
+      { value:'150 × 150 × 70 mm', models:'500,1000', label:'150 × 150 × 70 mm, R500H / R1000H' },
+      { value:'150 × 150 × 80 mm', models:'500,1000', label:'150 × 150 × 80 mm, R500H / R1000H' },
+      { value:'150 × 150 × 90 mm', models:'500,1000', label:'150 × 150 × 90 mm, R500H / R1000H' },
+      { value:'125 × 105 × 19 mm', models:'500,1000', label:'125 × 105 × 19 mm, R500H / R1000H' },
+      { value:'125 × 105 × 25 mm', models:'500,1000', label:'125 × 105 × 25 mm, R500H / R1000H' },
+      { value:'125 × 105 × 50 mm', models:'500,1000', label:'125 × 105 × 50 mm, R500H / R1000H' },
+      { value:'138 × 60 × 19 mm', models:'500,1000', label:'138 × 60 × 19 mm, R500H / R1000H' },
+      { value:'138 × 60 × 25 mm', models:'500,1000', label:'138 × 60 × 25 mm, R500H / R1000H' },
+      { value:'138 × 60 × 50 mm', models:'500,1000', label:'138 × 60 × 50 mm, R500H / R1000H' },
+      { value:'254 × 254 × 25 mm', models:'2000', label:'254 × 254 × 25 mm, R2000H' },
+      { value:'254 × 254 × 50 mm', models:'2000', label:'254 × 254 × 50 mm, R2000H' },
+      { value:'254 × 254 × 60 mm', models:'2000', label:'254 × 254 × 60 mm, R2000H' },
+      { value:'254 × 254 × 64 mm', models:'2000', label:'254 × 254 × 64 mm, R2000H' },
+      { value:'254 × 254 × 76 mm', models:'2000', label:'254 × 254 × 76 mm, R2000H' }
     ];
     var sliceFootprints = [
       { value:'125 × 125', inch:'5 × 5 in', className:'is-square' },
@@ -849,7 +866,7 @@
       { code:'1000', capacity:1000, name:'R1000H', image:'../../assets/img/plt-r1000h-g1.webp', link:'r1000h.html' },
       { code:'2000', capacity:2500, name:'R2000H', image:'../../assets/img/plt-r2000h-g1.webp', link:'r2000h.html' }
     ];
-    var shapeNames = { pellet:'펠렛·너겟', slice:'슬라이스·블록' };
+    var shapeNames = { pellet:'펠렛 및 너겟', slice:'슬라이스 및 블록' };
 
     function currentShape() {
       return form.querySelector('input[name="iceShape"]:checked').value;
@@ -866,26 +883,42 @@
       });
       progressButtons.forEach(function (button) {
         var step = Number(button.getAttribute('data-go-step'));
-        button.classList.toggle('is-active', step === currentFinderStep);
-        button.classList.toggle('is-complete', step < currentFinderStep);
-        button.setAttribute('aria-current', step === currentFinderStep ? 'step' : 'false');
+        button.classList.toggle('is-active', !showingResult && step === currentFinderStep);
+        button.classList.toggle('is-complete', showingResult || step < currentFinderStep);
+        button.setAttribute('aria-current', !showingResult && step === currentFinderStep ? 'step' : 'false');
       });
-      finderPrev.disabled = currentFinderStep === 1;
-      var progressNav = document.querySelector('.plt-finder-progress');
-      if (progressNav) progressNav.style.setProperty('--fp', (currentFinderStep - 1) / 3);
-      finderCurrentStep.textContent = currentFinderStep;
+      var first = currentFinderStep === 1 && !showingResult;
+      finderPrev.hidden = first;
+      finderResetTop.hidden = first;
+      finderBarHint.hidden = !first;
+      if (showingResult) {
+        finderStepText.textContent = '추천 결과';
+        finderStepTotal.textContent = '';
+      } else {
+        finderStepText.innerHTML = '질문 <span id="finderCurrentStep">' + currentFinderStep + '</span>';
+        finderStepTotal.textContent = ' / 4';
+      }
+      finderLine.style.width = (showingResult ? 100 : (currentFinderStep - 1) / 4 * 100) + '%';
+      /* 고르면 바로 넘어가는 질문(1 / 3)과 '다음'을 눌러야 하는 질문(2 / 4)의 안내 */
+      finderHint.textContent = (currentFinderStep === 1 || currentFinderStep === 3) ? '하나를 고르면 바로 다음 질문으로 넘어갑니다.' : (currentFinderStep === 2 ? '규격을 고른 뒤 다음을 눌러 주세요.' : '생산량을 정한 뒤 추천 결과를 확인하세요.');
       if (currentFinderStep < 4) {
         finderNextStep.innerHTML = '다음 <i>→</i>';
       } else {
         finderNextStep.innerHTML = '추천 결과 보기 <i>→</i>';
       }
     }
+    function keepFinderInView() {
+      var top = finderShellEl.getBoundingClientRect().top;
+      if (top < 70 || top > window.innerHeight * 0.45) window.scrollTo({ top: window.pageYOffset + top - 96, behavior: 'smooth' });
+    }
     function setFinderStep(step) {
-      currentFinderStep = Math.max(1, Math.min(4, step));
-      if (currentFinderStep < 4) {
-        finderResult.hidden = true;
-        finderResult.classList.remove('is-visible');
-      }
+      var next = Math.max(1, Math.min(4, step));
+      finderShellEl.classList.toggle('is-back', showingResult || next < currentFinderStep);
+      currentFinderStep = next;
+      showingResult = false;
+      finderShellEl.classList.remove('is-result');
+      finderResult.hidden = true;
+      finderResult.classList.remove('is-visible');
       updateFinderProgress();
     }
     function updateFinderSummaries() {
@@ -906,20 +939,20 @@
       locationField.hidden = shape !== 'pellet';
       sliceSupplyField.hidden = shape !== 'slice';
       if (shape === 'pellet') {
-        dimensionFields.innerHTML = '<div class="plt-size-choice"><span>펠렛·너겟 직경</span><div>' + pelletSizes.map(function (size) {
+        dimensionFields.innerHTML = '<div class="plt-size-choice"><span>펠렛 및 너겟 직경</span><div>' + pelletSizes.map(function (size) {
           return '<label><input type="radio" name="diameter" value="' + size + '"' + (size === 3 ? ' checked' : '') + '><b>' + size + '</b><i>mm</i></label>';
         }).join('') + '</div></div>';
-        dimensionIntro.textContent = '펠렛타이저가 압출·절단해 만드는 낱개 펠렛·너겟의 지름을 선택합니다. 이 규격과 필요한 생산량에 맞는 장비를 검토합니다.';
+        dimensionIntro.textContent = '펠렛타이저가 압출하고 절단해 만드는 낱개 펠렛이나 너겟의 지름을 선택합니다. 이 규격과 필요한 생산량에 맞는 장비를 검토합니다.';
         dimensionHelp.textContent = '펠렛과 너겟은 길이를 지정하지 않으며, 직경 규격과 필요한 생산량으로 장비를 검토합니다.';
         dimensionStep.textContent = '02';
         dimensionTitle.textContent = '원하는 펠렛/너겟의 지름을 고르세요.';
       } else {
         dimensionFields.innerHTML = '<div class="plt-slice-builder"><span class="plt-field-label">가로 × 세로</span><div class="plt-footprint-options">' + sliceFootprints.map(function (footprint, index) {
-          return '<label><input type="radio" name="sliceFootprint" value="' + footprint.value + '"' + (index === 0 ? ' checked' : '') + '><span><i class="' + footprint.className + '" aria-hidden="true"></i><b>' + footprint.value + '</b><small>mm · ' + footprint.inch + '</small></span></label>';
+          return '<label><input type="radio" name="sliceFootprint" value="' + footprint.value + '"' + (index === 0 ? ' checked' : '') + '><span><i class="' + footprint.className + '" aria-hidden="true"></i><b>' + footprint.value + '</b><small>mm / ' + footprint.inch + '</small></span></label>';
         }).join('') + '</div><span class="plt-field-label plt-thickness-label">두께</span><div class="plt-thickness-options" id="thicknessOptions"></div></div>';
         renderSliceThickness();
-        dimensionIntro.textContent = '이 규격은 완성된 슬라이스·블록의 크기입니다. 리포머(R Series)가 드라이아이스 펠렛을 압축해 선택한 가로×세로×두께로 성형합니다.';
-        dimensionHelp.textContent = '첨부된 R Series 규격표를 기준으로 선택합니다. R Series는 펠렛을 슬라이스·블록으로 재성형하는 리포머입니다.';
+        dimensionIntro.textContent = '이 규격은 완성된 슬라이스 또는 블록의 크기입니다. 리포머(R Series)가 드라이아이스 펠렛을 압축해 선택한 가로×세로×두께로 성형합니다.';
+        dimensionHelp.textContent = '첨부된 R Series 규격표를 기준으로 선택합니다. R Series는 펠렛을 슬라이스나 블록으로 재성형하는 리포머입니다.';
         dimensionStep.textContent = '02';
         dimensionTitle.textContent = '원하는 블록/슬라이스의 규격을 고르세요.';
       }
@@ -940,7 +973,7 @@
       var formats = sliceFormats.filter(function (format) { return format.value.indexOf(selectedFootprint.value + ' × ') === 0; });
       container.innerHTML = formats.map(function (format, index) {
         var thickness = format.value.replace(selectedFootprint.value + ' × ', '').replace(' mm', '');
-        var modelNames = format.models.split(',').map(function (code) { return 'R' + code + 'H'; }).join(' · ');
+        var modelNames = format.models.split(',').map(function (code) { return 'R' + code + 'H'; }).join(' / ');
         return '<label><input type="radio" name="sliceThickness" value="' + format.value + '" data-models="' + format.models + '"' + (index === 0 ? ' checked' : '') + '><span><b>' + thickness + ' mm</b><small>' + modelNames + '</small></span></label>';
       }).join('');
       Array.prototype.forEach.call(container.querySelectorAll('input'), function (input) {
@@ -1054,17 +1087,17 @@
         var mobile = form.querySelector('input[name="installation"]:checked').value === 'mobile';
         if (mobile) {
           max = 350;
-          description = 'Production Hub · PR120H 또는 PR350H 기준';
+          description = 'Production Hub, PR120H 또는 PR350H 기준';
         } else if (diameter === 1.7) {
           max = 1500;
-          description = '1.7 mm · 표준 모델 별도 검토';
+          description = '1.7 mm, 표준 모델 별도 검토';
         }
       } else {
         var selected = dimensionFields.querySelector('input[name="sliceThickness"]:checked');
         var codes = selected.getAttribute('data-models').split(',');
         max = codes.indexOf('2000') !== -1 ? 2500 : (codes.indexOf('1000') !== -1 ? 1000 : 600);
-        var supplyDescription = currentSliceSupply() === 'produce' ? ' · 펠렛타이저 함께 구성' : ' · 기존 펠렛 공급';
-        description = (codes.indexOf('2000') !== -1 ? '선택 규격의 R2000H 포함 기준' : '선택 규격의 R500H·R1000H 기준') + supplyDescription;
+        var supplyDescription = currentSliceSupply() === 'produce' ? ', 펠렛타이저 함께 구성' : ', 기존 펠렛 공급';
+        description = (codes.indexOf('2000') !== -1 ? '선택 규격의 R2000H 포함 기준' : '선택 규격의 R500H / R1000H 기준') + supplyDescription;
       }
       slider.max = max;
       capacityNumber.max = max;
@@ -1073,7 +1106,7 @@
       if (current < 20) current = 20;
       slider.value = current;
       capacityNumber.value = current;
-      capacityLimit.innerHTML = '<b>현재 조건에서 선택 가능</b><span>최대 ' + max.toLocaleString('ko-KR') + ' kg/h · ' + description + '</span>';
+      capacityLimit.innerHTML = '<b>현재 조건에서 선택 가능</b><span>최대 ' + max.toLocaleString('ko-KR') + ' kg/h, ' + description + '</span>';
       var tickValues = [20, .25, .5, .75, 1].map(function (value, index) {
         if (index === 0) return 20;
         if (index === 4) return max;
@@ -1096,13 +1129,13 @@
         var candidates = mobile ? pelletModels.filter(function (item) { return item.name === 'PR120H' || item.name === 'PR350H'; }) : pelletModels;
         var machine = candidates.find(function (item) { return item.capacity >= need && item.sizes.indexOf(diameter) !== -1; });
         if (mobile && machine) {
-          result = { name:'Production Hub + ' + machine.name, image:'../../assets/img/pelletizer-hub-official.png', link:'production-hub.html', linkText:'Production Hub 상담', type:shapeNames[shape] + ' 생산 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'설치 장소 변경을 고려해 ' + machine.name + '를 탑재한 독립형 Production Hub 구성을 추천합니다.', config:size + ' · ' + machine.name + ' 탑재', next:'이동·설치 인프라 확인' };
+          result = { name:'Production Hub + ' + machine.name, image:'../../assets/img/pelletizer-hub-official.png', link:'production-hub.html', linkText:'Production Hub 상담', type:shapeNames[shape] + ' 생산, ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'설치 장소 변경을 고려해 ' + machine.name + '를 탑재한 독립형 Production Hub 구성을 추천합니다.', config:size + ', ' + machine.name + ' 탑재', next:'이동, 설치 인프라 확인' };
         } else if (mobile && !machine) {
-          result = { name:'Production Hub 맞춤 검토', image:'../../assets/img/pelletizer-hub-official.png', link:'production-hub.html', linkText:'Production Hub 상담', type:shapeNames[shape] + ' 생산 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'Production Hub는 PR120H 또는 PR350H 구성만 가능하므로 선택한 직경과 생산량에 대한 별도 검토가 필요합니다.', config:size + ' · Hub 적용성 검토', next:'생산량·설치 장소 확인' };
+          result = { name:'Production Hub 맞춤 검토', image:'../../assets/img/pelletizer-hub-official.png', link:'production-hub.html', linkText:'Production Hub 상담', type:shapeNames[shape] + ' 생산, ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'Production Hub는 PR120H 또는 PR350H 구성만 가능하므로 선택한 직경과 생산량에 대한 별도 검토가 필요합니다.', config:size + ', Hub 적용성 검토', next:'생산량, 설치 장소 확인' };
         } else if (!machine) {
-          result = { name:'맞춤 펠렛 생산 시스템', image:'../../assets/img/pelletizer-pr1500h-official.jpg', link:'../quote.html', linkText:'시스템 구성 상담', type:shapeNames[shape] + ' 생산 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'선택한 직경과 생산량을 동시에 충족하는 단일 표준 모델이 없어 다이와 병렬 구성을 함께 검토해야 합니다.', config:size + ' · 다이 및 생산량 검토', next:'일일 운전 시간 확인' };
+          result = { name:'맞춤 펠렛 생산 시스템', image:'../../assets/img/pelletizer-pr1500h-official.jpg', link:'../quote.html', linkText:'시스템 구성 상담', type:shapeNames[shape] + ' 생산, ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'선택한 직경과 생산량을 동시에 충족하는 단일 표준 모델이 없어 다이와 병렬 구성을 함께 검토해야 합니다.', config:size + ', 다이 및 생산량 검토', next:'일일 운전 시간 확인' };
         } else {
-          result = { name:machine.name, image:machine.image, link:machine.link, linkText:'추천 모델 상세 보기', type:shapeNames[shape] + ' 생산 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'입력한 조건과 생산량을 기준으로 우선 검토할 수 있는 펠렛타이저입니다.', config:size + ' · 전용 다이 검토', next:'LCO₂ 공급 조건 확인', tip:(capacityTip(candidates, need, machine) || {}).text };
+          result = { name:machine.name, image:machine.image, link:machine.link, linkText:'추천 모델 상세 보기', type:shapeNames[shape] + ' 생산, ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'입력한 조건과 생산량을 기준으로 우선 검토할 수 있는 펠렛타이저입니다.', config:size + ', 전용 다이 검토', next:'LCO₂ 공급 조건 확인', tip:(capacityTip(candidates, need, machine) || {}).text };
         }
       } else {
         var formatOption = dimensionFields.querySelector('input[name="sliceThickness"]:checked');
@@ -1116,14 +1149,14 @@
             var reformerCandidates = reformers.filter(function (item) { return supportedModels.indexOf(item.code) !== -1; });
             var reformerTip = capacityTip(reformerCandidates, need, reformer);
             var combinedTip = (pelletizerTip && pelletizerTip.type === 'down') ? pelletizerTip.text : (reformerTip && reformerTip.type === 'down') ? reformerTip.text : (pelletizerTip ? pelletizerTip.text : (reformerTip ? reformerTip.text : ''));
-            result = { name:pelletizer.name + ' + ' + reformer.name, products:[{name:pelletizer.name,image:pelletizer.image,role:'펠렛 생산',link:pelletizer.link},{name:reformer.name,image:reformer.image,role:'슬라이스 재성형',link:reformer.link}], link:'../quote.html', linkText:'통합 생산 시스템 상담', type:shapeNames[shape] + ' 생산·리폼 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'펠렛 생산부터 슬라이스·블록 재성형까지 이어지도록 ' + pelletizer.name + ' 펠렛타이저와 ' + reformer.name + ' 리포머를 함께 구성합니다.', config:size + ' · ' + pelletizer.name + ' → ' + reformer.name, next:'펠렛 이송·버퍼 구성 확인', note:'R Series 자체는 드라이아이스를 생산하지 않는 리포머입니다. 이 추천은 필요한 펠렛을 현장에서 생산하는 펠렛타이저를 함께 포함한 1차 구성입니다.', tip:combinedTip };
+            result = { name:pelletizer.name + ' + ' + reformer.name, products:[{name:pelletizer.name,image:pelletizer.image,role:'펠렛 생산',link:pelletizer.link},{name:reformer.name,image:reformer.image,role:'슬라이스 재성형',link:reformer.link}], link:'../quote.html', linkText:'통합 생산 시스템 상담', type:shapeNames[shape] + ' 생산과 리폼, ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'펠렛 생산부터 슬라이스 및 블록 재성형까지 이어지도록 ' + pelletizer.name + ' 펠렛타이저와 ' + reformer.name + ' 리포머를 함께 구성합니다.', config:size + ', ' + pelletizer.name + ' → ' + reformer.name, next:'펠렛 이송, 버퍼 구성 확인', note:'R Series 자체는 드라이아이스를 생산하지 않는 리포머입니다. 이 추천은 필요한 펠렛을 현장에서 생산하는 펠렛타이저를 함께 포함한 1차 구성입니다.', tip:combinedTip };
           } else if (makePellets && !pelletizer) {
-            result = { name:'펠렛타이저 맞춤 구성 + ' + reformer.name, products:[{name:'펠렛타이저 맞춤 구성',image:'../../assets/img/pelletizer-pr1500h-official.jpg',role:'펠렛 생산',link:'../quote.html',linkText:'구성 상담'},{name:reformer.name,image:reformer.image,role:'슬라이스 재성형',link:reformer.link}], link:'../quote.html', linkText:'통합 생산 시스템 상담', type:shapeNames[shape] + ' 생산·리폼 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'리포머 처리량에 맞는 펠렛을 함께 생산하려면 복수 펠렛타이저 또는 생산라인 맞춤 구성이 필요합니다.', config:size + ' · 펠렛 생산 병렬 구성 → ' + reformer.name, next:'펠렛타이저 대수·버퍼 용량 확인', note:'R Series 자체는 드라이아이스를 생산하지 않습니다. 시간당 1,500 kg을 초과하는 펠렛 생산은 단일 표준 펠렛타이저 범위를 넘어 병렬 구성과 연속 운전 조건을 함께 검토해야 합니다.' };
+            result = { name:'펠렛타이저 맞춤 구성 + ' + reformer.name, products:[{name:'펠렛타이저 맞춤 구성',image:'../../assets/img/pelletizer-pr1500h-official.jpg',role:'펠렛 생산',link:'../quote.html',linkText:'구성 상담'},{name:reformer.name,image:reformer.image,role:'슬라이스 재성형',link:reformer.link}], link:'../quote.html', linkText:'통합 생산 시스템 상담', type:shapeNames[shape] + ' 생산과 리폼, ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'리포머 처리량에 맞는 펠렛을 함께 생산하려면 복수 펠렛타이저 또는 생산라인 맞춤 구성이 필요합니다.', config:size + ', 펠렛 생산 병렬 구성 → ' + reformer.name, next:'펠렛타이저 대수, 버퍼 용량 확인', note:'R Series 자체는 드라이아이스를 생산하지 않습니다. 시간당 1,500 kg을 초과하는 펠렛 생산은 단일 표준 펠렛타이저 범위를 넘어 병렬 구성과 연속 운전 조건을 함께 검토해야 합니다.' };
           } else {
-            result = { name:reformer.name, image:reformer.image, link:reformer.link, linkText:'제품 보러가기', type:shapeNames[shape] + ' 리폼 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'기존에 공급되는 펠렛을 선택한 규격으로 재성형하며 필요한 처리량을 충족하는 가장 가까운 R Series 리포머입니다.', config:size + ' · 기존 펠렛 공급 → ' + reformer.name, next:'원료 펠렛 공급량·이송 확인', note:'R Series는 펠렛을 슬라이스·블록으로 재성형하는 리포머입니다. 이 구성은 필요한 양의 펠렛이 기존 제조기 또는 외부 공급을 통해 확보된다는 조건입니다.', tip:(capacityTip(reformers.filter(function (item) { return supportedModels.indexOf(item.code) !== -1; }), need, reformer) || {}).text };
+            result = { name:reformer.name, image:reformer.image, link:reformer.link, linkText:'제품 보러가기', type:shapeNames[shape] + ' 리폼, ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'기존에 공급되는 펠렛을 선택한 규격으로 재성형하며 필요한 처리량을 충족하는 가장 가까운 R Series 리포머입니다.', config:size + ', 기존 펠렛 공급 → ' + reformer.name, next:'원료 펠렛 공급량, 이송 확인', note:'R Series는 펠렛을 슬라이스나 블록으로 재성형하는 리포머입니다. 이 구성은 필요한 양의 펠렛이 기존 제조기 또는 외부 공급을 통해 확보된다는 조건입니다.', tip:(capacityTip(reformers.filter(function (item) { return supportedModels.indexOf(item.code) !== -1; }), need, reformer) || {}).text };
           }
         } else {
-          result = { name:'R Series 맞춤 검토', image:'../../assets/img/plt-card-rseries.webp', link:'../quote.html', linkText:'구성 상담', type:shapeNames[shape] + ' 리폼 · ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'선택한 규격과 처리량을 동시에 충족하는 표준 R Series 구성이 없어 규격 또는 병렬 운전을 검토해야 합니다.', config:size + (makePellets ? ' · 펠렛타이저 함께 검토' : ' · 기존 펠렛 공급 조건'), next:'규격·처리량 재검토', note:'R Series는 리포머입니다. 펠렛도 함께 생산하는 경우에는 필요한 처리량에 맞는 드라이아이스 제조기 구성까지 함께 검토해야 합니다.' };
+          result = { name:'R Series 맞춤 검토', image:'../../assets/img/plt-card-rseries.webp', link:'../quote.html', linkText:'구성 상담', type:shapeNames[shape] + ' 리폼, ' + need.toLocaleString('ko-KR') + ' kg/h', reason:'선택한 규격과 처리량을 동시에 충족하는 표준 R Series 구성이 없어 규격 또는 병렬 운전을 검토해야 합니다.', config:size + (makePellets ? ', 펠렛타이저 함께 검토' : ', 기존 펠렛 공급 조건'), next:'규격, 처리량 재검토', note:'R Series는 리포머입니다. 펠렛도 함께 생산하는 경우에는 필요한 처리량에 맞는 드라이아이스 제조기 구성까지 함께 검토해야 합니다.' };
         }
       }
 
@@ -1176,29 +1209,43 @@
     progressButtons.forEach(function (button) {
       button.addEventListener('click', function () { setFinderStep(Number(button.getAttribute('data-go-step'))); });
     });
-    finderPrev.addEventListener('click', function () { setFinderStep(currentFinderStep - 1); });
+    finderPrev.addEventListener('click', function () { setFinderStep(showingResult ? 4 : currentFinderStep - 1); });
     finderNextStep.addEventListener('click', function () {
       if (currentFinderStep < 4) {
         setFinderStep(currentFinderStep + 1);
+        keepFinderInView();
       } else {
+        showingResult = true;
+        finderShellEl.classList.remove('is-back');
+        finderShellEl.classList.add('is-result');
         finderResult.hidden = false;
         finderResult.classList.remove('is-visible');
         void finderResult.offsetWidth;
         finderResult.classList.add('is-visible');
+        updateFinderProgress();
         output.model.setAttribute('tabindex', '-1');
         output.model.focus({ preventScroll:true });
-        finderResult.scrollIntoView({ behavior:'smooth', block:'start' });
+        keepFinderInView();
       }
     });
-    var finderShell = document.querySelector('.plt-finder-shell') || form;
-    document.getElementById('finderReset').addEventListener('click', function () {
+    /* 질문 1 / 3은 항목을 누르면 바로 다음 질문으로 (키보드 방향키로 고를 때는 넘어가지 않음) */
+    Array.prototype.forEach.call(form.querySelectorAll('input[name="iceShape"], input[name="installation"], input[name="sliceSupply"]'), function (radio) {
+      radio.addEventListener('click', function (e) {
+        if (e.detail === 0) return;
+        var from = currentFinderStep;
+        setTimeout(function () { if (!showingResult && currentFinderStep === from) { setFinderStep(from + 1); keepFinderInView(); } }, 280);
+      });
+    });
+    function resetFinder() {
       form.reset();
       renderDimensions();
       updateCapacityLimit();
       updateRecommendation();
       setFinderStep(1);
-      finderShell.scrollIntoView({ behavior:'smooth', block:'center' });
-    });
+      keepFinderInView();
+    }
+    document.getElementById('finderReset').addEventListener('click', resetFinder);
+    finderResetTop.addEventListener('click', resetFinder);
     function printPayload() {
       var labels = ['', '드라이아이스 형태', '제품 규격', shape3Label(), '시간당 생산량'];
       var conditions = [];
@@ -1225,7 +1272,7 @@
       Array.prototype.forEach.call(clone.querySelectorAll('.plt-result-note-footer, .plt-result-live, .plt-result-go'), function (el) { el.remove(); });
       sheet.appendChild(clone);
       var footer = document.createElement('footer');
-      footer.innerHTML = '<b>(주)바테크 VATEK</b><span>Cold Jet 공식 대리점 · 드라이아이스 생산 시스템 상담</span>';
+      footer.innerHTML = '<b>(주)바테크 VATEK</b><span>Cold Jet 공식 대리점, 드라이아이스 생산 시스템 상담</span>';
       sheet.appendChild(footer);
       document.body.appendChild(sheet);
       return sheet;

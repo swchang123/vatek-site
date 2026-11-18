@@ -805,6 +805,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // (2026-11-09) Cold Jet × VATEK 히어로 배지 — 본문과 용수철로 이어진 듯 스크롤 속도에 따라 늘어났다 탄성 있게 따라붙는다.
+  // 모든 페이지(메인 히어로·서브 히어로)에서 동일하게 사용. 움직임 줄이기 설정이면 즉시 추종.
+  var makeBadgeSpring = function (el) {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var pos = 0, vel = 0, target = 0, raf = null, last = 0;
+    var K = 360, C = 24; // 강성·감쇠 (감쇠비 ≈ 0.63 → 살짝 튕기며 정착)
+    var step = function (ts) {
+      var dt = Math.min(0.05, Math.max(0.001, (ts - last) / 1000)); last = ts;
+      var acc = K * (target - pos) - C * vel;
+      vel += acc * dt; pos += vel * dt;
+      if (Math.abs(target - pos) < 0.15 && Math.abs(vel) < 1) { pos = target; vel = 0; raf = null; }
+      else raf = requestAnimationFrame(step);
+      el.style.transform = "translate3d(0, " + pos.toFixed(2) + "px, 0)";
+    };
+    return function (y) {
+      if (reduce) { el.style.transform = "translate3d(0, " + y.toFixed(1) + "px, 0)"; return; }
+      target = y;
+      if (raf === null) { last = performance.now(); raf = requestAnimationFrame(step); }
+    };
+  };
+
   // 홈 히어로: 영상이 페이지 스크롤 속도의 20%로만 움직이는 패럴랙스 효과
   // (나머지 콘텐츠는 평소처럼 100% 속도로 스크롤됨)
   var heroVideoWrap = document.querySelector(".hero-video-wrap");
@@ -813,6 +834,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var heroStickyEl = heroVideoWrap.closest(".hero-sticky");
     var heroMedia = heroVideoWrap.querySelector("video, img");
     var heroBadge = (heroStickyEl || heroVideoWrap.parentElement).querySelector(".pel-hero-mask");
+    var setHeroBadge = heroBadge ? makeBadgeSpring(heroBadge) : null;
     var applyHeroParallax = function () {
       // 영상은 스크롤량의 20%만 이동해야 하므로, 페이지와 함께 움직이는 나머지 80%를
       // 반대 방향으로 되돌려(보정해) 순수 이동량이 20%만 남도록 함
@@ -828,7 +850,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       heroVideoWrap.style.transform = "translateY(" + offset.toFixed(1) + "px)";
       // (2026-11-08) 배지는 본문과 같은 속도로 위로 이동
-      if (heroBadge) heroBadge.style.transform = "translate3d(0, " + (-Math.min(window.scrollY, heroStickyEl ? heroStickyEl.offsetHeight : window.innerHeight)).toFixed(1) + "px, 0)";
+      if (setHeroBadge) setHeroBadge(-Math.min(window.scrollY, heroStickyEl ? heroStickyEl.offsetHeight : window.innerHeight));
       // (2026-11-08) 메인 히어로 영상도 스크롤 진행(0~1)에 따라 0 → 12px 블러
       if (heroMedia) heroMedia.style.filter = "blur(" + ((heroStickyEl ? Math.min(Math.max(window.scrollY / (heroStickyEl.offsetHeight || 1), 0), 1) : 0) * 12).toFixed(2) + "px)";
       parallaxTicking = false;
@@ -1817,11 +1839,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var subheroNext = subheroStage.nextElementSibling;
     var subheroBadge = subheroStage.querySelector(".pel-hero-mask");
+    var setSubheroBadge = subheroBadge ? makeBadgeSpring(subheroBadge) : null;
+    // (2026-11-09) 본문 카드가 히어로 아래를 덮고 시작하는 페이지(.bls-cover/.rec-cover 등 margin-top 음수)에서는
+    // 그 겹침만큼 배지를 위로 올려 정지 상태의 간격을 다른 페이지와 같게 하고, 스크롤 추종량에서도 겹침을 빼
+    // 배지와 본문 사이가 벌어지지 않게 한다.
+    var subheroOverlap = 0;
+    var applyBadgeOverlap = function () {
+      if (!subheroBadge || !subheroNext) return;
+      var mt = parseFloat(getComputedStyle(subheroNext).marginTop);
+      subheroOverlap = (!isNaN(mt) && mt < 0) ? -mt : 0;
+      // (2026-11-13) 본문 섹션 자체는 히어로 바로 아래에서 시작하지만, 그 안의 첫 패널(.cmp-panel 등)이
+      // margin-top 음수로 히어로 위에 올라오는 페이지(세척 가이드, 산업별, 작업별)도 있다.
+      // 첫 자식을 따라 내려가며 실제로 가장 위에 그려지는 지점을 찾아, 그만큼(nested) 배지를 더 올린다.
+      var nextTop = subheroNext.getBoundingClientRect().top, visualTop = nextTop, el = subheroNext, depth = 0;
+      while (el && depth < 6) {
+        var child = null;
+        for (var i = 0; i < el.children.length; i++) {
+          var c = el.children[i], ccs = getComputedStyle(c);
+          if (ccs.display === "none" || ccs.position === "absolute" || ccs.position === "fixed") continue;
+          child = c; break;
+        }
+        if (!child) break;
+        var ct = child.getBoundingClientRect().top;
+        if (ct < visualTop) visualTop = ct;
+        el = child; depth++;
+      }
+      var nested = Math.max(0, nextTop - visualTop);
+      subheroBadge.style.bottom = "";
+      if (subheroOverlap + nested > 0) {
+        var base = parseFloat(getComputedStyle(subheroBadge).bottom) || 0;
+        subheroBadge.style.bottom = (base + subheroOverlap + nested).toFixed(1) + "px";
+      }
+    };
+    applyBadgeOverlap();
     var updateSubhero = function () {
       subheroTicking = false;
       var rect = subheroStage.getBoundingClientRect();
       var stageHeight = subheroStage.offsetHeight || 1;
-      var scrolled;
+      var scrolled, badgeRise;
       if (stickyStage && subheroNext) {
         // sticky 히어로: 다음 섹션(본문 카드)이 위로 올라온 거리를 진행도로 사용
         var nextTop = subheroNext.getBoundingClientRect().top;
@@ -1831,8 +1886,10 @@ document.addEventListener("DOMContentLoaded", function () {
         var passed = nextTop <= stickyTop + 0.5;
         if (passed !== subheroStage.classList.contains("is-passed")) subheroStage.classList.toggle("is-passed", passed);
         scrolled = Math.min(Math.max(stageHeight - (nextTop - stickyTop), 0), stageHeight);
+        badgeRise = Math.min(Math.max(stageHeight - subheroOverlap - (nextTop - stickyTop), 0), stageHeight);
       } else {
         scrolled = Math.min(Math.max(-rect.top, 0), stageHeight);
+        badgeRise = scrolled;
       }
       var progress = scrolled / stageHeight;
       // sticky + 비율 버퍼: 이미지가 0에서 시작해 버퍼만큼만 위로(본문보다 느리게) 이동
@@ -1846,7 +1903,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var blurProgress = blurStart > 0 ? Math.max(0, (progress - blurStart) / (1 - blurStart)) : progress;
       subheroImg.style.filter = noBlur ? "" : "blur(" + (blurProgress * SUBHERO_BLUR_MAX).toFixed(2) + "px)";
       // (2026-11-08) Cold Jet × VATEK 배지는 본문과 같은 속도로 위로 올라가며 히어로 위쪽으로 사라짐
-      if (subheroBadge) subheroBadge.style.transform = "translate3d(0, " + (-scrolled).toFixed(1) + "px, 0)";
+      if (setSubheroBadge) setSubheroBadge(-badgeRise);
     };
     var onSubheroScroll = function () {
       if (!subheroTicking) {
@@ -1856,8 +1913,42 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     // 스크롤 시에는 rAF를 기다리지 않고 즉시 갱신 — 한 프레임 지연으로 sticky 히어로 이미지가 떨리는 현상 방지
     window.addEventListener("scroll", function () { subheroTicking = false; updateSubhero(); }, { passive: true });
-    window.addEventListener("resize", function () { applyBufferRatio(); onSubheroScroll(); });
+    window.addEventListener("resize", function () { applyBufferRatio(); applyBadgeOverlap(); onSubheroScroll(); });
     updateSubhero();
     }
   }
 });
+
+
+/* (2026-11-13) 히어로 텍스트 박스 통일 — 박스 크기는 CSS에서 고정. 글이 길어 넘치는 페이지만
+   글자 배율(--htb-s)을 단계적으로 줄여 같은 박스 안에 맞춘다. 0.8까지 줄여도 넘치면 둘째 문단을 접는다(is-tight). */
+(function () {
+  function fitOne(box) {
+    var kids = Array.prototype.filter.call(box.children, function (c) { return getComputedStyle(c).display !== 'none'; });
+    if (!kids.length) return true;
+    var cs = getComputedStyle(box);
+    var inner = box.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    var need = kids[kids.length - 1].getBoundingClientRect().bottom - kids[0].getBoundingClientRect().top;
+    return need <= inner + 1;
+  }
+  function fit() {
+    var boxes = document.querySelectorAll('.subhero-parallax .subhero-textbox');
+    Array.prototype.forEach.call(boxes, function (box) {
+      box.classList.remove('is-tight');
+      var s = 1;
+      box.style.setProperty('--htb-s', '1');
+      while (!fitOne(box) && s > 0.8) { s = Math.round((s - 0.025) * 1000) / 1000; box.style.setProperty('--htb-s', String(s)); }
+      if (!fitOne(box)) {
+        box.classList.add('is-tight');
+        s = 1; box.style.setProperty('--htb-s', '1');
+        while (!fitOne(box) && s > 0.8) { s = Math.round((s - 0.025) * 1000) / 1000; box.style.setProperty('--htb-s', String(s)); }
+      }
+    });
+  }
+  if (!document.querySelector('.subhero-parallax .subhero-textbox')) return;
+  var t;
+  fit();
+  window.addEventListener('load', fit);
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fit, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();

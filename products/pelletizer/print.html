@@ -86,7 +86,7 @@
   }).join('<span class="op plus"></span>') + (data.products.length > 1 ? '<span class="op eq"></span>' : '') +
     '<div class="sum"><small>' + esc(data.type) + '</small><h2>' + esc(data.name) + '</h2><p>' + esc(data.reason) + '</p></div></div>';
   html += '<div class="note"><b>NOTE</b><p>' + esc(data.note) + '</p>' + (data.tip ? '<p class="tip">' + esc(data.tip) + '</p>' : '') + '</div>';
-  html += '<footer><b>(주)바테크 VATEK</b><span>Cold Jet 공식 대리점 · 드라이아이스 생산 시스템 상담</span></footer>';
+  html += '<footer><b>(주)바테크 VATEK</b><span>Cold Jet 공식 대리점, 드라이아이스 생산 시스템 상담</span></footer>';
   document.getElementById('sheet').innerHTML = html;
   document.title = '추천 결과 — ' + data.name + ' — VATEK';
   var imgs = Array.prototype.slice.call(document.images), pending = imgs.filter(function (im) { return !im.complete; }).length;
