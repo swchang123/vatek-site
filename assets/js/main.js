@@ -1952,3 +1952,113 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fit, 120); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 })();
+
+// ---------------------------------------------------------------------
+// (2026-11-19) "장비 및 드라이아이스" 메가메뉴: 영상은 오른쪽 칸 위로 올리고(배치는 style.css),
+// 영상이 있던 가운데 칸에 지금 가리키는 메뉴의 모델 목록을 보여 준다. 누르면 그 제품 페이지로 간다.
+// 헤더 HTML은 97개 페이지에 똑같이 들어 있으므로, 페이지를 고치지 않고 여기서 칸을 만들어 넣는다.
+// 항목은 [이름, 주소, 이름 옆 짧은 설명(선택)]. 모델이 없는 메뉴는 바로가기를 보여 준다.
+// ---------------------------------------------------------------------
+(function () {
+  var menu = document.querySelector('.megamenu[data-menu="products"]');
+  if (!menu) return;
+  var index = menu.querySelector('.megamenu-index');
+  var first = menu.querySelector('.megamenu-index-item a');
+  if (!index || !first) return;
+  var m = /^(.*)products\/blaster\/index\.html$/.exec(first.getAttribute('href') || '');
+  if (!m) return;
+  var base = m[1];
+  var B = 'products/blaster/', PL = 'products/pelletizer/', R = 'products/recovery/', A = 'products/automation/';
+  var DATA = {
+    0: { label: 'MODELS', lead: ['모델을 고르기 전에', '드라이아이스 블라스터 한눈에 보기'], groups: [
+      { name: '스마트 블라스터', to: B + 'index.html#bls-sys-smart', items: [['Aero2 PCS ULTRA', B + 'aero2-ultra.html'], ['Aero2 PLT ULTRA', B + 'aero2-plt-ultra.html']] },
+      { name: '펠렛형 블라스터', to: B + 'index.html#bls-sys-pellet', items: [['Aero 40FP', B + 'aero-40fp.html'], ['Aero 80FP', B + 'aero-80fp.html'], ['ELITE 20', B + 'elite-20.html'], ['IceRocket PLT', B + 'icerocket-plt.html']] },
+      { name: '마이크로파티클 블라스터', to: B + 'index.html#bls-sys-micro', items: [['i³ MicroClean 2', B + 'i3-microclean-2.html'], ['i³ MicroClean', B + 'i3-microclean.html'], ['SDI Select 60', B + 'sdi-select-60.html']] },
+      { name: '특수 목적', to: B + 'index.html#bls-sys-specialty', items: [['Aero C100', B + 'c100.html'], ['E-CO2 150', B + 'e-co2-150.html']] }
+    ] },
+    1: { label: 'MODELS', lead: ['모델을 고르기 전에', '드라이아이스 제조기 한눈에 보기'], groups: [
+      { name: '펠렛 제조기', items: [['PE 80', PL + 'pe-80.html'], ['PR120H', PL + 'pr120h.html'], ['PR350H', PL + 'pr350h.html'], ['PR750H', PL + 'pr750h.html'], ['PR1500H', PL + 'pr1500h.html']] },
+      { name: '리포머', items: [['R500H', PL + 'r500h.html'], ['R1000H', PL + 'r1000h.html'], ['R2000H', PL + 'r2000h.html']] },
+      { name: '슬라이스 제조기', items: [['DS500E', PL + 'ds500e.html'], ['DS1000E', PL + 'ds1000e.html']] },
+      { name: '특수 시스템', items: [['Dosing System', PL + 'dosing-system.html'], ['Production Hub', PL + 'production-hub.html']] }
+    ] },
+    2: { label: 'MODELS', lead: ['모델을 고르기 전에', 'CO2 리커버리 한눈에 보기'], rows: [
+      ['RE-CO2 80', R + 're-co2-80.html', '시간당 최대 80 kg'],
+      ['RE-CO2 160', R + 're-co2-160.html', '시간당 최대 160 kg'],
+      ['RE-CO2 320 V2', R + 're-co2-320-v2.html', '시간당 최대 320 kg'],
+      ['RE-CO2 3500', R + 're-co2-3500.html', '시간당 3,500 kg, 컨테이너형']
+    ] },
+    3: { label: 'SYSTEMS', lead: ['시스템을 고르기 전에', '자동화 시스템 한눈에 보기'], rows: [
+      ['COMBI PCS', A + 'combi-pcs.html', '생산과 분사 통합'],
+      ['ASP-T', A + 'asp-t.html', '타이어 금형 전용 로봇'],
+      ['DUCT ROBOT', A + 'duct-robot.html', '덕트, 배관 내부 세척'],
+      ['VATEK 맞춤 설비', A + 'vatek-custom.html', '플레이트, 롤 자동 세척']
+    ] },
+    4: { label: 'QUICK LINKS', rows: [
+      ['장비별 노즐 찾기', 'products/nozzle.html#nozzle-finder', '보유 장비에 맞는 노즐'],
+      ['전체 노즐 및 액세서리', 'products/nozzle.html', '']
+    ] },
+    5: { label: 'QUICK LINKS', rows: [
+      ['공급 형태', 'products/supply.html#forms', '펠렛, 너겟, 블록'],
+      ['규격 안내', 'products/supply.html#particle-sizes', ''],
+      ['주문과 배송', 'products/supply.html#order', '']
+    ] },
+    6: { label: 'QUICK LINKS', rows: [
+      ['장비 비교 및 추천받기', 'products/compare-equip.html', '질문에 답하면 추천'],
+      ['드라이아이스 생산 시스템 찾기', PL + 'index.html#model-finder', ''],
+      ['RE-CO2 찾기', R + 'index.html#pairing', '']
+    ] },
+    7: { label: 'QUICK LINKS', rows: [
+      ['구매 프로세스 보기', 'products/process.html', ''],
+      ['견적 요청', 'products/quote.html', ''],
+      ['데모 테스트 신청', 'rental/demo-apply.html', '']
+    ] }
+  };
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function link(it) {
+    return '<a class="mm-model" href="' + base + it[1] + '"><b>' + esc(it[0]) + '</b>' +
+      (it[2] ? '<small>' + esc(it[2]) + '</small>' : '') + '</a>';
+  }
+  // 맨 위 안내 줄: 모델보다 먼저 해당 장비의 소개 페이지(왼쪽 메뉴 항목과 같은 주소)로 보낸다.
+  function lead(d, i) {
+    var a = menu.querySelector('.megamenu-index-item[data-i="' + i + '"] a');
+    if (!d.lead || !a) return '';
+    return '<a class="mm-lead" href="' + esc(a.getAttribute('href')) + '"><span class="mm-lead-text"><small>' + esc(d.lead[0]) +
+      '</small><b>' + esc(d.lead[1]) + '</b></span><i class="mm-lead-arrow" aria-hidden="true">' +
+      '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>';
+  }
+  function groupName(g) {
+    if (!g.to) return '<span class="mm-group-name">' + esc(g.name) + '</span>';
+    return '<a class="mm-group-name" href="' + base + g.to + '">' + esc(g.name) + '</a>';
+  }
+  function html(d, i) {
+    var h = lead(d, i) + '<span class="megamenu-index-label">' + d.label + '</span>';
+    if (d.groups) {
+      h += '<div class="mm-groups">' + d.groups.map(function (g) {
+        return '<div class="mm-group">' + groupName(g) + g.items.map(link).join('') + '</div>';
+      }).join('') + '</div>';
+    } else {
+      h += '<div class="mm-rows">' + d.rows.map(link).join('') + '</div>';
+    }
+    return h;
+  }
+  var panel = document.createElement('div');
+  panel.className = 'megamenu-models';
+  index.insertAdjacentElement('afterend', panel);
+  menu.classList.add('has-models');
+  var cur = null, timer = null;
+  function show(i, instant) {
+    if (i === cur || !DATA[i]) return;
+    cur = i;
+    window.clearTimeout(timer);
+    if (instant) { panel.innerHTML = html(DATA[i], i); return; }
+    panel.classList.add('is-fading');
+    timer = window.setTimeout(function () { panel.innerHTML = html(DATA[i], i); panel.classList.remove('is-fading'); }, 70);
+  }
+  var items = menu.querySelectorAll('.megamenu-index-item');
+  Array.prototype.forEach.call(items, function (item) {
+    item.addEventListener('mouseenter', function () { show(+item.getAttribute('data-i')); });
+  });
+  var active = menu.querySelector('.megamenu-index-item.is-active') || items[0];
+  show(active ? +active.getAttribute('data-i') : 0, true);
+})();

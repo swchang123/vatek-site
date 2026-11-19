@@ -1,22 +1,29 @@
 /* 제품 상세 Features 투어 (공용). 스타일은 assets/css/feature-tour.css
    - 번호(.ft-dot)나 카드(.ft-card)를 누르면 그 기능을 강조하고, 4초마다 다음 기능으로 넘어간다(화면에 보일 때만).
+   - 카드나 사진 위 번호에 마우스를 올려도 그 기능으로 바뀐다. 올려 둔 동안은 자동 넘김이 멈추고, 벗어나면 이어진다.
+     3D 위 번호는 화면이 움직이면 번호도 따라 움직이므로 올리기에는 반응하지 않고 누를 때만 바뀐다.
    - 섹션이 가까워지면 model-viewer와 모델 데이터 파일을 불러와 사진을 3D로 바꾼다. 불러오지 못하면 사진 그대로 동작한다.
    - 페이지별 값은 HTML에 둔다: #ftTour 의 data-viewer / data-meshopt / data-model / data-model-key,
      각 .ft-dot 의 data-p(위치) data-n(면 방향) data-o(카메라 각도와 거리) data-t(바라보는 지점). 값은 Cold Jet 제품 페이지의 설정 그대로. */
 (function(){
   var root=document.getElementById('ftTour');if(!root)return;
   var stage=document.getElementById('ftStage'),label=document.getElementById('ftStageLabel'),btn=document.getElementById('ftToggle');
-  var cards=root.querySelectorAll('.ft-card'),n=cards.length,cur=0,timer=null,playing=false,inView=false,mv=null;
+  var cards=root.querySelectorAll('.ft-card'),n=cards.length,cur=0,timer=null,playing=false,inView=false,mv=null,hov=false,hovT=null;
   var HOT=[];
   root.querySelectorAll('.ft-pic .ft-dot').forEach(function(d){HOT[+d.dataset.i]={p:d.dataset.p,n:d.dataset.n,o:d.dataset.o,t:d.dataset.t,above:d.hasAttribute('data-above')}});
   function show(i){cur=(i+n)%n;
     root.querySelectorAll('.ft-dot').forEach(function(d){var on=+d.dataset.i===cur;d.classList.toggle('is-on',on);d.setAttribute('aria-pressed',on?'true':'false')});
     cards.forEach(function(c){var on=+c.dataset.i===cur;c.classList.toggle('is-on',on);c.setAttribute('aria-pressed',on?'true':'false')});
     var h=HOT[cur];if(mv&&h&&h.o){mv.cameraOrbit=h.o;if(h.t)mv.cameraTarget=h.t}}
-  function sync(){if(timer){clearInterval(timer);timer=null}if(playing&&inView)timer=setInterval(function(){show(cur+1)},4000)}
+  function sync(){if(timer){clearInterval(timer);timer=null}if(playing&&inView&&!hov)timer=setInterval(function(){show(cur+1)},4000)}
   function setPlaying(v){playing=v;if(btn){btn.setAttribute('aria-pressed',v?'true':'false');btn.classList.toggle('is-paused',!v);btn.querySelector('span').textContent=v?'투어 일시정지':'투어 재생'}sync()}
   function pick(el){el.addEventListener('click',function(){show(+el.dataset.i);setPlaying(false)})}
-  root.querySelectorAll('.ft-dot').forEach(pick);cards.forEach(pick);
+  function isMouse(e){return !e.pointerType||e.pointerType==='mouse'}
+  function hover(el){
+    el.addEventListener('pointerenter',function(e){if(!isMouse(e))return;hov=true;sync();clearTimeout(hovT);hovT=setTimeout(function(){show(+el.dataset.i)},90)});
+    el.addEventListener('pointerleave',function(e){if(!isMouse(e))return;clearTimeout(hovT);hov=false;sync()});
+  }
+  root.querySelectorAll('.ft-dot').forEach(function(d){pick(d);hover(d)});cards.forEach(function(c){pick(c);hover(c)});
   if(btn)btn.addEventListener('click',function(){setPlaying(!playing)});
 
   var started3d=false;
@@ -57,4 +64,39 @@
   }else{inView=true;init3d()}
   show(0);
   setPlaying(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches));
+})();
+
+/* 사양 표(.sp): 단위 전환과 전체 펼침. 스타일은 feature-tour.css 아래쪽 */
+(function(){
+  var sp=document.getElementById('specs');if(!sp)return;
+  var more=sp.querySelectorAll('.sp-more'),all=sp.querySelector('.sp-all'),unitName=sp.querySelector('.sp-unit-name'),units=sp.querySelectorAll('.sp-toggle button');
+  sp.classList.add('is-js');
+  if(all&&more.length){
+    /* 펼침과 접힘은 표를 감싼 .sp-clip 의 높이를 움직여 보여 준다(줄 자체는 높이를 움직일 수 없어서).
+       접을 때 표 윗부분이 화면 밖이면, 버튼이 제자리에 머물도록 접히는 만큼 화면을 함께 올린다. */
+    var table=sp.querySelector('.sp-table'),card=sp.querySelector('.sp-card'),clip=document.createElement('div'),busy=false;
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    clip.className='sp-clip';table.parentNode.insertBefore(clip,table);clip.appendChild(table);
+    function label(open){all.setAttribute('aria-expanded',open?'true':'false');all.querySelector('span').textContent=open?'접기':'전체 사양 '+sp.dataset.count+'개 보기'}
+    function run(from,to,pin,done){
+      var fin=false,y0=all.getBoundingClientRect().top;
+      clip.style.height=from+'px';void clip.offsetHeight;clip.classList.add('is-anim');clip.style.height=to+'px';
+      function follow(){if(fin)return;var d=all.getBoundingClientRect().top-y0;if(d)window.scrollBy(0,d);requestAnimationFrame(follow)}
+      function end(e){if(fin||(e&&e.target!==clip))return;if(pin)follow();fin=true;clip.removeEventListener('transitionend',end);clip.classList.remove('is-anim');clip.style.height='';busy=false;if(done)done()}
+      if(pin)requestAnimationFrame(follow);
+      clip.addEventListener('transitionend',end);setTimeout(end,560);
+    }
+    all.hidden=false;
+    all.addEventListener('click',function(){
+      if(busy)return;var open=!sp.classList.contains('is-open');
+      if(reduce){sp.classList.toggle('is-open',open);label(open);return}
+      busy=true;var h0=clip.offsetHeight;
+      if(open){sp.classList.add('is-open');label(true);run(h0,clip.scrollHeight,false)}
+      else{var pin=card.getBoundingClientRect().top<96;sp.classList.add('is-closing');label(false);
+        run(h0,more[0].offsetTop,pin,function(){sp.classList.remove('is-open');sp.classList.remove('is-closing')})}
+    });
+  }
+  units.forEach(function(b){b.addEventListener('click',function(){var u=b.dataset.unit;sp.dataset.unit=u;
+    units.forEach(function(x){var on=x===b;x.classList.toggle('is-on',on);x.setAttribute('aria-pressed',on?'true':'false')});
+    if(unitName)unitName.textContent=u==='imperial'?'IMPERIAL':'METRIC'})});
 })();
