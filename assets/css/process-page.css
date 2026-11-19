@@ -5,18 +5,32 @@
 .prc-hero-stage .subhero-breadcrumb { text-shadow: 0 1px 8px rgba(15,22,23,.9), 0 0 2px rgba(15,22,23,.9); }
 .prc-hero-stage .subhero-textbox h1, .prc-hero-stage .bls-hero-main { word-break: keep-all; text-wrap: pretty; }
 
-/* ---- 01 FLOW — 6 steps ---- */
-.prc-flow { counter-reset: prc; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 24px); }
-.prc-step { position: relative; background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); padding: clamp(24px, 2.4vw, 32px); display: grid; grid-template-rows: auto auto 1fr; box-shadow: 0 1px 2px rgba(15,25,26,.04); transition: border-color .25s, box-shadow .25s, transform .25s; }
-.prc-step:hover { border-color: var(--ice); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(15,25,26,.08); }
-.prc-step .num { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); }
-.prc-step .num i { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: #fff; font-style: normal; font-size: 14px; letter-spacing: 0; }
-.prc-step h3 { margin: 18px 0 10px; font-size: clamp(20px, 1.6vw, 24px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
-.prc-step p { margin: 0; font-size: 14.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.prc-step .who { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--gray-line); font-size: 12.5px; color: var(--text-muted); display: flex; gap: 8px; flex-wrap: wrap; align-self: end; }
-.prc-step .who b { color: var(--navy); font-weight: 800; }
-.prc-step + .prc-step::before { content: "→"; position: absolute; left: -22px; top: 36px; width: 20px; text-align: center; font-size: 18px; color: var(--text-muted); }
-.prc-step:nth-child(4)::before { display: none; }
+/* ---- 01 FLOW — 6 steps ----
+   (2026-11-19) 카드 6장 대신 한 장의 표로: 번호 | 단계 이름 | 진행 내용 | 담당. 위에서 아래로 읽으면 순서가 된다.
+   번호 동그라미를 세로선으로 이어 순서가 한눈에 보이게 하고, 줄 구분선은 번호 오른쪽에만 긋는다.
+   담당 표시: 바테크(진한 남색), 고객사(테두리만), 함께(연한 파랑). */
+.prc-flow { --prc-num: 46px; --prc-pad: 28px; --prc-cols: var(--prc-num) minmax(200px, 270px) minmax(0, 1fr) 200px; --prc-gap: clamp(18px, 2.4vw, 38px); background: #fff; border: 1px solid var(--gray-line); border-radius: 18px; padding: 6px clamp(22px, 3vw, 46px) 2px; }
+.prc-flow-head { display: grid; grid-template-columns: var(--prc-cols); column-gap: var(--prc-gap); padding: 18px 0 13px; border-bottom: 2px solid var(--navy); font-size: 12.5px; font-weight: 800; color: var(--text-muted); }
+.prc-flow-head span:nth-child(2) { grid-column: 2 / 4; }
+.prc-flow-head span:nth-child(3) { display: none; }
+.prc-steps { list-style: none; margin: 0; padding: 0; }
+.prc-step { position: relative; display: grid; grid-template-columns: var(--prc-cols); column-gap: var(--prc-gap); align-items: start; padding: var(--prc-pad) 0; }
+.prc-step::after { content: ""; position: absolute; left: calc(var(--prc-num) + var(--prc-gap)); right: 0; bottom: 0; height: 1px; background: var(--gray-line); }
+.prc-step:last-child::after { display: none; }
+.prc-step::before { content: ""; position: absolute; left: calc(var(--prc-num) / 2 - 1px); top: calc(var(--prc-pad) + var(--prc-num) + 7px); bottom: calc(7px - var(--prc-pad)); width: 2px; border-radius: 1px; background: #c9d2e6; }
+.prc-step:last-child::before { display: none; }
+.prc-step .num { display: grid; place-items: center; width: var(--prc-num); height: var(--prc-num); border-radius: 50%; background: var(--navy); color: #fff; font-size: 15.5px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.prc-step h3 { margin: 9px 0 0; font-size: clamp(18.5px, 1.45vw, 21px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.4; word-break: keep-all; }
+.prc-step p { margin: 10px 0 0; max-width: 640px; font-size: 15px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.prc-step p a { display: inline-block; color: var(--navy); font-weight: 800; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.prc-step p a:hover { color: var(--blue-dark); }
+.prc-step .who { display: grid; gap: 9px; margin-top: 10px; font-size: 13.5px; line-height: 1.5; color: var(--text-body); }
+.prc-step .who span { display: flex; align-items: baseline; gap: 9px; word-break: keep-all; }
+.prc-step .who b { flex: none; min-width: 50px; padding: 3px 8px; border: 1px solid var(--navy); border-radius: 6px; font-size: 12px; font-weight: 800; line-height: 1.45; text-align: center; }
+.prc-step .who .is-vatek { background: var(--navy); color: #fff; }
+.prc-step .who .is-client { background: #fff; color: var(--navy); }
+.prc-step .who .is-both { background: var(--blue-pale); border-color: #c9d6ef; color: var(--blue-dark); }
+.prc-after-label { font-size: 15px; font-weight: 800; color: #fff; white-space: nowrap; padding-right: clamp(14px, 1.6vw, 22px); border-right: 1px solid rgba(255,255,255,.28); }
 .prc-after { margin-top: clamp(20px, 2.2vw, 28px); background: var(--navy); color: #fff; border-radius: var(--radius); padding: clamp(20px, 2.2vw, 28px) clamp(22px, 2.6vw, 36px); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px clamp(20px, 3vw, 40px); align-items: center; }
 .prc-after .bls-en { color: var(--ice); white-space: nowrap; }
 .prc-after ol { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 0; font-size: 15px; font-weight: 700; }
@@ -79,8 +93,15 @@
 .prc-support-item a:hover { color: var(--ice-dark); }
 
 @media (max-width: 1100px) {
-  .prc-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .prc-step + .prc-step::before { display: none; }
+  /* 좁아지면 번호 옆으로 이름, 내용, 담당을 차례로 쌓는다 */
+  .prc-flow { --prc-num: 42px; --prc-pad: 24px; --prc-cols: var(--prc-num) minmax(0, 1fr); --prc-gap: 18px; }
+  .prc-flow-head { display: none; }
+  .prc-steps { border-top: 2px solid var(--navy); margin-top: 14px; }
+  .prc-step h3, .prc-step p, .prc-step .who { grid-column: 2; }
+  .prc-step h3 { margin-top: 8px; }
+  .prc-step p { margin-top: 8px; }
+  .prc-step .who { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 18px; }
+  .prc-after-label { border-right: 0; padding-right: 0; }
   .prc-pay { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .prc-extra { grid-template-columns: 1fr; }
   .prc-extra ul { grid-template-columns: 1fr; }
@@ -90,7 +111,10 @@
   .prc-after { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .prc-flow, .prc-pay { grid-template-columns: 1fr; }
+  .prc-pay { grid-template-columns: 1fr; }
+  .prc-flow { --prc-num: 36px; --prc-gap: 14px; padding-left: 18px; padding-right: 18px; }
+  .prc-step .num { font-size: 13.5px; }
+  .prc-step h3 { margin-top: 5px; }
   .prc-figure { grid-template-columns: 1fr; }
   .prc-figure img { min-height: 220px; }
   .prc-figure-copy dl { grid-template-columns: 1fr; }
