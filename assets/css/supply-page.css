@@ -17,6 +17,27 @@
 }
 
 /* ---- 01 WHAT WE SUPPLY — 3 form cards ---- */
+/* (2026-11-19) 머리말: 제목 오른쪽이 아니라 아래에 본문 3단락 */
+#forms .plt-head { display: block; }
+.sup-intro { display: grid; gap: 14px; max-width: 1040px; margin-top: clamp(20px, 2.2vw, 30px); }
+.sup-intro .plt-lead { max-width: none; }
+#by-use .plt-head { display: block; }
+#order .sup-intro { margin-top: 0; max-width: none; gap: 12px; }
+#by-use .sup-intro { gap: 12px; }
+.sup-form-copy { display: grid; gap: 10px; }
+/* (2026-11-19) 치수 섹션 머리말: 왼쪽(영문 라벨 + 제목)과 오른쪽('규격 안내' + 2단락)을 같은 줄에 맞춘다.
+   1행 = 라벨끼리, 2행 = 제목 첫 줄과 본문 첫 줄. 1100px 이하(1단)에서는 위에서 아래로 차례로 놓인다. */
+.sup-note { display: grid; gap: 12px; max-width: 860px; }
+.sup-note-title { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 800; letter-spacing: 1.5px; line-height: 1.5; color: var(--accent-red); }
+.sup-note-body { display: grid; gap: 12px; }
+@media (min-width: 1101px) {
+  .sup-size-head { grid-template-rows: auto auto; align-items: start; row-gap: 14px; }
+  .sup-size-head > div, .sup-size-head > .sup-note { display: contents; }
+  .sup-size-head .plt-eyebrow { grid-column: 1; grid-row: 1; align-self: center; }
+  .sup-size-head .plt-title { grid-column: 1; grid-row: 2; margin-top: 0; }
+  .sup-size-head .sup-note-title { grid-column: 2; grid-row: 1; align-self: center; }
+  .sup-size-head .sup-note-body { grid-column: 2; grid-row: 2; max-width: 860px; padding-top: .28em; }
+}
 .sup-forms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2vw, 28px); }
 .sup-form { display: flex; flex-direction: column; min-width: 0; background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); overflow: hidden; transition: transform .35s ease, box-shadow .35s ease; }
 .sup-form:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
@@ -31,50 +52,134 @@
 .sup-form-size { font-size: clamp(22px, 1.9vw, 28px); font-weight: 800; letter-spacing: -0.03em; color: var(--ice-dark); line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .sup-form-size i { font-style: normal; font-size: .5em; margin-left: 2px; color: var(--text-muted); }
 .sup-form p { margin: 0; font-size: 15px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.sup-spec { margin: auto 0 0; padding-top: 16px; border-top: 1px solid var(--gray-line); display: grid; gap: 9px; }
-.sup-spec div { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 12px; font-size: 14.5px; line-height: 1.55; }
-.sup-spec dt { margin: 0; font-weight: 700; color: var(--text-muted); }
+.sup-spec { margin: auto 0 0; padding-top: 16px; border-top: 1px solid var(--gray-line); display: grid; gap: 0; }
+.sup-spec div { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: start; padding: 11px 0; border-bottom: 1px solid var(--gray-line); font-size: 14.5px; line-height: 1.6; }
+.sup-spec div:first-child { padding-top: 0; }
+.sup-spec div:nth-child(-n+2) dd { min-height: 3.2em; }
+@media (min-width: 1101px) and (max-width: 1300px) { .sup-spec div:nth-child(-n+2) dd { min-height: 4.8em; } }
+.sup-spec dt { margin: 0; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
 .sup-spec dd { margin: 0; font-weight: 600; color: var(--navy); word-break: keep-all; }
+.sup-spec .nw { white-space: nowrap; }
+.sup-dim-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 4px; padding: 13px 18px; border: 1.5px solid var(--navy); border-radius: 10px; background: #fff; color: var(--navy); font-size: 14.5px; font-weight: 800; letter-spacing: .02em; text-decoration: none; cursor: pointer; transition: background .25s ease, color .25s ease, border-color .25s ease; }
+.sup-dim-btn svg { width: 17px; height: 17px; flex: none; transition: transform .3s ease; }
+.sup-dim-btn:hover, .sup-dim-btn:focus-visible { background: var(--navy); color: #fff; }
+.sup-dim-btn:hover svg, .sup-dim-btn:focus-visible svg { transform: translateY(3px); }
 
 /* ---- 02 BLOCK DIMENSIONS — 치수 비례 박스 ---- */
 .sup-dims { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 2vw, 28px); }
 .sup-dim { background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; }
-.sup-dim-stage { position: relative; height: 290px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 26px; margin: 0 0 22px; border-bottom: 1px solid var(--gray-line);
-  background-image: linear-gradient(rgba(223,227,227,.55) 1px, transparent 1px), linear-gradient(90deg, rgba(223,227,227,.55) 1px, transparent 1px); background-size: 24px 24px; background-position: center bottom; }
-.sup-dim-stage::after { content: attr(data-scale); position: absolute; right: 10px; top: 10px; font-size: 10.5px; font-weight: 800; letter-spacing: 1.5px; color: var(--text-muted); }
-/* --w/--h/--d = mm. --s = px per mm. 정면(w×h) + 윗면/옆면은 45° 사투영(깊이의 1/2). */
-.sup-box { --s: .58; position: relative; box-sizing: border-box; width: calc(var(--w) * var(--s) * 1px); height: calc(var(--h) * var(--s) * 1px); margin-right: calc(var(--d) * var(--s) * .5px); background: #fff; border: 1.5px solid var(--navy); }
-.sup-box::before { content: ""; position: absolute; left: -1.5px; bottom: 100%; box-sizing: border-box; width: calc(100% + 3px); height: calc(var(--d) * var(--s) * .5px); background: var(--ice-pale); border: 1.5px solid var(--navy); border-bottom: 0; transform: skewX(-45deg); transform-origin: bottom left; }
-.sup-box::after { content: ""; position: absolute; left: 100%; top: -1.5px; box-sizing: border-box; width: calc(var(--d) * var(--s) * .5px); height: calc(100% + 3px); background: #d6dff0; border: 1.5px solid var(--navy); border-left: 0; transform: skewY(-45deg); transform-origin: top left; }
-.sup-box b { position: absolute; font-size: 11px; font-weight: 800; letter-spacing: .5px; color: var(--ice-dark); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.sup-box .lw { left: 50%; top: 100%; transform: translate(-50%, 8px); }
-.sup-box .lh { right: 100%; top: 50%; transform: translate(-8px, -50%); }
-.sup-box .ld { left: 100%; top: 100%; transform: translate(calc(var(--d) * var(--s) * .25px + 9px), calc(var(--d) * var(--s) * -.25px + 9px)) translate(-50%, -50%) rotate(-45deg); }
+/* ============================================================
+   (2026-11-19) 치수 도면 — 블록, 펠렛, 너겟 공통
+   --mm = 1 mm를 그리는 길이. 모눈은 실제 치수에 맞춘다(가는 선 --gmm, 굵은 선 --Gmm, 단위 mm).
+   모눈의 원점은 물체의 왼쪽 아래 모서리(원기둥은 중심축)에 둔다.
+   치수선: .dm-w 가로(지름), .dm-h 세로(길이), .dm-d 깊이(45° 사투영, 실제 길이의 1/2로 그림).
+   ============================================================ */
+.sup-dim { container-type: inline-size; }
+.sup-dim-stage { --mm: .5px; --gmm: 20; --Gmm: 100; --ln: #243a94; --ext: rgba(36, 58, 148, .5);
+  position: relative; isolation: isolate; overflow: hidden; height: calc(400 * var(--mm) + 84px); /* 가장 큰 블록(높이 250 + 깊이 300의 1/2 = 400 mm) + 위 라벨 38px + 아래 치수선 46px */ display: flex; align-items: flex-end; justify-content: center; padding-bottom: 46px; margin: 0 0 22px;
+  border: 1px solid #d5dcec; border-radius: 8px; background: #fcfdff; }
+/* 카드 폭이 좁아지면 배율을 단계로 낮춘다(모눈 한 칸이 항상 정수 px가 되도록) */
+@container (max-width: 288.9px) { .sup-dim-stage:not(.sup-particle-stage) { --mm: .4px; } }
+@container (max-width: 243.9px) { .sup-dim-stage:not(.sup-particle-stage) { --mm: .3px; } }
+@container (max-width: 198.9px) { .sup-dim-stage:not(.sup-particle-stage) { --mm: .25px; } }
+.sup-dim-stage::after { content: attr(data-scale); position: absolute; right: 12px; top: 11px; z-index: 4; font-size: 10.5px; font-weight: 800; letter-spacing: 1.5px; line-height: 1; color: var(--text-muted); }
+/* 축척 막대 — 굵은 모눈 한 칸과 같은 길이 */
+.sup-scalebar { position: absolute; left: 12px; top: 9px; z-index: 4; display: flex; align-items: flex-end; gap: 7px; font-size: 10.5px; font-weight: 800; letter-spacing: .8px; line-height: 1; color: var(--text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sup-scalebar::before { content: ""; box-sizing: border-box; width: calc(var(--Gmm) * var(--mm) + 1px); height: 7px; border: 1px solid var(--ln); border-top: 0; }
+@container (max-width: 243.9px) { .sup-dim-stage::after { letter-spacing: .5px; } .sup-scalebar { letter-spacing: .3px; gap: 5px; } }
+/* 모눈 */
+.sup-grid { position: absolute; left: calc(-1 * var(--bw)); bottom: calc(-1 * var(--bw)); width: 0; height: 0; z-index: -1; pointer-events: none; }
+.sup-cyl .sup-grid { left: 50%; }
+.sup-grid::before { content: ""; position: absolute; left: -1200px; bottom: -400px; width: 2400px; height: 1400px;
+  --g: calc(var(--gmm) * var(--mm)); --G: calc(var(--Gmm) * var(--mm));
+  background-image: linear-gradient(to right, rgba(36, 58, 148, .2) 1px, transparent 1px), linear-gradient(to top, rgba(36, 58, 148, .2) 1px, transparent 1px), linear-gradient(to right, rgba(36, 58, 148, .075) 1px, transparent 1px), linear-gradient(to top, rgba(36, 58, 148, .075) 1px, transparent 1px);
+  background-size: var(--G) var(--G), var(--G) var(--G), var(--g) var(--g), var(--g) var(--g);
+  background-position: left 1200px bottom 400px; }
+/* 블록 — 정면(w×h) + 윗면, 옆면은 45° 사투영(깊이의 1/2) */
+.sup-box { --bw: 1.5px; --dz: calc(var(--d) * var(--mm) * .5); position: relative; flex: none; box-sizing: border-box; width: calc(var(--w) * var(--mm)); height: calc(var(--h) * var(--mm)); margin: 0 calc(var(--dz) + 26px) 0 38px; background: #fff; border: var(--bw) solid var(--navy); }
+.sup-box::before { content: ""; position: absolute; left: -1.5px; bottom: calc(100% + 1.5px); box-sizing: border-box; width: calc(100% + 3px); height: var(--dz); background: var(--ice-pale); border: 1.5px solid var(--navy); border-bottom: 0; transform: skewX(-45deg); transform-origin: bottom left; }
+.sup-box::after { content: ""; position: absolute; left: calc(100% + 1.5px); top: -1.5px; box-sizing: border-box; width: var(--dz); height: calc(100% + 3px); background: #d6dff0; border: 1.5px solid var(--navy); border-left: 0; transform: skewY(-45deg); transform-origin: top left; }
+/* 숨은선(뒤쪽 모서리 3개) */
+.sup-hid { position: absolute; left: calc(var(--dz) - 1.5px); bottom: calc(var(--dz) - 1.5px); box-sizing: border-box; width: calc(100% + 3px); height: calc(100% + 3px); border-left: 1px dashed rgba(22, 32, 74, .34); border-bottom: 1px dashed rgba(22, 32, 74, .34); z-index: 3; pointer-events: none; }
+.sup-hid::before { content: ""; position: absolute; left: -1px; top: 100%; width: calc(var(--dz) * 1.4142); height: 0; border-top: 1px dashed rgba(22, 32, 74, .34); transform-origin: 0 0; transform: rotate(135deg); }
+/* 치수선 공통 */
+.dm { position: absolute; z-index: 4; box-sizing: border-box; pointer-events: none; color: var(--ln); border: 0 solid var(--ext); }
+.dm > i { position: absolute; background: currentColor; }
+.dm > i::before, .dm > i::after { content: ""; position: absolute; width: 0; height: 0; border: 0 solid transparent; }
+.dm > b { position: absolute; font-size: 11px; font-weight: 800; line-height: 1; letter-spacing: .3px; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--ln); }
+/* 가로 치수(물체 아래) */
+.dm-w { left: calc(-1 * var(--bw)); right: calc(-1 * var(--bw)); top: calc(100% + var(--bw) + 5px); height: 15px; border-left-width: 1px; border-right-width: 1px; }
+.dm-w > i { left: 0; right: 0; top: 9px; height: 1px; }
+.dm-w > i::before { left: 0; top: -2.5px; border-width: 3px 6px 3px 0; border-right-color: currentColor; }
+.dm-w > i::after { right: 0; top: -2.5px; border-width: 3px 0 3px 6px; border-left-color: currentColor; }
+.dm-w > b { left: 50%; top: 18px; transform: translateX(-50%); }
+/* 가로 치수가 아주 짧을 때: 화살표를 바깥에서 안쪽으로 */
+.dm-w.is-out > i { left: -15px; right: -15px; }
+.dm-w.is-out > i::before { left: 9px; border-width: 3px 0 3px 6px; border-right-color: transparent; border-left-color: currentColor; }
+.dm-w.is-out > i::after { right: 9px; border-width: 3px 6px 3px 0; border-left-color: transparent; border-right-color: currentColor; }
+/* 세로 치수(물체 왼쪽) */
+.dm-h { top: calc(-1 * var(--bw)); bottom: calc(-1 * var(--bw)); right: calc(100% + var(--bw) + 5px); width: 15px; border-top-width: 1px; border-bottom-width: 1px; }
+.dm-h > i { top: 0; bottom: 0; right: 9px; width: 1px; }
+.dm-h > i::before { top: 0; left: -2.5px; border-width: 0 3px 6px 3px; border-bottom-color: currentColor; }
+.dm-h > i::after { bottom: 0; left: -2.5px; border-width: 6px 3px 0 3px; border-top-color: currentColor; }
+.dm-h > b { right: 23px; top: 50%; transform: translate(50%, -50%) rotate(-90deg); }
+/* 깊이 치수(정면 오른쪽 아래 모서리에서 45° 방향) */
+.dm-d { left: calc(100% + var(--bw)); top: calc(100% + var(--bw)); width: calc(var(--dz) * 1.4142); height: 15px; border-left-width: 1px; border-right-width: 1px; transform-origin: 0 0; transform: rotate(-45deg) translateY(5px); }
+.dm-d > i { left: 0; right: 0; top: 9px; height: 1px; }
+.dm-d > i::before { left: 0; top: -2.5px; border-width: 3px 6px 3px 0; border-right-color: currentColor; }
+.dm-d > i::after { right: 0; top: -2.5px; border-width: 3px 0 3px 6px; border-left-color: currentColor; }
+.dm-d > b { left: 50%; top: 18px; transform: translateX(-50%); }
+
+/* ---- 02b PELLET, NUGGET — 같은 배율(1 mm = 5px)의 원기둥 ---- */
+.sup-particles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sup-particle-stage { --mm: 5px; --gmm: 2; --Gmm: 10; height: 276px; }
+.sup-cyl { --bw: 0px; --e: calc(var(--d) * var(--mm) * .5); position: relative; flex: none; width: calc(var(--d) * var(--mm)); height: calc(var(--l) * var(--mm)); margin: 0 30px 0 38px; }
+.sup-cyl .cyl-top { position: absolute; left: 0; top: 0; width: 100%; height: var(--e); border-radius: 50%; box-sizing: border-box; border: 1.25px solid var(--ice); background: radial-gradient(ellipse at 32% 30%, #fff 0%, var(--ice-pale) 55%, #bfcdea 100%); z-index: 2; }
+.sup-cyl .cyl-body { position: absolute; left: 0; top: calc(var(--e) * .5); width: 100%; height: calc(100% - var(--e)); box-sizing: border-box; border-left: 1.25px solid var(--ice); border-right: 1.25px solid var(--ice); background: linear-gradient(90deg, #aabde3, #eef3fb 30%, #fff 46%, #eef3fb 62%, #aabde3); z-index: 1; }
+.sup-cyl .cyl-bot { position: absolute; left: 0; bottom: 0; width: 100%; height: var(--e); border-radius: 50%; box-sizing: border-box; border: 1.25px solid var(--ice); background: linear-gradient(180deg, #cfdaf0, #9fb5df); z-index: 0; }
+/* 중심선(1점 쇄선) */
+.sup-axis { position: absolute; left: 50%; top: -12px; bottom: -3px; width: 1px; margin-left: -.5px; z-index: 3; pointer-events: none; background: repeating-linear-gradient(to bottom, rgba(36, 58, 148, .7) 0 8px, transparent 8px 11px, rgba(36, 58, 148, .7) 11px 13px, transparent 13px 16px); }
+
 .sup-dim-size { margin: 0; font-size: clamp(22px, 1.9vw, 28px); font-weight: 800; color: #000; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .sup-dim-size small { font-size: .5em; font-weight: 700; color: var(--text-muted); margin-left: 6px; letter-spacing: 0; }
 .sup-dim-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .sup-dim-meta span { padding: 6px 11px; border: 1px solid var(--gray-line); border-radius: 999px; font-size: 12.5px; font-weight: 700; color: var(--text-body); white-space: nowrap; }
 .sup-dim-meta span.is-w { border-color: var(--ice); background: var(--ice-pale); color: var(--ice-dark); }
 .sup-dim p { margin: 14px 0 0; font-size: 14.5px; line-height: 1.7; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.sup-dim-pack { margin: auto 0 0; padding-top: 12px; border-top: 1px solid var(--gray-line); font-size: 12.5px; font-weight: 700; line-height: 1.5; color: var(--text-muted); display: grid; gap: 4px; min-height: 42px; align-content: start; }
+.sup-dim > p { margin-bottom: 18px; }
+.sup-dim-pack p { margin: 0; font: inherit; color: inherit; }
+.sup-dim-pack .nw { white-space: nowrap; }
+.sup-dim-pack { margin: auto 0 0; padding-top: 12px; border-top: 1px solid var(--gray-line); font-size: 12.5px; font-weight: 700; line-height: 1.5; color: var(--text-muted); display: grid; gap: 4px; min-height: 51px; align-content: start; }
 .sup-dim-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 32px; align-items: center; margin-top: clamp(22px, 2.4vw, 32px); padding-top: 22px; border-top: 1px solid var(--gray-line); }
 .sup-dim-foot p { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--text-muted); word-break: keep-all; max-width: 760px; }
 
 /* ---- 03 BY PURPOSE — 매트릭스 + 사진 카드 (dark) ---- */
-.sup-matrix-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.sup-matrix { width: 100%; min-width: 860px; border-collapse: collapse; }
-.sup-matrix th { text-align: left; padding: 0 16px 14px; font-size: 12px; font-weight: 800; letter-spacing: 1.6px; color: rgba(255,255,255,.62); border-bottom: 1px solid rgba(255,255,255,.28); white-space: nowrap; }
-.sup-matrix th.c, .sup-matrix td.c { text-align: center; width: 128px; }
-.sup-matrix th.c b { display: block; margin-top: 3px; font-size: 14px; letter-spacing: 0; color: #fff; }
-.sup-matrix td { padding: 18px 16px; border-bottom: 1px solid rgba(255,255,255,.12); vertical-align: middle; font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,.76); word-break: keep-all; }
-.sup-matrix td:first-child { font-size: 16.5px; font-weight: 800; color: #fff; white-space: nowrap; }
-.sup-matrix td:first-child small { display: block; margin-top: 3px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.55); white-space: normal; }
-.sup-matrix tr:hover td { background: rgba(255,255,255,.04); }
-.sup-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--ice); vertical-align: middle; }
-.sup-dot.is-best { background: var(--ice); box-shadow: 0 0 0 4px rgba(127, 163, 224,.22); }
-.sup-dot.is-no { width: 12px; height: 2px; border: 0; border-radius: 1px; background: rgba(255,255,255,.28); }
-.sup-legend { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 16px; font-size: 13px; color: rgba(255,255,255,.65); }
-.sup-legend span { display: inline-flex; align-items: center; gap: 9px; }
+/* 용도별 적합표 (2026-11-19 재설계): 점 기호와 범례 대신, 칸마다 글자로 상태를 적는다 */
+.sup-matrix { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.sup-matrix th { padding: 0 0 16px; text-align: left; vertical-align: bottom; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.6); border-bottom: 1px solid rgba(255,255,255,.55); }
+.sup-matrix th:first-child { width: 23%; }
+.sup-matrix th.c { width: 124px; padding: 0 6px 16px; text-align: center; }
+.sup-matrix th.c b { display: block; font-size: 17px; font-weight: 800; letter-spacing: -0.01em; color: #fff; }
+.sup-matrix th.c small { display: block; margin-top: 2px; font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.6); white-space: nowrap; }
+.sup-matrix th:last-child, .sup-matrix td:last-child { padding-left: clamp(18px, 2.4vw, 36px); }
+.sup-matrix td { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,.14); vertical-align: middle; font-size: 14.5px; line-height: 1.65; color: rgba(255,255,255,.76); word-break: keep-all; text-wrap: pretty; }
+.sup-matrix td.c { padding: 15px 6px; }
+.sup-matrix td:first-child { padding-right: 16px; font-size: 16.5px; font-weight: 800; line-height: 1.4; color: #fff; }
+.sup-matrix td:first-child small { display: block; margin-top: 3px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.55); }
+.sup-fit { display: flex; align-items: center; justify-content: center; height: 38px; border: 1px solid rgba(255,255,255,.36); border-radius: 4px; font-size: 13.5px; font-weight: 700; line-height: 1; color: rgba(255,255,255,.88); }
+.sup-fit.is-best { background: #fff; border-color: #fff; color: var(--navy-deep); font-weight: 800; }
+.sup-fit.is-no { border-color: transparent; font-weight: 400; color: rgba(255,255,255,.32); }
+.sup-legend { display: flex; align-items: center; gap: 4px; margin: 14px 0 0; font-size: 13px; color: rgba(255,255,255,.6); }
+.sup-legend .sup-fit { width: 22px; height: auto; border: 0; }
+@media (max-width: 760px) {
+  .sup-matrix, .sup-matrix tbody { display: block; }
+  .sup-matrix thead { display: none; }
+  .sup-matrix tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 8px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.16); }
+  .sup-matrix tbody tr:first-child { border-top: 1px solid rgba(255,255,255,.55); }
+  .sup-matrix td, .sup-matrix td.c { display: block; padding: 0; border: 0; }
+  .sup-matrix td:first-child, .sup-matrix td:last-child { grid-column: 1 / -1; padding: 0; }
+  .sup-matrix td.c::before { content: attr(data-form); display: block; margin-bottom: 6px; font-size: 12.5px; font-weight: 700; color: rgba(255,255,255,.62); }
+}
 .sup-uses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 24px); margin-top: clamp(40px, 4.5vw, 64px); }
 .sup-use { background: rgba(255,255,255,.11); backdrop-filter: blur(3px); border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
 .sup-use img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
@@ -86,32 +191,43 @@
 .sup-use-pick span { padding: 6px 12px; border-radius: 999px; background: rgba(127, 163, 224,.18); border: 1px solid rgba(127, 163, 224,.55); color: #fff; font-size: 12.5px; font-weight: 700; }
 
 /* ---- 04 ORDER & DELIVERY ---- */
-.sup-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 24px); }
-.sup-step { position: relative; background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); padding: clamp(24px, 2.4vw, 32px); }
-.sup-step .num { display: block; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--ice-dark); }
-.sup-step h3 { margin: 12px 0 12px; font-size: clamp(21px, 1.7vw, 25px); font-weight: 800; color: #000; letter-spacing: -0.015em; }
+/* ORDER & DELIVERY (2026-11-19 재설계): 카드 대신 트랙 위의 단계 + 한 장의 비교 시트 */
+.sup-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px clamp(28px, 3.4vw, 56px); }
+.sup-step { position: relative; border-top: 1px solid rgba(22, 32, 74, .28); padding: 30px 0 4px; display: grid; grid-template-rows: subgrid; grid-row: span 3; row-gap: 0; align-content: start; }
+.sup-step::before { content: ""; position: absolute; left: 0; top: -1px; width: 64px; height: 3px; background: var(--accent-red); }
+.sup-step .num { display: flex; align-items: baseline; gap: 12px; font-size: 36px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: var(--navy); font-variant-numeric: tabular-nums; }
+.sup-step .num small { font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; color: var(--ice-dark); }
+.sup-step h3 { margin: 20px 0 10px; font-size: clamp(20px, 1.6vw, 24px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
 .sup-step p { margin: 0; font-size: 15px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.sup-step + .sup-step::before { content: "→"; position: absolute; left: -22px; top: 32px; width: 20px; text-align: center; font-size: 18px; color: var(--text-muted); }
-.sup-plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 24px); margin-top: clamp(16px, 1.8vw, 24px); }
-.sup-plan { background: var(--navy); color: #fff; border-radius: var(--radius); padding: clamp(26px, 2.6vw, 36px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px clamp(24px, 3vw, 44px); align-items: start; }
-.sup-plan.is-light { background: #fff; color: var(--navy); border: 1px solid var(--gray-line); }
-.sup-plan .bls-en { color: var(--ice); }
-.sup-plan h3 { margin: 6px 0 12px; font-size: clamp(23px, 1.9vw, 28px); font-weight: 800; letter-spacing: -0.015em; }
-.sup-plan p { margin: 0; font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.78); word-break: keep-all; text-wrap: pretty; }
-.sup-plan.is-light p { color: var(--text-body); }
-.sup-plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 14.5px; line-height: 1.6; }
-.sup-plan li { position: relative; padding-left: 18px; color: rgba(255,255,255,.86); }
-.sup-plan.is-light li { color: var(--text-body); }
-.sup-plan li::before { content: ""; position: absolute; left: 0; top: .72em; width: 8px; height: 1.5px; background: var(--ice); }
-.sup-plan li b { color: inherit; font-weight: 800; }
-.sup-plan.is-light li b { color: var(--navy); }
+.sup-plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin-top: clamp(44px, 5vw, 72px); background: #fff; border: 1px solid var(--gray-line); border-radius: 8px; overflow: hidden; }
+.sup-plan { padding: clamp(28px, 3vw, 44px) clamp(26px, 3vw, 44px) clamp(30px, 3.2vw, 48px); color: var(--navy); }
+.sup-plan + .sup-plan { border-left: 1px solid var(--gray-line); }
+.sup-plan .bls-en { color: var(--ice-dark); }
+.sup-plan h3 { margin: 10px 0 14px; font-size: clamp(24px, 2vw, 30px); font-weight: 800; letter-spacing: -0.02em; color: #000; }
+.sup-plan p { margin: 0; max-width: 560px; font-size: 15.5px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.sup-plan ul { margin: 28px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--navy); counter-reset: plan; }
+.sup-plan li { counter-increment: plan; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: start; padding: 13px 0; border-bottom: 1px solid var(--gray-line); font-size: 15px; line-height: 1.6; color: var(--navy); word-break: keep-all; text-wrap: pretty; }
+.sup-plan li::before { content: counter(plan, decimal-leading-zero); padding-top: .3em; font-size: 11.5px; font-weight: 800; letter-spacing: 1.5px; line-height: 1; color: var(--ice-dark); font-variant-numeric: tabular-nums; }
+.sup-plan li b { font-weight: 700; color: var(--navy); }
 
 /* ---- 05 STORAGE & SAFETY ---- */
-.sup-tips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 20px); }
-.sup-tip { background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); padding: clamp(22px, 2.2vw, 28px); }
-.sup-tip .num { display: block; font-size: clamp(30px, 2.6vw, 40px); font-weight: 800; letter-spacing: -0.03em; color: var(--ice); line-height: 1; }
-.sup-tip h3 { margin: 16px 0 8px; font-size: 18.5px; font-weight: 800; color: #000; letter-spacing: -0.01em; }
-.sup-tip p { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+/* STORAGE & SAFETY (2026-11-19 재설계): 사진 + 가는 줄 목록(승화 늦추기), 안전 수칙은 번호가 붙은 네 칸 */
+#handling .sup-intro { margin-top: 0; max-width: none; gap: 12px; }
+.sup-keep { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 4vw, 72px); align-items: stretch; }
+.sup-keep-side { display: flex; flex-direction: column; min-width: 0; }
+.sup-keep-side h3 { margin: 10px 0 0; font-size: clamp(26px, 2.4vw, 36px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.3; color: #000; word-break: keep-all; }
+.sup-keep-side img { display: block; width: 100%; height: auto; margin-top: auto; padding-top: 28px; border-radius: 0 0 8px 8px; }
+.sup-keep-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--navy); }
+.sup-keep-list li { padding: 16px 0 17px; border-bottom: 1px solid var(--gray-line); }
+.sup-keep-list b { display: block; font-size: 17px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.45; color: var(--navy); word-break: keep-all; }
+.sup-keep-list p { margin: 5px 0 0; font-size: 15px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+#handling .sup-group-label { margin-top: clamp(52px, 6vw, 88px); margin-bottom: 22px; }
+.sup-tips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px clamp(24px, 2.8vw, 48px); }
+.sup-tip { position: relative; border-top: 1px solid rgba(22, 32, 74, .28); padding: 28px 0 4px; display: grid; grid-template-rows: subgrid; grid-row: span 3; row-gap: 0; align-content: start; }
+.sup-tip::before { content: ""; position: absolute; left: 0; top: -1px; width: 64px; height: 3px; background: var(--accent-red); }
+.sup-tip .num { display: block; font-size: 36px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: var(--navy); font-variant-numeric: tabular-nums; }
+.sup-tip h3 { margin: 18px 0 8px; font-size: 18.5px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.4; color: #000; word-break: keep-all; }
+.sup-tip p { margin: 0; font-size: 15px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
 .sup-sub-note { margin: 0; font-size: 13.5px; color: var(--text-muted); }
 .sup-sub-figure { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 48px); align-items: center; margin-bottom: clamp(28px, 3vw, 40px); background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); overflow: hidden; }
 .sup-sub-figure img { display: block; width: 100%; height: 100%; min-height: 260px; object-fit: cover; }
@@ -120,31 +236,21 @@
 .sup-sub-copy p { margin: 0; font-size: 15px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
 .sup-sub-copy .rec-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 22px; padding-top: 20px; }
 
-/* ---- 02b PELLET · NUGGET SIZE — 원형 비례 ---- */
-.sup-particles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.sup-particle-stage { height: 210px; }
-.sup-cyl { --s3: 5; position: relative; width: calc(var(--d) * var(--s3) * 1px); height: calc(var(--l) * var(--s3) * 1px); min-width: 16px; }
-.sup-cyl .cyl-top { position: absolute; left: 0; top: 0; width: 100%; height: calc(var(--d) * var(--s3) * .5px); border-radius: 50%; box-sizing: border-box; border: 1.5px solid var(--ice); background: radial-gradient(ellipse at 32% 30%, #fff 0%, var(--ice-pale) 55%, #bfcdea 100%); z-index: 2; }
-.sup-cyl .cyl-body { position: absolute; left: 0; top: calc(var(--d) * var(--s3) * .25px); width: 100%; height: calc(100% - var(--d) * var(--s3) * .5px); box-sizing: border-box; border-left: 1.5px solid var(--ice); border-right: 1.5px solid var(--ice); background: linear-gradient(90deg, #aabde3, #eef3fb 30%, #fff 46%, #eef3fb 62%, #aabde3); z-index: 1; }
-.sup-cyl .cyl-bot { position: absolute; left: 0; bottom: 0; width: 100%; height: calc(var(--d) * var(--s3) * .5px); border-radius: 50%; box-sizing: border-box; border: 1.5px solid var(--ice); background: linear-gradient(180deg, #cfdaf0, #9fb5df); z-index: 0; }
-
 .sup-group-label { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; letter-spacing: 2.2px; color: var(--ice-dark); text-transform: uppercase; margin: 0 0 18px; }
 .sup-group-label::before { content: ""; width: 20px; height: 2px; background: var(--ice); flex: none; }
 .sup-group-label:not(:first-child) { margin-top: clamp(36px, 3.6vw, 52px); }
 @media (max-width: 1100px) {
   .sup-forms, .sup-dims, .sup-particles, .sup-steps, .sup-uses { grid-template-columns: 1fr 1fr; }
-  .sup-step + .sup-step::before { display: none; }
+  .sup-plan + .sup-plan { border-left: 0; border-top: 1px solid var(--gray-line); }
   .sup-plans { grid-template-columns: 1fr; }
   .sup-tips { grid-template-columns: 1fr 1fr; }
   .sup-sub-figure { grid-template-columns: 1fr; }
+  .sup-keep { grid-template-columns: 1fr; }
   .sup-sub-copy { padding: 24px; }
 }
 @media (max-width: 640px) {
+  .sup-spec div:nth-child(-n+2) dd { min-height: 0; }
   .sup-forms, .sup-dims, .sup-particles, .sup-steps, .sup-uses, .sup-tips { grid-template-columns: 1fr; }
-  .sup-plan { grid-template-columns: 1fr; }
   .sup-dim-foot { grid-template-columns: 1fr; }
-  .sup-dim-stage { height: 250px; }
-  .sup-box { --s: .5; }
 }
 
-.sup-plan:not(.is-light) h3 { color: #fff; }

@@ -38,6 +38,8 @@
     automate2:{line:'생산라인 통합',tire:'타이어 금형',duct:'배관 및 덕트',custom:'맞춤 설계'}};
   var NEXT={clean:'실제 오염 샘플로 세척 테스트를 먼저 진행해 입자, 압력, 노즐을 확정합니다.',produce:'하루 사용량과 LCO₂ 공급 조건, 설치 공간을 확인해 모델과 부속 장비를 확정합니다.',recover:'펠렛타이저 실제 가동 시간과 가스 배출량으로 회수 용량을 산정합니다.',automate:'부품 샘플과 사이클 타임을 검토해 로봇, 부스, 유틸리티 구성을 제안합니다.',buy:'형태, 수량, 날짜를 알려주시면 수량 계산과 배송 방법을 안내합니다.'};
   var flow={clean:['clean2','clean3'],produce:['produce2','produce3'],recover:['recover2'],automate:['automate2'],buy:[]};
+  var QL={goal:'목적',clean2:'세척 대상',clean3:'현장 조건',produce2:'시간당 생산량',produce3:'생산 형태',recover2:'펠렛타이저 규모',automate2:'자동화 대상'};
+  var lastList=null;
   /* (2026-11-10) 추천 v3 — 최대 3가지: 1순위(best) + 함께 검토(also) / 함께 구성(addon).
      원칙 ① 기계 특성이 조건과 맞는 모델이 1순위 (예: 전원 불가 → 공압식 C100, 도막, 부식 → E-CO2, 대용량 → 80 lb 호퍼)
           ② 특성이 맞는 범위에서는 바테크 주력 4종(Aero2 PCS ULTRA / i³ MicroClean 2 / ELITE 20 / IceRocket)을 우선
@@ -142,6 +144,7 @@
   }
   function render(){
     var list=recs(ans),first=list[0],m=M[first[0]];
+    lastList=list;
     document.getElementById('eqfName').innerHTML=tm(m.name); document.getElementById('eqfCat').textContent=m.cat; document.getElementById('eqfWhy').textContent=m.why;
     var note=document.getElementById('eqfNote'); note.hidden=!first[2]; note.textContent=first[2]||'';
     document.getElementById('eqfRent').hidden=!RENTAL[first[0]];
@@ -178,6 +181,17 @@
   });
   back.addEventListener('click',function(){var idx=path.indexOf(cur); if(idx<=0) return; show(path[idx-1],'back');});
   reset.addEventListener('click',function(){ans={};path=['goal'];show('goal','back');keepInView();});
+  /* (2026-11-19) 결과 카드 오른쪽 아래의 다시하기, 출력하기 — 다른 찾기 화면과 같은 자리, 같은 결과지(finder-print.js) */
+  var again=document.getElementById('eqfAgain'),prt=document.getElementById('eqfPrint');
+  if(again) again.addEventListener('click',function(){ans={};path=['goal'];show('goal','back');keepInView();});
+  if(prt) prt.addEventListener('click',function(){
+    if(!lastList) render();
+    var first=lastList[0],m=M[first[0]];
+    var conditions=path.filter(function(k){return k!=='result'&&L[k]&&L[k][ans[k]];}).map(function(k){return [QL[k]||k,L[k][ans[k]]];});
+    var products=lastList.map(function(r,i){var x=M[r[0]]; return {name:x.name,image:x.img,role:i===0?'1순위 추천':(r[1]==='addon'?'함께 구성':'함께 검토')};});
+    var payload={title:'장비 비교, 추천 결과',combine:false,conditions:conditions,products:products,name:m.name,type:m.cat,reason:m.why+(first[2]?' '+first[2]:''),note:NEXT[ans.goal]||'',tip:lastList.length>1?lastList.slice(1).map(function(r){return M[r[0]].name+': '+r[2];}).join(' / '):''};
+    window.VatekFinderPrint.run(payload,{button:prt,printPage:'pelletizer/print.html'});
+  });
   show('goal');
   var tabs=document.querySelectorAll('.eqf-tab'),tables=document.querySelectorAll('.eqf-table');
   tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.classList.toggle('is-active',x===t);});tables.forEach(function(x){x.classList.toggle('is-active',x.dataset.t===t.dataset.t);});});});

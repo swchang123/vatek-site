@@ -7,7 +7,7 @@
    /industries/ 하위 페이지와 동일한 22개 산업명을 그대로 재사용해 사이트
    전체 용어를 통일했다. */
 window.VATEK_RESOURCE_TAXONOMY = {
-  industry: ['우주 · 항공', '자동차 제조', '자동차 복원 · 디테일링', '전문 세척 서비스', '엔지니어드 우드', '식품 · 음료', '주조 · 다이캐스팅', '역사적 건축물 · 문화재 복원', '의료기기 제조', '광업', '곰팡이 제거', '오일 · 가스', '포장', '플라스틱 · 복합소재', '발전 · 전력', '인쇄', '철도 · 대중교통', '화재 · 수해 복원', '고무 · 타이어', '반도체 · 전자 제조', '섬유', '생산설비 · 시설 유지보수'],
+  industry: ['우주 및 항공', '자동차 제조', '자동차 복원 및 디테일링', '전문 세척 서비스', '엔지니어드 우드', '식품 및 음료', '주조 및 다이캐스팅', '역사적 건축물 및 문화재 복원', '의료기기 제조', '광업', '곰팡이 제거', '오일 및 가스', '포장', '플라스틱 및 복합소재', '발전 및 전력', '인쇄', '철도 및 대중교통', '화재 및 수해 복원', '고무 및 타이어', '반도체 및 전자 제조', '섬유', '생산설비 및 시설 유지보수'],
   category: ['제품', '적용 분야', '현장 시연'],
   type: ['도입 가이드', '백서', '카탈로그', '교육자료']
 };
@@ -19,19 +19,19 @@ window.VATEK_RESOURCES = {
     {
       id: 'tire-mold-inline',
       date: '2026-08-21',
-      industry: '고무 · 타이어',
-      equipment: 'Aero2® PCS ULTRA · ASP-T',
+      industry: '고무 및 타이어',
+      equipment: 'Aero2® PCS ULTRA, ASP-T',
       application: '금형 세척',
       title: '가황 프레스 안의 타이어 금형, 분해와 냉각 없이 세척하다',
-      client: '국내 타이어 제조사 A사 · 광주 (적용 예시)',
+      client: '국내 타이어 제조사 A사, 광주 (적용 예시)',
       excerpt: '금형을 내려 세척장으로 옮기던 방식에서 프레스 안 인라인 세척으로 바꿔 가동 정지 시간을 크게 줄였습니다.',
       img: '../assets/img/rubber-tires-cleaning-tire-mold-while-hot-and-online-with-dry-ice-blasting.webp',
-      stats: [{ k: '금형당 정지 시간', v: '−80%' }, { k: '분해 · 재조립', v: '0회' }, { k: '벤트홀 막힘', v: '해소' }],
+      stats: [{ k: '금형당 정지 시간', v: '−80%' }, { k: '분해 및 재조립', v: '0회' }, { k: '벤트홀 막힘', v: '해소' }],
       /* 본문 아래 '함께 보면 좋은 콘텐츠' — 같은 산업 · 같은 작업 · 관련 영상 (서버 게시판에서는 태그로 자동 매칭) */
       related: {
         videos: ['aero2-reinvented'],
-        industry: { label: '고무 · 타이어', href: '../industries/rubber-tires.html', img: '../assets/img/rubber-tires-dry-ice-blasting-cleaning-tire-mold-without-disassembly-or-cooldown.webp', desc: '가류기에 장착한 상태로 타이어 · 고무 금형을 세척하는 방식' },
-        task: { label: '금형 · 툴링 세척', href: '../applications/mold-tool-cleaning.html', img: '../assets/img/task-mold-tool-cleaning.webp', desc: '이형제 · 수지 · 카본 등 금형에 쌓인 오염물을 분해 없이 제거' }
+        industry: { label: '고무 및 타이어', href: '../industries/rubber-tires.html', img: '../assets/img/rubber-tires-dry-ice-blasting-cleaning-tire-mold-without-disassembly-or-cooldown.webp', desc: '가류기에 장착한 상태로 타이어, 고무 금형을 세척하는 방식' },
+        task: { label: '금형 및 툴링 세척', href: '../applications/mold-tool-cleaning.html', img: '../assets/img/task-mold-tool-cleaning.webp', desc: '이형제, 수지, 카본 등 금형에 쌓인 오염물을 분해 없이 제거' }
       },
       body: [
         ['과제', '타이어 금형은 가황 반복으로 이형제와 고무 잔류물이 쌓여 벤트홀이 막히고 표면 품질이 떨어집니다. 기존에는 금형을 프레스에서 내려 냉각한 뒤 세척장에서 처리했고, 한 세트에 반나일이 걸렸습니다.'],
@@ -42,18 +42,18 @@ window.VATEK_RESOURCES = {
     {
       id: 'food-conveyor-mixer',
       date: '2026-06-03',
-      industry: '식품 · 음료',
+      industry: '식품 및 음료',
       equipment: 'Aero® 80FP',
       application: '설비 위생 세척',
       title: '물 없이 매일 세척 — 제과 라인 컨베이어와 믹서의 위생 관리',
-      client: '제과 제조사 B사 · 충북 (적용 예시)',
+      client: '제과 제조사 B사, 충북 (적용 예시)',
       excerpt: '물과 세제를 쓰지 못하는 구간의 탄화 반죽과 유지를 드라이아이스로 제거해 세척 주기를 주 1회에서 매일로 바꿨습니다.',
       img: '../assets/img/food-beverage-cleaning-conveyors-with-dry-ice-blasting.webp',
       stats: [{ k: '세척 중 물 사용', v: '0 L' }, { k: '세척 주기', v: '주 1회 → 매일' }, { k: '화학 세제', v: '미사용' }],
       related: {
         videos: ['food-mixer'],
-        industry: { label: '식품 · 음료', href: '../industries/food-beverage.html', img: '../assets/img/food-beverage-dough-carbon-and-grease-removed-from-food-mixer.webp', desc: '오븐 · 믹서 · 컨베이어 등 식품 설비를 물 없이 현장에서 세척' },
-        task: { label: '오일 · 그리스 · 고착 오염 제거', href: '../applications/oil-grease-residue-removal.html', img: '../assets/img/food-beverage-cleaning-oil-residue-from-fryers-and-cookers.webp', desc: '두껍게 축적된 유지 · 탄화물을 분해 없이 제거하는 방식' }
+        industry: { label: '식품 및 음료', href: '../industries/food-beverage.html', img: '../assets/img/food-beverage-dough-carbon-and-grease-removed-from-food-mixer.webp', desc: '오븐, 믹서, 컨베이어 등 식품 설비를 물 없이 현장에서 세척' },
+        task: { label: '오일, 그리스, 고착 오염 제거', href: '../applications/oil-grease-residue-removal.html', img: '../assets/img/food-beverage-cleaning-oil-residue-from-fryers-and-cookers.webp', desc: '두껍게 축적된 유지, 탄화물을 분해 없이 제거하는 방식' }
       },
       body: [
         ['과제', '오븐 앞뒤 컨베이어와 믹서 내부에 탄화된 반죽과 유지가 쌓였지만, 전장부와 베어링 때문에 물 세척이 어려워 주말에만 부분 분해 세척을 했습니다.'],
@@ -64,18 +64,18 @@ window.VATEK_RESOURCES = {
     {
       id: 'semi-mold-die-automation',
       date: '2026-03-17',
-      industry: '반도체 · 전자',
-      equipment: 'i³ MicroClean® 2 · 자동화 셀',
+      industry: '반도체 및 전자',
+      equipment: 'i³ MicroClean® 2, 자동화 셀',
       application: '몰드 다이 세척',
       title: '반도체 몰드 다이 세척을 무인 반복 공정으로',
-      client: '반도체 패키징 C사 · 경기 (적용 예시)',
+      client: '반도체 패키징 C사, 경기 (적용 예시)',
       excerpt: '수작업 솔벤트 세척을 마이크로파티클 자동 세척으로 바꿔 표면 영향을 관리하며 반복 조건을 일정하게 유지했습니다.',
       img: '../assets/img/semiconductor-cleaning-the-mold-or-die-after-the-molding-process-of-the-microchips.webp',
       stats: [{ k: '세척 편차', v: '작업자 무관' }, { k: '표면 영향', v: '관리' }, { k: '솔벤트', v: '미사용' }],
       related: {
         videos: ['capabilities-applications'],
-        industry: { label: '반도체 · 전자 제조', href: '../industries/semiconductor.html', img: '../assets/img/semiconductor-dry-ice-cleaning-removing-wax-and-gas-buildup-from-semiconductor-molds.webp', desc: '반도체 몰드 · 웨이퍼 장비 · PCB까지 정밀 세척 적용' },
-        task: { label: '금형 · 툴링 세척', href: '../applications/mold-tool-cleaning.html', img: '../assets/img/auto-semi-mold-die.webp', desc: '미세 형상 금형의 왁스 · 가스 부산물을 표면 손상 없이 제거' }
+        industry: { label: '반도체 및 전자 제조', href: '../industries/semiconductor.html', img: '../assets/img/semiconductor-dry-ice-cleaning-removing-wax-and-gas-buildup-from-semiconductor-molds.webp', desc: '반도체 몰드, 웨이퍼 장비, PCB까지 정밀 세척 적용' },
+        task: { label: '금형 및 툴링 세척', href: '../applications/mold-tool-cleaning.html', img: '../assets/img/auto-semi-mold-die.webp', desc: '미세 형상 금형의 왁스, 가스 부산물을 표면 손상 없이 제거' }
       },
       body: [
         ['과제', '몰딩 공정 후 다이에 남는 왁스와 가스 부산물을 작업자가 솔벤트로 닦아 냈습니다. 작업자에 따라 결과가 달랐고, 미세 형상 손상과 용제 취급이 부담이었습니다.'],
@@ -112,7 +112,7 @@ window.VATEK_RESOURCES = {
       date: '2026-02-14',
       youtube: 'HzrVVdPBvy4',
       category: '현장 시연',
-      industry: '식품 · 음료',
+      industry: '식품 및 음료',
       duration: '1:48',
       title: '식품 믹서의 드라이아이스 세척 시연',
       excerpt: '고착된 사료 반죽을 믹서 내부에서 제거하는 장면을 보여주는 영상입니다.'
@@ -125,9 +125,9 @@ window.VATEK_RESOURCES = {
       id: 'implementation-checklist',
       date: '2026-08-01',
       type: '도입 가이드',
-      format: 'WEB · 12 항목',
+      format: 'WEB, 12 항목',
       industry: '전 산업',
-      title: '드라이아이스 블라스팅 도입 체크리스트 — 압축공기 · 전원 · 드라이아이스 공급',
+      title: '드라이아이스 블라스팅 도입 체크리스트 — 압축공기, 전원, 드라이아이스 공급',
       excerpt: '장비를 고르기 전에 확인할 현장 조건을 정리했습니다. 필요한 공기량과 압력, 전원 조건, 드라이아이스 보관과 공급 계획까지.',
       img: '../assets/img/adopt-basic-setup.jpg',
       link: '../cleaning/adopt.html',
@@ -151,7 +151,7 @@ window.VATEK_RESOURCES = {
       type: '카탈로그',
       format: 'PDF',
       industry: '전 산업',
-      title: 'Cold Jet 제품 카탈로그 2026 — 블라스터 · 펠렛타이저 · 리커버리',
+      title: 'Cold Jet 제품 카탈로그 2026 — 블라스터, 펠렛타이저, 리커버리',
       excerpt: '전 모델의 주요 사양과 포지셔닝을 한 권에 담았습니다. 인쇄용 PDF는 요청 시 보내 드립니다.',
       img: '../assets/img/blaster-catalog-hero-natural.webp',
       link: '../support/catalog.html',
@@ -166,10 +166,10 @@ window.VATEK_RESOURCES = {
       date: '2026-01-15',
       type: '블라스터',
       year: '2026',
-      lang: 'PDF · 한국어',
+      lang: 'PDF, 한국어',
       pages: '',
       title: 'Cold Jet 드라이아이스 블라스터 종합 카탈로그',
-      excerpt: 'Aero2 · Elite · PCS · i³ MicroClean 전 모델의 사양, 압축공기 요구 조건, 노즐 구성을 한 권에 담았습니다.',
+      excerpt: 'Aero2, Elite, PCS 및 i³ MicroClean 전 모델의 사양, 압축공기 요구 조건, 노즐 구성을 한 권에 담았습니다.',
       img: '../assets/img/blaster-catalog-hero-natural.webp',
       pdf: ''
     },
@@ -178,9 +178,9 @@ window.VATEK_RESOURCES = {
       date: '2026-01-15',
       type: '펠렛타이저',
       year: '2026',
-      lang: 'PDF · 한국어',
+      lang: 'PDF, 한국어',
       pages: '',
-      title: 'Cold Jet 펠렛타이저 카탈로그 — PR 시리즈 · PE 80',
+      title: 'Cold Jet 펠렛타이저 카탈로그 — PR 시리즈, PE 80',
       excerpt: '시간당 생산량, LCO₂ 소비량, 설치 조건과 특수 성형 옵션까지 드라이아이스 생산 장비 전 라인업.',
       img: '../assets/img/pelletizer-pr750h-official.jpg',
       pdf: ''
@@ -190,10 +190,10 @@ window.VATEK_RESOURCES = {
       date: '2026-01-15',
       type: 'CO₂ 리커버리',
       year: '2026',
-      lang: 'PDF · 한국어',
+      lang: 'PDF, 한국어',
       pages: '',
       title: 'Cold Jet CO₂ 리커버리 시스템 카탈로그 — RE-CO₂ 시리즈',
-      excerpt: '펠렛타이저 배출 CO₂를 회수 · 액화해 재사용하는 리커버리 시스템의 모델별 회수 용량과 구성.',
+      excerpt: '펠렛타이저 배출 CO₂를 회수, 액화해 재사용하는 리커버리 시스템의 모델별 회수 용량과 구성.',
       img: '../assets/img/recovery-hero-official.jpg',
       pdf: ''
     }
@@ -208,7 +208,7 @@ window.VATEK_RESOURCES = {
       status: 'replay',
       industry: '세척 서비스',
       duration: '45분',
-      speaker: 'Mike Henderson · Cold Jet',
+      speaker: 'Mike Henderson, Cold Jet',
       lang: '영어 진행',
       title: '드라이아이스 블라스팅으로 세척 사업 시작하기',
       excerpt: '계약 세척 사업자가 알아야 할 장비 선택, 견적 방식, 현장 안전과 고객 설득 포인트를 다룹니다.'
@@ -218,7 +218,7 @@ window.VATEK_RESOURCES = {
       date: '2025-10-15',
       youtube: 'vwg-V8cOfCM',
       status: 'replay',
-      industry: '식품 · 음료',
+      industry: '식품 및 음료',
       duration: '40분',
       speaker: 'Cold Jet Food & Beverage 팀',
       lang: '영어 진행',

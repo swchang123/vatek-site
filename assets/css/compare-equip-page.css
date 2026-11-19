@@ -87,7 +87,7 @@
 
 /* ---- COMPARISON TABLES ---- */
 .eqf-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
-.eqf-tab { padding: 10px 18px; border-radius: 999px; border: 1px solid var(--gray-line); background: #fff; font: inherit; font-size: 14px; font-weight: 800; color: var(--text-body); cursor: pointer; transition: all .25s; }
+.eqf-tab { padding: 10px 18px; border-radius: 10px; border: 1px solid var(--gray-line); background: #fff; font: inherit; font-size: 14px; font-weight: 800; color: var(--text-body); cursor: pointer; transition: all .25s; }
 .eqf-tab:hover { border-color: var(--ice); color: var(--ice-dark); }
 .eqf-tab.is-active { background: var(--navy); border-color: var(--navy); color: #fff; }
 .eqf-table { display: none; }
@@ -125,7 +125,7 @@
 .eqf-chip:hover { background: var(--blue-light); border-color: var(--blue-dark); }
 .eqf-bar-hint { align-self: center; font-size: 13.5px; color: var(--text-muted); }
 .eqf-next p { margin-top: 8px; }
-.eqf-bar-back, .eqf-bar-reset { appearance: none; display: inline-flex; align-items: center; gap: 5px; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--gray-line); background: #fff; color: var(--navy); font: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer; white-space: nowrap; transition: border-color .2s, color .2s, background .2s; }
+.eqf-bar-back, .eqf-bar-reset { appearance: none; display: inline-flex; align-items: center; gap: 5px; padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--gray-line); background: #fff; color: var(--navy); font: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer; white-space: nowrap; transition: border-color .2s, color .2s, background .2s; }
 .eqf-bar-back svg, .eqf-bar-reset svg { width: 14px; height: 14px; }
 .eqf-bar-back:hover, .eqf-bar-reset:hover { border-color: var(--blue-dark); color: var(--blue-dark); }
 .eqf-bar-reset { margin-left: auto; border-color: transparent; background: none; color: var(--text-muted); font-weight: 700; }
@@ -280,3 +280,33 @@
   .eqf-table .cmp-table td:first-child, .eqf-table .cmp-table th:first-child { position: static; }
 }
 @media (prefers-reduced-motion: reduce) { .eqf-thumb { transition: none; } }
+
+/* (2026-11-19) 1순위 카드: 왼쪽 사진, 오른쪽 설명 — 다른 찾기 화면의 결과와 같은 순서 */
+.eqf-pick { grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); }
+.eqf-pick > div:first-child { order: 2; }
+.eqf-pick .eqf-pick-media { order: 1; }
+.eqf-pick:has(.eqf-pick-media[data-empty]) { grid-template-columns: 1fr; }
+@media (max-width: 760px) { .eqf-pick { grid-template-columns: 1fr; } }
+
+/* (2026-11-19) 추천 결과 화면을 펠렛타이저, RE-CO2 찾기와 같은 모양으로: 빨간 '추천 결과' 표시, 흰 카드, 흰 바탕 사진, 왼쪽 사진 오른쪽 설명 */
+.eqf-result-badge { background: var(--accent-red); color: #fff; }
+.eqf-pick { background: #fff; color: var(--navy); border: 1px solid var(--gray-line); border-radius: 14px; box-shadow: none; }
+.eqf-pick .eqf-pick-media { background: #fff; border: 1px solid var(--gray-line); border-radius: 12px; }
+.eqf-pick .eqf-pick-media img { mix-blend-mode: normal; }
+.eqf-pick h3 { color: var(--navy); font-size: clamp(22px, 1.9vw, 26px); letter-spacing: -0.01em; margin: 10px 0 2px; }
+.eqf-pick .cat { border-color: transparent; padding: 0; margin: 4px 0 12px; color: var(--text-muted); font-size: 12px; letter-spacing: .4px; }
+.eqf-pick p, .eqf-pick #eqfWhy { color: var(--text-body); font-size: 14.5px; line-height: 1.7; }
+.eqf-pick .eqf-pick-note { color: var(--navy); border-left-color: var(--blue-dark); font-size: 15.5px; }
+.eqf-rank { background: var(--blue-pale); color: var(--navy); border: 1px solid rgba(36, 58, 148, .18); }
+.eqf-pick .cta-btn { height: 38px; padding: 0 18px; border-radius: 10px; font-size: 13.5px; box-shadow: none; margin-top: 18px; }
+.eqf-more { border-width: 1px; border-radius: 14px; }
+.eqf-more-media { background: #fff; border: 1px solid var(--gray-line); }
+.eqf-more-media img { mix-blend-mode: normal; }
+.eqf-result .eqf-next { border-radius: 14px; }
+
+/* (2026-11-19) 선택 표시: 빈 동그라미 위에 손으로 그은 듯한 빨간 V (펠렛타이저, RE-CO2 찾기와 같은 모양) */
+.eqf-opt.is-picked::after { border-color: #b9bfd0; background: #fff; }
+.eqf-opt::before { content: ""; position: absolute; z-index: 2; top: 4px; right: 7px; width: 38px; height: 38px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 36' fill='%23c81e2c'%3E%3Cpath d='M3 21.6C5.4 20.8 7.4 19.6 8.7 18.7Q10 17.9 10.9 19.2L13.7 23.3C19 15.4 28 7.4 39.6 4C29.6 9.6 20.6 19.6 14.9 31.6Z'/%3E%3C/svg%3E") center / contain no-repeat; clip-path: inset(-4px 104% -4px -4px); pointer-events: none; }
+.eqf-opt.is-picked::before { clip-path: inset(-4px); transition: clip-path .3s cubic-bezier(.45, 0, .2, 1); }
+@media (max-width: 760px) { .eqf-opt::before { top: 50%; margin-top: -25px; right: 5px; } }
+@media (prefers-reduced-motion: reduce) { .eqf-opt.is-picked::before { transition: none; } }

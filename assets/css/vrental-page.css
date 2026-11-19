@@ -53,7 +53,7 @@
 .vr-q-label .num { font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .vr-q-label h3 { margin: 0; font-size: clamp(17px, 1.3vw, 19px); font-weight: 800; color: #000; letter-spacing: -0.01em; line-height: 1.35; word-break: keep-all; }
 .vr-opts { display: flex; flex-wrap: wrap; gap: 8px; }
-.vr-opt { appearance: none; cursor: pointer; padding: 11px 16px; border-radius: 999px; border: 1.5px solid var(--gray-line); background: #fff; color: var(--text-dark); font: inherit; font-size: 14.5px; font-weight: 700; line-height: 1.2; white-space: nowrap; transition: border-color .2s, background .2s, color .2s, transform .2s; }
+.vr-opt { appearance: none; cursor: pointer; padding: 11px 16px; border-radius: 10px; border: 1.5px solid var(--gray-line); background: #fff; color: var(--text-dark); font: inherit; font-size: 14.5px; font-weight: 700; line-height: 1.2; white-space: nowrap; transition: border-color .2s, background .2s, color .2s, transform .2s; }
 .vr-opt:hover { border-color: var(--ice); color: var(--ice-dark); }
 .vr-opt.is-on { border-color: var(--navy); background: var(--navy); color: #fff; }
 .vr-opt:focus-visible { outline: 2px solid var(--ice); outline-offset: 2px; }

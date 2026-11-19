@@ -6,14 +6,14 @@
 [hidden] { display: none !important; }
 
 /* ---- 공통: eyebrow / heading / lead (cmp-* 어휘 재사용) ---- */
-.plt-eyebrow { display: flex; align-items: center; gap: 12px; font-size: 12.5px; font-weight: 800; letter-spacing: 3px; color: var(--ice-dark); text-transform: uppercase; }
-.plt-eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--ice); flex: none; }
+.plt-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 800; letter-spacing: 3px; color: var(--eyebrow-red); text-transform: uppercase; }
+.plt-eyebrow::before { content: ""; flex: none; } /* 고리 모양은 style.css "섹션 제목 영문 라벨 통일" 블록에서 */
 .plt-title { font-size: clamp(30px, 3.2vw, 46px); font-weight: 800; color: #000; letter-spacing: -0.02em; line-height: 1.25; margin: 14px 0 0; word-break: keep-all; }
 .plt-lead { max-width: 860px; font-size: clamp(16px, 1.25vw, 18.5px); line-height: 1.85; color: var(--text-body); word-break: keep-all; text-wrap: pretty; margin: 0; }
 .plt-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px clamp(32px, 4vw, 80px); align-items: end; margin-bottom: clamp(40px, 4.5vw, 64px); max-width: 1560px; }
 
 .plt-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
-.plt-btn { display: inline-flex; align-items: center; gap: 8px; height: 52px; padding: 0 28px; border-radius: 999px; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%); color: #fff; font-weight: 700; font-size: 15.5px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 10px 26px rgba(27,36,38,.18); }
+.plt-btn { display: inline-flex; align-items: center; gap: 8px; height: 52px; padding: 0 28px; border-radius: 10px; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%); color: #fff; font-weight: 700; font-size: 15.5px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 10px 26px rgba(27,36,38,.18); }
 .plt-btn:hover { transform: translateY(-2px); }
 .plt-btn span { display: inline-block; transition: transform .3s cubic-bezier(.22,.61,.36,1); }
 .plt-btn:hover span { transform: translate(3px, 2px); }
@@ -136,7 +136,6 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 
 /* ---- 07 FINDER (다크 카드로 구성) ---- */
 .plt-lineup { background-color: var(--navy); background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 1px, transparent 1px, transparent 14px); border-top-color: rgba(255,255,255,.12); }
-.plt-lineup .plt-eyebrow { color: var(--ice); }
 .plt-lineup .plt-finder-head h2 { color: #fff; }
 .plt-lineup .plt-finder-intro p { color: rgba(255,255,255,.75); }
 .plt-finder { margin-top: clamp(24px, 3vw, 40px); }
@@ -283,7 +282,7 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .plt-finder-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 24px; margin-top: 20px; border-top: 1px solid var(--gray-line); }
 .plt-finder-nav span { font-size: 13px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .plt-finder-nav span b { color: var(--navy); font-size: 15px; }
-.plt-step-back, .plt-step-next { border-radius: 999px; padding: clamp(9px, 1.4vh, 14px) clamp(20px, 2.6vh, 28px); font-weight: 800; font-size: 14.5px; cursor: pointer; transition: background .2s, border-color .2s, color .2s, transform .2s, opacity .2s; }
+.plt-step-back, .plt-step-next { border-radius: 10px; padding: clamp(9px, 1.4vh, 14px) clamp(20px, 2.6vh, 28px); font-weight: 800; font-size: 14.5px; cursor: pointer; transition: background .2s, border-color .2s, color .2s, transform .2s, opacity .2s; }
 .plt-step-back { border: 1.5px solid var(--gray-line); background: #fff; color: var(--navy); }
 .plt-step-back:hover { background: var(--blue-pale); transform: translateY(-2px); }
 .plt-step-next { border: 1.5px solid var(--navy); background: var(--navy); color: #fff; }
@@ -330,7 +329,6 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 
 /* ---- 08 TECH / COMPARE (다크) ---- */
 .plt-tech { background-color: var(--navy-deep); background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 1px, transparent 1px, transparent 14px); color: #fff; border-top: none; }
-.plt-tech .plt-eyebrow { color: var(--ice); }
 .plt-tech .plt-title { color: #fff; }
 .plt-tech .plt-lead { color: rgba(255,255,255,.75); }
 .plt-compare { position: relative; isolation: isolate; margin-top: 18px; counter-reset: cmp; --rail: 200px; --gap: 24px; --lap: 48px; }
@@ -360,7 +358,6 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .plt-compare-row:last-child p { padding-bottom: 30px; }
 .plt-compare-note { margin: 42px 0 0; font-size: 13.5px; color: rgba(255,255,255,.45); word-break: keep-all; }
 #difference { background-color: var(--white); background-image: repeating-linear-gradient(135deg, rgba(40,55,57,.045) 0px, rgba(40,55,57,.045) 1px, transparent 1px, transparent 14px); color: var(--text-body); }
-#difference .plt-eyebrow { color: var(--ice-dark); }
 #difference .plt-title { color: #000; }
 #difference .plt-lead { color: var(--text-body); }
 #difference { padding-bottom: 0; }
@@ -418,7 +415,6 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .hl-title .plt-hl { background-image: linear-gradient(100deg, rgba(255,205,60,.68), rgba(255,205,60,.68)); background-repeat: no-repeat; background-position: 0 76%; background-size: 0% 44%; -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: background-size 1.15s cubic-bezier(.16,.84,.32,1); transition-delay: var(--hd, 0s); }
 .hl-title.is-hl .plt-hl { background-size: 100% 44%; }
 #pelletizer-difference { background-color: #eaf0f0; background-image: radial-gradient(ellipse at 15% 0%, rgba(79,173,184,.14), transparent 55%), repeating-linear-gradient(135deg, rgba(40,55,57,.045) 0px, rgba(40,55,57,.045) 1px, transparent 1px, transparent 10px); color: inherit; }
-#pelletizer-difference .plt-eyebrow { color: var(--ice-dark); }
 #pelletizer-difference .plt-title { color: #000; }
 #pelletizer-difference .plt-lead { color: var(--text-body); }
 #pelletizer-difference .bls-tech { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
@@ -494,7 +490,16 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .plt-result-products article > div { width: 100%; background: var(--blue-pale); }
 .plt-result-products img { mix-blend-mode: multiply; background: transparent; height: 200px; padding: 18px; }
 .plt-result-products strong { margin: 4px 0 14px; }
-.plt-result-go { display: inline-flex; align-items: center; gap: 6px; height: 38px; padding: 0 18px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 13.5px; font-weight: 700; text-decoration: none; transition: background .2s, transform .2s; }
+/* (2026-11-19) 추천 장비가 한 대뿐이면: 왼쪽 사진, 오른쪽 설명. '=' 기호와 사진 아래 이름은 숨기고, '제품 보러가기'는 설명 쪽으로 옮긴다(JS) */
+.plt-result-row.is-single .plt-result-op.is-eq { display: none; }
+.plt-result-row.is-single .plt-result-products article { flex: 0 0 40%; padding-bottom: 0; justify-content: center; }
+.plt-result-row.is-single .plt-result-products article > div { flex: 1; display: flex; align-items: center; justify-content: center; }
+.plt-result-row.is-single .plt-result-products article span, .plt-result-row.is-single .plt-result-products article strong, .plt-result-row.is-single .plt-result-products article .plt-result-go { display: none; }
+.plt-result-row.is-single .plt-result-products img { height: auto; max-height: 320px; min-height: 240px; padding: 24px; }
+.plt-result-row.is-single .plt-result-summary { padding: clamp(26px, 2.8vw, 40px) clamp(26px, 3vw, 44px); align-items: flex-start; }
+.plt-result-row.is-single .plt-result-summary .plt-result-go { margin-top: 20px; }
+@media (max-width: 900px) { .plt-result-row.is-single .plt-result-products article { flex-basis: 100%; } .plt-result-row.is-single .plt-result-products img { min-height: 0; max-height: 240px; } }
+.plt-result-go { display: inline-flex; align-items: center; gap: 6px; height: 38px; padding: 0 18px; border-radius: 10px; background: var(--blue); color: #fff; font-size: 13.5px; font-weight: 700; text-decoration: none; transition: background .2s, transform .2s; }
 .plt-result-go i { font-style: normal; display: inline-block; transition: transform .3s cubic-bezier(.22,.61,.36,1); }
 .plt-result-go:hover { background: var(--blue-dark); transform: translateY(-1px); }
 .plt-result-go:hover i { transform: translateX(3px); }
@@ -505,30 +510,7 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .plt-result-note-footer .plt-btn i { font-style: normal; font-size: 1.1em; line-height: 1; }
 .plt-result-note-footer .plt-btn.is-outline { color: var(--blue); border-color: var(--blue); }
 .plt-result-note-footer .plt-btn.is-outline:hover { background: var(--blue); color: #fff; }
-/* ---- 출력하기: 브라우저 기본 인쇄 미리보기에 결과만 출력 ---- */
-#finderPrintSheet { display: none; }
-.plt-result-print-fallback { align-self: center; font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
-@media print {
-  @page { size: A4 portrait; margin: 14mm; }
-  body > *:not(#finderPrintSheet) { display: none !important; }
-  body, html { background: #fff !important; overflow: visible !important; height: auto !important; }
-  #finderPrintSheet { display: block; color: #111; }
-  #finderPrintSheet header { border-bottom: 2px solid #243a94; padding-bottom: 12px; margin-bottom: 18px; display: grid; gap: 4px; }
-  #finderPrintSheet header b { font-size: 12px; letter-spacing: 1px; color: #3e68b3; }
-  #finderPrintSheet header h2 { margin: 0; font-size: 22px; color: #243a94; }
-  #finderPrintSheet header span { font-size: 12px; color: #666; }
-  #finderPrintSheet > dl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 20px; }
-  #finderPrintSheet > dl div { border: 1px solid #ccd; border-radius: 8px; padding: 10px 12px; }
-  #finderPrintSheet dt { font-size: 11px; color: #666; margin-bottom: 4px; }
-  #finderPrintSheet dd { margin: 0; font-size: 14px; font-weight: 700; }
-  #finderPrintSheet .plt-finder-result { opacity: 1 !important; transform: none !important; box-shadow: none; border: none; padding: 0; transition: none; }
-  #finderPrintSheet .plt-result-top { display: none; }
-  #finderPrintSheet .plt-result-row { break-inside: avoid; flex-direction: row !important; flex-wrap: nowrap; }
-  #finderPrintSheet .plt-result-products { display: contents; }
-  #finderPrintSheet img { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-  #finderPrintSheet .plt-result-products article > div, #finderPrintSheet .plt-result-products img { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  #finderPrintSheet footer { margin-top: 24px; padding-top: 14px; border-top: 1px solid #ccd; display: flex; justify-content: space-between; gap: 12px; font-size: 11px; color: #666; }
-  #finderPrintSheet footer b { color: #243a94; }
+/* 출력하기(결과지) 스타일은 2026-11-19부터 style.css의 #finderPrintSheet 공통 규칙을 쓴다 (finder-print.js) */
 }
 
 /* ============================================================
@@ -545,7 +527,7 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .pf-bar-step b { font-size: 16px; font-weight: 800; color: var(--blue-dark); }
 .pf-bar-hint { font-size: 13.5px; color: var(--text-muted); }
 .pf-bar-hint[hidden] { display: none; }
-.pf-bar-back, .pf-bar-reset { appearance: none; display: inline-flex; align-items: center; gap: 5px; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--gray-line); background: #fff; color: var(--navy); font: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer; white-space: nowrap; transition: border-color .2s, color .2s; }
+.pf-bar-back, .pf-bar-reset { appearance: none; display: inline-flex; align-items: center; gap: 5px; padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--gray-line); background: #fff; color: var(--navy); font: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer; white-space: nowrap; transition: border-color .2s, color .2s; }
 .pf-bar-back svg, .pf-bar-reset svg { width: 14px; height: 14px; }
 .pf-bar-back:hover, .pf-bar-reset:hover { border-color: var(--blue-dark); color: var(--blue-dark); }
 .pf-bar-reset { margin-left: auto; border-color: transparent; background: none; color: var(--text-muted); font-weight: 700; }
@@ -657,3 +639,39 @@ video.pel-hero-video { object-fit: cover; background: var(--navy-deep); }
 .pfv2 .plt-finder-progress button { padding-right: 7px; }
 .pfv2 .plt-finder-progress button::after { content: ""; flex: none; width: 18px; height: 18px; margin-left: 3px; border-radius: 50%; background: rgba(36, 58, 148, .1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23243a94' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / 10px no-repeat; transition: background-color .2s; }
 .pfv2 .plt-finder-progress button:hover::after, .pfv2 .plt-finder-progress button:focus-visible::after { background: var(--blue-dark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / 10px no-repeat; }
+
+/* (2026-11-19) 추천 결과 화면 통일 — '추천 결과' 표시는 빨간 바탕 흰 글자, 장비 사진은 흰 바탕. (장비 비교 추천도 같은 규칙: compare-equip-page.css) */
+.pfv2 .plt-finder-shell .plt-result-label { background: var(--accent-red); color: #fff; font-weight: 800; }
+.plt-result-products article { border: 1px solid var(--gray-line); border-radius: 14px; }
+.plt-result-products article > div, .plt-result-products img { background: #fff; }
+.plt-result-products img { mix-blend-mode: normal; }
+.plt-result-summary { border-radius: 14px; }
+.plt-result-summary small { font-size: 12px; font-weight: 800; letter-spacing: .4px; color: var(--text-muted); }
+.plt-result-summary h3 { font-size: clamp(22px, 1.9vw, 26px); letter-spacing: -0.01em; }
+.plt-result-summary p { font-size: 14.5px; }
+
+/* (2026-11-19) 선택 표시: 파란 동그라미 체크 대신, 빈 동그라미 위에 손으로 그은 듯한 빨간 V.
+   V는 동그라미보다 조금 크게, 오른쪽 위로 삐져나오게 그리고 왼쪽에서 오른쪽으로 그어지듯 나타난다. */
+.pfv2 .plt-shape-options input:checked + span::after, .pfv2 .plt-binary-options input:checked + span::after { border-color: #b9bfd0; background: #fff; }
+.pfv2 .plt-shape-options span::before, .pfv2 .plt-binary-options span::before { display: block; z-index: 4; top: 3px; right: 6px; width: 40px; height: 40px; transform: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 36' fill='%23c81e2c'%3E%3Cpath d='M3 21.6C5.4 20.8 7.4 19.6 8.7 18.7Q10 17.9 10.9 19.2L13.7 23.3C19 15.4 28 7.4 39.6 4C29.6 9.6 20.6 19.6 14.9 31.6Z'/%3E%3C/svg%3E") center / contain no-repeat; opacity: 1; clip-path: inset(-4px 104% -4px -4px); transition: none; pointer-events: none; }
+.pfv2 .plt-shape-options input:checked + span::before, .pfv2 .plt-binary-options input:checked + span::before { opacity: 1; clip-path: inset(-4px); transition: clip-path .3s cubic-bezier(.45, 0, .2, 1); }
+@media (prefers-reduced-motion: reduce) { .pfv2 .plt-shape-options input:checked + span::before, .pfv2 .plt-binary-options input:checked + span::before { transition: none; } }
+
+/* (2026-11-19) 비교 카드는 어두운 바탕인데 --ice(진한 파랑)를 써서 영문 라벨, 체크 동그라미, VS가 묻혔다.
+   어두운 바탕용 밝은 파랑(--ice-on-dark)으로 바꾼다. 좁은 화면에서는 항목 번호(01, 02 …)도 어두운 바탕 위라 같이 밝게. */
+.plt-compare-head strong::before { color: var(--ice-on-dark); }
+.plt-compare-row p:last-child::before { background: var(--ice-on-dark); color: #0b1440; }
+.plt-compare-head::after { color: #0b1440; background: linear-gradient(160deg, #c4d5f3, var(--ice-on-dark) 55%, #5a82cf); box-shadow: 0 0 0 4px rgba(127,163,224,.3), 0 0 36px rgba(127,163,224,.6), 0 14px 30px rgba(0,0,0,.45); }
+.plt-compare-row:hover p:last-child { text-shadow: 0 0 22px rgba(127,163,224,.5); }
+.plt-compare-row:hover p:last-child::before { box-shadow: 0 0 0 3px rgba(127,163,224,.25), 0 0 14px rgba(127,163,224,.7); }
+@media (max-width: 1100px) { .plt-compare-row span::before { color: var(--ice-on-dark); } }
+
+/* (2026-11-19) 비교 카드 배경: 예전 청록 계열(#23444a 등)을 사이트 남색 계열의 단색으로 정리.
+   왼쪽(일반)은 차분한 회남색, 오른쪽(Cold Jet)은 진한 남색 단색에 밝은 파랑 테두리. */
+.plt-compare::before { background: #262b3d; border-color: rgba(255,255,255,.08); }
+.plt-compare::after { background: var(--navy); border-color: rgba(127,163,224,.55); box-shadow: 0 34px 80px rgba(13,19,51,.38), inset 0 1px 0 rgba(255,255,255,.08); }
+.plt-compare-row p:last-child { border-top-color: rgba(127,163,224,.22); }
+@media (max-width: 1100px) {
+  .plt-compare { background: #262b3d; }
+  .plt-compare-row p:last-child { background: var(--navy); border-color: rgba(127,163,224,.4); }
+}

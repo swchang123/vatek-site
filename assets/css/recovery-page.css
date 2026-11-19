@@ -83,7 +83,6 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 .rec-stats span{display:block;margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--text-body);word-break:keep-all}
 .rec-stats strong .rec-count{display:inline;margin:0;font:inherit;line-height:inherit;color:inherit;letter-spacing:inherit}
 .rec-how{background-color:var(--navy-deep);background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 1px, transparent 1px, transparent 14px);border-top:0;color:#fff}
-.rec-how .plt-eyebrow{color:var(--ice)}
 .rec-how .plt-title{color:#fff}
 .rec-how .plt-lead{color:rgba(255,255,255,.75)}
 .rec-how .plt-reason-stage{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
@@ -91,8 +90,6 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 .rec-how .bls-showcase-frame{background:rgba(255,255,255,.11);background-image:none;border:1px solid rgba(255,255,255,.12);box-shadow:none;backdrop-filter:blur(3px)}
 .rec-how .bls-showcase{align-items:center}
 .rec-how .bls-showcase-body{color:rgba(255,255,255,.82)}
-.rec-how .bls-dot-eyebrow{color:var(--ice)}
-.rec-how .bls-dot-eyebrow::before{background:var(--ice)}
 .rec-how .bls-showcase-body h3{color:#fff}
 .rec-how .bls-showcase-body p{color:rgba(255,255,255,.72)}
 .rec-how .bls-showcase-body p+p{margin-top:14px}
@@ -145,6 +142,11 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 .rec-note{margin:24px 0 0;font-size:13.5px;color:var(--text-muted);word-break:keep-all}
 /* ---- RE-CO2 finder (pelletizer finder 어휘 재사용) ---- */
 #pairing{padding:clamp(48px,5vw,72px) 0 clamp(40px,4.5vw,64px)}
+/* (2026-11-19) 펠렛타이저 찾기(#pelletizer-lineup)와 같은 남색 배경 — 공통 규칙(.subhero-sticky ~ section)이 흰색으로 덮던 것을 id로 되돌림 */
+#pairing.plt-lineup{background-color:var(--navy)}
+#pairing .rec-summary-list{flex-direction:row;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+#pairing .rec-summary-row{flex-direction:column;align-items:flex-start;gap:4px;min-width:150px;padding:12px 16px;background:var(--blue-pale)}
+#pairing .rec-growth-input{background:var(--blue-pale)}
 #pairing .plt-finder-progress{grid-template-columns:repeat(2,minmax(0,1fr)) auto}
 .rec-model-options{grid-template-columns:repeat(4,minmax(0,1fr))}
 .rec-model-options i{height:150px;background-color:#fff;background-size:contain;background-position:center;background-repeat:no-repeat}
@@ -158,7 +160,7 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 .rec-count-options{grid-template-columns:repeat(3,minmax(0,1fr))}
 .rec-growth-input{margin:16px 0 0;padding:16px 18px;background:#f4f6f6;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .rec-growth-input label{font-size:13px;font-weight:600;color:var(--rec-ink);margin-bottom:0;text-align:right}
-[data-rec-field="2"] > p:last-of-type{text-align:right}
+[data-rec-field="2"] > p:last-of-type{text-align:left}
 .rec-summary-list{display:flex;flex-direction:column;gap:10px;margin-top:4px}
 .rec-summary-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 18px;background:#f4f6f6;border-radius:10px}
 .rec-summary-row span{font-size:13px;color:var(--rec-muted)}
@@ -176,7 +178,7 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 .rec-finder-visual .plt-finder-visual-caption{background:none;border:0;padding:0;box-shadow:none}
 .rec-growth-input-row{display:flex;align-items:center;justify-content:flex-end;flex-wrap:nowrap;flex-shrink:0;gap:10px}
 @media (max-width:1100px){.rec-model-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:900px){.rec-finder-visual img{max-width:160px}}
+@media (max-width:900px){#pairing .plt-finder-visual{flex-direction:column;gap:10px}#pairing .plt-finder-visual-caption{white-space:nowrap}.rec-finder-visual img{max-width:160px}}
 @media (max-width:720px){.rec-model-options,.rec-count-options{grid-template-columns:1fr}}
 .rec-faq{border-top:2px solid var(--navy);max-width:1100px}
 .rec-faq details{border-bottom:1px solid var(--gray-line)}
@@ -189,3 +191,10 @@ video.rec-hero-video{object-fit:cover;background:var(--navy-deep)}
 @media (max-width:1100px){.rec-how .plt-reason-stage{grid-template-columns:1fr}.rec-stats{grid-template-columns:1fr;gap:18px}}
 @media (max-width:760px){.rec-stats{grid-template-columns:1fr;gap:18px}.rec-faq summary{font-size:16px}.rec-faq details p{padding-right:16px}}
 .rec-model-dark h3{color:#fff}
+
+/* (2026-11-19) THE COLD JET DIFFERENCE 섹션 배경 빗금 제거 */
+#difference.plt-section{background-image:none}
+
+/* (2026-11-19) 비교 카드 그림자가 위 섹션(#difference, z-index 2)에 가려 끊겨 보이던 문제:
+   비교 영역을 위 섹션보다 앞에 둬서 그림자가 자연스럽게 번지게 한다. */
+#recCompare{position:relative;z-index:3}

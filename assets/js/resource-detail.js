@@ -17,7 +17,7 @@
     document.title = it.title + ' | VATEK';
     if (crumbTitle) crumbTitle.textContent = it.title;
     root.innerHTML = '<div class="rda-hero"><img src="' + it.img + '" alt="" /></div>' +
-      '<div class="rda-head"><span class="res-eyebrow">CASE STUDY · ' + esc(it.industry) + '</span><h1>' + esc(it.title) + '</h1>' +
+      '<div class="rda-head"><span class="res-eyebrow">CASE STUDY / ' + esc(it.industry) + '</span><h1>' + esc(it.title) + '</h1>' +
       '<div class="rda-byline"><span>고객 <b>' + esc(it.client) + '</b></span><span>장비 <b>' + esc(it.equipment) + '</b></span><span>작업 <b>' + esc(it.application) + '</b></span><span>게시 <b>' + fmtDate(it.date) + '</b></span></div></div>' +
       '<dl class="rda-stats">' + it.stats.map(function (s) { return '<div><dt>' + esc(s.k) + '</dt><dd>' + esc(s.v) + '</dd></div>'; }).join('') + '</dl>' +
       it.body.map(function (b) { return '<section class="rda-sec"><h3>' + esc(b[0]) + '</h3><p>' + esc(b[1]) + '</p></section>'; }).join('') +
@@ -26,7 +26,7 @@
       var rel = it.related || {}, cards = [];
       (rel.videos || []).slice(0, 1).forEach(function (vid) {
         var v = (D.videos || []).concat(D.webinars || []).filter(function (x) { return x.id === vid; })[0]; if (!v) return;
-        cards.push('<a class="res-link-card reveal" href="watch.html?id=' + encodeURIComponent(v.id) + '"><div class="res-link-media"><img src="https://i.ytimg.com/vi/' + v.youtube + '/hqdefault.jpg" alt="" loading="lazy" /><span class="res-play" aria-hidden="true"></span><span class="res-tag">' + esc(v.duration || '') + '</span></div><div class="res-link-body"><small>VIDEO · ' + esc(v.category || v.industry || '') + '</small><b>' + esc(v.title) + '</b><span>' + esc(v.excerpt) + '</span><i>영상 보기 →</i></div></a>');
+        cards.push('<a class="res-link-card reveal" href="watch.html?id=' + encodeURIComponent(v.id) + '"><div class="res-link-media"><img src="https://i.ytimg.com/vi/' + v.youtube + '/hqdefault.jpg" alt="" loading="lazy" /><span class="res-play" aria-hidden="true"></span><span class="res-tag">' + esc(v.duration || '') + '</span></div><div class="res-link-body"><small>VIDEO / ' + esc(v.category || v.industry || '') + '</small><b>' + esc(v.title) + '</b><span>' + esc(v.excerpt) + '</span><i>영상 보기 →</i></div></a>');
       });
       if (rel.industry) cards.push('<a class="res-link-card reveal" href="' + rel.industry.href + '" style="--reveal-delay:0.06s"><div class="res-link-media"><img src="' + rel.industry.img + '" alt="" loading="lazy" /></div><div class="res-link-body"><small>INDUSTRY SOLUTION</small><b>' + esc(rel.industry.label) + '</b><span>' + esc(rel.industry.desc) + '</span><i>산업별 솔루션 보기 →</i></div></a>');
       if (rel.task) cards.push('<a class="res-link-card reveal" href="' + rel.task.href + '" style="--reveal-delay:0.12s"><div class="res-link-media"><img src="' + rel.task.img + '" alt="" loading="lazy" /></div><div class="res-link-body"><small>APPLICATION</small><b>' + esc(rel.task.label) + '</b><span>' + esc(rel.task.desc) + '</span><i>작업별 솔루션 보기 →</i></div></a>');
@@ -52,7 +52,7 @@
   if (vt.speaker) metaBits.push(esc(vt.speaker));
   if (vt.lang) metaBits.push(esc(vt.lang));
   root.innerHTML = '<div class="res-watch"><div class="res-video"><iframe src="https://www.youtube-nocookie.com/embed/' + vt.youtube + '?rel=0" title="YouTube" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>' +
-    '<div class="res-watch-copy"><span class="res-eyebrow">' + (kind === 'videos' ? 'VIDEO' : 'WEBINAR') + ' · ' + esc(vt.category || vt.industry || '') + '</span><h1>' + esc(vt.title) + '</h1>' +
+    '<div class="res-watch-copy"><span class="res-eyebrow">' + (kind === 'videos' ? 'VIDEO' : 'WEBINAR') + ' / ' + esc(vt.category || vt.industry || '') + '</span><h1>' + esc(vt.title) + '</h1>' +
     '<div class="res-watch-meta">' + metaBits.map(function (m) { return '<span>' + m + '</span>'; }).join('') + '</div>' +
     '<p>' + esc(vt.excerpt) + '</p>' +
     '<div class="res-watch-cta"><a class="cta-btn" href="../products/quote.html">비슷한 현장, 상담 요청</a><a class="res-ghost" href="' + kind + '.html">' + (kind === 'videos' ? '다른 영상 보기' : '다른 웹세미나 보기') + ' →</a></div></div></div>';

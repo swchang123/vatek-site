@@ -13,7 +13,7 @@
   .bar p { margin: 0; font-size: 14px; }
   .bar p span { font-size: 12px; opacity: .72; margin-left: 10px; }
   .bar div { display: flex; gap: 8px; }
-  .bar button { height: 38px; padding: 0 18px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.55); background: none; color: #fff; font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; }
+  .bar button { height: 38px; padding: 0 18px; border-radius: 10px; border: 1.5px solid rgba(255,255,255,.55); background: none; color: #fff; font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; }
   .bar button.go { background: #3e68b3; border-color: #3e68b3; }
   .bar button.go:hover { background: #243a94; border-color: #243a94; }
   .bar button:hover { background: rgba(255,255,255,.12); }
@@ -68,7 +68,7 @@
 </head>
 <body>
 <div class="bar"><p><strong>출력 미리보기</strong><span>A4 세로</span></p><div><button type="button" onclick="window.close()">닫기</button><button type="button" class="go" onclick="window.print()">인쇄</button></div></div>
-<main class="sheet" id="sheet"><div class="empty">출력할 결과가 없습니다. 생산 시스템 찾기에서 결과를 확인한 뒤 출력하기를 눌러 주세요.</div></main>
+<main class="sheet" id="sheet"><div class="empty">출력할 결과가 없습니다. 찾기 화면에서 결과를 확인한 뒤 출력하기를 눌러 주세요.</div></main>
 <script>
 (function () {
   function esc(v) { return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) { return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
@@ -79,16 +79,16 @@
   } catch (e) { data = null; }
   if (!data || !data.products) return;
   var d = new Date();
-  var html = '<header><b>VATEK × Cold Jet</b><h1>드라이아이스 생산 시스템 추천 결과</h1><span>' + d.getFullYear() + '. ' + (d.getMonth() + 1) + '. ' + d.getDate() + '.</span></header>';
-  html += '<dl class="cond">' + (data.conditions || []).map(function (c) { return '<div><dt>' + esc(c[0]) + '</dt><dd>' + esc(c[1]) + '</dd></div>'; }).join('') + '</dl>';
+  var html = '<header><b>VATEK × Cold Jet</b><h1>' + esc(data.title || '드라이아이스 생산 시스템 추천 결과') + '</h1><span>' + d.getFullYear() + '. ' + (d.getMonth() + 1) + '. ' + d.getDate() + '.</span></header>';
+  if ((data.conditions || []).length) html += '<dl class="cond">' + (data.conditions || []).map(function (c) { return '<div><dt>' + esc(c[0]) + '</dt><dd>' + esc(c[1]) + '</dd></div>'; }).join('') + '</dl>';
   html += '<div class="row">' + data.products.map(function (p, i) {
     return '<article><div><img src="' + esc(p.image) + '" alt="' + esc(p.name) + '"></div><span>' + String(i + 1).padStart(2, '0') + ' / ' + esc(p.role) + '</span><strong>' + esc(p.name) + '</strong></article>';
-  }).join('<span class="op plus"></span>') + (data.products.length > 1 ? '<span class="op eq"></span>' : '') +
+  }).join(data.combine === false ? '' : '<span class="op plus"></span>') + (data.products.length > 1 && data.combine !== false ? '<span class="op eq"></span>' : '') +
     '<div class="sum"><small>' + esc(data.type) + '</small><h2>' + esc(data.name) + '</h2><p>' + esc(data.reason) + '</p></div></div>';
-  html += '<div class="note"><b>NOTE</b><p>' + esc(data.note) + '</p>' + (data.tip ? '<p class="tip">' + esc(data.tip) + '</p>' : '') + '</div>';
-  html += '<footer><b>(주)바테크 VATEK</b><span>Cold Jet 공식 대리점, 드라이아이스 생산 시스템 상담</span></footer>';
+  if (data.note || data.tip) html += '<div class="note"><b>NOTE</b>' + (data.note ? '<p>' + esc(data.note) + '</p>' : '') + (data.tip ? '<p class="tip">' + esc(data.tip) + '</p>' : '') + '</div>';
+  html += '<footer><b>(주)바테크 VATEK</b><span>Cold Jet 공식 대리점, 드라이아이스 장비와 공급 상담 031-796-4300</span></footer>';
   document.getElementById('sheet').innerHTML = html;
-  document.title = '추천 결과 — ' + data.name + ' — VATEK';
+  document.title = (data.title || '추천 결과') + ' — ' + data.name + ' — VATEK';
   var imgs = Array.prototype.slice.call(document.images), pending = imgs.filter(function (im) { return !im.complete; }).length;
   function go() { setTimeout(function () { window.print(); }, 150); }
   if (!pending) go();
