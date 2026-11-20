@@ -28,7 +28,9 @@
 .ft-card:hover{border-color:var(--blue-dark);transform:translateY(-2px);box-shadow:0 14px 26px -18px rgba(36,58,148,.55)}
 .ft-card:focus-visible{outline:2px solid var(--blue-dark);outline-offset:3px}
 .ft-card.is-on{background:var(--navy);border-color:var(--navy);box-shadow:0 18px 34px -18px rgba(13,19,51,.7);transform:none}
-.ft-card-top{display:flex;align-items:center;gap:10px}
+.ft-card-top{display:flex;align-items:center;gap:10px;align-self:stretch}
+/* (2026-11-20) 특허 기술 표시: 특허가 등록된 기능에만 PATENTED 배지를 붙인다(특허 출원 중인 기능은 제외). 카드에서는 윗줄 오른쪽 끝 */
+.ft-pat{flex:none;display:block;width:auto;height:24px;margin-left:auto}
 .ft-num{display:grid;place-items:center;flex:none;width:24px;height:24px;border:2px solid var(--blue-dark);border-radius:50%;color:var(--blue-dark);font-size:11.5px;font-weight:800;line-height:1;transition:background .25s,border-color .25s,color .25s}
 .ft-tag{padding:4px 10px;border:1.5px solid var(--blue-dark);border-radius:999px;color:var(--blue-dark);font-size:10.5px;font-weight:800;letter-spacing:1.6px;line-height:1.2;transition:border-color .25s,color .25s}
 .ft-title{margin-top:4px;font-size:16.5px;font-weight:800;line-height:1.38;letter-spacing:-.01em;color:#000;word-break:keep-all;transition:color .25s}
@@ -84,6 +86,39 @@
   .ft.is-7 .ft-view,.ft.is-7 .ft-card.is-lead{grid-column:1/-1}
   .ft.is-7 .ft-card,.ft.is-7 .ft-card.is-mid,.ft.is-7 .ft-card:last-child{grid-column:span 3}
 }
+
+/* (2026-11-20) 넓은 화면(1101px 이상) 배치: 3D 화면을 왼쪽에 크게, 기능은 오른쪽에 목록으로 둔다.
+   목록은 번호와 제목만 보이고, 선택된 기능만 분류와 설명이 펼쳐진다(번호를 누르거나, 올리거나, 투어가 넘어갈 때).
+   .ft-view 를 풀어(display:contents) 3D 화면과 오른쪽 칸(투어 버튼 줄 + 목록)이 같은 줄을 쓰게 해서, 오른쪽 칸의 위아래 끝이 3D 화면의 위아래 끝과 맞는다.
+   1100px 이하는 위쪽 규칙 그대로(3D 위, 카드 아래). */
+@media(min-width:1101px){
+  .ft,.ft.is-7{--ft-n:8;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);grid-template-rows:38px;grid-auto-rows:auto;gap:8px 20px}
+  .ft.is-7{--ft-n:7}
+  .ft .ft-view,.ft.is-7 .ft-view{display:contents}
+  /* 3D 화면은 높이를 고정한다. 목록이 펼쳐지고 접히는 동안 화면 크기가 1px이라도 바뀌면 model-viewer 가 크기 변경으로 보고
+     카메라를 목표 지점으로 바로 옮겨 버려(부드러운 이동 없이 장면이 뚝 바뀜) 전환이 끊겨 보인다. */
+  .ft .ft-stage{grid-column:1;grid-row:1/calc(var(--ft-n) + 2);align-self:start;flex:none;min-height:0;height:clamp(620px,42vw,720px)}
+  /* 투어 버튼은 목록 맨 위(1번 줄 위)의 오른쪽 끝, 안내 문구는 같은 줄의 왼쪽 끝. 이 줄의 윗선이 3D 화면의 윗선과 맞는다 */
+  .ft .ft-ctrl{grid-column:2;grid-row:1;flex-direction:row-reverse;justify-content:space-between;flex-wrap:nowrap;gap:12px;min-width:0}
+  .ft .ft-ctrl .ft-tour{flex:none}
+  .ft .ft-ctrl .ft-hint{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ft .ft-card,.ft .ft-card.is-lead,.ft .ft-card.is-mid,.ft.is-7 .ft-card,.ft.is-7 .ft-card.is-mid,.ft.is-7 .ft-card.is-lead{grid-column:2;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-content:center;align-items:center;justify-content:stretch;column-gap:12px;row-gap:0;padding:11px 18px;border-radius:12px}
+  .ft .ft-card:hover{transform:none;box-shadow:none}
+  .ft .ft-card.is-on,.ft .ft-card.is-on:hover{box-shadow:0 14px 28px -18px rgba(13,19,51,.7)}
+  .ft .ft-card .ft-card-top{display:contents}
+  .ft .ft-card .ft-num{grid-column:1;grid-row:1}
+  .ft .ft-card .ft-title,.ft .ft-card.is-lead .ft-title{grid-column:2;grid-row:1;margin:0;font-size:15.5px;line-height:1.4}
+  .ft .ft-card .ft-tag{grid-column:2;grid-row:2;justify-self:start;padding:0;border:0;border-radius:0;font-size:10px;letter-spacing:2px;line-height:1.6;max-height:0;margin-top:0;opacity:0;overflow:hidden;transition:max-height .36s ease,margin-top .36s ease,opacity .3s,color .25s}
+  .ft .ft-card .ft-desc,.ft .ft-card.is-lead .ft-desc{grid-column:2/4;grid-row:3;max-width:none;font-size:13.5px;line-height:1.65;max-height:0;margin-top:0;opacity:0;overflow:hidden;transition:max-height .36s ease,margin-top .36s ease,opacity .3s,color .25s}
+  .ft .ft-card .ft-lead-mark{display:none}
+  /* PATENTED 배지: 목록에서는 제목 줄의 오른쪽 끝, 제목과 같은 높이 가운데 */
+  .ft .ft-card .ft-pat{grid-column:3;grid-row:1;height:24px;margin:0 0 0 4px;transform:translateY(1px)}
+  /* 펼쳐질 높이는 feature-tour.js 가 실제 글 높이를 재서 --ft-th, --ft-dh 로 넣는다. 펼치는 줄과 접는 줄이 같은 시간, 같은 속도로 움직여
+     목록 전체 높이가 중간에 넘치지 않는다. */
+  .ft .ft-card.is-on .ft-tag{max-height:var(--ft-th,2em);margin-top:5px;opacity:1;color:var(--ice-on-dark)}
+  .ft .ft-card.is-on .ft-desc{max-height:var(--ft-dh,10em);margin-top:5px;opacity:1}
+}
+@media(min-width:1101px) and (prefers-reduced-motion:reduce){.ft .ft-card .ft-tag,.ft .ft-card .ft-desc{transition:none}}
 @media(max-width:640px){
   .ft.is-7 .ft-card,.ft.is-7 .ft-card.is-mid,.ft.is-7 .ft-card:last-child{grid-column:1/-1}
 }

@@ -16,7 +16,7 @@
     cards.forEach(function(c){var on=+c.dataset.i===cur;c.classList.toggle('is-on',on);c.setAttribute('aria-pressed',on?'true':'false')});
     var h=HOT[cur];if(mv&&h&&h.o){mv.cameraOrbit=h.o;if(h.t)mv.cameraTarget=h.t}}
   function sync(){if(timer){clearInterval(timer);timer=null}if(playing&&inView&&!hov)timer=setInterval(function(){show(cur+1)},4000)}
-  function setPlaying(v){playing=v;if(btn){btn.setAttribute('aria-pressed',v?'true':'false');btn.classList.toggle('is-paused',!v);btn.querySelector('span').textContent=v?'투어 일시정지':'투어 재생'}sync()}
+  function setPlaying(v){playing=v;if(btn){btn.setAttribute('aria-pressed',v?'true':'false');btn.classList.toggle('is-paused',!v);btn.querySelector('span').textContent=v?'자동재생 정지':'자동재생'}sync()}
   function pick(el){el.addEventListener('click',function(){show(+el.dataset.i);setPlaying(false)})}
   function isMouse(e){return !e.pointerType||e.pointerType==='mouse'}
   function hover(el){
@@ -24,6 +24,14 @@
     el.addEventListener('pointerleave',function(e){if(!isMouse(e))return;clearTimeout(hovT);hov=false;sync()});
   }
   root.querySelectorAll('.ft-dot').forEach(function(d){pick(d);hover(d)});cards.forEach(function(c){pick(c);hover(c)});
+  /* 넓은 화면의 목록: 선택된 줄만 분류와 설명이 펼쳐진다. 펼쳐질 높이를 실제 글 높이로 재서 넣어 두면,
+     펼치는 줄과 접는 줄이 같은 속도로 움직여 목록 전체 높이가 중간에 넘치지 않는다(스타일은 feature-tour.css). */
+  function measure(){cards.forEach(function(c){var d=c.querySelector('.ft-desc'),t=c.querySelector('.ft-tag');
+    if(d)c.style.setProperty('--ft-dh',d.scrollHeight+'px');if(t)c.style.setProperty('--ft-th',t.scrollHeight+'px')})}
+  var measT=null;measure();
+  window.addEventListener('resize',function(){clearTimeout(measT);measT=setTimeout(measure,150)});
+  window.addEventListener('load',measure);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
   if(btn)btn.addEventListener('click',function(){setPlaying(!playing)});
 
   var started3d=false;

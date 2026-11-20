@@ -57,15 +57,20 @@
 .dm-way-meta dd small { display: block; font-size: 12.5px; font-weight: 600; color: var(--text-muted); margin-top: 2px; }
 .dm-way .bls-more { padding: 0 clamp(18px, 1.8vw, 24px) clamp(18px, 1.8vw, 24px); margin: -6px 0 0; font-size: 15px; }
 .dm-way:hover .bls-more i { transform: translateX(4px); }
-.dm-flow { margin-top: clamp(20px, 2.4vw, 32px); background: var(--navy-deep); color: #fff; border-radius: var(--radius); padding: clamp(24px, 2.6vw, 36px) clamp(24px, 2.8vw, 40px); background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0px, rgba(255,255,255,.05) 1px, transparent 1px, transparent 14px); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px clamp(24px, 3vw, 48px); align-items: center; }
-.dm-flow > .bls-en { color: var(--ice); white-space: nowrap; }
-.dm-flow-line { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 8px; font-size: 15px; line-height: 1.5; }
-.dm-flow-line .q { font-weight: 700; color: rgba(255,255,255,.9); }
-.dm-flow-line .arrow { color: rgba(255,255,255,.4); }
-.dm-flow-line a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(79,173,184,.18); border: 1px solid rgba(79,173,184,.5); color: #fff; font-weight: 800; text-decoration: none; white-space: nowrap; transition: background .2s; }
-.dm-flow-line a:hover { background: rgba(79,173,184,.4); }
-.dm-flow-line a i { display: inline-flex; width: 20px; height: 20px; border-radius: 50%; background: var(--ice); color: var(--navy-deep); font-style: normal; font-size: 11px; font-weight: 800; align-items: center; justify-content: center; }
-.dm-flow-line .sep { flex-basis: 100%; height: 0; }
+/* (2026-11-20) WHICH ONE? 안내를 어두운 상자에서 흰 판으로: 위 카드 세 장과 같은 3칸 격자(같은 간격)를 써서
+   질문과 답이 각자 해당 카드 바로 아래, 카드 글과 같은 세로선에서 시작한다. 칸 사이 선은 쓰지 않는다. */
+.dm-flow { margin-top: clamp(20px, 2.4vw, 32px); background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); padding: clamp(20px, 2vw, 26px) 0 clamp(22px, 2.2vw, 28px); }
+.dm-flow > .bls-en { display: block; padding: 0 clamp(18px, 1.8vw, 24px); color: var(--ice-dark); white-space: nowrap; }
+.dm-flow-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(14px, 1.6vw, 20px); }
+.dm-flow-list li { min-width: 0; display: grid; grid-template-rows: subgrid; grid-row: span 2; row-gap: 10px; padding: 0 clamp(18px, 1.8vw, 24px); }
+.dm-flow-list li:nth-child(2) { padding-left: calc(clamp(18px, 1.8vw, 24px) + .67px); }
+.dm-flow-list li:nth-child(3) { padding-left: calc(clamp(18px, 1.8vw, 24px) + 1.33px); }
+.dm-flow-list .q { font-size: 16px; font-weight: 700; line-height: 1.5; color: #000; letter-spacing: -0.01em; word-break: keep-all; }
+.dm-flow-list a { justify-self: start; display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; line-height: 1.4; color: var(--navy); text-decoration: none; white-space: nowrap; }
+.dm-flow-list a i { display: inline-flex; width: 22px; height: 22px; border-radius: 50%; background: var(--ice-dark); color: #fff; font-style: normal; font-size: 12px; font-weight: 800; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
+.dm-flow-list a em { font-style: normal; color: var(--ice); transition: transform .3s cubic-bezier(.22,.61,.36,1); }
+.dm-flow-list a:hover { color: var(--ice-dark); }
+.dm-flow-list a:hover em { transform: translateX(4px); }
 
 /* ---- 02 DETAIL rows ---- */
 .dm-detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); align-items: center; padding: clamp(40px, 4.4vw, 64px) 0; border-top: 1px solid var(--gray-line); }
@@ -178,7 +183,8 @@
 
 @media (max-width: 1100px) {
   .dm-choose { grid-template-columns: 1fr; }
-  .dm-flow { grid-template-columns: 1fr; }
+  .dm-flow-list { grid-template-columns: 1fr; row-gap: 18px; }
+  .dm-flow-list li, .dm-flow-list li:nth-child(2), .dm-flow-list li:nth-child(3) { display: grid; grid-template-rows: none; grid-row: auto; row-gap: 8px; padding: 0 clamp(18px, 1.8vw, 24px); }
   .dm-detail { grid-template-columns: 1fr; }
   .dm-detail.is-flip .dm-detail-media { order: 0; }
   .dm-report { grid-template-columns: 1fr; }
@@ -199,3 +205,78 @@
 /* (2026-10-03) HOW EACH WORKS 미디어 3칸을 영상/사진 → 세 가지 방법 카드와 같은 라인 일러스트로. 밝은 배경이라 캡션은 어두운 필로 */
 .dm-detail-media.is-illust { background: #fff; border: 1px solid var(--gray-line); }
 .dm-detail-media.is-illust .cap { left: 20px; right: auto; bottom: 18px; padding: 7px 12px; border-radius: 8px; background: rgba(15,22,23,.72); backdrop-filter: blur(6px); color: #fff; text-shadow: none; }
+
+/* (2026-11-20) FREE는 파란 바탕, PAID는 빨간 바탕에 흰 글자(카드와 아래 상세 사진 공통).
+   카드 제목 앞에는 짧은 빨간 세로선. 선은 안쪽 여백에 걸어 두어 제목 글자의 시작선이 영문 라벨, 본문과 그대로 맞는다. */
+.dm-way-media .fee, .dm-detail-media .fee { background: var(--ice-dark); color: #fff; border: 1.5px solid var(--ice-dark); font-size: 12px; font-weight: 900; -webkit-text-stroke: .45px currentColor; } /* 맑은 고딕은 Bold보다 굵은 굵기가 없어 같은 색 외곽선으로 획을 키운다 */
+.dm-way-media .fee.is-paid, .dm-detail-media .fee.is-paid { background: var(--accent-red); color: #fff; border-color: var(--accent-red); }
+.dm-way-body h3 { position: relative; }
+/* 세로선은 영문 라벨과 제목 두 줄을 위아래로 3px씩 넘겨 감싼다(글자 끝에 딱 맞추면 글꼴에 따라 1px씩 어긋나 보여서).
+   위: 라벨 줄 높이 19.2px + 사이 8px 만큼 올리고, 라벨 글자 위 빈 공간 5px 중 2px만 남긴다. 아래: 제목 글자 아래 빈 공간(.2em)에서 3px 더 내린다. */
+.dm-way-body h3::before { content: ""; position: absolute; left: -13px; top: calc(-27.2px + 2px); bottom: calc(.2em - 3px); width: 3px; background: var(--accent-red); }
+
+/* (2026-11-20) 테스트 방법 세 가지: 소개 글은 두 문단. 카드 세 장은 사진, 글, "이런 경우", 비용과 소요, 링크의 높이를 함께 써서(subgrid)
+   글 길이가 달라도 "이런 경우" 상자와 아래 항목이 같은 가로선에 놓인다. */
+.dm-intro { display: grid; gap: 12px; min-width: 0; }
+@media (min-width: 1101px) { #choose .plt-head { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); } } /* 제목 둘째 줄이 글자가 넓은 글꼴에서도 한 줄에 들어가도록 제목 칸을 조금 넓힌다 */
+.dm-choose .dm-way { grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
+.dm-choose .dm-way-fit { align-content: start; } /* 상자 높이가 같아져도 글은 라벨 바로 아래에서 시작 */
+
+/* (2026-11-20) RENT & TEST: 세 가지 방법 아래에 놓는 가로형 카드. 위 카드 세 장과 같은 3칸 격자(같은 간격)를 써서
+   사진은 첫째 카드, 글은 둘째 카드, "이런 경우"와 비용은 셋째 카드와 같은 세로선에 선다. 1100px 이하에서는 위 카드처럼 세로로 쌓인다. */
+.dm-rent { margin-top: clamp(20px, 2.4vw, 32px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(14px, 1.6vw, 20px); background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: inherit; transition: border-color .25s, box-shadow .25s, transform .25s; }
+.dm-rent:hover { border-color: var(--ice); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(15,25,26,.08); }
+.dm-rent .dm-way-media.is-illust { aspect-ratio: auto; min-height: 300px; border-bottom: 0; border-right: 1px solid var(--gray-line); }
+.dm-rent .dm-way-media.is-illust img { object-position: 22% 50%; }
+.dm-rent:hover .dm-way-media.is-illust img { transform: scale(1.03); }
+.dm-rent .dm-way-body { padding: clamp(22px, 2vw, 28px) clamp(18px, 1.8vw, 24px); padding-left: calc(clamp(18px, 1.8vw, 24px) + .67px); } /* 테두리 1px 때문에 생기는 소수점 어긋남을 보정해 위 카드의 글 시작선과 맞춘다 */
+.dm-rent-side { display: grid; grid-template-rows: auto 1fr auto; align-content: start; padding: clamp(22px, 2vw, 28px) clamp(18px, 1.8vw, 24px); padding-left: calc(clamp(18px, 1.8vw, 24px) + 1.33px); min-width: 0; }
+.dm-rent .dm-way-fit { margin: 0; align-content: start; }
+.dm-rent .dm-way-meta { margin: 16px 0 0; padding: 16px 0 0; align-self: start; }
+.dm-rent .bls-more { margin-top: 18px; font-size: 15px; }
+.dm-rent:hover .bls-more i { transform: translateX(4px); }
+@media (max-width: 1100px) {
+  .dm-rent { grid-template-columns: 1fr; }
+  .dm-rent .dm-way-media.is-illust { aspect-ratio: 16 / 11; min-height: 0; border-right: 0; border-bottom: 1px solid var(--gray-line); }
+  .dm-rent .dm-way-media.is-illust img { object-position: 50% 50%; }
+  .dm-rent .dm-way-body { padding-bottom: 0; padding-left: clamp(18px, 1.8vw, 24px); }
+  .dm-rent-side { padding-top: 14px; padding-left: clamp(18px, 1.8vw, 24px); }
+}
+
+/* (2026-11-20) 연구소 주소 상자: 주소 오른쪽에 복사 버튼(위치/연락처 페이지와 같은 모양, 동작은 main.js 의 .lc-copy),
+   상자 오른쪽 끝에 "위치 및 연락처" 버튼. 상자가 좁으면(600px 이하) 버튼이 주소 아래, 글과 같은 세로선으로 내려간다. */
+.dm-addr { grid-template-columns: auto minmax(0, 1fr) auto; container-type: inline-size; }
+.dm-addr .lc-val { display: block; margin-top: 3px; line-height: 1.75; word-break: keep-all; } /* 복사 버튼은 주소 글 끝에 붙어 흐른다: 주소가 두 줄로 나뉘어도 마지막 글자 옆에 온다 */
+.dm-addr .lc-copy { display: inline-flex; align-items: center; gap: 5px; vertical-align: middle; margin: -3px 0 0 10px; padding: 4px 10px 4px 8px; border: 1px solid var(--gray-line); border-radius: 999px; background: #fff; color: var(--text-muted); font: inherit; font-size: 12.5px; font-weight: 700; line-height: 1; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+.dm-addr .lc-copy svg { width: 14px; height: 14px; color: inherit; }
+.dm-addr .lc-copy:hover { color: var(--navy); border-color: var(--navy); }
+.dm-addr .lc-copy.is-done { color: #fff; background: var(--blue); border-color: var(--blue); }
+.dm-addr a.dm-addr-btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 14px; border: 1.5px solid var(--navy); border-radius: 10px; background: #fff; color: var(--navy); font-size: 13.5px; font-weight: 800; line-height: 1.2; white-space: nowrap; text-decoration: none; transition: background .2s, color .2s; }
+.dm-addr a.dm-addr-btn i { font-style: normal; transition: transform .3s cubic-bezier(.22,.61,.36,1); }
+.dm-addr a.dm-addr-btn:hover { background: var(--navy); color: #fff; text-decoration: none; }
+.dm-addr a.dm-addr-btn:hover i { transform: translateX(3px); }
+@container (max-width: 600px) {
+  .dm-addr a.dm-addr-btn { grid-column: 2; grid-row: 2; justify-self: start; }
+}
+
+/* (2026-11-20) 방법별 절차 제목 옆 표시: 무료는 파란 바탕, 유료는 빨간 바탕, 글씨는 흰색(위 카드의 FREE / PAID 와 같은 색) */
+.dm-detail-copy h3 small { background: var(--ice-dark); color: #fff; }
+.dm-detail-copy h3 small.is-paid { background: var(--accent-red); color: #fff; }
+
+/* (2026-11-20) FAQ 소개 문장은 한 줄로(V렌탈 페이지와 같은 처리): 공용 최대 폭(520px)을 풀고,
+   제목 옆에 한 줄로 들어가지 않는 폭(1360px 이하)에서는 제목 아래로 내려 한 줄을 유지한다. */
+#faq .faq-intro { max-width: none; }
+@media (max-width: 1360px) { #faq .faq-head { grid-template-columns: 1fr; gap: 10px; } #faq .faq-intro { justify-self: start; text-align: left; } }
+
+/* (2026-11-20) 마지막 안내: 제목 두 줄("테스트로 먼저 확인하고, / 그다음 단계를 결정하세요.")이 각각 한 줄에 들어가도록
+   두 칸을 같은 폭으로 두고 제목을 조금 줄인다(구매 프로세스 페이지와 같은 처리). 좁은 화면에서 줄이 나뉠 때는 어절 묶음 사이에서만 나뉜다. */
+#dm-final .cmp-h2 { font-size: clamp(30px, 2.9vw, 42px); }
+#dm-final .cmp-h2 span { white-space: nowrap; }
+#dm-final .cmp-lead p { word-break: keep-all; text-wrap: pretty; }
+@media (min-width: 1101px) { #dm-final .bls-final-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+#dm-final { border-top: 0; } /* FAQ와 마지막 안내 사이의 구분선은 쓰지 않는다(구매 프로세스, V렌탈 페이지와 같게) */
+
+/* (2026-11-20) WHAT YOU GET: 제목 둘째 줄은 어절 묶음 사이에서만 나뉘고, 맨 아래 공개 범위 안내는 빨간색으로 강조한다.
+   남색 바탕이라 사이트 기본 빨강(#c81e2c)은 어두워 읽기 어려우므로 같은 계열의 밝은 빨강을 쓴다. */
+.dm-report-copy h3 span { white-space: nowrap; }
+.dm-report-copy p.dm-report-note { margin: 2px 0 0; font-size: 14px; font-weight: 700; line-height: 1.7; color: #ff6f78; }

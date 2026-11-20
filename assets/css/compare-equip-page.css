@@ -310,3 +310,16 @@
 .eqf-opt.is-picked::before { clip-path: inset(-4px); transition: clip-path .3s cubic-bezier(.45, 0, .2, 1); }
 @media (max-width: 760px) { .eqf-opt::before { top: 50%; margin-top: -25px; right: 5px; } }
 @media (prefers-reduced-motion: reduce) { .eqf-opt.is-picked::before { transition: none; } }
+/* (2026-11-20) 첫 질문 문구 변경에 맞춘 정렬: 제목 아래 안내 문장 간격, 다섯 선택지의 설명이 같은 높이에서 시작하도록
+   제목 두 줄 자리를 잡아 두고(한 줄짜리 제목이 섞여도 어긋나지 않게), CO2의 아래첨자가 줄 높이를 밀지 않게 한다. */
+#finder .plt-head .plt-lead { margin-top: 16px; }
+.eqf-opt b sub, .eqf-opt .eqf-desc sub { line-height: 0; }
+@media (min-width: 641px) { .eqf-q.is-goal .eqf-opt b { min-height: 2.6em; } }
+/* 마지막 문의 안내(구매 프로세스 페이지와 같은 처리): 제목 둘째 줄이 한 줄에 들어가도록 두 칸을 같은 폭으로 두고 제목을 조금 줄인다.
+   줄이 나뉘어야 할 때는 어절 묶음 사이에서만 나뉘고, 본문은 단어 중간에서 끊기지 않는다. */
+#eqf-final .bls-final-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+#eqf-final .cmp-h2 { font-size: clamp(30px, 2.9vw, 42px); }
+#eqf-final .cmp-h2 span { white-space: nowrap; }
+#eqf-final .cmp-lead p { word-break: keep-all; text-wrap: pretty; }
+#eqf-final .cmp-lead sub { line-height: 0; }
+@media (max-width: 1100px) { #eqf-final .bls-final-grid { grid-template-columns: 1fr; } }

@@ -6,7 +6,7 @@
 <title>Aero&reg; 40FP | 드라이아이스 세척기 (블라스터) | VATEK</title>
 <meta name="description" content="Aero 40FP — 검증된 설계의 풀프레셔 드라이아이스 블라스터. 1.4–17.2 bar(20–250 psi), 호퍼 18.2kg, 래디얼 피딩 시스템과 컴팩트 모터로 가볍고 전력 소비가 낮습니다. 사양, 강점 및 액세서리." />
 <link rel="stylesheet" href="../../assets/css/style.css" />
-<link rel="stylesheet" href="../../assets/css/feature-tour.css?v=20261119-3" />
+<link rel="stylesheet" href="../../assets/css/feature-tour.css?v=20261120-4" />
 </head>
 <body>
 
@@ -113,11 +113,11 @@
           <span class="megamenu-index-highlight" aria-hidden="true"></span>
           <li class="megamenu-index-group">SERVICE</li>
           <li class="megamenu-index-item is-active" data-i="0"><a href="../../rental/vrental.html" data-desc="블라스터와 디젤 콤프레샤를 필요한 기간만 빌려 쓰는 렌탈 프로그램입니다." data-img="../../assets/img/submenu-vrental.webp">장비 렌탈<img class="mi-logo" src="../../assets/img/vrental-logo.png" alt="V RENTAL" /></a></li>
-          <li class="megamenu-index-item" data-i="1"><a href="../../rental/demo.html" data-desc="시편 발송, 연구소 방문 및 현장 방문, 세 가지 방법으로 세척 효과를 먼저 확인합니다." data-img="../../assets/img/submenu-demo-test.webp">데모 테스트</a></li>
+          <li class="megamenu-index-item" data-i="1"><a href="../../rental/demo.html" data-desc="시료 발송, 연구소 방문 및 현장 방문, 세 가지 방법으로 세척 효과를 먼저 확인합니다." data-img="../../assets/img/submenu-demo-test.webp">데모 테스트</a></li>
           <li class="megamenu-index-item" data-i="2"><a href="../../rental/partners.html" data-desc="바테크 장비 운용 교육을 이수한 인증 세척용역 업체를 소개합니다." data-img="../../assets/img/submenu-partners-v2.webp">세척 용역</a></li>
           <li class="megamenu-index-group">REQUEST</li>
           <li class="megamenu-index-item" data-i="3"><a href="../../rental/apply.html" data-desc="회원가입 후 장비, 악세서리, 기간을 선택해 렌탈 신청서를 제출합니다." data-img="../../assets/img/submenu-apply-v2.webp">렌탈 신청</a></li>
-          <li class="megamenu-index-item" data-i="4"><a href="../../rental/demo-apply.html" data-desc="테스트 방법을 고르고 세척 대상과 시편 정보를 보내 주세요." data-img="../../assets/img/submenu-demo-apply-v2.webp">데모 테스트 신청</a></li>
+          <li class="megamenu-index-item" data-i="4"><a href="../../rental/demo-apply.html" data-desc="테스트 방법을 고르고 세척 대상과 시료 정보를 보내 주세요." data-img="../../assets/img/submenu-demo-apply-v2.webp">데모 테스트 신청</a></li>
         </ul>
       </div>
       <div class="megamenu-preview">
@@ -206,10 +206,11 @@
     .au-sec .sub{color:var(--text-muted);font-size:15px;margin:0 0 22px}
     .only{display:inline-block;margin-left:6px;font-size:11px;font-weight:800;color:var(--ice-dark);background:var(--ice-pale);padding:2px 7px;border-radius:999px;vertical-align:middle}
     /* 상단 — 갤러리 + 소개 */
-    .au-top{display:grid;grid-template-columns:100px minmax(0,1.6fr) minmax(0,.9fr);gap:28px clamp(28px,3.4vw,56px);align-items:start;padding:40px 0 0}
-    .au-thumbs{display:grid;gap:12px;align-content:start}
-    .au-thumbs button{display:block;width:100px;height:100px;padding:0;border:1px solid var(--gray-line);border-radius:6px;background:#fff;cursor:pointer;overflow:hidden;transition:border-color .15s,box-shadow .15s}
-    .au-thumbs button img{width:100%;height:100%;object-fit:contain;display:block;padding:6px;box-sizing:border-box}
+    /* (2026-11-20) 작은 사진 칸을 100px → 76px 로 줄였다(PCS ULTRA, PLT ULTRA, Aero 80FP 페이지와 같게) */
+    .au-top{display:grid;grid-template-columns:76px minmax(0,1.6fr) minmax(0,.9fr);gap:28px clamp(28px,3.4vw,56px);align-items:start;padding:40px 0 0}
+    .au-thumbs{display:grid;gap:8px;align-content:start}
+    .au-thumbs button{display:block;width:76px;height:76px;padding:0;border:1px solid var(--gray-line);border-radius:6px;background:#fff;cursor:pointer;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+    .au-thumbs button img{width:100%;height:100%;object-fit:contain;display:block;padding:4px;box-sizing:border-box}
     .au-thumbs button.is-on{border-color:var(--blue);box-shadow:0 0 0 2px var(--blue-light)}
     .au-thumbs button:hover{border-color:var(--blue)}
     .au-stage{position:relative;background:#fff;border-radius:12px;min-height:640px;display:flex;align-items:flex-start;justify-content:center;padding:0 0 28px}
@@ -429,8 +430,8 @@
     .au-accgrid h3{font-size:16.5px;color:var(--navy);font-weight:800;margin:0;padding:12px 0 2px}
     .au-accgrid p{margin:0;padding:0 0 6px;font-size:13.5px;color:var(--text-muted);line-height:1.5}
     @media (max-width:1100px){
-      .au-top{grid-template-columns:84px minmax(0,1fr);}
-      .au-thumbs button{width:84px;height:84px}
+      .au-top{grid-template-columns:64px minmax(0,1fr);}
+      .au-thumbs button{width:64px;height:64px}
       .au-copy{grid-column:1 / -1}
       .au-stage{min-height:380px}
     }
@@ -468,12 +469,15 @@
       </div>
       <div class="au-top">
         <div class="au-thumbs" id="auThumbs" role="tablist" aria-label="제품 이미지">
-          <button type="button" class="is-on" data-src="../../assets/img/aero40-front.webp" data-cap="Aero 40FP" aria-label="제품 전면"><img src="../../assets/img/aero40-front.webp" alt="" /></button>
-          <button type="button" data-src="../../assets/img/aero40-side.webp" data-cap="측면, 컨트롤 패널" aria-label="제품 측면"><img src="../../assets/img/aero40-side.webp" alt="" /></button>
-          <button type="button" data-src="../../assets/img/aero40-back.webp" data-cap="후면, 호스 연결부" aria-label="제품 후면"><img src="../../assets/img/aero40-back.webp" alt="" /></button>
+          <button type="button" class="is-on" data-src="../../assets/img/aero-40fp-photo-1.webp" data-cap="Aero 40FP" aria-label="제품 정면 사선"><img src="../../assets/img/aero-40fp-photo-1.webp" alt="" /></button>
+          <button type="button" data-src="../../assets/img/aero-40fp-photo-2.webp" data-cap="후면, 조작 패널" aria-label="제품 후면과 조작 패널"><img src="../../assets/img/aero-40fp-photo-2.webp" alt="" /></button>
+          <button type="button" data-src="../../assets/img/aero-40fp-photo-3.webp" data-cap="정면 사선" aria-label="제품 정면 사선 2"><img src="../../assets/img/aero-40fp-photo-3.webp" alt="" /></button>
+          <button type="button" data-src="../../assets/img/aero-40fp-photo-4.webp" data-cap="정면" aria-label="제품 정면"><img src="../../assets/img/aero-40fp-photo-4.webp" alt="" /></button>
+          <button type="button" data-src="../../assets/img/aero-40fp-photo-5.webp" data-cap="측면" aria-label="제품 측면"><img src="../../assets/img/aero-40fp-photo-5.webp" alt="" /></button>
+          <button type="button" data-src="../../assets/img/aero-40fp-photo-6.webp" data-cap="윗면, 호퍼" aria-label="제품 윗면"><img src="../../assets/img/aero-40fp-photo-6.webp" alt="" /></button>
         </div>
         <div class="au-stage">
-          <img id="auStageImg" src="../../assets/img/aero40-front.webp" alt="Aero 40FP 풀프레셔 드라이아이스 블라스터" />
+          <img id="auStageImg" src="../../assets/img/aero-40fp-photo-1.webp" alt="Aero 40FP 풀프레셔 드라이아이스 블라스터" />
           <span class="cap" id="auStageCap">Aero 40FP</span>
         </div>
         <div class="au-copy">
@@ -567,12 +571,12 @@
             <span class="ft-drag-hint" aria-hidden="true">드래그하면 장비를 돌려 볼 수 있습니다</span>
           </div>
           <div class="ft-ctrl">
-            <button type="button" class="ft-tour" id="ftToggle" aria-pressed="true"><svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg><span>투어 일시정지</span></button>
-            <span class="ft-hint">번호나 카드를 누르면 그 기능에서 멈춥니다</span>
+            <button type="button" class="ft-tour" id="ftToggle" aria-pressed="true"><svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg><span>자동재생 정지</span></button>
+            <span class="ft-hint">번호를 누르면 자동 재생이 정지됩니다.</span>
           </div>
         </div>
         <button type="button" class="ft-card is-lead" data-i="0"><span class="ft-card-top"><span class="ft-num">1</span><span class="ft-tag">CONSTRUCTION</span></span><b class="ft-title">내구성을 위한 구조</b><span class="ft-desc">용접 스틸 프레임, 스테인리스 패널, 폼 충전 공압 타이어, 이중 교반 장치를 갖춰 중공업 현장에 맞게 만들었습니다.</span><span class="ft-lead-mark">LEAD FEATURE</span></button>
-        <button type="button" class="ft-card is-mid" data-i="1"><span class="ft-card-top"><span class="ft-num">2</span><span class="ft-tag">PERFORMANCE</span></span><b class="ft-title">SureFlow 시스템</b><span class="ft-desc">Cold Jet 특허 시스템이 막힘 없는 분사를 보장해, 세척을 중단 없이 이어갈 수 있습니다.</span></button>
+        <button type="button" class="ft-card is-mid" data-i="1"><span class="ft-card-top"><span class="ft-num">2</span><span class="ft-tag">PERFORMANCE</span><img class="ft-pat" src="../../assets/img/badge-patented.webp" alt="특허 기술" width="194" height="72" /></span><b class="ft-title">SureFlow 시스템</b><span class="ft-desc">Cold Jet 특허 시스템이 막힘 없는 분사를 보장해, 세척을 중단 없이 이어갈 수 있습니다.</span></button>
         <button type="button" class="ft-card is-mid" data-i="2"><span class="ft-card-top"><span class="ft-num">3</span><span class="ft-tag">ENGINEERING</span></span><b class="ft-title">래디얼 피딩 시스템</b><span class="ft-desc">공기역학적 로딩이 패드와 로터에 걸리는 기계적 부담을 줄여 장비 수명을 늘리고, 드라이아이스를 일정하게 공급합니다.</span></button>
         <button type="button" class="ft-card" data-i="3"><span class="ft-card-top"><span class="ft-num">4</span><span class="ft-tag">CONTROL</span></span><b class="ft-title">맥동 없는 분사</b><span class="ft-desc">개선된 로터가 펠렛 쏠림을 없애 일정한 흐름으로 분사하고, 표면 세척 품질을 높입니다.</span></button>
         <button type="button" class="ft-card" data-i="4"><span class="ft-card-top"><span class="ft-num">5</span><span class="ft-tag">VERSATILITY</span></span><b class="ft-title">전 범위 분사 압력</b><span class="ft-desc">섬세한 부품용 1.4 bar(20 psi)부터 심한 산업 오염용 17.2 bar(250 psi)까지 장비 한 대로 폭넓은 세척 작업을 처리합니다.</span></button>
@@ -752,7 +756,7 @@
     })();
   </script>
 
-  <script src="../../assets/js/feature-tour.js?v=20261119-4"></script>
+  <script src="../../assets/js/feature-tour.js?v=20261120-2"></script>
 
 </body>
 </html>

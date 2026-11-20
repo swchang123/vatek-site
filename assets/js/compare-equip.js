@@ -135,7 +135,7 @@
     else { stepEl.innerHTML='<b>질문 '+n+'</b>'+(t?' / '+t:''); line.style.width=(t?((n-1)/t*100):0)+'%'; }
     back.hidden=idx<=0; reset.hidden=idx<=0; if(hint) hint.hidden=id!=='result';
     /* 지금까지 고른 답 — 누르면 그 질문으로 돌아감 */
-    chips.innerHTML=idx===0?'<span class="eqf-bar-hint">질문 한두 개만 더 고르면 추천 장비가 바로 나옵니다.</span>':'';
+    chips.innerHTML=idx===0?'<span class="eqf-bar-hint">2~3개의 답변만으로, 적합한 장비와 서비스를 확인할 수 있습니다.</span>':'';
     path.slice(0,idx).forEach(function(k){ if(!L[k]||!L[k][ans[k]]) return;
       var c=document.createElement('button'); c.type='button'; c.className='eqf-chip'; c.textContent=L[k][ans[k]]; c.title='이 선택을 지우고 다시 고르기';
       c.addEventListener('click',function(){ show(k,'back'); }); chips.appendChild(c); });

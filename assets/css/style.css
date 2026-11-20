@@ -5129,3 +5129,21 @@ a.mm-group-name:hover, a.mm-group-name:focus-visible { color: var(--blue-dark); 
   .mm-lead-arrow { width: 28px; height: 28px; }
 }
 @media (max-width: 960px) { .megamenu-models { display: none; } }
+
+/* (2026-11-20) 페이지 마지막 안내 섹션(.bls-final)의 버튼은 모두 같은 모양으로 통일한다:
+   흰 바탕, 남색 1.5px 테두리, 모서리 14px, 남색 굵은 글씨. 올리면 남색으로 채워지고 글씨가 흰색이 된다.
+   파란색으로 채워져 있던 버튼(.cta-btn)과 테두리 버튼(.cmp-btn-ghost) 둘 다 이 규칙을 따른다. 버튼 아래의 글자 링크(.bls-textlink)는 그대로. */
+.bls-final .cmp-cta-btns .cta-btn,
+.bls-final .cmp-cta-btns .cmp-btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0;
+  padding: 14px 26px; border: 1.5px solid var(--navy); border-radius: 14px;
+  background: #fff; color: var(--navy) !important;
+  font-size: 16px; font-weight: 700; letter-spacing: 0; line-height: 1.5; white-space: nowrap; text-decoration: none;
+  box-shadow: none; filter: none; transform: none; overflow: visible;
+  transition: background .2s, color .2s;
+}
+.bls-final .cmp-cta-btns .cta-btn:hover,
+.bls-final .cmp-cta-btns .cmp-btn-ghost:hover { background: var(--navy); color: #fff !important; filter: none; transform: none; box-shadow: none; }
+.bls-final .cmp-cta-btns .cta-btn:active,
+.bls-final .cmp-cta-btns .cmp-btn-ghost:active { transform: none; filter: none; box-shadow: none; }
+.bls-final .cmp-cta-btns .cta-btn::after { content: none; }
