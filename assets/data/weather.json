@@ -1,0 +1,5 @@
+{
+  "condition": "clear",
+  "updated": "",
+  "note": "회사소개 히어로 사진에 쓰는 하남 본사 날씨. condition 은 clear, rain, snow 중 하나. updated(예: 2026-11-20T18:00:00+09:00)를 적으면 3시간이 지난 값은 무시한다."
+}

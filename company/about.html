@@ -201,7 +201,59 @@
   <section class="subhero-parallax aut-hero-stage ab-hero-stage subhero-sticky">
     <div class="subhero-breadcrumb wrap"><a href="../index.html">홈</a> &gt; <a href="about.html">회사소개</a> &gt; 회사소개</div>
     <div class="hero-fit">
-      <img class="subhero-parallax-img" src="../assets/img/about-hero.webp" alt="경기도 하남 바테크 사옥 — VATEK 사인이 있는 외벽" data-buffer-ratio="0.333" data-pan-scale="1" data-no-blur="true" />
+      <img class="subhero-parallax-img" id="abHeroImg" src="../assets/img/about-hero.webp" alt="경기도 하남 바테크 사옥 — VATEK 사인이 있는 외벽" data-buffer-ratio="0.333" data-pan-scale="1" data-no-blur="true" />
+      <script>
+      /* (2026-11-20) 히어로 사진을 접속한 시간대와 날씨에 맞춘다.
+         - 시간대: 낮(기본 사진), 해질녘과 새벽(dusk), 밤(night). 시각은 접속한 기기의 시계, 해 뜨고 지는 시각은 하남 본사 위치와 날짜로 계산한다.
+         - 날씨: 같은 사이트의 assets/data/weather.json 을 읽어 condition 이 rain 이면 비 오는 사진, snow 이면 눈 오는 사진으로 바꾼다(낮, 해질녘, 밤 모두 준비됨).
+           이 파일은 사람이 고치거나 예약 작업이 갱신한다. 파일이 없거나 읽지 못하면 맑은 사진 그대로.
+         - 확인용: 주소 뒤에 ?hero=day / dusk / night 또는 뒤에 -rain, -snow 를 더한 값(예: day-rain, night-snow)을 붙이면 그 사진을 바로 본다. ?weather=rain, ?weather=snow 는 지금 시간대에 날씨만 적용한다.
+         스크립트가 꺼져 있으면 낮 사진 그대로. */
+      (function () {
+        var img = document.getElementById('abHeroImg'); if (!img) return;
+        var DIR = '../assets/img/about-hero-';
+        var SRC = { dusk: DIR + 'dusk.webp', night: DIR + 'night.webp', 'day-rain': DIR + 'day-rain.webp', 'day-snow': DIR + 'day-snow.webp', 'dusk-rain': DIR + 'dusk-rain.webp', 'night-rain': DIR + 'night-rain.webp', 'dusk-snow': DIR + 'dusk-snow.webp', 'night-snow': DIR + 'night-snow.webp' };
+        var stage = img.closest('.ab-hero-stage');
+        function sun(d) {
+          var rad = Math.PI / 180, lat = 37.54 * rad, lon = 127.21;
+          var n = Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(d.getFullYear(), 0, 0)) / 864e5);
+          var dec = 23.44 * rad * Math.sin(2 * Math.PI * (284 + n) / 365);
+          var b = 2 * Math.PI * (n - 81) / 364, eot = 9.87 * Math.sin(2 * b) - 7.53 * Math.cos(b) - 1.5 * Math.sin(b);
+          var ha = Math.acos((Math.sin(-0.833 * rad) - Math.sin(lat) * Math.sin(dec)) / (Math.cos(lat) * Math.cos(dec))) / rad * 4;
+          var noon = 720 + 4 * (135 - lon) - eot;
+          return { rise: noon - ha, set: noon + ha };
+        }
+        function phase(d) {
+          var s = sun(d), t = d.getHours() * 60 + d.getMinutes();
+          if ((t >= s.set - 20 && t < s.set + 40) || (t >= s.rise - 40 && t < s.rise + 20)) return 'dusk';
+          return (t >= s.set + 40 || t < s.rise - 40) ? 'night' : 'day';
+        }
+        var q = location.search, m = /[?&]hero=(day|dusk|night)(?:-(rain|snow))?\b/.exec(q);
+        var p = m ? m[1] : phase(new Date());
+        if (SRC[p]) img.src = SRC[p];
+        if (stage) { stage.setAttribute('data-time', p); stage.setAttribute('data-weather', 'clear'); }
+        // 비, 눈: 사진을 다 받은 뒤에 바꾼다(바뀌는 순간 빈 화면이 보이지 않게). 좌우를 채우는 흐린 복제 사진(.hero-fit-ambient)도 함께 바꾼다.
+        function wx(kind) {
+          var url = SRC[p + '-' + kind]; if (!url) return;
+          var pre = new Image();
+          pre.onload = function () {
+            img.src = url;
+            var amb = stage && stage.querySelector('img.hero-fit-ambient'); if (amb) amb.src = url;
+            if (stage) stage.setAttribute('data-weather', kind);
+          };
+          pre.src = url;
+        }
+        if (m) { if (m[2]) wx(m[2]); return; }
+        var f = /[?&]weather=(rain|snow|clear)\b/.exec(q);
+        if (f) { if (f[1] !== 'clear') wx(f[1]); return; }
+        if (!window.fetch || !(SRC[p + '-rain'] || SRC[p + '-snow'])) return;
+        fetch('../assets/data/weather.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (w) {
+          if (!w || (w.condition !== 'rain' && w.condition !== 'snow')) return;
+          if (w.updated) { var age = Date.now() - Date.parse(w.updated); if (!(age >= 0 && age < 3 * 3600e3)) return; }
+          wx(w.condition);
+        }).catch(function () {});
+      })();
+      </script>
       <div class="subhero-textbox">
         <span class="ind-hero-eyebrow">VATEK / SINCE 1988 / COLD JET KOREA</span>
         <h1>1988년부터,<br><span class="bls-hero-accent">한 가지를 제대로 해 왔습니다.</span></h1>

@@ -5147,3 +5147,11 @@ a.mm-group-name:hover, a.mm-group-name:focus-visible { color: var(--blue-dark); 
 .bls-final .cmp-cta-btns .cta-btn:active,
 .bls-final .cmp-cta-btns .cmp-btn-ghost:active { transform: none; filter: none; box-shadow: none; }
 .bls-final .cmp-cta-btns .cta-btn::after { content: none; }
+
+/* (2026-11-20) 메가메뉴 "한눈에 보기" 안내 줄: 바탕을 흰색으로. 바탕이 안 보이므로 글자 시작선과 화살표 끝선을 아래 목록의 좌우 끝에 맞춘다
+   (안쪽 여백만큼 바깥으로 당김). 화살표 원은 옅은 파랑으로 두어 보이게 하고, 올렸을 때만 옅은 파랑 바탕이 나타난다. */
+.megamenu-models .mm-lead { background: #fff; margin-left: -16px; margin-right: -14px; }
+.megamenu-models .mm-lead-arrow { background: var(--blue-pale); }
+.megamenu-models .mm-lead:hover, .megamenu-models .mm-lead:focus-visible { background: var(--blue-pale); }
+.megamenu-models .mm-lead:hover .mm-lead-arrow, .megamenu-models .mm-lead:focus-visible .mm-lead-arrow { background: var(--blue-dark); }
+@media (max-width: 1240px) { .megamenu-models .mm-lead { margin-left: -14px; margin-right: -12px; } }
