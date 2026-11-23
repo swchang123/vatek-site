@@ -25,61 +25,81 @@
 .plt-lead a { color: var(--ice-dark); font-weight: 700; text-decoration: none; }
 .plt-lead a:hover { text-decoration: underline; }
 
-/* ---- 01 WHO ---- */
-.ts-who { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 18px); }
-.ts-who-card { background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); padding: clamp(22px, 2.2vw, 30px); display: grid; gap: 10px; align-content: start; grid-template-rows: auto auto 1fr auto auto; }
-.ts-who-card .bls-en { color: var(--ice-dark); }
-.ts-who-card h3 { margin: 2px 0 0; font-size: clamp(19px, 1.5vw, 23px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
-.ts-who-card p { margin: 0; font-size: 14.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.ts-who-card ul { margin: 8px 0 0; padding: 12px 0 0; list-style: none; border-top: 1px solid var(--gray-line); display: grid; gap: 6px; }
-.ts-who-card li { font-size: 13.5px; font-weight: 600; color: var(--navy); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; word-break: keep-all; }
-.ts-who-card li::before { content: ""; flex: none; width: 10px; height: 1.5px; margin-top: 9px; background: var(--ice); }
-.ts-who-card .bls-more { margin-top: 6px; font-size: 13.5px; }
+/* ==== (2026-11-21) 본문 전면 재구성 ====
+   교육 및 A/S 페이지와 같은 4칸 격자(.edu-grid, education-page.css)를 그대로 쓴다. 이 파일에는 이 페이지에만 있는 블록(영역 표, 문의 시 알려 줄 내용, Cold Jet 자문)만 둔다.
+   카드 상자는 쓰지 않고 선과 여백으로만 구분한다. */
 
-/* ---- 02 AREAS ---- */
-.ts-areas { display: grid; gap: clamp(12px, 1.4vw, 18px); }
-.ts-row { background: #fff; border: 1px solid var(--gray-line); border-radius: var(--radius); padding: clamp(22px, 2.4vw, 34px); display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.4fr); gap: clamp(18px, 2.6vw, 44px); align-items: start; }
-.ts-row-head { display: grid; gap: 8px; align-content: start; }
-.ts-row-head .num { font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
-.ts-row-head .bls-en { color: var(--ice-dark); }
-.ts-row-head h3 { margin: 2px 0 0; font-size: clamp(21px, 1.9vw, 28px); font-weight: 800; color: #000; letter-spacing: -0.02em; line-height: 1.25; word-break: keep-all; text-wrap: pretty; }
-.ts-row-head p { margin: 4px 0 0; font-size: 14.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.ts-row-body { margin: 0; display: grid; gap: 0; border-top: 1px solid var(--gray-line); }
-.ts-row-body > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 4px 18px; padding: 13px 0; border-bottom: 1px solid var(--gray-line); }
-.ts-row-body dt { margin: 0; font-size: 11.5px; font-weight: 800; letter-spacing: 1.6px; color: var(--ice-dark); padding-top: 4px; }
-.ts-row-body dd { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.ts-row-body dd b { color: var(--navy); font-weight: 800; }
+/* ---- 02 지원 영역(2026-11-23 다시 정리) ----
+   영역 하나가 한 줄. 왼쪽 1칸은 이름과 자주 받는 질문 한 줄(고객의 말, 빨간 세로선). 번호는 쓰지 않는다.
+   오른쪽 3칸 사이에는 작은 화살표를 두어 문의, 검토, 자료로 이어지는 순서가 보이게 한다. 오른쪽 3칸은 이런 때(점 목록), 바테크가 하는 일(순서 목록), 받으시는 자료(문서 이름).
+   줄마다 칸 이름을 작게 다시 적어 위로 올라가 보지 않아도 읽힌다. 영역 이름과 칸 이름이 같은 높이, 설명과 각 칸의 첫 줄이 같은 높이(글자 밑선 기준)에 온다. */
+.ts-table { border-top: 2px solid var(--navy); }
+.ts-area { display: grid; grid-template-columns: subgrid; grid-template-rows: auto auto 1fr; grid-column: 1 / -1; align-items: baseline; padding: 26px 0 32px; border-bottom: 1px solid var(--gray-line); }
+.ts-area:last-child { padding-bottom: 0; border-bottom: 0; }
+.ts-area > * { min-width: 0; }
+.ts-area .k { grid-row: 1; margin: 0; font-size: 13px; font-weight: 800; line-height: 1.5; color: var(--text-muted); }
+.ts-area h3 { grid-column: 1; grid-row: 1; margin: 0; font-size: clamp(20px, 1.65vw, 24px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.4; word-break: keep-all; }
+.ts-area .desc { grid-column: 1; grid-row: 2 / span 2; margin-top: 10px; padding-right: 8px; }
+.ts-area .desc p { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--text-muted); word-break: keep-all; text-wrap: pretty; }
+.ts-area .desc p.q { padding-left: 14px; border-left: 3px solid var(--accent-red); font-size: 15px; font-weight: 600; line-height: 1.6; color: var(--navy); text-wrap: balance; }
+.ts-area .desc .bls-more { margin-top: 12px; font-size: 14.5px; }
+.ts-area .desc .bls-more i { color: var(--accent-red); }
+.ts-area .desc .bls-more:hover i { transform: translateX(4px); }
+.ts-area .k1, .ts-area .c1 { grid-column: 2; }
+.ts-area .k2, .ts-area .c2 { grid-column: 3; }
+.ts-area .k3, .ts-area .c3 { grid-column: 4; }
+.ts-area .c { grid-row: 2 / span 2; margin: 10px 0 0; padding: 0; list-style: none; }
+.ts-area .c li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.6; color: var(--text-body); word-break: keep-all; text-wrap: balance; } /* 줄이 넘어갈 때 마지막 한 단어만 떨어지지 않게 한다 */
+.ts-area .c li + li { margin-top: 8px; }
+.ts-area .c1 li::before { content: ""; position: absolute; left: 3px; top: .8em; width: 5px; height: 5px; margin-top: -2.5px; border-radius: 50%; background: var(--navy); }
+.ts-area .c2 { counter-reset: tsstep; }
+.ts-area .c2, .ts-area .c3 { position: relative; }
+.ts-area .c2::before, .ts-area .c3::before { content: ""; position: absolute; left: calc(var(--edu-gap) * -.5 - 7px); top: 8px; width: 8px; height: 8px; border-top: 2px solid rgba(22, 32, 74, .38); border-right: 2px solid rgba(22, 32, 74, .38); transform: rotate(45deg); } /* 칸 사이 간격 한가운데, 첫 줄 높이에 놓는 화살표 */
+.ts-area .c2 li { counter-increment: tsstep; }
+.ts-area .c2 li::before { content: counter(tsstep); position: absolute; left: 0; top: 0; width: 14px; font-size: 13px; font-weight: 800; line-height: inherit; color: var(--ice-dark); font-variant-numeric: tabular-nums; }
+.ts-area .c3 b { display: flex; align-items: baseline; gap: 5px; font-size: 16.5px; font-weight: 800; line-height: 1.45; color: var(--navy); letter-spacing: -0.01em; word-break: keep-all; }
+.ts-area .c3 b svg { flex: none; align-self: center; width: 17px; height: 17px; margin-left: -1px; color: var(--accent-red); }
+.ts-area .c3 p { margin: 8px 0 0; padding-left: 22px; font-size: 14.5px; line-height: 1.7; color: var(--text-muted); word-break: keep-all; text-wrap: pretty; }
 
-/* ---- 03 HOW (dark) ---- */
-.ts-request { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 2.6vw, 40px); align-items: start; }
-.ts-send dl > div { grid-template-columns: 112px minmax(0, 1fr); }
-.ts-send dd em { font-style: normal; color: var(--ice); font-weight: 700; }
-.cmp-dark p.ts-how-key { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.18); font-size: clamp(16px, 1.3vw, 19px); font-weight: 800; line-height: 1.45; letter-spacing: -0.01em; color: #fff; word-break: keep-all; text-wrap: pretty; }
-.ts-how-key em { font-style: normal; color: var(--ice); }
-.ts-request-cta { margin-top: clamp(24px, 2.6vw, 34px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
-.ts-request-cta p { margin: 0; flex: 1 1 320px; font-size: 15px; line-height: 1.7; color: rgba(255,255,255,.78); word-break: keep-all; text-wrap: pretty; }
-.ts-request-cta p b { color: #fff; }
+/* ---- 03 진행 방식(어두운 섹션): 단계 네 칸 + 문의 시 알려 줄 내용(왼쪽 2칸 안내, 오른쪽 2칸 목록) ---- */
+.cmp-dark .edu-list .via a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.cmp-dark .edu-list .via a:hover { color: #fff; }
+.ts-send { margin-top: clamp(56px, 5.4vw, 84px); align-items: start; }
+.ts-send-copy { grid-column: span 2; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, .88); } /* 오른쪽 목록의 윗선과 같은 높이에 선을 두어 좌우 글의 시작 높이를 맞춘다 */
+.ts-send-copy .bls-en { color: rgba(255, 255, 255, .55); font-size: 11.5px; letter-spacing: 2px; line-height: 1.4; }
+.ts-send-copy h3 { margin: 8px 0 0; font-size: clamp(22px, 1.9vw, 28px); font-weight: 800; color: #fff; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
+.ts-send-copy p { margin: 14px 0 0; max-width: 520px; font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, .74); word-break: keep-all; text-wrap: pretty; }
+.ts-send-copy .edu-btns { margin-top: 24px; }
+.ts-send-list { grid-column: span 2; grid-template-columns: subgrid; align-content: start; }
+.ts-send-list > * { grid-row: span 3; }
+.ts-send-list > *:nth-child(-n+4) { padding-bottom: 8px; }
 
-/* ---- 04 COLD JET ---- */
-.ts-coldjet { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(22px, 3vw, 48px); align-items: center; }
-.ts-coldjet-media { position: relative; border-radius: var(--radius); overflow: hidden; background: var(--navy-deep); aspect-ratio: 4 / 5; max-height: 560px; }
-.ts-coldjet-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.ts-coldjet-media .cap { position: absolute; left: 18px; right: 18px; bottom: 16px; padding: 10px 14px; border-radius: 10px; background: rgba(15,22,23,.72); backdrop-filter: blur(6px); color: #fff; font-size: 13px; font-weight: 600; line-height: 1.5; word-break: keep-all; }
-.ts-coldjet-media .cap small { display: block; font-size: 11px; font-weight: 800; letter-spacing: 1.6px; color: var(--ice); margin-bottom: 3px; }
-.ts-coldjet-copy .bls-en { color: var(--ice-dark); }
-.ts-coldjet-copy h3 { margin: 10px 0 14px; font-size: clamp(24px, 2.2vw, 34px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; color: #000; word-break: keep-all; text-wrap: pretty; }
-.ts-coldjet-copy > p { margin: 0 0 18px; font-size: 15.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.ts-coldjet-list { margin: 0; padding: 0; list-style: none; display: grid; border-top: 1px solid var(--gray-line); }
-.ts-coldjet-list li { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 4px 16px; padding: 12px 0; border-bottom: 1px solid var(--gray-line); }
-.ts-coldjet-list b { font-size: 14.5px; font-weight: 800; color: var(--navy); line-height: 1.5; }
-.ts-coldjet-list span { font-size: 14px; line-height: 1.65; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
-.ts-coldjet-links { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+/* ---- 04 Cold Jet 자문: 왼쪽 사진(2칸), 오른쪽 설명과 항목 2×2(.edu-connect-copy 규칙을 그대로 씀) ---- */
+.ts-cj { align-items: stretch; }
+.ts-cj .edu-photo { grid-row: auto; min-height: 340px; }
+.ts-cj .edu-photo img { object-position: 30% 50%; }
+.ts-cj-links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 22px; }
+.ts-cj-links .bls-more { font-size: 15px; }
+.ts-cj-links .bls-more i { color: var(--accent-red); }
+.ts-cj-links .bls-more:hover i { transform: translateX(4px); }
+
+/* ---- 마지막 안내(교육 및 A/S 페이지와 같은 규칙) ---- */
+#ts-final { border-top: 0; }
+#ts-final .cmp-h2 { font-size: clamp(30px, 2.9vw, 42px); }
+#ts-final .cmp-h2 span { white-space: nowrap; }
+#ts-final .cmp-lead p { word-break: keep-all; text-wrap: pretty; }
+@media (min-width: 1101px) { #ts-final .bls-final-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--edu-gap); } }
 
 @media (max-width: 1100px) {
-  .ts-who { grid-template-columns: 1fr; }
-  .ts-row, .ts-request, .ts-coldjet { grid-template-columns: 1fr; }
-  .ts-coldjet-media { aspect-ratio: 16 / 10; max-height: none; }
+  .ts-area { display: block; padding: 26px 0 30px; }
+  .ts-area .c2::before, .ts-area .c3::before { display: none; }
+  .ts-area .desc { padding-right: 0; }
+  .ts-area .k { display: block; margin-top: 20px; }
+  .ts-area .c { margin-top: 8px; }
+  .ts-send-copy, .ts-send-list { grid-column: 1 / -1; }
+  .ts-send-list { margin-top: 36px; }
+  .ts-cj .edu-photo { min-height: 0; }
 }
 @media (max-width: 640px) {
-  .ts-row-body > div, .ts-send dl > div, .ts-coldjet-list li { grid-template-columns: 1fr; }
+  .ts-send-list > *:nth-child(-n+4) { padding-bottom: 22px; }
 }

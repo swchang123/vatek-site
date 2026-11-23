@@ -355,6 +355,8 @@ body:not(.home) { padding-top: 76px; }
 .megamenu-index-item.is-active a { color: var(--blue-dark); font-weight: 700; }
 /* (2026-10-03) 장비 렌탈 항목 우측 V RENTAL 로고 — 글자 높이(1em)에 맞춰 인라인 배치 */
 .megamenu-index-item a .mi-logo { display: inline-block; height: 1.55em; width: auto; vertical-align: -0.42em; margin-left: 10px; }
+/* (2026-11-23) 항목 이름 오른쪽의 작은 영문 꼬리표(CO2 리커버리 옆 CCU Solution) */
+.megamenu-index-item a .mi-tag { display: inline-block; margin-left: 8px; font-size: 12px; font-weight: 700; letter-spacing: .02em; color: var(--blue); white-space: nowrap; }
 .megamenu-preview-img {
   position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden;
   border-radius: 14px;
