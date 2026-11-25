@@ -202,12 +202,9 @@
 .cap-links .bls-more i { color: var(--accent-red); }
 .cap-links .bls-more:hover i { transform: translateX(4px); }
 
-/* ---- 마지막 안내(다른 두 페이지와 같은 규칙) ---- */
-#cap-final { border-top: 0; }
-#cap-final .cmp-h2 { font-size: clamp(30px, 2.9vw, 42px); }
-#cap-final .cmp-h2 span { white-space: nowrap; }
-#cap-final .cmp-lead p { word-break: keep-all; text-wrap: pretty; }
-@media (min-width: 1101px) { #cap-final .bls-final-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--edu-gap); } }
+/* ---- 마지막 섹션(2026-11-25): 방문 안내 섹션을 없애고 글로벌 네트워크 섹션이 페이지의 끝이 됐다.
+   끝 섹션 고정(.tail-freeze)은 배경을 흰색으로 바꾸므로, 이 섹션의 옅은 바탕색을 그대로 둔다 ---- */
+.subhero-sticky ~ section#network.tail-freeze { background-color: #eaf0f0; }
 
 @media (max-width: 1100px) {
   .cap-col { grid-column: 1 / -1; grid-row: auto; grid-template-rows: none; }
