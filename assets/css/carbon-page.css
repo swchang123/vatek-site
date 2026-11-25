@@ -1,0 +1,216 @@
+/* CARBON CAPTURE (carbon-capture/index.html) — 2026-11-25. 탄소포집 기술 안내.
+   교육 및 A/S, 기술지원 안내와 같은 4칸 격자(.edu-grid, education-page.css)를 그대로 쓰고, 이 파일에는 이 페이지에만 있는 블록(cc-*)만 둔다.
+   카드 상자는 쓰지 않고 선과 여백으로 구분한다. 흰 상자는 영상과 제품 사진의 바탕이 흰색이라 필요한 두 곳(도식 영상, 제품 사진)에만 쓴다. */
+
+/* ---- 히어로: 기술지원 안내(.ts-hero-stage)와 같은 구성(왼쪽 글상자). 배경은 CO2 리커버리 페이지처럼 소리 없이 반복 재생하는 영상(recovery-process.mp4, 16:9)이다.
+   글상자의 크기와 위치는 style.css의 '히어로 텍스트 박스 통일' 규칙을 그대로 따른다 ---- */
+.cc-hero-stage::after { background: linear-gradient(to bottom, rgba(15,22,23,.66) 0%, rgba(15,22,23,.34) 14%, rgba(15,22,23,.12) 32%, rgba(15,22,23,.08) 70%, rgba(15,22,23,.22) 100%); }
+.cc-hero-stage .subhero-breadcrumb, .cc-hero-stage .subhero-breadcrumb a { color: #fff; text-shadow: 0 1px 3px rgba(15,22,23,.85), 0 0 12px rgba(15,22,23,.7); }
+.cc-hero-stage .subhero-textbox h1, .cc-hero-stage .bls-hero-main { word-break: keep-all; text-wrap: pretty; }
+video.cc-hero-video { object-fit: cover; object-position: 50% 62%; background: var(--navy-deep); } /* 21:9로 자를 때 탱크 아래쪽과 회수 설비가 보이도록 조금 아래를 기준으로 한다 */
+/* (2026-11-25) Cold Jet 탄소포집 페이지의 히어로 영상 세 가지(16:9). 21:9로 자를 때의 기준점만 영상마다 다르다 */
+video.cc-hero-video.is-capture, video.cc-hero-video.is-biogas { object-position: 50% 50%; }
+video.cc-hero-video.is-recovery { object-position: 50% 56%; }
+
+/* 이동 버튼: 기술지원 안내의 .ts-btn과 같은 모양. 흰 바탕, 남색 1.5px 테두리, 모서리 10px, 올리면 남색으로 채워진다 */
+.cc-btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 20px; border: 1.5px solid var(--navy); border-radius: 10px; background: #fff; color: var(--navy); font-size: 14.5px; font-weight: 800; line-height: 1.2; text-decoration: none; white-space: nowrap; transition: background .2s, color .2s; }
+.cc-btn span { display: inline-block; transition: transform .2s ease; }
+.cc-btn:hover { background: var(--navy); color: #fff; }
+.cc-btn:hover span { transform: translateX(3px); }
+/* 아래 첨자(CO2의 2)가 줄 높이를 밀어 줄 간격이 들쭉날쭉해지지 않게 한다 */
+.edu-sec sub, #cc-final sub, .cc-hero-stage sub { line-height: 0; }
+.cc-nb { white-space: nowrap; } /* 모델 이름과 단위가 줄 끝에서 갈라지지 않게 한다 */
+
+/* ---- 01 원리: 왼쪽 두 칸은 도식 영상(흰 판), 오른쪽 두 칸은 세 단계 ----
+   영상 원본은 852×480이고 위아래 62px가 검은 띠다. CO2 리커버리 페이지와 같은 방법으로 852/354 틀에 맞춰 띠를 잘라 낸다.
+   흰 판의 높이는 오른쪽 세 단계의 높이를 따라가고(위아래 끝이 서로 맞는다), 영상은 판의 가운데에 놓인다. */
+.cc-flow { align-items: stretch; }
+.cc-flow-media { grid-column: span 2; display: grid; grid-template-rows: minmax(0, 1fr) auto; row-gap: 14px; min-width: 0; margin: 0; padding: clamp(18px, 2vw, 30px) clamp(18px, 2vw, 30px) clamp(16px, 1.6vw, 22px); border: 1px solid var(--gray-line); border-radius: 14px; background: #fff; }
+.cc-flow-video { position: relative; align-self: center; width: 100%; aspect-ratio: 852 / 354; overflow: hidden; background: #fff; }
+.cc-flow-video video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.003); }
+.cc-flow-img { align-self: center; min-width: 0; }
+.cc-flow-img img { display: block; width: 100%; height: auto; }
+.cc-flow-media figcaption { font-size: 13px; line-height: 1.6; color: var(--text-muted); word-break: keep-all; }
+/* 세 단계: 왼쪽에 가는 세로선 하나를 두고 단계를 위에서 아래로 잇는다. 번호는 쓰지 않는다.
+   빨간 선이 첫 단계부터 차례로 내려가며 채워진 뒤 사라지고 다시 시작한다(끊기지 않고 이어지는 순환을 나타낸다) */
+.cc-stages { grid-column: span 2; display: grid; align-content: space-between; min-width: 0; margin: 0; padding: 0; list-style: none; }
+.cc-stages li { position: relative; min-width: 0; padding: 0 0 clamp(26px, 2.4vw, 36px) clamp(20px, 1.8vw, 28px); }
+.cc-stages li:last-child { padding-bottom: 0; }
+.cc-stages li::before, .cc-stages li::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; }
+.cc-stages li::before { background: rgba(22, 32, 74, .16); }
+.cc-stages li::after { background: var(--accent-red); transform: scaleY(0); transform-origin: center top; }
+.cc-stages:not(.reveal) li:nth-child(1)::after { animation: ccFlow1 10s linear infinite; }
+.cc-stages:not(.reveal) li:nth-child(2)::after { animation: ccFlow2 10s linear infinite; }
+.cc-stages:not(.reveal) li:nth-child(3)::after { animation: ccFlow3 10s linear infinite; }
+@keyframes ccFlow1 { 0% { transform: scaleY(0); opacity: 1; } 28%, 90% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+@keyframes ccFlow2 { 0%, 28% { transform: scaleY(0); opacity: 1; } 56%, 90% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+@keyframes ccFlow3 { 0%, 56% { transform: scaleY(0); opacity: 1; } 84%, 90% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .cc-stages:not(.reveal) li::after { animation: none; } }
+.cc-stages .bls-en { color: var(--ice-dark); font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; line-height: 1.4; }
+.cc-stages h3 { margin: 10px 0 10px; font-size: clamp(20px, 1.65vw, 24px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
+.cc-stages p { margin: 0; font-size: 15px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+
+/* ---- 02 도입 효과(어두운 섹션): 수치 네 칸 + 항목 여덟 가지(네 칸씩 두 줄) ----
+   수치 칸은 기술 및 서비스 역량 페이지의 .cap-nums와 같은 글자 크기다. '최대'는 숫자 앞에 작게 붙인다 */
+.cc-nums { row-gap: 28px; }
+.cc-nums li { min-width: 0; }
+.cc-nums b { display: block; font-size: clamp(34px, 3.2vw, 46px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cc-nums b small { margin-right: .4em; font-size: .37em; font-weight: 800; letter-spacing: 0; color: rgba(255, 255, 255, .7); }
+.cc-nums span { display: block; margin-top: 10px; font-size: 15.5px; font-weight: 700; line-height: 1.5; color: rgba(255, 255, 255, .78); word-break: keep-all; }
+/* 항목 여덟 가지: 칸마다 끊어서 긋는 선(첫 줄은 굵게, 둘째 줄은 가늘게) 아래에 이름과 한 문장. 이름 줄과 설명 줄의 높이를 줄마다 서로 맞춘다 */
+.cc-why { margin-top: clamp(48px, 4.6vw, 72px); }
+.cc-why > li { display: grid; grid-template-rows: subgrid; grid-row: span 2; row-gap: 0; align-content: start; margin: 0; padding: 20px 0 0; border-top: 2px solid rgba(255, 255, 255, .88); }
+.cc-why > li:nth-child(n+5) { margin-top: clamp(32px, 3vw, 44px); border-top: 1px solid rgba(255, 255, 255, .26); }
+.cc-why b { display: block; font-size: 17.5px; font-weight: 800; color: #fff; letter-spacing: -0.01em; line-height: 1.45; word-break: keep-all; }
+.cc-why p { margin: 6px 0 0; font-size: 14.5px; line-height: 1.75; color: rgba(255, 255, 255, .74); word-break: keep-all; text-wrap: pretty; }
+
+/* ---- 03 적용 분야: 두 분야를 두 칸씩. 가는 선 + 짧은 빨간 막대(.edu-step과 같은 머리), 영문 표기, 이름, 설명, 항목 세 줄.
+   항목은 이름(왼쪽 칸)과 내용(오른쪽 칸)을 격자 두 칸에 나눠 놓고, 두 분야의 같은 줄끼리 높이를 맞춘다 ---- */
+.cc-area { position: relative; display: grid; grid-column: span 2; grid-row: span 6; grid-template-columns: subgrid; grid-template-rows: subgrid; row-gap: 0; align-content: start; min-width: 0; border-top: 1px solid rgba(22, 32, 74, .28); padding: 28px 0 0; }
+.cc-area::before { content: ""; position: absolute; left: 0; top: -1px; width: 64px; height: 3px; background: var(--accent-red); }
+.cc-area > * { grid-column: 1 / -1; min-width: 0; }
+.cc-area .bls-en { color: var(--ice-dark); font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; line-height: 1.4; }
+.cc-area h3 { margin: 12px 0 12px; font-size: clamp(22px, 1.9vw, 28px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
+.cc-area > p { margin: 0; font-size: 15.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.cc-area dl { display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; grid-row: span 3; margin: 26px 0 0; }
+@media (min-width: 1101px) { /* 항목이 네 줄인 묶음(탄소포집 기술 페이지의 적용 분야) */
+  .cc-areas.rows-4 .cc-area { grid-row: span 7; }
+  .cc-areas.rows-4 .cc-area dl { grid-row: span 4; }
+}
+.cc-area dl > div { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: baseline; padding: 13px 0; border-top: 1px solid var(--gray-line); }
+.cc-area dl > div:last-child { padding-bottom: 0; }
+.cc-area dt { margin: 0; font-size: 16px; font-weight: 800; line-height: 1.5; color: var(--navy); word-break: keep-all; }
+.cc-area dd { margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-body); word-break: keep-all; text-wrap: balance; } /* 줄이 넘어갈 때 마지막 한 단어만 떨어지지 않게 한다 */
+.cc-area dd a { color: var(--navy); font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+.cc-area dd a:hover { color: var(--ice-dark); }
+/* 분야 사진(2026-11-25): 글 묶음 위에 두 칸 폭으로 놓는다. 사진 두 장의 위아래 끝이 서로 맞고, 그 아래에서 글 묶음의 선이 시작한다.
+   HTML에서는 사진, 글, 사진, 글 순서이고(좁은 화면에서 그대로 쌓인다) 넓은 화면에서만 자리를 지정한다.
+   .is-render는 바탕이 투명한 제품 그림이라 흰 판에 통째로 넣는다 */
+.cc-area-photo { position: relative; grid-column: span 2; min-width: 0; margin: 0 0 clamp(26px, 2.6vw, 38px); aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: var(--navy-deep); }
+.cc-area-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.cc-area-photo.is-render { background: #fefefe; }
+.cc-area-photo.is-render img { inset: clamp(14px, 1.8vw, 28px); width: calc(100% - clamp(14px, 1.8vw, 28px) * 2); height: calc(100% - clamp(14px, 1.8vw, 28px) * 2); object-fit: contain; object-position: center; }
+@media (min-width: 1101px) {
+  .cc-areas.has-photo > figure:nth-of-type(1) { grid-column: 1 / span 2; grid-row: 1; }
+  .cc-areas.has-photo > figure:nth-of-type(2) { grid-column: 3 / span 2; grid-row: 1; }
+  .cc-areas.has-photo > article:nth-of-type(1) { grid-column: 1 / span 2; grid-row: 2 / span 6; }
+  .cc-areas.has-photo > article:nth-of-type(2) { grid-column: 3 / span 2; grid-row: 2 / span 6; }
+  .cc-areas.has-photo.rows-4 > article { grid-row: 2 / span 7; }
+}
+/* 전체 폭 그림(흰 판): 바탕이 흰 구성도를 넣는다. 판의 좌우 끝은 본문 격자의 양 끝에 맞는다 */
+.cc-wide { margin: 0 0 clamp(36px, 3.6vw, 56px); padding: clamp(18px, 2vw, 30px) clamp(18px, 2vw, 30px) clamp(16px, 1.6vw, 22px); border: 1px solid var(--gray-line); border-radius: 14px; background: #fff; }
+.cc-wide img { display: block; width: 100%; max-width: 940px; height: auto; margin: 0 auto; }
+.cc-wide figcaption { margin-top: 14px; font-size: 13px; line-height: 1.6; color: var(--text-muted); word-break: keep-all; }
+/* 사진 두 장: 두 칸씩, 사진 아래에 한 줄 설명 */
+.cc-pair { margin-top: clamp(40px, 4vw, 60px); }
+.cc-shot { grid-column: span 2; min-width: 0; margin: 0; }
+.cc-shot > span { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: var(--navy-deep); }
+.cc-shot img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.cc-shot figcaption { margin-top: 12px; font-size: 13px; line-height: 1.6; color: var(--text-muted); word-break: keep-all; }
+
+/* ---- 04 장비: 네 모델을 네 칸에. 사진은 바탕이 흰색이라 같은 비율의 흰 판에 아래쪽을 맞춰 넣는다(object-fit: contain).
+   줄: 사진, 이름, 용량, 한 문장, 이동 표시. 네 칸의 같은 줄끼리 높이를 맞춘다 ---- */
+.cc-model { display: grid; grid-template-rows: subgrid; grid-row: span 5; row-gap: 0; align-content: start; min-width: 0; color: inherit; text-decoration: none; }
+.cc-model-media { display: block; aspect-ratio: 1 / 1.05; padding: clamp(16px, 1.8vw, 28px) clamp(16px, 1.8vw, 28px) clamp(14px, 1.4vw, 22px); border-radius: 14px; background: #fefefe; overflow: hidden; } /* 사진 파일의 바탕색(254, 254, 254)과 같은 색 */
+.cc-model-media img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; transition: transform .4s ease; }
+.cc-model-media.is-mid img { object-position: center; } /* 바탕이 투명한 그림은 판의 가운데에 놓는다 */
+.cc-model:hover .cc-model-media img { transform: scale(1.03); }
+.cc-model h3 { margin: 20px 0 0; font-size: clamp(20px, 1.65vw, 24px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; transition: color .2s; }
+.cc-model:hover h3 { color: var(--ice-dark); }
+.cc-model-cap { display: block; margin-top: 6px; font-size: 15.5px; font-weight: 800; line-height: 1.5; color: var(--navy); word-break: keep-all; }
+.cc-model p { margin: 10px 0 0; font-size: 14.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.cc-model-more { display: inline-flex; align-items: center; gap: 8px; justify-self: start; align-self: end; margin-top: 14px; font-size: 14.5px; font-weight: 700; line-height: 1.5; color: var(--navy); }
+.cc-model-more i { font-style: normal; color: var(--accent-red); transition: transform .3s cubic-bezier(.22, .61, .36, 1); }
+.cc-model:hover .cc-model-more i { transform: translateX(4px); }
+.cc-model:focus-visible { outline: 2px solid var(--ice-dark); outline-offset: 6px; border-radius: 14px; }
+@media (prefers-reduced-motion: reduce) { .cc-model-media img, .cc-model-more i, .cc-btn span { transition: none; } }
+/* 장비 아래 한 줄: 안내 문장(왼쪽 두 칸)과 버튼(오른쪽 두 칸, 셋째 칸의 왼쪽 끝에서 시작) */
+.cc-models-foot { align-items: center; margin-top: clamp(36px, 3.4vw, 52px); }
+.cc-models-foot > * { grid-column: span 2; min-width: 0; }
+.cc-models-foot p { margin: 0; font-size: 15px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: balance; }
+
+/* ---- 05 설치 준비: 다섯 가지를 같은 폭 다섯 칸에(칸 간격은 본문 격자와 같은 --edu-gap, 기술지원 안내의 .ts-facts와 같은 배치).
+   칸마다 굵은 선을 끊어서 긋고 그 아래에 이름과 설명. 이름 줄의 높이를 서로 맞춘다 ---- */
+.cc-prep { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: var(--edu-gap); row-gap: 0; margin: 0; padding: 0; list-style: none; }
+.cc-prep > li { display: grid; grid-template-rows: subgrid; grid-row: span 2; row-gap: 0; align-content: start; min-width: 0; margin: 0; padding: 20px 0 0; border-top: 2px solid var(--navy); }
+.cc-prep b { display: block; font-size: 17.5px; font-weight: 800; color: #000; letter-spacing: -0.01em; line-height: 1.45; word-break: keep-all; }
+.cc-prep p { margin: 6px 0 0; font-size: 14.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+/* 사진이 있을 때(2026-11-25): 칸마다 사진, 이름, 설명. 선 대신 사진이 칸의 머리가 된다. 사진 다섯 장의 위아래 끝이 서로 맞는다 */
+.cc-prep-photo { position: relative; min-width: 0; margin: 0 0 18px; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: var(--navy-deep); }
+.cc-prep-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+@media (min-width: 1101px) { .cc-prep.has-photo > li { grid-row: span 3; padding-top: 0; border-top: 0; } }
+
+/* ---- 06 용어: 여덟 가지를 두 개씩 네 줄. 용어 하나가 격자 두 칸을 쓴다(왼쪽 칸에 용어와 영문, 오른쪽 칸에 풀이).
+   첫 줄 위에만 굵은 선, 줄 사이에는 가는 선. 마지막 줄 아래에는 선을 두지 않는다 ---- */
+.cc-terms > div { display: grid; grid-column: span 2; grid-template-columns: subgrid; align-items: start; min-width: 0; margin: 0; padding: 20px 0 22px; border-top: 1px solid rgba(22, 32, 74, .2); }
+.cc-terms > div:nth-child(-n+2) { border-top: 2px solid var(--navy); }
+.cc-terms > div:nth-last-child(-n+2) { padding-bottom: 0; }
+.cc-terms dt { margin: 0; font-size: 17.5px; font-weight: 800; color: #000; letter-spacing: -0.01em; line-height: 1.45; word-break: keep-all; }
+.cc-terms dt span { display: block; margin-top: 3px; font-size: 13px; font-weight: 700; letter-spacing: 0; line-height: 1.5; color: var(--text-muted); }
+.cc-terms dd { margin: 0; padding-top: 2px; font-size: 14.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+
+/* ---- 마지막 안내(교육 및 A/S, 기술지원 안내와 같은 규칙) ---- */
+#cc-final { border-top: 0; }
+#cc-final .cmp-h2 { font-size: clamp(30px, 2.9vw, 42px); }
+#cc-final .cmp-h2 span { white-space: nowrap; }
+#cc-final .cmp-lead p { word-break: keep-all; text-wrap: pretty; }
+@media (min-width: 1101px) { #cc-final .bls-final-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--edu-gap); } } /* 오른쪽 글의 왼쪽 끝을 본문 격자 3번째 칸에 맞춘다 */
+
+/* 섹션 이름으로 바로 왔을 때 고정 머리글에 가리지 않게 한다 */
+#how, #why, #where, #equipment, #prepare, #terms { scroll-margin-top: 76px; }
+
+@media (max-width: 1100px) {
+  /* 원리: 도식 영상을 위에, 세 단계를 아래에 */
+  .cc-flow-media, .cc-stages { grid-column: 1 / -1; }
+  .cc-flow-media { margin-bottom: 36px; }
+  /* 도입 효과: 두 칸씩. 줄마다 가는 선, 첫 줄만 굵은 선 */
+  .cc-why > li:nth-child(n+3) { margin-top: 32px; border-top: 1px solid rgba(255, 255, 255, .26); }
+  /* 적용 분야: 한 분야씩 전체 폭 */
+  .cc-area { grid-column: 1 / -1; grid-row: auto; grid-template-rows: none; }
+  .cc-area dl { grid-row: auto; grid-template-rows: none; }
+  .cc-area + .cc-area, .cc-area + .cc-area-photo { margin-top: 48px; }
+  .cc-area-photo { grid-column: 1 / -1; }
+  .cc-shot { grid-column: 1 / -1; }
+  .cc-shot + .cc-shot { margin-top: 28px; }
+  /* 장비: 두 칸씩 두 줄 */
+  .cc-model:nth-child(-n+2) { padding-bottom: 44px; }
+  .cc-models-foot > * { grid-column: 1 / -1; }
+  .cc-models-foot > div { margin-top: 18px; }
+  /* 설치 준비: 한 줄에 하나씩, 왼쪽 칸에 이름, 오른쪽 칸에 설명(본문 격자 두 칸). 첫 줄 위에만 굵은 선 */
+  .cc-prep { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cc-prep > li { grid-column: 1 / -1; grid-row: auto; grid-template-columns: subgrid; grid-template-rows: none; align-items: start; padding: 18px 0 20px; border-top: 1px solid var(--gray-line); }
+  .cc-prep > li:first-child { border-top: 2px solid var(--navy); }
+  .cc-prep > li:last-child { padding-bottom: 0; }
+  .cc-prep p { margin-top: 0; padding-top: 2px; }
+  /* 사진이 있을 때: 왼쪽 칸에 사진, 오른쪽 칸에 이름과 설명 */
+  .cc-prep.has-photo > li { grid-template-rows: auto 1fr; }
+  .cc-prep-photo { grid-row: 1 / span 2; margin: 0; aspect-ratio: 16 / 10; }
+  .cc-prep.has-photo b, .cc-prep.has-photo p { grid-column: 2; }
+  .cc-prep.has-photo p { padding-top: 0; margin-top: 6px; }
+  /* 용어: 한 줄에 하나씩 */
+  .cc-terms > div { grid-column: 1 / -1; }
+  .cc-terms > div:nth-child(2) { border-top: 1px solid rgba(22, 32, 74, .2); }
+  .cc-terms > div:nth-last-child(2) { padding-bottom: 22px; }
+}
+@media (max-width: 640px) {
+  .cc-flow-media { padding: 14px 12px 12px; margin-bottom: 32px; }
+  .cc-nums { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 24px; }
+  .cc-nums b { font-size: clamp(26px, 8vw, 34px); }
+  .cc-nums span { font-size: 14.5px; }
+  .cc-why > li { grid-row: auto; grid-template-rows: none; }
+  .cc-why > li:nth-child(n+2) { margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, .26); }
+  .cc-area dl > div { display: block; }
+  .cc-area dd { margin-top: 2px; }
+  .cc-model { grid-row: auto; grid-template-rows: none; }
+  .cc-model:nth-child(-n+3) { padding-bottom: 40px; }
+  .cc-models-foot .cc-btn { white-space: normal; height: auto; min-height: 44px; padding: 10px 20px; }
+  .cc-prep { grid-template-columns: minmax(0, 1fr); }
+  .cc-prep > li { display: block; }
+  .cc-prep p { margin-top: 6px; padding-top: 0; }
+  .cc-prep-photo { margin: 0 0 14px; aspect-ratio: 16 / 9; }
+  .cc-area-photo { aspect-ratio: 4 / 3; }
+  .cc-wide { padding: 14px 12px 12px; }
+  .cc-terms > div { display: block; }
+  .cc-terms dd { margin-top: 8px; padding-top: 0; }
+  #cc-final .cmp-h2 span { white-space: normal; }
+}

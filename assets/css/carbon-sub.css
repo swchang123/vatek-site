@@ -1,0 +1,79 @@
+/* CARBON CAPTURE 적용 안내 페이지 (carbon-capture/biogas-carbon-capture.html, dry-ice-co2-recovery.html) — 2026-11-25. 네 페이지였던 것을 두 페이지로 합쳤다.
+   탄소포집 기술(index.html)과 같은 4칸 격자(.edu-grid, education-page.css)와 cc-* 블록(carbon-page.css)을 그대로 쓴다.
+   이 파일에는 두 페이지에만 있는 블록(ccs-*)만 둔다. 카드 상자는 쓰지 않고 선과 여백으로 구분한다. 페이지는 tools/cc_sub_build.py로 만든다. */
+
+/* 섹션 이름으로 바로 왔을 때 고정 머리글에 가리지 않게 한다 (#equipment는 carbon-page.css에 있다) */
+#overview, #benefits, #process, #who, #markets, #setup { scroll-margin-top: 76px; }
+
+/* ---- 사진 + 글 묶음: 왼쪽 두 칸은 사진, 오른쪽 두 칸은 .cc-area 하나. 사진의 위아래 끝은 글 묶음의 위 선과 마지막 줄에 맞는다 ---- */
+.ccs-photo { position: relative; grid-column: 1 / span 2; grid-row: 1 / span 6; min-width: 0; min-height: 300px; margin: 0; border-radius: 14px; overflow: hidden; background: var(--navy-deep); }
+.ccs-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+
+/* ---- 줄 목록: 한 줄에 하나씩. 첫 칸에 이름, 둘째 칸에 핵심, 셋째와 넷째 칸에 설명. 세 가지의 첫 줄 밑선을 맞춘다.
+   첫 줄 위에만 굵은 선, 줄 사이에는 가는 선(.cc-terms와 같은 규칙). 순서가 있는 목록(.is-num)에만 이름 앞에 번호를 둔다.
+   .is-quad는 네 칸을 한 칸씩 쓴다(이름, 핵심, 핵심, 설명) ---- */
+.ccs-rows > li { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: baseline; min-width: 0; margin: 0; padding: 20px 0 22px; border-top: 1px solid rgba(22, 32, 74, .2); }
+.ccs-rows > li:first-child { border-top: 2px solid var(--navy); }
+.ccs-rows > li:last-child { padding-bottom: 0; }
+.ccs-rows > li > * { min-width: 0; }
+.ccs-rows h3 { display: flex; align-items: baseline; margin: 0; font-size: 17.5px; font-weight: 800; color: #000; letter-spacing: -0.01em; line-height: 1.45; word-break: keep-all; }
+.ccs-rows h3 > span:last-child, .ccs-rows h3 > a { min-width: 0; }
+.ccs-n { flex: none; width: 1.7em; color: var(--accent-red); font-variant-numeric: tabular-nums; }
+.ccs-rows h3 a { color: inherit; text-decoration: none; transition: color .2s; }
+.ccs-rows h3 a i { display: inline-block; margin-left: 8px; font-style: normal; font-size: 14.5px; color: var(--accent-red); transition: transform .3s cubic-bezier(.22, .61, .36, 1); }
+.ccs-rows h3 a:hover { color: var(--ice-dark); }
+.ccs-rows h3 a:hover i { transform: translateX(4px); }
+.ccs-rows h3 a:focus-visible { outline: 2px solid var(--ice-dark); outline-offset: 4px; border-radius: 4px; }
+.ccs-row-k { font-size: 15px; font-weight: 800; line-height: 1.6; color: var(--navy); word-break: keep-all; text-wrap: balance; }
+.ccs-rows p { grid-column: span 2; margin: 0; font-size: 14.5px; line-height: 1.75; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.ccs-rows.is-quad p { grid-column: auto; }
+@media (prefers-reduced-motion: reduce) { .ccs-rows h3 a i { transition: none; } }
+
+/* 사진이 있는 줄 목록(2026-11-25): 첫 칸에 사진, 둘째 칸에 이름과 핵심, 셋째와 넷째 칸에 설명. 사진과 글의 위 끝을 맞춘다 */
+.ccs-rows.has-photo > li { align-items: start; padding: 22px 0 24px; }
+.ccs-rows.has-photo > li:last-child { padding-bottom: 0; }
+.ccs-row-photo { position: relative; min-width: 0; margin: 0; aspect-ratio: 2 / 1; border-radius: 12px; overflow: hidden; background: var(--navy-deep); }
+.ccs-row-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.ccs-row-head { display: grid; row-gap: 6px; align-content: start; }
+.ccs-rows.has-photo p { padding-top: 1px; }
+
+/* 사진 + 용어 풀이: 왼쪽 두 칸은 사진, 오른쪽 두 칸은 용어를 한 줄에 하나씩(셋째 칸에 용어, 넷째 칸에 풀이). 사진의 위아래 끝은 용어 묶음의 위 선과 마지막 줄에 맞는다 */
+.ccs-split > .ccs-photo { grid-row: auto; }
+.cc-terms.ccs-terms-half { display: grid; grid-column: 3 / span 2; grid-template-columns: subgrid; align-content: start; min-width: 0; margin: 0; }
+.cc-terms.ccs-terms-half > div { grid-column: 1 / -1; }
+.cc-terms.ccs-terms-half > div:nth-child(2) { border-top: 1px solid rgba(22, 32, 74, .2); }
+.cc-terms.ccs-terms-half > div:nth-last-child(2) { padding-bottom: 22px; }
+
+/* 도식 + 단계(.cc-flow)를 쓸 때: 단계 이름 아래에 핵심 한 줄 */
+.cc-stages.ccs-stages { align-content: stretch; } /* 도식 판이 더 높을 때도 왼쪽 세로선이 끊기지 않게 단계가 높이를 나눠 채운다 */
+.cc-stages.ccs-stages h3 { margin: 0 0 6px; }
+.ccs-stage-k { display: block; margin-bottom: 8px; font-size: 15px; font-weight: 800; line-height: 1.6; color: var(--navy); word-break: keep-all; }
+
+/* 버튼이 둘 이상일 때의 간격, 본문 안의 글 링크 */
+.ccs-btns { display: flex; flex-wrap: wrap; gap: 10px 12px; }
+.ccs-link { color: var(--navy); font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+.ccs-link:hover { color: var(--ice-dark); }
+
+@media (max-width: 1100px) {
+  /* 사진을 위에, 글 묶음을 아래에 */
+  .ccs-photo { grid-column: 1 / -1; grid-row: auto; min-height: 0; aspect-ratio: 16 / 10; margin-bottom: 32px; }
+  /* 줄 목록: 첫 줄에 이름과 핵심(두 칸), 그 아래에 설명. 네 칸짜리는 이름과 핵심, 핵심과 설명으로 두 줄 */
+  .ccs-rows > li { row-gap: 8px; }
+  .ccs-rows p { grid-column: 1 / -1; }
+  /* 사진이 있는 줄: 왼쪽 칸에 사진, 오른쪽 칸에 이름과 핵심, 설명 */
+  .ccs-rows.has-photo > li { grid-template-rows: auto 1fr; row-gap: 8px; }
+  .ccs-row-photo { grid-row: 1 / span 2; }
+  .ccs-rows.has-photo .ccs-row-head, .ccs-rows.has-photo p { grid-column: 2; }
+  .cc-terms.ccs-terms-half { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .ccs-photo { aspect-ratio: 4 / 3; margin-bottom: 28px; }
+  .ccs-rows > li { display: block; padding: 18px 0 20px; }
+  .ccs-row-k { display: block; margin-top: 4px; }
+  .ccs-row-photo { margin-bottom: 14px; aspect-ratio: 16 / 9; }
+  .ccs-row-head { display: block; }
+  .cc-terms.ccs-terms-half { display: block; }
+  .ccs-rows p { margin-top: 6px; }
+  .cc-nums.ccs-nums-long b { font-size: clamp(22px, 6.8vw, 30px); } /* '80~3,500'처럼 긴 숫자가 두 칸 배치에서 칸을 넘지 않게 한다 */
+  .ccs-btns .cc-btn { white-space: normal; height: auto; min-height: 44px; padding: 10px 20px; }
+}

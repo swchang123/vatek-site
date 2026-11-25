@@ -24,13 +24,19 @@
 @media (max-width: 1000px) { .ts-hero-stage .hero-fit .subhero-textbox .bls-hero-main { display: none; } }
 .plt-lead a { color: var(--ice-dark); font-weight: 700; text-decoration: none; }
 .plt-lead a:hover { text-decoration: underline; }
+/* 이동 버튼: 다른 서비스 페이지(V RENTAL의 .vr-check-btn 등)와 같은 모양. 흰 바탕, 남색 1.5px 테두리, 모서리 10px, 올리면 남색으로 채워진다 */
+.ts-btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 20px; border: 1.5px solid var(--navy); border-radius: 10px; background: #fff; color: var(--navy); font-size: 14.5px; font-weight: 800; line-height: 1.2; text-decoration: none; white-space: nowrap; transition: background .2s, color .2s; }
+.ts-btn span { display: inline-block; transition: transform .2s ease; }
+.ts-btn:hover { background: var(--navy); color: #fff; }
+.ts-btn:hover span { transform: translateX(3px); }
+.edu-step .ts-btn { justify-self: start; align-self: end; margin-top: 22px; }
 
 /* ==== (2026-11-21) 본문 전면 재구성 ====
    교육 및 A/S 페이지와 같은 4칸 격자(.edu-grid, education-page.css)를 그대로 쓴다. 이 파일에는 이 페이지에만 있는 블록(영역 표, 문의 시 알려 줄 내용, Cold Jet 자문)만 둔다.
    카드 상자는 쓰지 않고 선과 여백으로만 구분한다. */
 
 /* ---- 02 지원 영역(2026-11-23 다시 정리) ----
-   영역 하나가 한 줄. 왼쪽 1칸은 이름과 자주 받는 질문 한 줄(고객의 말, 빨간 세로선). 번호는 쓰지 않는다.
+   영역 하나가 한 줄. 왼쪽 1칸은 이름(앞에 빨간 세로선)과 그 아래 문의 예시 한 줄(고객의 말). 번호는 쓰지 않는다.
    오른쪽 3칸 사이에는 작은 화살표를 두어 문의, 검토, 자료로 이어지는 순서가 보이게 한다. 오른쪽 3칸은 이런 때(점 목록), 바테크가 하는 일(순서 목록), 받으시는 자료(문서 이름).
    줄마다 칸 이름을 작게 다시 적어 위로 올라가 보지 않아도 읽힌다. 영역 이름과 칸 이름이 같은 높이, 설명과 각 칸의 첫 줄이 같은 높이(글자 밑선 기준)에 온다. */
 .ts-table { border-top: 2px solid var(--navy); }
@@ -38,10 +44,11 @@
 .ts-area:last-child { padding-bottom: 0; border-bottom: 0; }
 .ts-area > * { min-width: 0; }
 .ts-area .k { grid-row: 1; margin: 0; font-size: 13px; font-weight: 800; line-height: 1.5; color: var(--text-muted); }
-.ts-area h3 { grid-column: 1; grid-row: 1; margin: 0; font-size: clamp(20px, 1.65vw, 24px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.4; word-break: keep-all; }
-.ts-area .desc { grid-column: 1; grid-row: 2 / span 2; margin-top: 10px; padding-right: 8px; }
+.ts-area h3 { grid-column: 1; grid-row: 1; margin: 0; padding-left: 14px; border-left: 3px solid var(--accent-red); font-size: clamp(20px, 1.65vw, 24px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.4; word-break: keep-all; }
+.ts-area .desc { grid-column: 1; grid-row: 2 / span 2; margin-top: 10px; padding: 0 8px 0 17px; } /* 영역 이름의 글자 시작 위치(빨간 세로선 3px + 14px)에 맞춘다 */
+.ts-area .desc .qk { display: block; margin-bottom: 4px; font-size: 13px; font-weight: 800; line-height: 1.5; color: var(--text-muted); }
 .ts-area .desc p { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--text-muted); word-break: keep-all; text-wrap: pretty; }
-.ts-area .desc p.q { padding-left: 14px; border-left: 3px solid var(--accent-red); font-size: 15px; font-weight: 600; line-height: 1.6; color: var(--navy); text-wrap: balance; }
+.ts-area .desc p.q { font-size: 15px; font-weight: 600; line-height: 1.6; color: var(--navy); text-wrap: balance; }
 .ts-area .desc .bls-more { margin-top: 12px; font-size: 14.5px; }
 .ts-area .desc .bls-more i { color: var(--accent-red); }
 .ts-area .desc .bls-more:hover i { transform: translateX(4px); }
@@ -74,14 +81,49 @@
 .ts-send-list > * { grid-row: span 3; }
 .ts-send-list > *:nth-child(-n+4) { padding-bottom: 8px; }
 
-/* ---- 04 Cold Jet 자문: 왼쪽 사진(2칸), 오른쪽 설명과 항목 2×2(.edu-connect-copy 규칙을 그대로 씀) ---- */
-.ts-cj { align-items: stretch; }
-.ts-cj .edu-photo { grid-row: auto; min-height: 340px; }
-.ts-cj .edu-photo img { object-position: 30% 50%; }
-.ts-cj-links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 22px; }
-.ts-cj-links .bls-more { font-size: 15px; }
-.ts-cj-links .bls-more i { color: var(--accent-red); }
-.ts-cj-links .bls-more:hover i { transform: translateX(4px); }
+/* ---- 04 Cold Jet 글로벌 경험(2026-11-24 다시 구성) ----
+   위에서부터: 세계 지도(어두운 판, 본문 전체 폭) → 소제목(왼쪽 2칸)과 설명(오른쪽 2칸) → 네 항목(굵은 선 아래 4칸) → 출처(왼쪽 2칸)와 버튼(오른쪽 2칸).
+   지도는 교육 및 A/S 페이지의 글로벌 네트워크 지도를 그대로 쓴다(색과 점, 이름표 규칙은 education-page.css의 .gn-*). */
+/* 기술력의 배경: 제목이 한 줄이고 설명이 길어, 좌우로 나누지 않고 제목 바로 아래에 설명을 둔다. 설명의 폭은 본문 격자 세 칸까지 */
+#coldjet .plt-head { grid-template-columns: minmax(0, 1fr); row-gap: 20px; }
+#coldjet .plt-head .plt-lead { max-width: calc((100% - var(--edu-gap) * 3) / 4 * 3 + var(--edu-gap) * 2); }
+@media (max-width: 1100px) { #coldjet .plt-head .plt-lead { max-width: none; } }
+/* Cold Jet 주요 수치: 다섯 칸을 같은 폭으로 놓는다(칸 간격은 본문 격자와 같은 --edu-gap). 기술 및 서비스 역량 페이지의 수치 칸과 같은 글자 크기 */
+.ts-facts { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: var(--edu-gap); row-gap: 28px; margin: 0 0 clamp(40px, 4vw, 56px); padding: 0; list-style: none; }
+.ts-facts li { min-width: 0; }
+.ts-facts b { display: block; font-size: clamp(34px, 3.2vw, 46px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: var(--navy); font-variant-numeric: tabular-nums; }
+.ts-facts span { display: block; margin-top: 10px; font-size: 15.5px; font-weight: 700; line-height: 1.5; color: var(--text-body); word-break: keep-all; }
+@media (max-width: 1100px) { .ts-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .ts-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 24px; } .ts-facts b { font-size: clamp(26px, 8vw, 34px); } .ts-facts span { font-size: 14.5px; } }
+.ts-map { padding: clamp(18px, 2.4vw, 36px) clamp(18px, 2.4vw, 36px) clamp(18px, 1.9vw, 28px); border-radius: 14px; background: var(--navy-deep); } /* 빗금 없이 단색 */
+.ts-map .gn-legend { margin-top: clamp(14px, 1.6vw, 22px); }
+.edu-src.ts-map-src { margin-top: 14px; }
+.edu-src.ts-map-src a { color: var(--navy); font-weight: 800; }
+.ts-cj { align-items: start; margin-top: clamp(48px, 4.6vw, 72px); }
+.ts-cj > .bls-en { grid-column: 1 / -1; margin-bottom: 12px; color: var(--ice-dark); font-size: 11.5px; letter-spacing: 2.5px; line-height: 1.4; } /* 영문 표시는 한 줄을 따로 쓰고, 그 아래 줄에서 소제목(왼쪽)과 설명(오른쪽)의 시작 높이를 맞춘다 */
+.ts-cj > h3, .ts-cj-body { grid-column: span 2; min-width: 0; }
+.ts-cj > h3 { margin: 0; font-size: clamp(22px, 1.9vw, 28px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.35; word-break: keep-all; }
+.ts-cj > h3 span { display: block; white-space: nowrap; }
+.ts-cj-body p { margin: 0; font-size: 15.5px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.ts-cj-body p + p { margin-top: 12px; }
+.ts-cj-feats { margin-top: clamp(32px, 3vw, 44px); }
+.ts-cj-feats { border-top: 0; } /* 굵은 선을 칸마다 끊어서 긋는다(칸 사이 간격만큼 비운다) */
+.ts-cj-feats > li { grid-row: span 2; border-top: 2px solid var(--navy); }
+/* 네 항목 위의 굵은 선: 한 칸 길이의 빨간 선이 첫 칸부터 차례로 옮겨 간다(칸마다 약 2.4초 머문 뒤 옆 칸으로). 칸 폭과 간격은 본문 격자와 같다 */
+.ts-cj-feats { position: relative; }
+.ts-cj-feats::before { content: ""; position: absolute; left: 0; top: 0; width: calc((100% - var(--edu-gap) * 3) / 4); height: 2px; background: var(--accent-red); opacity: 0; transition: opacity .4s ease; animation: tsFeatBar 12s cubic-bezier(.6, 0, .3, 1) infinite; }
+.ts-cj-feats:has(> li:last-child:not(.reveal))::before { opacity: 1; } /* 네 항목이 화면에 올라와 자리를 잡은 뒤(main.js가 .reveal을 떼어 낸 뒤)에 빨간 선이 나타난다 */
+@keyframes tsFeatBar {
+  0%, 20% { left: 0; }
+  25%, 45% { left: calc((100% + var(--edu-gap)) / 4); }
+  50%, 70% { left: calc((100% + var(--edu-gap)) / 2); }
+  75%, 95% { left: calc((100% + var(--edu-gap)) * 3 / 4); }
+  100% { left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .ts-cj-feats::before { animation: none; } }
+.ts-cj-foot { align-items: center; margin-top: clamp(28px, 2.6vw, 36px); }
+.ts-cj-foot > .edu-connect-note { grid-column: span 2; margin: 0; font-size: 13.5px; line-height: 1.7; color: var(--text-muted); word-break: keep-all; }
+.ts-cj-links { grid-column: span 2; display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* ---- 마지막 안내(교육 및 A/S 페이지와 같은 규칙) ---- */
 #ts-final { border-top: 0; }
@@ -94,12 +136,18 @@
   .ts-area { display: block; padding: 26px 0 30px; }
   .ts-area .c2::before, .ts-area .c3::before { display: none; }
   .ts-area .desc { padding-right: 0; }
+  .ts-area .desc .qk { display: block; margin-top: 0; }
   .ts-area .k { display: block; margin-top: 20px; }
   .ts-area .c { margin-top: 8px; }
   .ts-send-copy, .ts-send-list { grid-column: 1 / -1; }
   .ts-send-list { margin-top: 36px; }
-  .ts-cj .edu-photo { min-height: 0; }
+  .ts-cj > h3, .ts-cj-body, .ts-cj-foot > .edu-connect-note, .ts-cj-links { grid-column: 1 / -1; }
+  .ts-cj-body { margin-top: 16px; }
+  .ts-cj-links { margin-top: 18px; }
+  .ts-cj-feats::before { display: none; } /* 두 칸, 한 칸 배치에서는 항목이 여러 줄로 놓이므로 움직이는 선을 쓰지 않는다 */
 }
 @media (max-width: 640px) {
+  .ts-cj > h3 span { white-space: normal; }
+  .ts-map { padding: 14px 12px 16px; }
   .ts-send-list > *:nth-child(-n+4) { padding-bottom: 22px; }
 }

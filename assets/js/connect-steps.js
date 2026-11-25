@@ -1,7 +1,6 @@
-/* Cold Jet CONNECT QR 5단계 (support/education.html #connect). 스크립트가 없으면 다섯 단계가 목록으로 모두 보인다. */
+/* Cold Jet CONNECT 단계 보기 (support/education.html #connect, QR 5단계와 기능 5가지). 스크립트가 없으면 다섯 항목이 목록으로 모두 보인다. */
 (function () {
-  var root = document.querySelector('[data-qr-steps]');
-  if (!root) return;
+function gnSteps(root) {
   var imgs = root.querySelectorAll('.edu-qr-media img'), panels = root.querySelectorAll('.edu-qr-stage > li');
   var bars = root.querySelectorAll('.edu-qr-bar i'), thumbs = root.querySelector('.edu-qr-thumbs');
   var tabs = thumbs ? thumbs.querySelectorAll('button') : [];
@@ -21,11 +20,13 @@
       tabs[j].classList.toggle('is-on', on); tabs[j].setAttribute('aria-pressed', on ? 'true' : 'false');
       if (bars[j]) { bars[j].classList.toggle('is-done', j < cur); bars[j].classList.remove('is-on'); }
     }
+    if (thumbs.scrollWidth > thumbs.clientWidth + 4) thumbs.scrollTo({ left: tabs[cur].offsetLeft - (thumbs.clientWidth - tabs[cur].offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' }); // 휴대폰: 옆으로 넘기는 줄에서 고른 화면이 보이게
     if (bars[cur]) { void bars[cur].offsetWidth; bars[cur].classList.add('is-on'); } // 진행 막대를 처음부터 다시 채운다
   }
   function play() { clearTimeout(timer); root.classList.toggle('is-auto', auto && inView && !held); if (auto && inView && !held) timer = setTimeout(function () { show(cur + 1); play(); }, STEP); }
   for (var i = 0; i < n; i++) (function (idx) {
     tabs[idx].addEventListener('click', function () { auto = false; show(idx); play(); }); // 직접 고르면 자동 넘김을 멈춘다
+    if (root.classList.contains('edu-app')) panels[idx].addEventListener('click', function () { auto = false; show(idx); play(); }); // 화면 아래 이름을 눌러도 고를 수 있다
   })(i);
   root.addEventListener('mouseenter', function () { held = true; play(); });
   root.addEventListener('mouseleave', function () { held = false; if (auto) show(cur); play(); });
@@ -33,4 +34,6 @@
   root.addEventListener('focusout', function () { held = false; play(); });
   show(0);
   if (window.IntersectionObserver) new IntersectionObserver(function (es) { inView = es[0].isIntersecting; if (inView && auto) show(cur); play(); }, { threshold: .35 }).observe(root);
+}
+document.querySelectorAll('[data-qr-steps]').forEach(gnSteps);
 })();

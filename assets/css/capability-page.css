@@ -16,9 +16,160 @@
    이 페이지의 역할: "왜 믿을 수 있는가"에 근거로 답한다. 절차(A/S 접수, 기술지원 진행 방식)는 각 페이지에 두고 여기서는 링크만 건다.
    교육 및 A/S, 기술지원 안내 페이지와 같은 4칸 격자(.edu-grid, education-page.css)를 쓴다. 카드 상자 없이 선과 여백으로만 구분한다. */
 
-/* 히어로: 실제 사옥 사진. 사인이 오른쪽 위에 있어 오른쪽 위를 기준으로 맞춘다 */
-.tec-hero-stage.cap-hero .subhero-parallax-img { object-position: 70% 20%; filter: brightness(.55) saturate(.92) !important; } /* 밝은 외벽 사진이라 글 상자가 읽히도록 사진만 어둡게 한다(글 상자 위에는 덮지 않는다) */
-.tec-hero-stage.cap-hero img.hero-fit-ambient { filter: brightness(.6) saturate(.92) blur(24px); }
+/* 히어로 제목: 첫 줄("Cold Jet의 기술력과 바테크의 전문성,")이 길어, 글자가 넓은 글꼴에서도 한 줄에 들어가도록 이 페이지만 제목 글자를 조금 줄인다(휴대폰 폭은 공통 규칙 그대로) */
+@media (min-width: 641px) { .cap-hero.subhero-parallax.subhero-parallax .subhero-textbox.subhero-textbox h1 { font-size: calc(var(--htb-w) * .0482 * var(--htb-s)); } }
+
+/* ---- 01 Cold Jet과 바테크의 경쟁력 ----
+   핵심 수치 네 칸(.edu-nums) 아래에 두 회사를 두 칸씩 나란히 놓는다. 로고, 소제목, 목록의 시작 높이가 좌우로 맞는다.
+   목록은 접이식(details): 제목 줄 전체를 눌러 여닫고, 오른쪽 표시가 +에서 −로 바뀐다. 여러 항목을 함께 열 수 있고 좌우는 서로 영향을 주지 않는다 */
+/* 핵심 수치: 큰 숫자와 이름만 둔다(설명 문장은 이름과 겹쳐서 뺐다) */
+.cap-nums { row-gap: 28px; } /* 위 가로선은 뺐다: 섹션 머리 아래 여백 다음에 바로 숫자가 온다 */
+.cap-nums li { min-width: 0; }
+.cap-nums b { display: block; font-size: clamp(34px, 3.2vw, 46px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: var(--navy); font-variant-numeric: tabular-nums; }
+.cap-nums span { display: block; margin-top: 10px; font-size: 15.5px; font-weight: 700; line-height: 1.5; color: var(--text-body); word-break: keep-all; }
+.cap-nums + .edu-src { margin-top: 22px; }
+/* 두 회사: 로고와 소제목을 한 줄에 놓고(가는 세로선으로 구분) 그 아래 굵은 선 한 줄부터 목록이 시작된다. 좌우의 로고 줄과 목록 시작 높이가 서로 맞는다 */
+.cap-duo { align-items: start; margin-top: clamp(56px, 5.4vw, 84px); }
+.cap-col { grid-column: span 2; grid-row: span 2; display: grid; grid-template-rows: subgrid; row-gap: 0; min-width: 0; }
+.cap-col-head { display: flex; align-items: center; gap: 18px; min-height: 34px; }
+.cap-col-head .edu-duo-logo { flex: none; align-self: center; }
+.cap-col h3 { position: relative; margin: 0; padding-left: 18px; font-size: clamp(19px, 1.6vw, 22px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.3; word-break: keep-all; }
+.cap-col h3::before { content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: 18px; margin-top: -9px; background: rgba(22, 32, 74, .3); }
+.cap-acc { align-self: start; margin-top: 20px; border-top: 2px solid var(--navy); }
+.cap-acc details { border-bottom: 1px solid var(--gray-line); }
+.cap-acc summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 0; font-size: 17px; font-weight: 700; line-height: 1.5; color: #000; letter-spacing: -0.01em; word-break: keep-all; cursor: pointer; list-style: none; outline: none; transition: color .18s ease; }
+.cap-acc summary::-webkit-details-marker { display: none; }
+.cap-acc summary:hover, .cap-acc summary:focus-visible { color: var(--ice-dark); } /* 키보드로 옮겨 갈 때에도 테두리 상자 대신 글자색과 밑줄로만 알린다 */
+.cap-acc summary:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.cap-acc details.is-open > summary, .cap-acc:not(.is-js) details[open] > summary { font-weight: 800; }
+.cap-acc summary i { position: relative; flex: none; width: 16px; height: 16px; transition: transform .25s ease; }
+.cap-acc summary i::before, .cap-acc summary i::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--navy); transform: translate(-50%, -50%); }
+.cap-acc summary i::before { width: 14px; height: 2px; }
+.cap-acc summary i::before { transition: background .2s ease; }
+.cap-acc summary i::after { width: 2px; height: 14px; transition: opacity .2s ease; }
+.cap-acc:not(.is-js) details[open] > summary i::after, .cap-acc.is-js details.is-open > summary i::after { opacity: 0; }
+.cap-acc:not(.is-js) details[open] > summary i::before, .cap-acc.is-js details.is-open > summary i::before { background: var(--accent-red); }
+.cap-acc.is-js details.is-open > summary i { transform: rotate(180deg); }
+/* 설명 여닫기: 자주 묻는 질문과 같은 방식. capability-accordion.js가 높이를 0에서 내용 높이까지 바꾸고, 여기서는 그 변화를 부드럽게 잇는다 */
+.cap-acc.is-js .cap-acc-a { overflow: hidden; height: 0; opacity: 0; transition: height .35s cubic-bezier(.4, 0, .2, 1), opacity .3s ease; }
+.cap-acc.is-js details.is-open .cap-acc-a { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .cap-acc.is-js .cap-acc-a, .cap-acc summary i { transition: none; } }
+.cap-acc p { margin: -4px 0 0; padding: 0 48px 22px 0; font-size: 15px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.cap-acc p + p.note { margin-top: -10px; font-size: 13.5px; line-height: 1.7; color: var(--text-muted); }
+
+/* ---- 02 글로벌 네트워크 ----
+   세계 연결망 지도(남색 판, 본문 전체 폭) 아래에 카드 세 장을 놓는다.
+   카드는 차례로 강조되고, 지도에서는 그 카드에 해당하는 연결만 밝게 남는다(.cap-map[data-focus]) */
+.cap-map { padding: clamp(18px, 2.4vw, 36px) clamp(18px, 2.4vw, 36px) clamp(18px, 1.9vw, 28px); border-radius: 14px; background: var(--navy-deep); }
+.cap-map .gn-legend { margin-top: clamp(14px, 1.6vw, 22px); }
+.edu-src.cap-map-src { margin-top: 14px; }
+.cap-map .gn-link { transition: opacity .6s ease; }
+.cap-map[data-focus="knowledge"] .gn-link:not(.is-peer):not(.is-main),
+.cap-map[data-focus="engineering"] .gn-link:not(.is-kr):not(.is-main),
+.cap-map[data-focus="service"] .gn-link:not(.is-spoke):not(.is-main) { opacity: .14; }
+.cap-map[data-focus="knowledge"] .gn-link.is-peer .base { stroke: rgba(255, 255, 255, .7); }
+.cap-map[data-focus="service"] .gn-link.is-spoke:not(.is-kr) .base { stroke: rgba(255, 255, 255, .6); }
+.cap-map[data-focus="engineering"] .gn-link.is-kr .base { stroke: #ff8a95; stroke-width: calc(var(--gn-u, 1) * 1.8px); }
+/* 카드 세 장(같은 폭): 아이콘, 영문 표시, 제목, 한 줄 문구, 세부 항목의 높이가 카드끼리 서로 맞는다.
+   지금 강조되는 카드는 테두리가 남색이 되고 위쪽 빨간 선이 왼쪽부터 채워진다 */
+.cap-net { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(16px, 1.8vw, 24px); row-gap: 0; align-items: stretch; margin-top: clamp(40px, 3.8vw, 56px); }
+.cap-net-item { position: relative; display: grid; grid-template-rows: subgrid; grid-row: span 5; row-gap: 0; min-width: 0; padding: clamp(22px, 2.2vw, 30px); border: 1px solid var(--gray-line); border-radius: 14px; background: #fff; overflow: hidden; transition: border-color .4s ease; }
+.cap-net-item.is-on { border-color: rgba(22, 32, 74, .55); }
+.cap-net-item::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--accent-red); transform: scaleX(0); transform-origin: left center; transition: transform .7s cubic-bezier(.6, 0, .3, 1); }
+.cap-net-item.is-on::before { transform: scaleX(1); }
+.cap-net-item .ic { display: block; width: 32px; height: 32px; color: var(--ice-dark); }
+.cap-net-item .ic svg { display: block; width: 100%; height: 100%; }
+.cap-net-item .bls-en { margin-top: 18px; color: var(--text-muted); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; line-height: 1.4; }
+.cap-net-item h3 { margin: 10px 0 0; font-size: clamp(18px, 1.5vw, 20px); font-weight: 800; color: #000; letter-spacing: -0.015em; line-height: 1.4; word-break: keep-all; }
+.cap-net-item .say { margin: 10px 0 0; font-size: 15.5px; font-weight: 700; line-height: 1.6; color: var(--navy); word-break: keep-all; }
+.cap-net-item ul { align-self: start; margin: 20px 0 0; padding: 18px 0 0; list-style: none; border-top: 1px solid var(--gray-line); }
+.cap-net-item li { font-size: 14.5px; line-height: 1.6; color: var(--text-body); word-break: keep-all; }
+.cap-net-item li + li { margin-top: 8px; }
+@media (max-width: 860px) {
+  .cap-net { grid-template-columns: minmax(0, 1fr); row-gap: 16px; }
+  .cap-net-item { grid-template-rows: none; grid-row: auto; display: block; }
+}
+@media (prefers-reduced-motion: reduce) { .cap-net-item::before, .cap-map .gn-link { transition: none; } }
+
+/* ---- 03 장비가 갖춰야 할 다섯 가지 경쟁력 ----
+   왼쪽 두 칸: 오각형 그림(가운데 Cold Jet, VATEK, 꼭짓점마다 경쟁력 하나). 오른쪽 두 칸: 다섯 항목 목록, 지금 선택된 항목만 설명이 펼쳐진다.
+   그림의 점이나 이름, 목록의 제목 어느 쪽을 눌러도 같은 항목이 선택되고, 가만히 두면 차례로 넘어간다(capability-five.js).
+   선택된 항목: 그림에서는 점이 빨간색으로 바뀌고 가운데에서 그 점까지 빨간 선이 그어지며, 목록에서는 위쪽 선이 빨간색으로 채워진다.
+   그림 좌표는 600x450 기준이고 이름표 위치(--x, --y)도 같은 좌표다. 스크립트가 없으면 그림과 다섯 설명이 모두 펼쳐진 채로 보인다 */
+.cap-five { align-items: center; --five-n: 52px; }
+.cap-five-fig { grid-column: span 2; }
+.cap-five-stage { position: relative; width: min(100%, 640px); margin-inline: auto; aspect-ratio: 4 / 3; container-type: inline-size; }
+.cap-five-stage svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; overflow: visible; }
+.cap-five-stage .ring, .cap-five-stage .spoke { fill: none; stroke: #cdd4e1; stroke-width: 1.8; }
+.tint-hatch .cap-five-stage .ring, .tint-hatch .cap-five-stage .spoke { stroke: #bfc8d9; } /* 빗금 배경 위에서는 선을 조금 진하게 */
+.cap-five-stage .core { fill: var(--navy); }
+.cap-five-stage .kite { fill: rgba(62, 104, 179, .1); opacity: 0; transition: opacity .5s ease; }
+.cap-five-stage .beam .base { stroke: var(--accent-red); stroke-width: 2.6; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .7s cubic-bezier(.6, 0, .3, 1); }
+.cap-five-stage .beam .flow { stroke: #fff; stroke-width: 2.6; stroke-dasharray: 4 18; opacity: 0; transition: opacity .3s ease; }
+.cap-five-stage .pt { cursor: pointer; }
+.cap-five-stage .hit { fill: transparent; }
+.cap-five-stage .dot { fill: var(--blue); transform-box: fill-box; transform-origin: center; transition: fill .3s ease, transform .3s ease; }
+.cap-five-stage .halo { fill: none; stroke: var(--accent-red); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.cap-five-core { position: absolute; left: 50%; top: 51.556%; transform: translate(-50%, -50%); display: grid; justify-items: center; row-gap: .1em; color: #fff; line-height: 1.2; white-space: nowrap; pointer-events: none; }
+.cap-five-core b { font-size: clamp(11.5px, 3.7cqw, 23px); font-weight: 800; letter-spacing: -0.01em; }
+.cap-five-core span { font-size: clamp(10px, 2.8cqw, 17px); font-weight: 700; letter-spacing: .02em; }
+.cap-five-pt { position: absolute; left: calc(var(--x) / 600 * 100%); top: calc(var(--y) / 450 * 100%); margin: -10px 0 0 -8px; padding: 10px 8px; border: 0; background: none; font: inherit; font-size: clamp(13px, 3.3cqw, 20px); font-weight: 800; letter-spacing: -0.015em; line-height: 1.3; color: #000; white-space: nowrap; cursor: pointer; outline: none; transition: color .25s ease; }
+/* 누르는 범위를 넓히려고 안쪽 여백(10px 8px)을 두고, 그만큼 바깥 여백으로 되돌려 글자 자리는 기준점 그대로 둔다 */
+.cap-five-pt.is-t { margin: 10px 0 0; transform: translate(-50%, -100%); }
+.cap-five-pt.is-tr { margin: 10px 0 0 -8px; transform: translate(0, -100%); }
+.cap-five-pt.is-bl { margin: -10px 0 0 8px; transform: translate(-100%, 0); }
+.cap-five-pt.is-tl { margin: 10px 0 0 8px; transform: translate(-100%, -100%); }
+.cap-five-pt:hover, .cap-five-pt:focus-visible { color: var(--ice-dark); }
+.cap-five-pt:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+/* 선택된 항목(그림): 그림이 다 그려진 뒤(.is-ready)부터 표시한다 */
+.cap-five.is-ready .kite.is-on { opacity: 1; }
+.cap-five.is-ready .beam.is-on .base { stroke-dashoffset: 0; }
+.cap-five.is-ready .beam.is-on .flow { opacity: .85; transition-delay: .6s; animation: capFiveFlow 1.4s linear infinite; }
+.cap-five.is-ready .pt.is-on .dot { fill: var(--accent-red); transform: scale(1.18); }
+.cap-five.is-ready .pt.is-on .halo { animation: capFiveHalo 2.2s ease-out infinite; }
+.cap-five.is-ready .cap-five-pt.is-on { color: var(--accent-red); }
+@keyframes capFiveFlow { from { stroke-dashoffset: 22; } to { stroke-dashoffset: 0; } }
+@keyframes capFiveHalo { 0% { opacity: .55; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(2.7); } }
+/* 처음 화면에 들어올 때: 오각형이 안쪽부터 차례로 펼쳐지고 점과 이름이 뒤따라 나타난다 */
+.cap-five.is-js .ring { transform-origin: 300px 232px; transition: transform .8s cubic-bezier(.2, .7, .2, 1) calc(var(--d) * .14s), opacity .5s ease calc(var(--d) * .14s); }
+.cap-five.is-js .spoke { transition: opacity .6s ease .35s; }
+.cap-five.is-js .core, .cap-five.is-js .cap-five-core { transition: opacity .5s ease; }
+.cap-five.is-js .pt { transition: opacity .4s ease calc(.55s + var(--d) * .08s); }
+.cap-five.is-js .cap-five-pt { transition: color .25s ease, opacity .5s ease .7s; }
+.cap-five.is-js:not(.is-in) .ring { transform: scale(.2); opacity: 0; }
+.cap-five.is-js:not(.is-in) .spoke, .cap-five.is-js:not(.is-in) .pt, .cap-five.is-js:not(.is-in) .core, .cap-five.is-js:not(.is-in) .cap-five-core, .cap-five.is-js:not(.is-in) .cap-five-pt { opacity: 0; }
+/* 목록: 번호 칸의 폭(--five-n)을 고정해 제목, 영문 표시, 설명의 왼쪽 끝이 한 줄로 맞는다. 마지막 항목 아래에는 선을 두지 않는다 */
+.cap-five-list { grid-column: span 2; margin: 0; padding: 0; list-style: none; }
+.cap-five-item { position: relative; padding-bottom: 10px; border-top: 1px solid var(--gray-line); } /* 아래 여백 10px은 제목 줄의 아래 여백을 나눠 가진 것: 펼친 설명이 제목 바로 아래(8px)에서 시작한다 */
+.cap-five-item::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--accent-red); transform: scaleX(0); transform-origin: left center; transition: transform .7s cubic-bezier(.6, 0, .3, 1); }
+.cap-five.is-js .cap-five-item.is-on::before { transform: scaleX(1); }
+.cap-five-item h3 { margin: 0; font-size: inherit; font-weight: inherit; }
+.cap-five-q { display: flex; align-items: baseline; width: 100%; margin: 0; padding: 18px 0 8px; border: 0; background: none; font: inherit; font-size: clamp(18px, 1.55vw, 21px); font-weight: 800; letter-spacing: -0.015em; line-height: 1.4; color: #000; text-align: left; word-break: keep-all; cursor: pointer; outline: none; transition: color .2s ease; }
+.cap-five-q .n { flex: none; width: var(--five-n); color: var(--text-muted); font-variant-numeric: tabular-nums; letter-spacing: 0; transition: color .25s ease; }
+.cap-five-q:hover .t, .cap-five-q:focus-visible .t { color: var(--ice-dark); }
+.cap-five-q:focus-visible .t { text-decoration: underline; text-underline-offset: 4px; }
+.cap-five.is-js .cap-five-item.is-on .n { color: var(--accent-red); }
+.cap-five-a > div { padding: 0 0 14px var(--five-n); }
+.cap-five-a .bls-en { display: block; color: var(--ice-dark); font-size: 11.5px; font-weight: 800; letter-spacing: 2px; line-height: 1.4; }
+.cap-five-a p { margin: 12px 0 0; font-size: 15.5px; line-height: 1.8; color: var(--text-body); word-break: keep-all; text-wrap: pretty; }
+.cap-five.is-js .cap-five-a { overflow: hidden; height: 0; opacity: 0; transition: height .4s cubic-bezier(.4, 0, .2, 1), opacity .3s ease; }
+.cap-five.is-js .cap-five-item.is-on .cap-five-a { opacity: 1; }
+@media (max-width: 1100px) { .cap-five-fig, .cap-five-list { grid-column: span 1; } }
+@media (max-width: 860px) {
+  .cap-five-fig, .cap-five-list { grid-column: 1 / -1; }
+  .cap-five-stage { width: min(100%, 520px); }
+  .cap-five-list { margin-top: 28px; }
+}
+@media (max-width: 640px) {
+  .cap-five { --five-n: 42px; }
+  .cap-five-stage { width: 90%; } /* 좌우 이름표가 본문 폭을 넘지 않도록 그림을 조금 줄인다 */
+  .cap-five-q { padding: 15px 0 5px; font-size: 18px; }
+  .cap-five-a p { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cap-five.is-js .ring, .cap-five.is-js .spoke, .cap-five.is-js .pt, .cap-five.is-js .cap-five-pt, .cap-five.is-js .core, .cap-five.is-js .cap-five-core, .cap-five-stage .beam .base, .cap-five-stage .kite, .cap-five-item::before, .cap-five.is-js .cap-five-a { transition: none; }
+  .cap-five.is-ready .beam.is-on .flow, .cap-five.is-ready .pt.is-on .halo { animation: none; }
+}
 
 /* ---- 공식 대리점 확인 안내 줄 ---- */
 .cap-verify { margin: 26px 0 0; font-size: 15px; line-height: 1.7; color: var(--text-body); word-break: keep-all; }
@@ -59,10 +210,18 @@
 @media (min-width: 1101px) { #cap-final .bls-final-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--edu-gap); } }
 
 @media (max-width: 1100px) {
+  .cap-col { grid-column: 1 / -1; grid-row: auto; grid-template-rows: none; }
+  .cap-col + .cap-col { margin-top: 52px; }
   .cap-built-copy { grid-column: 1 / -1; grid-row: auto; margin-bottom: 32px; }
   .cap-built figure:nth-of-type(-n+2), .cap-field figure:nth-child(-n+2) { padding-bottom: 32px; }
 }
 @media (max-width: 640px) {
+  .cap-map { padding: 14px 12px 16px; }
+  .cap-nums { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 24px; }
+  .cap-nums b { font-size: clamp(26px, 8vw, 34px); }
+  .cap-nums span { font-size: 14.5px; }
+  .cap-acc summary { font-size: 16px; padding: 15px 0; }
+  .cap-acc p { padding-right: 0; }
   .cap-built figure:not(:last-child), .cap-field figure:not(:last-child) { padding-bottom: 32px; }
   .cap-verify a { display: inline-block; margin: 6px 0 0; white-space: normal; }
 }

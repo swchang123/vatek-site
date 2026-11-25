@@ -1682,6 +1682,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!highlight) return;
       highlight.style.top = li.offsetTop + "px";
       highlight.style.height = li.offsetHeight + "px";
+      // (2026-11-25) 메뉴 목록이 좌우 두 줄로 나뉜 메뉴(서비스)에서도 맞도록 가로 위치와 폭도 항목에 맞춘다
+      highlight.style.left = li.offsetLeft + "px";
+      highlight.style.right = "auto";
+      highlight.style.width = li.offsetWidth + "px";
       highlight.style.opacity = "1";
     };
     var selectItem = function (item, a) {
@@ -1917,6 +1921,110 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSubhero();
     }
   }
+
+  // (2026-11-25) 메뉴 안의 '페이지 안 위치' 링크(주소에 #이 붙은 링크: ON THIS PAGE 목록 등)를 누르면 그 섹션까지 부드럽게 이동한다.
+  // - 지금 보고 있는 페이지의 섹션이면 메뉴를 닫고 그 자리에서 미끄러지듯 이동한다.
+  // - 다른 페이지의 섹션이면 #섹션 대신 ?to=섹션을 붙여 이동한다(브라우저가 열자마자 그 위치로 건너뛰지 않게). 페이지가 열리면
+  //   맨 위에서 그 섹션까지 이동하고, 이동이 끝나면 주소를 #섹션으로 고쳐 둔다(새로고침, 주소 복사용).
+  // 데스크톱은 위의 휠 스크롤 보정 때문에 scroll-behavior가 auto라서 한 프레임씩 직접 옮긴다(가는 동안 화면 높이가 변해도 목적지를
+  // 매 프레임 다시 잰다). 터치 기기는 브라우저의 부드러운 스크롤을 쓴다. 움직임 줄이기 설정이면 바로 이동한다.
+  // 이동 중에 휠, 터치, 키보드로 직접 스크롤하면 그 즉시 멈추고 사용자의 조작을 따른다.
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var running = null;
+    function targetY(el) {
+      var m = parseFloat(window.getComputedStyle(el).scrollMarginTop) || 0;
+      var max = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      return Math.max(0, Math.min(Math.round(el.getBoundingClientRect().top + window.scrollY - m), max));
+    }
+    function glide(el, done) {
+      if (running) running();
+      if (reduce) { window.scrollTo(0, targetY(el)); if (done) done(); return; }
+      if (window.getComputedStyle(document.documentElement).scrollBehavior === "smooth") {
+        window.scrollTo({ top: targetY(el), behavior: "smooth" });
+        if (done) window.setTimeout(done, 900);
+        return;
+      }
+      // 휠 스크롤 보정이 아직 움직이는 중이면 멈추고 지금 위치에서 시작한다
+      if (typeof smoothRaf !== "undefined" && smoothRaf !== null) { window.cancelAnimationFrame(smoothRaf); smoothRaf = null; }
+      if (typeof smoothCurrent !== "undefined") { smoothCurrent = window.scrollY; smoothTarget = window.scrollY; }
+      if (typeof setHsScrolling === "function") setHsScrolling(false);
+      var y0 = window.scrollY, dist = Math.abs(targetY(el) - y0);
+      var dur = Math.max(700, Math.min(1500, 450 + dist * 0.28)), t0 = null, dead = false;
+      var stop = function () { dead = true; off(); };
+      var onKey = function (e) { if (/^(Arrow|Page|Home|End| |Spacebar)/.test(e.key)) stop(); };
+      var off = function () {
+        window.removeEventListener("wheel", stop); window.removeEventListener("touchstart", stop); window.removeEventListener("keydown", onKey);
+        if (running === stop) running = null;
+      };
+      var step = function (ts) {
+        if (dead) return;
+        if (t0 === null) t0 = ts;
+        var p = Math.min(1, (ts - t0) / dur);
+        var e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; // 천천히 출발해 천천히 멈춘다
+        window.scrollTo(0, Math.round(y0 + (targetY(el) - y0) * e));
+        if (p < 1) { window.requestAnimationFrame(step); return; }
+        off();
+        if (done) done();
+      };
+      window.addEventListener("wheel", stop, { passive: true }); window.addEventListener("touchstart", stop, { passive: true }); window.addEventListener("keydown", onKey);
+      running = stop;
+      window.requestAnimationFrame(step);
+    }
+    function samePage(a) {
+      var n = function (path) { return path.replace(/index\.html$/, ""); };
+      return a.host === window.location.host && n(a.pathname) === n(window.location.pathname);
+    }
+    function setHash(id) { try { window.history.replaceState(null, "", "#" + encodeURIComponent(id)); } catch (err) {} }
+
+    document.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target && e.target.closest ? e.target.closest('.megamenu a[href*="#"]') : null;
+      if (!a || a.target === "_blank") return;
+      var id = "";
+      try { id = decodeURIComponent((a.hash || "").slice(1)); } catch (err) { return; }
+      if (!id) return;
+      if (samePage(a)) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        // 메뉴를 닫는다: 마우스가 메뉴 위에 그대로 있어도 다시 벗어날 때까지 열리지 않게 한다. 모바일 메뉴도 접는다
+        var li = a.closest(".main-nav > ul > li");
+        if (li) {
+          li.classList.add("mega-suppress");
+          li.classList.remove("open");
+          var leave = function () { li.classList.remove("mega-suppress"); li.removeEventListener("mouseleave", leave); };
+          li.addEventListener("mouseleave", leave);
+        }
+        var navEl = document.querySelector(".main-nav");
+        if (navEl) navEl.classList.remove("open");
+        glide(el, function () { setHash(id); });
+      } else {
+        e.preventDefault();
+        var url = a.href.split("#")[0];
+        window.location.href = url + (url.indexOf("?") < 0 ? "?" : "&") + "to=" + encodeURIComponent(id);
+      }
+    });
+
+    // 다른 페이지에서 ?to=섹션으로 넘어온 경우
+    var m = /[?&]to=([^&#]+)/.exec(window.location.search);
+    if (m) {
+      var toId = "";
+      try { toId = decodeURIComponent(m[1]); } catch (err) {}
+      try {
+        var u = new URL(window.location.href);
+        u.searchParams.delete("to");
+        window.history.replaceState(null, "", u.pathname + u.search); // #섹션은 이동이 끝난 뒤에 붙인다(먼저 붙이면 브라우저가 그 위치로 바로 건너뛴다)
+      } catch (err) {}
+      var toEl = toId ? document.getElementById(toId) : null;
+      if (toEl) {
+        var started = false;
+        var go = function () { if (started) return; started = true; window.setTimeout(function () { glide(toEl, function () { setHash(toId); }); }, 250); };
+        window.addEventListener("load", go);
+        window.setTimeout(go, 1500); // 느린 연결에서도 너무 오래 기다리지 않는다
+      }
+    }
+  })();
 });
 
 
@@ -1958,107 +2066,333 @@ document.addEventListener("DOMContentLoaded", function () {
 // 영상이 있던 가운데 칸에 지금 가리키는 메뉴의 모델 목록을 보여 준다. 누르면 그 제품 페이지로 간다.
 // 헤더 HTML은 97개 페이지에 똑같이 들어 있으므로, 페이지를 고치지 않고 여기서 칸을 만들어 넣는다.
 // 항목은 [이름, 주소, 이름 옆 짧은 설명(선택)]. 모델이 없는 메뉴는 바로가기를 보여 준다.
+// (2026-11-24) "적용분야" 메가메뉴에도 같은 칸을 넣는다: 산업별 솔루션은 산업 목록, 작업별 솔루션은 작업 목록.
+// 묶음에 wide: [두 줄일 때 줄 수, 세 줄일 때 줄 수]를 주면 그 묶음은 칸 전체 폭을 쓰고 항목을 여러 줄로 나눠 위에서 아래로 채운다.
 // ---------------------------------------------------------------------
 (function () {
-  var menu = document.querySelector('.megamenu[data-menu="products"]');
-  if (!menu) return;
-  var index = menu.querySelector('.megamenu-index');
-  var first = menu.querySelector('.megamenu-index-item a');
-  if (!index || !first) return;
-  var m = /^(.*)products\/blaster\/index\.html$/.exec(first.getAttribute('href') || '');
-  if (!m) return;
-  var base = m[1];
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function build(menu, base, DATA) {
+    var index = menu.querySelector('.megamenu-index');
+    if (!index) return;
+    function link(it) {
+      return '<a class="mm-model" href="' + base + it[1] + '"><b>' + esc(it[0]) + '</b>' +
+        (it[2] ? '<small>' + esc(it[2]) + '</small>' : '') + '</a>';
+    }
+    // 맨 위 추천 줄: 모델보다 먼저 해당 메뉴의 소개 페이지(왼쪽 메뉴 항목과 같은 주소)로 보낸다.
+    // 깜박이는 빨간 고리 옆에 "추천메뉴 - (이름) 오버뷰"라고 적는다. 이름은 DATA의 lead
+    function lead(d, i) {
+      var a = menu.querySelector('.megamenu-index-item[data-i="' + i + '"] a');
+      if (!d.lead || !a) return '';
+      return '<a class="mm-lead" href="' + esc(a.getAttribute('href')) + '"><i class="mm-lead-dot" aria-hidden="true"></i><b>추천메뉴 - ' + esc(d.lead) +
+        ' 오버뷰</b><i class="mm-lead-arrow" aria-hidden="true">' +
+        '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>';
+    }
+    function groupName(g) {
+      if (!g.to) return '<span class="mm-group-name">' + esc(g.name) + '</span>';
+      return '<a class="mm-group-name" href="' + base + g.to + '">' + esc(g.name) + '</a>';
+    }
+    function group(g) {
+      if (!g.wide) return '<div class="mm-group">' + groupName(g) + g.items.map(link).join('') + '</div>';
+      return '<div class="mm-group is-wide">' + groupName(g) + '<div class="mm-group-items" style="--mm-rows:' + g.wide[0] + ';--mm-rows3:' + g.wide[1] + '">' + g.items.map(link).join('') + '</div></div>';
+    }
+    function html(d, i) {
+      var h = lead(d, i) + '<span class="megamenu-index-label">' + d.label + '</span>';
+      if (d.groups) h += '<div class="mm-groups">' + d.groups.map(group).join('') + '</div>';
+      else h += '<div class="mm-rows">' + d.rows.map(link).join('') + '</div>';
+      return h;
+    }
+    var panel = document.createElement('div');
+    panel.className = 'megamenu-models';
+    index.insertAdjacentElement('afterend', panel);
+    menu.classList.add('has-models');
+    var cur = null, timer = null;
+    function show(i, instant) {
+      if (i === cur || !DATA[i]) return;
+      cur = i;
+      window.clearTimeout(timer);
+      if (instant) { panel.innerHTML = html(DATA[i], i); return; }
+      panel.classList.add('is-fading');
+      timer = window.setTimeout(function () { panel.innerHTML = html(DATA[i], i); panel.classList.remove('is-fading'); }, 70);
+    }
+    var items = menu.querySelectorAll('.megamenu-index-item');
+    Array.prototype.forEach.call(items, function (item) {
+      item.addEventListener('mouseenter', function () { show(+item.getAttribute('data-i')); });
+    });
+    var active = menu.querySelector('.megamenu-index-item.is-active') || items[0];
+    show(active ? +active.getAttribute('data-i') : 0, true);
+    // 가장 긴 목록의 높이를 잰다(지금 칸 폭 그대로, 보이지 않는 사본에 차례로 그려 본다). 메뉴 높이를 고정하는 데 쓴다
+    return function tallest() {
+      var probe = panel.cloneNode(false), max = 0;
+      probe.style.cssText = 'position:absolute;left:0;top:0;visibility:hidden;pointer-events:none;min-height:0;box-sizing:border-box;width:' + panel.getBoundingClientRect().width + 'px';
+      panel.parentNode.appendChild(probe);
+      Object.keys(DATA).forEach(function (k) { probe.innerHTML = html(DATA[k], +k); max = Math.max(max, probe.getBoundingClientRect().height); });
+      panel.parentNode.removeChild(probe);
+      return Math.ceil(max);
+    };
+  }
+  // 메뉴의 첫 항목 주소에서 사이트 뿌리까지의 경로(base)를 얻는다. 첫 항목이 tail로 끝나지 않으면 null
+  function baseOf(menu, tail) {
+    var first = menu && menu.querySelector('.megamenu-index-item a');
+    var href = first ? (first.getAttribute('href') || '') : '';
+    return href.slice(-tail.length) === tail ? href.slice(0, href.length - tail.length) : null;
+  }
+
+  // 목록 칸의 최소 높이를 가장 긴 목록에 맞춰, 항목을 옮겨 다녀도 메뉴 높이가 변하지 않게 한다(칸 배치는 style.css가 정한다)
+  function keepHeight(menu, tallest) {
+    var li = menu.parentElement, panel = menu.querySelector('.megamenu-models');
+    if (!panel || !tallest) return;
+    function place() {
+      panel.style.minHeight = '';
+      if (window.innerWidth > 960) panel.style.minHeight = tallest() + 'px';
+    }
+    place();
+    window.addEventListener('resize', place);
+    window.addEventListener('load', place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+    if (li) li.addEventListener('mouseenter', place);
+  }
+
+  // 설명 카드(.megamenu-detail)의 최소 높이를 가장 긴 설명에 맞춰, 항목을 옮겨 다녀도 카드와 메뉴 전체의 높이가 변하지 않게 한다
+  function keepCard(menu) {
+    var detail = menu.querySelector('.megamenu-detail'), li = menu.parentElement;
+    if (!detail) return;
+    function card() {
+      detail.style.minHeight = '';
+      if (window.innerWidth <= 960) return;
+      var w = detail.getBoundingClientRect().width;
+      if (!w) return;
+      var probe = detail.cloneNode(true), max = 0;
+      probe.classList.remove('is-fading');
+      probe.style.cssText = 'position:absolute;left:0;top:0;visibility:hidden;pointer-events:none;min-height:0;width:' + w + 'px';
+      detail.parentNode.appendChild(probe);
+      var t = probe.querySelector('.megamenu-detail-title'), d = probe.querySelector('.megamenu-detail-desc');
+      Array.prototype.forEach.call(menu.querySelectorAll('.megamenu-index-item a'), function (a) {
+        if (t) t.textContent = a.textContent.replace(/\s+$/, '');
+        if (d) d.textContent = a.getAttribute('data-desc') || '';
+        max = Math.max(max, probe.getBoundingClientRect().height);
+      });
+      detail.parentNode.removeChild(probe);
+      if (max) detail.style.minHeight = Math.ceil(max) + 'px';
+    }
+    card();
+    window.addEventListener('load', card);
+    window.addEventListener('resize', card);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(card);
+    if (li) li.addEventListener('mouseenter', card);
+  }
+
+  // ---- 제품소개 ----
+  (function () {
+    var menu = document.querySelector('.megamenu[data-menu="products"]');
+    var base = baseOf(menu, 'products/blaster/index.html');
+    if (base === null) return;
   var B = 'products/blaster/', PL = 'products/pelletizer/', R = 'products/recovery/', A = 'products/automation/';
   var DATA = {
-    0: { label: 'MODELS', lead: ['모델을 고르기 전에', '드라이아이스 블라스터 한눈에 보기'], groups: [
+    0: { label: 'MODELS', lead: '드라이아이스 블라스터', groups: [
       { name: '스마트 블라스터', to: B + 'index.html#bls-sys-smart', items: [['Aero2 PCS ULTRA', B + 'aero2-ultra.html'], ['Aero2 PLT ULTRA', B + 'aero2-plt-ultra.html']] },
       { name: '펠렛형 블라스터', to: B + 'index.html#bls-sys-pellet', items: [['Aero 40FP', B + 'aero-40fp.html'], ['Aero 80FP', B + 'aero-80fp.html'], ['ELITE 20', B + 'elite-20.html'], ['IceRocket PLT', B + 'icerocket-plt.html']] },
       { name: '마이크로파티클 블라스터', to: B + 'index.html#bls-sys-micro', items: [['i³ MicroClean 2', B + 'i3-microclean-2.html'], ['i³ MicroClean', B + 'i3-microclean.html'], ['SDI Select 60', B + 'sdi-select-60.html']] },
       { name: '특수 목적', to: B + 'index.html#bls-sys-specialty', items: [['Aero C100', B + 'c100.html'], ['E-CO2 150', B + 'e-co2-150.html']] }
     ] },
-    1: { label: 'MODELS', lead: ['모델을 고르기 전에', '드라이아이스 제조기 한눈에 보기'], groups: [
+    1: { label: 'MODELS', lead: '드라이아이스 제조기', groups: [
       { name: '펠렛 제조기', items: [['PE 80', PL + 'pe-80.html'], ['PR120H', PL + 'pr120h.html'], ['PR350H', PL + 'pr350h.html'], ['PR750H', PL + 'pr750h.html'], ['PR1500H', PL + 'pr1500h.html']] },
       { name: '리포머', items: [['R500H', PL + 'r500h.html'], ['R1000H', PL + 'r1000h.html'], ['R2000H', PL + 'r2000h.html']] },
       { name: '슬라이스 제조기', items: [['DS500E', PL + 'ds500e.html'], ['DS1000E', PL + 'ds1000e.html']] },
       { name: '특수 시스템', items: [['Dosing System', PL + 'dosing-system.html'], ['Production Hub', PL + 'production-hub.html']] }
     ] },
-    2: { label: 'MODELS', lead: ['모델을 고르기 전에', 'CO2 리커버리 한눈에 보기'], rows: [
-      ['RE-CO2 80', R + 're-co2-80.html', '시간당 최대 80 kg'],
-      ['RE-CO2 160', R + 're-co2-160.html', '시간당 최대 160 kg'],
-      ['RE-CO2 320 V2', R + 're-co2-320-v2.html', '시간당 최대 320 kg'],
-      ['RE-CO2 3500', R + 're-co2-3500.html', '시간당 3,500 kg, 컨테이너형']
-    ] },
-    3: { label: 'SYSTEMS', lead: ['시스템을 고르기 전에', '자동화 시스템 한눈에 보기'], rows: [
+    2: { label: 'SYSTEMS', lead: '자동화 시스템', rows: [
       ['COMBI PCS', A + 'combi-pcs.html', '생산과 분사 통합'],
       ['ASP-T', A + 'asp-t.html', '타이어 금형 전용 로봇'],
       ['DUCT ROBOT', A + 'duct-robot.html', '덕트, 배관 내부 세척'],
       ['VATEK 맞춤 설비', A + 'vatek-custom.html', '플레이트, 롤 자동 세척']
     ] },
-    4: { label: 'QUICK LINKS', rows: [
+    3: { label: 'QUICK LINKS', rows: [
       ['장비별 노즐 찾기', 'products/nozzle.html#nozzle-finder', '보유 장비에 맞는 노즐'],
       ['전체 노즐 및 액세서리', 'products/nozzle.html', '']
     ] },
-    5: { label: 'QUICK LINKS', rows: [
+    4: { label: 'QUICK LINKS', rows: [
       ['공급 형태', 'products/supply.html#forms', '펠렛, 너겟, 블록'],
       ['규격 안내', 'products/supply.html#particle-sizes', ''],
       ['주문과 배송', 'products/supply.html#order', '']
     ] },
-    6: { label: 'QUICK LINKS', rows: [
+    5: { label: 'QUICK LINKS', rows: [
       ['장비 비교 및 추천받기', 'products/compare-equip.html', '질문에 답하면 추천'],
       ['드라이아이스 생산 시스템 찾기', PL + 'index.html#model-finder', ''],
       ['RE-CO2 찾기', R + 'index.html#pairing', '']
     ] },
-    7: { label: 'QUICK LINKS', rows: [
+    6: { label: 'QUICK LINKS', rows: [
       ['구매 프로세스 보기', 'products/process.html', ''],
       ['견적 요청', 'products/quote.html', ''],
       ['데모 테스트 신청', 'rental/demo-apply.html', '']
     ] }
   };
-  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function link(it) {
-    return '<a class="mm-model" href="' + base + it[1] + '"><b>' + esc(it[0]) + '</b>' +
-      (it[2] ? '<small>' + esc(it[2]) + '</small>' : '') + '</a>';
-  }
-  // 맨 위 안내 줄: 모델보다 먼저 해당 장비의 소개 페이지(왼쪽 메뉴 항목과 같은 주소)로 보낸다.
-  function lead(d, i) {
-    var a = menu.querySelector('.megamenu-index-item[data-i="' + i + '"] a');
-    if (!d.lead || !a) return '';
-    return '<a class="mm-lead" href="' + esc(a.getAttribute('href')) + '"><span class="mm-lead-text"><small>' + esc(d.lead[0]) +
-      '</small><b>' + esc(d.lead[1]) + '</b></span><i class="mm-lead-arrow" aria-hidden="true">' +
-      '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>';
-  }
-  function groupName(g) {
-    if (!g.to) return '<span class="mm-group-name">' + esc(g.name) + '</span>';
-    return '<a class="mm-group-name" href="' + base + g.to + '">' + esc(g.name) + '</a>';
-  }
-  function html(d, i) {
-    var h = lead(d, i) + '<span class="megamenu-index-label">' + d.label + '</span>';
-    if (d.groups) {
-      h += '<div class="mm-groups">' + d.groups.map(function (g) {
-        return '<div class="mm-group">' + groupName(g) + g.items.map(link).join('') + '</div>';
-      }).join('') + '</div>';
-    } else {
-      h += '<div class="mm-rows">' + d.rows.map(link).join('') + '</div>';
+    // (2026-11-25) 목록 칸과 설명 카드의 높이를 가장 긴 것에 맞춰 고정한다: 항목을 옮겨 다녀도 메뉴 높이가 변하지 않는다(탄소포집, 적용분야 메뉴와 같다)
+    keepHeight(menu, build(menu, base, DATA));
+    keepCard(menu);
+  })();
+
+  // ---- 탄소포집 ---- (제품소개와 같은 배치. 헤더 HTML에 data-menu="carbon"이 붙어 있다)
+  // 탄소포집 기술은 소개 페이지 안의 주요 부분으로 가는 링크, CO2 리커버리는 RE-CO2 모델 목록을 보여 준다
+  // CB 12, CB 17과 적용 안내 두 항목(바이오가스 탄소포집, 드라이아이스 CO2 회수)은 그 페이지 안의 주요 부분을 보여 준다
+  (function () {
+    var menu = document.querySelector('.megamenu[data-menu="carbon"]');
+    var base = baseOf(menu, 'carbon-capture/index.html');
+    if (base === null) return;
+    var C = 'carbon-capture/index.html', P = 'carbon-capture/', R = 'products/recovery/';
+    var B = P + 'biogas-carbon-capture.html', D = P + 'dry-ice-co2-recovery.html';
+    var DATA = {
+      0: { label: 'ON THIS PAGE', lead: '탄소포집', rows: [
+        ['탄소포집의 원리', C + '#how', ''],
+        ['도입 효과', C + '#why', ''],
+        ['적용 분야', C + '#where', ''],
+        ['설치 전 준비 사항', C + '#prepare', ''],
+        ['주요 용어', C + '#terms', '']
+      ] },
+      1: { label: 'MODELS', lead: 'CO2 리커버리', rows: [
+        ['RE-CO2 80', R + 're-co2-80.html', '시간당 최대 80 kg'],
+        ['RE-CO2 160', R + 're-co2-160.html', '시간당 최대 160 kg'],
+        ['RE-CO2 320 V2', R + 're-co2-320-v2.html', '시간당 최대 320 kg'],
+        ['RE-CO2 3500', R + 're-co2-3500.html', '시간당 3,500 kg, 컨테이너형']
+      ] },
+      2: { label: 'ON THIS PAGE', rows: [
+        ['CB 12의 강점', P + 'cb-12.html#advantage', ''],
+        ['작동 순서', P + 'cb-12.html#how', ''],
+        ['특징, 사양, 선택 사양', P + 'cb-12.html#details', ''],
+        ['함께 보는 장비', P + 'cb-12.html#lineup', '']
+      ] },
+      3: { label: 'ON THIS PAGE', rows: [
+        ['CB 17의 강점', P + 'cb-17.html#advantage', ''],
+        ['작동 순서', P + 'cb-17.html#how', ''],
+        ['특징, 사양, 선택 사양', P + 'cb-17.html#details', ''],
+        ['함께 보는 장비', P + 'cb-17.html#lineup', '']
+      ] },
+      4: { label: 'ON THIS PAGE', rows: [
+        ['배출할 때와 포집할 때', B + '#overview', ''],
+        ['도입 효과', B + '#benefits', ''],
+        ['고질화에서 판매까지', B + '#process', ''],
+        ['포집한 CO2의 쓰임', B + '#markets', ''],
+        ['바이오가스 시설용 장비', B + '#equipment', '']
+      ] },
+      5: { label: 'ON THIS PAGE', rows: [
+        ['회수하지 않을 때와 회수할 때', D + '#overview', ''],
+        ['회수 순서', D + '#process', ''],
+        ['도입 효과', D + '#benefits', ''],
+        ['업체 유형별 구성', D + '#who', ''],
+        ['회수 설비의 구성', D + '#setup', ''],
+        ['RE-CO2 장비', D + '#equipment', '']
+      ] }
+    };
+    keepHeight(menu, build(menu, base, DATA));
+    keepCard(menu);
+  })();
+
+  // ---- 적용분야 ---- (헤더 HTML에 표시가 없어, 첫 항목이 산업별 솔루션인 메뉴를 찾아 data-menu="apps"를 붙인다)
+  (function () {
+    var menu = null, base = null;
+    Array.prototype.some.call(document.querySelectorAll('.megamenu'), function (m) {
+      var b = baseOf(m, 'cleaning/industry.html');
+      if (b === null) return false;
+      menu = m; base = b; return true;
+    });
+    if (!menu) return;
+    menu.setAttribute('data-menu', 'apps');
+    var I = 'industries/', AP = 'applications/', T = 'cleaning/task.html';
+    var DATA = {
+      0: { label: 'INDUSTRIES', lead: '산업별 솔루션', groups: [
+        { name: '주요 산업', to: 'cleaning/industry.html#ind-core', wide: [8, 6], items: [
+          ['자동차 제조', I + 'automotive.html'], ['반도체, 전자 제조', I + 'semiconductor.html'], ['플라스틱, 복합소재', I + 'plastics-composites.html'], ['고무, 타이어', I + 'rubber-tires.html'],
+          ['식품, 음료', I + 'food-beverage.html'], ['주조, 다이캐스팅', I + 'foundry.html'], ['우주, 항공', I + 'aerospace.html'], ['의료기기 제조', I + 'medical.html'],
+          ['발전, 전력', I + 'power-generation.html'], ['오일, 가스', I + 'oil-gas.html'], ['포장', I + 'packaging.html'], ['인쇄', I + 'printing.html'],
+          ['섬유', I + 'textiles.html'], ['엔지니어드 우드', I + 'engineered-wood.html'], ['철도, 대중교통', I + 'rail.html'], ['광업', I + 'mining.html']] },
+        { name: '유지보수, 전문 세척과 복원', to: 'cleaning/industry.html#ind-maint', wide: [3, 2], items: [
+          ['생산설비, 시설 유지보수', I + 'facility-maintenance.html'], ['전문 세척 서비스', I + 'contract-cleaning.html'], ['화재, 수해 복원', I + 'restoration.html'],
+          ['곰팡이 제거', I + 'mold-remediation.html'], ['역사적 건축물, 문화재 복원', I + 'historical-restoration.html'], ['자동차 복원, 디테일링', I + 'automotive-detailing.html']] }
+      ] },
+      1: { label: 'APPLICATIONS', lead: '작업별 솔루션', groups: [
+        { name: '설비, 툴링 세척', to: T + '#tsk-g1', items: [['금형, 툴링 세척', AP + 'mold-tool-cleaning.html'], ['생산설비, 시설 유지보수', I + 'facility-maintenance.html'], ['용접라인, 지그, 로봇 세척', AP + 'weld-fixture-robot.html'], ['도장부스, 코팅라인 세척', AP + 'paint-booth-coating-line.html'], ['전기, 전자 장비 세척', AP + 'electrical-electronic.html']] },
+        { name: '오염물 제거', to: T + '#tsk-g2', items: [['접착제, 수지 제거', AP + 'adhesive-resin-removal.html'], ['잉크, 도료, 코팅 제거', AP + 'ink-paint-coating-removal.html'], ['오일, 그리스, 고착 오염 제거', AP + 'oil-grease-residue-removal.html'], ['녹, 부식, 산화물 제거', AP + 'rust-corrosion-removal.html']] },
+        { name: '공정, 부품 마무리', to: T + '#tsk-g3', items: [['표면 전처리', AP + 'surface-preparation.html'], ['디버링, 디플래싱', AP + 'deburring-deflashing.html']] },
+        { name: '복원, 오염 제거', to: T + '#tsk-g4', items: [['복원, 재해복구', 'cleaning/industry.html#ind-svc']] }
+      ] },
+      2: { label: 'QUICK LINKS', rows: [
+        ['케이스 스터디 전체 보기', 'cases/case-studies.html', ''],
+        ['적용 영상 보기', 'cases/videos.html', ''],
+        ['데모 테스트 신청', 'rental/demo-apply.html', '']
+      ] },
+      3: { label: 'QUICK LINKS', rows: [
+        ['적용 영상 전체 보기', 'cases/videos.html', ''],
+        ['케이스 스터디 보기', 'cases/case-studies.html', ''],
+        ['데모 테스트 신청', 'rental/demo-apply.html', '']
+      ] }
+    };
+    var tallest = build(menu, base, DATA);
+
+    keepHeight(menu, tallest);
+    keepCard(menu); // 설명 카드의 높이도 가장 긴 설명에 맞춰 고정한다
+  })();
+
+  // ---- 서비스 ---- (첫 항목이 데모 테스트인 메뉴를 찾아 data-menu="service"를 붙인다)
+  // 칸 순서는 소개 | 메뉴 | 그림과 설명 카드. 목록 칸은 따로 두지 않고, 메뉴 칸을 넓혀 메뉴 목록을 좌우 두 줄로 나눈다:
+  // 왼쪽 줄은 TEST & RENTAL, 오른쪽 줄은 위에 SUPPORT, 그 아래에 REQUEST. 배치는 style.css(.has-split)
+  (function () {
+    var menu = null;
+    Array.prototype.some.call(document.querySelectorAll('.megamenu'), function (m) {
+      if (baseOf(m, 'rental/demo.html') === null) return false;
+      menu = m; return true;
+    });
+    if (!menu) return;
+    var list = menu.querySelector('.megamenu-index-list');
+    if (!list) return;
+    // 목록에 data-single이 있으면 좌우로 나누지 않고 한 줄 목록 그대로 둔다(메뉴 시험 구성). 설명 카드 높이만 고정한다
+    if (list.hasAttribute('data-single')) { keepCard(menu); return; }
+    menu.setAttribute('data-menu', 'service');
+    // SUPPORT 묶음 이름부터 끝까지(SUPPORT, REQUEST)를 오른쪽 줄로 보낸다(줄 번호를 1부터 차례로 매긴다)
+    var row = 0;
+    Array.prototype.forEach.call(list.children, function (el) {
+      if (!row && !(el.classList.contains('megamenu-index-group') && /SUPPORT/i.test(el.textContent))) return;
+      row += 1;
+      el.classList.add('mm-col2');
+      if (row === 1) el.classList.add('mm-col2-first');
+      el.style.gridRow = String(row);
+    });
+    if (!row) return;
+    menu.classList.add('has-split');
+    // 선택 표시(옅은 파란 바탕)는 위에서 이미 한 줄일 때의 폭으로 놓였으므로, 두 줄로 나눈 뒤의 항목 자리에 다시 맞춘다
+    var hl = list.querySelector('.megamenu-index-highlight');
+    function fit() {
+      var cur = list.querySelector('.megamenu-index-item.is-active');
+      if (!hl || !cur) return;
+      hl.style.top = cur.offsetTop + 'px'; hl.style.height = cur.offsetHeight + 'px';
+      hl.style.left = cur.offsetLeft + 'px'; hl.style.right = 'auto'; hl.style.width = cur.offsetWidth + 'px';
     }
-    return h;
-  }
-  var panel = document.createElement('div');
-  panel.className = 'megamenu-models';
-  index.insertAdjacentElement('afterend', panel);
-  menu.classList.add('has-models');
-  var cur = null, timer = null;
-  function show(i, instant) {
-    if (i === cur || !DATA[i]) return;
-    cur = i;
-    window.clearTimeout(timer);
-    if (instant) { panel.innerHTML = html(DATA[i], i); return; }
-    panel.classList.add('is-fading');
-    timer = window.setTimeout(function () { panel.innerHTML = html(DATA[i], i); panel.classList.remove('is-fading'); }, 70);
-  }
-  var items = menu.querySelectorAll('.megamenu-index-item');
-  Array.prototype.forEach.call(items, function (item) {
-    item.addEventListener('mouseenter', function () { show(+item.getAttribute('data-i')); });
-  });
-  var active = menu.querySelector('.megamenu-index-item.is-active') || items[0];
-  show(active ? +active.getAttribute('data-i') : 0, true);
+    // 설명 카드의 높이를 가장 긴 설명에 맞춰 잡는다: 항목을 옮겨 다녀도 카드와 메뉴 전체의 높이가 변하지 않는다
+    var detail = menu.querySelector('.megamenu-detail');
+    function card() {
+      if (!detail) return;
+      detail.style.minHeight = '';
+      if (window.innerWidth <= 960) return;
+      var probe = detail.cloneNode(true), max = 0;
+      probe.classList.remove('is-fading');
+      probe.style.cssText = 'position:absolute;left:0;top:0;visibility:hidden;pointer-events:none;min-height:0;width:' + detail.getBoundingClientRect().width + 'px';
+      detail.parentNode.appendChild(probe);
+      var t = probe.querySelector('.megamenu-detail-title'), d = probe.querySelector('.megamenu-detail-desc');
+      Array.prototype.forEach.call(list.querySelectorAll('.megamenu-index-item a'), function (a) {
+        if (t) {
+          t.textContent = a.textContent.replace(/\s+$/, '');
+          var logo = a.querySelector('.mi-logo');
+          if (logo) { var img = logo.cloneNode(true); img.className = 'megamenu-detail-logo'; t.appendChild(img); }
+        }
+        if (d) d.textContent = a.getAttribute('data-desc') || '';
+        max = Math.max(max, probe.getBoundingClientRect().height);
+      });
+      detail.parentNode.removeChild(probe);
+      if (max) detail.style.minHeight = Math.ceil(max) + 'px';
+    }
+    function both() { fit(); card(); }
+    both();
+    window.addEventListener('load', both);
+    window.addEventListener('resize', card);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(both);
+    if (menu.parentElement) menu.parentElement.addEventListener('mouseenter', both);
+  })();
 })();
